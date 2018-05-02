@@ -59,6 +59,9 @@ class RouteServiceProvider extends ServiceProvider
 		Route::middleware('web')
 			 ->namespace($this->namespace)
 			 ->group(base_path('routes/luan.php'));
+        Route::middleware('web')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/lu.php'));
 	}
 
 	/**
