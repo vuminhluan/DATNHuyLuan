@@ -1,1 +1,4 @@
-index.blade.php
+@extends('includes.navtop')
+@section('NoiDung')
+LALALALALALAAA
+@endsection
