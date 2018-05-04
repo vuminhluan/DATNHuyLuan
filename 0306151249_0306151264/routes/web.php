@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-  return view('index');
-})->name('index');
+Route::get('/', 'DangNhapController@getIndex')->name('index');
 
-Route::post('/', function() {
-	return view('trangchu');
-})->name('trangchu');
+Route::post('/dangnhap', 'DangNhapController@postDangNhap')->name('dangnhap');
+
+Route::post('/dangki', 'DangKiController@dangki')->name('dangki');
+
+Route::get('/trangchu', 'TrangChuController@getTrangChu')->name('trangchu');

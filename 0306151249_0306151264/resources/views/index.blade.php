@@ -14,7 +14,7 @@
 		<div class="main">
 			<div class="sign-up">
 				<div class="section">
-					<form action="a.html" id="sign-up-form" method="POST">
+					<form action="{{route('dangki')}}" id="sign-up-form" method="POST">
 						{{ csrf_field() }}
 						<div>
 							<h1 style="text-align: center;">Đăng ký</h1>
@@ -106,7 +106,7 @@
 			<div class="sign-in">
 				<!-- Form đăng nhập -->
 				<div class="section sign-in-form">
-					<form action="{{route('trangchu')}}" id="sign-in-form" method="POST">
+					<form action="{{route('dangnhap')}}" id="sign-in-form" method="POST">
 						{{ csrf_field() }}
 						<div>
 							<h1 style="text-align: center;">
