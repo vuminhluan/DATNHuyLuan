@@ -10,9 +10,8 @@
 
 @section('main')
 
-	
+
 	<h1 class="haha">
 		Trang chủ
 	</h1>
-	
 @endsection
