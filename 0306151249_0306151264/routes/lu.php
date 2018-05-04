@@ -6,9 +6,7 @@ Route::get("mid",function(){
 return view("includes.navtop");
 
 });
-Route::get("page",function(){
-return view("nhom.indexnhom");
-});
+Route::get("gr/{id}","NhomController\Nhom@loadnhom");
 
 Route::get("baiviet", function(){
 	return view("includes.baiviet");
