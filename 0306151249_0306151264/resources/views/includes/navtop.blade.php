@@ -18,6 +18,5 @@
 </ul>
 </div>
 </div>
-        <!-- end nav top  -->
-   {{-- @yield('NoiDung'); --}}
+
 

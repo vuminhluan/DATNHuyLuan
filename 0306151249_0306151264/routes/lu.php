@@ -7,7 +7,7 @@ return view("includes.navtop");
 
 });
 Route::get("page",function(){
-return view("nhom.index");
+return view("nhom.indexnhom");
 });
 
 Route::get("baiviet", function(){

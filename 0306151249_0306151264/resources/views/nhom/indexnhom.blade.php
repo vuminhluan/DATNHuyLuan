@@ -1,6 +1,7 @@
 @extends('includes.navtop')
 @extends('includes.baiviet')
-@section('NoiDung')
+@extends('master.masterpage')
+@section('main')
  <!-- body -->
     <div class="topnav contentmain  ">
 <!-- ảnh bìa -->
@@ -15,12 +16,8 @@
 <!--  -->
         <div class="content"  >
             <!--  -->
-            <?php
-            for ($i=0; $i < 1; $i++) { 
-            	@include('includes.baiviet');
-            }
-             
-            ?>
+            
+          
             <!--  -->
         </div>
         
