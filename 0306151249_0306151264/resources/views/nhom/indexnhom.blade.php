@@ -1,5 +1,4 @@
-@extends('includes.navtop')
-@extends('includes.baiviet')
+
 @extends('master.masterpage')
 @section('main')
  <!-- body -->
@@ -16,7 +15,11 @@
 <!--  -->
         <div class="content"  >
             <!--  -->
-            
+            @for ($i = 0; $i <2 ; $i++)
+                 @include('includes.baiviet')
+            @endfor
+          
+
           
             <!--  -->
         </div>
