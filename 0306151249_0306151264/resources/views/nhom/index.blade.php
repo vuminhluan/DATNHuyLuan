@@ -30,7 +30,4 @@
     </div>
     <!-- //// -->
 @endsection
-=======
-LALALALALALAAA
-@endsection
->>>>>>> 06d7099c38d5e7b4679e0c708477bc3d62aa67a4
+
