@@ -1,6 +1,4 @@
-<!--  -->
-        <div class="content"  >
-            <!--  -->
+
             <div class="subcontent" >
                 <!--  -->
                  <div class="headtus" style="background-color: rgb(118,223,236); " >
@@ -27,5 +25,3 @@
 
             </div>
             <!--  -->
-        </div>
-<!--  -->

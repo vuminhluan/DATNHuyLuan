@@ -1,6 +1,6 @@
 @extends('includes.navtop')
+@extends('includes.baiviet')
 @section('NoiDung')
-<<<<<<< HEAD
  <!-- body -->
     <div class="topnav contentmain  ">
 <!-- ảnh bìa -->
@@ -16,8 +16,8 @@
         <div class="content"  >
             <!--  -->
             <?php
-            for ($i=0; $i < 2; $i++) { 
-            	@include("includes.baiviet");
+            for ($i=0; $i < 1; $i++) { 
+            	@include('includes.baiviet');
             }
              
             ?>
