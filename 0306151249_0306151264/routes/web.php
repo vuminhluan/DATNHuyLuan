@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+  return view('index');
+})->name('index');
+
+Route::post('/', function() {
+	return view('trangchu');
+})->name('trangchu');

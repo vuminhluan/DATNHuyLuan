@@ -1,0 +1,203 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Arial";
+}
+
+body {
+  background: #fafafa;
+  color: #14171a;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+button{
+  -webkit-appearance: none;
+}
+
+select{
+  -webkit-appearance: none;
+}
+
+ul {list-style-type: none;}
+
+a {text-decoration: none; color: #1b95e0; outline: 0}
+
+.clear {clear: both}
+
+.main {
+  width: 900px;
+  margin: 70px auto;
+  overflow: hidden;
+}
+
+
+
+.sign-up {
+  width: 60%; float: left;border: 1px solid #b2b2b2;
+  height: 420px;
+}
+
+#sign-up-form {
+  width: 75%;margin: 50px auto 0;
+}
+
+
+.sign-up-tab {
+  display: none;
+}
+
+.sign-up-tab .help-mark-text {
+  width: 300px !important;
+}
+
+
+
+
+
+
+.sign-in {
+  width: 37%;border: 1px solid #b2b2b2;float: right;
+  height: 420px;
+}
+.section {
+  background-color: #fff; padding: 10px 20px;height: 100%;
+
+}
+.section form div {
+  margin: 5px 0;
+  padding: 5px 10px;
+}
+
+.section form label {
+  font-size: 13px;
+  display: block;
+  position: relative;
+}
+
+.section form input[type=text], .section form input[type=password] {
+  display: block;
+  width:100%;padding: 7px 7px;font-size: 14px;
+  border: 1px solid #ccc;background-color: #fafafa;
+  border-radius: 3px;
+}
+.section form input[type=text]:focus, .section form input[type=password]:focus {
+  border: 1px solid #aaa;
+  box-shadow: 1px 1px 3px #aaa;
+
+}
+#sign-in-remember, #sign-in-remember + label {
+  display: inline-block !important;
+}
+
+
+.form-button {
+  width: 100%;padding: 7px;font-size: 14px;
+  background-color: #48aae6;border: 0;border-radius: 3px;
+  cursor: pointer;opacity: 0.8;color: #fff;
+}
+
+.form-button:hover {
+  opacity: 1;box-shadow: 1px 1px 3px #48aae6;
+}
+
+.sign-in-linethrough {
+  text-align: center;position: relative;
+  overflow:hidden;padding: 0 40px;
+  color: #666;
+}
+.sign-in-linethrough span {
+  display: inline-block;
+}
+
+.sign-in-linethrough:before, .sign-in-linethrough:after {
+  content: "";
+  width: 35%;height: 1px;background-color: #c3c3c3;
+  position: absolute;top: 50%;bottom: 50%;
+  margin: 0 10px;
+
+}
+.sign-in-linethrough:before {
+  left: 0;
+}
+
+.sign-in-linethrough:after {
+  right: 0;
+}
+
+.google-sign-in-button {
+  border: 1px solid #ccc;
+  padding: 7px;border-radius: 3px;cursor: pointer;
+}
+
+.google-sign-in-button:hover {
+  box-shadow: 1px 1px 3px #ccc;
+}
+
+
+
+.help-mark {
+  font-weight: bold;cursor: pointer;
+  color: #333;background-color: #ccc;
+  display: inline-block;
+  padding: 0 6px;border-radius: 10px;
+  position: absolute; right: 5px; top: -2px;
+}
+
+.help-mark:hover > .help-mark-text {
+  display: inline-block;
+}
+
+.help-mark-text {
+  position: absolute;top: 150%;right: -100%;
+  width: 220px;z-index: 10;padding: 10px;
+  background-color: #000;color: #fff;font-size: 11px;
+  border-radius: 10px;
+  display: none;
+}
+
+.help-mark-text:after {
+  content: "";
+  position: absolute; bottom: 100%; right:22px;
+  border-width: 8px;border-style: solid;
+  border-color: transparent transparent #000 transparent;
+
+}
+
+label.error {display: none !important;}
+
+.sign-up-controllers {
+  text-align: right;
+}
+.sign-up-controllers button {
+  display: inline-block;
+  padding: 7px;
+  margin-right: 10px;
+  border: 0;cursor: pointer;
+  color: #fff;font-size: 14px;border-radius: 3px;
+  opacity: 0.8;
+}
+
+
+#sign-up-next-btn {
+  background-color: #48aae6;
+}
+#sign-up-next-btn:hover {
+  opacity: 1;box-shadow: 1px 1px 3px #48aae6;
+}
+#sign-up-prev-btn {
+  background-color: #bbbbbb;
+}
+#sign-up-prev-btn:hover{
+  opacity: 1;box-shadow: 1px 1px 3px #bbbbbb;
+}
+
+.login-footer {
+  background-color: #fff;text-align: center;
+  height: 100px;line-height: 100px;border-top: 1px solid #eee;
+}
+
+.login-footer ul li {
+  display: inline-block;margin: 0 5px;
+}
