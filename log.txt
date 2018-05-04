@@ -6,7 +6,7 @@
 * Khai báo thêm route mới trong file app/Provider/RouteServiceProvider.php
 	- Khai báo thêm route "luan" ở dòng 58->60
 
-* Tạo cấu trúc thư mục ở view
+* Tạo cấu trúc thư mục ở view (tạm)
 
 
 //----------------------------------------------------------------------------------

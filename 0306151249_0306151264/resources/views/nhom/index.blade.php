@@ -1,5 +1,6 @@
 @extends('includes.navtop')
 @section('NoiDung')
+<<<<<<< HEAD
  <!-- body -->
     <div class="topnav contentmain  ">
 <!-- ảnh bìa -->
@@ -29,3 +30,7 @@
     </div>
     <!-- //// -->
 @endsection
+=======
+LALALALALALAAA
+@endsection
+>>>>>>> 06d7099c38d5e7b4679e0c708477bc3d62aa67a4
