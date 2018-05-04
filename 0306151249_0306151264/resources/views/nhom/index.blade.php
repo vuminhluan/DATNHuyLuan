@@ -15,11 +15,12 @@
 <!--  -->
         <div class="content"  >
             <!--  -->
-            
-             @include("includes.baiviet");
-            
-           
-            
+            <?php
+            for ($i=0; $i < 2; $i++) { 
+            	@include("includes.baiviet");
+            }
+             
+            ?>
             <!--  -->
         </div>
         
