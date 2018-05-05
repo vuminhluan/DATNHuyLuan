@@ -15,9 +15,14 @@
 <!--  -->
         <div class="content"  >
             <!--  -->
+           
+          @for ($i = 0; $i < 2  ; $i++)
+               @include('includes.baiviet')
+          @endfor
+         
           
+
                 
-                 @include('includes.baiviet')
            
           
 

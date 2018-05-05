@@ -9,6 +9,8 @@ class Nhom extends Controller
 {
     public function loadnhom ($id)
     {
+    	$soluongbaiviet =10;
+    	
     	echo "$id";
     	return view("nhom.indexnhom",["t"=>$id]);
 
