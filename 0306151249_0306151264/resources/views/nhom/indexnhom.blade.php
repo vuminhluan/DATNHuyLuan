@@ -13,10 +13,14 @@
         </div>
         
 <!--  -->
+       
         <div class="content"  >
+          <div>
+            @include('baiviet.dangbaiviet')
+         </div>
             <!--  -->
            
-          @for ($i = 0; $i < 2  ; $i++)
+          @for ($i = 0; $i < (int)$s  ; $i++)
                @include('includes.baiviet')
           @endfor
          

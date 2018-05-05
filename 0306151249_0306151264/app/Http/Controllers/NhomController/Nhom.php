@@ -11,8 +11,8 @@ class Nhom extends Controller
     {
     	$soluongbaiviet =10;
     	
-    	echo "$id";
-    	return view("nhom.indexnhom",["t"=>$id]);
+    	
+    	return view("nhom.indexnhom",["t"=>$id,"s"=>$soluongbaiviet]);
 
     }
 }

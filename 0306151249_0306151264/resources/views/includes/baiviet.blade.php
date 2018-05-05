@@ -3,7 +3,8 @@
                 <!--  -->
                  <div class="headtus" style="background-color: rgb(118,223,236); " >
                     <div style="width: 40px; height:40px; margin-top: 5px; margin-left: 5px; float: left; " >
-                      <img style="width: 40px; height: 40px; border-radius: 50%;" src="pictures/avt1.jpg" alt="Mountain View">
+                      <img style="width: 40px; height: 40px; border-radius: 50%;" 
+                       src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View">
                     </div>
                     <div style="float:left; margin-left:10px;">
                       <span> <h4 style="margin-top: 10px;margin-bottom:0px;">  {{ $t }} </h4> </span><br>
