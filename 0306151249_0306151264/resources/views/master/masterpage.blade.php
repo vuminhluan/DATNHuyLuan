@@ -9,7 +9,7 @@
 	{{-- Biểu tượng icon cho trang web --}}
 	<link rel='icon' href='favicon.ico' type='image/x-icon'/ >
 
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/navtop.css') }}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	@yield('css')
@@ -22,7 +22,7 @@
 	@yield('main')
 
 
-	
+
 	@include('includes.footer')
 	{{-- Chưa có footer :D --}}
 

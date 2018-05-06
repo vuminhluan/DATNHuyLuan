@@ -8,6 +8,6 @@
 
 
 Route::get(
-	'/trang_ca_nhan/{username}',
+	'/taikhoan/{username}',
 	'TrangCaNhanController@getTrangCaNhan'
 )->name('trangcanhan');

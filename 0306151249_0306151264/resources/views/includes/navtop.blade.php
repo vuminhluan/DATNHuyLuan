@@ -2,7 +2,7 @@
     <!-- nav top -->
 <div class="topnavroot">
 <div class="topnav" >
-<ul>
+<ul class="navtop-menu">
   <li><a class="active" href="#home">Trang chủ</a></li>
   <li><a href="#news">Thông báo</a></li>
   <li><a href="#contact">Tin nhắn</a></li>
@@ -18,5 +18,3 @@
 </ul>
 </div>
 </div>
-
-

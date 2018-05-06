@@ -1,9 +1,14 @@
-@extends('master.masterpage')
+@extends('master.luan.trangcanhan_masterpage')
 @section('title')
-<title>{{$username}}</title>
+<title>Trang cá nhân {{$username}}</title>
 @endsection
 
 
-@section('main')
-<h1>Trang ca nhan cua {{$username}}</h1>
+@section('trang_ca_nhan')
+<h1>Trang cá nhân của {{strlen($username)}}</h1>
+
+
+
+
+
 @endsection
