@@ -9,10 +9,13 @@ button {
   -webkit-appearance: none;
 }
 
-ul.navtop-menu {
+ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+ul.navtop-menu {
     overflow: hidden;
     background-color: white;
 }

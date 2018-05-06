@@ -3,6 +3,10 @@
   width: 1176px; margin: 0 auto;
 }
 
+a.luan_link {
+	text-decoration: none; color: #1b95e0; outline: 0;
+}
+
 /*Profile banner and Profile avatar*/
 .profile-image{
   height: 320px;

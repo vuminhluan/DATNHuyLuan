@@ -38,22 +38,22 @@
 		<div class="main">
 			<ul>
 				<li>
-					<a href="#">
+					<a class="luan_link" href="#">
 						<span>Bài viết</span><span>12</span>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a class="luan_link" href="#">
 						<span>Thích</span><span>0</span>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a class="luan_link" href="#">
 						<span>Lưu</span><span>0</span>
 					</a>
 				</li>
 				<li>
-					<a href="profile-all-group.html">
+					<a class="luan_link" href="profile-all-group.html">
 						<span>Nhóm</span><span>2</span>
 					</a>
 				</li>
@@ -69,7 +69,7 @@
 			<div>
 				<div class="profile-name">
 					<h2>Người Dùng A</h2>
-					<p><a href="#">@nguoidunga</a></p>
+					<p><a class="luan_link" href="#">@nguoidunga</a></p>
 
 				</div>
 				<div class="profile-bio">
@@ -95,19 +95,19 @@
 				<div class="profile-some-images">
 					<i class="fa fa-image"></i>
 					&nbsp;
-					<a href="#/">Hình ảnh</a>
+					<a class="luan_link" href="#/">Hình ảnh</a>
 					<ul>
-						<li><a href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
-						<li><a href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
-						<li><a href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
-						<li><a href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
+						<li><a class="luan_link" href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
+						<li><a class="luan_link" href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
+						<li><a class="luan_link" href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
+						<li><a class="luan_link" href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
 					</ul>
 				</div>
 				<div id="edit-profile-button">
 					<p class="edit-profile edit-name">
 						<i class="fa fa-edit"></i>
 						&nbsp;
-						<a href="#/" onclick="openModal('js-edit-profile-modal')">Chỉnh sửa thông tin hiển thị trang cá nhân.</a>
+						<a class="luan_link" href="#/" onclick="openModal('js-edit-profile-modal')">Chỉnh sửa thông tin hiển thị trang cá nhân.</a>
 					</p>
 				</div>
 			</div>
