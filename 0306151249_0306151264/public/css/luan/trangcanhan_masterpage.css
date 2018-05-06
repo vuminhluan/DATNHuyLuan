@@ -1,0 +1,179 @@
+
+.main {
+  width: 1176px; margin: 0 auto;
+}
+
+/*Profile banner and Profile avatar*/
+.profile-image{
+  height: 320px;
+  position: relative;
+}
+.profile-banner {
+  height: inherit;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.profile-avatar {
+  position: absolute; bottom: -90px;
+  width: 200px; height: 200px; border: 5px solid #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 0;
+}
+.profile-avatar > img {width: 100%; height: 100%;border-radius: 50%}
+
+.edit-profile-image {
+  width: 100%; height: 100%;background-color: rgba(0,0,0,0.5);align-items: center;justify-content: center;
+  position: absolute;top:0;left: 0; cursor: pointer;color: #fff;display: none;
+}
+.edit-profile-avatar-button {
+  border-radius: 50%;
+}
+.edit-profile-image .-icon {
+  font-size: 30px;
+}
+
+.edit-profile-image p {display: block;text-align: center;margin-top: 5px}
+
+
+.profile-avatar:hover > .edit-profile-avatar-button {
+  display: flex;
+}
+
+
+.profile-banner:hover > .edit-profile-banner-button {
+  display: flex;
+}
+
+
+.uploader {
+  cursor: pointer; opacity: 0;display: block;z-index: 0;
+  width: 100%;height: 100%; position: absolute;top: 0;left: 0;
+}
+
+/* End profile image (banner and avatar) */
+
+
+
+/*Profile navbar*/
+.profile-navbar {
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.25); height: 60px;background-color: #fff;
+}
+.profile-navbar ul {
+  margin-left: 308px; height: 60px;
+}
+
+.profile-navbar ul > li {
+  float: left;position: relative;text-align: center;height: 60px;
+}
+
+.profile-navbar ul > li:hover::after, .profile-navbar ul > li:hover::before {
+  width: 50%; height: 3px;
+}
+
+.profile-navbar ul > li::after, .profile-navbar ul > li::before {
+  content: ""; height: 0px; background-color: #666;
+  position: absolute; bottom: 0; width: 0%; transition: all 0.3s;
+}
+
+.profile-navbar ul > li::after {
+  right: 50%;
+}
+
+.profile-navbar ul > li::before {
+  left: 50%;
+}
+
+.profile-navbar ul > li > a {
+  padding:  15px; color: #363636;font-weight: bold; display: inline-block;
+}
+
+.profile-navbar ul > li > a:hover {
+  opacity: 0.8;
+}
+
+.profile-navbar ul > li > a > span {
+  display: block;
+}
+/*End profile navbar*/
+
+
+/*Profile edit modal*/
+
+.profile-edit.modal-body > div > label {
+  display: block;font-weight: bold;
+}
+
+.profile-edit.modal-body > div > input, .profile-edit.modal-body > div > textarea, .profile-edit.modal-body > div > select {
+  padding: 5px; height:35px;border: 1px solid #e6ecf0;border-radius: 3px
+}
+
+.profile-edit.modal-body > div > input:focus, .profile-edit.modal-body > div > textarea:focus, .profile-edit.modal-body > div > select:focus {
+  border: 1px solid #5eb4e9;
+}
+
+.profile-edit.modal-body > div > input, .profile-edit.modal-body > div > textarea {
+  width: 100%;
+}
+
+.profile-edit.modal-body > div > textarea {
+  box-sizing: border-box;resize: none;
+  overflow-y: hidden; height: auto;
+}
+
+
+input.profile-name {
+  font-size: 16px; font-weight: bold;
+}
+
+.character-counter {
+  display: block;text-align: right;color :#90949c;font-size: 12px;
+}
+
+/*End profile edit modal*/
+
+
+/*  */
+.contentmain {
+  margin-top: 8px !important;
+}
+.contentmain > div {
+  float: left;
+}
+
+
+.content {
+  width: 560px; height: auto; margin: 0 8px;
+  background-color:#fff;
+}
+
+
+.sidebar {
+  width: 300px;
+}
+/*  */
+
+
+/*Leftnav*/
+
+
+
+.leftnav-profile > div:nth-of-type(1) {
+  margin: 40px 0 0 0;
+}
+
+.leftnav-profile > div > div{margin: 15px 0;}
+
+.profile-name > p > a {color: #657786;}
+.profile-name > p > a:hover, .profile-some-images > a:hover, #edit-profile-button a:hover  {text-decoration: underline;}
+
+.profile-primary-info > p {margin: 5px 0; color: #657786;}
+.profile-primary-info i.fa, .profile-some-images i.fa, #edit-profile-button i.fa {font-size: 18px;min-width: 18px;color: #657786;}
+
+
+.profile-some-images > ul > li {width: 85px; height: 85px; display: inline-block;}
+.profile-some-images > ul > li > a > img {width: 100%; height: 100%; border-radius: 6px}
+.profile-some-images > ul > li {margin: 5px 5px 0 0}
+
+/*End leftnav*/

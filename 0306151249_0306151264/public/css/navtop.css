@@ -9,7 +9,7 @@ button {
   -webkit-appearance: none;
 }
 
-ul {
+ul.navtop-menu {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -86,6 +86,7 @@ ul {
    border-style: solid;
    border-width: 0px;
    border-bottom-width: 1px;
+   z-index: 10;
 
 
   }
