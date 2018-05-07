@@ -17,8 +17,18 @@ Route::get(
 	'TrangCaNhanController@getNhom'
 )->name('trangcanhan.nhom');
 
-Route::get('/caidat', function() {
-	return redirect()->route('caidat.index');
-});
+Route::prefix('caidat')->group(function () {
 
-Route::get('/caidat/taikhoan', 'CaiDatController@getIndex')->name('caidat.index');
+	Route::get('/', function() {
+		return redirect()->route('caidat.index');
+	});
+
+	Route::get('/taikhoan', 'CaiDatController@getIndex')->name('caidat.index');
+
+	Route::get('/matkhau', 'CaiDatController@getTrangThayDoiMatKhau')->name('caidat.thaydoi_matkhau');
+	Route::get('/vohieuhoa', 'CaiDatController@getTrangVoHieuHoaTaiKhoan')->name('caidat.vohieuhoa');
+
+	Route::get('/taikhoan_bichan', 'CaiDatController@getTrangTaiKhoanBiChan')->name('caidat.chan_taikhoan');
+
+
+});

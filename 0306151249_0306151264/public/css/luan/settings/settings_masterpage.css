@@ -1,0 +1,155 @@
+.main {
+  width: 1176px; margin: 0 auto;
+}
+
+* {font-family: "Arial";}
+
+.clear {clear: both;}
+
+a.luan_link, a {
+	text-decoration: none; color: #1b95e0; outline: 0;
+}
+.clear {clear: both}
+
+.sidebar {
+  width: 300px;
+}
+
+.contentmain {
+  margin-top: 8px !important;
+}
+.contentmain > div {
+  float: left;
+}
+
+
+.content {
+  width: 560px; height: auto; margin: 0 8px;
+  background-color:#fff;
+}
+
+/* profile-setting-sidebar */
+.profile-setting-sidebar > div {
+  background-color: #fff;width: 100%; height: auto;margin-bottom: 8px;
+}
+.profile-card {height: 160px !important;}
+
+.profile-card-banner {background-color:#000; background-size: 100% 100%; width: 100%; height: 100px;position: relative;}
+.profile-card-avatar {color: red;position: absolute;left:10px;bottom: -30px; width: 75px; height: 75px;border: 3px solid #fff;border-radius:50%;}
+.profile-card-avatar > img {width: 100%; height: 100%;border-radius: 50%}
+
+.profile-name-and-id {margin-left: 100px;padding: 5px 0;}
+.profile-name-and-id > h3, .profile-name-and-id > p {
+  width: 100%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;
+}
+.profile-name-and-id > h3 > a {color:#000;}
+.profile-name-and-id > p > a {color: #657786;}
+.profile-name-and-id a:hover {text-decoration: underline;}
+
+
+/*end profile-setting-sidebar */
+
+/*setting-sidenav*/
+.setting-active-link{color:#1b95e0 !important;font-weight: bold;}
+
+
+.setting-sidenav > ul > li {border-bottom: 1px solid #eee}
+.setting-sidenav > ul > li > a {display: block; padding: 10px; color: #657786;position: relative;}
+.setting-sidenav > ul > li > a > span {font-size: 20px;position: absolute;right: 10px }
+.setting-sidenav > ul > li > a:hover {background-color: #f5f8fa;color:#1b95e0;font-weight: bold;}
+
+
+/*end setting-sidenav #f5f8fa*/
+
+
+
+/*setting content account, changing password*/
+
+.content-setting > div {
+  border-bottom: 1px solid #e6ecf0;
+  padding: 20px 10px;
+}
+
+.setting-title > p {margin: 5px 0;color: #657786;}
+.setting-title > p a:hover {text-decoration: underline;}
+
+/* setting form : setting account , changing password, */
+.setting-form > table {width: 80%; margin: 0 auto;}
+.setting-form > table tr > td {
+  padding: 10px 0 ;
+}
+.setting-form > table tr > td:nth-of-type(1) {
+  text-align: right;
+}
+.setting-form > table tr > td:nth-of-type(2) > div {
+  margin-left: 20px;
+}
+.setting-form > table tr > td:nth-of-type(2) > div >  input {
+  padding: 0 5px; height: 30px; width: 200px;
+  border: 1px solid #e6ecf0;border-radius: 3px
+}
+.setting-form > table tr > td:nth-of-type(2) > div >  input:focus {
+  border: 1px solid #5eb4e9;
+}
+
+.setting-form > table tr > td:nth-of-type(2) > div >  button {
+  display: inline-block;
+  border: none;background-color: #48aae6;padding:8px;color:#fff;border-radius: 3px;cursor: pointer;opacity: 0.8;
+}
+
+#deactivate-account-link:hover {text-decoration: underline;}
+/*end setting content account*/
+
+
+
+/*Deactivate-account-page*/
+
+.before-deactivate-account-info > ul {
+  margin: 10px 0 0 20px;
+}
+.before-deactivate-account-info > ul > li {
+  list-style: disc outside;
+  margin-top: 10px;
+}
+.before-deactivate-account-info > ul > li a:hover {text-decoration: underline;}
+.before-deactivate-account-info + div {text-align: center;}
+#deactivate-account-button {display: inline-block; background-color: #1b95e0; border: none; padding: 10px; border-radius: 3px;color:#fff;cursor: pointer;}
+#deactivate-account-button:hover {opacity: 0.8;}
+#deactivate-account-button > span {font-weight: bold;}
+
+/*End deactivate-account-page*/
+
+
+/*Blocked account page*/
+.no-padding-content-setting-div {padding: 0 !important}
+ul.blocked-account-list > li {
+  display: grid;grid-template-columns: 50px auto 180px;
+  grid-gap: 10px;padding:15px;margin: 5px 0;border-bottom: 1px solid #eee;
+}
+
+.blocked-account-avatar {width: 50px; height: 50px;}
+.blocked-account-avatar img {width: 100%; height: 100%;border-radius: 50%}
+
+.blocked-account-name-and-username > a > span {display: block}
+.blocked-account-name-and-username > a > span:nth-of-type(1) {
+  font-weight: bold;
+}
+.blocked-account-name-and-username > a > span:nth-of-type(2) {
+  color: #657786;
+}
+
+.blocked-account-button-and-action {text-align: right}
+.blocked-account-button-and-action > button {
+  display: none; padding: 10px;cursor: pointer;border-radius: 3px;
+  font-weight: bold;min-width: 100px;
+}
+.blocked-account-button-and-action > button.js-show-button {display: inline-block;}
+
+.unblock-account-button {
+  border: 1px solid #e0245e;background-color: transparent;color:#e0245e;
+}
+.block-account-button {
+  border: 1px solid #e0245e;background-color: #e0245e;color:#fff;
+}
+
+/*End Blocked account page*/

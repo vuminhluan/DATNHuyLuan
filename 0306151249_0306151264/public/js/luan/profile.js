@@ -1,14 +1,14 @@
 $(document).ready(function() {
 
-	// Open modal
-	$('.modal-open-button').click(function() {
-		closeModal($(this).attr('data-modalid'));
-	});
-
-	// Close modal
-	$('.modal-cancel-button').click(function() {
-		closeModal($(this).attr('data-modalid'));
-	});
+	// // Open modal
+	// $('.modal-open-button').click(function() {
+	// 	closeModal($(this).attr('data-modalid'));
+	// });
+	//
+	// // Close modal
+	// $('.modal-cancel-button').click(function() {
+	// 	closeModal($(this).attr('data-modalid'));
+	// });
 
 	$('.group-action-button').click(function() {
 		if( $(this).parent().hasClass('js-card-hover') ) {

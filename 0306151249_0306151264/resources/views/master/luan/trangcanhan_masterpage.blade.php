@@ -117,11 +117,13 @@
 			</div>
 		</div>
 		<!--  -->
+
 		{{-- Nội dung chính (cột ở giữa) của trang cá nhân  --}}
 
 		@yield('noidung_trangcanhan')
 
 		{{-- End Nội dung chính (cột ở giữa) của trang cá nhân  --}}
+		
 
 		<!--  -->
 		<div class="rightnav-profile-masterpage sidebar profile-group-rightnav">
@@ -133,15 +135,6 @@
 	<div class="clear"></div>
 
 	@include('includes/trangcanhan/trangcanhan_modal')
-
-
-
-
-
-
-
-
-
 
 @endsection
 
