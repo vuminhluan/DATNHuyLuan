@@ -73,7 +73,7 @@
 			<div>
 				<div class="profile-name">
 					<h2>Người Dùng A</h2>
-					<p><a class="luan_link" href="#">@nguoidunga</a></p>
+					<p><a class="luan_link" href="{{route('trangcanhan.index', ['username'=>'vuminhluan'])}}">@nguoidunga</a></p>
 
 				</div>
 				<div class="profile-bio">
@@ -101,10 +101,10 @@
 					&nbsp;
 					<a class="luan_link" href="#/">Hình ảnh</a>
 					<ul>
-						<li><a class="luan_link" href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
-						<li><a class="luan_link" href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
-						<li><a class="luan_link" href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
-						<li><a class="luan_link" href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
+						<li><a class="luan_link" href="{{asset('pictures/luan/test1.png')}}" target="_blank"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
+						<li><a class="luan_link" href="{{asset('pictures/luan/test1.png')}}"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
+						<li><a class="luan_link" href="{{asset('pictures/luan/test1.png')}}"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
+						<li><a class="luan_link" href="{{asset('pictures/luan/test1.png')}}"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
 					</ul>
 				</div>
 				<div id="edit-profile-button">
@@ -124,8 +124,8 @@
 		{{-- End Nội dung chính (cột ở giữa) của trang cá nhân  --}}
 
 		<!--  -->
-		<div class="rightnav-profile-masterpage sidebar">
-			right
+		<div class="rightnav-profile-masterpage sidebar profile-group-rightnav">
+			@yield('righnav-profile-masterpage')
 		</div>
 
 	</div>

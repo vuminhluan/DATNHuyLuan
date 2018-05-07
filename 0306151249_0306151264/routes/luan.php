@@ -16,3 +16,9 @@ Route::get(
 	'/taikhoan/{username}/nhom',
 	'TrangCaNhanController@getNhom'
 )->name('trangcanhan.nhom');
+
+Route::get('/caidat', function() {
+	return redirect()->route('caidat.index');
+});
+
+Route::get('/caidat/taikhoan', 'CaiDatController@getIndex')->name('caidat.index');

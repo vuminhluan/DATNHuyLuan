@@ -6,7 +6,7 @@
 
 @section('noidung_trangcanhan')
 <div class="content">
-	<h1>Trang cá nhân của {{$username}}</h1>
+	Bài viết ở đây (Theo tứ tự mới nhất -> cũ)
 </div>
 
 

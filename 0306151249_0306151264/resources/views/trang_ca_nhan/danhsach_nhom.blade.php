@@ -251,4 +251,57 @@
 
 	</div>
 
+
+
+	@section('righnav-profile-masterpage')
+		<!-- Create group -->
+		<div class="profile-create-groups">
+			<div>
+				<h3>Tạo nhóm mới</h3>
+			</div>
+			<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, consequatur!</p>
+				<!-- <a href="#/" class="create-group-button">Tạo nhóm</a> -->
+			</div>
+			<div>
+				<a href="#/" class="create-group-button">Tạo nhóm</a>
+			</div>
+		</div>
+		<!-- End Create group -->
+
+		<!-- offered group -->
+		<div class="profile-offered-groups">
+			<div>
+				<h3>Nhóm đề xuất</h3>
+			</div>
+			<div>
+				<ul>
+					<li>
+						<a href="#/"><img class="-banner" src="{{asset('pictures/luan/test2.png')}}" alt=""></a>
+						<div>
+							<div class="-name">
+								<p ><a href="#/">Tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm</a></p>
+								<span>1590 thành viên</span>
+							</div>
+							<div class="-join-button"><a href="#/"><i class="fa fa-plus"></i> Tham gia</a></div>
+						</div>
+					</li>
+					<li>
+						<a href="#/"><img class="-banner" src="{{asset('pictures/luan/test2.png')}}" alt=""></a>
+						<div>
+							<div class="-name">
+								<p ><a href="#/">Tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm</a></p>
+								<span>1590 thành viên</span>
+							</div>
+							<div class="-join-button"><a href="#/" ><i class="fa fa-plus"></i> Tham gia</a></div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- offered group -->
+
+
+	@endsection
+
 @endsection

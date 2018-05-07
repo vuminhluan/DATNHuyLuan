@@ -8,7 +8,7 @@
 
 .clear {clear: both;}
 
-a.luan_link {
+a.luan_link, a {
 	text-decoration: none; color: #1b95e0; outline: 0;
 }
 
@@ -186,3 +186,59 @@ input.profile-name {
 .profile-some-images > ul > li {margin: 5px 5px 0 0}
 
 /*End leftnav*/
+
+
+/* Rightnav profile masterpage  (create group and order groups) */
+
+
+.profile-group-rightnav {
+  /*border: 1px solid red;*/
+}
+
+.profile-group-rightnav > div {
+  background-color: #fff !important;
+  border-radius: 3px 3px 0 0;margin-bottom: 8px;
+}
+.profile-group-rightnav > div > div {
+  padding: 10px;
+}
+
+.profile-group-rightnav > div > div:first-child {
+  border-bottom: 1px solid #e6ecf0;
+}
+
+.profile-create-groups .create-group-button {
+  display: inline-block; color: #fff; background-color:#48aae6;
+  padding: 8px;border-radius: 3px;
+}
+
+
+.profile-offered-groups ul li {
+  border: 1px solid #e4e4e4;border-radius: 3px;padding-bottom: 5px;margin-bottom: 8px;
+}
+.profile-offered-groups .-banner  {
+  width: 100%; height: 120px;border-radius: 3px 3px 0 0;
+}
+.profile-offered-groups ul li > div {
+  display: flex;padding: 3px;
+  align-items: center;
+}
+.profile-offered-groups ul li > div > div:first-child {
+  width: 170px;
+}
+.profile-offered-groups ul li > div > div:last-child {
+  width: 90px;margin-left: 10px;
+}
+.profile-offered-groups .-name {font-size: 12px;}
+.profile-offered-groups .-name p a {text-transform: uppercase;color:#000}
+.profile-offered-groups .-name:hover > p > a {color: #1b95e0;text-decoration: underline;}
+.profile-offered-groups .-name span {color:#657786;}
+.profile-offered-groups .-join-button {text-align: right;}
+.profile-offered-groups .-join-button a {
+  padding: 5px;display: inline-block;color: #48aae6;border: 1px solid #48aae6;border-radius: 3px;
+}
+.profile-offered-groups .-join-button a:hover {
+  background-color:#48aae6;color:#fff;
+}
+
+/* End Rightnav profile masterpage  */

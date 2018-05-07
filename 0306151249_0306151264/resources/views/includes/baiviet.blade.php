@@ -3,7 +3,7 @@
                 <!--  -->
                  <div class="headtus" style="background-color: rgb(118,223,236); " >
                     <div style="width: 40px; height:40px; margin-top: 5px; margin-left: 5px; float: left; " >
-                      <img style="width: 40px; height: 40px; border-radius: 50%;" 
+                      <img style="width: 40px; height: 40px; border-radius: 50%;"
                        src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View">
                     </div>
                     <div style="float:left; margin-left:10px;">
@@ -20,7 +20,7 @@
 
                  </div>
                  <!--  -->
-                 <div class="commenttus"> 
+                 <div class="commenttus">
 
                  </div>
 
