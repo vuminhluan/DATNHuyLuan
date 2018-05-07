@@ -1,7 +1,12 @@
 
 .main {
   width: 1176px; margin: 0 auto;
+
 }
+
+* {font-family: "Arial";}
+
+.clear {clear: both;}
 
 a.luan_link {
 	text-decoration: none; color: #1b95e0; outline: 0;

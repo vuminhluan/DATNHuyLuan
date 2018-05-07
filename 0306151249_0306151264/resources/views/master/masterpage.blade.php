@@ -26,7 +26,9 @@
 	@include('includes.footer')
 	{{-- Chưa có footer :D --}}
 
+	<script src="{{asset('js/jquery/jquery3.3.1.js')}}" charset="utf-8"></script>
 	@yield('javascript')
+
 
 </body>
 </html>

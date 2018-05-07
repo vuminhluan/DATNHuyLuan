@@ -10,4 +10,9 @@ class TrangCaNhanController extends Controller
 	{
 		return view('trang_ca_nhan.index')->with(['username'=>$username]);
 	}
+
+	public function getNhom($username)
+	{
+		return view('trang_ca_nhan.danhsach_nhom')->with(['username'=>$username]);
+	}
 }

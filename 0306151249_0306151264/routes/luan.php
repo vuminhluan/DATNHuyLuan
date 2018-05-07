@@ -10,4 +10,9 @@
 Route::get(
 	'/taikhoan/{username}',
 	'TrangCaNhanController@getTrangCaNhan'
-)->name('trangcanhan');
+)->name('trangcanhan.index');
+
+Route::get(
+	'/taikhoan/{username}/nhom',
+	'TrangCaNhanController@getNhom'
+)->name('trangcanhan.nhom');

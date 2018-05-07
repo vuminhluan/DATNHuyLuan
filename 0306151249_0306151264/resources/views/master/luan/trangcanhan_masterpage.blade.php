@@ -1,7 +1,11 @@
 @extends('master.masterpage')
 
+
+
 @section('css')
-	<link rel="stylesheet" href="{{asset('css/luan/trangcanhan_masterpage.css')}}">
+	<link rel="stylesheet" href="{{asset('css/luan/profile/profile_masterpage.css')}}">
+	<link rel="stylesheet" href="{{asset('css/luan/confirm-modal.css')}}">
+	@yield('profile_css')
 @endsection
 
 @section('main')
@@ -53,7 +57,7 @@
 					</a>
 				</li>
 				<li>
-					<a class="luan_link" href="profile-all-group.html">
+					<a class="luan_link" href="{{route('trangcanhan.nhom', ['username'=>'vuminhluan'])}}">
 						<span>Nhóm</span><span>2</span>
 					</a>
 				</li>
@@ -107,26 +111,42 @@
 					<p class="edit-profile edit-name">
 						<i class="fa fa-edit"></i>
 						&nbsp;
-						<a class="luan_link" href="#/" onclick="openModal('js-edit-profile-modal')">Chỉnh sửa thông tin hiển thị trang cá nhân.</a>
+						<a class="luan_link modal-open-button" href="#/" onclick="openModal('js-edit-profile-modal')">Chỉnh sửa thông tin hiển thị trang cá nhân.</a>
 					</p>
 				</div>
 			</div>
 		</div>
 		<!--  -->
-		<div class="content">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, veritatis.
-		</div>
+		{{-- Nội dung chính (cột ở giữa) của trang cá nhân  --}}
+
+		@yield('noidung_trangcanhan')
+
+		{{-- End Nội dung chính (cột ở giữa) của trang cá nhân  --}}
+
 		<!--  -->
 		<div class="rightnav-profile-masterpage sidebar">
+			right
 		</div>
 
 	</div>
 	{{--  --}}
+	<div class="clear"></div>
+
+	@include('includes/trangcanhan/trangcanhan_modal')
 
 
 
 
 
-	@yield('noidung_trangcanhan')
 
+
+
+
+
+@endsection
+
+@section('javascript')
+	<script src="{{asset('js/luan/utilities/auto_expand_textarea.js')}}"></script>
+	<script src="{{asset('js/luan/utilities/open_close_modal.js')}}"></script>
+	<script src="{{asset('js/luan/profile.js')}}"></script>
 @endsection
