@@ -9,7 +9,7 @@
 
 /*Modal confirm save changes in setting page | Confirm modal in profile page*/
 .confirm-modal {
-  /* display: none; */
+  display: none;
   position: fixed; left: 0; top: 0; z-index: 1;width: 100%; height: 100%;
   padding-top: 80px !important; overflow: auto; background-color: rgba(0,0,0,0.5);
 }
