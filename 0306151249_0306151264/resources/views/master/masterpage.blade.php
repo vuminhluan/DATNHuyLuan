@@ -22,7 +22,7 @@
 	@yield('main')
 
 
-
+	<div class="clear"></div>
 	@include('includes.footer')
 	{{-- Chưa có footer :D --}}
 
