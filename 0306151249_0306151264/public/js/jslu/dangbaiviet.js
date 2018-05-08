@@ -1,4 +1,79 @@
 
+var z = true;
+function clickckb() {
+  if (z)  {
+             z=!z;
+             document.getElementById("divbigformdangbaiviet").style.height="300px";
+             document.getElementById("divtrongformdangbaiviet").style.height="250px";
+       var a =    document.getElementsByClassName("divoptionradio");
+       var c =    document.getElementsByClassName("optionlevel2");
+       for (var i = 0; i < a.length; i++) {
+         a[i].style.height="140px";
+         c[i].style.display="block";
+       }
+              
+          }
+          else{
+              z=!z;
+              document.getElementById("divbigformdangbaiviet").style.height="200px";
+              document.getElementById("divtrongformdangbaiviet").style.height="150px";
+              var b =    document.getElementsByClassName("divoptionradio");
+              var d =    document.getElementsByClassName("optionlevel2");
+               for (var i = 0; i < b.length; i++) {
+                 b[i].style.height="50px";
+                 d[i].style.display="none";
+               }
+          }
+      }
+
+function clickoption(l) {
+  if (z)  {
+             z=!z;
+             // document.getElementById("divbigformdangbaiviet").style.height="300px";
+             // document.getElementById("divtrongformdangbaiviet").style.height="250px";
+             document.getElementById(l).style.display="block";
+       //       var a =    document.getElementsByClassName("divoptionradio");
+       // for (var i = 0; i < a.length; i++) {
+       //   a[i].style.height="140px";
+         
+       // }
+              
+          }
+          else{
+              z=!z;
+              // document.getElementById("divbigformdangbaiviet").style.height="200px";
+              // document.getElementById("divtrongformdangbaiviet").style.height="150px";
+              document.getElementById(l).style.display="none";
+              // var b =    document.getElementsByClassName("divoptionradio");
+              //  for (var i = 0; i < b.length; i++) {
+              //    b[i].style.height="50px";
+              
+              //  }
+          }
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// comboxx các loại ẩn danh
+
 var x, i, j, selElmnt, a, b, c;
 /*look for any elements with the class "custom-select":*/
 x = document.getElementsByClassName("custom-select");

@@ -5,6 +5,7 @@
 #iptextdangbaiviet{
 	border: 1px solid #c5cfd6; border-radius: 3px; float:left;width: 493px;
 	 margin-left: 10px;margin-top: 5px;
+	 border-color: #9695d8;
 }
 #divbigformdangbaiviet{
 	height: 200px;background-color: white; margin-bottom: 5px; 
@@ -36,22 +37,55 @@
 }
 #divoptionradiobutton{
 	height: 50px;
-	padding-left: 10px;
+	padding-left: 0px;
 }
 #divbtndangbaiviet{
 	float: right;
 	width: 25%;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*checkbox*/
 /* The container */
-.container {
+.optionlevel2{
+	margin-top: 50px;
+	display: none;
+}
+.divoptionradio{
 	float: right;
+	width: 21%;
+	height: 45px;
+	/*border: solid 1px;*/
+	/*border-radius: 1px;*/
+	/*border-color: transparent transparent  #9695d8 transparent;*/
+	border-top: 50%;
+	margin-right: 5px;
+	-webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.container {
+	float: left;
     display: block;
     position: relative;
     padding-left: 35px;
     margin-bottom: 12px;
-    margin-right: 25px;
+    margin-right: 10px;
     cursor: pointer;
     font-size: 14px;
     -webkit-user-select: none;
