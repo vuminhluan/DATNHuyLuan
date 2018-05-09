@@ -39,7 +39,7 @@
   height: 40px; width: 100%;padding: 0 5px;border: 1px solid #e6ecf0;border-radius: 3px;
 }
 .confirm-modal .modal-body input#confirm-password-setting:focus {
-  border: 1px solid #5eb4e9;
+  border: 1px solid #9695d8;
 }
 .confirm-modal .modal-body  a.forgot-password-link {
   font-size: 12px;
@@ -51,13 +51,13 @@
 .confirm-modal .modal-footer > a {
   display: inline-block;padding: 10px;border-radius: 3px;margin-left: 8px;font-weight: bold;}
 .confirm-modal .modal-footer > a:nth-of-type(1) {
-  border: 1px solid #48aae6;
+  border: 1px solid #c8c5ff;color: #000;
 }
 .confirm-modal .modal-footer > a:nth-of-type(1):hover {
-  background-color: #eee;
+  background-color: #c8c5ff;
 }
 .confirm-modal .modal-footer > a:nth-of-type(2) {
-  background-color: #48aae6;color: #fff;border: 1px solid #48aae6;
+  background-color: #6667a6;color: #fff;border: 1px solid #6667a6;
 }
 .confirm-modal .modal-footer > a:nth-of-type(2):hover {
   /*opacity: 0.8;*/

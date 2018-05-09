@@ -119,7 +119,7 @@ a.luan_link, a {
 }
 
 .profile-edit.modal-body > div > input:focus, .profile-edit.modal-body > div > textarea:focus, .profile-edit.modal-body > div > select:focus {
-  border: 1px solid #5eb4e9;
+  border: 1px solid #9695d8;
 }
 
 .profile-edit.modal-body > div > input, .profile-edit.modal-body > div > textarea {
@@ -208,7 +208,7 @@ input.profile-name {
 }
 
 .profile-create-groups .create-group-button {
-  display: inline-block; color: #fff; background-color:#48aae6;
+  display: inline-block; color: #fff; background-color:#9695d8;
   padding: 8px;border-radius: 3px;
 }
 
@@ -235,10 +235,10 @@ input.profile-name {
 .profile-offered-groups .-name span {color:#657786;}
 .profile-offered-groups .-join-button {text-align: right;}
 .profile-offered-groups .-join-button a {
-  padding: 5px;display: inline-block;color: #48aae6;border: 1px solid #48aae6;border-radius: 3px;
+  padding: 5px;display: inline-block;color: #000;border: 1px solid #6667a6;border-radius: 3px;
 }
 .profile-offered-groups .-join-button a:hover {
-  background-color:#48aae6;color:#fff;
+  background-color:#6667a6;color:#fff;
 }
 
 /* End Rightnav profile masterpage  */
