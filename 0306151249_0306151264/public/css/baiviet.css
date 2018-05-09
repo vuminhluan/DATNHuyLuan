@@ -8,13 +8,16 @@
 	 border-color: #9695d8;
 }
 #divbigformdangbaiviet{
-	height: 200px;background-color: white; margin-bottom: 5px; 
+	height: 175px;background-color: white; margin-bottom: 5px; 
 	border: 1px solid #c5cfd6;
 			border-radius: 3px; 
 			margin-bottom: 10px;
 }
 #divtrongformdangbaiviet{
-	height: 150px; border-bottom: 1px solid #c5cfd6;
+	height: 125px; border-bottom: 1px solid #c5cfd6;
+}
+#divbottomformdangbaiviet{
+  height: 50px;
 }
 #btndangbaiviet {
 	margin-top: 7px;
@@ -31,20 +34,34 @@
       color: rgb(150, 149, 216);
     /*color: dodgerblue;*/
     float: right;
+       -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 #divnoidungbaiviet{
-	height: 100px;
+	height: 90px;
 }
 #divoptionradiobutton{
-	height: 50px;
+	height: 30px;
 	padding-left: 0px;
 }
 #divbtndangbaiviet{
 	float: right;
 	width: 25%;
 }
+input[type="file"] {
+    display: none;
+}
 
 
+.custom-file-upload {
+    border: 1px solid #9695d8;
+    display: inline-block;
+    padding: 3px 6px;
+    cursor: pointer;
+    border-radius: 3px;
+}
 
 
 
@@ -65,10 +82,16 @@
 	margin-top: 50px;
 	display: none;
 }
+.datetimepickker{
+  border-radius: 3px;
+  border: solid 1px; 
+  width: 110px;
+  border-color: #9695d8;
+}
 .divoptionradio{
 	float: right;
 	width: 21%;
-	height: 45px;
+	height: 30px;
 	/*border: solid 1px;*/
 	/*border-radius: 1px;*/
 	/*border-color: transparent transparent  #9695d8 transparent;*/
@@ -145,6 +168,14 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+#optionthongbao{
+
+}
+#optionthubai{
+
+}
+
 /*end checkbox*/
 
 
@@ -224,3 +255,66 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 /*endcombobox*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*custom datetime*/
+/* Removes the clear button from date inputs */
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+/* Removes the spin button */
+input[type="date"]::-webkit-inner-spin-button { 
+    display: none;
+}
+
+/* Always display the drop down caret */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #9695d8;
+}
+
+/* A few custom styles for date inputs */
+input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    color: #95a5a6;
+    font-family: "Helvetica", arial, sans-serif;
+    font-size: 14px;
+    border:1px solid #9695d8;
+    background: transparent;
+    padding:5px;
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+input[type="date"], focus {
+    color: #95a5a6;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+/*endcustom*/
+
+
+
+
+
+

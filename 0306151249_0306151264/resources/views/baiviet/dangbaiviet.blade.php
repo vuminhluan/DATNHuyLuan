@@ -19,14 +19,14 @@
 				<div id="divoptionradiobutton">		
 					<div class="divoptionradio"  >	
 						<label class="container">Thông báo
-		  				<input type="checkbox" checked="checked" onclick="clickckb()">
+		  				<input type="checkbox"  onclick='clickoption("optionthongbao")'>
 		 				<span class="checkmark"></span>
 						</label>
 						<div class="optionlevel2" id="optionthongbao">
+							
+							Ngày ẩn:<br><input class="datetimepickker"  type="date" name="" value="" placeholder="">
 							<br>
-							<p>Ngày ẩn:<p>
-							<br>
-							<p>xxxxxxx:<p>
+							
 						</div>
 					</div>
 					<div class="divoptionradio" >
@@ -35,35 +35,37 @@
 		 				<span class="checkmark"></span>
 						</label>
 						<div class="optionlevel2" id="optionthubai">
+							Từ ngày:<br><input class="datetimepickker"   type="date" name="" value="" placeholder="">
 							<br>
-							<p>Từ ngày:<p>
-							<br>
-							<p>Đến ngày:<p>
+							Đến ngày:<br><input class="datetimepickker"  type="date" name="" value="" placeholder="">
 						</div>
 					</div>
 					<div class="divoptionradio" >
 						<label class="container">Khảo sát
-		 				<input type="checkbox"  onclick='clickoption("optionkhaosat")''>
+		 				<input type="checkbox"  onclick='clickoption("optionkhaosat")'>
 		  				<span class="checkmark"></span>
 						</label>
 						<div class="optionlevel2" id="optionkhaosat" >
+							Từ ngày:
+							<input class="datetimepickker"  type="date" name="" value="" placeholder="">
+							Đến ngày:
+								<br><input class="datetimepickker"  type="date" name="" value="" placeholder="">
 							<br>
-							<p>Từ ngày:<p>
-							<br>
-							<p>Đến ngày:<p>
 						</div>
 					</div>
 					<div class="divoptionradio" >
 						<label class="container">Tài liệu
-		  				<input type="checkbox"  onclick='clickoption("optiontailieu")''>
+		  				<input type="checkbox"  onclick='clickoption("optiontailieu")'>
 		 				 <span class="checkmark"></span>
 						</label>
 						<div class="optionlevel2" id="optiontailieu">
-							<br>
-							<input style="width: 90px;" type="file" name="fileToUpload" id="fileToUpload">
-							<br>
-							<br>
-							<p>Đến ngày:<p>
+							<br>	
+							<label for="file-upload" class="custom-file-upload">
+  								  Chọn tệp
+							</label>
+							<input id="file-upload" type="file"/>
+							
+							
 						</div>
 					</div>
 						 				 
@@ -72,7 +74,7 @@
        		</div>
 
 		</div>
-		<div>
+		<div class="divbottomformdangbaiviet">
 		<div class="custom-select" >
  			 <select>
    				<option value="0">Công khai</option>

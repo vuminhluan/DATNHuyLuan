@@ -1,56 +1,106 @@
-
-var z = true;
-function clickckb() {
+var tongsoluachon= 0;
+//var z = true;
+function clickckb(z) {
   if (z)  {
-             z=!z;
-             document.getElementById("divbigformdangbaiviet").style.height="300px";
-             document.getElementById("divtrongformdangbaiviet").style.height="250px";
-       var a =    document.getElementsByClassName("divoptionradio");
-       var c =    document.getElementsByClassName("optionlevel2");
-       for (var i = 0; i < a.length; i++) {
-         a[i].style.height="140px";
-         c[i].style.display="block";
-       }
+            // z=!z;
+                 document.getElementById("divbigformdangbaiviet").style.height="300px";
+                 document.getElementById("divtrongformdangbaiviet").style.height="250px";
+                 var a =    document.getElementsByClassName("divoptionradio");
+                // var c =    document.getElementsByClassName("optionlevel2");
+                 for (var i = 0; i < a.length; i++) {
+                   a[i].style.height="140px";
+                 //  c[i].style.display="none";
+                 }
               
-          }
+              }
           else{
-              z=!z;
-              document.getElementById("divbigformdangbaiviet").style.height="200px";
-              document.getElementById("divtrongformdangbaiviet").style.height="150px";
+            //  z=!z;
+              document.getElementById("divbigformdangbaiviet").style.height="175px";
+              document.getElementById("divtrongformdangbaiviet").style.height="125px";
               var b =    document.getElementsByClassName("divoptionradio");
-              var d =    document.getElementsByClassName("optionlevel2");
+           //   var d =    document.getElementsByClassName("optionlevel2");
                for (var i = 0; i < b.length; i++) {
-                 b[i].style.height="50px";
-                 d[i].style.display="none";
-               }
-          }
+                 b[i].style.height="30px";
+            //     d[i].style.display="none";
+                 }
+              }
       }
+
+var za=zb=zc=zd= true;
+
 
 function clickoption(l) {
-  if (z)  {
-             z=!z;
-             // document.getElementById("divbigformdangbaiviet").style.height="300px";
-             // document.getElementById("divtrongformdangbaiviet").style.height="250px";
-             document.getElementById(l).style.display="block";
-       //       var a =    document.getElementsByClassName("divoptionradio");
-       // for (var i = 0; i < a.length; i++) {
-       //   a[i].style.height="140px";
-         
-       // }
-              
+ 
+  if (za&&l=="optionthubai") {
+               tongsoluachon+=1;
+             za=!za;
+             document.getElementById(l).style.display="block";    
+             if (tongsoluachon>0) {
+              clickckb(true);
+             }
           }
-          else{
-              z=!z;
-              // document.getElementById("divbigformdangbaiviet").style.height="200px";
-              // document.getElementById("divtrongformdangbaiviet").style.height="150px";
+          else if(l=="optionthubai"){
+               tongsoluachon-=1;
+              za=!za;
               document.getElementById(l).style.display="none";
-              // var b =    document.getElementsByClassName("divoptionradio");
-              //  for (var i = 0; i < b.length; i++) {
-              //    b[i].style.height="50px";
-              
-              //  }
+              if (tongsoluachon<1) {
+              clickckb(false);
+             }
           }
-      }
+  if (zb&&l=="optionkhaosat") {
+               tongsoluachon+=1;
+             zb=!zb;
+             document.getElementById(l).style.display="block";    
+             if (tongsoluachon>0) {
+              clickckb(true);
+             }
+          }
+          else if(l=="optionkhaosat"){
+               tongsoluachon-=1;
+              zb=!zb;
+              document.getElementById(l).style.display="none";
+              if (tongsoluachon<1) {
+              clickckb(false);
+             }
+          }
+  if (zc&&l=="optiontailieu") {
+               tongsoluachon+=1;
+             zc=!zc;
+             document.getElementById(l).style.display="block";    
+             if (tongsoluachon>0) {
+              clickckb(true);
+             }
+          }
+          else if(l=="optiontailieu"){
+               tongsoluachon-=1;
+              zc=!zc;
+              document.getElementById(l).style.display="none";
+              if (tongsoluachon<1) {
+              clickckb(false);
+             }
+          }
+  if (zd&&l=="optionthongbao") {
+               tongsoluachon+=1;
+             zd=!zd;
+             document.getElementById(l).style.display="block";    
+             if (tongsoluachon>0) {
+              clickckb(true);
+             }
+          }
+          else if(l=="optionthongbao"){
+               tongsoluachon-=1;
+              zd=!zd;
+              document.getElementById(l).style.display="none";
+              if (tongsoluachon<1) {
+              clickckb(false);
+             }
+          }
+
+
+
+
+}
+
 
 
 
