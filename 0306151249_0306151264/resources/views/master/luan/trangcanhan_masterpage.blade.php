@@ -61,6 +61,11 @@
 						<span>Nhóm</span><span>2</span>
 					</a>
 				</li>
+				<li>
+					<a class="luan_link" href="{{route('trangcanhan.nhom', ['username'=>'vuminhluan'])}}">
+						<span>Tệp</span><span>2</span>
+					</a>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -123,7 +128,7 @@
 		@yield('noidung_trangcanhan')
 
 		{{-- End Nội dung chính (cột ở giữa) của trang cá nhân  --}}
-		
+
 
 		<!--  -->
 		<div class="rightnav-profile-masterpage sidebar profile-group-rightnav">

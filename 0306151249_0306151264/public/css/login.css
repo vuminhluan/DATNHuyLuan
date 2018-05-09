@@ -94,12 +94,12 @@ a {text-decoration: none; color: #1b95e0; outline: 0}
 
 .form-button {
   width: 100%;padding: 7px;font-size: 14px;
-  background-color: #48aae6;border: 0;border-radius: 3px;
+  background-color: #6667a6;border: 0;border-radius: 3px;
   cursor: pointer;opacity: 0.8;color: #fff;
 }
 
 .form-button:hover {
-  opacity: 1;box-shadow: 1px 1px 3px #48aae6;
+  opacity: 1;box-shadow: 1px 1px 3px #6667a6;
 }
 
 .sign-in-linethrough {
@@ -139,7 +139,7 @@ a {text-decoration: none; color: #1b95e0; outline: 0}
 
 .help-mark {
   font-weight: bold;cursor: pointer;
-  color: #333;background-color: #ccc;
+  color: #333;background-color: #9695d8;
   display: inline-block;
   padding: 0 6px;border-radius: 10px;
   position: absolute; right: 5px; top: -2px;
@@ -165,7 +165,7 @@ a {text-decoration: none; color: #1b95e0; outline: 0}
 
 }
 
-label.error {display: none !important;}
+/* label.error {display: none !important;} */
 
 .sign-up-controllers {
   text-align: right;
@@ -181,10 +181,10 @@ label.error {display: none !important;}
 
 
 #sign-up-next-btn {
-  background-color: #48aae6;
+  background-color: #6667a6;
 }
 #sign-up-next-btn:hover {
-  opacity: 1;box-shadow: 1px 1px 3px #48aae6;
+  opacity: 1;box-shadow: 1px 1px 3px #6667a6;
 }
 #sign-up-prev-btn {
   background-color: #bbbbbb;

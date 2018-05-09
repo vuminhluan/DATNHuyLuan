@@ -97,10 +97,16 @@ $(document).ready(function() {
         required: true,
         email: true
 	    });
+
+      // $('[name="sign-up-username"]').rules('remove');
+      // $('[name="sign-up-email').rules('remove');
+      // $('[name="sign-up-password"]').rules('remove');
+
 			$('#sign-up-form').valid();
 			if($('#sign-up-form').valid()) {
 				e.preventDefault();
 				changeTab(1);
+        return;
 			}
 		}
 
@@ -108,7 +114,6 @@ $(document).ready(function() {
 
 			$('[name="sign-up-username"]').rules('add', {
         required: true
-
 	    });
 	    $('[name="sign-up-email"]').rules("add", {
 	    	required: true
@@ -118,10 +123,15 @@ $(document).ready(function() {
 			$('[name="sign-up-password"]').rules('add', {
         required: true
 	    });
+
+      // $('[name="sign-up-lastname"]').rules('remove');
+      // $('[name="sign-up-firstname"]').rules('remove');
+
 			$('#sign-up-form').valid();
 			if($('#sign-up-form').valid()) {
 				e.preventDefault();
 				changeTab(1);
+        return;
 			}
 		}
 
