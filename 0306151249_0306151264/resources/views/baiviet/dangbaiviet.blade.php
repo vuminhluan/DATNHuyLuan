@@ -6,10 +6,14 @@
 @section('javascript')
 <script src="{{ asset('js/jslu/dangbaiviet.js') }}" type="text/javascript" charset="utf-8" async defer></script>
 @endsection
-
+<script type="text/javascript">
+	$("#theForm").ajaxForm({url: 'server.php', type: 'post'});
+	//postbaitest
+</script>
 
 <div id="divbigformdangbaiviet" >
-	<form action="dangbaiviet_submit" method="get" accept-charset="utf-8">
+	<form action="" id="theForm" method="post" accept-charset="utf-8">
+		 {{ csrf_field() }}
 		<div id="divtrongformdangbaiviet" >
 			<div style="height: 200px;">
 				<div id="divnoidungbaiviet">
