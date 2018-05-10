@@ -3,21 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="{{asset('css/luan/settings/reset-password.css')}}">
+	<link rel="stylesheet" type="text/css" href="css/reset-password.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
-  <div class="topnavroot">
-    <div class="topnav" >
-      <ul class="navtop-menu">
-        <li><a href="#/">Logo here</a></li>
-        <li><a href="#/">Quên mật khẩu</a></li>
-      </ul>
-    </div>
-  </div>
 
-  <div class="reset-password-container">
+	<div class="reset-password-container">
+		<div> header goes here... maybe</div>
 		<div class="reset-password-main">
 			<div class="reset-password-form">
 				<form action="#/" id="reset-password" name="reset-password" method="POST">
@@ -27,7 +20,7 @@
 					</div>
 
 					<div>
-						<p class="description">Để giúp bạn lấy lại mật khẩu, chúng tôi cần biết email mà bạn đã dùng để đăng kí.</p>
+						<p class="description">Liên lạc</p>
 					</div>
 
 					<div>
@@ -44,6 +37,10 @@
 	</div>
 
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+
+  <script src="js/login.script.js"></script>
 
 
   <script>

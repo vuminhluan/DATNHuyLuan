@@ -26,4 +26,13 @@ class CaiDatController extends Controller
     return view('caidat.danhsach_taikhoan_bichan');
   }
 
+  public function getQuenMatKhau()
+  {
+    return view('caidat.quen_matkhau');
+  }
+  public function postQuenMatKhau()
+  {
+    return "Hãy kiểm tra email để nhận mã thay đổi mật khẩu";
+  }
+
 }

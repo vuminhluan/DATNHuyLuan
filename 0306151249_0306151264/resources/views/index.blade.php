@@ -151,7 +151,7 @@
 							<p class="google-sign-in-button"><i class="fa fa-google"></i> Đăng nhập với google</p>
 						</div>
 						<div style="text-align: right;">
-							<a href="#/">Quên mật khẩu ?</a>
+							<a href="{{route('caidat.quen_matkhau')}}">Quên mật khẩu ?</a>
 						</div>
 					</form>
 				</div>
@@ -192,8 +192,8 @@
 		</ul>
 	</footer>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+	<script src="{{asset('js/jquery/jquery3.3.1.js')}}" charset="utf-8"></script>
+	<script src="{{asset('js/jquery/jquery-validate.min.js')}}" charset="utf-8"></script>
 
   <script src="js/luan/login.js"></script>
 
