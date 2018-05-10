@@ -17,6 +17,10 @@ Route::get(
 	'TrangCaNhanController@getNhom'
 )->name('trangcanhan.nhom');
 
+Route::get('/lienhe', function () {
+	return view('khac.lienhe');
+})->name('lienlac');
+
 Route::prefix('caidat')->group(function () {
 
 	Route::get('/', function() {
@@ -25,10 +29,14 @@ Route::prefix('caidat')->group(function () {
 
 	Route::get('/taikhoan', 'CaiDatController@getIndex')->name('caidat.index');
 
-	Route::get('/matkhau', 'CaiDatController@getTrangThayDoiMatKhau')->name('caidat.thaydoi_matkhau');
-	Route::get('/vohieuhoa', 'CaiDatController@getTrangVoHieuHoaTaiKhoan')->name('caidat.vohieuhoa');
 
-	Route::get('/taikhoan_bichan', 'CaiDatController@getTrangTaiKhoanBiChan')->name('caidat.chan_taikhoan');
+	Route::get('/taikhoan/vohieuhoa', 'CaiDatController@getTrangVoHieuHoaTaiKhoan')->name('caidat.vohieuhoa');
+
+	Route::get('/taikhoan/bichan', 'CaiDatController@getTrangTaiKhoanBiChan')->name('caidat.chan_taikhoan');
+
+	Route::get('/matkhau/thaydoi', 'CaiDatController@getTrangThayDoiMatKhau')->name('caidat.thaydoi_matkhau');
+	Route::get('/matkhau/quen', 'CaiDatController@getQuenMatKhau')->name('caidat.quen_matkhau');
+	Route::post('/matkhau/quen', 'CaiDatController@postQuenMatKhau')->name('caidat.quen_matkhau_post');
 
 
 });
