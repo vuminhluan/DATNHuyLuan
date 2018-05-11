@@ -61,7 +61,7 @@ ul.navtop-menu {
 
 .contact-form-container {
   display: grid; grid-template-columns: 4fr 8fr;
-  max-width: 900px;margin:45px auto;
+  max-width: 900px;margin:35px auto;
   box-shadow: 3px 3px 5px #000;
   border-radius: 10px;
 }
@@ -142,6 +142,8 @@ ul.navtop-menu {
   background-color: #6667a6;border: 0;border-radius: 3px;
   cursor: pointer;opacity: 0.8;color: #fff;
 }
+
+label.error {color: red}
 
 
 /* End contact form main  */
