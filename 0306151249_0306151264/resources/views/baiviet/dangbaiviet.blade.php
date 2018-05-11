@@ -7,12 +7,33 @@
 <script src="{{ asset('js/jslu/dangbaiviet.js') }}" type="text/javascript" charset="utf-8" async defer></script>
 @endsection
 <script type="text/javascript">
-	$("#theForm").ajaxForm({url: 'server.php', type: 'post'});
+	  /* attach a submit handler to the form */
+            $("#searchForm").submit(function(event) {
+
+                /* stop form from submitting normally */
+                event.preventDefault();
+
+                /* get some values from elements on the page: */
+                var $form = $(this),
+                    term = $form.find('input[name="s"]').val(),
+                    url = $form.attr('action');
+
+                /* Send the data using post */
+                var posting = $.post(url, {
+                    s: term
+                });
+
+                /* Put the results in a div */
+                posting.done(function(data) {
+                    var content = $(data).find('#content');
+                    $("#result").empty().append(content);
+                });
+            });
 	//postbaitest
 </script>
 
 <div id="divbigformdangbaiviet" >
-	<form action="" id="theForm" method="post" accept-charset="utf-8">
+	<form action="hi" id="searchForm" method="post" accept-charset="utf-8">
 		 {{ csrf_field() }}
 		<div id="divtrongformdangbaiviet" >
 			<div style="height: 200px;">
