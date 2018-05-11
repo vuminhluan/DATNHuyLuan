@@ -17,9 +17,7 @@ $(document).ready(function() {
     return this.optional(element) || /^[\w]{6,30}$/.test(value);
   }, "Mật khẩu không hợp lệ");
 
-  $.validator.addMethod(
-    "regex",
-    function(value, element, regexp) {
+  $.validator.addMethod( "regex", function(value, element, regexp) {
         var re = new RegExp(regexp);
         return re.test(value);
     },
@@ -36,7 +34,6 @@ $(document).ready(function() {
       	regex: "^[\\w]{6,30}$"
       }
     }
-
 	});
 
 	// End Form đăng nhập

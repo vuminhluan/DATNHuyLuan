@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
 </head>
 <body>
+
 	<div class="background"></div>
 
 	<div class="topnavroot">
@@ -91,9 +92,11 @@
 
 
 	<script src="{{asset('js/jquery/jquery3.3.1.js')}}"></script>
-	<script src="{{asset('js/jquery/jquery-validation.min.js')}}"></script>
+	<script src="{{asset('js/jquery/jquery-validate.min.js')}}"></script>
+	<script src="{{asset('js/luan/contact.js')}}"></script>
 
 	<script>
+
 	</script>
 
 
