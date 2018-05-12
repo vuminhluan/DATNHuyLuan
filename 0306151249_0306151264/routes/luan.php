@@ -40,3 +40,12 @@ Route::prefix('caidat')->group(function () {
 
 
 });
+
+
+Route::prefix('admin')->group(function () {
+
+	Route::get('/', function() {
+		return view('admin.index');
+	})->name('admin.index');
+
+});
