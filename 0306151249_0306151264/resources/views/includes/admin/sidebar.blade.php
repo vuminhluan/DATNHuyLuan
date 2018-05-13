@@ -28,7 +28,7 @@
         </a>
       </li>
       <li class="list-group-item">
-        <a href="contact.html">
+        <a href="{{route('admin.phanhoi')}}">
           <i class="fa fa-envelope-o"></i> <span>Phản hồi<span class="badge pull-right">1</span></span>
         </a>
       </li>
@@ -38,12 +38,12 @@
         </a>
       </li>
       <li class="list-group-item">
-        <a href="user.html">
+        <a href="{{route('admin.taikhoan')}}">
           <i class="fa fa-user"></i> <span>Tài khoản</span>
         </a>
       </li>
       <li class="list-group-item">
-        <a href="setting.html">
+        <a href="{{route('admin.cauhinh')}}">
           <i class="fa fa-wrench"></i> <span>Cấu hình</span>
         </a>
       </li>

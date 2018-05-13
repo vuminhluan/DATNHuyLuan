@@ -1,11 +1,13 @@
 <?php
 
-
+use Illuminate\Http\Request;
 
 // Route của Luân :D
 
 // Route::view('/home', 'trangchu')->name('home');
-
+// Route::get('/admin/tk', 'AjaxController@get')->name('ajax');
+//
+// Route::post('/register', 'AjaxController@post')->name('ajaxpost');
 
 Route::get(
 	'/taikhoan/{username}',
@@ -47,5 +49,27 @@ Route::prefix('admin')->group(function () {
 	Route::get('/', function() {
 		return view('admin.index');
 	})->name('admin.index');
+
+	Route::get('/phanhoi', function() {
+		return view('admin.phanhoi.index');
+	})->name('admin.phanhoi');
+
+	Route::get('/cauhinh', function() {
+		return view('admin.cauhinh.index');
+	})->name('admin.cauhinh');
+
+	Route::prefix('taikhoan')->group(function() {
+		Route::get('/', function() {
+			return view('admin.taikhoan.index');
+		})->name('admin.taikhoan');
+
+		Route::get('/them', function() {
+			return view('admin.taikhoan.them-taikhoan');
+		})->name('admin.taikhoan.them');
+	});
+
+
+
+
 
 });
