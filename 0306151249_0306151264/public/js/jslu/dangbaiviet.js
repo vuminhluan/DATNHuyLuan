@@ -95,13 +95,15 @@ function clickoption(l) {
               clickckb(false);
              }
           }
-
-
-
-
 }
 
-
+function displaydivoption(p)
+{
+    document.getElementById("optionthongbao").style.display=p;
+    document.getElementById("optiontailieu").style.display=p;
+    document.getElementById("optionkhaosat").style.display=p;
+    document.getElementById("optionthubai").style.display=p;
+}
 
 
 
@@ -198,81 +200,206 @@ then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
 
 
-/////////////
-  /* attach a submit handler to the form */
-
-    // ma_bai_viet: "BV12345675",
-    //       ma_nguoi_viet: "BV12345675",
-    //       ma_chu_bai_viet: "BV12345675",
-    //       noi_dung_bai_viet: "Đây là bài viết test thêm vào 666",
-    //       binh_luan_bai_viet: "1",
-    //       hinh_anh_bai_viet: "1",
-    //       nop_tep: "1",
-    //       khao_sat_y_kien: "1",
-    //       ma_loai_bai_viet: "LBV002",
-    //       thoi_gian_dang: "2001/01/01",
-    //       thoi_gian_an_bai_viet: "2001/01/01",
-    //       thoi_gian_sua: "2001/01/01",
-    //       nguoi_sua: "NV12345675" 
-
-    ////////////////////////////////
-    $.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
-});
 
 
-    //
 
-      $("#frmdangbaiviet").submit(function(event) {
 
-      /* stop form from submitting normally */
-      event.preventDefault();
-  
-      /* get the action attribute from the <form action=""> element */
-      // var $form = $( this ),
-      //     urll = $form.attr( 'action' );
-      // var _tokenn = $("form[name='frmnamedangbaiviet']").find("input[name='_token']").val();
-      // var _tokenn2 =  $('input[name=_token]').val();
-      // alert(_tokenn);
-      // alert(_tokenn2);
-      alert("hihi");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+var thongbao=thubai=khaosat=tailieu= "0";
+var mabaiviet="hi";
+ var ngaygiohientai = getdatetime();
+
+$("#frmdangbaiviet").submit(function(event) {
+  // tat su kien mac dinh của form
+      event.preventDefault(); 
+      //test
+       
+     alert("-"+getdatetime()+"-");
+      //end test
+
       
+      // lay cac thong so cua form
+    //get value from form
+          if ($('#ckbthongbao').is(":checked"))
+          {
+            thongbao="1";
+          }
+          if ($('#ckbthubai').is(":checked"))
+          {
+            thubai="1";
+          }
+          if ($('#ckbkhaosat').is(":checked"))
+          {
+            khaosat="1";
+          }
+          if ($('#ckbtailieu').is(":checked"))
+          {
+            tailieu="1";
+          }
+          ///value của combobox loaibaiviet
+          var e = document.getElementById("cbbloaibaiviet");
+          var valueselectedoption = e.options[e.selectedIndex].value;
+          alert ("loai bai viet:"+valueselectedoption);
+
+
+          
+    // end lay cac thong so form
+      //lay so luong bai viet, và cấp mã, sau đó insert
       $.ajax(
           {
-          url: '/DATNHuyLuan/0306151249_0306151264/public/hr/postbaivietne',
-          type: 'POST',
+          url: '/DATNHuyLuan/0306151249_0306151264/public/ajax/getmabaivietne',
+          type: 'GET',
           data:{
-          _token: $('input[name=_token]').val(),
-
-          ma_bai_viet: "BV12345676",
-          ma_nguoi_viet: "BV12345676",
-          ma_chu_bai_viet: "BV12345676",
-          noi_dung_bai_viet: "Đây là bài viết test thêm vào 777",
-          binh_luan_bai_viet: "1",
-          hinh_anh_bai_viet: "1",
-          nop_tep: "1",
-          khao_sat_y_kien: "1",
-          ma_loai_bai_viet: "LBV002",
-          thoi_gian_dang: "2001/01/01",
-          thoi_gian_an_bai_viet: "2001/01/01",
-          thoi_gian_sua: "2001/01/01",
-          nguoi_sua: "NV12345676" 
           }
       }).done(function(data) {
-        document.getElementById("baivietmoidang").style.height = "300px";
-         $('#baivietmoidang').html(data);
-    })
+         mabaiviet=  data.substring(2,10);
+         var mabaivietint = parseInt(mabaiviet)+1;
+         mabaiviet = mabaivietint.toString();
+          while(mabaiviet.length<8)
+          {
+            mabaiviet ="0"+mabaiviet;
+          }
+          mabaiviet ="BV"+ mabaiviet;
+          alert(mabaiviet);
+          ///
+              $.ajax(
+              {
+                  url: '/DATNHuyLuan/0306151249_0306151264/public/ajax/postbaivietne',
+                  type: 'POST',
+                  data:{
+                  _token: $('input[name=_token]').val(),
+                  ma_bai_viet: mabaiviet,
+                  ma_nguoi_viet: "BV12345869",
+                  ma_chu_bai_viet: "BV12345869",
+                  noi_dung_bai_viet: document.getElementById("iptextdangbaiviet").value,
+                  binh_luan_bai_viet: thongbao,
+                  hinh_anh_bai_viet: tailieu,
+                  nop_tep: thubai,
+                  khao_sat_y_kien: khaosat,
+                  ma_loai_bai_viet: valueselectedoption,
+                  thoi_gian_dang: ngaygiohientai,
+                  thoi_gian_an_bai_viet: "2001/01/01",
+                  thoi_gian_sua: "2001/01/01",
+                  nguoi_sua: "NV12345869" 
+              }
+              }).done(function(data) {
+                //  document.getElementById("baivietmoidang").style.height = "300px";
+                 // $('#baivietmoidang').html(data);
+                  ///xu ly sau khi dang baiviet xong
+                  document.getElementById("frmdangbaiviet").reset();
+                  displaydivoption("none");
+                  clickckb(false);
+                  tongsoluachon= 0;
+                  za=zb=zc=zd= true;
+                  ///insert bai viet vao noi dung ben duoi su dung ajax
+                    alert(mabaiviet);
+                  $.ajax({
+                      url: '/DATNHuyLuan/0306151249_0306151264/public/ajax/getbaivietne',
+                      type: 'GET',
+                      data:{
+                        mabaiviet: mabaiviet
+                      }
+                  }).done(function(data){
+                    alert(mabaiviet+"saukhidangbai");
+                      //   alert("lay trang kia thanh cong");
+                         var econ = document.createElement("div");
+                         econ.setAttribute("id", "sss");
+                        // document.getElementById('divcontent').appendChild(element);
+                        var Echa = document.getElementById('divnoidungcon');
+                        Echa.insertBefore(econ, Echa.firstChild);
+                        $('#sss').html(data);
 
-    });
+                  })
+
+
+                 
+              })     
+      })
+
+      
+
+
+});
       /////////////////////////////
 
-      // $(document).ready(function(){
-      //   $('btnn').click(function(event){
-      //     event.preventDefault();
-      //     $.post("ajaxpost",{ _token:  $('input[name=_token]').val(), dulieu:"tesstdulieu"}, function(data){
-      //       $('#data').html(data);
-      //     });
-      //   });
-      // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////// tao ra div sau khi dang bai
+function creatediv() {
+
+    var element = document.createElement("div");
+    element.setAttribute("id", "sss");
+    document.getElementById('divcontent').appendChild(element);
+
+
+}
+
+ function getdatetime(){
+ var today = new Date();
+      
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+        var h = today.getHours();
+        var MM = today.getMinutes();
+        var mns = today.getSeconds();
+
+        if(dd<10) {
+            dd = '0'+dd
+        } 
+
+        if(mm<10) {
+            mm = '0'+mm
+        } 
+        today = yyyy + '/' + mm + '/' + dd +" "+h+":"+MM+":"+mns;
+     return today;
+ }
+

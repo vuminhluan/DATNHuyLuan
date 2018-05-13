@@ -14,24 +14,19 @@
         
 <!--  -->
        
-        <div class="content"  >
-          <div>
+        <div id="divcontent" class="content"  >
+          <div id="divdangbaiviet">
             @include('baiviet.dangbaiviet')
-            <div id="baivietmoidang" style="width: 100%;height: 50px;background-color: red;"></div>
+            {{-- <div id="baivietmoidang" style="width: 100%;height: 50px;background-color: red;"></div> --}}
          </div>
+         <div id="divnoidungcon">
+
             <!--  -->
            
           @for ($i = 0; $i < (int)$s  ; $i++)
                @include('includes.baiviet')
           @endfor
-         
-          
-
-                
-           
-          
-
-          
+          </div>
             <!--  -->
         </div>
         

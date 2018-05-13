@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BaiVietController;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\bai_viet;
 
 
@@ -12,7 +13,7 @@ class BaiViet extends Controller
 {
     //
 
-    public function Dangbaiviet(Request $request)
+    public function Postbaiviet(Request $request)
     {
     	$baiviet = new bai_viet();
     	$baiviet->ma_bai_viet 			= $request->ma_bai_viet;
@@ -28,8 +29,19 @@ class BaiViet extends Controller
     	$baiviet->thoi_gian_an_bai_viet	= $request->thoi_gian_an_bai_viet;
     	$baiviet->thoi_gian_sua			= $request->thoi_gian_sua;
     	$baiviet->nguoi_sua				= $request->nguoi_sua;
-    	//$baiviet->save();							
-        return "đã thực hiện save";		
+    	$baiviet->save();							
+        return "hihi";		
+    }
+    public function GetMaBaiViet()
+    {
+        $ma =  DB::table('bai_viet')->select('ma_bai_viet')->orderBy('ma_bai_viet','desc')->get()->first();
+        return $ma->ma_bai_viet;
+    
+    }
+    public function GetBaiViet(Request $rq)
+    {
+        $dulieu=$rq->mabaiviet;
+        return view("includes.baiviet",["t"=>$dulieu]);
     }
 
 

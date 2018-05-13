@@ -24,7 +24,7 @@
 				<div id="divoptionradiobutton">		
 					<div class="divoptionradio"  >	
 						<label class="container">Thông báo
-		  				<input type="checkbox"  onclick='clickoption("optionthongbao")'>
+		  				<input id="ckbthongbao" type="checkbox"  onclick='clickoption("optionthongbao")'>
 		 				<span class="checkmark"></span>
 						</label>
 						<div class="optionlevel2" id="optionthongbao">
@@ -36,7 +36,7 @@
 					</div>
 					<div class="divoptionradio" >
 						<label class="container">Thu bài
-		  				<input type="checkbox" onclick='clickoption("optionthubai")'>
+		  				<input id="ckbthubai" type="checkbox" onclick='clickoption("optionthubai")'>
 		 				<span class="checkmark"></span>
 						</label>
 						<div class="optionlevel2" id="optionthubai">
@@ -47,7 +47,7 @@
 					</div>
 					<div class="divoptionradio" >
 						<label class="container">Khảo sát
-		 				<input type="checkbox"  onclick='clickoption("optionkhaosat")'>
+		 				<input id="ckbkhaosat" type="checkbox"  onclick='clickoption("optionkhaosat")'>
 		  				<span class="checkmark"></span>
 						</label>
 						<div class="optionlevel2" id="optionkhaosat" >
@@ -60,7 +60,7 @@
 					</div>
 					<div class="divoptionradio" >
 						<label class="container">Tài liệu
-		  				<input type="checkbox"  onclick='clickoption("optiontailieu")'>
+		  				<input id="ckbtailieu" type="checkbox"  onclick='clickoption("optiontailieu")'>
 		 				 <span class="checkmark"></span>
 						</label>
 						<div class="optionlevel2" id="optiontailieu">
@@ -81,11 +81,11 @@
 		</div>
 		<div class="divbottomformdangbaiviet">
 		<div class="custom-select" >
- 			 <select>
-   				<option value="0">Công khai</option>
-   				<option value="1">Chỉ ẩn tên người đăng</option>
-			    <option value="2">Chỉ ẩn tên người bình luận</option>
-			    <option value="3">Ẩn tên cả người đăng và người bình luận</option>
+ 			 <select id="cbbloaibaiviet">
+   				<option value="LBV001">Công khai</option>
+   				<option value="LBV002">Chỉ ẩn tên người đăng</option>
+			    <option value="LBV003">Chỉ ẩn tên người bình luận</option>
+			    <option value="LBV004">Ẩn tên cả người đăng và người bình luận</option>
 			   
 			  </select>
 		</div>
