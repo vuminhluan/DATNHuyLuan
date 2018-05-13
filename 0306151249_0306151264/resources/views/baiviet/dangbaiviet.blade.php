@@ -4,37 +4,17 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/baiviet.css') }}">
 @endsection
 @section('javascript')
-<script src="{{ asset('js/jslu/dangbaiviet.js') }}" type="text/javascript" charset="utf-8" async defer></script>
+<script src="{{ asset('js/jslu/dangbaiviet.js') }}" type="text/javascript" charset="utf-8"></script>
 @endsection
-<script type="text/javascript">
-	  /* attach a submit handler to the form */
-            $("#searchForm").submit(function(event) {
 
-                /* stop form from submitting normally */
-                event.preventDefault();
 
-                /* get some values from elements on the page: */
-                var $form = $(this),
-                    term = $form.find('input[name="s"]').val(),
-                    url = $form.attr('action');
 
-                /* Send the data using post */
-                var posting = $.post(url, {
-                    s: term
-                });
 
-                /* Put the results in a div */
-                posting.done(function(data) {
-                    var content = $(data).find('#content');
-                    $("#result").empty().append(content);
-                });
-            });
-	//postbaitest
-</script>
 
 <div id="divbigformdangbaiviet" >
-	<form action="hi" id="searchForm" method="post" accept-charset="utf-8">
-		 {{ csrf_field() }}
+	<div id="data" style="width: 100%;height: 50px;background-color: red;"></div>
+	<form  id="frmdangbaiviet" action="#/" method="post" accept-charset="utf-8" name="frmnamedangbaiviet">
+		 @csrf 
 		<div id="divtrongformdangbaiviet" >
 			<div style="height: 200px;">
 				<div id="divnoidungbaiviet">
@@ -110,7 +90,9 @@
 			  </select>
 		</div>
 		<div id="divbtndangbaiviet">
-		<button id="btndangbaiviet" >Đăng</button>
+		{{-- <input id="btndangbaiviet" type="submit"  value="Đăng"/> --}}
+		<input type="submit" id="btndangbaiviet"  name="btndangbaiviet" value="Submit">
+		<button id="btnn">DANGGG</button>
 		</div>
 		</div>
 

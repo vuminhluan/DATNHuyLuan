@@ -196,3 +196,61 @@ function closeAllSelect(elmnt) {
 /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
+
+
+/////////////
+  /* attach a submit handler to the form */
+
+    // ma_bai_viet: "BV12345675",
+    //       ma_nguoi_viet: "BV12345675",
+    //       ma_chu_bai_viet: "BV12345675",
+    //       noi_dung_bai_viet: "Đây là bài viết test thêm vào 666",
+    //       binh_luan_bai_viet: "1",
+    //       hinh_anh_bai_viet: "1",
+    //       nop_tep: "1",
+    //       khao_sat_y_kien: "1",
+    //       ma_loai_bai_viet: "LBV002",
+    //       thoi_gian_dang: "2001/01/01",
+    //       thoi_gian_an_bai_viet: "2001/01/01",
+    //       thoi_gian_sua: "2001/01/01",
+    //       nguoi_sua: "NV12345675" 
+
+    ////////////////////////////////
+      $("#frmdangbaiviet").submit(function(event) {
+
+      /* stop form from submitting normally */
+      event.preventDefault();
+  
+      /* get the action attribute from the <form action=""> element */
+      // var $form = $( this ),
+      //     urll = $form.attr( 'action' );
+      var _tokenn = $("form[name='frmnamedangbaiviet']").find("input[name='_token']").val();
+      var _tokenn2 =  $('input[name=_token]').val();
+      alert(_tokenn);
+      alert(_tokenn2);
+      alert("hihi");
+      
+      $.ajax(
+          {
+          url: 'postbaiviet',
+          type: 'POST',
+          data:{
+          _token: _tokenn,
+          dulieu: "hi"
+          }
+      }).done(function(data) {
+         $('#data').html(data);
+
+    })
+
+    });
+      /////////////////////////////
+
+      // $(document).ready(function(){
+      //   $('btnn').click(function(event){
+      //     event.preventDefault();
+      //     $.post("ajaxpost",{ _token:  $('input[name=_token]').val(), dulieu:"tesstdulieu"}, function(data){
+      //       $('#data').html(data);
+      //     });
+      //   });
+      // });
