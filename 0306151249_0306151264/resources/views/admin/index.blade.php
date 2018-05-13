@@ -4,9 +4,11 @@
 
 
   <div id="main"><!--Phần chứa nội dung chính-->
+
     <ol class="breadcrumb">
       <li><a href="index.html"><i class="fa fa-home"></i> Trang quản trị</a></li>
     </ol>
+
     <div class="col-xs-12">
       <div class="menu">
         <a href="index.html" class="col-md-2 col-sm-5 col-xs-5">
@@ -36,14 +38,38 @@
       </div>
     </div>
   </div>
+
+
+  {{-- <form action="#/" id="formpost">
+    @csrf
+    <input type="text" id="username" name="username" value="">
+    <button id="btn-register">ajax submit</button>
+  </form>
+
+  <div id="data"><!-- Chỗ này để tí dùng hàm debug kết quả --></div> --}}
   <!--END #main-->
 @endsection
 
 
-@section('javascript')
-  {{-- <script type="text/javascript">
+{{-- @section('javascript')
+
+  <script>
+
   $(document).ready(function() {
-  alert('a');
-});
-</script> --}}
-@endsection
+    $('#btn-register').click(function(event) {
+      event.preventDefault();
+
+      $.ajax({
+        url: "/register",
+        type: 'POST',
+        data: {_token: $('input[name=_token]').val(), username: $('#username').val() }
+      })
+      .done(function(data) {
+        $('#data').html(data);
+      })
+
+    });
+  });
+
+  </script>
+@endsection --}}
