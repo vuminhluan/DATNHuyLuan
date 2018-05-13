@@ -11,5 +11,5 @@ Route::get("gr/{id}","NhomController\Nhom@loadnhom");
 Route::get("baiviet", function(){
 	return view("includes.baiviet");
 });
-Route::post("postbaiviet","BaiVietController/BaiViet@Dangbaiviet")->name('postbaiviet');
-Route::post("getbaiviet","BaiVietController/BaiViet@Getajax")->name('ajaxget');
+Route::post("/hr/postbaivietne","BaiVietController\BaiViet@Dangbaiviet")->name('postbaiviet');
+Route::get("/hr/postbaivietne","BaiVietController\BaiViet@Dangbaiviet")->name('postbaiviet');

@@ -17,6 +17,7 @@
         <div class="content"  >
           <div>
             @include('baiviet.dangbaiviet')
+            <div id="baivietmoidang" style="width: 100%;height: 50px;background-color: red;"></div>
          </div>
             <!--  -->
            

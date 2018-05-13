@@ -216,6 +216,15 @@ document.addEventListener("click", closeAllSelect);
     //       nguoi_sua: "NV12345675" 
 
     ////////////////////////////////
+    $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
+
+    //
+
       $("#frmdangbaiviet").submit(function(event) {
 
       /* stop form from submitting normally */
@@ -224,23 +233,36 @@ document.addEventListener("click", closeAllSelect);
       /* get the action attribute from the <form action=""> element */
       // var $form = $( this ),
       //     urll = $form.attr( 'action' );
-      var _tokenn = $("form[name='frmnamedangbaiviet']").find("input[name='_token']").val();
-      var _tokenn2 =  $('input[name=_token]').val();
-      alert(_tokenn);
-      alert(_tokenn2);
+      // var _tokenn = $("form[name='frmnamedangbaiviet']").find("input[name='_token']").val();
+      // var _tokenn2 =  $('input[name=_token]').val();
+      // alert(_tokenn);
+      // alert(_tokenn2);
       alert("hihi");
       
       $.ajax(
           {
-          url: 'postbaiviet',
+          url: '/DATNHuyLuan/0306151249_0306151264/public/hr/postbaivietne',
           type: 'POST',
           data:{
-          _token: _tokenn,
-          dulieu: "hi"
+          _token: $('input[name=_token]').val(),
+
+          ma_bai_viet: "BV12345676",
+          ma_nguoi_viet: "BV12345676",
+          ma_chu_bai_viet: "BV12345676",
+          noi_dung_bai_viet: "Đây là bài viết test thêm vào 777",
+          binh_luan_bai_viet: "1",
+          hinh_anh_bai_viet: "1",
+          nop_tep: "1",
+          khao_sat_y_kien: "1",
+          ma_loai_bai_viet: "LBV002",
+          thoi_gian_dang: "2001/01/01",
+          thoi_gian_an_bai_viet: "2001/01/01",
+          thoi_gian_sua: "2001/01/01",
+          nguoi_sua: "NV12345676" 
           }
       }).done(function(data) {
-         $('#data').html(data);
-
+        document.getElementById("baivietmoidang").style.height = "300px";
+         $('#baivietmoidang').html(data);
     })
 
     });

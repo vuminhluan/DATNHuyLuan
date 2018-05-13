@@ -12,7 +12,7 @@
 
 
 <div id="divbigformdangbaiviet" >
-	<div id="data" style="width: 100%;height: 50px;background-color: red;"></div>
+	{{-- <div id="data" style="width: 100%;height: 50px;background-color: red;"></div> --}}
 	<form  id="frmdangbaiviet" action="#/" method="post" accept-charset="utf-8" name="frmnamedangbaiviet">
 		 @csrf 
 		<div id="divtrongformdangbaiviet" >
@@ -92,7 +92,7 @@
 		<div id="divbtndangbaiviet">
 		{{-- <input id="btndangbaiviet" type="submit"  value="Đăng"/> --}}
 		<input type="submit" id="btndangbaiviet"  name="btndangbaiviet" value="Submit">
-		<button id="btnn">DANGGG</button>
+		{{-- <button id="btnn">DANGGG</button> --}}
 		</div>
 		</div>
 
