@@ -43,6 +43,11 @@
         </a>
       </li>
       <li class="list-group-item">
+        <a href="{{route('admin.gioitinh')}}">
+          <i class="fa fa-transgender"></i> <span>Giới tính</span>
+        </a>
+      </li>
+      <li class="list-group-item">
         <a href="{{route('admin.cauhinh')}}">
           <i class="fa fa-wrench"></i> <span>Cấu hình</span>
         </a>

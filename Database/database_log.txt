@@ -1,0 +1,5 @@
+﻿15052018 0640
+database_15052018 0640
+Thêm khóa chính vào các bảng còn thiếu khóa chính
+Thêm cột ten_tep (tên tệp) vào bảng tep(tệp)
+Sửa cột ten_gioi_tinh -> đổi kiểu dữ liệu từ int(20) sang varchar(20)
