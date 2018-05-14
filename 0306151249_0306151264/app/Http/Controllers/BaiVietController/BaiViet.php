@@ -41,7 +41,7 @@ class BaiViet extends Controller
     public function GetBaiViet(Request $rq)
     {
         $dulieu=$rq->mabaiviet;
-        return view("includes.baiviet",["t"=>$dulieu]);
+        return view("baiviet.hienthibaivietmoi",["t"=>$dulieu]);
     }
 
 

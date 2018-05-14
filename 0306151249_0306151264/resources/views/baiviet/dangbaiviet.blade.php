@@ -1,7 +1,7 @@
 
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/baiviet.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/lu/baiviet/baiviet.css') }}">
 @endsection
 @section('javascript')
 <script src="{{ asset('js/jslu/dangbaiviet.js') }}" type="text/javascript" charset="utf-8"></script>
@@ -12,6 +12,8 @@
 
 
 <div id="divbigformdangbaiviet" >
+	<div  class="fal fa-car">
+	</div>
 	{{-- <div id="data" style="width: 100%;height: 50px;background-color: red;"></div> --}}
 	<form  id="frmdangbaiviet" action="#/" method="post" accept-charset="utf-8" name="frmnamedangbaiviet">
 		 @csrf 

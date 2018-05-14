@@ -23,8 +23,8 @@
 
             <!--  -->
            
-          @for ($i = 0; $i < (int)$s  ; $i++)
-               @include('includes.baiviet')
+          @for ($i = 0; $i < count($lstbaiviet) ; $i++)
+               @include('baiviet.hienthibaiviet')
           @endfor
           </div>
             <!--  -->

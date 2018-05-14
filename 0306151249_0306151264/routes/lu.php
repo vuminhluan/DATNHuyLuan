@@ -9,7 +9,7 @@ return view("includes.navtop");
 Route::get("gr/{id}","NhomController\Nhom@loadnhom");
 
 Route::get("baiviet", function(){
-	return view("includes.baiviet");
+	return view("baiviet.hienthibaiviet");
 });
 
 Route::post("/ajax/postbaivietne","BaiVietController\BaiViet@Postbaiviet")->name('postbaiviet');

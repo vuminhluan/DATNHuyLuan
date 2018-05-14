@@ -9,6 +9,7 @@
   <link href="{{asset('css/bootstrap3.min.css')}}" rel="stylesheet">
   <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
   <link href="{{asset('css/admin/admin.css')}}" rel="stylesheet">
+  
 
   <!--[if lt IE 9]>
       <script src="js/html5shiv.min.js"></script>
