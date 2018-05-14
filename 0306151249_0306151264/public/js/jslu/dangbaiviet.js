@@ -1,3 +1,8 @@
+
+
+
+
+
 var tongsoluachon= 0;
 //var z = true;
 function clickckb(z) {
@@ -244,7 +249,7 @@ $("#frmdangbaiviet").submit(function(event) {
   // tat su kien mac dinh của form
       event.preventDefault(); 
       //test
-       
+     //  alert(textt+"dang tim ne");
      alert("-"+getdatetime()+"-");
       //end test
 
@@ -292,7 +297,9 @@ $("#frmdangbaiviet").submit(function(event) {
           }
           mabaiviet ="BV"+ mabaiviet;
           alert(mabaiviet);
-          ///
+
+          alert(document.getElementById("iptextdangbaiviet").value);
+          ///document.getElementById("iptextdangbaiviet").value,
               $.ajax(
               {
                   url: '/DATNHuyLuan/0306151249_0306151264/public/ajax/postbaivietne',
@@ -302,7 +309,7 @@ $("#frmdangbaiviet").submit(function(event) {
                   ma_bai_viet: mabaiviet,
                   ma_nguoi_viet: "BV12345869",
                   ma_chu_bai_viet: "BV12345869",
-                  noi_dung_bai_viet: document.getElementById("iptextdangbaiviet").value,
+                  noi_dung_bai_viet:"11331123123123123123123",
                   binh_luan_bai_viet: thongbao,
                   hinh_anh_bai_viet: tailieu,
                   nop_tep: thubai,
@@ -403,3 +410,24 @@ function creatediv() {
      return today;
  }
 
+//tu dong them dong textarea ///// textarea
+$('.lala').each(function () {
+  this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+}).on('input', function () {
+  // alert(this.scrollHeight+"day la cai gi do");
+  this.style.height = 'auto';
+  this.style.height = (this.scrollHeight) + 'px';
+});
+
+
+// var areinput = document.getElementById('#iptextdangbaiviet');
+//     areinput.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+//     areinput.addEventListener("input", myFunction);
+
+
+//     function myFunction () {
+//   alert(this.scrollHeight+"day la cai gi do");
+//   this.style.height = 'auto';
+//   this.style.height = (this.scrollHeight) + 'px';
+// }
+/////

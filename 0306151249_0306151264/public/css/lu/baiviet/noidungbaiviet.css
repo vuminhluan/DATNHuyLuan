@@ -1,0 +1,38 @@
+.subcontent{
+	height: auto; margin-bottom:8px;border-radius: 3px; border: solid 1px #c5cfd6;
+}
+.headtus{
+
+}
+.divtopcontent{
+	width: 40px; height:40px; margin-top: 15px; margin-left: 15px; float: left;
+}
+.imgavtnguoidang{
+	width: 40px; height: 40px; border-radius: 50%;
+}
+.divtennguoidang{
+	float:left; margin-left:20px;
+}
+.spantennguoidang{
+	margin-top: 20px;margin-bottom:0px;
+}
+.spanthoigiandang{
+	 margin-top: -22px; color:#ccc;
+}
+.bodytus{
+	padding-left: 12px; height: auto; width: auto;  
+}
+.texttus{
+	margin-bottom: 7px; margin-top: 5px; font-family: inherit;
+}
+.divimagetus{
+	height: 357px;
+}
+.imgtus{
+	width: 536px; height: 357px;
+}
+
+
+
+
+
