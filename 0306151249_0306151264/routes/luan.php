@@ -68,6 +68,16 @@ Route::prefix('admin')->group(function () {
 		})->name('admin.taikhoan.them');
 	});
 
+	// Giới tính route group
+	Route::prefix('gioitinh')->group(function() {
+		Route::get('/', 'GioiTinhController@index')->name('admin.gioitinh');
+
+		Route::get('/them', 'GioiTinhController@getThem')->name('admin.gioitinh.get_them');
+		Route::post('/them', 'GioiTinhController@postThem')->name('admin.gioitinh.post_them');
+
+		// Route::post('/tacvu/{hanhdong}', 'GioiTinhController@postTacVu')->name('admin.gioitinh.post_tacvu');
+	});
+
 
 
 
