@@ -5,7 +5,6 @@
 @endsection
 @section('javascript')
 <script src="{{ asset('js/jslu/dangbaiviet.js') }}" type="text/javascript" charset="utf-8">
-	
 </script>
 @endsection
 
@@ -18,14 +17,30 @@
 	<form  id="frmdangbaiviet" action="#/" method="post" accept-charset="utf-8" name="frmnamedangbaiviet">
 		 @csrf 
 		<div id="divtrongformdangbaiviet" >
-			<div style="height: 200px;">
+			<div>
 				<div id="divnoidungbaiviet">
 					<img id="imgdangbaiviet" " src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View">
 					<div>
-						<textarea class="lala" id="iptextdangbaiviet" placeholder="Viết điều gì đó..."></textarea>
+						<textarea  id="iptextdangbaiviet" rows="2" placeholder="Viết điều gì đó..."></textarea>
 					</div>
 					{{-- <div id="iptextdangbaiviet" contenteditable="true">	</div> --}}
 					{{-- <textarea id="iptextdangbaiviet" rows="5" cols="50"></textarea> --}}
+				</div>
+				<div id="divluachondinhkem">
+					<div id="divcacluachondinhkem">
+						<div id="divthemanhbaidang">
+							<label for="file-upload-img" class="custom-file-upload">
+								<i class="fa fa-picture-o" aria-hidden="true"></i>
+							</label>
+							<input id="file-upload-img" type="file"/>
+						</div>
+						<div id="divthemteptinbaidang">
+							<label for="file-upload-file" class="custom-file-upload">
+								<i class="fa fa-paperclip" aria-hidden="true"></i>
+							</label>
+							<input id="file-upload-file" type="file"/>
+						</div>
+					</div>
 				</div>
 				<div id="divoptionradiobutton">		
 					<div class="divoptionradio"  >	

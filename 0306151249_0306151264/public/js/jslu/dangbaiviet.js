@@ -3,13 +3,78 @@
 
 
 
+
+// $(document).ready(){
+
+
+var heightofdivtrongformdangbaiviet= $('#divtrongformdangbaiviet').height();
+var heightofdivbigformdanbaiviet = $('#divbigformdangbaiviet').height();
+
+
+//tu dong them dong textarea ///// textarea
+$('#iptextdangbaiviet').each(function () {
+  this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+}).on('input', function () {
+  // alert(this.scrollHeight);
+  // alert(this.scrollHeight+"day la cai gi do");
+  this.style.height = 'auto';
+  this.style.height = (this.scrollHeight) + 'px';
+
+  var dodaimot= 20+parseInt(this.style.height);
+  var strdodaimot = dodaimot+'px';
+  $('#divnoidungbaiviet').height(strdodaimot);
+
+
+  var dodaihai = 94+parseInt(this.style.height);
+      // heightofdivtrongformdangbaiviet+=parseInt(this.style.height);
+  if (dodaihai>heightofdivtrongformdangbaiviet)   
+      heightofdivtrongformdangbaiviet=dodaihai;
+  else
+      dodaihai=heightofdivtrongformdangbaiviet;
+  var strdodaihai = dodaihai+'px';
+  $('#divtrongformdangbaiviet').height(strdodaihai);
+
+
+  var dodaiba = 143+parseInt(this.style.height);
+      // heightofdivbigformdanbaiviet+=parseInt(this.style.height);
+
+   if (dodaiba>heightofdivbigformdanbaiviet)   
+      heightofdivbigformdanbaiviet= dodaiba;
+  else
+      dodaiba=heightofdivbigformdanbaiviet;
+  
+  var strdodaiba = dodaiba+'px';
+  $('#divbigformdangbaiviet').height(strdodaiba);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var tongsoluachon= 0;
 //var z = true;
 function clickckb(z) {
   if (z)  {
+            if(tongsoluachon==1)
+            {
+              heightofdivtrongformdangbaiviet+=125;
+              heightofdivbigformdanbaiviet+=125;
+            }
+            var strheightofdivtrongformdangbaiviet = heightofdivtrongformdangbaiviet + 'px';
+            var strheightofdivbigformdangbaiviet = heightofdivbigformdanbaiviet + 'px';
             // z=!z;
-                 document.getElementById("divbigformdangbaiviet").style.height="300px";
-                 document.getElementById("divtrongformdangbaiviet").style.height="250px";
+                 $('#divbigformdangbaiviet').height(strheightofdivbigformdangbaiviet);
+                 $('#divtrongformdangbaiviet').height(strheightofdivtrongformdangbaiviet);
                  var a =    document.getElementsByClassName("divoptionradio");
                 // var c =    document.getElementsByClassName("optionlevel2");
                  for (var i = 0; i < a.length; i++) {
@@ -17,11 +82,18 @@ function clickckb(z) {
                  //  c[i].style.display="none";
                  }
               
-              }
-          else{
+          }
+  else{
+            if(tongsoluachon==2)
+            {
+            heightofdivtrongformdangbaiviet-=125;
+            heightofdivbigformdanbaiviet-=125;
+            }
+            var strheightofdivtrongformdangbaiviet = heightofdivtrongformdangbaiviet + 'px';
+            var strheightofdivbigformdangbaiviet = heightofdivbigformdanbaiviet + 'px';
             //  z=!z;
-              document.getElementById("divbigformdangbaiviet").style.height="175px";
-              document.getElementById("divtrongformdangbaiviet").style.height="125px";
+              $('#divbigformdangbaiviet').height(strheightofdivbigformdangbaiviet);
+                 $('#divtrongformdangbaiviet').height(strheightofdivtrongformdangbaiviet);
               var b =    document.getElementsByClassName("divoptionradio");
            //   var d =    document.getElementsByClassName("optionlevel2");
                for (var i = 0; i < b.length; i++) {
@@ -410,14 +482,8 @@ function creatediv() {
      return today;
  }
 
-//tu dong them dong textarea ///// textarea
-$('.lala').each(function () {
-  this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
-}).on('input', function () {
-  // alert(this.scrollHeight+"day la cai gi do");
-  this.style.height = 'auto';
-  this.style.height = (this.scrollHeight) + 'px';
-});
+
+
 
 
 // var areinput = document.getElementById('#iptextdangbaiviet');
@@ -431,3 +497,5 @@ $('.lala').each(function () {
 //   this.style.height = (this.scrollHeight) + 'px';
 // }
 /////
+
+
