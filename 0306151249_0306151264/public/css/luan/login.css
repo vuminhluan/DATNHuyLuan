@@ -1,3 +1,6 @@
+
+/*  Trang đăng nhập - đăng kí  = index.blade.php */
+
 * {
   padding: 0;
   margin: 0;
@@ -200,4 +203,33 @@ a {text-decoration: none; color: #1b95e0; outline: 0}
 
 .login-footer ul li {
   display: inline-block;margin: 0 5px;
+}
+
+
+/*  Alert modal thông báo  */
+.myalert {
+  width: 700px; min-height: 100px;z-index: 1;
+  position: fixed;left: 0%; right: 0%;margin: auto;top: 0;
+  transform: translateY(-150px);
+  padding: 10px 30px;
+
+}
+.myalert.show-alert-animation {
+  animation: show-alert-animation 4s ease-in-out;
+}
+.myalert.show-alert-animation:hover {
+  animation-play-state: paused;
+}
+
+.myalert.show-alert {
+  background-color: #fff;
+  color: #666;
+  box-shadow: 2px 2px 5px 1px rgba(178, 178, 178, 1);
+}
+
+@keyframes show-alert-animation {
+  0% {transform: translateY(-150px)}
+  25% {transform: translateY(0px)}
+  90% {transform: translateY(0px)}
+  100% {transform: translateY(-150px)}
 }

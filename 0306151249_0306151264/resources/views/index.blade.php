@@ -8,14 +8,19 @@
 </head>
 <body>
 
+	{{-- Alert notification  --}}
+	{{-- <div class="myalert fail" id="login-signup-alert">
+		<p>Đăng kí thất bại</p>
+	</div> --}}
+	{{-- End alert notification  --}}
 
 	<div class="container">
 
 		<div class="main">
 			<div class="sign-up">
 				<div class="section">
-					<form action="{{route('dangki')}}" id="sign-up-form" method="POST">
-						{{ csrf_field() }}
+					<form action="{{route('post_dangki')}}" id="sign-up-form" method="POST">
+						@csrf
 						<div>
 							<h1 style="text-align: center;">Đăng ký</h1>
 						</div>
@@ -26,7 +31,7 @@
 									<span class="help-mark">&#63;
 
 										<span class="help-mark-text">
-											Tên đăng nhập hoặc email không được để trống, có độ dài từ 6 tới 20 kí tự gồm các chữ số và chữ cái in thường không dấu.
+											Họ và tên đệm chỉ chứa các kí tự là chữ cái (có dấu)
 										</span>
 
 									</span>
@@ -40,7 +45,7 @@
 									<span class="help-mark">&#63;
 
 										<span class="help-mark-text">
-											Tên đăng nhập hoặc email không được để trống, có độ dài từ 6 tới 20 kí tự gồm các chữ số và chữ cái in thường không dấu.
+											Tên chỉ chứa các kí tự là chữ cái (có dấu)
 										</span>
 
 									</span>
@@ -56,7 +61,7 @@
 									<span class="help-mark">&#63;
 
 										<span class="help-mark-text">
-											Tên đăng nhập hoặc email không được để trống, có độ dài từ 6 tới 20 kí tự gồm các chữ số và chữ cái in thường không dấu.
+											Tên tài khoản có độ dài tối thiểu 6 kí tự, chỉ chứa các chữ cái in thường không dấu, các chữ số và dấu gạch dưới " _ "
 										</span>
 
 									</span>
@@ -70,7 +75,7 @@
 									<span class="help-mark">&#63;
 
 										<span class="help-mark-text">
-											Tên đăng nhập hoặc email không được để trống, có độ dài từ 6 tới 20 kí tự gồm các chữ số và chữ cái in thường không dấu.
+											Tên tài khoản hoặc email không được để trống, có độ dài từ 6 tới 20 kí tự gồm các chữ số và chữ cái in thường không dấu.
 										</span>
 
 									</span>
@@ -84,7 +89,7 @@
 									<span class="help-mark">&#63;
 
 										<span class="help-mark-text">
-											Tên đăng nhập hoặc email không được để trống, có độ dài từ 6 tới 20 kí tự gồm các chữ số và chữ cái in thường không dấu.
+											Tên tài khoản hoặc email không được để trống, có độ dài từ 6 tới 20 kí tự gồm các chữ số và chữ cái in thường không dấu.
 										</span>
 
 									</span>
@@ -99,6 +104,11 @@
 							<button id="sign-up-prev-btn" >Quay lại</button>
 							<button id="sign-up-next-btn" >Tiếp theo</button>
 						</div>
+
+						<div id="ajax-loader" style="text-align: center; display: none">
+							<img width="40px" height="40px" src="{{asset('pictures/luan/ajax-loader.gif')}}" alt="">
+						</div>
+
 					</form>
 				</div>
 			</div>
@@ -114,11 +124,12 @@
 							</h1>
 						</div>
 						<div>
-							<label for="sign-in-username">Tên đăng nhập hoặc email
+							<label for="sign-in-username">Tên tài khoản hoặc email
 								<span class="help-mark">&#63;
 
 									<span class="help-mark-text">
-										Tên đăng nhập hoặc email không được để trống, có độ dài từ 6 tới 20 kí tự gồm các chữ số và chữ cái in thường không dấu.
+										Tên tài khoản có độ dài tối thiểu 6 kí tự, chỉ chứa các chữ cái in thường không dấu, các chữ số và dấu gạch dưới " _ ". <br>
+										Email phải hợp lệ.
 									</span>
 
 								</span>
@@ -130,7 +141,7 @@
 							<label for="sign-in-password">Mật khẩu
 								<span class="help-mark">&#63;
 									<span class="help-mark-text">
-										Mật khẩu không được để trống, có độ dài từ 6 tới 30 kí tự gồm các chữ số và chữ cái in thường không dấu.
+										Mật khẩu không được để trống, có độ dài từ 6 tới 30 kí tự gồm các chữ số các chữ cái in thường không dấu và dấu gạch dưới " _ ".
 									</span>
 
 								</span>

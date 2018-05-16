@@ -22,8 +22,8 @@ class GioiTinhController extends Controller
       )
       ->get();
 
-    // return view('admin.gioitinh.index')->with(['tatca_gioitinh'=>$tatca_gioitinh]);
-    return $tatca_gioitinh;
+    return view('admin.gioitinh.index')->with(['tatca_gioitinh'=>$tatca_gioitinh]);
+    // return $tatca_gioitinh;
   }
 
   public function getThem() {
@@ -31,12 +31,12 @@ class GioiTinhController extends Controller
   }
 
   public function postThem(Request $req) {
-    $gioitinh = new GioiTinh();
-    $gioitinh->ma_gioi_tinh = 2;
-    $gioitinh->ten_gioi_tinh = $req->gender;
-    $gioitinh->nguoi_tao = "TK0001";
-    $gioitinh->nguoi_sua = "TK0001";
-    $gioitinh->save();
+    // $gioitinh = new GioiTinh();
+    // $gioitinh->ma_gioi_tinh = 2;
+    // $gioitinh->ten_gioi_tinh = $req->gender;
+    // $gioitinh->nguoi_tao = "TK0001";
+    // $gioitinh->nguoi_sua = "TK0001";
+    // $gioitinh->save();
   }
 
 }

@@ -1,154 +1,241 @@
 $(document).ready(function() {
 
-	// $('.help-mark').hover(function() {
-	// 	$(this).children().show();
-	// }, function() {
-	// 	$(this).children().hide();
-	// });
-
-
-	//  Form đăng nhập
-
-	// $.validator.addMethod("USERNAME", function(value, element) {
- //    return this.optional(element) || /^[\w.@]{6,30}$/.test(value);
- //  }, "Tài khoản hoặc email không hợp lệ");
-
-  $.validator.addMethod("PASSWORD", function(value, element) {
-    return this.optional(element) || /^[\w]{6,30}$/.test(value);
-  }, "Mật khẩu không hợp lệ");
 
   $.validator.addMethod( "regex", function(value, element, regexp) {
-        var re = new RegExp(regexp);
-        return re.test(value);
-    },
-    "Dữ liệu không hợp lệ."
-	);
+    var re = new RegExp(regexp);
+    return re.test(value);
+  },
+  "Dữ liệu không hợp lệ."
+);
 
+//
+function showAlert(message) {
+  $("<div class='myalert show-alert show-alert-animation'>"+message+"</div>").appendTo('body');
+}
 
-	$('#sign-in-form').validate({
-		rules: {
-      username: {
-      	regex: "^[\\w.\@]{6,30}$"
-      },
-      password: {
-      	regex: "^[\\w]{6,30}$"
+function removeAlert(alertID, classToRemove) {
+  $('#'+alertID).removeClass(classToRemove);
+}
+
+// XOR rule 1 XOR rule 2
+$.validator.addMethod("xor", function(val, el, param) {
+  var valid = false;
+
+  // loop through sets of nested rules
+  for(var i = 0; i < param.length; ++i) {
+    var setResult = true;
+
+    // loop through nested rules in the set
+    for(var x in param[i]) {
+      var result = $.validator.methods[x].call(this, val, el, param[i][x]);
+
+      // If the input breaks one rule in a set we stop and move
+      // to the next set...
+      if(!result) {
+        setResult = false;
+        break;
       }
     }
-	});
 
-	// End Form đăng nhập
+    // If the value passes for one set we stop with a true result
+    if(setResult == true) {
+      valid = true;
+      break;
+    }
+  }
 
+  // Return the validation result
+  return this.optional(el) || valid;
+}, "Dữ liệu không hợp lệ");
+// End XOR:  rule 1 XOR rule 2
 
-
-	// Form đăng ký
-
-	var currentTab = 0;
-	var tabs = $('.sign-up-tab');
-	showTab(currentTab);
-
-	function showTab(currentTab) {
-
-		$(tabs[currentTab]).css('display', 'block');
-		showControllers(currentTab, tabs.length);
-	}
-
-	function showControllers(currentTab) {
-		if(currentTab == 0) {
-			$('#sign-up-prev-btn').css('display', 'none');
-		} else {
-			$('#sign-up-prev-btn').css('display', 'inline-block');
-		}
-
-		if(currentTab >= tabs.length - 1) {
-			$('#sign-up-next-btn').html('Đăng ký');
-		} else {
-			$('#sign-up-next-btn').html('Tiếp theo');
-		}
-	}
-
-	function changeTab(n) {
-		$(tabs[currentTab]).css('display', 'none');
-		currentTab += n
-		if(currentTab >= tabs.length) {
-			currentTab--;
-			$('#sign-up-form').submit();
-			// return false;
-		}
-		showTab(currentTab);
-	}
-
-
-	$('#sign-up-next-btn').click(function (e) {
-
-		$('#sign-up-form').validate({
-
-		});
-
-		// e.preventDefault();
-		if(currentTab == 0) {
-
-			$('[name="sign-up-lastname"]').rules('add', {
-        required: true
-	    });
-			$('[name="sign-up-firstname"]').rules('add', {
-        required: true,
+$('#sign-in-form').validate({
+  rules: {
+    username: {
+      // regex: "^[a-z.\@1-9]{6,}$"
+      required: true,
+      xor: [{
+        regex: "^[\\w]{6,}$"
+      }, {
         email: true
-	    });
+      }]
+    },
+    password: {
+      regex: "^[a-z0-9_]{6,30}$"
+    }
+  },
+  messages: {
+    username: {
+      required: 'Dữ liệu không hợp lệ'
+    }
+  }
+});
+
+// End Form đăng nhập
+
+
+
+// Form đăng ký
+
+var currentTab = 0;
+var tabs = $('.sign-up-tab');
+showTab(currentTab);
+
+function showTab(currentTab) {
+
+  $(tabs[currentTab]).css('display', 'block');
+  showControllers(currentTab, tabs.length);
+}
+
+function showControllers(currentTab) {
+  if(currentTab == 0) {
+    $('#sign-up-prev-btn').css('display', 'none');
+  } else {
+    $('#sign-up-prev-btn').css('display', 'inline-block');
+  }
+
+  if(currentTab >= tabs.length - 1) {
+    $('#sign-up-next-btn').html('Đăng ký');
+  } else {
+    $('#sign-up-next-btn').html('Tiếp theo');
+  }
+}
+
+function changeTab(n) {
+  $(tabs[currentTab]).css('display', 'none');
+  currentTab += n
+  if(currentTab >= tabs.length) {
+    currentTab--;
+    SignupAjax();
+    // $('#sign-up-form').submit();
+    // return false;
+  }
+  showTab(currentTab);
+}
+
+
+  $('#sign-up-next-btn').click(function (e) {
+
+    $('#sign-up-form').validate({
+
+    });
+
+    // e.preventDefault();
+    if(currentTab == 0) {
+
+      $('[name="sign-up-lastname"]').rules('add', {
+        regex: "^([A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,10}((\\s[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,15})?)+$)"
+      });
+      $('[name="sign-up-firstname"]').rules('add', {
+        regex: "^([A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,10}((\\s[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,15})?)+$)"
+      });
 
       // $('[name="sign-up-username"]').rules('remove');
       // $('[name="sign-up-email').rules('remove');
       // $('[name="sign-up-password"]').rules('remove');
 
-			$('#sign-up-form').valid();
-			if($('#sign-up-form').valid()) {
-				e.preventDefault();
-				changeTab(1);
+      $('#sign-up-form').valid();
+      if($('#sign-up-form').valid()) {
+        e.preventDefault();
+        changeTab(1);
         return;
-			}
-		}
+      }
+    }
 
-		if(currentTab == 1) {
+    if(currentTab == 1) {
 
-			$('[name="sign-up-username"]').rules('add', {
-        required: true
-	    });
-	    $('[name="sign-up-email"]').rules("add", {
-	    	required: true
-	    	// regex: "^[a-zA-Z]{3,40}$"
-	    });
+      $('[name="sign-up-username"]').rules('add', {
+        regex: "^[\\w]{6,}$"
+      });
 
-			$('[name="sign-up-password"]').rules('add', {
-        required: true
-	    });
+      $('[name="sign-up-email"]').rules("add", {
+        required: true,
+        email: true,
+        messages: {
+          required: 'Dữ liệu không hợp lệ',
+          email: 'Dữ liệu không hợp lệ'
+        }
+      });
+
+      $('[name="sign-up-password"]').rules('add', {
+        regex: "^[a-z0-9_]{6,30}$"
+      });
 
       // $('[name="sign-up-lastname"]').rules('remove');
       // $('[name="sign-up-firstname"]').rules('remove');
 
-			$('#sign-up-form').valid();
-			if($('#sign-up-form').valid()) {
-				e.preventDefault();
-				changeTab(1);
+      $('#sign-up-form').valid();
+      if($('#sign-up-form').valid()) {
+        e.preventDefault();
+        changeTab(1);
         return;
-			}
-		}
+      }
+    }
+
+  });
+
+  $('#sign-up-prev-btn').click(function (e) {
+    e.preventDefault();
+    changeTab(-1);
+  });
 
 
 
 
+// End Form đăng ký
+// ajax
+  function SignupAjax() {
+    $.ajax({
+      url: '/dangki',
+      type: 'post',
+      // async: false,
+      data: {
+        _token: $('input[name=_token]').val(),
+        firstname: $('input[name=sign-up-firstname]').val(),
+        lastname: $('input[name=sign-up-lastname]').val(),
+        username: $('input[name=sign-up-username]').val(),
+        email: $('input[name=sign-up-email]').val(),
+        password: $('input[name=sign-up-password]').val()
+      },
+      beforeSend: function() {
+        $('#ajax-loader').css('display', 'block');
+
+      },
+      success: function() {
+        // setting a timeout
+        $('#ajax-loader').css('display', 'none');
+      }
+    })
+    .done(function(response) {
+      var m =  "";
+      if(response.errors) {
+        // console.log(response.errors);
+        // Duyệt từng phần từ của object lỗi (từ DangKiController trả về dạng Json)
+
+        $.each(response.errors, function(fieldsName, messagesArray) {
+          messagesArray.forEach(function(message) {
+            m += "<p>"+message+"</p>";
+          });
+        });
+        showAlert(m);
+      } else {
+
+        // m += "<p>Đăng kí thành công. Chúng tôi đã gửi tin nhắn kích hoạt tài khoản tới email "+$('input[name=sign-up-email]').val()+" của bạn. <span class='time-counter'></span></p>";
+        // showAlert(m);
+        // console.log(response);
+
+        // setTimeout(function () {
+        //   window.location.href = "/kichhoat/taikhoan";
+        //
+        // }, 4000);
+        window.location.href = "/kichhoat/taikhoan";
+      }
+    });
 
 
 
-	});
-
-	$('#sign-up-prev-btn').click(function (e) {
-		e.preventDefault();
-		changeTab(-1);
-	});
+  }
 
 
-
-
-	// End Form đăng ký
-
-
+// end ajax
 });
