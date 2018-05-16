@@ -12,7 +12,7 @@ class Nhom extends Controller
 {
     public function loadnhom ($id)
     {
-    	$listbaiviet = DB::table('bai_viet')->orderBy('ma_bai_viet','desc')->get();
+    	$listbaiviet = DB::table('bai_viet')->orderBy('ma_bai_viet','desc')->take(3)->get();
     	$soluongbaiviet =10;
     	return view("nhom.indexnhom",["t"=>$id,"s"=>$soluongbaiviet,"lstbaiviet"=>$listbaiviet]);
 

@@ -1,3 +1,10 @@
+textarea:focus{
+  outline:0px !important;
+    -webkit-appearance:none;
+}
+
+
+
 #divthemanhbaidang{
   margin-left: 15px; 
   float: left;
@@ -28,10 +35,17 @@
 	border: 1px solid #c5cfd6; border-radius: 3px; float:left;width: 493px;
 	 margin-left: 10px;margin-top: 15px;
 	 border-color: #9695d8;
+     border-style: none; 
+
+    border-color: Transparent; 
+    overflow: auto;  
+    width: auto;
+    resize: none;
 }
 #divbigformdangbaiviet{
 	height: 175px;background-color: white; margin-bottom: 5px; 
-	border: 1px solid #c5cfd6;
+	border: 1px solid #9695d8;
+  /*#c5cfd6*/
 			border-radius: 3px; 
 			margin-bottom: 10px;
 }

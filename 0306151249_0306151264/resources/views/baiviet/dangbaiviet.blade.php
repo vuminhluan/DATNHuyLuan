@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/lu/baiviet/baiviet.css') }}">
 @endsection
 @section('javascript')
-<script src="{{ asset('js/jslu/dangbaiviet.js') }}" type="text/javascript" charset="utf-8">
+<script src="{{ asset('js/jslu/baiviet/dangbaiviet.js') }}" type="text/javascript" charset="utf-8">
 </script>
 @endsection
 
@@ -20,8 +20,10 @@
 			<div>
 				<div id="divnoidungbaiviet">
 					<img id="imgdangbaiviet" " src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View">
-					<div>
-						<textarea  id="iptextdangbaiviet" rows="2" placeholder="Viết điều gì đó..."></textarea>
+					<div style="padding-top: 5px;padding-left: 50px;padding-right: 7px;">
+						<div style="width: auto;height: 0px;">
+						<textarea cols="60"  id="iptextdangbaiviet" rows="2" placeholder="Viết điều gì đó..."></textarea>
+						</div>
 					</div>
 					{{-- <div id="iptextdangbaiviet" contenteditable="true">	</div> --}}
 					{{-- <textarea id="iptextdangbaiviet" rows="5" cols="50"></textarea> --}}
@@ -112,7 +114,7 @@
 		</div>
 		<div id="divbtndangbaiviet">
 		{{-- <input id="btndangbaiviet" type="submit"  value="Đăng"/> --}}
-		<input type="submit" id="btndangbaiviet"  name="btndangbaiviet" value="Submit">
+		<input type="submit" id="btndangbaiviet"  name="btndangbaiviet" value="Đăng">
 		{{-- <button id="btnn">DANGGG</button> --}}
 		</div>
 		</div>

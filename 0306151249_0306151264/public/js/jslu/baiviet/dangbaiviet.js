@@ -448,6 +448,8 @@ function creatediv() {
 
 /////
 
+$('document').ready()
+{
 
 var x, i, j, selElmnt, a, b, c;
 /*look for any elements with the class "custom-select":*/
@@ -523,3 +525,6 @@ then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
 
 
+
+
+}

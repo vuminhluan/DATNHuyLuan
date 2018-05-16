@@ -1,7 +1,119 @@
-/* binh luan*/
-textarea {
-  overflow: auto;
+textarea[name=foo] {
+    resize: none;
+
 }
+textarea:disabled {
+  background-color: transparent;
+
+}
+
+
+.div-tatca-cmt{
+	 height: auto; background-color: #f2f3f5 ;border-top: solid 1px #c5cfd6;
+}
+
+
+.stick-xemthem{
+	display: none;
+}
+
+
+
+
+.cl-div-content-boxreadcmt-avt{
+	height: 35px; width: 100%;
+}
+
+/* binh luan*/
+.div-btn-show-allcmt{
+	margin-right: 13px;
+	padding-top: 2px;
+	width: 17px	;height: 17px;float: left;
+
+	}
+.div-btn-like-cmt{
+	width: 17px	;height: 17px;float: left;
+	}
+.div-btn-rep-cmt{
+	width: 17px	;height: 17px;float: left;
+	}
+
+.div-btn-show-allcmt:hover{
+	/*background-color: red;*/
+	cursor:pointer;
+
+}
+
+.cl-div-avt-cmt{
+  height: 100%; 
+  width: 7%; 
+  float: left;
+}
+.cl-div-avt-rep-cmt{
+	margin-left: 5px;
+  height: 90%; 
+  width: 7%; 
+  float: left;
+}
+
+
+
+
+.cl-div-tare-read{
+  margin-top: 6px;
+  width: auto;
+  float: left; 
+  background-color: white;
+  height: auto;
+  text-align:  justify;
+  border-radius: 5px;
+  border:solid 1px #9695d8;
+  padding: 1px;
+  padding-top: 5px;
+}
+
+.cl-div-tare-read-repcmt{
+  margin-left: 2px;
+  margin-top: 2px;
+  width: auto;
+  float: left; 
+  background-color: white;
+  height: auto;
+  text-align:  justify;
+  border-radius: 5px;
+  border:solid 1px #b4b3d3;
+  padding: 1px;
+  padding-top: 5px;
+}
+
+
+.tara-read-cmt{
+	height: 15px;
+	border-style: none; 
+    border-color: Transparent; 
+    overflow: auto;  
+    width: auto;
+    resize: none;
+	overflow:hidden;
+	width: 427px;
+
+
+}
+
+.tara-read-cmtrep{
+	height: 15px;
+	border-style: none; 
+    border-color: Transparent; 
+    overflow: auto;  
+    width: auto;
+    resize: none;
+	overflow:hidden;
+	width: 350px;
+}
+
+
+
+
 .divlikecmt{
 	border-top: solid 1px #c5cfd6;
 	margin-left: 12px;
@@ -35,6 +147,13 @@ textarea {
 	height: 32px;
 	float: left; 
 	margin-left: 12px; 
+}
+.imgaccountrepcmt{
+	width: 25px;
+	height: 25px; 
+	border-radius: 50%; 
+	margin-top: 4px;
+	float: left;
 }
 .imgaccountcmt{
 	width: 32px;
