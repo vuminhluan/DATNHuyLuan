@@ -12,7 +12,7 @@
                       <img class="imgavtnguoidang" src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View">
                     </div>
                     <div class="divtennguoidang" >
-                      <span> <h3 class="spantennguoidang">  {{ $t }} </h3> </span><br>
+                      <span> <h3 class="spantennguoidang">  {{ $lstbaiviet[$i]->ma_bai_viet }} </h3> </span><br>
                       <span> <h5 class="spanthoigiandang"> 22/02/2018 18:07 </h5> <span>
                     </div>
                  </div>
