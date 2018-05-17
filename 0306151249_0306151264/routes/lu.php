@@ -16,6 +16,8 @@ Route::post("/ajax/postbaivietne","BaiVietController\BaiViet@Postbaiviet")->name
 Route::post("/ajax/postbinhluanne","BinhLuanController\BinhLuan@PostBinhLuan")->name('postbinhluan');
 Route::post("/ajax/postbinhluanc2ne","BinhLuanController\BinhLuan@PostBinhLuanC2")->name('postbinhluanc2');
 Route::get("/ajax/getmabinhluanne","BinhLuanController\BinhLuan@GetMaBinhLuan")->name('getmabinhluan');
+Route::get("/ajax/getbinhluanmoine","BinhLuanController\BinhLuan@GetBinhLuanMoi")->name('getbinhluanmoi');
+Route::get("/ajax/getbinhluanne","BinhLuanController\BinhLuan@GetBinhLuan")->name('getbinhluan');
 
 
 Route::get("/ajax/getmabaivietne","BaiVietController\BaiViet@GetMaBaiViet")->name('getmabaiviet');

@@ -1,7 +1,40 @@
+function clickbinhluan(pr1)
+{
+	$('#'+pr1).css("display","block");
+	$('#'+'div-inputbinhluan-157').css("display","block");
+
+
+		$.ajax({
+		url:'/DATNHuyLuan/0306151249_0306151264/public/ajax/getbinhluanne',
+		type:'GET',
+		data{
+			ma_bai_viet:pr1
+		}
+	}).done(function(data){
+
+						// var econn = document.createElement("div");
+      //                   econn.setAttribute("id", mabl);
+      //                   var Echa = document.getElementById('div-content-all-cmt-157');
+      //                   Echa.appendChild(econn);
+                        $('#'+pr1).html(data);
+
+						// $('#'+pr1).appendChild()
+				
+	})
+}
+
+
+function clicklike(pr1)
+{
+
+}
+
+
+
 function submitme(event)
 {
 	var mabl= "hi";
-
+	var ndbinhluan="hi";
 	if (window.event.keyCode == 13)
     {
     		 alert("ban vua enter");
@@ -48,6 +81,33 @@ function submitme(event)
      	  }).done(function(data) {
      	  	alert("insert thanh cong");
      	  	$('#binhluan-hi157').val('');
+
+     	  		$.ajax(
+     	  		{
+     	  			url:'/DATNHuyLuan/0306151249_0306151264/public/ajax/getbinhluanmoine',
+     	  			type:'GET',
+     	  			data:{
+     	  				ma_binh_luan:mabl,
+     	  				noidung:ndbinhluan
+     	  			}
+
+     	  		}).done(function(data){
+
+     	  				alert(ndbinhluan+": noi dung bl cuoi cung");
+
+     	  				var econn = document.createElement("div");
+                         econn.setAttribute("id", mabl);
+                        // document.getElementById('divcontent').appendChild(element);
+                        var Echa = document.getElementById('div-content-all-cmt-157');
+                        //Echa.insertBefore(econn, Echa.lastChild);
+                        Echa.appendChild(econn);
+                        $('#'+mabl).html(data);
+
+     	  		})
+
+     	  	             
+
+
      	  })
 
 	})}}

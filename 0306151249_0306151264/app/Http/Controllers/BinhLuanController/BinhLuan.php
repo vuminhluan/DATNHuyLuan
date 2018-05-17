@@ -14,6 +14,19 @@ class BinhLuan extends Controller
 		$mabl= DB::table('binh_luan_bai_viet')->select('ma_binh_luan')->orderBy('ma_binh_luan','desc')->get()->first();
 		return $mabl->ma_binh_luan;
 	}
+	public function GetBinhLuanMoi(Request $rq)
+	{
+		 $noidung = $rq->noidung;
+		return View('binhluan.motbinhluanmoi',["noidungbinhluanmoi"=>$noidung]);
+	}
+	public function GetBinhLuan(Request $rq)
+	{
+		 $lstbinhluan = DB::table('binh_luan_bai_viet')->where('ma_bai_viet',$rq->ma_bai_viet)->take(3)->get();
+		return View('binhluan.motbinhluan',["lstbinhluan"=>$lstbinhluan]);
+	}
+
+
+
     public function PostBinhLuan(Request $rq)
     {
     	$binhluan = new binh_luan_bai_viet();

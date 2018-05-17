@@ -127,6 +127,12 @@ textarea:disabled {
 	text-align: center;
 	padding-top: 8px; 
 	font-family: inherit; 
+	cursor: pointer;
+	border-radius: 5px;
+}
+.divbtnlike:hover{
+	background-color: #c5cfd6;
+
 }
 .divbtncmt{
 	float: left;
@@ -136,6 +142,11 @@ textarea:disabled {
 	margin-right: 1%;
 	text-align: center;
 	padding-top: 8px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+.divbtncmt:hover{
+background-color: #c5cfd6;
 }
 .divcmt{
 	height: 42px;
