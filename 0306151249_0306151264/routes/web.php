@@ -11,12 +11,18 @@
 |
 */
 // use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'DangNhapController@getIndex')->name('index');
 
-Route::post('/dangnhap', 'DangNhapController@postDangNhap')->name('dangnhap');
+Route::post('/dangnhap', 'DangNhapController@postDangNhap')->name('post_dangnhap');
 // Route::get('/dangki', 'DangKiController@getDangKi')->name('get_dangki');
 Route::post('/dangki', 'DangKiController@postDangKi')->name('post_dangki');
+
+Route::get('/dangxuat', function() {
+  Auth::logout();
+  return redirect()->route('index');
+})->name('dangxuat');
 
 Route::get('/trangchu', 'TrangChuController@getTrangChu')->name('trangchu');
 

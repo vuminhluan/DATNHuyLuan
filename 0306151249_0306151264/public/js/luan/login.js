@@ -237,5 +237,45 @@ function changeTab(n) {
   }
 
 
-// end ajax
+// end ajax signup
+
+  // Ajax login
+  $('#sign-in-form-button').click(function(event) {
+    event.preventDefault();
+    if($('#sign-in-form').valid()) {
+      // alert($('#sign-in-form input[name=remember]').prop('checked'));
+      check = $('#sign-in-form input[name=remember]').is(':checked') ? 1 : 0;
+      // alert(check); return;
+      // return;
+      $.ajax({
+        url: '/dangnhap',
+        type: 'POST',
+        data: {
+          _token: $('#sign-in-form input[name=_token]').val(),
+          username: $('#sign-in-form input[name=username]').val(),
+          password: $('#sign-in-form input[name=password]').val(),
+          remember: check
+        }
+      })
+      .done(function(response) {
+        console.log(response);
+        if(!response.success) {
+
+          m = "<p>"+response.message+"</p>";
+          showAlert(m);
+          return;
+        }
+        // Đăng nhập thành công, chuyển hướng về trang chủ
+        window.location.href="/trangchu";
+      });
+    }
+
+
+  });
+
+
+
+
+  // End ajax login
+
 });
