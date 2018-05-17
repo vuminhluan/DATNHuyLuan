@@ -24,7 +24,7 @@ Route::get('/dangxuat', function() {
   return redirect()->route('index');
 })->name('dangxuat');
 
-Route::get('/trangchu', 'TrangChuController@getTrangChu')->name('trangchu');
+Route::get('/trangchu', 'TrangChuController@getTrangChu')->middleware('MyUserAuth')->name('trangchu');
 
 Route::get('/kichhoat/taikhoan', 'DangKiController@getKichHoatTaiKhoan')->name('kichhoat');
 Route::post('/kichhoat/taikhoan', 'DangKiController@postKichHoatTaiKhoan')->name('post_kichhoat');

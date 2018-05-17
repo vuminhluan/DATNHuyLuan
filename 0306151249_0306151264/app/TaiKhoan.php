@@ -21,5 +21,12 @@ class TaiKhoan extends Model implements \Illuminate\Contracts\Auth\Authenticatab
     return $this->mat_khau;
   }
 
+  public function scopeLayMaTaiKhoanDauTien()
+  {
+    // thêm tiền tố scope để được: TaiKhoan::LayMaTaiKhoanDauTien()
+    // link: https://stackoverflow.com/questions/32806287/how-to-call-a-model-function-inside-the-controller-in-laravel-5
+    return "TK00000001";
+  }
+
 
 }

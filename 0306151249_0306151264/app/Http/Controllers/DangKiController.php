@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use Validator;
 use App\TaiKhoan;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class DangKiController extends Controller
 {
-  
+
 
   public function postDangKi(Request $req)
   {
@@ -52,7 +53,7 @@ class DangKiController extends Controller
   public function taoTaiKhoan($ma_tai_khoan, $ten_tai_khoan, $email, $mat_khau, $thoigian_hientai)
   {
 
-    $quyen = "Q0003"; //Người dùng
+    $quyen = "Q0002"; //Người dùng
 
     $data = [
       'ma_tai_khoan'  => $ma_tai_khoan,
@@ -91,7 +92,9 @@ class DangKiController extends Controller
   public function taoMaTaiKhoan()
   {
     // $lastID = DB::table('tai_khoan')->orderBy('thoi_gian_tao', 'DESC')->first()->ma_tai_khoan;
-    $lastID = DB::table('tai_khoan')->latest('thoi_gian_tao')->first()->ma_tai_khoan;
+    $latestAccount = DB::table('tai_khoan')->latest('thoi_gian_tao')->first();
+    if($latestAccount === null) return TaiKhoan::LayMaTaiKhoanDauTien();
+    $lastID = $latestAccount->ma_tai_khoan;
 
     $pattern = '/\d\d+/';
     preg_match($pattern, $lastID, $matches);
@@ -109,7 +112,9 @@ class DangKiController extends Controller
   // Để người dùng nếu ko nhận được tin nhắn kích hoạt trong email thì ấn nút để gửi lại
   public function getKichHoatTaiKhoan()
   {
-    return view('khac.kichhoat_taikhoan');
+    if(Auth::check() && Auth::user()->trang_thai == 1)
+      return view('khac.kichhoat_taikhoan');
+    return abort(404);
   }
 
 
