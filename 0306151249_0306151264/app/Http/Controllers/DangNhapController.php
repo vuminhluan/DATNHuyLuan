@@ -32,24 +32,30 @@ class DangNhapController extends Controller
 
 		$username = $req->username;
 		$password = $req->password;
-		// $remember = $req->remember == true ? true : false;
 		$remember = $req->remember;
 
-		$success  = false;
+		$account = TaiKhoan::where('ten_tai_khoan', $username)->orwhere('email', $username)->first();
 
-		// Chưa xét tài khoản bị khóa hay chưa kích hoạt
+		// Nếu tài khoản không bị vô hiệu hóa và không bị khóa do vi phạm điều khoản sử dụng thì cho tài khoản đó đăng nhập.
+		// Nói cách khác, nếu tài khoản đó Chưa kích hoạt || Đang hoạt động || Tự khóa thì được đăng nhập.
+		if($account->trang_thai != 4 && $account->trang_thai != 5) {
+			if ( Auth::attempt(['ten_tai_khoan' => $username, 'password' => $password], $remember) || Auth::attempt(['email' => $username, 'password' => $password], $remember) ) {
+				$success = true;
+				return ['success' => true, 'message' => 'Đăng nhập thành công !'];
+	  	}
+		}
+		// Tài khoản bị khóa do vi phạm điều khoản sử dụng.
+		if($account->trang_thai == 5) {
+			return ['success' => false, 'message' => 'Tài khoản của bạn đã bị khóa vì lý do vi phạm điều khoản. Hãy liên hệ với chúng tôi để biết thêm thông tin chi tiết'];
+		}
 
-		if ( Auth::attempt(['ten_tai_khoan' => $username, 'password' => $password], $remember) || Auth::attempt(['email' => $username, 'password' => $password]) ) {
-			$success = true;
-			return ['success' => $success, 'message' => 'Đăng nhập thành công !'];
-  	}
-
+		// Trường hợp còn lại:
+		//
 		$message = "Tài khoản không tồn tại";
-		if(TaiKhoan::where('ten_tai_khoan', $username)->first()) {
+		if($account && $account->trang_thai != 4) {
 			$message =  "Xin hãy kiểm tra lại mật khẩu";
 		}
-		return ['success' => $success, 'message' => $message];
-		// return $message;
+		return ['success' => false, 'message' => $message];
 
 	}
 

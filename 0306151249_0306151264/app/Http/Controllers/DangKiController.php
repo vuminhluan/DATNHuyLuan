@@ -96,8 +96,9 @@ class DangKiController extends Controller
     if($latestAccount === null) return TaiKhoan::LayMaTaiKhoanDauTien();
     $lastID = $latestAccount->ma_tai_khoan;
 
-    $pattern = '/\d\d+/';
+    $pattern = '/\d\d+/'; // Lấy ra dãy các chữ số liên tiếp. Ví dụ: TK00123896 => lấy ra 00123896
     preg_match($pattern, $lastID, $matches);
+    
     $newIDNumber =  ltrim($matches[0], '0') + 1;
 
     $newID = "TK";
@@ -114,7 +115,8 @@ class DangKiController extends Controller
   {
     if(Auth::check() && Auth::user()->trang_thai == 1)
       return view('khac.kichhoat_taikhoan');
-    return abort(404);
+    // return abort(404);
+    return redirect()->back();
   }
 
 
