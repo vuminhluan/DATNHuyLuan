@@ -116,7 +116,8 @@
 			<div class="sign-in">
 				<!-- Form đăng nhập -->
 				<div class="section sign-in-form">
-					<form action="{{route('dangnhap')}}" id="sign-in-form" method="POST">
+					<form action="#/" id="sign-in-form" method="POST">
+						{{-- {{route('post_dangnhap')}} --}}
 						{{ csrf_field() }}
 						<div>
 							<h1 style="text-align: center;">
@@ -135,7 +136,7 @@
 								</span>
 
 							</label>
-							<input type="text" id="sign-in-username" name="username" value="abc@gmail.com">
+							<input type="text" id="sign-in-username" name="username" value="">
 						</div>
 						<div>
 							<label for="sign-in-password">Mật khẩu
@@ -147,10 +148,11 @@
 								</span>
 
 							</label>
-							<input type="password" id="sign-in-password" name="password" value="123123">
+							<input type="password" id="sign-in-password" name="password" value="">
 						</div>
 						<div>
-							<input type="checkbox" class="" id="sign-in-remember" name="remember"> <label for="sign-in-remember">Ghi nhớ đăng nhập</label>
+							<input type="checkbox" class="" id="sign-in-remember" name="remember">
+							<label for="sign-in-remember">Ghi nhớ đăng nhập</label>
 						</div>
 						<div>
 							<button type="submit" id="sign-in-form-button" class="form-button">Đăng nhập</button>

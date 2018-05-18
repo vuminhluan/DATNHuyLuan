@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 Route::get(
 	'/taikhoan/{username}',
 	'TrangCaNhanController@getTrangCaNhan'
-)->name('trangcanhan.index');
+)->middleware('MyUserAuth')->name('trangcanhan.index');
 
 Route::get(
 	'/taikhoan/{username}/nhom',
@@ -21,7 +21,7 @@ Route::get(
 
 Route::get('/lienhe', function () {
 	return view('khac.lienhe');
-})->name('lienlac');
+})->name('lienhe');
 
 Route::prefix('caidat')->group(function () {
 
@@ -44,7 +44,7 @@ Route::prefix('caidat')->group(function () {
 });
 
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 
 	Route::get('/', function() {
 		return view('admin.index');

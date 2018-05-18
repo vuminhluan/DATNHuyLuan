@@ -13,7 +13,12 @@
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
         </div>
-        <li ><a  href="#about">Người dùng A</a></li>
+        @if (Auth::check())
+          <li ><a  href="#about">{{Auth::user()->ten_tai_khoan}} remember</a></li>
+        @endif
+
+        <li ><a  href="{{route('dangxuat')}}">Đăng xuất</a></li>
+
       </div>
     </ul>
   </div>

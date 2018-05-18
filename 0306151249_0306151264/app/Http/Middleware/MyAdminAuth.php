@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class MyAuth
+class MyAdminAuth
 {
   /**
   * Handle an incoming request.
@@ -16,7 +16,11 @@ class MyAuth
   */
   public function handle($request, Closure $next)
   {
-    
-    return $next($request);
+    if(Auth::check() && Auth::user()->quyen == "Q0001") {
+      return $next($request);
+    }
+
+    return abort(404);
+
   }
 }

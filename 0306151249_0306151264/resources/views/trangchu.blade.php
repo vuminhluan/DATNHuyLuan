@@ -5,7 +5,7 @@
 @endsection
 
 @section('css')
-	<link rel="stylesheet" href="css/luan.css">
+	{{-- <link rel="stylesheet" href="css/luan.css"> --}}
 @endsection
 
 @section('main')
