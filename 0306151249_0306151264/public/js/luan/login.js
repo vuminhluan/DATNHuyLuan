@@ -258,7 +258,8 @@ function changeTab(n) {
         }
       })
       .done(function(response) {
-        console.log(response);
+        $('#sign-in-form input[name=password]').val('');
+        // console.log(response);
         if(!response.success) {
 
           m = "<p>"+response.message+"</p>";
