@@ -26,7 +26,7 @@ class MyUserAuth
     **/
     if(Auth::check() && Auth::user()->quyen == "Q0002" ) {
       if( Auth::user()->trang_thai == 1 ) {
-        return redirect()->route('kichhoat');
+        return redirect()->route('kichhoat.index');
       }
       return $next($request);
     }

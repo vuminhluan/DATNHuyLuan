@@ -13,7 +13,7 @@
   <br>
   <p>Xin chào {{Auth::user()->ho_ten_lot." ". Auth::user()->ten }},</p>
   <p>Chúng tôi gửi mail này để giúp bạn kích hoạt tài khoản sau khi đăng kí tài khoản trên website chúng tôi.</p>
-  <p>Bấm vào <a href="{{url('/taikhoan/'.Auth::user()->ten_tai_khoan.'/'.md5(Auth::user()->ten_tai_khoan.'kichhoat').'/kichhoat')}}">liên kết</a> để kích hoạt tài khoản</p>
+  <p>Bấm vào <a href="{{url('/kichhoat/taikhoan/'.Auth::user()->ten_tai_khoan.'/'.md5(Auth::user()->ten_tai_khoan.'kichhoat'))}}">liên kết</a> để kích hoạt tài khoản</p>
   <p>Hoặc bỏ qua mail này nếu đây không phải là bạn</p>
   <p>Cảm ơn !</p>
   <br>

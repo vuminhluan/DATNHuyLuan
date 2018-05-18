@@ -93,14 +93,6 @@ class DangKiController extends Controller
     // return Response()->json($data);
   }
 
-  public function guiMailKichHoat($to, $receiver)
-  {
-    // Mail::send(['text'=>'email.kichhoat'],['name','Admin'], function($message) {
-    //   $message->to($to, $receiver)->subject('Testing Email');
-    //   $message->from('vuminhluan1407@gmail.com', 'DATN Admin Vu Minh Luan');
-    // });
-  }
-
 
   public function taoMaTaiKhoan()
   {
@@ -124,13 +116,13 @@ class DangKiController extends Controller
 
   // Sau khi đăng kí, chuyển tới trang xác nhận tài khoản
   // Để người dùng nếu ko nhận được tin nhắn kích hoạt trong email thì ấn nút để gửi lại
-  public function getKichHoatTaiKhoan()
-  {
-    if(Auth::check() && Auth::user()->trang_thai == 1)
-      return view('khac.kichhoat_taikhoan');
-    // return abort(404);
-    return redirect()->back();
-  }
+  // public function getKichHoatTaiKhoan()
+  // {
+  //   if(Auth::check() && Auth::user()->trang_thai == 1)
+  //     return view('khac.kichhoat_taikhoan');
+  //   // return abort(404);
+  //   return redirect()->back();
+  // }
 
 
 
