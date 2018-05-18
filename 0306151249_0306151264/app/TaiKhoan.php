@@ -28,5 +28,31 @@ class TaiKhoan extends Model implements \Illuminate\Contracts\Auth\Authenticatab
     return "TK00000001";
   }
 
+  public function hasNguoiDung()
+  {
+    return $this->hasOne('App\NguoiDung', 'ma_tai_khoan', 'ma_tai_khoan');
+  }
+
+  // Lấy dữ liệu từ bảng nguoi_dung thông qua Relationship hasOne ở trên
+  // cấu trúc: get + CaiGiDo + Attribute
+  // Gọi: Auth::user()->cai_gi_do
+  public function getTenAttribute()
+  {
+    return $this->hasNguoiDung->ten;
+  }
+
+  // Lấy họ và tên lót từ bảng người dùng
+  public function getHoTenLotAttribute()
+  {
+    return $this->hasNguoiDung->ho_ten_lot;
+  }
+
+  public function getAnhDaiDienAttribute()
+  {
+    return $this->hasNguoiDung->anh_dai_dien;
+    // Phương thức tên AnhDaiDien thì lúc gọi sẽ là anh_dai_dien
+    // Lấy ảnh đại diện. Cách gọi: Auth::user()->anh_dai_dien
+  }
+
 
 }

@@ -13,11 +13,14 @@
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
         </div>
-        @if (Auth::check())
-          <li ><a  href="#about">{{Auth::user()->ten_tai_khoan}} remember</a></li>
-        @endif
 
-        <li ><a  href="{{route('dangxuat')}}">Đăng xuất</a></li>
+        @if (Auth::check())
+          <li ><a  href="#about" title="{{Auth::user()->ho_ten_lot." ".Auth::user()->ten}}"><img width="14px" style="border-radius: 50%" height="14px" src="{{asset('pictures/anh_dai_dien/'.Auth::user()->anh_dai_dien.'')}}" alt=""></a></li>
+          <li ><a  href="{{route('dangxuat')}}">Đăng xuất</a></li>
+        @endif
+          <li ><a  href="#/">Người dùng A</a></li>
+
+
 
       </div>
     </ul>

@@ -19,11 +19,16 @@ Route::get(
 	'TrangCaNhanController@getNhom'
 )->name('trangcanhan.nhom');
 
+Route::get(
+	'/taikhoan/{username}/tep',
+	'TrangCaNhanController@getTep'
+)->name('trangcanhan.tep');
+
 Route::get('/lienhe', function () {
 	return view('khac.lienhe');
 })->name('lienhe');
 
-Route::prefix('caidat')->group(function () {
+Route::prefix('caidat')->middleware('MyUserAuth')->group(function () {
 
 	Route::get('/', function() {
 		return redirect()->route('caidat.index');
@@ -43,6 +48,8 @@ Route::prefix('caidat')->group(function () {
 
 });
 
+
+// Các route cho admin ở dưới đây
 
 Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 
@@ -77,8 +84,6 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 
 		// Route::post('/tacvu/{hanhdong}', 'GioiTinhController@postTacVu')->name('admin.gioitinh.post_tacvu');
 	});
-
-
 
 
 

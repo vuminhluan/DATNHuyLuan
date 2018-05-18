@@ -31,6 +31,10 @@ class MyUserAuth
       return $next($request);
     }
 
-    return abort(404);
+    if(!Auth::check()) {
+      return redirect()->route('index');
+    }
+
+    return redirect()->route('admin.index');
   }
 }

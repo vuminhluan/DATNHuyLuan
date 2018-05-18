@@ -32,6 +32,9 @@
 					<div>
 						<button id="reset-passowrd-button">Gửi lại tin nhắn kích hoạt</button>
 					</div>
+					<div>
+						<a href="{{route('dangxuat')}}">Bỏ qua</a>
+					</div>
 				</form>
 			</div>
 		</div>

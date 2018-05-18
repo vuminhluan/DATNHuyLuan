@@ -19,8 +19,13 @@ class MyAdminAuth
     if(Auth::check() && Auth::user()->quyen == "Q0001") {
       return $next($request);
     }
-
-    return abort(404);
+    if(!Auth::check()) {
+      return redirect()->route('index');
+    }
+    // return abort(404);
+    return redirect()->back();
 
   }
+
+
 }
