@@ -7,6 +7,8 @@ use Validator;
 use App\TaiKhoan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MailKichHoat;
 use Carbon\Carbon;
 
 class DangKiController extends Controller
@@ -45,8 +47,12 @@ class DangKiController extends Controller
     // Lưu thông tin người dùng (Họ tên, ảnh đại diện mặc định, ảnh bìa mặc định,...)
     $this->themThongTinNguoiDung($ma_tai_khoan, $req->lastname, $req->firstname, $now);
 
-    // // Gửi tin nhắn kích hoạt tới email
-    // Gửi_tin_nhắn_kich_hoat ( )
+    Auth::attempt(['ten_tai_khoan' => $req->username, 'password' => $req->password]);
+
+    //Gửi tin nhắn kích hoạt tới email
+    Mail::send(new MailKichHoat());
+
+
   }
 
 
@@ -84,8 +90,15 @@ class DangKiController extends Controller
       'nguoi_sua'     => $ma_tai_khoan
     ];
     DB::table('nguoi_dung')->insert($data);
-
     // return Response()->json($data);
+  }
+
+  public function guiMailKichHoat($to, $receiver)
+  {
+    // Mail::send(['text'=>'email.kichhoat'],['name','Admin'], function($message) {
+    //   $message->to($to, $receiver)->subject('Testing Email');
+    //   $message->from('vuminhluan1407@gmail.com', 'DATN Admin Vu Minh Luan');
+    // });
   }
 
 
@@ -98,7 +111,7 @@ class DangKiController extends Controller
 
     $pattern = '/\d\d+/'; // Lấy ra dãy các chữ số liên tiếp. Ví dụ: TK00123896 => lấy ra 00123896
     preg_match($pattern, $lastID, $matches);
-    
+
     $newIDNumber =  ltrim($matches[0], '0') + 1;
 
     $newID = "TK";

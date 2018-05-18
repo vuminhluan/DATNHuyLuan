@@ -28,6 +28,8 @@ Route::get('/lienhe', function () {
 	return view('khac.lienhe');
 })->name('lienhe');
 
+Route::get('/taikhoan/{username}/{username_md5}/kichhoat', 'GuiMailController@kichHoatTaiKhoan')->name('taikhoan.kichhoat');
+
 Route::prefix('caidat')->middleware('MyUserAuth')->group(function () {
 
 	Route::get('/', function() {
