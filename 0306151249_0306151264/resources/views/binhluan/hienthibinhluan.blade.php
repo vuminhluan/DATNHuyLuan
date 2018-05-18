@@ -36,13 +36,13 @@
                         </div>
                     </div>
                         {{-- duoi --}}
-                        <div class="divcmt" id="div-inputbinhluan-157" style="display: none;" >
+                        <div class="divcmt" id="div-input-binhluan-{{ $lstbaiviet[$i]->ma_bai_viet }}" style="display: none;" >
                             <div>
                                 <div class="divimgaccountcmt" >
                                     <img class="imgaccountcmt"  src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View" >
                                 </div>
                                 <div class="divtextcmt" >
-                                    <input class="iptextcmt" id="binhluan-hi157" onKeyPress='submitme(event,"{{ $lstbaiviet[$i]->ma_bai_viet }}")' style="                               
+                                    <input class="iptextcmt" id="input-binhluan-{{ $lstbaiviet[$i]->ma_bai_viet }}" onKeyPress='submitme(event,"{{ $lstbaiviet[$i]->ma_bai_viet }}")' style="                               
                                                                     margin-top: 5px;
                                                                     width: 498px;
                                                                     background-color: 

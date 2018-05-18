@@ -1,7 +1,7 @@
 function clickbinhluan(mabaiviet)
 {
 	$('#div-content-all-cmt-'+mabaiviet).css("display","block");
-	$('#'+'div-inputbinhluan-157').css("display","block");
+	$('#div-input-binhluan-'+mabaiviet).css("display","block");
      	  		$.ajax(
      	  		{
      	  			url:'/DATNHuyLuan/0306151249_0306151264/public/ajax/getbinhluanne',
@@ -26,7 +26,7 @@ function submitme(event,mabaivietl)
 	if (window.event.keyCode == 13)
     {
     	//	 alert("ban vua enter");
-    	var ndbinhluan = $('#binhluan-hi157').val();
+    	var ndbinhluan = $('#input-binhluan-'+mabaivietl).val();
     	ndbinhluan=ndbinhluan.trim();
     	//alert(ndbinhluan);
 	//	alert( $('input[name=_token]').val());
@@ -63,8 +63,7 @@ function submitme(event,mabaivietl)
           	trang_thai:"1"
           }
      	  }).done(function(data) {
-     	//  	alert("insert thanh cong");
-     	  	$('#binhluan-hi157').val('');
+     	  	$('#input-binhluan-'+mabaivietl).val(''); // gán lại rỗng cho cmt
      	  		$.ajax(
      	  		{
      	  			url:'/DATNHuyLuan/0306151249_0306151264/public/ajax/getbinhluanmoine',
