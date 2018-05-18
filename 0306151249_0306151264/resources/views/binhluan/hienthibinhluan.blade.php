@@ -24,10 +24,10 @@
 
                         </div>
                         {{--tren  --}}
-                    <div id="dv-div-big-tare-cmt-157" class="div-tatca-cmt" >
+                    <div id="dv-div-big-{{ $lstbaiviet[$i]->ma_bai_viet }}" class="div-tatca-cmt" >
                         <div style="margin-left: 12px;margin-right: 12px; height: 12px;"> </div>
                         <div style="margin-left: 12px;margin-right: 12px; height: 30px;"> </div>
-                        <div id="{{ $lstbaiviet[$i]->ma_bai_viet }}" style="display: none;border-top: solid 1px #c5cfd6;margin-left: 12px;margin-right: 12px; height: auto;    padding-bottom: 10px">
+                        <div id="div-content-all-cmt-{{ $lstbaiviet[$i]->ma_bai_viet }}" style="display: none;border-top: solid 1px #c5cfd6;margin-left: 12px;margin-right: 12px; height: auto;    padding-bottom: 10px"> 
                             {{-- 1 cmt --}}
                                {{--  @include('binhluan.motbinhluan') --}}
                                
@@ -42,7 +42,7 @@
                                     <img class="imgaccountcmt"  src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View" >
                                 </div>
                                 <div class="divtextcmt" >
-                                    <input class="iptextcmt" id="binhluan-hi157" onKeyPress="submitme(event)" style="                               
+                                    <input class="iptextcmt" id="binhluan-hi157" onKeyPress='submitme(event,"{{ $lstbaiviet[$i]->ma_bai_viet }}")' style="                               
                                                                     margin-top: 5px;
                                                                     width: 498px;
                                                                     background-color: 

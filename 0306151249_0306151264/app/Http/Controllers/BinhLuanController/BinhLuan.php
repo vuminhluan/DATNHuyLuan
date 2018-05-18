@@ -19,12 +19,25 @@ class BinhLuan extends Controller
 		 $noidung = $rq->noidung;
 		return View('binhluan.motbinhluanmoi',["noidungbinhluanmoi"=>$noidung]);
 	}
+
+
+
+	// public function GetBinhLuanMoi(Request $rq)
+	// {
+	// 	$binhluanmoi = DB::table('binh_luan_bai_viet')->where('ma_binh_luan',$rq->ma_binh_luan)->get();
+		 
+	// 	return View('binhluan.motbinhluanmoi',["binhluanmoi"=>$binhluanmoi,"mabaivietmoil"=>$binhluanmoi->ma_bai_viet]);
+	// }
+
+
+
+
 	public function GetBinhLuan(Request $rq)
 	{
-		 $lstbinhluan = DB::table('binh_luan_bai_viet')->where('ma_bai_viet',$rq->ma_bai_viet)->take(3)->get();
-		return View('binhluan.motbinhluan',["lstbinhluan"=>$lstbinhluan]);
+		 $lstbinhluan = DB::table('binh_luan_bai_viet')->where('ma_bai_viet',$rq->ma_bai_viet)->take(5)->get();
+		 
+		return View('binhluan.motbinhluan',["lstbinhluan"=>$lstbinhluan,"mabaivietl"=>$rq->ma_bai_viet]);
 	}
-
 
 
     public function PostBinhLuan(Request $rq)
@@ -39,7 +52,6 @@ class BinhLuan extends Controller
     	$binhluan->nguoi_sua	= $rq->nguoi_sua;
     	$binhluan->trang_thai = $rq->trang_thai;
     	$binhluan->save();
-
     }
     public function PostBinhLuanC2(Request $rq)
     {
