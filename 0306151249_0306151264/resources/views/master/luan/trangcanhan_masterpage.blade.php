@@ -9,10 +9,9 @@
 @endsection
 
 @section('main')
-
 	<div class="profile-image">
 		<div class="profile-banner">
-			<img src="{{asset('pictures/anh_bia/'.Auth::user()->nguoi_dung->anh_bia.'')}}" alt="">
+			<img src="{{asset('pictures/anh_bia/'.Auth::user()->nguoi_dung->anh_bia)}}" alt="">
 			<div class="edit-profile-banner-button edit-profile-image">
 				<div>
 					<p class="fa fa-camera-retro -icon"></p>
@@ -150,6 +149,7 @@
 	<div class="clear"></div>
 
 	@include('includes/trangcanhan/trangcanhan_modal')
+	@include('includes/trangcanhan/upload_avatar_banner_modal')
 
 @endsection
 

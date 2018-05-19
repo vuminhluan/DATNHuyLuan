@@ -1,4 +1,10 @@
 
+@font-face {
+  font-family: "Baomoi";
+  font-weight: 700;
+  src: url("../../../fonts/baomoi-regular-2.0.2.woff2") format("woff2");
+}
+
 .main {
   width: 1176px; margin: 0 auto;
 

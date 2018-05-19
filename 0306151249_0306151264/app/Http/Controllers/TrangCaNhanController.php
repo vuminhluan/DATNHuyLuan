@@ -15,7 +15,7 @@ class TrangCaNhanController extends Controller
 	public function getTrangCaNhan($username)
 	{
 		$tatca_gioitinh = DB::table('gioi_tinh')->get();
-		return view('trang_ca_nhan.index')->with(['username'=>$username, 'tatca_gioitinh'=>$tatca_gioitinh]);
+		return view('trang_ca_nhan.index')->with(['username'=>Auth::user()->ten_tai_khoan, 'tatca_gioitinh'=>$tatca_gioitinh]);
 	}
 
 	public function getNhom($username)
@@ -51,12 +51,14 @@ class TrangCaNhanController extends Controller
 	public function capNhatAnhNguoiDung($kind_of_image, Request $req)
 	{
 		// return $kind_of_image;
-		$field; $file;
+		$the_message; $field; $file;
 		if($kind_of_image == "anh_bia") {
 			$field = "upload_banner";
+			$the_message = "ảnh bìa";
 			// $file = $req->upload_banner;
 		} else {
 			$field = "upload_avatar";
+			$the_message = "ảnh đại diện";
 		}
 
 
@@ -89,7 +91,7 @@ class TrangCaNhanController extends Controller
 			$nguoi_dung->save();
 		}
 
-		return redirect()->back()->with('my_message', 'Cập nhật ảnh '.$kind_of_image.' thành công');
+		return redirect()->back()->with('my_message', 'Cập nhật '.$the_message.' thành công');
 
 
 

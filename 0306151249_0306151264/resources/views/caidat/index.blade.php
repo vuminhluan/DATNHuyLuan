@@ -9,15 +9,15 @@
 			<table>
 				<tr>
 					<td><label for="setting-account-form-username">Tên tài khoản</label></td>
-					<td><div><input id="setting-account-form-username" type="text" value="nguoidunga"></div></td>
+					<td><div><input id="setting-account-form-username" type="text" value="{{Auth::user()->ten_tai_khoan}}"></div></td>
 				</tr>
 				<tr>
 					<td><label for="setting-account-form-email">Email</label></td>
-					<td><div><input type="text" id="setting-account-form-email" value="nguoidunga@gmail.com"></div></td>
+					<td><div><input type="text" id="setting-account-form-email" value="{{Auth::user()->email}}"></div></td>
 				</tr>
 				<tr>
 					<td><label for="setting-account-form-phone">Số điện thoại</label></td>
-					<td><div><input type="text" id="setting-account-form-phone" value="0123456789"></div></td>
+					<td><div><input type="text" id="setting-account-form-phone" value="{{Auth::user()->so_dien_thoai}}"></div></td>
 				</tr>
 				<tr>
 					<td></td>

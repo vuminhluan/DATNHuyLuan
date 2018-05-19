@@ -11,19 +11,29 @@
 
 
 {{-- @include('includes/trangcanhan/trangcanhan_modal') --}}
-<div style="display:none"  id="my_message">{{session('my_message')}}</div>
+{{-- <div style="display:none"  id="my_message">{{session('my_message')}}</div> --}}
 @endsection
 
 @section('trang_canhan_javascript')
 	<script>
 
 		$(document).ready(function() {
-			// var message = document.getElementById('my_message').innerHTML;
-			message = $('#my_message');
 
-			if($('#my_message').html() != "") {
-				$('#my_message').css('display', 'block');
+			if($('#upload-pho-to-message').html() != "") {
+				// $('.photo-modal').css('display', 'block');
+				$('.photo-modal').addClass('photo-modal-show');
 			}
+
+			$('#close-icon').click(function() {
+				// $('#upload-pho-to-message').html('');
+				$('.photo-modal').removeClass('photo-modal-show');
+				// alert('haha');
+				// alert('haiz');
+			});
+
+
+
+
 		});
 
 	</script>
