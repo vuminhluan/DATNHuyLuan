@@ -86,7 +86,8 @@ a.luan_link, a {
 }
 .setting-form > table tr > td:nth-of-type(2) > div > input {
   padding: 0 5px; height: 30px; width: 200px;
-  border: 1px solid #e6ecf0;border-radius: 3px
+  border: 1px solid #e6ecf0;border-radius: 3px;
+  display:block;
 }
 .setting-form > table tr > td:nth-of-type(2) > div > input:focus {
   border: 1px solid #5eb4e9;

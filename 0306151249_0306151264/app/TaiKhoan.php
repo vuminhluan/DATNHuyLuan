@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class TaiKhoan extends Model implements \Illuminate\Contracts\Auth\Authenticatable
 {
@@ -52,6 +54,11 @@ class TaiKhoan extends Model implements \Illuminate\Contracts\Auth\Authenticatab
     return $this->hasNguoiDung->anh_dai_dien;
     // Phương thức tên AnhDaiDien thì lúc gọi sẽ là anh_dai_dien
     // Lấy ảnh đại diện. Cách gọi: Auth::user()->anh_dai_dien
+  }
+
+  public function getNguoiDungAttribute()
+  {
+    return DB::table('nguoi_dung')->where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->first();
   }
 
 

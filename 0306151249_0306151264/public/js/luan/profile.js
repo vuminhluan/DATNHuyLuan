@@ -20,4 +20,15 @@ $(document).ready(function() {
 		$(this).next().fadeToggle('fast');
 	});
 
+
+	$('#upload-avatar').change(function(event) {
+		event.preventDefault();
+		$(this).parent('form').submit();
+	});
+
+	$('#upload-banner').change(function(event) {
+		event.preventDefault();
+		$(this).parent('form').submit();
+	});
+
 });

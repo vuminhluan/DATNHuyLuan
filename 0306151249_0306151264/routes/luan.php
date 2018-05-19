@@ -28,27 +28,35 @@ Route::get('/lienhe', function () {
 	return view('khac.lienhe');
 })->name('lienhe');
 
-// Route::get('/taikhoan/{username}/{username_md5}/kichhoat', 'GuiMailController@kichHoatTaiKhoan')->name('taikhoan.kichhoat');
+Route::post('/taikhoan/{username}/thongtin/capnhat', 'TrangCaNhanController@capNhatNguoiDung')->name('post_taikhoan.thongtin_canhan.capnhat');
+Route::post('/taikhoan/{kind_of_image}/capnhat', 'TrangCaNhanController@capNhatAnhNguoiDung')->name('post_taikhoan.anh.capnhat');
+
+
 
 Route::get('/kichhoat/taikhoan/{username}/{username_md5}', 'KichHoatTaiKhoanController@kichHoatTaiKhoan')->name('kichhoat');
 
 Route::get('/kichhoat/taikhoan', 'KichHoatTaiKhoanController@getKichHoatTaiKhoan')->name('kichhoat.index');
 Route::get('/kichhoat/taikhoan/gui_mail', 'KichHoatTaiKhoanController@guiLaiMailKichHoat')->name('kichhoat.gui_mail');
 
-Route::prefix('caidat')->middleware('MyUserAuth')->group(function () {
+Route::prefix('caidat')->group(function () {
 
-	Route::get('/', function() {
-		return redirect()->route('caidat.index');
+	Route::group(['middleware' => ['MyUserAuth']], function () {
+		
+		Route::get('/', function() {
+			return redirect()->route('caidat.index');
+		});
+
+		Route::get('/taikhoan', 'CaiDatController@getIndex')->name('caidat.index');
+
+
+		Route::get('/taikhoan/vohieuhoa', 'CaiDatController@getTrangVoHieuHoaTaiKhoan')->name('caidat.vohieuhoa');
+
+		Route::get('/taikhoan/bichan', 'CaiDatController@getTrangTaiKhoanBiChan')->name('caidat.chan_taikhoan');
+
+		Route::get('/matkhau/thaydoi', 'CaiDatController@getTrangThayDoiMatKhau')->name('caidat.thaydoi_matkhau');
 	});
 
-	Route::get('/taikhoan', 'CaiDatController@getIndex')->name('caidat.index');
 
-
-	Route::get('/taikhoan/vohieuhoa', 'CaiDatController@getTrangVoHieuHoaTaiKhoan')->name('caidat.vohieuhoa');
-
-	Route::get('/taikhoan/bichan', 'CaiDatController@getTrangTaiKhoanBiChan')->name('caidat.chan_taikhoan');
-
-	Route::get('/matkhau/thaydoi', 'CaiDatController@getTrangThayDoiMatKhau')->name('caidat.thaydoi_matkhau');
 	Route::get('/matkhau/quen', 'CaiDatController@getQuenMatKhau')->name('caidat.quen_matkhau');
 	Route::post('/matkhau/quen', 'CaiDatController@postQuenMatKhau')->name('caidat.quen_matkhau_post');
 

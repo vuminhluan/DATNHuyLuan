@@ -17,16 +17,17 @@
 
 			{{-- Profile card --}}
       <div class="profile-card">
-        <a href="profile.html">
-          <div class="profile-card-banner" style="background-image: url('{{asset('pictures/luan/test2.png')}}');">
+        <a href="{{route('trangcanhan.index', Auth::user()->ten_tai_khoan)}}">
+          <div class="profile-card-banner" style="background-image: url('{{asset('pictures/anh_bia/'.Auth::user()->nguoi_dung->anh_bia)}}');">
             <div class="profile-card-avatar">
-              <img src="{{asset('pictures/luan/test1.png')}}" alt="">
+              <img src="{{asset('pictures/anh_dai_dien/'.Auth::user()->nguoi_dung->anh_dai_dien)}}" alt="">
+
             </div>
           </div>
         </a>
         <div class="profile-name-and-id">
-          <h3><a href="profile.html">Người Dùng A Người Dùng A Người Dùng A Người Dùng A</a></h3>
-          <p><a href="profile.html">@nguoidunga @nguoidunga @nguoidunga @nguoidunga</a></p>
+          <h3><a href="{{route('trangcanhan.index', Auth::user()->ten_tai_khoan)}}">{{Auth::user()->nguoi_dung->ho_ten_lot.' '. Auth::user()->nguoi_dung->ten}}</a></h3>
+          <p><a href="{{route('trangcanhan.index', Auth::user()->ten_tai_khoan)}}">{{'@'.Auth::user()->ten_tai_khoan}}</a></p>
         </div>
       </div>
 
@@ -63,5 +64,8 @@
 
 @section('javascript')
 	<script src="{{asset('js/luan/utilities/open_close_modal.js')}}"></script>
+	<script src="{{asset('js/jquery/jquery-validate.min.js')}}"></script>
+	<script src="{{asset('js/luan/configpage.js')}}"></script>
+
 	@yield('settings_javascript')
 @endsection

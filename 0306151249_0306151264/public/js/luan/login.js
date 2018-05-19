@@ -4,9 +4,8 @@ $(document).ready(function() {
   $.validator.addMethod( "regex", function(value, element, regexp) {
     var re = new RegExp(regexp);
     return re.test(value);
-  },
-  "Dữ liệu không hợp lệ."
-);
+    }, "Dữ liệu không hợp lệ."
+  );
 
 //
 function showAlert(message) {
