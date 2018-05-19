@@ -348,7 +348,7 @@ $("#frmdangbaiviet").submit(function(event) {
                   ///insert bai viet vao noi dung ben duoi su dung ajax
                     alert(mabaiviet);
                   $.ajax({
-                      url: '/DATNHuyLuan/0306151249_0306151264/public/ajax/getbaivietne',
+                      url: '/DATNHuyLuan/0306151249_0306151264/public/ajax/getbaivietmoine',
                       type: 'GET',
                       data:{
                         mabaiviet: mabaiviet
@@ -357,17 +357,16 @@ $("#frmdangbaiviet").submit(function(event) {
                     //gan lai height cho form dang bai viet
                     $('#divbigformdangbaiviet').height(175);
                     $('#divtrongformdangbaiviet').height(125);
-
                     $('#iptextdangbaiviet').height(30);
                     //alert(mabaiviet+"saukhidangbai");
                     document.getElementById("frmdangbaiviet").reset();
                       //   alert("lay trang kia thanh cong");
                          var econ = document.createElement("div");
-                         econ.setAttribute("id", "sss");
+                         econ.setAttribute("id", "ssa");
                         // document.getElementById('divcontent').appendChild(element);
                         var Echa = document.getElementById('divnoidungcon');
                         Echa.insertBefore(econ, Echa.firstChild);
-                        $('#sss').html(data);
+                        $('#ssa').html(data);
 
                   })
 

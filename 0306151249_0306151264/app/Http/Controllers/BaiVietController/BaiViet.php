@@ -38,10 +38,14 @@ class BaiViet extends Controller
         return $ma->ma_bai_viet;
     
     }
-    public function GetBaiViet(Request $rq)
+    public function GetBaiVietMoi(Request $rq)
     {
-        $dulieu=$rq->mabaiviet;
-        return view("baiviet.hienthibaivietmoi",["t"=>$dulieu]);
+            $mabaiviet=$rq->mabaiviet;
+
+
+        $listbaiviet = DB::table('bai_viet')->where("ma_bai_viet",$mabaiviet)->get();
+        
+        return view("baiviet.hienthibaivietmoi",["mabaivietmoi"=>$mabaiviet,"lstbaiviett"=>$listbaiviet]);
     }
 
 

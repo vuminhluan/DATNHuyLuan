@@ -13,14 +13,14 @@
                       <img class="imgavtnguoidang" src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View">
                     </div>
                     <div class="divtennguoidang" >
-                      <span> <h3 class="spantennguoidang">  {{ $t }} </h3> </span><br>
+                      <span> <h3 class="spantennguoidang">  {{ $mabaivietmoi }} </h3> </span><br>
                       <span> <h5 class="spanthoigiandang"> 22/02/2018 18:07 </h5> <span>
                     </div>
                  </div>
                  <!--  -->
                  <div class="bodytus" >
                     <div class="texttus" >
-                      {{--   <span><h4>{{$lstbaiviet[$i]->noi_dung_bai_viet}}</h4></span> --}}
+                        <span><h4>{{$lstbaiviett[0]->noi_dung_bai_viet}}</h4></span>
                     </div>
                     <div class="divimagetus" >
                         <img class="imgtus" 
@@ -28,6 +28,6 @@
                     </div>
 
                  </div>
-                 @include('binhluan.hienthibinhluan')
+                 @include('binhluan.hienthibinhluanchobaivietmoi')
                  
     </div>

@@ -21,5 +21,5 @@ Route::get("/ajax/getbinhluanne","BinhLuanController\BinhLuan@GetBinhLuan")->nam
 
 
 Route::get("/ajax/getmabaivietne","BaiVietController\BaiViet@GetMaBaiViet")->name('getmabaiviet');
-Route::get("/ajax/getbaivietne","BaiVietController\BaiViet@GetBaiViet")->name('getbaiviet');
+Route::get("/ajax/getbaivietmoine","BaiVietController\BaiViet@GetBaiVietMoi")->name('getbaivietmoi');
 

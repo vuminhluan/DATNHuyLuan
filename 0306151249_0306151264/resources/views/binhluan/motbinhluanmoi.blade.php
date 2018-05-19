@@ -6,7 +6,7 @@
                                     <div class="cl-div-tare-read" >
 
                                         <div id="div-tare-cmt-157" style="width: 427px;float: left;height: 20px;padding-right: 5px;">
-                                                 <textarea disabled="true" id="tare-cmt-157" cols="53" name="foo"  class="tara-read-cmt" ><span>Lu Lu:</span>  {{$noidungbinhluanmoi}}</textarea>
+                                                 <textarea disabled="true" id="tare-cmt-157" cols="53" name="foo"  class="tara-read-cmt" >Lu Lu:  {{$noidungbinhluanmoi}}</textarea>
                                         </div>
                                         <div class="div-btn-show-allcmt" id="div-btn-showcmt-157"  onclick="showfullcmt()">      
                                                 <i style="color: #9695d8;" id="i-btn-show-allcmt" class="fa fa-arrow-circle-down stick-xemthem" aria-hidden="true"></i>

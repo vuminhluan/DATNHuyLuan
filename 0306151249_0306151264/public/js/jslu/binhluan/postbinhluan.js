@@ -1,3 +1,5 @@
+var host="/DATNHuyLuan/0306151249_0306151264/public/"; // tam thoi de day
+
 function clickbinhluan(mabaiviet)
 {
 	$('#div-content-all-cmt-'+mabaiviet).css("display","block");
@@ -31,7 +33,8 @@ function submitme(event,mabaivietl)
     	//alert(ndbinhluan);
 	//	alert( $('input[name=_token]').val());
 	$.ajax({
-		url:'/DATNHuyLuan/0306151249_0306151264/public/ajax/getmabinhluanne',
+    //getmabinhluan {{ asset('css/lu/baiviet/baiviet.css') }}  ///DATNHuyLuan/0306151249_0306151264/public/ajax/getmabinhluanne
+		url: {{getbinhluan}},
 		type:'GET',
 		data:{
 
@@ -46,7 +49,7 @@ function submitme(event,mabaivietl)
             mabl ="0"+mabl;
           }
           mabl ="BL"+ mabl;
-       //   alert(mabl);
+          alert(mabl);
 		 $.ajax(
           {
           url: '/DATNHuyLuan/0306151249_0306151264/public/ajax/postbinhluanne',
