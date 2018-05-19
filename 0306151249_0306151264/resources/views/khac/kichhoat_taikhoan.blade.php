@@ -20,17 +20,17 @@
   <div class="reset-password-container">
 		<div class="reset-password-main">
 			<div class="reset-password-form">
-				<form action="#/" id="reset-password" name="reset-password" method="POST">
+				<form action="{{route('kichhoat.gui_mail')}}" id="reset-password" name="reset-password" method="GET">
 
 					<div>
 						<h2>Kích hoạt tài khoản</h2>
 					</div>
 
 					<div>
-						<p class="description">Chúng tôi đã gửi tin nhắn kích hoạt tài khoản tới email vuminhluan1407@gmail.com của bạn. Vui lòng kích hoạt tài khoản để có thể đăng nhập.</p>
+						<p class="description">Chúng tôi đã gửi mail kích hoạt tài khoản tới email {{Auth::user()->email}} của bạn khi bạn đăng kí. Vui lòng kích hoạt tài khoản để có thể đăng nhập.</p>
 					</div>
 					<div>
-						<button id="reset-passowrd-button">Gửi lại tin nhắn kích hoạt</button>
+						<button id="reset-passowrd-button">Gửi lại mail kích hoạt</button>
 					</div>
 					<div>
 						<a href="{{route('dangxuat')}}">Bỏ qua</a>

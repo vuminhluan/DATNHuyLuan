@@ -28,6 +28,13 @@ Route::get('/lienhe', function () {
 	return view('khac.lienhe');
 })->name('lienhe');
 
+// Route::get('/taikhoan/{username}/{username_md5}/kichhoat', 'GuiMailController@kichHoatTaiKhoan')->name('taikhoan.kichhoat');
+
+Route::get('/kichhoat/taikhoan/{username}/{username_md5}', 'KichHoatTaiKhoanController@kichHoatTaiKhoan')->name('kichhoat');
+
+Route::get('/kichhoat/taikhoan', 'KichHoatTaiKhoanController@getKichHoatTaiKhoan')->name('kichhoat.index');
+Route::get('/kichhoat/taikhoan/gui_mail', 'KichHoatTaiKhoanController@guiLaiMailKichHoat')->name('kichhoat.gui_mail');
+
 Route::prefix('caidat')->middleware('MyUserAuth')->group(function () {
 
 	Route::get('/', function() {

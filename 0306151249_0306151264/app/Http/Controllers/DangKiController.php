@@ -7,6 +7,8 @@ use Validator;
 use App\TaiKhoan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MailKichHoat;
 use Carbon\Carbon;
 
 class DangKiController extends Controller
@@ -45,8 +47,12 @@ class DangKiController extends Controller
     // Lưu thông tin người dùng (Họ tên, ảnh đại diện mặc định, ảnh bìa mặc định,...)
     $this->themThongTinNguoiDung($ma_tai_khoan, $req->lastname, $req->firstname, $now);
 
-    // // Gửi tin nhắn kích hoạt tới email
-    // Gửi_tin_nhắn_kich_hoat ( )
+    Auth::attempt(['ten_tai_khoan' => $req->username, 'password' => $req->password]);
+
+    //Gửi tin nhắn kích hoạt tới email
+    Mail::send(new MailKichHoat());
+
+
   }
 
 
@@ -84,7 +90,6 @@ class DangKiController extends Controller
       'nguoi_sua'     => $ma_tai_khoan
     ];
     DB::table('nguoi_dung')->insert($data);
-
     // return Response()->json($data);
   }
 
@@ -98,7 +103,7 @@ class DangKiController extends Controller
 
     $pattern = '/\d\d+/'; // Lấy ra dãy các chữ số liên tiếp. Ví dụ: TK00123896 => lấy ra 00123896
     preg_match($pattern, $lastID, $matches);
-    
+
     $newIDNumber =  ltrim($matches[0], '0') + 1;
 
     $newID = "TK";
@@ -111,13 +116,13 @@ class DangKiController extends Controller
 
   // Sau khi đăng kí, chuyển tới trang xác nhận tài khoản
   // Để người dùng nếu ko nhận được tin nhắn kích hoạt trong email thì ấn nút để gửi lại
-  public function getKichHoatTaiKhoan()
-  {
-    if(Auth::check() && Auth::user()->trang_thai == 1)
-      return view('khac.kichhoat_taikhoan');
-    // return abort(404);
-    return redirect()->back();
-  }
+  // public function getKichHoatTaiKhoan()
+  // {
+  //   if(Auth::check() && Auth::user()->trang_thai == 1)
+  //     return view('khac.kichhoat_taikhoan');
+  //   // return abort(404);
+  //   return redirect()->back();
+  // }
 
 
 
