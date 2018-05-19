@@ -17,7 +17,7 @@
 
 			{{-- Profile card --}}
       <div class="profile-card">
-        <a href="profile.html">
+        <a href="{{route('trangcanhan.index', Auth::user()->ten_tai_khoan)}}">
           <div class="profile-card-banner" style="background-image: url('{{asset('pictures/anh_bia/'.Auth::user()->nguoi_dung->anh_bia)}}');">
             <div class="profile-card-avatar">
               <img src="{{asset('pictures/anh_dai_dien/'.Auth::user()->nguoi_dung->anh_dai_dien)}}" alt="">
@@ -64,5 +64,8 @@
 
 @section('javascript')
 	<script src="{{asset('js/luan/utilities/open_close_modal.js')}}"></script>
+	<script src="{{asset('js/jquery/jquery-validate.min.js')}}"></script>
+	<script src="{{asset('js/luan/configpage.js')}}"></script>
+
 	@yield('settings_javascript')
 @endsection
