@@ -1,0 +1,1 @@
+var link_host = "/DATNHuyLuan/0306151249_0306151264/public";

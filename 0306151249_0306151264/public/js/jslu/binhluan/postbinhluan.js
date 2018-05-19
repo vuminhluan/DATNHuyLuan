@@ -6,7 +6,7 @@ function clickbinhluan(mabaiviet)
 	$('#div-input-binhluan-'+mabaiviet).css("display","block");
      	  		$.ajax(
      	  		{
-     	  			url:'/DATNHuyLuan/0306151249_0306151264/public/ajax/getbinhluanne',
+     	  			url: link_host+'/ajax/getbinhluanne',
      	  			type:'GET',
      	  			data:{
      	  				ma_bai_viet:mabaiviet
@@ -34,7 +34,7 @@ function submitme(event,mabaivietl)
 	//	alert( $('input[name=_token]').val());
 	$.ajax({
     //getmabinhluan {{ asset('css/lu/baiviet/baiviet.css') }}  ///DATNHuyLuan/0306151249_0306151264/public/ajax/getmabinhluanne
-		url: {{getbinhluan}},
+		url: link_host+'/ajax/getmabinhluanne',
 		type:'GET',
 		data:{
 
@@ -49,10 +49,10 @@ function submitme(event,mabaivietl)
             mabl ="0"+mabl;
           }
           mabl ="BL"+ mabl;
-          alert(mabl);
+       //   alert(mabl);
 		 $.ajax(
           {
-          url: '/DATNHuyLuan/0306151249_0306151264/public/ajax/postbinhluanne',
+          url: link_host+'/ajax/postbinhluanne',
           type: 'POST',
           data:{
           	_token: $('input[name=_token]').val(),
@@ -69,7 +69,7 @@ function submitme(event,mabaivietl)
      	  	$('#input-binhluan-'+mabaivietl).val(''); // gán lại rỗng cho cmt
      	  		$.ajax(
      	  		{
-     	  			url:'/DATNHuyLuan/0306151249_0306151264/public/ajax/getbinhluanmoine',
+     	  			url: link_host+'/ajax/getbinhluanmoine',
      	  			type:'GET',
      	  			data:{
      	  				ma_binh_luan:mabl
