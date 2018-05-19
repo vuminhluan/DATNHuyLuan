@@ -41,6 +41,7 @@ Route::get('/kichhoat/taikhoan/gui_mail', 'KichHoatTaiKhoanController@guiLaiMail
 Route::prefix('caidat')->group(function () {
 
 	Route::group(['middleware' => ['MyUserAuth']], function () {
+		
 		Route::get('/', function() {
 			return redirect()->route('caidat.index');
 		});

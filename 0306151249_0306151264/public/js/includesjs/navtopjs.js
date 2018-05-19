@@ -23,3 +23,10 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+
+$(document).ready(function() {
+	$('.taikhoan-dropdown-content').click(function() {
+		$('.taikhoan-dropdown-menu').fadeToggle('fast');
+	});
+});
