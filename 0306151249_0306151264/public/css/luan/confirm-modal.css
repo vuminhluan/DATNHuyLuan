@@ -23,7 +23,7 @@
   background-color: #fff;
   border-radius: 5px;
 }
-.confirm-modal .modal-content > div {
+.confirm-modal .modal-content form > div {
   /*padding-left: 10px;  padding-right: 10px;*/
   padding: 15px 10px;
 }
@@ -61,6 +61,12 @@
 }
 .confirm-modal .modal-footer > a:nth-of-type(2):hover {
   /*opacity: 0.8;*/
+}
+
+.update-profile-button {
+  background-color: #6667a6;color: #fff;border: 1px solid #6667a6;
+  display: inline-block; padding: 10px; border-radius: 3px; margin-left: 8px; font-weight: bold;
+
 }
 
 .confirm-modal .modal-footer .js-conditions-failed {

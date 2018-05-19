@@ -77,8 +77,8 @@ class DangKiController extends Controller
 
   public function themThongTinNguoiDung($ma_tai_khoan, $ho_ten_lot, $ten, $thoigian_hientai)
   {
-    $anh_daidien = "/mac_dinh/anh_dai_dien/default-avatar.jpg";
-    $anh_bia = "/mac_dinh/anh_bia/default-banner.jpg";
+    $anh_daidien = "default-avatar.jpg";
+    $anh_bia = "default-banner.jpg";
 
     $data = [
       'ma_tai_khoan'  => $ma_tai_khoan,
