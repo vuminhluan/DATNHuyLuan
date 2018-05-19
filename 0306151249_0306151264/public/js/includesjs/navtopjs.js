@@ -25,13 +25,8 @@ window.onclick = function(event) {
 }
 
 
-<<<<<<< HEAD
 
 // 
-
-
-
-
 
 
 
@@ -65,7 +60,6 @@ function openCity(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
 }
-=======
 // -----------------
 $(document).ready(function() {
 	$('.taikhoan-dropdown-content').click(function() {
@@ -73,4 +67,3 @@ $(document).ready(function() {
 	});
 });
 // ------------------
->>>>>>> f43d230f1438553ad48074ee4babec836ce2e025
