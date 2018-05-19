@@ -92,9 +92,9 @@ nav.navtop-menu {
   line-height: 48px;
 }
 
-ul.navleft {float: left;}
+ul.navtop-left {float: left;}
 
-ul.navright {float: right;display: inline-block;}
+ul.navtop-right {float: right;display: inline-block;}
 
 .navtop-menu > ul > li {
   float: left;display: block;
@@ -175,6 +175,7 @@ ul.navright {float: right;display: inline-block;}
 
 
 
+/* Dropdown menu */
 .taikhoan-dropdown-content {
   position: relative;
 }
@@ -191,7 +192,7 @@ ul.navright {float: right;display: inline-block;}
 
 
 .taikhoan-dropdown-menu {
-  position: absolute;top:110%;right: -0%;
+  position: absolute;top:110%;right: 0%;
   width: 200px;display: none;
   border-radius: 3px;box-shadow: 1px 1px 5px #999;
   background-color: #fff;
@@ -224,18 +225,21 @@ ul.navright {float: right;display: inline-block;}
   border-bottom: 0;margin-bottom:0;
 }
 
-.taikhoan-dropdown-menu > li:first-child h3 {font-family: 'Baomoi', Arial, Helvetica, sans-serif;font-size: 20px;}
+.taikhoan-dropdown-menu > li:first-child h3 {
+  font-family: 'Baomoi', Arial, Helvetica, sans-serif; font-size: 20px;
+  margin-bottom: 8px; width: 100%;
+  white-space: nowrap;text-overflow: ellipsis; overflow: hidden;
+}
+.taikhoan-dropdown-menu > li:first-child  p {
+  color: #666 !important;
+}
 
 .taikhoan-dropdown-menu > li > a {
   display: block; padding: 8px 10px; background-color: #fff;
-  text-decoration: none;
+  text-decoration: none;color: #000;
 }
 
 .taikhoan-dropdown-menu > li > a:hover {
   background-color: #f1f1f1;
 }
-
-
-/*.taikhoan-dropdown-content > a:hover + .taikhoan-dropdown-menu {
-  display: block;
-}*/
+/* End Dropdown menu */

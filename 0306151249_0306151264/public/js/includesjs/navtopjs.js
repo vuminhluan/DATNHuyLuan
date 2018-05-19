@@ -25,8 +25,10 @@ window.onclick = function(event) {
 }
 
 
+// -----------------
 $(document).ready(function() {
 	$('.taikhoan-dropdown-content').click(function() {
 		$('.taikhoan-dropdown-menu').fadeToggle('fast');
 	});
 });
+// ------------------
