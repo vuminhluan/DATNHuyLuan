@@ -22,7 +22,7 @@ class Nhom extends Controller
     }
     public function posttaonhom(Request $rql)
     {
-    	$nhom = new 
-    	ma_nhom	ma_gia_nhap	ten_nhom	anh	ma_tai_khoan	ma_loai_nhom	gioi_thieu_nhom	thoi_gian_tao	thoi_gian_tham_gia	thoi_gian_het_han_tham_gia	thoi_gian_sua	nguoi_sua	trang_thai
+    //	$nhom = new 
+    	// ma_nhom	ma_gia_nhap	ten_nhom	anh	ma_tai_khoan	ma_loai_nhom	gioi_thieu_nhom	thoi_gian_tao	thoi_gian_tham_gia	thoi_gian_het_han_tham_gia	thoi_gian_sua	nguoi_sua	trang_thai
     }
 }
