@@ -13,6 +13,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    font-family: Arial, Helvetica, sans-serif;
+
 }
 #btn-show-dynamic-menu{
     background-color: transparent;
@@ -28,13 +30,14 @@ cursor: pointer;
     
 }
 /* Modal Content */
-#div-head-popup-show-all-menu{
+/*#div-head-popup-show-all-menu{
         background-color: #fefefe;
     margin: auto;
-    padding: 20px;
+    height: 20px;
     border-bottom:  1px solid #9695d8;
     width: 100%;
-}
+    display: none;
+}*/
 /* The Close Button */
 .close {
     color: #aaaaaa;
@@ -50,12 +53,123 @@ cursor: pointer;
     cursor: pointer;
 }
 
+.div-item-nhom-popup{
+     border: solid 1px #9695d8;border-radius: 50%; height: 77px;width: 77px;float: left;margin: 4px;
+     cursor: pointer;
+}
+
+
+
+/**/
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: transparent;
+    /*border-bottom: 1px solid #ccc;*/
+    background-color: white;
+
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    color: #9595d8;
+    border-bottom: 1px solid #9695d8;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #cfb9e8;
+    /*border:solid 1px #9595d8;*/
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+     border:solid 1px #9595d8;
+     border-bottom: none;
+    /*background-color: #9595d8;*/
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+     border: transparent;
+    border-top:  1px solid #9695d8;
+   
+    border-top: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**/
 
 
 
