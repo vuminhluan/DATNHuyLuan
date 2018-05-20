@@ -19,7 +19,7 @@ class CaiDatController extends Controller
   {
 
     if( !Auth::attempt(['ten_tai_khoan' => Auth::user()->ten_tai_khoan, 'password' => $req->confirm_password]) ) {
-      return ['form_message' => ["confirm_password" => ["Mật khẩu xác nhận không đúng"] ]];
+      return ['errors' => ["confirm_password" => ["Mật khẩu xác nhận không đúng"] ]];
     }
 
     $rules = [];
@@ -38,14 +38,29 @@ class CaiDatController extends Controller
 
     $validator = Validator::make($req->all(), $rules, $messages);
     if($validator->fails()) {
-      return Response()->json(['form_message' => $validator->errors()]);
+      return Response()->json(['errors' => $validator->errors()]);
     }
 
+    // Thỏa tất cả điều kiến => cập nhật tài khoản
+    $this->capNhatTaiKhoan($req);
 
-    return ['form_message' => ["success" => ["Mật khẩu xác nhận không đúng"] ]];
+    return ["success" => "Cập nhật thành công. Chuẩn bị tải lại trang"];
+
+    
+
+  }
 
 
+  public function capNhatTaiKhoan($req)
+  {
+    $taikhoan = TaiKhoan::where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->first();
 
+    $taikhoan->ten_tai_khoan = $req->username;
+    $taikhoan->email = $req->email;
+    if($req->phone != "") {
+      $taikhoan->so_dien_thoai = $req->phone;
+    }
+    $taikhoan->save();
   }
 
   public function getTrangThayDoiMatKhau()

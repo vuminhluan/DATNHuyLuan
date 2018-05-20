@@ -2,7 +2,13 @@
 
 @section('noidung_trangcaidat')
 <div class="setting-title">
-	<h2>Tài khoản</h2>
+	<h2>Tài khoản <span class="ajax-loader"><img src="{{asset('pictures/luan/ajax-loader.gif')}}"></span></h2>
+</div>
+<div class="myalert">
+	<div class="--content" >
+		<p>Tài khoản đã có người sử dụng</p>
+	</div>
+	<span class="--close fa fa-times"></span>
 </div>
 <div>
 	<form action="javascript: void(0)" method="POST" class="setting-form" id="setting-account-form">
@@ -23,10 +29,11 @@
 		</div>
 
 		<div><button type="submit" id='validation-button' class="save-change-by-password-button" data-modalid="js-confirm-change-by-password-modal">Lưu thay đổi</button></div>
+
 		{{-- class="modal-open-button" --}}
 	</form>
 </div>
-<div>
+<div style="position: relative;">
 	<a href="{{route('caidat.vohieuhoa')}}" id="deactivate-account-link" class="another-link">Vô hiệu hóa tài khoản</a>
 </div>
 

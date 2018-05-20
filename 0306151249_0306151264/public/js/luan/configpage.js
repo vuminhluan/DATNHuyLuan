@@ -1,6 +1,12 @@
 $(document).ready(function() {
 
 
+  // Close alert
+  $('.myalert .--close').click(function(event) {
+    $(this).parents('.myalert').fadeOut('fast');
+  });
+
+
   // add rule regex
   $.validator.addMethod( "regex", function(value, element, regexp) {
     var re = new RegExp(regexp);
@@ -106,8 +112,7 @@ $(document).ready(function() {
 
   $('#validation-button').click(function(event) {
     var parentForm =  $(this).parents('form').attr('id');
-    alert(parentForm);
-    return ;
+    
     if($('#setting-account-form').valid()) {
       var modal = $(this).attr('data-modalid');
       openModal(modal);
@@ -129,20 +134,48 @@ $(document).ready(function() {
       url: '/caidat/taikhoan/capnhat',
       type: 'POST',
       data: inputObject,
+      beforeSend: function() {
+        $('.ajax-loader').css('display', 'inline-block');
+
+      },
+      success: function() {
+        // setting a timeout
+        $('.ajax-loader').css('display', 'none');
+      }
     })
     .done(function(response) {
       var m =  "";
+      // if(response.errors)
+      // console.log(response);
+      // return;
+
       // Nếu muốn debug thì xem lại file login.js
       // Hoặc console.log(response)
       // Hoặc console.log(response.form_message)
       // Để hiểu cách duyệt mảng javascript (jquery)
-      console.log(response.form_message);
-      $.each(response.form_message, function(fieldsName, messagesArray) {
-        messagesArray.forEach(function(message) {
-          m += "<p>"+message+"</p>";
+
+      // console.log(response.form_message);
+      if(response.errors) {
+
+        $.each(response.errors, function(fieldsName, messagesArray) {
+          messagesArray.forEach(function(message) {
+            m += "<p>"+message+"</p>";
+          });
         });
-      });
-      console.log(m);
+
+      } else {
+        m += "<p>"+response.success+"</p>";
+      }
+
+      $('.myalert .--content').html(m);
+      $('.myalert').fadeIn('fast');
+
+      if(response.success) {
+        setTimeout(function () {
+          window.location.reload();
+        }, 1000);
+      }
+
     });
     
     
