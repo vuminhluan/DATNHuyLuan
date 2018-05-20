@@ -20,6 +20,11 @@ class Nhom extends Controller
 
 
     }
+    public function getmanhom()
+    {
+    	$manhom = DB::table('nhom')->select('ma_nhom')->otherBy('ma_nhom','desc')->get()->first();
+    	return $manhom->ma_nhom;
+    }
     public function posttaonhom(Request $rql)
     {
     	$nhom = new nhom();

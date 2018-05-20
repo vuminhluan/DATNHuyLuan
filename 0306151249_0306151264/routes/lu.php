@@ -23,3 +23,5 @@ Route::get("/ajax/getbinhluanne","BinhLuanController\BinhLuan@GetBinhLuan")->nam
 Route::get("/ajax/getmabaivietne","BaiVietController\BaiViet@GetMaBaiViet")->name('getmabaiviet');
 Route::get("/ajax/getbaivietmoine","BaiVietController\BaiViet@GetBaiVietMoi")->name('getbaivietmoi');
 
+Route::post("/ajax/posttaonhomne","NhomController\Nhom@posttaonhom")->name('posttaonhom');
+Route::get("/ajax/getmanhomne","NhomController\Nhom@getmanhom")->name('getmanhom');
