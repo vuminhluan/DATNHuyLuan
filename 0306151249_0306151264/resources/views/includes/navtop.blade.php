@@ -82,7 +82,7 @@
   </div> --}}
             <div  style="width: 100%;height: 100%;margin-top: 17px; padding-left: 20px;padding-right: 20px;" >
                   <div class="tab">
-                  <button class="tablinks" onclick="openCity(event, 'divnhom')"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Nhóm</button>
+                  <button class="tablinks active" onclick="openCity(event, 'divnhom')"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Nhóm</button>
                   <button class="tablinks" onclick="openCity(event, 'divbanbe')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Bạn bè</button>
                   <button class="tablinks" onclick="openCity(event, 'divkhac')">Khác&nbsp;<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></button>
                   <div style="width: 100%;height: 44px;border-bottom: solid 1px #9695d8;"></div>

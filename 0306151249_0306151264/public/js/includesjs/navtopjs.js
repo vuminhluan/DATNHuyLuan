@@ -14,8 +14,57 @@ function taonhommoi(l)
 
 function submittaonhom()
 {
+    var manhom="hi";
     var tennhom = $('#input-tennhom').val();
     alert(tennhom);
+
+   alert(link_host);
+
+ $.ajax({
+    url: link_host+'/ajax/getmanhomne',
+    type:'GET',
+    data:{
+
+    }
+ }).done(function(data){
+alert(manhom);
+    manhom =  data.substring(2,10);
+    alert(manhom);
+         var manhomint = parseInt(manhom)+1;
+         alert(manhomint);
+         manhom = manhomint.toString();
+          while(manhom.length<8)
+          {
+            manhom ="0"+manhom;
+          }
+          manhom ="NH"+ manhom;
+
+
+alert(manhom);
+alert($('input[name=_token]').val());
+    $.ajax({
+        url:link_host+'/ajax/posttaonhomne',
+        type:'POST',
+        data:{
+            _token:$('input[name=_token]').val(),
+            ma_nhom:   manhom    ,           
+            ma_gia_nhap: "0000"   ,           
+            ten_nhom:   tennhom   ,               
+            anh:        "no"   ,              
+            ma_tai_khoan:  "IDtaikhoantaonhom"   ,           
+            ma_loai_nhom:  "LN01"   ,          
+            gioi_thieu_nhom:  "Describe something"  ,         
+            thoi_gian_tham_gia: "2018/05/22 22:11:11" ,        
+            thoi_gian_het_han_tham_gia: "2018/05/22 00:00:00"  ,
+            nguoi_sua:   "ND00000001"  ,              
+            trang_thai:   "1"               
+        }
+
+    }).done(function(data){
+            alert(tennhom);
+            alert(data);
+    })
+    })
 }
 
 
