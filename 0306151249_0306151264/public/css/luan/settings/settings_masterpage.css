@@ -1,3 +1,5 @@
+
+
 .main {
   width: 1176px; margin: 0 auto;
 }
@@ -28,6 +30,10 @@ a.luan_link, a {
   background-color:#fff;
 }
 
+.ajax-loader {
+  position: absolute;top: 0;bottom: 0;
+  transform: translateY(-5px);display: none;
+}
 /* profile-setting-sidebar */
 .profile-setting-sidebar > div {
   background-color: #fff;width: 100%; height: auto;margin-bottom: 8px;
@@ -62,7 +68,25 @@ a.luan_link, a {
 /*end setting-sidenav #f5f8fa*/
 
 
+/*ALERT BOX*/
 
+.myalert {
+  display: none;
+  background-color: rgba(102, 103, 166, 0.6);
+  position: relative;
+}
+.myalert .--close {
+  color: #555;font-size: 22px;cursor: pointer;
+  position: absolute;top: 5px;right: 10px;
+}
+.myalert .--content {
+  color: #000;
+
+}
+
+.myalert .--content p {font-family: 'Baomoi', 'Arial'; font-size: 17px;}
+
+/*END ALERT BOX*/
 
 
 /*setting content account, changing password*/
@@ -72,6 +96,7 @@ a.luan_link, a {
   padding: 20px 10px;
 }
 
+.setting-title > h2 {position: relative; }
 .setting-title > p {margin: 5px 0;color: #657786;}
 .setting-title > p a:hover {text-decoration: underline;}
 
@@ -100,6 +125,9 @@ a.luan_link, a {
 }
 
 .another-link:hover {text-decoration: underline;}
+
+
+
 /*end setting content account*/
 
 
