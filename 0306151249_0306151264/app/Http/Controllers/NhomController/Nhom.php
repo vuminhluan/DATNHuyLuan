@@ -5,7 +5,7 @@ namespace App\Http\Controllers\NhomController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-
+use App\nhom;
 
 
 class Nhom extends Controller
@@ -22,7 +22,20 @@ class Nhom extends Controller
     }
     public function posttaonhom(Request $rql)
     {
-    //	$nhom = new 
-    	// ma_nhom	ma_gia_nhap	ten_nhom	anh	ma_tai_khoan	ma_loai_nhom	gioi_thieu_nhom	thoi_gian_tao	thoi_gian_tham_gia	thoi_gian_het_han_tham_gia	thoi_gian_sua	nguoi_sua	trang_thai
+    	$nhom = new nhom();
+
+    	 $nhom->ma_nhom						= $rql->ma_nhom;
+    	 $nhom->ma_gia_nhap					= $rql->ma_gia_nhap;
+    	 $nhom->ten_nhom					= $rql->ten_nhom;
+    	 $nhom->anh							= $rql->anh;
+    	 $nhom->ma_tai_khoan				= $rql->ma_tai_khoan;
+    	 $nhom->ma_loai_nhom				= $rql->ma_loai_nhom;
+    	 $nhom->gioi_thieu_nhom				= $rql->gioi_thieu_nhom;
+    	 $nhom->thoi_gian_tham_gia			= $rql->thoi_gian_tham_gia;
+    	 $nhom->thoi_gian_het_han_tham_gia	= $rql->thoi_gian_het_han_tham_gia;
+    	 $nhom->nguoi_sua					= $rql->nguoi_sua;
+    	 $nhom->trang_thai  				= $rql->trang_thai;
+    	 $nhom->save();
+    	 return "ok";
     }
 }
