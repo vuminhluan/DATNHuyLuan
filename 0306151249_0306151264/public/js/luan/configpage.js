@@ -42,7 +42,7 @@ $(document).ready(function() {
 
 
 
-  // Trang index - Cài đặt tài khoản:
+  // ----------------- Trang index - Cài đặt tài khoản: -----------------------
   $('#setting-account-form').validate({
     rules: {
       username: {
@@ -65,8 +65,11 @@ $(document).ready(function() {
     },
     messages: {
       username: {
-        required : "Tên tài khoản không thể để trống.",
-        regex: "Tên tài khoản tối thiểu 6 kí tự, gồm chữ cái"
+        required : "Tên tài khoản không thể để trống",
+        regex: "Tên tài khoản tối thiểu 6 kí tự, gồm chữ cái in thường không dấu, chữ số là dấu gạch dưới \" _ \" "
+      },
+      email: {
+        required: "Email không thể để trống"
       }
     }
   });

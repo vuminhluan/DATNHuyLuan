@@ -18,25 +18,32 @@
 
 <div>
 	<form action="#" class="setting-form">
-		<table>
-			<tr>
-				<td><label for="setting-password-form-current-password">Mật khẩu hiện tại</label></td>
-				<td><div><input id="setting-password-form-current-password" type="text" value=""></div></td>
-			</tr>
-			<tr>
-				<td><label for="setting-password-form-new-password">Mật khẩu mới</label></td>
-				<td><div><input type="text" id="setting-password-form-new-password" value=""></div></td>
-			</tr>
-			<tr>
-				<td><label for="setting-password-form-reenter-new-password">Xác nhận mật khẩu</label></td>
-				<td><div><input type="text" id="setting-password-form-reenter-new-password" value=""></div></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><div><button id="agree-change-password-button" type="submit">Lưu thay đổi</button></div></td>
-			</tr>
-		</table>
+		
+		<div>
+			<label for="setting-password-form-current-password">Mật khẩu hiện tại</label>
+			<input id="setting-password-form-current-password" type="text" value="">
+		</div>
+
+		<div>	
+			<label for="setting-password-form-new-password">Mật khẩu mới</label>
+			<input type="text" id="setting-password-form-new-password" value="">
+		</div>
+
+		<div>	
+			<label for="setting-password-form-reenter-new-password">Xác nhận mật khẩu</label>
+			<input type="text" id="setting-password-form-reenter-new-password" value="">
+		</div>
+
+
+		
+		<div><button id="agree-change-password-button" type="submit">Lưu thay đổi</button></div>
+
+		
 	</form>
+</div>
+
+<div>
+	<a href="{{route('caidat.vohieuhoa')}}" id="" class="another-link">Quên mật khẩu</a>
 </div>
 
 @endsection
