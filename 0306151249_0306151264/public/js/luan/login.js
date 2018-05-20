@@ -115,9 +115,7 @@ function changeTab(n) {
 
   $('#sign-up-next-btn').click(function (e) {
 
-    $('#sign-up-form').validate({
-
-    });
+    $('#sign-up-form').validate({ });
 
     // e.preventDefault();
     if(currentTab == 0) {

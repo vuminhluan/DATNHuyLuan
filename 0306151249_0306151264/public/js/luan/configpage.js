@@ -41,6 +41,36 @@ $(document).ready(function() {
   // End XOR:  rule 1 XOR rule 2
 
 
+  // -------------------------------
+
+  // Confirm password form validation here:
+  $('#except-change-setting-button').click(function(event) {
+    // alert('s');
+    // event.preventDefault();
+    $('#confirm-password-form').validate({});
+    $('[name="confirm-password"]').rules('add', {
+      required: true,
+      regex: "^[a-z0-9_]{6,30}$",
+      messages: {
+        required: "Vì lý do bảo mật, bạn cần xác nhận mật khẩu của mình",
+        regex: "Mật khẩu dài từ 6 - 30 kí tự, gồm các chữ cái in thường không dấu, chữ số và dấu gạch dưới \" _ \"  "
+      }
+    });
+    // $('#confirm-password-form').valid();
+    if($('#confirm-password-form').valid()) {
+      // alert('Mat khau hop le');
+      closeModal($('#validation-button').attr('data-modalid'));
+      var settingFormId = $('.setting-form').attr('id');
+      var confirmPassword = $('[name="confirm-password"]').val();
+      ajaxSendFormInputConfigPage(settingFormId, confirmPassword);
+      // console.log($('#'+setting_form_id+' :input'));
+    }
+
+
+  });
+
+  // -------------------------------
+
 
   // ----------------- Trang index - Cài đặt tài khoản: -----------------------
   $('#setting-account-form').validate({
@@ -66,13 +96,63 @@ $(document).ready(function() {
     messages: {
       username: {
         required : "Tên tài khoản không thể để trống",
-        regex: "Tên tài khoản tối thiểu 6 kí tự, gồm chữ cái in thường không dấu, chữ số là dấu gạch dưới \" _ \" "
+        regex: "Tên tài khoản tối thiểu 6 kí tự, gồm chữ cái không dấu, chữ số là dấu gạch dưới \" _ \" "
       },
       email: {
         required: "Email không thể để trống"
       }
     }
   });
+
+  $('#validation-button').click(function(event) {
+    var parentForm =  $(this).parents('form').attr('id');
+    alert(parentForm);
+    return ;
+    if($('#setting-account-form').valid()) {
+      var modal = $(this).attr('data-modalid');
+      openModal(modal);
+    }
+  });
+
+  function ajaxSendFormInputConfigPage(settingFormId, confirmPassword) {
+    
+    var inputObject = {};
+    inputObject['confirm_password'] = confirmPassword;
+    $('#'+settingFormId+' :input').each(function() {
+      // Chỉ lấy input chứa dữ liệu và input chứa token, không lấy input[type = submit] hay button
+      if( $(this).attr('data-info') || $(this).attr('name') == '_token'  ) {
+        inputObject[$(this).attr('name')] = $(this).val();
+      }
+    });
+
+    $.ajax({
+      url: '/caidat/taikhoan/capnhat',
+      type: 'POST',
+      data: inputObject,
+    })
+    .done(function(response) {
+      var m =  "";
+      // Nếu muốn debug thì xem lại file login.js
+      // Hoặc console.log(response)
+      // Hoặc console.log(response.form_message)
+      // Để hiểu cách duyệt mảng javascript (jquery)
+      console.log(response.form_message);
+      $.each(response.form_message, function(fieldsName, messagesArray) {
+        messagesArray.forEach(function(message) {
+          m += "<p>"+message+"</p>";
+        });
+      });
+      console.log(m);
+    });
+    
+    
+  }
+
+
+ 
+
+
+
 
 
 
