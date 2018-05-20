@@ -1,3 +1,28 @@
+function taonhommoi(l)
+{
+ //   alert("tao nhom moi");
+ if (l) {
+            $('#div-group-tham-gia').css("display","none");
+            $('#div-content-tao-nhom').css("display","block");
+        }
+        else{
+            $('#div-group-tham-gia').css("display","block");
+            $('#div-content-tao-nhom').css("display","none");
+        }
+   
+}
+
+function submittaonhom()
+{
+    var tennhom = $('#input-tennhom').val();
+    alert(tennhom);
+}
+
+
+
+
+
+
 // Get the modal
 var modal = document.getElementById('div-dynamic-menu');
 
@@ -60,6 +85,23 @@ function openCity(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // -----------------
 $(document).ready(function() {
 	$('.taikhoan-dropdown-content').click(function() {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\NhomController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use App\nhom;
+use App\nhom_m;
 
 
 class Nhom extends Controller

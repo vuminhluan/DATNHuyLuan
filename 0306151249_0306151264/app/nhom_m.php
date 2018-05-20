@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class nhom extends Model
+class nhom_m extends Model
 {
-    //
     protected $table= "nhom";
     public $timestemps = false;
 
