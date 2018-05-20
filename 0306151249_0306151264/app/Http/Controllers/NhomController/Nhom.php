@@ -25,22 +25,38 @@ class Nhom extends Controller
     	$manhom = DB::table('nhom')->select('ma_nhom')->orderBy('ma_nhom','desc')->get()->first();
     	return $manhom->ma_nhom;
     }
+
+
+    public function getnhom(Request $rql)
+    {
+    	$nhom = DB::table('nhom')->where("ma_nhom",$rql->ma_nhom)->get();
+    	return $nhom;
+    }
+
+    // public function getviewnhom(Request $rql)
+    // {
+    // 	$nhom = $this-> getnhom($rql);
+    // 	return view()
+    // }
+
     public function posttaonhom(Request $rql)
     {
-    	// $nhom = new nhom();
-
-    	//  $nhom->ma_nhom						= $rql->ma_nhom;
-    	//  $nhom->ma_gia_nhap					= $rql->ma_gia_nhap;
-    	//  $nhom->ten_nhom					= $rql->ten_nhom;
-    	//  $nhom->anh							= $rql->anh;
-    	//  $nhom->ma_tai_khoan				= $rql->ma_tai_khoan;
-    	//  $nhom->ma_loai_nhom				= $rql->ma_loai_nhom;
-    	//  $nhom->gioi_thieu_nhom				= $rql->gioi_thieu_nhom;
-    	//  $nhom->thoi_gian_tham_gia			= $rql->thoi_gian_tham_gia;
-    	//  $nhom->thoi_gian_het_han_tham_gia	= $rql->thoi_gian_het_han_tham_gia;
-    	//  $nhom->nguoi_sua					= $rql->nguoi_sua;
-    	//  $nhom->trang_thai  				= $rql->trang_thai;
-    	//  $nhom->save();
-    	 return "ok";
+    	$nhom = new nhom_m();
+    	 $nhom->ma_nhom						= $rql->ma_nhom;
+    	 $nhom->ma_gia_nhap					= $rql->ma_gia_nhap;
+    	 $nhom->ten_nhom					= $rql->ten_nhom;
+    	 $nhom->anh							= $rql->anh;
+    	 $nhom->ma_tai_khoan				= $rql->ma_tai_khoan;
+    	 $nhom->ma_loai_nhom				= $rql->ma_loai_nhom;
+    	 $nhom->gioi_thieu_nhom				= $rql->gioi_thieu_nhom;
+    	 $nhom->thoi_gian_tham_gia			= $rql->thoi_gian_tham_gia;
+    	 $nhom->thoi_gian_het_han_tham_gia	= $rql->thoi_gian_het_han_tham_gia;
+    	 $nhom->thoi_gian_tao				= $rql->thoi_gian_tao;
+    	 $nhom->thoi_gian_sua				= $rql->thoi_gian_sua;
+    	 $nhom->nguoi_sua					= $rql->nguoi_sua;
+    	 $nhom->trang_thai  				= $rql->trang_thai;
+    	 $nhom->save();
+    	 return "ok tao thanh cong";
     }
+
 }

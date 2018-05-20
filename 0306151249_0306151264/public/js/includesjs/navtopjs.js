@@ -16,9 +16,9 @@ function submittaonhom()
 {
     var manhom="hi";
     var tennhom = $('#input-tennhom').val();
-    alert(tennhom);
+  //  alert(tennhom);
 
-   alert(link_host);
+ //  alert(link_host);
 
  $.ajax({
     url: link_host+'/ajax/getmanhomne',
@@ -27,11 +27,11 @@ function submittaonhom()
 
     }
  }).done(function(data){
-alert(manhom);
+//alert(manhom);
     manhom =  data.substring(2,10);
-    alert(manhom);
+   // alert(manhom);
          var manhomint = parseInt(manhom)+1;
-         alert(manhomint);
+       //  alert(manhomint);
          manhom = manhomint.toString();
           while(manhom.length<8)
           {
@@ -41,27 +41,29 @@ alert(manhom);
 
 
 alert(manhom);
-alert($('input[name=_token]').val());
+//alert($('input[name=_token]').val());
     $.ajax({
-        url:link_host+'/ajax/posttaonhomne',
+        url: link_host+'/ajax/posttaonhomne',
         type:'POST',
         data:{
-            _token:$('input[name=_token]').val(),
-            ma_nhom:   manhom    ,           
+            _token: $('input[name=_token]').val(),
+            ma_nhom:   manhom,           
             ma_gia_nhap: "0000"   ,           
             ten_nhom:   tennhom   ,               
             anh:        "no"   ,              
-            ma_tai_khoan:  "IDtaikhoantaonhom"   ,           
+            ma_tai_khoan:  "N000001"   ,           
             ma_loai_nhom:  "LN01"   ,          
             gioi_thieu_nhom:  "Describe something"  ,         
-            thoi_gian_tham_gia: "2018/05/22 22:11:11" ,        
-            thoi_gian_het_han_tham_gia: "2018/05/22 00:00:00"  ,
-            nguoi_sua:   "ND00000001"  ,              
+            thoi_gian_tham_gia: "2001/01/01",        
+            thoi_gian_het_han_tham_gia: "2001/01/01"  ,
+            thoi_gian_sua: "2001/01/01",
+            thoi_gian_tao: "2001/01/01" ,
+            nguoi_sua:   "N000001"  ,              
             trang_thai:   "1"               
         }
 
     }).done(function(data){
-            alert(tennhom);
+         //   alert(tennhom+"tao thanh cong");
             alert(data);
     })
     })
