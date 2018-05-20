@@ -6,22 +6,23 @@
 </div>
 <div>
 	<form action="javascript: void(0)" method="POST" class="setting-form" id="setting-account-form">
+		@csrf
 		<div>
 			<label for="username">Tên tài khoản</label>
-			<input id="username" name="username" type="text" value="{{Auth::user()->ten_tai_khoan}}">
+			<input type="text" id="username" data-info="1" name="username"  value="{{Auth::user()->ten_tai_khoan}}">
 		</div>
 
 		<div>
 			<label for="email">Email</label>
-			<input type="text" id="email" name="email" value="{{Auth::user()->email}}">
+			<input type="text" id="email" data-info="1" name="email" value="{{Auth::user()->email}}">
 		</div>
 
 		<div>
 			<label for="phone">Số điện thoại</label>
-			<input type="text" id="phone" name="phone" value="{{Auth::user()->so_dien_thoai}}">
+			<input type="text" id="phone" data-info="1" name="phone" value="{{Auth::user()->so_dien_thoai}}">
 		</div>
 
-		<div><button type="submit" class="save-change-by-password-button " data-modalid="js-confirm-change-by-password-modal">Lưu thay đổi</button></div>
+		<div><button type="submit" id='validation-button' class="save-change-by-password-button" data-modalid="js-confirm-change-by-password-modal">Lưu thay đổi</button></div>
 		{{-- class="modal-open-button" --}}
 	</form>
 </div>

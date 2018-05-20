@@ -14,6 +14,9 @@
   padding-top: 80px !important; overflow: auto; background-color: rgba(0,0,0,0.5);
 }
 
+.confirm-modal label.error {   color: red;font-size: 13px;margin:0
+5px;display: block; }
+
 .confirm-modal span.close {
   cursor: pointer;
 }
