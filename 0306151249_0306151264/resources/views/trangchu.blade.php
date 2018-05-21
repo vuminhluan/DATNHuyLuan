@@ -13,5 +13,14 @@
 
 	<h1 class="haha">
 		Trang chủ
+	
+
+		{{-- test message, mốt thấy nhớ XÓA dùm tao nha :))) --}}
+		@if(session('update_email_message'))
+			<br><br><br>
+			<p>{{session('update_email_message')}}</p>
+		@endif
+
+
 	</h1>
 @endsection

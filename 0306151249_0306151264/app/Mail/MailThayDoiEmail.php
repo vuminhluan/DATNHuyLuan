@@ -18,10 +18,12 @@ class MailThayDoiEmail extends Mailable
 	 *
 	 * @return void
 	 */
-	
-	public function __construct()
+	private $new_email;
+	private $user_id;
+	public function __construct($email, $userid)
 	{
-		
+		$this->new_email = $email;
+		$this->user_id = $userid;
 	}
 
 	/**
@@ -31,6 +33,9 @@ class MailThayDoiEmail extends Mailable
 	 */
 	public function build()
 	{
-		return $this->from('datn.ckc15@gmail.com')->view('mail.capnhat_email_moi');
+		return $this->to($this->new_email)
+			->from('datn.ckc15@gmail.com')
+			->view('mail.capnhat_email_moi')
+			->with(['new_email' => $this->new_email, 'user_id' => $this->user_id]);
 	}
 }
