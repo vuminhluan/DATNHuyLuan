@@ -8,8 +8,12 @@ use Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+use App\Traits\XacNhanMatKhauTrait;
+
 class CaiDatController extends Controller
 {
+  use XacNhanMatKhauTrait;
+
   public function getIndex()
   {
   	return view('caidat.index');
@@ -18,7 +22,11 @@ class CaiDatController extends Controller
   public function postThayDoiTaiKhoan(Request $req)
   {
 
-    if( !Auth::attempt(['ten_tai_khoan' => Auth::user()->ten_tai_khoan, 'password' => $req->confirm_password]) ) {
+    // if( !Auth::attempt(['ten_tai_khoan' => Auth::user()->ten_tai_khoan, 'password' => $req->confirm_password]) ) {
+    //   return ['errors' => ["confirm_password" => ["Mật khẩu xác nhận không đúng"] ]];
+    // }
+
+    if(! $this->xacNhanMatKhau($req->confirm_password) ) {
       return ['errors' => ["confirm_password" => ["Mật khẩu xác nhận không đúng"] ]];
     }
 
