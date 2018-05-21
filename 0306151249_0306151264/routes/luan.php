@@ -48,17 +48,19 @@ Route::prefix('caidat')->group(function () {
 		});
 
 		Route::get('/taikhoan', 'CaiDatController@getIndex')->name('caidat.index');
-		
+		Route::post('/taikhoan/capnhat', 'CaiDatController@postThayDoiTaiKhoan')->name('caidat.post.capnhat.taikhoan');
 
 
 		Route::get('/taikhoan/vohieuhoa', 'CaiDatController@getTrangVoHieuHoaTaiKhoan')->name('caidat.vohieuhoa');
+
+		Route::post('/taikhoan/vohieuhoa/dongy', 'CaiDatController@postVoHieuHoaTaiKhoan')->name('caidat.post.vohieuhoa');
 
 		Route::get('/taikhoan/bichan', 'CaiDatController@getTrangTaiKhoanBiChan')->name('caidat.chan_taikhoan');
 
 		Route::get('/matkhau/thaydoi', 'CaiDatController@getTrangThayDoiMatKhau')->name('caidat.thaydoi_matkhau');
 	});
 
-	Route::post('/taikhoan/capnhat', 'CaiDatController@postThayDoiTaiKhoan')->name('caidat.post.capnhat.taikhoan');
+	// Route::post('/taikhoan/capnhat', 'CaiDatController@postThayDoiTaiKhoan')->name('caidat.post.capnhat.taikhoan');
 
 	Route::get('/matkhau/quen', 'CaiDatController@getQuenMatKhau')->name('caidat.quen_matkhau');
 	Route::post('/matkhau/quen', 'CaiDatController@postQuenMatKhau')->name('caidat.quen_matkhau_post');

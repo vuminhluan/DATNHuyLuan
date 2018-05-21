@@ -143,9 +143,9 @@ a.luan_link, a {
 }
 .before-deactivate-account-info > ul > li a:hover {text-decoration: underline;}
 .before-deactivate-account-info + div {text-align: center;}
-#deactivate-account-button {display: inline-block; background-color: #6667a6; border: none; padding: 10px; border-radius: 3px;color:#fff;cursor: pointer;}
-#deactivate-account-button:hover {opacity: 0.8;}
-#deactivate-account-button > span {font-weight: bold;}
+.deactivate-account-button {display: inline-block; background-color: #6667a6; border: none; padding: 10px; border-radius: 3px;color:#fff;cursor: pointer;}
+.deactivate-account-button:hover {opacity: 0.8;}
+.deactivate-account-button > span {font-weight: bold;}
 
 /*End deactivate-account-page*/
 

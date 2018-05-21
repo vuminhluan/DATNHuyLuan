@@ -8,18 +8,20 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Auth;
 
-class MailKichHoat extends Mailable
+class MailThayDoiEmail extends Mailable
 {
 	use Queueable, SerializesModels;
+
 
 	/**
 	 * Create a new message instance.
 	 *
 	 * @return void
 	 */
+	
 	public function __construct()
 	{
-		//
+		
 	}
 
 	/**
@@ -29,6 +31,6 @@ class MailKichHoat extends Mailable
 	 */
 	public function build()
 	{
-		return $this->view('mail.kichhoat')->to(Auth::user()->email);
+		return $this->from('datn.ckc15@gmail.com')->view('mail.capnhat_email_moi');
 	}
 }

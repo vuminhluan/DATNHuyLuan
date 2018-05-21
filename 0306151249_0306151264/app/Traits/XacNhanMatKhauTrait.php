@@ -2,9 +2,9 @@
 
 namespace App\Traits;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\TaiKhoan;
+// use App\TaiKhoan;
 
 trait XacNhanMatKhauTrait {
 

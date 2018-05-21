@@ -4,6 +4,14 @@
 	<div class="setting-title">
 		<h2>Vô hiệu hóa tài khoản</h2>
 	</div>
+
+	<div class="myalert">
+		<div class="--content" >
+			<p>Thông báo ở đây</p>
+		</div>
+		<span class="--close fa fa-times"></span>
+	</div>
+
 	<div class="before-deactivate-account-info">
 		<h3>Bạn cần đọc kĩ thông tin sau trước khi vô hiệu hóa tài khoản của mình:</h3>
 		<ul>
@@ -13,7 +21,10 @@
 		</ul>
 	</div>
 	<div>
-		<button id="deactivate-account-button" class="modal-open-button" data-modalid="js-confirm-change-by-password-modal"><span>Vô hiệu hóa</span> @nguoidunga</button>
+		<form action="javascript: void(0)" class="setting-form" id="deactivate-form">
+			@csrf
+			<button id="validation-button" class="deactivate-account-button modal-open-button" data-modalid="js-confirm-change-by-password-modal"><span>Vô hiệu hóa</span> @nguoidunga</button>
+		</form>
 	</div>
 
 	@include('includes.caidat.trangcaidat_modal')

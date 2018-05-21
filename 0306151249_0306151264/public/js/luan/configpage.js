@@ -62,12 +62,15 @@ $(document).ready(function() {
         regex: "Mật khẩu dài từ 6 - 30 kí tự, gồm các chữ cái in thường không dấu, chữ số và dấu gạch dưới \" _ \"  "
       }
     });
-    // $('#confirm-password-form').valid();
     if($('#confirm-password-form').valid()) {
-      // alert('Mat khau hop le');
+      // alert('Mat khau hop le');return;
       closeModal($('#validation-button').attr('data-modalid'));
       var settingFormId = $('.setting-form').attr('id');
       var confirmPassword = $('[name="confirm-password"]').val();
+      if(settingFormId == "deactivate-form") {
+        ajaxDeactiveAccount(settingFormId, confirmPassword);
+        return;
+      }
       ajaxSendFormInputConfigPage(settingFormId, confirmPassword);
       // console.log($('#'+setting_form_id+' :input'));
     }
@@ -122,6 +125,8 @@ $(document).ready(function() {
   function ajaxSendFormInputConfigPage(settingFormId, confirmPassword) {
     
     var inputObject = {};
+
+
     inputObject['confirm_password'] = confirmPassword;
     $('#'+settingFormId+' :input').each(function() {
       // Chỉ lấy input chứa dữ liệu và input chứa token, không lấy input[type = submit] hay button
@@ -145,16 +150,9 @@ $(document).ready(function() {
     })
     .done(function(response) {
       var m =  "";
-      // if(response.errors)
       // console.log(response);
       // return;
 
-      // Nếu muốn debug thì xem lại file login.js
-      // Hoặc console.log(response)
-      // Hoặc console.log(response.form_message)
-      // Để hiểu cách duyệt mảng javascript (jquery)
-
-      // console.log(response.form_message);
       if(response.errors) {
 
         $.each(response.errors, function(fieldsName, messagesArray) {
@@ -182,14 +180,54 @@ $(document).ready(function() {
   }
 
 
- 
-
-
-
-
-
-
   // End Trang index - Cài đặt tài khoản
+
+  function ajaxDeactiveAccount(settingFormId, confirmPassword) {
+    // alert(settingFormId + " -- " +confirmPassword);
+    inputObject = {};
+    inputObject['confirm_password'] = confirmPassword;
+    $('#'+settingFormId+' :input').each(function() {
+      // Chỉ lấy input chứa dữ liệu và input chứa token, không lấy input[type = submit] hay button
+      if( $(this).attr('data-info') || $(this).attr('name') == '_token'  ) {
+        inputObject[$(this).attr('name')] = $(this).val();
+      }
+    });
+
+    // console.log(inputObject);
+
+    $.ajax({
+      url: '/caidat/taikhoan/vohieuhoa/dongy',
+      type: 'POST',
+      data: inputObject,
+    })
+    .done(function(response) {
+      var m = "";
+
+      if(response.success) {
+        m = "<p>"+response.success+"</p>";
+      }
+      if(response.errors) {
+        m = "<p>"+response.errors+"</p>";
+      }
+
+
+      $('.myalert .--content').html(m);
+      $('.myalert').fadeIn('fast');
+
+
+      if(response.success) {
+        setTimeout(function () {
+          window.location.href = "/dangxuat";
+        }, 1000);
+      }
+
+    });
+    
+    
+
+  }
+
+  // Trang vô hiệu hóa tài khoản
 
 
 

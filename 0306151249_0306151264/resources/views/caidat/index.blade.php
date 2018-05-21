@@ -6,7 +6,7 @@
 </div>
 <div class="myalert">
 	<div class="--content" >
-		<p>Tài khoản đã có người sử dụng</p>
+		<p>Thông báo ở đây</p>
 	</div>
 	<span class="--close fa fa-times"></span>
 </div>
@@ -17,7 +17,7 @@
 			<label for="username">Tên tài khoản</label>
 			<input type="text" id="username" data-info="1" name="username"  value="{{Auth::user()->ten_tai_khoan}}">
 		</div>
-		
+
 		<div>
 			<label for="email">Email</label>
 			<input type="text" id="email" data-info="1" name="email" value="{{Auth::user()->email}}">
