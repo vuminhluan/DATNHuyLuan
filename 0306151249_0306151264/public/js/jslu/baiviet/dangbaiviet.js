@@ -339,7 +339,7 @@ $("#frmdangbaiviet").submit(function(event) {
                 //  document.getElementById("baivietmoidang").style.height = "300px";
                  // $('#baivietmoidang').html(data);
                   ///xu ly sau khi dang baiviet xong
-                 
+                  alert(data);
 
                   displaydivoption("none");
                   clickckb(false);
