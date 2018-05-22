@@ -9,11 +9,11 @@
 </head>
 <body>
 
-  <h1>DATN</h1>
+  <h1>DATN {{$new_email}} {{$user_id}}</h1>
   <br>
   <p>Xin chào {{Auth::user()->ho_ten_lot." ". Auth::user()->ten }},</p>
   <p>Chúng tôi gửi mail này để giúp bạn cập nhật lại email mới.</p>
-  <p>Bấm vào <a href="{{url('/kichhoat/taikhoan/'.Auth::user()->ten_tai_khoan.'/'.md5(Auth::user()->ten_tai_khoan.'kichhoat'))}}">liên kết</a> để chấp nhận thay đổi email</p>
+  <p>Bấm vào <a href="{{url('/xacnhan/thaydoi/email/'.$user_id.'/'.md5($user_id.'xacnhan').'/'.$new_email.'/'.md5($new_email.'xacnhan'))}}">liên kết</a> để chấp nhận thay đổi email</p>
   <p>Hoặc bỏ qua mail này nếu đây không phải là bạn</p>
   <p>Cảm ơn !</p>
   <br>

@@ -64,7 +64,7 @@ class CaiDatController extends Controller
     // Muốn đổi email mới thì phải vào email mới và xác nhận
     // Chưa có link
     if($req->email != Auth::user()->email) {
-      Mail::to($req->email, 'Luan')->send(new MailThayDoiEmail());
+      Mail::send(new MailThayDoiEmail($req->email, Auth::user()->ma_tai_khoan));
       return ['errors' => ["confirm_email" => ["Để cập nhật email bạn cần vào email mới và bấm nút xác nhận"] ]];
     }
 

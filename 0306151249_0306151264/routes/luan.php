@@ -34,9 +34,12 @@ Route::post('/taikhoan/{kind_of_image}/capnhat', 'TrangCaNhanController@capNhatA
 
 
 Route::get('/kichhoat/taikhoan/{username}/{username_md5}', 'KichHoatTaiKhoanController@kichHoatTaiKhoan')->name('kichhoat');
-
 Route::get('/kichhoat/taikhoan', 'KichHoatTaiKhoanController@getKichHoatTaiKhoan')->name('kichhoat.index');
 Route::get('/kichhoat/taikhoan/gui_mail', 'KichHoatTaiKhoanController@guiLaiMailKichHoat')->name('kichhoat.gui_mail');
+
+
+Route::get('/xacnhan/thaydoi/email/{userid}/{userid_md5}/{newemail}/{newemail_md5}', 'XacNhanThayDoiEmailController@xacNhanThayDoi')->name('xacnhan.thaydoi.mail');
+
 
 
 Route::prefix('caidat')->group(function () {
