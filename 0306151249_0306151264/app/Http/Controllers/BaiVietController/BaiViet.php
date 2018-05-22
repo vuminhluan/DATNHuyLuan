@@ -43,9 +43,9 @@ class BaiViet extends Controller
         // return $ma->ma_bai_viet;
     
     }
-    public function GetBaiViet(Request)
+    public function GetBaiVietTheoChuBaiViet(Request $rq)
     {
-
+        return $this->GetBaiVietTheoChuBaiVietT($rq);
     }
     public function GetBaiVietMoi(Request $rq)
     {
