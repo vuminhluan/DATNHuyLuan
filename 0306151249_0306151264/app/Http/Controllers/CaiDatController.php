@@ -82,6 +82,18 @@ class CaiDatController extends Controller
     return view('caidat.thaydoi_matkhau');
   }
 
+  public function postThayDoiMatKhau(Request $req)
+  {
+    $taikhoan = TaiKhoan::where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->first();
+
+    $taikhoan->mat_khau = bcrypt($req['new-password']);
+    $taikhoan->save();
+
+    Auth::login($taikhoan);
+
+    return ['success' => 'Chúc mừng ! Bạn đã thay đổi mật khẩu thành công.'];
+  }
+
   // Vô hiệu hóa tài khoàn
   public function getTrangVoHieuHoaTaiKhoan()
   {

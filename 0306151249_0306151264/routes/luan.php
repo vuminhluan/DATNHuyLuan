@@ -61,6 +61,7 @@ Route::prefix('caidat')->group(function () {
 		Route::get('/taikhoan/bichan', 'CaiDatController@getTrangTaiKhoanBiChan')->name('caidat.chan_taikhoan');
 
 		Route::get('/matkhau/thaydoi', 'CaiDatController@getTrangThayDoiMatKhau')->name('caidat.thaydoi_matkhau');
+		Route::post('/matkhau/thaydoi/dongy', 'CaiDatController@postThayDoiMatKhau')->name('caidat.thaydoi_matkhau.dongy');
 	});
 
 	// Route::post('/taikhoan/capnhat', 'CaiDatController@postThayDoiTaiKhoan')->name('caidat.post.capnhat.taikhoan');

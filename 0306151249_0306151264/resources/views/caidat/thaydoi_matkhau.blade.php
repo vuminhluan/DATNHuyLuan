@@ -3,7 +3,7 @@
 @section('noidung_trangcaidat')
 
 <div class="setting-title">
-	<h2>Tài khoản</h2>
+	<h2>Thay đổi mật khẩu <span class="ajax-loader"><img src="{{asset('pictures/luan/ajax-loader.gif')}}"></span></h2>
 </div>
 
 {{-- <div class="setting-alert js-change-password-alert alert-box success">
@@ -16,22 +16,29 @@
 	<span class="close-alert-box">&times;</span>
 </div> --}}
 
+<div class="myalert">
+	<div class="--content" >
+		<p>Thông báo ở đây</p>
+	</div>
+	<span class="--close fa fa-times"></span>
+</div>
+
 <div>
-	<form action="#" class="setting-form">
-		
+	<form action="javascript: void(0)" id="change-password-form" class="setting-form">
+		@csrf
 		<div>
 			<label for="setting-password-form-current-password">Mật khẩu hiện tại</label>
-			<input id="setting-password-form-current-password" type="text" value="">
+			<input name="current-password" data-info="1" id="setting-password-form-current-password" type="password" value="">
 		</div>
 
 		<div>	
 			<label for="setting-password-form-new-password">Mật khẩu mới</label>
-			<input type="text" id="setting-password-form-new-password" value="">
+			<input name="new-password" data-info="1" type="password" id="setting-password-form-new-password" value="">
 		</div>
 
 		<div>	
 			<label for="setting-password-form-reenter-new-password">Xác nhận mật khẩu</label>
-			<input type="text" id="setting-password-form-reenter-new-password" value="">
+			<input name="confirm-password" data-info="1" type="password" id="setting-password-form-confirm-new-password" value="">
 		</div>
 
 

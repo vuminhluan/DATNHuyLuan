@@ -10,6 +10,7 @@
 	</div>
 	<span class="--close fa fa-times"></span>
 </div>
+
 <div>
 	<form action="javascript: void(0)" method="POST" class="setting-form" id="setting-account-form">
 		@csrf

@@ -1,5 +1,15 @@
 $(document).ready(function() {
 
+  function getFormData(form_id) {
+    inputObject = {};
+    $('#'+form_id+' :input').each(function() {
+      // Chỉ lấy input chứa dữ liệu (thêm data-info = 1) và input chứa token, không lấy input[type = submit] hay button
+      if( $(this).attr('data-info') || $(this).attr('name') == '_token'  ) {
+        inputObject[$(this).attr('name')] = $(this).val();
+      }
+    });
+    return inputObject;
+  }
 
   // Close alert
   $('.myalert .--close').click(function(event) {
@@ -9,6 +19,12 @@ $(document).ready(function() {
 
   // add rule regex
   $.validator.addMethod( "regex", function(value, element, regexp) {
+    var re = new RegExp(regexp);
+    return re.test(value);
+    }, "Dữ liệu không hợp lệ."
+  );
+
+  $.validator.addMethod( "capslockon", function(value, element, regexp) {
     var re = new RegExp(regexp);
     return re.test(value);
     }, "Dữ liệu không hợp lệ."
@@ -124,16 +140,19 @@ $(document).ready(function() {
 
   function ajaxSendFormInputConfigPage(settingFormId, confirmPassword) {
     
-    var inputObject = {};
+    inputObject = getFormData(settingFormId);
+    // var inputObject = {};
 
 
     inputObject['confirm_password'] = confirmPassword;
-    $('#'+settingFormId+' :input').each(function() {
-      // Chỉ lấy input chứa dữ liệu và input chứa token, không lấy input[type = submit] hay button
-      if( $(this).attr('data-info') || $(this).attr('name') == '_token'  ) {
-        inputObject[$(this).attr('name')] = $(this).val();
-      }
-    });
+    // $('#'+settingFormId+' :input').each(function() {
+    //   // Chỉ lấy input chứa dữ liệu và input chứa token, không lấy input[type = submit] hay button
+    //   if( $(this).attr('data-info') || $(this).attr('name') == '_token'  ) {
+    //     inputObject[$(this).attr('name')] = $(this).val();
+    //   }
+    // });
+
+
 
     $.ajax({
       url: '/caidat/taikhoan/capnhat',
@@ -184,14 +203,14 @@ $(document).ready(function() {
 
   function ajaxDeactiveAccount(settingFormId, confirmPassword) {
     // alert(settingFormId + " -- " +confirmPassword);
-    inputObject = {};
+    inputObject = getFormData(settingFormId);
     inputObject['confirm_password'] = confirmPassword;
-    $('#'+settingFormId+' :input').each(function() {
-      // Chỉ lấy input chứa dữ liệu và input chứa token, không lấy input[type = submit] hay button
-      if( $(this).attr('data-info') || $(this).attr('name') == '_token'  ) {
-        inputObject[$(this).attr('name')] = $(this).val();
-      }
-    });
+    // $('#'+settingFormId+' :input').each(function() {
+    //   // Chỉ lấy input chứa dữ liệu (thêm data-info = 1) và input chứa token, không lấy input[type = submit] hay button
+    //   if( $(this).attr('data-info') || $(this).attr('name') == '_token'  ) {
+    //     inputObject[$(this).attr('name')] = $(this).val();
+    //   }
+    // });
 
     // console.log(inputObject);
 
@@ -228,6 +247,90 @@ $(document).ready(function() {
   }
 
   // Trang vô hiệu hóa tài khoản
+
+
+
+  // -----------------------
+
+  
+
+  // ------------------------
+
+  // Trang thay đổi mật khẩu
+
+  $('#agree-change-password-button').click(function() {
+    
+    
+    $('#change-password-form').validate({});
+
+    $('[name="current-password"]').rules('add', {
+      required: true,
+      regex: "^[a-z0-9_]{6,30}$",
+      messages: {
+        required: "Xin hãy cho chúng tôi biết mật khẩu hiện tại của bạn",
+        regex: "Mật khẩu dài từ 6 - 30 kí tự, gồm các chữ cái in thường không dấu, chữ số và dấu gạch dưới \" _ \"  "
+      }
+    });
+
+    $('[name="new-password"]').rules('add', {
+      required: true,
+      regex: "^[a-z0-9_]{6,30}$",
+      messages: {
+        required: "Xin hãy chọn một mật khẩu mới",
+        regex: "Mật khẩu dài từ 6 - 30 kí tự, gồm các chữ cái in thường không dấu, chữ số và dấu gạch dưới \" _ \"  "
+      }
+    });
+
+    $('[name="confirm-password"]').rules('add', {
+      required: true,
+      // regex: "^[a-z0-9_]{6,30}$",
+      equalTo: "#setting-password-form-new-password",
+      messages: {
+        required: "Vì lý do bảo mật, bạn cần xác nhận mật khẩu mới của mình",
+        // regex: "Mật khẩu dài từ 6 - 30 kí tự, gồm các chữ cái in thường không dấu, chữ số và dấu gạch dưới \" _ \"  ",
+        equalTo: "Mật khẩu xác nhận không khớp với mật khẩu mới của bạn"
+      }
+    });
+
+    if($('#change-password-form').valid()) {
+      var inputObject = getFormData('change-password-form');
+
+      $.ajax({
+        url: '/caidat/matkhau/thaydoi/dongy',
+        type: 'POST',
+        data: inputObject,
+        beforeSend: function() {
+          $('.ajax-loader').css('display', 'inline-block');
+
+        },
+        success: function() {
+          // setting a timeout
+          $('.ajax-loader').css('display', 'none');
+        }
+      })
+      .done(function(response) {
+        if(response.success) {
+          var m = "<p>"+response.success+"</p>";
+          $('.myalert .--content').html(m);
+          $('.myalert').fadeIn('fast');
+        }
+
+        $('#change-password-form :input').each(function() {
+
+          $(this).val('');
+
+        });
+
+
+
+      });
+      
+    }
+
+
+  });
+
+  // End Trang thay đổi mật khẩu
 
 
 
