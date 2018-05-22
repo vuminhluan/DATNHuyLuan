@@ -356,17 +356,20 @@ input[type="date"], focus {
       height: 1500px;
   }
   #anhbia{
-    width:1184px; height: 325px; background-color: pink;border-bottom-left-radius: 10%;border-top-right-radius: 7%;
+    width:1184px; height: 325px; background-color: white;border-bottom-left-radius: 10%;border-top-right-radius: 7%;
     margin-top: 4px;
+    border: solid 1px #9695d8;
   }
   .leftnav{
      float:left; background-color:#e6ecf0; width:300px; height: 1500px; margin:4px; margin-top: 8px;
   }
   #thongtincuanhom{
-    float:left; background-color: rgb(150, 149, 216); width:300px; height: 300px;border-radius: 1%;
+    float:left; background-color: white; width:300px; height: 300px;border-radius: 1%;
+    border: solid 1px #9695d8;
   }
   #thongtinkhaccuanhom{
-    float:left; background-color: rgb(150, 149, 216); width:300px; height: 500px;margin-top: 8px;border-radius: 1%;
+    float:left; background-color: white; width:300px; height: 500px;margin-top: 8px;border-radius: 1%;
+    border: solid 1px #9695d8;
   }
   .content{
     float:left;   width:560px; margin: 4px;margin-top: 8px;
@@ -375,7 +378,8 @@ input[type="date"], focus {
     float:left; background-color: white;  width:560px; height: 500px;margin-bottom: 8px;
   }
   .rightnav{
-     float:left; background-color: rgb(118, 223, 236); width:300px; height: 700px;margin: 4px;margin-top: 8px;border-radius: 1%;
+     float:left; background-color: white; width:300px; height: 700px;margin: 4px;margin-top: 8px;border-radius: 1%;
+     border: solid 1px #9695d8;
   }
 /*endcotent*/
 

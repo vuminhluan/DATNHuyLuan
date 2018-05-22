@@ -317,11 +317,11 @@ ul.navtop-right {float: right;display: inline-block;}
   background: #ccc;
 }
 .topnav input#topnav-search  {
-  padding: 6px;
+  padding: 5px;
   margin-top: 8px;
   font-size: 17px;
-  border: none;
-  background: #d2e5f1;
+  border: solid 1px #9695d8;
+  background: white;
   border-bottom-left-radius: 7px;
   border-top-left-radius: 7px;
 }

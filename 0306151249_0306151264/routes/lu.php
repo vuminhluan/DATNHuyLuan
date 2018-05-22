@@ -7,7 +7,6 @@ return view("includes.navtop");
 
 });
 Route::get("gr/{id}","NhomController\Nhom@loadnhom");
-
 Route::get("baiviet", function(){
 	return view("baiviet.hienthibaiviet");
 });
@@ -25,3 +24,4 @@ Route::get("/ajax/getbaivietmoine","BaiVietController\BaiViet@GetBaiVietMoi")->n
 
 Route::post("/ajax/posttaonhomne","NhomController\Nhom@posttaonhom")->name('posttaonhom');
 Route::get("/ajax/getmanhomne","NhomController\Nhom@getmanhom")->name('getmanhom');
+Route::get("/ajax/getnhomtheomataikhoanne","NhomController\ThanhVienNhom@GetNhomTheoMaTaiKhoan")->name('getnhomtheomataikhoan');
