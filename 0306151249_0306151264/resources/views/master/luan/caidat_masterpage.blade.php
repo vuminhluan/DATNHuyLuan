@@ -63,6 +63,7 @@
 
 
 @section('javascript')
+  <script type="text/javascript" src="{{ asset('js/globaljs/varglobal.js') }}" charset="utf-8"></script>
 	<script src="{{asset('js/luan/utilities/open_close_modal.js')}}"></script>
 	<script src="{{asset('js/jquery/jquery-validate.min.js')}}"></script>
 	<script src="{{asset('js/luan/configpage.js')}}"></script>
