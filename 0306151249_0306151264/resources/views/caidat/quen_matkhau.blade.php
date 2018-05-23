@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Login</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/luan/settings/reset-password.css')}}">
-  {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
+  <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
 </head>
 <body>
 
@@ -20,10 +20,16 @@
   <div class="reset-password-container">
 		<div class="reset-password-main">
 			<div class="reset-password-form">
-				<form action="#/" id="reset-password" name="reset-password" method="POST">
-
+				<form action="javascript: void(0)" id="forget-password-form" name="forget-password-form" method="POST">
+					@csrf
 					<div>
-						<h2>Đặt lại mật khẩu</h2>
+						<h2>Quên mật khẩu</h2>
+					</div>
+					<div style="display: block;" class="myalert reset-password-alert">
+						<div class="--content" >
+							<p>Thông báo ở đây</p>
+						</div>
+						<span class="--close fa fa-times"></span>
 					</div>
 
 					<div>
@@ -32,10 +38,10 @@
 
 					<div>
 						<label for="reset-password-username">Tên đăng nhập hoặc email</label>
-						<input type="text" id="reset-password-username" required>
+						<input type="text" id="username" name="username">
 					</div>
 					<div>
-						<button id="reset-passowrd-button">Đặt lại mật khẩu</button>
+						<button id="forget-password-button">Đặt lại mật khẩu</button>
 					</div>
 				</form>
 			</div>
@@ -45,8 +51,9 @@
 
 
 
-
-  <script>
-  </script>
+	<script src="{{asset('js/jquery/jquery3.3.1.js')}}" charset="utf-8"></script>
+  <script type="text/javascript" src="{{ asset('js/globaljs/varglobal.js') }}" charset="utf-8"></script>
+	<script src="{{asset('js/jquery/jquery-validate.min.js')}}"></script>
+	<script src="{{asset('js/luan/configpage.js')}}"></script>
 </body>
 </html>

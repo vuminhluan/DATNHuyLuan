@@ -61,17 +61,18 @@ class CaiDatController extends Controller
       "so_dien_thoai" => $req->phone
     ];
 
+    $taikhoan = TaiKhoan::where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->first();
+
+    // CapNhatDoiTuongTrait
+    $this->capNhatDoiTuong($data, $taikhoan);
+
     // Muốn đổi email mới thì phải vào email mới và xác nhận
-    // Chưa có link
     if($req->email != Auth::user()->email) {
       Mail::send(new MailThayDoiEmail($req->email, Auth::user()->ma_tai_khoan));
       return ['errors' => ["confirm_email" => ["Để cập nhật email bạn cần vào email mới và bấm nút xác nhận"] ]];
     }
 
-    $taikhoan = TaiKhoan::where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->first();
-
-    // CapNhatDoiTuongTrait
-    $this->capNhatDoiTuong($data, $taikhoan);
+    
 
     return ["success" => "Cập nhật thành công. Chuẩn bị tải lại trang"];
 

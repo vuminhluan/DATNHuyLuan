@@ -54,13 +54,13 @@ $('#sign-in-form').validate({
       // regex: "^[a-z.\@1-9]{6,}$"
       required: true,
       xor: [{
-        regex: "^[\\w]{6,}$"
+        regex: myregex['ten_taikhoan']
       }, {
         email: true
       }]
     },
     password: {
-      regex: "^[a-z0-9_]{6,30}$"
+      regex: myregex['matkhau']
     }
   },
   messages: {
@@ -121,10 +121,12 @@ function changeTab(n) {
     if(currentTab == 0) {
 
       $('[name="sign-up-lastname"]').rules('add', {
-        regex: "^([A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,10}((\\s[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,15})?)+$)"
+        // regex: "^([A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,10}((\\s[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,15})?)+$)"
+        regex: myregex['tiengviet']
       });
       $('[name="sign-up-firstname"]').rules('add', {
-        regex: "^([A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,10}((\\s[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,15})?)+$)"
+        // regex: "^([A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,10}((\\s[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,15})?)+$)"
+        regex: myregex['tiengviet']
       });
 
       // $('[name="sign-up-username"]').rules('remove');
@@ -142,7 +144,8 @@ function changeTab(n) {
     if(currentTab == 1) {
 
       $('[name="sign-up-username"]').rules('add', {
-        regex: "^[\\w]{6,}$"
+        // regex: "^[\\w]{6,}$"
+        regex : myregex['taikhoan']
       });
 
       $('[name="sign-up-email"]').rules("add", {
@@ -155,7 +158,8 @@ function changeTab(n) {
       });
 
       $('[name="sign-up-password"]').rules('add', {
-        regex: "^[a-z0-9_]{6,30}$"
+        // regex: "^[a-z0-9_]{6,30}$"
+        regex : myregex['matkhau']
       });
 
       // $('[name="sign-up-lastname"]').rules('remove');

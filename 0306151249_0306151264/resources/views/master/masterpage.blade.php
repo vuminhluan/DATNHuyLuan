@@ -16,7 +16,8 @@
 	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
 	{{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" charset="utf-8"></script> --}}
 	<script type="text/javascript" src="{{ asset('js/globaljs/varglobal.js') }}" charset="utf-8"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="{{asset('js/jquery/jquery3.3.1.js')}}" charset="utf-8"></script>
+	{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
 
 	@yield('css')
 

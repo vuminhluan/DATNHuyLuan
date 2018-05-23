@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
   function getFormData(form_id) {
     inputObject = {};
     $('#'+form_id+' :input').each(function() {
@@ -72,7 +73,8 @@ $(document).ready(function() {
     $('#confirm-password-form').validate({});
     $('[name="confirm-password"]').rules('add', {
       required: true,
-      regex: "^[a-z0-9_]{6,30}$",
+      // regex: "^[a-z0-9_]{6,30}$",
+      regex : myregex['matkhau'],
       messages: {
         required: "Vì lý do bảo mật, bạn cần xác nhận mật khẩu của mình",
         regex: "Mật khẩu dài từ 6 - 30 kí tự, gồm các chữ cái in thường không dấu, chữ số và dấu gạch dưới \" _ \"  "
@@ -102,7 +104,8 @@ $(document).ready(function() {
     rules: {
       username: {
         required: true,
-        regex: "^[\\w]{6,}$"
+        // regex: "^[\\w]{6,}$"
+        regex : myregex['taikhoan']
       },
       email: {
         required: true,
@@ -111,9 +114,11 @@ $(document).ready(function() {
       phone: {
         required: false,
         xor: [{
-          regex: "^[0-9]{9,11}$"
+          // regex: "^[0-9]{9,11}$"
+          regex : myregex['sodienthoai']
         }, {
-          regex: "^[0-9]{9,11}$"
+          // regex: "^[0-9]{9,11}$"
+          regex : myregex['sodienthoai']
         }]
 
       }
@@ -265,7 +270,7 @@ $(document).ready(function() {
 
     $('[name="current-password"]').rules('add', {
       required: true,
-      regex: "^[a-z0-9_]{6,30}$",
+      regex: myregex['matkhau'],
       messages: {
         required: "Xin hãy cho chúng tôi biết mật khẩu hiện tại của bạn",
         regex: "Mật khẩu dài từ 6 - 30 kí tự, gồm các chữ cái in thường không dấu, chữ số và dấu gạch dưới \" _ \"  "
@@ -274,7 +279,7 @@ $(document).ready(function() {
 
     $('[name="new-password"]').rules('add', {
       required: true,
-      regex: "^[a-z0-9_]{6,30}$",
+      regex: myregex['matkhau'],
       messages: {
         required: "Xin hãy chọn một mật khẩu mới",
         regex: "Mật khẩu dài từ 6 - 30 kí tự, gồm các chữ cái in thường không dấu, chữ số và dấu gạch dưới \" _ \"  "
@@ -283,7 +288,6 @@ $(document).ready(function() {
 
     $('[name="confirm-password"]').rules('add', {
       required: true,
-      // regex: "^[a-z0-9_]{6,30}$",
       equalTo: "#setting-password-form-new-password",
       messages: {
         required: "Vì lý do bảo mật, bạn cần xác nhận mật khẩu mới của mình",
@@ -333,6 +337,30 @@ $(document).ready(function() {
   // End Trang thay đổi mật khẩu
 
 
+
+  // Trang quên mật khẩu
+
+  $('#forget-password-form').validate({
+    rules: {
+      username: {
+        // regex: "^[a-z.\@1-9]{6,}$"
+        required: true,
+        xor: [{
+          regex: myregex['ten_taikhoan']
+        }, {
+          email: true
+        }]
+      }
+    },
+    messages: {
+      username: {
+        required: 'Dữ liệu không hợp lệ'
+      }
+    }
+  });
+
+
+  // End trang quên mật khẩu
 
 
 

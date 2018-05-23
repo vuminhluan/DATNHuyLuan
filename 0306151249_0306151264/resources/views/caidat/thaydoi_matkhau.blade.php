@@ -50,7 +50,7 @@
 </div>
 
 <div>
-	<a href="{{route('caidat.vohieuhoa')}}" id="" class="another-link">Quên mật khẩu</a>
+	<a href="{{route('caidat.quen_matkhau')}}" id="" class="another-link">Quên mật khẩu</a>
 </div>
 
 @endsection
