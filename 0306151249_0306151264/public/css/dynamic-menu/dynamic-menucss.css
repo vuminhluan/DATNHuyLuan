@@ -1,0 +1,72 @@
+#div-content-tim-kiem-nhom{
+ display: none ;
+}
+
+/* width */
+#div-content-gr-thamgia-quanly ::-webkit-scrollbar {
+    width: 10px;
+    height: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+
+
+.btn-nhom-menu-dy{
+  margin-left: 10px;
+   float: right;
+  background-color: #9695d8;
+  color: white;
+  height: 25px;
+  border-radius: 3px;
+  border: 1px #9695d8 solid;
+  padding: 3px;
+  cursor: pointer;
+}
+
+#div-group-tham-gia {
+  height: 180px;
+  /*overflow: auto;*/
+  border-bottom: solid 1px #9695d8; 
+ margin-bottom: 5px;
+}
+#div-group-quan-ly {
+  height: 180px;
+  /*overflow: auto;*/
+  border-bottom: solid 1px #9695d8; 
+}
+.div-item-nhom-popup{
+     border: solid 1px #9695d8;border-radius: 50%; height: 77px;width: 77px;float: left;margin: 0px;
+     cursor: pointer;
+     display:inline;
+    
+}
+.div-name-nhom{
+	display:inline;
+}
+
+div.div-item-nhom{
+    overflow: auto;
+    white-space: nowrap;
+    height: 150px;
+}
+div.div-item-nhom div{
+	display: inline-block;
+    color: black;
+    /*text-align: center;*/
+    padding: 14px;
+
+}

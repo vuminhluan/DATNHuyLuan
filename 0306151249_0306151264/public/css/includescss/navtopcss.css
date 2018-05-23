@@ -111,10 +111,7 @@ ul {
   cursor: pointer;
 }
 
-.div-item-nhom-popup{
-     border: solid 1px #9695d8;border-radius: 50%; height: 77px;width: 77px;float: left;margin: 4px;
-     cursor: pointer;
-}
+
 
 
 
@@ -134,19 +131,8 @@ ul {
   cursor: pointer;
 }*/
 
-#div-group-tham-gia{
-  /*border-top: 1px #9695d8 solid;*/
-}
-.btn-nhom-menu-dy{
-   float: right;
-  background-color: #9695d8;
-  color: white;
-  height: 25px;
-  border-radius: 3px;
-  border: 1px #9695d8 solid;
-  padding: 3px;
-  cursor: pointer;
-}
+
+
 /*#btn-huy-tao-nhom-in-model{
   float: right;
   background-color: #9695d8;

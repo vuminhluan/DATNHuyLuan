@@ -30,7 +30,7 @@ trait BaiVietTrait{
     	$baiviet->save();							
         return "hihi-traittttttttttttttxxxxxxxxxxxxxxxx";		
     }
-    public function public function GetBaiVietTheoChuBaiVietT($rq)
+    public function GetBaiVietTheoChuBaiVietT($rq)
     {
             $lstbaivietTheoMaChuBaiViet = DB::table('baiviet')->where("ma_chu_bai_viet",$rq->ma_chu_bai_viet)->take(10)->get();
             return $lstbaivietTheoMaChuBaiViet;

@@ -1,16 +1,44 @@
-function taonhommoi(l)
-{
- //   alert("tao nhom moi");
- if (l) {
-            $('#div-group-tham-gia').css("display","none");
-            $('#div-content-tao-nhom').css("display","block");
-        }
-        else{
-            $('#div-group-tham-gia').css("display","block");
-            $('#div-content-tao-nhom').css("display","none");
-        }
+// function taonhommoi(l)
+// {
+//  //   alert("tao nhom moi");
+//  if (l) {
+//             $('#div-content-gr-thamgia-quanly').css("display","none");
+//             $('#div-content-tao-nhom').css("display","block");
+//             //div-content-tim-kiem-nhom
+//         }
+//         else{
+//             $('#div-content-gr-thamgia-quanly').css("display","block");
+//             $('#div-content-tao-nhom').css("display","none");
+//         }
    
+// }
+
+
+function opencontent_nhom(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tab-content-nhom");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    // tablinks = document.getElementsByClassName("tablinks");
+    // for (i = 0; i < tablinks.length; i++) {
+    //     tablinks[i].className = tablinks[i].className.replace(" active", "");
+    // }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    // evt.currentTarget.className += " active";
 }
+
+
+
+
+
 
 function submittaonhom()
 {
@@ -65,6 +93,8 @@ alert(manhom);
     }).done(function(data){
          //   alert(tennhom+"tao thanh cong");
             alert(data);
+            //sau khi xong thì chuyển về tab các nhóm
+            opencontent_nhom(event,'div-content-gr-thamgia-quanly'); 
     })
     })
 }
