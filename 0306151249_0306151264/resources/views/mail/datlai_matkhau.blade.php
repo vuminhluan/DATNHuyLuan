@@ -11,10 +11,11 @@
 
   <h1>DATN</h1>
   <br>
-  <p>Xin chào {{Auth::user()->ho_ten_lot." ". Auth::user()->ten }},</p>
-  <p>Chúng tôi gửi mail này để giúp bạn cập nhật lại email mới.</p>
-  <p>Bấm vào <a href="{{url('/xacnhan/thaydoi/email/'.$user_id.'/'.md5($user_id.'xacnhan').'/'.$new_email.'/'.md5($new_email.'xacnhan'))}}">liên kết</a> để chấp nhận thay đổi email</p>
+  <p>Xin chào {{$data["fullname"]}},</p>
+  <p>Chúng tôi gửi mail này để giúp bạn đặt lại mật khẩu.</p>
+  <p>Bấm vào <a href="{{url('/matkhau/datlai/'.$data["username"].'/'.md5($data["id"]).'/'.md5($data["today"].'datlaimatkhau'))}}">liên kết</a> để đặt lại mật khẩu</p>
   <p>Hoặc bỏ qua mail này nếu đây không phải là bạn</p>
+  <p>Lưu ý: liên kết chỉ có hiệu lực đến 23:59:59 ngày {{date("d-m-Y")}}</p>
   <p>Cảm ơn !</p>
   <br>
   <small><i>Xin đừng trả lời mail này.</i></small>

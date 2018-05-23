@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailThayDoiEmail;
+use App\Mail\MailDatLaiMatKhau;
 
 use App\Traits\XacNhanMatKhauTrait;
 use App\Traits\CapNhatDoiTuongTrait;
@@ -35,7 +36,7 @@ class CaiDatController extends Controller
       return ['errors' => ["confirm_password" => ["Mật khẩu xác nhận không đúng"] ]];
     }
 
-    $rules = [];
+    $rules    = [];
     $messages = [];
     // Nếu người dùng thay đổi tài khoản và email hiện tại
     //  => Kiểm tra xem tài khoản và email đó đã có người sử dụng chưa
@@ -134,9 +135,99 @@ class CaiDatController extends Controller
   {
     return view('caidat.quen_matkhau');
   }
-  public function postQuenMatKhau()
+
+  public function getKhongPhaiToi()
   {
-    return "Hãy kiểm tra email để nhận mã thay đổi mật khẩu";
+    Auth::logout();
+    return redirect()->back();
+  }
+
+  public function postQuenMatKhau(Request $req)
+  {
+
+    // note: return $taikhoan->hasNguoiDung->ten;
+    $today = date('d-m-Y');
+    $expiry_date =  date('d-m-Y', strtotime("+01 days")); // chuỗi date_create($date) return datetime
+    // return date_create(date('Y-m-d')) == date_create('2018-05-23') ? 'homnay' : 'sai';
+
+    if(!$req->username) {
+      
+      $data = [
+        'username' => Auth::user()->ten_tai_khoan,
+        'id'       => Auth::user()->ma_tai_khoan,
+        'email'    => Auth::user()->email,
+        'fullname' => Auth::user()->nguoi_dung->ho_ten_lot.' '.Auth::user()->nguoi_dung->ten,
+        'today'    => $today
+      ];
+
+      Mail::send(new MailDatLaiMatKhau($data));
+
+      return redirect()->back()->with(
+        'forget-password-message',
+        'Chúng tôi đã gửi một liên kết tới email '.Auth::user()->email.' để giúp bạn đặt lại mật khẩu của mình. Lưu ý, liên kết chỉ có hiệu lực trước 00:00:01 ngày '.$expiry_date
+      );
+
+    }
+
+    $taikhoan;
+    if( filter_var($req->username, FILTER_VALIDATE_EMAIL)) {
+      $taikhoan = TaiKhoan::where('email', $req->username)->first();
+    } else {
+      $taikhoan = TaiKhoan::where('ten_tai_khoan', $req->username)->first();
+    }
+
+    if(!$taikhoan) {
+      return redirect()->back()->with(
+        'forget-password-message',
+        'Tài khoản hoặc email không tồn tại'
+      )->withInput();
+    }
+
+    //Thỏa điều kiện
+    //Gửi mail ở đây
+    $data = [
+      'username' => $taikhoan->ten_tai_khoan,
+      'id'       => $taikhoan->ma_tai_khoan,
+      'email'    => $taikhoan->email,
+      'fullname' => $taikhoan->hasNguoiDung->ho_ten_lot.' '.$taikhoan->hasNguoiDung->ten,
+      'today'    => $today
+    ];
+
+    Mail::send(new MailDatLaiMatKhau($data));
+
+    return redirect()->back()->with(
+      'forget-password-message',
+      'Chúng tôi đã gửi một liên kết tới email '.$taikhoan->email.' để giúp bạn đặt lại mật khẩu của mình. Lưu ý, liên kết chỉ có hiệu lực trước 00:00:01 ngày '.$expiry_date
+    );
+
+
+  }
+
+  public function getDatLaiMatKhau($username, $userid_md5, $today_md5)
+  {
+    // return "Dat lai mat khau: ".$username." ".$userid_md5." ".$today_md5;
+
+    if(md5(date('d-m-Y').'datlaimatkhau') != $today_md5) {
+      return "Liên kết đã hết hiệu lực";
+    }
+
+    $taikhoan = TaiKhoan::where('ten_tai_khoan', $username)->first();
+    if($taikhoan) {
+      if (md5($taikhoan->ma_tai_khoan) == $userid_md5) {
+        if(!Auth::check()) Auth::login($taikhoan);
+        return view('caidat.datlai_matkhau');
+      }
+    }
+
+    abort(404);
+  }
+
+  public function postDatLaiMatKhau(Request $req)
+  {
+    $taikhoan = TaiKhoan::where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->first();
+    $taikhoan->mat_khau = bcrypt($req->new_password);
+    $taikhoan->save();
+    return redirect()->route('caidat.index');
   }
 
 }

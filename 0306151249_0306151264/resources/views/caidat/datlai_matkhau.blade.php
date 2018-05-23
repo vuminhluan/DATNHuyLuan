@@ -12,7 +12,7 @@
     <div class="topnav" >
       <ul class="navtop-menu">
         <li><a href="{{route('trangchu')}}">Logo here</a></li>
-        <li><a href="#/">Quên mật khẩu</a></li>
+        <li><a href="#/">Đặt lại mật khẩu</a></li>
       </ul>
     </div>
   </div>
@@ -20,24 +20,14 @@
   <div class="reset-password-container">
 		<div class="reset-password-main">
 			<div class="reset-password-form">
-				<form action="{{ route('caidat.post.quen_matkhau') }}" id="forget-password-form" name="forget-password-form" method="POST">
+				<form action="{{ route('caidat.post.quen_matkhau.datlai') }}" id="reset-password-form" method="POST">
 					@csrf
 					<div>
-						<h2 style="position: relative;">Quên mật khẩu <span class="ajax-loader"><img src="{{asset('pictures/luan/ajax-loader.gif')}}"></span></h2>
+						<h2 style="position: relative;">Đặt lại mật khẩu</h2>
 					</div>
-
-					@if (session('forget-password-message'))
-						<div style="display: block;" class="myalert reset-password-alert">
-							<div class="--content">
-								<p style="font-family: 'Baomoi'">{{session('forget-password-message')}}</p>
-							</div>
-							<span class="--close fa fa-times"></span>
-						</div>
-					@endif
-					
-
+	
 					<div>
-						<p class="description"  >Để giúp bạn lấy lại mật khẩu, chúng tôi cần biết email mà bạn đã dùng để đăng kí.</p>
+						<p class="description">Để đặt lại mật khẩu, bạn hãy chọn cho mình một mật khẩu mới.</p>
 					</div>
 					@if (Auth::check())
 						<div class="authed-account">
@@ -45,16 +35,19 @@
 							&nbsp;&nbsp;&nbsp;
 							<p>{{Auth::user()->ten_tai_khoan}} <br> {{Auth::user()->email}}</p>
 						</div>
-						<p>Không phải bạn? Nhấn vào <a href="{{ route('caidat.quen_matkhau.khongphaitoi') }}">đây</a> để đăng xuất.</p>
-					@else
-						<div>
-							<label for="username">Tên đăng nhập hoặc email</label>
-							<input type="text" id="username" name="username" value="{{old('username')}}">
-						</div>
 					@endif
+
+					<div>
+						<label for="new_password">Mật khẩu mới</label>
+						<input type="password" id="new_password" name="new_password">
+					</div>
+					<div>
+						<label for="confirm_password">Nhập lại mật khẩu mới</label>
+						<input type="password" id="confirm_password" name="confirm_password">
+					</div>
 					
 					<div>
-						<button id="forget-password-button">Nhận email trợ giúp</button>
+						<button id="reset-password-button">Đặt lại mật khẩu</button>
 					</div>
 				</form>
 			</div>

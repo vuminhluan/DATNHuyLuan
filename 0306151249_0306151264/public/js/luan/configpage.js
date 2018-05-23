@@ -363,6 +363,35 @@ $(document).ready(function() {
   // End trang quên mật khẩu
 
 
+  // Trang đặt lại mật khẩu reset password
+
+  $('#reset-password-form').validate({
+    rules: {
+      new_password: {
+        regex: myregex['matkhau'],
+        required: true
+      },
+      confirm_password: {
+        required: true,
+        equalTo: "#new_password"
+      }
+    },
+    messages: {
+      new_password: {
+        required: 'Hãy chọn một mật khẩu mới',
+        regex: 'Mật khẩu dài từ 6 - 30 kí tự, gồm các chữ số, chữ cái in thường không dấu và dấu gạch dưới " _ "'
+      },
+      confirm_password: {
+        required: 'Vì lý do bảo mật, bạn cần nhập lại mật khẩu mới',
+        equalTo: 'Mật khẩu xác nhận không khớp với mật khẩu mới của bạn'
+      }
+    }
+  });
+
+
+  // End trang đặt lại mật khẩu
+
+
 
 
 });
