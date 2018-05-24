@@ -23,6 +23,18 @@ class Nhom extends Controller
     	return $manhom->ma_nhom;
     }
 
+    public function gettimkiemnhom(Request $rql)
+    {
+        $lstnhomtimkiem;
+        if ($rql->ten_nhom!="") {
+           $lstnhomtimkiem = DB::table('nhom')->where("ten_nhom","LIKE","%$rql->ten_nhom%")->take(5)->get();
+        }
+        else{
+         $lstnhomtimkiem = DB::table('nhom')->where("ten_nhom","LIKE","%$rql->ten_nhom%")->take(0)->get();
+        }
+        return $lstnhomtimkiem;
+    }
+
 
     public function getnhom(Request $rql)
     {

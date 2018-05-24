@@ -24,6 +24,41 @@ function opencontent_nhom(evt, cityName) {
     // evt.currentTarget.className += " active";
 }
 function search_group(){
-	alert("hihi");
+
+	//alert("hihi");
+    $.ajax({
+        url: link_host+'/ajax/getlsttimkiemnhomne',
+        type: 'GET',
+        data: {
+            ten_nhom: $('#input-search-gr').val()
+        }
+    }).done(function(data){
+        //alert(data[0].ma_nhom);
+        var listsearchdiv = document.getElementById('div-ket-qua-tim-kiem');
+       // alert(listsearchdiv.childNodes.length);
+        // for (var i = 0; i < listsearchdiv.childNodes.length; i++) {
+        //     listsearchdiv.removeChild(listsearchdiv.childNodes[i]);
+        // }
+        while(listsearchdiv.firstChild){
+            listsearchdiv.removeChild(listsearchdiv.firstChild);
+        }
+
+        for (var i = 0; i < data.length; i++) {
+            var divkq = document.createElement("div");
+        divkq.style.height= "70px";
+        divkq.style.with="100%";
+        divkq.style.background ="white";
+        divkq.style.color="black";
+        divkq.style.borderBottom ="solid 1px #9695d8";
+        divkq.innerHTML = data[i].ma_nhom;
+        document.getElementById("div-ket-qua-tim-kiem").appendChild(divkq);
+        }
+        
+
+
+       // console.log(Object.values(data));
+        // $('#div-ket-qua-tim-kiem').html(data->ma_nhom);
+        // alert("lay thanh cong 1");
+    })
 }
 

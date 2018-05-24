@@ -1,10 +1,9 @@
-#div-content-tim-kiem-nhom{
- display: none ;
-}
-
-/* width */
 #div-content-gr-thamgia-quanly ::-webkit-scrollbar {
     width: 10px;
+    height: 7px;
+}
+#div-ket-qua-tim-kiem ::-webkit-scrollbar{
+  width: 10px;
     height: 7px;
 }
 
@@ -22,6 +21,18 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #555; 
 }
+
+
+
+#div-content-tim-kiem-nhom{
+ display: none ;
+}
+/*#div-ket-qua-tim-kiem{
+  height: 200px !important;
+  overflow: auto !important;
+
+}*/
+/* width */
 
 
 

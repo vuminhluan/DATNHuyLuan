@@ -105,7 +105,7 @@
                        <div id="div-input-search">
                         <input style="width: 100%;height: 35px;border:solid 1px #9695d8;padding-left: 5px;" onkeyup="search_group()" type="text" name="input-search-group" id="input-search-gr"  placeholder="Nhập vào mã nhóm cần tìm..">
                        </div>
-                       <div id="div-ket-qua-tim-kiem">
+                       <div id="div-ket-qua-tim-kiem" style="height: 250px;overflow: auto;">
                        </div>
                      </div>
                   {{-- end div tim kiem nhom --}}
