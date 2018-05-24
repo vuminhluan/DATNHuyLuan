@@ -1,5 +1,11 @@
 
 @extends('master.masterpage')
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/lu/nhom/nhomcss.css') }}">
+@endsection
+@section('javascript')
+<script src="{{ asset('js/jslu/nhom/nhomjs.js') }}" type="text/javascript" charset="utf-8" async defer></script>
+@endsection
 @section('main')
  <!-- body -->
     <div class="topnav contentmain  ">
@@ -8,7 +14,11 @@
 </div>
 <!-- end ảnh bìa -->
        <div class="leftnav" >
-         <div id="thongtincuanhom"></div>
+         <div id="thongtincuanhom">
+           <div style="margin-top: 5px;margin-right: 5px;">
+             <div id="div-btn-show-menu-setting-nhom" style="border: solid 1px #9695d8; cursor: pointer;width: 287px;height: 36px;float: right;padding: 5px;"><h3><i class="fa fa-envelope-o" aria-hidden="true"> &nbsp;Thông báo của quản lý nhóm</i></h3></div>
+           </div>
+         </div>
          <div id="thongtinkhaccuanhom"></div>
         </div>
         
@@ -34,6 +44,12 @@
         <div class="rightnav">
         </div>
 
+    </div>
+    {{-- setting group --}}
+    <div id="div-setting-nhom-menu" class="modal-setting-nhom">
+     
+        @include('includes.content-setting-group-menu')
+     
     </div>
     <!-- //// -->
 @endsection
