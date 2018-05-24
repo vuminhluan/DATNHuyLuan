@@ -38,18 +38,19 @@ class TrangCaNhanController extends Controller
 	}
 
 	public function getNhom($username)
-	{
+	{	
+		$taikhoan = TaiKhoan::where('ten_tai_khoan', $username)->first();
 		$tatca_gioitinh = DB::table('gioi_tinh')->get();
-		return view('trang_ca_nhan.danhsach_nhom')->with(['username'=>$username, 'tatca_gioitinh'=>$tatca_gioitinh]);
+		return view('trang_ca_nhan.danhsach_nhom')->with(['taikhoan'=>$taikhoan, 'tatca_gioitinh'=>$tatca_gioitinh]);
 	}
 
 	public function capNhatNguoiDung(Request $req)
 	{
-		$ho_ten_lot = $req['profile-family-middle-name'];
-		$ten = $req['profile-first-name'];
-		$gioi_thieu = preg_replace( "/(\r\n)/", " ", $req['profile-bio']);
-		$gioi_tinh = $req['profile-gender'];
-		$ngay_sinh = $req['profile-birthday'];
+		$ho_ten_lot = $req->profile_family_middle_name;
+		$ten = $req->profile_first_name;
+		$gioi_thieu = preg_replace( "/(\r\n)/", " ", $req->profile_bio);
+		$gioi_tinh = $req->profile_gender;
+		$ngay_sinh = $req->profile_birthday;
 		$nguoi_sua = Auth::user()->ma_tai_khoan;
 
 		// return Auth::user()->ma_tai_khoan;
@@ -64,7 +65,7 @@ class TrangCaNhanController extends Controller
 		$nguoi_dung->nguoi_sua = $nguoi_sua;
 		$nguoi_dung->save();
 
-		return redirect()->back();
+		return redirect()->back()->with('my_message', 'Cập nhật thông tin thành công');
 	}
 
 	public function capNhatAnhNguoiDung($kind_of_image, Request $req)

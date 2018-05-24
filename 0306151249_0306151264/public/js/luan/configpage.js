@@ -17,15 +17,8 @@ $(document).ready(function() {
     $(this).parents('.myalert').fadeOut('fast');
   });
 
-
   // add rule regex
   $.validator.addMethod( "regex", function(value, element, regexp) {
-    var re = new RegExp(regexp);
-    return re.test(value);
-    }, "Dữ liệu không hợp lệ."
-  );
-
-  $.validator.addMethod( "capslockon", function(value, element, regexp) {
     var re = new RegExp(regexp);
     return re.test(value);
     }, "Dữ liệu không hợp lệ."

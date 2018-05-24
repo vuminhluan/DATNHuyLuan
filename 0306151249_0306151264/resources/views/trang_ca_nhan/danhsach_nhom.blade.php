@@ -1,7 +1,7 @@
 @extends('master.luan.trangcanhan_masterpage')
 
 @section('title')
-	<title>{{$username}} - Tất cả các nhóm tham gia</title>
+	<title>{{'@'.$taikhoan->ten_tai_khoan}} - Tất cả các nhóm tham gia</title>
 @endsection
 
 @section('profile_css')
