@@ -45,6 +45,11 @@ Route::get('/matkhau/datlai/{username}/{userid_md5}/{today_md5}', 'CaiDatControl
 Route::post('/matkhau/datlai', 'CaiDatController@postDatLaiMatKhau')->name('caidat.post.quen_matkhau.datlai')->middleware('MyUserAuth');
 
 
+// Route::group(['middleware' => ['MyUserAuth']], function () {
+	
+// });
+
+
 
 Route::prefix('caidat')->group(function () {
 
@@ -63,6 +68,8 @@ Route::prefix('caidat')->group(function () {
 		Route::post('/taikhoan/vohieuhoa/dongy', 'CaiDatController@postVoHieuHoaTaiKhoan')->name('caidat.post.vohieuhoa');
 
 		Route::get('/taikhoan/bichan', 'CaiDatController@getTrangTaiKhoanBiChan')->name('caidat.chan_taikhoan');
+		Route::get('/taikhoan/chan/{userid}/{username}', 'CaiDatController@getChanMotTaiKhoan')->name('caidat.chan.mot_taikhoan');
+
 
 		Route::get('/matkhau/thaydoi', 'CaiDatController@getTrangThayDoiMatKhau')->name('caidat.thaydoi_matkhau');
 		Route::post('/matkhau/thaydoi/dongy', 'CaiDatController@postThayDoiMatKhau')->name('caidat.thaydoi_matkhau.dongy');
