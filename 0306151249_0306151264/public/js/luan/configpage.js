@@ -393,5 +393,31 @@ $(document).ready(function() {
 
 
 
+  // Trang liệt kê danh sách tài khoản bị chặn
+
+  $('.blocked-account-button-and-action button').click(function() {
+    var userID = $(this).attr('data-id');
+    var username = $(this).attr('data-username');
+
+    $.ajax({
+      url: '/caidat/taikhoan/chan/'+userID+'/'+username,
+      type: 'GET'
+    })
+    .done(function(response) {
+      if(response) {
+        var m = "<p>"+response+"</p>";
+        $('.myalert .--content').html(m);
+        $('.myalert').fadeIn('fast');
+      }
+    });
+    
+  });
+
+
+
+  // End Trang liệt kê danh sách tài khoản bị chặn
+
+
+
 
 });

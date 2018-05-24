@@ -125,10 +125,7 @@ class CaiDatController extends Controller
   // End Vô hiệu hóa tài khoàn
 
 
-  public function getTrangTaiKhoanBiChan()
-  {
-    return view('caidat.danhsach_taikhoan_bichan');
-  }
+  
 
 
   public function getQuenMatKhau()
@@ -228,6 +225,88 @@ class CaiDatController extends Controller
     $taikhoan->mat_khau = bcrypt($req->new_password);
     $taikhoan->save();
     return redirect()->route('caidat.index');
+    // Chưa gửi tin nhắn thông báo ->with('message', '');
   }
+
+
+
+
+  // Trang liệt kê danh sách tài khoản bị chặn
+
+
+  public function getTrangTaiKhoanBiChan()
+  {
+    // return view('caidat.danhsach_taikhoan_bichan');
+
+    $locked_accounts = DB::table('tai_khoan AS tk_bichan')
+      ->join('tai_khoan_bi_chan AS danhsach', 'danhsach.ma_tai_khoan_bi_chan', '=', 'tk_bichan.ma_tai_khoan')
+      ->join('nguoi_dung AS nd_bichan', 'nd_bichan.ma_tai_khoan', '=', 'tk_bichan.ma_tai_khoan')
+      ->where('danhsach.ma_tai_khoan_chan', '=', Auth::user()->ma_tai_khoan)
+      ->orderBy('thoi_gian_chan', 'desc')
+      ->select(
+        'tk_bichan.ma_tai_khoan',
+        'tk_bichan.ten_tai_khoan',
+        'nd_bichan.anh_dai_dien',
+        DB::raw("CONCAT(nd_bichan.ho_ten_lot,' ', nd_bichan.ten) AS hoten_nguoi_bichan")
+
+      )->get();
+      
+
+    // return $locked_accounts;
+    return view('caidat.danhsach_taikhoan_bichan')->with(['locked_accounts' => $locked_accounts]);
+    // return view('admin.gioitinh.index')->with(['tatca_gioitinh'=>$tatca_gioitinh]);
+  }
+
+
+  /*Chan 1 tai khoan*/
+  public function getChanMotTaiKhoan($user_id, $username)
+  {
+    // return $user_id. " ".$username;
+    // date_default_timezone_set("Asia/Ho_Chi_Minh");
+    $date = date('Y-m-d h:i:s');
+
+    $taikhoan_bichan = DB::table('tai_khoan_bi_chan')
+      ->where([
+              ['ma_tai_khoan_bi_chan', '=', $user_id],
+              ['ma_tai_khoan_chan', '=', Auth::user()->ma_tai_khoan]
+        ])->get();
+
+    // Nếu tồn tại trong bảng bị chặn => bỏ chặn
+    if(count($taikhoan_bichan) > 0) {
+      // return "ok";
+      return $this->getBoChanMotTaiKhoan($user_id, $username);
+
+    }
+
+    // Chặn tài khoản (insert)
+    DB::table('tai_khoan_bi_chan')->insert(
+      [
+        'ma_tai_khoan_bi_chan' => $user_id,
+        'ma_tai_khoan_chan'    => Auth::user()->ma_tai_khoan,
+        'thoi_gian_chan'       => $date
+      ]
+    );
+
+    return "Bạn đã chặn tài khoản @".$username;
+
+  }
+
+  public function getBoChanMotTaiKhoan($user_id, $username)
+  {
+    // return "Tai khoan nay ko bi chan";
+    // Chặn tài khoản (delete)
+    // $taikhoan_bichan->delete();
+    
+    DB::table('tai_khoan_bi_chan')
+      ->where([
+          ['ma_tai_khoan_bi_chan', '=', $user_id],
+          ['ma_tai_khoan_chan', '=', Auth::user()->ma_tai_khoan]
+        ])->delete();
+
+    return "Bạn đã bỏ chặn tài khoản @".$username;
+
+  }
+
+  // Trang liệt kê danh sách tài khoản bị chặn.
 
 }
