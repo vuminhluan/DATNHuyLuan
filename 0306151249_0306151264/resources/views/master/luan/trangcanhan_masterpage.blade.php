@@ -11,31 +11,35 @@
 @section('main')
 	<div class="profile-image">
 		<div class="profile-banner">
-			<img src="{{asset('pictures/anh_bia/'.Auth::user()->nguoi_dung->anh_bia)}}" alt="">
-			<div class="edit-profile-banner-button edit-profile-image">
-				<div>
-					<p class="fa fa-camera-retro -icon"></p>
-					<p>Thay đổi ảnh bìa</p>
-					<form class="uploader" action="{{route('post_taikhoan.anh.capnhat', 'anh_bia')}}" method="POST" enctype="multipart/form-data">
-						@csrf
-						<input type="file" name="upload_banner" id="upload-banner">
-					</form>
-				</div>
-			</div>
-		</div>
-		<div class="main">
-			<div class="profile-avatar">
-				<img src="{{asset('pictures/anh_dai_dien/'.Auth::user()->nguoi_dung->anh_dai_dien.'')}}" alt="">
-				<div class="edit-profile-avatar-button edit-profile-image">
+			<img src="{{asset('pictures/anh_bia/'.$taikhoan->hasNguoiDung->anh_bia)}}" alt="">
+			@if (Auth::user()->ten_tai_khoan == $taikhoan->ten_tai_khoan)
+				<div class="edit-profile-banner-button edit-profile-image">
 					<div>
 						<p class="fa fa-camera-retro -icon"></p>
-						<p>Thay đổi ảnh đại diện</p>
-						<form class="uploader" action="{{route('post_taikhoan.anh.capnhat', 'anh_dai_dien')}}" method="POST" enctype="multipart/form-data">
+						<p>Thay đổi ảnh bìa </p>
+						<form class="uploader" action="{{route('post_taikhoan.anh.capnhat', 'anh_bia')}}" method="POST" enctype="multipart/form-data">
 							@csrf
-							<input type="file" name="upload_avatar" id="upload-avatar">
+							<input type="file" name="upload_banner" id="upload-banner">
 						</form>
 					</div>
 				</div>
+			@endif
+		</div>
+		<div class="main">
+			<div class="profile-avatar">
+				<img src="{{asset('pictures/anh_dai_dien/'.$taikhoan->hasNguoiDung->anh_dai_dien)}}" alt="">
+				@if (Auth::user()->ten_tai_khoan == $taikhoan->ten_tai_khoan)
+					<div class="edit-profile-avatar-button edit-profile-image">
+						<div>
+							<p class="fa fa-camera-retro -icon"></p>
+							<p>Thay đổi ảnh đại diện</p>
+							<form class="uploader" action="{{route('post_taikhoan.anh.capnhat', 'anh_dai_dien')}}" method="POST" enctype="multipart/form-data">
+								@csrf
+								<input type="file" name="upload_avatar" id="upload-avatar">
+							</form>
+						</div>
+					</div>
+				@endif
 			</div>
 		</div>
 	</div>
@@ -82,12 +86,12 @@
 		<div class="leftnav-profile-masterpage leftnav-profile sidebar">
 			<div>
 				<div class="profile-name">
-					<h2>{{Auth::user()->nguoi_dung->ho_ten_lot.' '.Auth::user()->nguoi_dung->ten}}</h2>
-					<p><a class="luan_link" href="{{route('trangcanhan.index', ['username'=>'vuminhluan'])}}">{{'@'.Auth::user()->ten_tai_khoan}}</a></p>
+					<h2>{{$taikhoan->hasNguoiDung->ho_ten_lot.' '.$taikhoan->hasNguoiDung->ten}}</h2>
+					<p><a class="luan_link" href="{{route('trangcanhan.index', ['username'=>'vuminhluan'])}}">{{'@'.$taikhoan->ten_tai_khoan}}</a></p>
 
 				</div>
 				<div class="profile-bio">
-					<p>{{Auth::user()->nguoi_dung->gioi_thieu}} </p>
+					<p>{{$taikhoan->hasNguoiDung->gioi_thieu}} </p>
 				</div>
 				<div class="profile-primary-info">
 					{{-- <p>
@@ -98,14 +102,14 @@
 					<p>
 						<i class="fa fa-clock-o"></i>
 						&nbsp;
-						<span>Tham gia ngày: {{date_format(Auth::user()->thoi_gian_tao, "d/m/Y")}}</span>
+						<span>Tham gia ngày: {{date_format($taikhoan->thoi_gian_tao, "d/m/Y")}}</span>
 					</p>
 					@if (Auth::user()->nguoi_dung->ngay_sinh != null)
 					<p>
 						<i class="fa fa-calendar"></i>
 						&nbsp;
 						<span>Ngày sinh:
-							{{date_format(date_create(Auth::user()->nguoi_dung->ngay_sinh), "d/m/Y")}}
+							{{date_format(date_create($taikhoan->hasNguoiDung->ngay_sinh), "d/m/Y")}}
 						</span>
 					</p>
 					@endif
@@ -121,13 +125,15 @@
 						<li><a class="luan_link" href="{{asset('pictures/luan/test1.png')}}"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
 					</ul>
 				</div>
-				<div id="edit-profile-button">
-					<p class="edit-profile edit-name">
-						<i class="fa fa-edit"></i>
-						&nbsp;
-						<a class="luan_link modal-open-button" href="#/" onclick="openModal('js-edit-profile-modal')">Chỉnh sửa thông tin hiển thị trang cá nhân.</a>
-					</p>
-				</div>
+				@if (Auth::user()->ten_tai_khoan == $taikhoan->ten_tai_khoan)
+					<div id="edit-profile-button">
+						<p class="edit-profile edit-name">
+							<i class="fa fa-edit"></i>
+							&nbsp;
+							<a class="luan_link modal-open-button" href="#/" onclick="openModal('js-edit-profile-modal')">Chỉnh sửa thông tin hiển thị trang cá nhân.</a>
+						</p>
+					</div>
+				@endif
 			</div>
 		</div>
 		<!--  -->

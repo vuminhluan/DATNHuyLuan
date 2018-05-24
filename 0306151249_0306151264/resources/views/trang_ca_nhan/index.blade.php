@@ -1,12 +1,12 @@
 @extends('master.luan.trangcanhan_masterpage')
 
 @section('title')
-	<title>Trang cá nhân {{$username}}</title>
+	<title>Trang cá nhân {{'@'.$taikhoan->ten_tai_khoan}}</title>
 @endsection
 
 @section('noidung_trangcanhan')
 <div class="content">
-	Bài viết ở đây (Theo tứ tự mới nhất -> cũ) {{$username}}
+	Bài viết ở đây (Theo tứ tự mới nhất -> cũ)
 </div>
 
 

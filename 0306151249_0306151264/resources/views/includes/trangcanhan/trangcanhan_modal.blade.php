@@ -11,17 +11,17 @@
 			<div class="profile-edit modal-body">
 				<div>
 					<label for="profile-family-middle-name">Họ và tên đệm</label>
-					<input type="text" class="profile-name" id="profile-family-middle-name" name="profile-family-middle-name"  value="{{ Auth::user()->nguoi_dung->ho_ten_lot }}" autocomplete='off'>
+					<input type="text" class="profile-name" id="profile-family-middle-name" name="profile-family-middle-name"  value="{{$taikhoan->hasNguoiDung->ho_ten_lot}}" autocomplete='off'>
 					 <span class="character-counter" id="profile-family-middle-name-counter" data-limit='35'>35</span>
 				</div>
 				<div>
 					<label for="profile-first-name">Tên</label>
-					<input type="text" class="profile-name" id="profile-first-name" name="profile-first-name" value="{{Auth::user()->nguoi_dung->ten}}" autocomplete='off'>
+					<input type="text" class="profile-name" id="profile-first-name" name="profile-first-name" value="{{$taikhoan->hasNguoiDung->ten}}" autocomplete='off'>
 					<span class="character-counter" id="profile-first-name-counter" data-limit='15'>15</span>
 				</div>
 				<div>
 					<label for="profile-bio">Giới thiệu</label>
-					<textarea class="js-autoexpand" name="profile-bio" id="profile-bio" rows="2" autocomplete='off'>{{ Auth::user()->nguoi_dung->gioi_thieu }}</textarea>
+					<textarea class="js-autoexpand" name="profile-bio" id="profile-bio" rows="2" autocomplete='off'>{{$taikhoan->hasNguoiDung->gioi_thieu}}</textarea>
 					<span class="character-counter" id="profile-bio-counter" data-limit='10'>10</span>
 				</div>
 				<div>
@@ -29,7 +29,7 @@
 					<select style="width: 100%;" name="profile-gender" id="profile-gender">
 						{{-- <option value="Nam">Nam</option> --}}
 						@foreach ($tatca_gioitinh as $gt)
-							<option {{$gt->ma_gioi_tinh == Auth::user()->nguoi_dung->ma_gioi_tinh ? 'selected' : ''}} value="{{$gt->ma_gioi_tinh}}">{{$gt->ten_gioi_tinh.' '.$gt->ma_gioi_tinh. ' '.Auth::user()->nguoi_dung->ma_gioi_tinh}}</option>
+							<option {{$gt->ma_gioi_tinh == Auth::user()->nguoi_dung->ma_gioi_tinh ? 'selected' : ''}} value="{{$gt->ma_gioi_tinh}}">{{$gt->ten_gioi_tinh.' '.$gt->ma_gioi_tinh. ' '.$taikhoan->hasNguoiDung->ma_gioi_tinh}}</option>
 						@endforeach
 					</select>
 				</div>

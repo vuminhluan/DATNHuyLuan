@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\TaiKhoan;
+use App\TaiKhoan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -15,7 +15,26 @@ class TrangCaNhanController extends Controller
 	public function getTrangCaNhan($username)
 	{
 		$tatca_gioitinh = DB::table('gioi_tinh')->get();
-		return view('trang_ca_nhan.index')->with(['username'=>Auth::user()->ten_tai_khoan, 'tatca_gioitinh'=>$tatca_gioitinh]);
+		// return $tatca_gioitinh;
+
+		// $taikhoan_nguoidung = DB::table('tai_khoan AS tk')
+		// 	->join('nguoi_dung AS nd', 'tk.ma_tai_khoan', '=', 'nd.ma_tai_khoan')
+		// 	->where('tk.ten_tai_khoan', '=', $username)
+		// 	->select(
+		// 		'tk.*',
+		// 		DB::raw("CONCAT(nd.ho_ten_lot,' ', nd.ten) AS hoten_nguoidung")
+		// 	)->get();
+
+			// return $taikhoan_nguoidung;
+
+		$taikhoan = TaiKhoan::where('ten_tai_khoan', $username)->first();
+		// return $taikhoan->hasNguoiDung->ten;
+
+		if(!$taikhoan || $taikhoan->trang_thai != 2) {
+			abort(404);
+		}
+
+		return view('trang_ca_nhan.index')->with(['taikhoan'=>$taikhoan, 'tatca_gioitinh'=>$tatca_gioitinh]);
 	}
 
 	public function getNhom($username)
