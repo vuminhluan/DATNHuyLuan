@@ -40,22 +40,24 @@
 						</form>
 					</div>
 					
+					
 					<ul class="file-list">
+						
 						<li>
 							<span>Sắp xếp</span>
 							<select name="sort" id="sort">
-								<option value="1">Mới nhất</option>
-								<option value="0">Cũ nhất</option>
+								{{-- des - giảm => Ngày gần nhất -> ngày xa hơn (mới nhất) --}}
+								{{-- asc - tăng => Ngày cũ nhất -> ngày mới hơn (cũ nhất)--}}
+								<option value="desc" selected>Mới nhất</option>
+								<option value="asc" >Cũ nhất</option>
 							</select>
 						</li>
-						
-
-						<li class="item link-hover1">
+						<li id="bbb" class="item link-hover1">
 							<div>
 								<img class="pos-absolute item-icon" src="{{asset('myicons/tep/file.svg')}}" alt="">
 							</div>
 							<div>
-								<p><a href="#/">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, saepe?</a></p>
+								<p><a href="#/">aaa.rar</a></p>
 							</div>
 							<div class="item-date-created" data-date="2018-05-25"><p>25/05/2018</p></div>
 							<div class="item-action">
@@ -67,6 +69,8 @@
 											<li>Đăng bài viết với tệp này</li>
 											<li>Tải</li>
 											<li>Xóa</li>
+											<li>Công khai</li>
+											<li>Riêng tư</li>
 										</ul>
 									</div>
 
@@ -74,12 +78,12 @@
 							</div>
 						</li>
 
-						<li class="item link-hover1">
+						<li id="aaa" class="item link-hover1">
 							<div>
 								<img class="pos-absolute item-icon" src="{{asset('myicons/tep/file.svg')}}" alt="">
 							</div>
 							<div>
-								<p><a href="#/">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, saepe?</a></p>
+								<p><a href="#/">Lorem_ipsum_dolor.txt</a></p>
 							</div>
 							<div class="item-date-created" data-date="2018-05-10"><p>10/05/2018</p></div>
 							<div class="item-action">
@@ -91,6 +95,8 @@
 											<li>Đăng bài viết với tệp này</li>
 											<li>Tải</li>
 											<li>Xóa</li>
+											<li>Công khai</li>
+											<li>Riêng tư</li>
 										</ul>
 									</div>
 
@@ -103,7 +109,7 @@
 								<img class="pos-absolute item-icon" src="{{asset('myicons/tep/file.svg')}}" alt="">
 							</div>
 							<div>
-								<p><a href="#/">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, saepe?</a></p>
+								<p><a href="#/">xxx.rar</a></p>
 							</div>
 							<div class="item-date-created" data-date="2018-04-10"><p>10/04/2018</p></div>
 							<div class="item-action">
@@ -115,15 +121,14 @@
 											<li>Đăng bài viết với tệp này</li>
 											<li>Tải</li>
 											<li>Xóa</li>
+											<li>Công khai</li>
+											<li>Riêng tư</li>
 										</ul>
 									</div>
 
 								</span>
 							</div>
 						</li>
-
-						
-						
 
 					</ul>
 				</div>
