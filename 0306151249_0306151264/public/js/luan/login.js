@@ -252,7 +252,7 @@ function changeTab(n) {
       // alert(check); return;
       // return;
       $.ajax({
-        url: '/dangnhap',
+        url: link_host+'/dangnhap',
         type: 'POST',
         data: {
           _token: $('#sign-in-form input[name=_token]').val(),
@@ -271,7 +271,7 @@ function changeTab(n) {
           return;
         }
         // Đăng nhập thành công, chuyển hướng về trang chủ
-        window.location.href="/trangchu";
+        window.location.href=link_host+"/trangchu";
       });
     }
 
