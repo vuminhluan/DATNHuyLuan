@@ -23,6 +23,10 @@ function opencontent_nhom(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     // evt.currentTarget.className += " active";
 }
+function clickxinvaonhom(pr){
+    alert(pr.currentTarget.myParam);
+    document.getElementById("btnxingianhapnhom"+pr.currentTarget.myParam).innerHTML="Đã xin gia nhập";
+}
 function search_group(){
 
 	//alert("hihi");
@@ -51,6 +55,32 @@ function search_group(){
         divkq.style.color="black";
         divkq.style.borderBottom ="solid 1px #9695d8";
         divkq.innerHTML = data[i].ma_nhom;
+
+        var btnxingianhapnhom = document.createElement("div");
+        btnxingianhapnhom.style.height ="29px";
+        btnxingianhapnhom.style.with="30px";
+        btnxingianhapnhom.style.background="white";
+        btnxingianhapnhom.style.color="black";
+        btnxingianhapnhom.style.border="solid 1px #9695d8";
+        btnxingianhapnhom.innerHTML = '<i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp; Gia nhập';
+        btnxingianhapnhom.style.cursor="pointer";
+        btnxingianhapnhom.style.marginTop="0px";
+        btnxingianhapnhom.style.marginLeft="315px";
+        btnxingianhapnhom.style.borderRadius="3px";
+        btnxingianhapnhom.style.paddingLeft="10px";
+        btnxingianhapnhom.style.paddingTop="3px";
+        btnxingianhapnhom.addEventListener("click",clickxinvaonhom);
+        btnxingianhapnhom.myParam=data[i].ma_nhom;
+        btnxingianhapnhom.id="btnxingianhapnhom"+data[i].ma_nhom;
+        divkq.appendChild(btnxingianhapnhom);
+
+
+
+
+
+
+
+
         document.getElementById("div-ket-qua-tim-kiem").appendChild(divkq);
         }
         
