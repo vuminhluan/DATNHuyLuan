@@ -117,6 +117,17 @@ btn.onclick = function() {
 
 // When the user clicks anywhere outside of the modal, close it
 //ham nay o ben nhomjs.js roi
+
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    else if(event.target == modal_nhom)
+    {
+        modal_nhom.style.display="none";
+    }
+}
 // window.onclick = function(event) {
 //     if (event.target == modal) {
 //         modal.style.display = "none";
