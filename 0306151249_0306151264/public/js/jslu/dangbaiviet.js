@@ -298,7 +298,7 @@ $("#frmdangbaiviet").submit(function(event) {
       //lay so luong bai viet, và cấp mã, sau đó insert
       $.ajax(
           {
-          url: '/DATNHuyLuan/0306151249_0306151264/public/ajax/getmabaivietne',
+          url: link_host+'/ajax/getmabaivietne',
           type: 'GET',
           data:{
           }
@@ -317,7 +317,7 @@ $("#frmdangbaiviet").submit(function(event) {
           ///document.getElementById("iptextdangbaiviet").value,
               $.ajax(
               {
-                  url: '/DATNHuyLuan/0306151249_0306151264/public/ajax/postbaivietne',
+                  url: link_host+'/ajax/postbaivietne',
                   type: 'POST',
                   data:{
                   _token: $('input[name=_token]').val(),
@@ -348,7 +348,7 @@ $("#frmdangbaiviet").submit(function(event) {
                   ///insert bai viet vao noi dung ben duoi su dung ajax
                     alert(mabaiviet);
                   $.ajax({
-                      url: '/DATNHuyLuan/0306151249_0306151264/public/ajax/getbaivietne',
+                      url: link_host+'/ajax/getbaivietne',
                       type: 'GET',
                       data:{
                         mabaiviet: mabaiviet
