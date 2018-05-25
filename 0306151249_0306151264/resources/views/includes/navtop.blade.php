@@ -55,11 +55,14 @@
             </li>
             <li>
               <a href="{{route('dangxuat')}}"><i class="fa fa-sign-out"></i> Đăng xuất</a>
+              {{-- $taikhoan->nguoi_dung->ten_cot --}}
             </li>
           </ul>
         </li>
+        <li><input type="hidden" id="session-ma-tk" value="{{Auth::user()->ma_tai_khoan}}"></li>
         @endif
         <li ><a  href="#/">Người dùng A</a></li>
+
       </ul>
       {{-- End Menu phải --}}
 
@@ -78,4 +81,8 @@
  {{-- @include ('includes.content-menu-popup'); --}}
 
 </div>
+
+<script>
+  // alert($('#session-ma-tk').val());
+</script>
 {{-- end modal --}}
