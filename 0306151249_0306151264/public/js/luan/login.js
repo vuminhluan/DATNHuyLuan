@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-
+ 
   $.validator.addMethod( "regex", function(value, element, regexp) {
     var re = new RegExp(regexp);
     return re.test(value);
@@ -212,6 +212,9 @@ function changeTab(n) {
       if(response.errors) {
         // console.log(response.errors);
         // Duyệt từng phần từ của object lỗi (từ DangKiController trả về dạng Json)
+
+        // Xóa mật khẩu trong input hiện tại
+        $('input[name=sign-up-password]').val('');
 
         $.each(response.errors, function(fieldsName, messagesArray) {
           messagesArray.forEach(function(message) {

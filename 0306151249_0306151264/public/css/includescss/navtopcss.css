@@ -345,7 +345,8 @@ ul.navtop-right {float: right;display: inline-block;}
 .taikhoan-dropdown-content > a > img {
   border-radius: 50%;
   width: 30px; height: 30px;
-  transform: translateY(30%);
+  /*transform: translateY(30%);*/
+  vertical-align: middle;
    
 }
 

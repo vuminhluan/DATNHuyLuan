@@ -4,25 +4,25 @@ use Illuminate\Http\Request;
 
 // Route của Luân :D
 
-// Route::view('/home', 'trangchu')->name('home');
-// Route::get('/admin/tk', 'AjaxController@get')->name('ajax');
-//
-// Route::post('/register', 'AjaxController@post')->name('ajaxpost');
 
-Route::get(
-	'/taikhoan/{username}',
-	'TrangCaNhanController@getTrangCaNhan'
-)->middleware('MyUserAuth')->name('trangcanhan.index');
+Route::group(['middleware' => ['MyUserAuth']], function () {
+	Route::get(
+		'/taikhoan/{username}',
+		'TrangCaNhanController@getTrangCaNhan'
+	)->name('trangcanhan.index');
 
-Route::get(
-	'/taikhoan/{username}/nhom',
-	'TrangCaNhanController@getNhom'
-)->name('trangcanhan.nhom');
+	Route::get(
+		'/taikhoan/{username}/nhom',
+		'TrangCaNhanController@getNhom'
+	)->name('trangcanhan.nhom');
 
-Route::get(
-	'/taikhoan/{username}/tep',
-	'TrangCaNhanController@getTep'
-)->name('trangcanhan.tep');
+	Route::get(
+		'/taikhoan/{username}/tep',
+		'TrangCaNhanController@getTep'
+	)->name('trangcanhan.tep');
+});
+
+
 
 Route::get('/lienhe', function () {
 	return view('khac.lienhe');
@@ -45,9 +45,7 @@ Route::get('/matkhau/datlai/{username}/{userid_md5}/{today_md5}', 'CaiDatControl
 Route::post('/matkhau/datlai', 'CaiDatController@postDatLaiMatKhau')->name('caidat.post.quen_matkhau.datlai')->middleware('MyUserAuth');
 
 
-// Route::group(['middleware' => ['MyUserAuth']], function () {
-	
-// });
+
 
 
 

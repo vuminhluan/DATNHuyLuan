@@ -44,6 +44,11 @@ class TrangCaNhanController extends Controller
 		return view('trang_ca_nhan.danhsach_nhom')->with(['taikhoan'=>$taikhoan, 'tatca_gioitinh'=>$tatca_gioitinh]);
 	}
 
+	public function getTep($username)
+	{
+		return view('trang_ca_nhan.tep');
+	}
+
 	public function capNhatNguoiDung(Request $req)
 	{
 		$ho_ten_lot = $req->profile_family_middle_name;
@@ -112,11 +117,6 @@ class TrangCaNhanController extends Controller
 		}
 
 		return redirect()->back()->with('my_message', 'Cập nhật '.$the_message.' thành công');
-
-
-
-
-
 	}
 
 }

@@ -1,0 +1,61 @@
+* {font-family: "Arial"; margin: 0; padding: 0;box-sizing: border-box;}
+
+.main {
+  max-width: 1176px; margin: 0 auto;
+}
+
+@font-face {
+  font-family: "Baomoi";
+  font-weight: 700;
+  src: url("../../../fonts/baomoi-regular-2.0.2.woff2") format("woff2");
+}
+
+
+.baomoi {
+	font-family: 'Baomoi' !important;
+}
+
+ul {
+	list-style-type: none;
+}
+
+
+a.luan_link, a {
+	text-decoration: none; color: #1b95e0; outline: 0;
+}
+
+
+.sidebar {
+	width: 300px;
+	border: 1px solid red;
+}
+
+.main > .container {
+	width: 100%;margin: 8px 0;
+}
+
+.main > .container > div {
+	float: left;
+}
+
+.files {
+	margin: 0 8px;border: 1px solid blue;width: 860px;
+}
+
+.sidebar > div {
+	width: 100%;background-color: #fff;display: block;
+}
+
+.sidebar > div > .--title {
+	display: inline-block;width: 100%;
+	padding: 10px;border-bottom: 1px solid #eee;
+}
+
+.sidebar > div > .--files-menu li a {
+	display: block;padding: 10px;
+	border-bottom: 1px solid #eee;
+}
+
+.sidebar > div > .--files-menu li:last-child a {
+	border: 0;
+}
