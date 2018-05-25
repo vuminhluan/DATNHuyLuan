@@ -260,9 +260,15 @@ var thongbao=thubai=khaosat=tailieu= "0";
 var mabaiviet="hi";
  var ngaygiohientai = getdatetime();
 
-$("#frmdangbaiviet").submit(function(event) {
-  // tat su kien mac dinh của form
-      event.preventDefault(); 
+
+function submitdangbaiviet() {
+  alert("hihi");
+
+
+
+// $("#frmdangbaiviet").submit(function(event) {
+//   // tat su kien mac dinh của form
+//       event.preventDefault(); 
       //test
      //  alert(textt+"dang tim ne");
      alert("-"+getdatetime()+"-");
@@ -359,7 +365,8 @@ $("#frmdangbaiviet").submit(function(event) {
                     $('#divtrongformdangbaiviet').height(125);
                     $('#iptextdangbaiviet').height(30);
                     //alert(mabaiviet+"saukhidangbai");
-                    document.getElementById("frmdangbaiviet").reset();
+                    // document.getElementById("frmdangbaiviet").reset();
+                    $('#iptextdangbaiviet').val("");
                       //   alert("lay trang kia thanh cong");
                          var econ = document.createElement("div");
                          econ.setAttribute("id", "ssa");
@@ -378,7 +385,9 @@ $("#frmdangbaiviet").submit(function(event) {
       
 
 
-});
+// });
+}
+// }
       /////////////////////////////
 
 

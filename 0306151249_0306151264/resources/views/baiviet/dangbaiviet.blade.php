@@ -1,11 +1,14 @@
 
-
+<head>
+	<script src="{{ asset('js/jslu/baiviet/dangbaiviet.js') }}" type="text/javascript" charset="utf-8">
+</script>
+</head>
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/lu/baiviet/baiviet.css') }}">
 @endsection
 @section('javascript')
-<script src="{{ asset('js/jslu/baiviet/dangbaiviet.js') }}" type="text/javascript" charset="utf-8">
-</script>
+{{-- <script src="{{ asset('js/jslu/baiviet/dangbaiviet.js') }}" type="text/javascript" charset="utf-8">
+</script> --}}
 @endsection
 
 
@@ -14,7 +17,7 @@
 
 <div id="divbigformdangbaiviet" >
 	{{-- <div id="data" style="width: 100%;height: 50px;background-color: red;"></div> --}}
-	<form  id="frmdangbaiviet" action="#/" method="post" accept-charset="utf-8" name="frmnamedangbaiviet">
+	{{-- <form  id="frmdangbaiviet" action="/" method="post" accept-charset="utf-8" name="frmnamedangbaiviet"> --}}
 		 @csrf 
 		<div id="divtrongformdangbaiviet" >
 			<div>
@@ -114,10 +117,10 @@
 		</div>
 		<div id="divbtndangbaiviet">
 		{{-- <input id="btndangbaiviet" type="submit"  value="Đăng"/> --}}
-		<input type="submit" id="btndangbaiviet"  name="btndangbaiviet" value="Đăng">
+		<input type="submit" id="btndangbaiviet" onclick="submitdangbaiviet()"  name="btndangbaiviet" value="Đăng">
 		{{-- <button id="btnn">DANGGG</button> --}}
 		</div>
 		</div>
 
-	</form>
+	{{-- </form> --}}
 </div>

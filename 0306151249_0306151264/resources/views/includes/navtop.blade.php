@@ -5,6 +5,7 @@
   <script src="{{ asset('js/includesjs/navtopjs.js') }}" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 <div class="topnavroot">
+  @csrf
   <div class="topnav" >
     {{-- <ul class="navtop-menu">
       <div style="border-right: solid 1px #9695d8; width: 150px; height: 48px; float: left;">

@@ -16,12 +16,13 @@ btn_nhom.onclick = function() {
 }
 
 
+
 window.onclick = function(event) {
-    if (event.target == modal_nhom) {
-        modal_nhom.style.display = "none";
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
-    else if(event.target == modal)
+    else if(event.target == modal_nhom)
     {
-        modal.style.display="none";
+        modal_nhom.style.display="none";
     }
 }

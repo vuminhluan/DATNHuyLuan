@@ -12,7 +12,21 @@ trait BaiVietTrait{
 /////this is test
 
  public function PostbaivietT( $request)
-    {
+    { 
+// ma_bai_viet
+// ma_nguoi_viet
+// ma_chu_bai_viet
+// noi_dung_bai_viet
+// binh_luan_bai_viet
+// hinh_anh_bai_viet
+// nop_tep
+// khao_sat_y_kien
+// ma_loai_bai_viet
+// thoi_gian_dang
+// thoi_gian_an_bai_viet
+// thoi_gian_sua
+// nguoi_sua
+// 
     	$baiviet = new bai_viet();
     	$baiviet->ma_bai_viet 			= $request->ma_bai_viet;
     	$baiviet->ma_nguoi_viet			= $request->ma_nguoi_viet;

@@ -50,7 +50,7 @@ function submittaonhom()
 
 
 alert(manhom);
-//alert($('input[name=_token]').val());
+alert($('input[name=_token]').val());
     $.ajax({
         url: link_host+'/ajax/posttaonhomne',
         type:'POST',
@@ -74,7 +74,7 @@ alert(manhom);
     }).done(function(data){
          //   alert(tennhom+"tao thanh cong");
             alert(data);
-            //sau khi xong thì chuyển về tab các nhóm
+            //sau khi xong thì chuyển về tab các nhóm // hàm này bên content-menu-popupjs.js
             opencontent_nhom(event,'div-content-gr-thamgia-quanly'); 
     })
     })
@@ -97,12 +97,13 @@ var btn = document.getElementById("btn-show-dynamic-menu");
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
     modal.style.display = "block";
+    alert($("#session-ma-tk").val());
 // alert("hihi thanh cong send ajax");
     $.ajax({
         url: link_host+'/ajax/getnhomtheomataikhoanne', 
         type: 'GET',
         data:{
-            ma_tai_khoan :"N000001"
+            ma_tai_khoan :$("#session-ma-tk").val()
         }
     }).done(function(data){
         alert("hihi thanh cong send ajax");
@@ -122,10 +123,6 @@ btn.onclick = function() {
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
-    }
-    else if(event.target == modal_nhom)
-    {
-        modal_nhom.style.display="none";
     }
 }
 // window.onclick = function(event) {
