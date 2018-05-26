@@ -16,7 +16,10 @@
        <div class="leftnav" >
          <div id="thongtincuanhom">
            <div style="margin-top: 5px;margin-right: 5px;">
-             <div id="div-btn-show-menu-setting-nhom" style="border: solid 1px #9695d8; cursor: pointer;width: 287px;height: 36px;float: right;padding: 5px;"><h3><i class="fa fa-envelope-o" aria-hidden="true"> &nbsp;Thông báo của quản lý nhóm</i></h3></div>
+            @if ($quyentruycapnhomcuataikhoan[0]->ma_chuc_vu=="CV01")
+               <div id="div-btn-show-menu-setting-nhom" style="border: solid 1px #9695d8; cursor: pointer;width: 287px;height: 36px;float: right;padding: 5px;"><h3><i class="fa fa-envelope-o" aria-hidden="true"> &nbsp;Thông báo của quản lý nhóm</i></h3></div>
+            @endif
+            
            </div>
          </div>
          <div id="thongtinkhaccuanhom"></div>

@@ -5,16 +5,25 @@ namespace App\Http\Controllers\NhomController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\nhom_m;
+use App\thanh_vien_nhom;
+use App\thanh_vien_cho_phe_duyet;
 
 
 class Nhom extends Controller
 {
-    public function loadnhom ($id)
+    public function loadnhom ($idnhom)
     {
+       $matk =  Auth::user()->ma_tai_khoan;
+       $machucvu = DB::table('thanh_vien_nhom')->select("ma_chuc_vu")->where([
+                                                                                    ["ma_nhom",$idnhom],
+                                                                                    ["ma_tai_khoan",$matk],
+                                                                                    ["trang_thai","1"]
+                                                                                ])->get();
     	$listbaiviet = DB::table('bai_viet')->orderBy('ma_bai_viet','desc')->take(3)->get();
     	$soluongbaiviet =10;
-    	return view("nhom.indexnhom",["t"=>$id,"s"=>$soluongbaiviet,"lstbaiviet"=>$listbaiviet]);
+    	return view("nhom.indexnhom",["t"=>$idnhom,"s"=>$soluongbaiviet,"lstbaiviet"=>$listbaiviet,"quyentruycapnhomcuataikhoan"=>$machucvu]);
 
     }
     public function getmanhom()
