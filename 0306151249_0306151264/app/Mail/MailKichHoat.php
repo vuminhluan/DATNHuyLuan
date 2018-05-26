@@ -29,6 +29,6 @@ class MailKichHoat extends Mailable
 	 */
 	public function build()
 	{
-		return $this->from('datn.ckc15@gmail.com')->view('mail.kichhoat')->to(Auth::user()->email);
+		return $this->from('datn.ckc15@gmail.com')->markdown('mail.kichhoat')->to(Auth::user()->email);
 	}
 }
