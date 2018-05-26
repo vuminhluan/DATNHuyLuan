@@ -21,13 +21,13 @@ $(document).ready(function() {
       message: {
       	required: true,
         minlength: 20,
-        maxlength: 40
+        maxlength: 500
       }
     },
     messages: {
-      fullname: "Họ tên không hợp lệ",
+      fullname: "Họ tên không hợp lệ.",
       email: {
-        required: "Xin hãy nhập email để chúng tôi có thể trả lời lại trong tương lai",
+        required: "Xin hãy nhập email để chúng tôi có thể trả lời lại trong trường hợp cần thiết",
         email: "Không đúng định dạng email",
       },
       message: {

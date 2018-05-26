@@ -27,6 +27,7 @@ Route::group(['middleware' => ['MyUserAuth']], function () {
 Route::get('/lienhe', function () {
 	return view('khac.lienhe');
 })->name('lienhe');
+Route::post('/lienhe', 'LienHeController@postLienHe')->name('lienhe.post');
 
 Route::post('/taikhoan/{username}/thongtin/capnhat', 'TrangCaNhanController@capNhatNguoiDung')->name('post_taikhoan.thongtin_canhan.capnhat');
 Route::post('/taikhoan/{kind_of_image}/capnhat', 'TrangCaNhanController@capNhatAnhNguoiDung')->name('post_taikhoan.anh.capnhat');
