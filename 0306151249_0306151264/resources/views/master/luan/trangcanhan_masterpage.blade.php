@@ -66,7 +66,7 @@
 					</a>
 				</li>
 				<li>
-					<a class="luan_link" href="{{route('trangcanhan.nhom', ['username'=>'vuminhluan'])}}">
+					<a class="luan_link" href="{{route('trangcanhan.nhom', ['username'=>Auth::user()->ten_tai_khoan])}}">
 						<span>Nhóm</span><span>2</span>
 					</a>
 				</li>
@@ -119,10 +119,10 @@
 					&nbsp;
 					<a class="luan_link" href="#/">Hình ảnh</a>
 					<ul>
-						<li><a class="luan_link" href="{{asset('pictures/luan/test1.png')}}" target="_blank"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
-						<li><a class="luan_link" href="{{asset('pictures/luan/test1.png')}}"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
-						<li><a class="luan_link" href="{{asset('pictures/luan/test1.png')}}"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
-						<li><a class="luan_link" href="{{asset('pictures/luan/test1.png')}}"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a></li>
+						<li><a class="luan_link" href="{{asset('pictures/anh_bia/default-banner.png')}}" target="_blank"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a></li>
+						<li><a class="luan_link" href="{{asset('pictures/anh_bia/default-banner.png')}}"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a></li>
+						<li><a class="luan_link" href="{{asset('pictures/anh_bia/default-banner.png')}}"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a></li>
+						<li><a class="luan_link" href="{{asset('pictures/anh_bia/default-banner.png')}}"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a></li>
 					</ul>
 				</div>
 				@if (Auth::user()->ten_tai_khoan == $taikhoan->ten_tai_khoan)

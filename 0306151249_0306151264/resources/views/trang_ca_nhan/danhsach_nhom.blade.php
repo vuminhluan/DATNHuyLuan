@@ -24,7 +24,7 @@
 					<ul class="group-list" >
 						<li>
 							<div class="profile-group-card">
-								<a href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a>
+								<a href="#/"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a>
 								<div class="group-name-and-unread-post-counter">
 									<a href="" class="luan_link">
 										<h3>Tên group Tên group Tên group Tên group Tên group Tên group Tên group</h3>
@@ -52,7 +52,7 @@
 
 						<li>
 							<div class="profile-group-card">
-								<a href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a>
+								<a href="#/"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a>
 								<div class="group-name-and-unread-post-counter">
 									<a href="" class="luan_link">
 										<h3>Tên group Tên group Tên group Tên group Tên group Tên group Tên group</h3>
@@ -79,7 +79,7 @@
 
 						<li>
 							<div class="profile-group-card">
-								<a href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a>
+								<a href="#/"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a>
 								<div class="group-name-and-unread-post-counter">
 									<a href="" class="luan_link">
 										<h3>Tên group Tên group Tên group Tên group Tên group Tên group Tên group</h3>
@@ -106,7 +106,7 @@
 
 						<li>
 							<div class="profile-group-card">
-								<a href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a>
+								<a href="#/"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a>
 								<div class="group-name-and-unread-post-counter">
 									<a href="" class="luan_link">
 										<h3>Tên group Tên group Tên group Tên group Tên group Tên group Tên group</h3>
@@ -133,7 +133,7 @@
 
 						<li>
 							<div class="profile-group-card">
-								<a href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a>
+								<a href="#/"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a>
 								<div class="group-name-and-unread-post-counter">
 									<a href="" class="luan_link">
 										<h3>Tên group Tên group Tên group Tên group Tên group Tên group Tên group</h3>
@@ -174,7 +174,7 @@
 
 						<li>
 							<div class="profile-group-card">
-								<a href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a>
+								<a href="#/"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a>
 								<div class="group-name-and-unread-post-counter">
 									<a href="" class="luan_link">
 										<h3>Tên group Tên group Tên group Tên group Tên group Tên group Tên group</h3>
@@ -216,7 +216,7 @@
 
 						<li>
 							<div class="profile-group-card">
-								<a href="#/"><img src="{{asset('pictures/luan/test1.png')}}" alt=""></a>
+								<a href="#/"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a>
 								<div class="group-name-and-unread-post-counter">
 									<a href="" class="luan_link">
 										<h3>Tên group Tên group Tên group Tên group Tên group Tên group Tên group</h3>
@@ -277,7 +277,7 @@
 			<div>
 				<ul>
 					<li>
-						<a href="#/"><img class="-banner" src="{{asset('pictures/luan/test2.png')}}" alt=""></a>
+						<a href="#/"><img class="-banner" src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a>
 						<div>
 							<div class="-name">
 								<p ><a href="#/">Tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm</a></p>
@@ -287,7 +287,7 @@
 						</div>
 					</li>
 					<li>
-						<a href="#/"><img class="-banner" src="{{asset('pictures/luan/test2.png')}}" alt=""></a>
+						<a href="#/"><img class="-banner" src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a>
 						<div>
 							<div class="-name">
 								<p ><a href="#/">Tên nhóm tên nhóm tên nhóm tên nhóm tên nhóm</a></p>
