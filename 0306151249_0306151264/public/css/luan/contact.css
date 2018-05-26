@@ -10,6 +10,12 @@ body {
   background: linear-gradient(to right, #f0f2f0, #000c40);
 }
 
+@font-face {
+  font-family: "Baomoi";
+  font-weight: 700;
+  src: url("../../fonts/baomoi-regular-2.0.2.woff2") format("woff2");
+}
+
 .background {
   font-size: 14px; line-height: 20px;
   background-image: url('https://wallpapersite.com/images/pages/pic_w/5666.jpg');
@@ -41,6 +47,10 @@ ul.navtop-menu {
   overflow: hidden; background-color: white;
 }
 
+label.error {margin: 0 5px;color: red}
+.baomoi {
+  font-family: "Baomoi";
+}
 .navtop-menu li {
   float: left;
 }
@@ -143,7 +153,34 @@ ul.navtop-menu {
   cursor: pointer;opacity: 0.8;color: #fff;
 }
 
-label.error {color: red}
+
+
+/*Contact- message - alert*/
+
+.contact-alert {
+  position: fixed;z-index: 11;
+  top: 0;left: 0;right:0;margin:auto;
+  min-height:80px;width: 500px;background-color: #fff;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+  transform: translateY(-200%);
+}
+.contact-alert .message {
+  color: #000;font-size: 20px;
+  padding: 15px 25px;
+}
+
+.alert-animate {
+  animation: alert-animation 4s linear;
+}
+
+@keyframes alert-animation {
+  0% { transform: translateY(-200%); }
+  15% { transform: translateY(0%); }
+  90% {transform: translateY(0%);}
+  100% { transform: translateY(-200%); }
+}
+
+/*End alert*/
 
 
 /* End contact form main  */

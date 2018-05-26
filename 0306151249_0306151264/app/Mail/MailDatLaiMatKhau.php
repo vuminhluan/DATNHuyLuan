@@ -33,7 +33,7 @@ class MailDatLaiMatKhau extends Mailable
 	{
 		return $this->to($this->data_array['email'])
 			->from('datn.ckc15@gmail.com')
-			->view('mail.datlai_matkhau')
+			->markdown('mail.datlai_matkhau')
 			->with(['data' => $this->data_array]);
 	}
 }

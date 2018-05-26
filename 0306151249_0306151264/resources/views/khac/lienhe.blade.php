@@ -7,14 +7,20 @@
 	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
 </head>
 <body>
+	
+	<div class="contact-alert {{session('success_message') ? 'alert-animate' : '' }}">
+		<div class="message baomoi">
+			<p class="baomoi">{{session('success_message')}}</p>
+		</div>
+	</div>
 
 	<div class="background"></div>
 
 	<div class="topnavroot">
     <div class="topnav wrapper-main">
       <ul class="navtop-menu">
-        <li><a href="#/">Logo here</a></li>
-        <li><a href="#/">Quên mật khẩu</a></li>
+        <li><a href="{{ route('trangchu') }}">Logo here</a></li>
+        <li><a href="{{ route('lienhe') }}">Liên hệ</a></li>
       </ul>
     </div>
   </div>
@@ -59,19 +65,21 @@
 				</div>
 	    </div>
 
-			{{-- ----------------------------- ----------------------------- --}}
+		{{-- - - - - - - - - - - - - - - - - - - - - - - - - - --}}
 
 	    <div class="contact-form-main">
 	      <div class="title"><h1>Gửi tin nhắn đến chúng tôi</h1></div>
+	      
 				<div>
-					<form id="contact-form" name="contact-form" action="#/" action="POST">
+					<form id="contact-form" name="contact-form" action="{{ route('lienhe.post') }}" method="POST">
+						@csrf
 						<div>
 							<label for="fullname">Họ và tên</label>
-							<input type="text" id="fullname" name="fullname">
+							<input type="text" id="fullname" name="fullname" value="{{Auth::check() ? Auth::user()->ho_ten_lot.' '.Auth::user()->ten : ''}}">
 						</div>
 						<div>
 							<label for="email">Email</label>
-							<input type="text" id="email" name="email">
+							<input type="text" id="email" name="email" value="{{Auth::check() ? Auth::user()->email : ''}}">
 						</div>
 						<div>
 							<label for="message">Tin nhắn</label>

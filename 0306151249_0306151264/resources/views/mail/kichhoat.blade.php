@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -21,3 +21,22 @@
 
 </body>
 </html>
+ --}}
+
+
+
+@component('mail::message')
+# Kích hoạt tài khoản
+
+Xin chào {{Auth::user()->ho_ten_lot." ". Auth::user()->ten }}, <br>
+Chúng tôi gửi mail này để giúp bạn kích hoạt tài khoản sau khi đăng kí tài khoản trên website chúng tôi. Để kích hoạt, bạn cần bấm vào nút bên dưới. Hoặc bỏ qua email này nếu có điều gì đó nghi ngờ. <br>
+<small><i>Xin đừng trả lời mail này.</i></small>
+
+@component('mail::button', ['url' => url('/kichhoat/taikhoan/'.Auth::user()->ten_tai_khoan.'/'.md5(Auth::user()->ten_tai_khoan.'kichhoat')), 'color' => 'main'])
+Kích hoạt tài khoản
+@endcomponent
+
+Cảm ơn,<br>
+{{-- {{ config('app.name') }} --}}
+Lu-Luân
+@endcomponent
