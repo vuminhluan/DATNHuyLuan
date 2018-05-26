@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -20,4 +20,19 @@
   <small><i>Xin đừng trả lời mail này.</i></small>
 
 </body>
-</html>
+</html> --}}
+
+
+@component('mail::message')
+# Introduction
+
+The body of your message.
+{{-- {{$new_email}} --}}
+
+@component('mail::button', ['url' => url('/xacnhan/thaydoi/email/'.$user_id.'/'.md5($user_id.'xacnhan').'/'.$new_email.'/'.md5($new_email.'xacnhan'))])
+Button Text
+@endcomponent
+
+Thanks,<br>
+{{ config('app.name') }}
+@endcomponent

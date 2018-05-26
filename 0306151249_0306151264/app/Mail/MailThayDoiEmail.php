@@ -35,7 +35,7 @@ class MailThayDoiEmail extends Mailable
 	{
 		return $this->to($this->new_email)
 			->from('datn.ckc15@gmail.com')
-			->view('mail.capnhat_email_moi')
+			->markdown('mail.capnhat_email_moi')
 			->with(['new_email' => $this->new_email, 'user_id' => $this->user_id]);
 	}
 }
