@@ -20,7 +20,7 @@
       {{-- Menu trái --}}
       <ul class="navtop-left">
         <li style="width: 150px;border-right: solid 1px #9695d8;height: 48px;margin-left: 30px;">
-          <a class="active" href="/">Trang chủ</a>
+          <a class="active" href="{{ route('trangchu') }}">Trang chủ</a>
         </li>
         <li><a href="#news">Thông báo</a></li>
         <li><a href="#contact">Tạo nhóm</a></li>
@@ -62,8 +62,6 @@
         </li>
         <li><input type="hidden" id="session-ma-tk" value="{{Auth::user()->ma_tai_khoan}}"></li>
         @endif
-        <li ><a  href="#/">Người dùng A</a></li>
-
       </ul>
       {{-- End Menu phải --}}
 

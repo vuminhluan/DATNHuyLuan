@@ -187,9 +187,9 @@ function changeTab(n) {
 // ajax
   function SignupAjax() {
     $.ajax({
-      url: '/dangki',
+      url: link_host+'/dangki',
       type: 'post',
-      // async: false,
+      async: false,
       data: {
         _token: $('input[name=_token]').val(),
         firstname: $('input[name=sign-up-firstname]').val(),
@@ -208,6 +208,7 @@ function changeTab(n) {
       }
     })
     .done(function(response) {
+      // console.log(response);
       var m =  "";
       if(response.errors) {
         // console.log(response.errors);
@@ -232,7 +233,7 @@ function changeTab(n) {
         //   window.location.href = "/kichhoat/taikhoan";
         //
         // }, 4000);
-        window.location.href = "/kichhoat/taikhoan";
+        window.location.href = link_host+"/kichhoat/taikhoan";
       }
     });
 
