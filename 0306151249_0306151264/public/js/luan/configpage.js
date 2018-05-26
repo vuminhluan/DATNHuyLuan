@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-
+  // alert(link_host);
   function getFormData(form_id) {
     inputObject = {};
     $('#'+form_id+' :input').each(function() {
@@ -153,7 +153,7 @@ $(document).ready(function() {
 
 
     $.ajax({
-      url: '/caidat/taikhoan/capnhat',
+      url: link_host+'/caidat/taikhoan/capnhat',
       type: 'POST',
       data: inputObject,
       beforeSend: function() {
@@ -213,7 +213,7 @@ $(document).ready(function() {
     // console.log(inputObject);
 
     $.ajax({
-      url: '/caidat/taikhoan/vohieuhoa/dongy',
+      url: link_host+'/caidat/taikhoan/vohieuhoa/dongy',
       type: 'POST',
       data: inputObject,
     })
@@ -234,7 +234,7 @@ $(document).ready(function() {
 
       if(response.success) {
         setTimeout(function () {
-          window.location.href = "/dangxuat";
+          window.location.href = link_host+"/dangxuat";
         }, 1000);
       }
 
@@ -293,7 +293,7 @@ $(document).ready(function() {
       var inputObject = getFormData('change-password-form');
 
       $.ajax({
-        url: '/caidat/matkhau/thaydoi/dongy',
+        url: link_host+'/caidat/matkhau/thaydoi/dongy',
         type: 'POST',
         data: inputObject,
         beforeSend: function() {
@@ -393,7 +393,7 @@ $(document).ready(function() {
     var username = $(this).attr('data-username');
 
     $.ajax({
-      url: '/caidat/taikhoan/chan/'+userID+'/'+username,
+      url: link_host+'/caidat/taikhoan/chan/'+userID+'/'+username,
       type: 'GET'
     })
     .done(function(response) {

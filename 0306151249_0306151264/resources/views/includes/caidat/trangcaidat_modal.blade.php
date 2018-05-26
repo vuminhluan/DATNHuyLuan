@@ -15,7 +15,7 @@
 					<input name="confirm-password" type="password" id="confirm-password-setting" placeholder="Mật khẩu">
 				</div>
 				<div>
-					<p><a href="#/" class="forgot-password-link">Quên mật khẩu ?</a></p>
+					<p><a href="{{ route('caidat.quen_matkhau') }}" class="forgot-password-link">Quên mật khẩu ?</a></p>
 				</div>
 			</div>
 			<div class="modal-footer">
