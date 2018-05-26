@@ -49,8 +49,8 @@ function submittaonhom()
           manhom ="NH"+ manhom;
 
 
-alert(manhom);
-alert($('input[name=_token]').val());
+//alert(manhom);
+//alert($('input[name=_token]').val());
     $.ajax({
         url: link_host+'/ajax/posttaonhomne',
         type:'POST',
@@ -60,7 +60,7 @@ alert($('input[name=_token]').val());
             ma_gia_nhap: "0000"   ,           
             ten_nhom:   tennhom   ,               
             anh:        "no"   ,              
-            ma_tai_khoan:  "N000001"   ,           
+            ma_tai_khoan:  $('#session-ma-tk').val() ,           
             ma_loai_nhom:  "LN01"   ,          
             gioi_thieu_nhom:  "Describe something"  ,         
             thoi_gian_tham_gia: "2001/01/01",        
@@ -72,9 +72,27 @@ alert($('input[name=_token]').val());
         }
 
     }).done(function(data){
+
+            //Thêm chính người tạo nhóm này là thành viên của nhóm
+            $.ajax({
+            url: link_host+'/ajax/postthemthanhvienvaonhomne',
+            type:'POST',
+            data:{
+                    _token: $('input[name=_token]').val(),
+                    ma_nhom:manhom,
+                    ma_tai_khoan:$("#session-ma-tk").val(),
+                    ma_chuc_vu:"CV01",
+                    thoi_gian_vao_nhom:"2001/01/01",
+                    thoi_gian_thoat_nhom:"2001/01/01",
+                    trang_thai:"1"        
+
+            }}).done(function(data){
+                    alert(data);
+            })
          //   alert(tennhom+"tao thanh cong");
             alert(data);
             //sau khi xong thì chuyển về tab các nhóm // hàm này bên content-menu-popupjs.js
+            $('#input-tennhom').val('');
             opencontent_nhom(event,'div-content-gr-thamgia-quanly'); 
     })
     })
@@ -97,7 +115,7 @@ var btn = document.getElementById("btn-show-dynamic-menu");
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
     modal.style.display = "block";
-    alert($("#session-ma-tk").val());
+  //  alert($("#session-ma-tk").val());
 // alert("hihi thanh cong send ajax");
     $.ajax({
         url: link_host+'/ajax/getnhomtheomataikhoanne', 
@@ -106,7 +124,7 @@ btn.onclick = function() {
             ma_tai_khoan :$("#session-ma-tk").val()
         }
     }).done(function(data){
-        alert("hihi thanh cong send ajax");
+     //   alert("hihi thanh cong send ajax");
         $('#div-dynamic-menu').html(data);
     })
 }

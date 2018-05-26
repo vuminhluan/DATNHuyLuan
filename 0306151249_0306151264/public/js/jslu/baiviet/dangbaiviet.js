@@ -262,7 +262,7 @@ var mabaiviet="hi";
 
 
 function submitdangbaiviet() {
-  alert("hihi");
+//  alert("hihi");
 
 
 
@@ -271,7 +271,7 @@ function submitdangbaiviet() {
 //       event.preventDefault(); 
       //test
      //  alert(textt+"dang tim ne");
-     alert("-"+getdatetime()+"-");
+   //  alert("-"+getdatetime()+"-");
       //end test
 
       
@@ -296,7 +296,7 @@ function submitdangbaiviet() {
           ///value của combobox loaibaiviet
           var e = document.getElementById("cbbloaibaiviet");
           var valueselectedoption = e.options[e.selectedIndex].value;
-          alert ("loai bai viet:"+valueselectedoption);
+       //   alert ("loai bai viet:"+valueselectedoption);
 
 
           
@@ -317,9 +317,9 @@ function submitdangbaiviet() {
             mabaiviet ="0"+mabaiviet;
           }
           mabaiviet ="BV"+ mabaiviet;
-          alert(mabaiviet);
+        //  alert(mabaiviet);
 
-          alert(document.getElementById("iptextdangbaiviet").value);
+      //    alert(document.getElementById("iptextdangbaiviet").value);
           ///document.getElementById("iptextdangbaiviet").value,
               $.ajax(
               {
@@ -345,14 +345,14 @@ function submitdangbaiviet() {
                 //  document.getElementById("baivietmoidang").style.height = "300px";
                  // $('#baivietmoidang').html(data);
                   ///xu ly sau khi dang baiviet xong
-                  alert(data);
+               //   alert(data);
 
                   displaydivoption("none");
                   clickckb(false);
                   tongsoluachon= 0;
                   za=zb=zc=zd= true;
                   ///insert bai viet vao noi dung ben duoi su dung ajax
-                    alert(mabaiviet);
+              //      alert(mabaiviet);
                   $.ajax({
                       url: link_host+'/ajax/getbaivietmoine',
                       type: 'GET',

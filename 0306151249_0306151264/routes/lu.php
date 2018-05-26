@@ -26,3 +26,7 @@ Route::post("/ajax/posttaonhomne","NhomController\Nhom@posttaonhom")->name('post
 Route::get("/ajax/getmanhomne","NhomController\Nhom@getmanhom")->name('getmanhom');
 Route::get("/ajax/getnhomtheomataikhoanne","NhomController\ThanhVienNhom@GetNhomTheoMaTaiKhoan")->name('getnhomtheomataikhoan');
 Route::get("/ajax/getlsttimkiemnhomne","NhomController\Nhom@gettimkiemnhom")->name('getlsttimkiemnhom');
+Route::post("/ajax/postthanhvienxingianhapnhomne","NhomController\ThanhVienNhom@PostThanhVienXinGiaNhapNhom")->name('postthanhvienxingianhapnhom');
+Route::get("/ajax/getnhommathanhviencone","NhomController\ThanhVienNhom@GetLstNhomMaThanhVienGiaNhap")->name('getnhommathanhvienco');
+Route::post("/ajax/postthemthanhvienvaonhomne","NhomController\ThanhVienNhom@PostThemThanhVienVaoNhom")->name('postthemthanhvienvaonhom');
+Route::get("/ajax/getlstnhomnguoidungdangxingianhapne","NhomController\ThanhVienNhom@GetLstNhomNguoiDungDangXinGiaNhap")->name('getlstnhomnguoidungdangxingianhap');

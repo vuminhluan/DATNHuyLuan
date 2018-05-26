@@ -51,7 +51,7 @@ class Nhom extends Controller
     public function posttaonhom(Request $rql)
     {
         
-    	$nhom = new nhom_m();
+    	 $nhom = new nhom_m();
     	 $nhom->ma_nhom						= $rql->ma_nhom;
     	 $nhom->ma_gia_nhap					= $rql->ma_gia_nhap;
     	 $nhom->ten_nhom					= $rql->ten_nhom;
