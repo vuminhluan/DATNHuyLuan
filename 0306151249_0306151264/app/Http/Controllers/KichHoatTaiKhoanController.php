@@ -49,7 +49,8 @@ class KichHoatTaiKhoanController extends Controller
   public function guiLaiMailKichHoat()
   {
     Mail::send(new MailKichHoat());
-    echo "<script>alert('Đã gửi lại mail kích hoạt tài khoản'); window.location.href='/kichhoat/taikhoan'</script>";
+    // echo "<script>alert('Đã gửi lại mail kích hoạt tài khoản')</script>";
+    return redirect()->back()->with('success_message', 'Đã gửi lại email kích hoạt tài khoản');
   }
 
 

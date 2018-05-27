@@ -24,6 +24,7 @@
 
 					<div>
 						<h2>Kích hoạt tài khoản</h2>
+						{{session('success_message')}}
 					</div>
 
 					<div>
