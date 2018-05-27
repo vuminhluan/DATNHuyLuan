@@ -35,8 +35,9 @@
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
         </li>
-        
+        {{-- đây là cái menu động --}}
         <li><button id="btn-show-dynamic-menu"><i class="fa fa-bars" aria-hidden="true"></i></button></li>
+        {{-- end menu động --}}
 
         @if (Auth::check())
         <li class="taikhoan-dropdown-content">

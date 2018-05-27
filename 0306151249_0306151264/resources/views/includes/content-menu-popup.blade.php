@@ -43,7 +43,7 @@
                           <div style="height: 130px;width: 90px; margin: 7px;" onclick='gotogroup("{{$lstnhomcuataikhoan[$i]->ma_nhom}}")' >
 
                             <div  class="div-item-nhom-popup">
-                                <div class="div-name-nhom"  style="height: 20px; width: 92px;text-align: center;margin-left: -23px;margin-top: 53px;">{{$lstnhomcuataikhoan[$i]->ma_nhom}}</div>
+                                <div class="div-name-nhom"  style="height: 20px; width: 92px;text-align: center;margin-left: -23px;margin-top: 53px;">{{$lstnhomcuataikhoan[$i]->ten_nhom}}</div>
                             </div>
                           
                           </div>
@@ -62,10 +62,10 @@
                           </div>
                           <div class="div-item-nhom">
                             @for ($i = 0; $i < count($lstNhomQuanLyCuaTaiKhoan); $i++)
-                            <div style="height: 130px;width: 90px; margin: 7px;" onclick='gotogroup("{{$lstNhomQuanLyCuaTaiKhoan[$i]->ma_nhom}}")' >
-
+                            <div style="height: 130px;width: 90px; margin: 7px;background-image: url('pictures/group-icon.png');" onclick='gotogroup("{{$lstNhomQuanLyCuaTaiKhoan[$i]->ma_nhom}}")' >
+                             {{--  <img src="{{ asset('papictures/group-icon.pngth') }}" style="width: 90px;height: 130px;" alt=""> --}}
                               <div  class="div-item-nhom-popup">
-                                  <div class="div-name-nhom"  style="height: 20px; width: 92px;text-align: center;margin-left: -23px;margin-top: 53px;">{{$lstNhomQuanLyCuaTaiKhoan[$i]->ma_nhom}}</div>
+                                  <div class="div-name-nhom"  style="height: 20px; width: 92px;text-align: center;margin-left: -23px;margin-top: 53px;">{{$lstNhomQuanLyCuaTaiKhoan[$i]->ten_nhom}}</div>
                               </div>
                             
                             </div>

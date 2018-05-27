@@ -8,20 +8,47 @@ use Illuminate\Support\Facades\DB;
 use App\thanh_vien_nhom;
 use App\thanh_vien_cho_phe_duyet;
 use App\NguoiDung;
+use App\nhom_m;
 
 
 class ThanhVienNhom extends Controller
 {
     public function GetNhomTheoMaTaiKhoan(Request $rq)
     {
-    	$lstNhomCuaTaiKhoan = DB::table("thanh_vien_nhom")->where("ma_tai_khoan",$rq->ma_tai_khoan)->get();
-    	$lstNhomQuanLyCuaTaiKhoan = DB::table("thanh_vien_nhom")->where([
-    																		["ma_tai_khoan","=",$rq->ma_tai_khoan],
-    																		["ma_chuc_vu","=","CV01"]
+    	// $lstNhomCuaTaiKhoan = DB::table("thanh_vien_nhom")->where("ma_tai_khoan",$rq->ma_tai_khoan)->get();
+    	// $lstNhomQuanLyCuaTaiKhoan = DB::table("thanh_vien_nhom")->where([
+    	// 																	["ma_tai_khoan","=",$rq->ma_tai_khoan],
+    	// 																	["ma_chuc_vu","=","CV01"]
 
-    																    ])->get();
-    	return view("includes.content-menu-popup",["lstnhomcuataikhoan"=>$lstNhomCuaTaiKhoan,"lstNhomQuanLyCuaTaiKhoan"=>$lstNhomQuanLyCuaTaiKhoan]);
+    	// 															    ])->get();
+    	// return view("includes.content-menu-popup",["lstnhomcuataikhoan"=>$lstNhomCuaTaiKhoan,"lstNhomQuanLyCuaTaiKhoan"=>$lstNhomQuanLyCuaTaiKhoan]);
+        ////////////////
+        $lstNhomCuaTaiKhoan = DB::table("thanh_vien_nhom")->join('nhom','thanh_vien_nhom.ma_nhom','=','nhom.ma_nhom')->select('thanh_vien_nhom.*','nhom.*')->where("thanh_vien_nhom.ma_tai_khoan",$rq->ma_tai_khoan)->get();
+
+
+
+
+
+        $lstNhomQuanLyCuaTaiKhoan = DB::table("thanh_vien_nhom")->join('nhom','thanh_vien_nhom.ma_nhom','=','nhom.ma_nhom')->select('thanh_vien_nhom.*','nhom.*')->where([
+                                                                            ["thanh_vien_nhom.ma_tai_khoan","=",$rq->ma_tai_khoan],
+                                                                            ["ma_chuc_vu","=","CV01"]
+
+                                                                        ])->get();
+        return view("includes.content-menu-popup",["lstnhomcuataikhoan"=>$lstNhomCuaTaiKhoan,"lstNhomQuanLyCuaTaiKhoan"=>$lstNhomQuanLyCuaTaiKhoan]);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function GetLstThanhVienTheoMaNhom()
     {
