@@ -47,9 +47,10 @@ function opentab_pheduyetthanhvien(pr) {
         btnchophepgianhapnhom.style.border="solid 1px #9695d8";
         btnchophepgianhapnhom.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i> &nbsp; Phê duyệt';
         btnchophepgianhapnhom.addEventListener("click",clickpheduyetgianhapnhom);
+         btnchophepgianhapnhom.myParamMaNhom=pr;
         btnchophepgianhapnhom.myParamMaTaiKhoan=data[i].ma_tai_khoan;
-        btnchophepgianhapnhom.myParamMaNhom=data[i].ma_nhom;
-        btnchophepgianhapnhom.id="btnxingianhapnhom"+data[i].ma_nhom;
+       
+        btnchophepgianhapnhom.id="btnpheduyetgianhapnhom"+data[i].ma_tai_khoan;
 
         var btntuchoigianhapnhom = document.createElement("div");
         btntuchoigianhapnhom.style.cursor="pointer";
@@ -67,10 +68,12 @@ function opentab_pheduyetthanhvien(pr) {
         btntuchoigianhapnhom.style.border="solid 1px #9695d8";
         btntuchoigianhapnhom.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i> &nbsp; Từ chối';
         btntuchoigianhapnhom.addEventListener("click",clicktuchoigianhapnhom);
+        btntuchoigianhapnhom.myParamMaNhom=pr;
         btntuchoigianhapnhom.myParamMaTaiKhoan=data[i].ma_tai_khoan;
-        btntuchoigianhapnhom.myParamMaNhom=data[i].ma_nhom;
-        btntuchoigianhapnhom.id="btnxingianhapnhom"+data[i].ma_nhom;
+       //data[i].ma_nhom;
+        btntuchoigianhapnhom.id="btntuchoiduyetgianhapnhom"+data[i].ma_tai_khoan;
 
+        //alert(data[i].ma_nhom+"day la luc tao xxx");
         
        
         divomhainut.appendChild(btnchophepgianhapnhom);
@@ -83,14 +86,17 @@ function opentab_pheduyetthanhvien(pr) {
 }
 
 function clickpheduyetgianhapnhom(prl){
-	alert("phê duyệt"+prl.currentTarget.myParamMaTaiKhoan);
+	alert("phê duyệt mã nhóm:"+prl.currentTarget.myParamMaNhom);
+	alert("phê duyệt:"+prl.currentTarget.myParamMaTaiKhoan);
+	var prmanhom=prl.currentTarget.myParamMaNhom;
+	var prmataikhoan=prl.currentTarget.myParamMaTaiKhoan;
 	 $.ajax({
             url: link_host+'/ajax/postthemthanhvienvaonhomne',
             type:'POST',
             data:{
                     _token: $('input[name=_token]').val(),
-                    ma_nhom:prl.currentTarget.myParamMaNhom,
-                    ma_tai_khoan:prl.currentTarget.myParamMaTaiKhoan,
+                    ma_nhom:prmanhom,
+                    ma_tai_khoan:prmataikhoan,
                     ma_chuc_vu:"CV07",
                     thoi_gian_vao_nhom:"2001/01/01",
                     thoi_gian_thoat_nhom:"2001/01/01",
@@ -98,19 +104,24 @@ function clickpheduyetgianhapnhom(prl){
 
             }}).done(function(data){
                     alert(data);
+                    alert("phê duyệt mã nhóm:"+prmanhom);
+					alert("phê duyệt mã tk:"+prmataikhoan);
                     //sau khi insert vào bảng thành viên xong
 				            $.ajax({
 				            url: link_host+'/ajax/postupdatethanhvienchopheduyetne',
 				            type:'POST',
 				            data:{
 				                    _token: $('input[name=_token]').val(),
-				                    ma_nhom:prl.currentTarget.myParamMaNhom,
-				                    ma_tai_khoan:prl.currentTarget.myParamMaTaiKhoan,
+				                    ma_nhom:prmanhom,
+				                    ma_tai_khoan:prmataikhoan,
 				                    nguoi_phe_duyet:$("#session-ma-tk").val()
 				                           
 
 				            }}).done(function(data){
 				                    alert(data);
+				                    //sau khi hoàn tất thêm thành viên vào nhóm
+				                    $("#btnpheduyetgianhapnhom"+prmataikhoan).css("display","none");
+				                     $("#btntuchoiduyetgianhapnhom"+prmataikhoan).css("display","none");
 				            })
                     //
             })
