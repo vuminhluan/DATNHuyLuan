@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\thanh_vien_nhom;
 use App\thanh_vien_cho_phe_duyet;
+use App\NguoiDung;
 
 
 class ThanhVienNhom extends Controller
@@ -29,7 +30,7 @@ class ThanhVienNhom extends Controller
     public function PostUpdateThanhVienChoPheDuyet(Request $rql){
         DB::table('thanh_vien_cho_phe_duyet')
             ->where([['ma_tai_khoan', $rql->ma_tai_khoan],['ma_nhom',$rql->ma_nhom]])
-            ->update(['trang_thai' => "0",'nguoi_phe_duyet'=>$rql->nguoi_phe_duyet]);
+            ->update(['trang_thai' => $rql->trang_thai,'nguoi_phe_duyet'=>$rql->nguoi_phe_duyet]);
             return "hoàn thành update".$rql->ma_tai_khoan.$rql->ma_nhom.$rql->nguoi_phe_duyet;
     }
     public function PostThemThanhVienVaoNhom(Request $rql){
@@ -63,7 +64,21 @@ class ThanhVienNhom extends Controller
             return "Xin gia nhập thành công";
     }
     public function GetLstThanhVienDangChoPheDuyetTheoMaNhom(Request $rql){
-            $lstThanhVienDangChoPheDuyetTheoMaNhom = DB::table("thanh_vien_cho_phe_duyet")->select("ma_tai_khoan")->where([
+            // $lstThanhVienDangChoPheDuyetTheoMaNhom = DB::table("thanh_vien_cho_phe_duyet")
+
+
+            //                                     ->select("ma_tai_khoan")->where([
+            //                                             ["ma_nhom",$rql->ma_nhom],
+            //                                             ["trang_thai","1"]
+            //                                         ])->get();
+            // return $lstThanhVienDangChoPheDuyetTheoMaNhom;
+        //////
+        //->select("ma_tai_khoan")
+
+        //->where([["ma_nhom",$rql->ma_nhom],["trang_thai","1"]])
+
+
+          $lstThanhVienDangChoPheDuyetTheoMaNhom = DB::table("thanh_vien_cho_phe_duyet")->join('nguoi_dung','thanh_vien_cho_phe_duyet.ma_tai_khoan','=','nguoi_dung.ma_tai_khoan')->select('thanh_vien_cho_phe_duyet.*','nguoi_dung.*')->where([
                                                         ["ma_nhom",$rql->ma_nhom],
                                                         ["trang_thai","1"]
                                                     ])->get();

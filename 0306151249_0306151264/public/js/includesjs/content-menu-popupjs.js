@@ -111,7 +111,7 @@ function search_group(){
         divkq.style.background ="white";
         divkq.style.color="black";
         divkq.style.borderBottom ="solid 1px #9695d8";
-        divkq.innerHTML = data[i].ma_nhom;
+        divkq.innerHTML = data[i].ten_nhom;
 
         var btnxingianhapnhom = document.createElement("div");
         btnxingianhapnhom.style.cursor="pointer";
