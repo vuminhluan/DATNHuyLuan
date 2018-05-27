@@ -29,9 +29,12 @@ class KichHoatTaiKhoanController extends Controller
           Auth::login($taikhoan);
         }
       }
-      return redirect()->route('index')->with('home_message' => 'Chúc mừng bạn đã kích hoạt tài khoản thành công');
+
+      return redirect()->route('trangchu')->with('success_message', 'Chúc mừng @'.Auth::user()->ten_tai_khoan.' bạn đã kích hoạt tài khoản thành công');
+      // return redirect()->route('trangchu')->with('update_email_message', 'Cập nhật email '.$newemail.' thành công');
 
     }
+
     abort(404);
   }
 

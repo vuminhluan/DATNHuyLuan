@@ -1,0 +1,26 @@
+/*Contact- message - alert*/
+
+.home-alert {
+  position: fixed;z-index: 11;
+  top: 0;left: 0;right:0;margin:auto;
+  min-height:80px;width: 500px;background-color: #fff;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+  transform: translateY(-200%);
+}
+.home-alert .message {
+  color: #000;font-size: 18px;
+  padding: 15px 25px;
+}
+
+.alert-animate {
+  animation: alert-animation 4s linear;
+}
+
+@keyframes alert-animation {
+  0% { transform: translateY(-200%); }
+  15% { transform: translateY(0%); }
+  90% {transform: translateY(0%);}
+  100% { transform: translateY(-200%); }
+}
+
+/*End alert*/
