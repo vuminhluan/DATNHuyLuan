@@ -22,8 +22,8 @@
         <li style="width: 150px;border-right: solid 1px #9695d8;height: 48px;margin-left: 30px;">
           <a class="active" href="{{ route('trangchu') }}">Trang chủ</a>
         </li>
-        <li><a href="#news">Thông báo</a></li>
-        <li><a href="#contact">Tạo nhóm</a></li>
+        <li><a href="#news">xxxxxxx</a></li>
+        <li><a href="#contact">xxxxxxx</a></li>
       </ul>
       {{-- End Menu trái --}}
 
