@@ -19,7 +19,7 @@
 	{{-- END Hiện thông báo khi kích hoạt tài khoản thành công, cập nhật email mới thành công, (....) --}}
 
 	<h1 class="haha">
-		<p>Trang chủ</p>
+		
 	</h1>
 	
 

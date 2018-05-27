@@ -94,6 +94,7 @@ function submittaonhom()
             //sau khi xong thì chuyển về tab các nhóm // hàm này bên content-menu-popupjs.js
             $('#input-tennhom').val('');
             opencontent_nhom(event,'div-content-gr-thamgia-quanly'); 
+             ajaxlstnhomdathamgia_quanly();
     })
     })
 }
@@ -117,7 +118,21 @@ btn.onclick = function() {
     modal.style.display = "block";
   //  alert($("#session-ma-tk").val());
 // alert("hihi thanh cong send ajax");
-    $.ajax({
+    // $.ajax({
+    //     url: link_host+'/ajax/getnhomtheomataikhoanne', 
+    //     type: 'GET',
+    //     data:{
+    //         ma_tai_khoan :$("#session-ma-tk").val()
+    //     }
+    // }).done(function(data){
+    //  //   alert("hihi thanh cong send ajax");
+    //     $('#div-dynamic-menu').html(data);
+    // })
+    ajaxlstnhomdathamgia_quanly();
+}
+
+function ajaxlstnhomdathamgia_quanly(){
+      $.ajax({
         url: link_host+'/ajax/getnhomtheomataikhoanne', 
         type: 'GET',
         data:{
@@ -127,6 +142,7 @@ btn.onclick = function() {
      //   alert("hihi thanh cong send ajax");
         $('#div-dynamic-menu').html(data);
     })
+
 }
 
 // When the user clicks on <span> (x), close the modal
