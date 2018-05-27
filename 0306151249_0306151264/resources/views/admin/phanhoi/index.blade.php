@@ -31,12 +31,14 @@
             <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
             Có <strong>1</strong> phản hồi mới chưa đọc
           </div>
+          @if (!$tatca_phanhoi)
+            <p>Chưa có phản hồi nào</p>
+          @endif
           <table class="table table-bordered table-hover" id="step4">
             <thead>
               <tr>
                 <th><input id="check_all" type="checkbox"></th>
-                <th class="hidden-xs">ID</th>
-                <th>Tiêu đề</th>
+                <th>Mã</th>
                 <th class="hidden-xs">Người gửi</th>
                 <th class="hidden-sm hidden-xs">Email</th>
                 <th class="hidden-sm hidden-xs">Ngày gửi</th>
@@ -44,22 +46,27 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="alert alert-info" style="color: #333">
-                <td>
-                  <input name="id[]" type="checkbox" value="0">
-                </td>
-                <td class="hidden-xs">1</td>
-                <td>
-                  <a href="view-contact.html">Phản hồi số 1</a>
-                </td>
-                <td class="hidden-xs">Sang Nguyen</td>
-                <td class="hidden-sm hidden-xs">sangnguyenplus@gmail.com</td>
-                <td class="hidden-sm hidden-xs">2014-06-19 01:05:13</td>
-                <td>
-                  <i class="fa fa-envelope-o" data-toggle="tooltip" data-placement="top" title="Phản hồi chưa đọc"></i>
-                </td>
-              </tr>
-              <tr>
+              @if ($tatca_phanhoi)
+                @foreach ($tatca_phanhoi as $phanhoi)
+                 
+                
+                <tr class="alert alert-info" style="color: #333">
+                  <td>
+                    <input name="id[]" type="checkbox" value="0">
+                  </td>
+                  <td>
+                    <a href="view-contact.html">Phản hồi số {{$phanhoi->ma}}</a>
+                  </td>
+                  <td class="hidden-xs">{{$phanhoi->ho_va_ten}}</td>
+                  <td class="hidden-sm hidden-xs">{{$phanhoi->email}}</td>
+                  <td class="hidden-sm hidden-xs">{{date_format($phanhoi->thoi_gian_tao, "d/m/Y H:i:s")}}</td>
+                  <td>
+                    <i class="fa fa-envelope-o" data-toggle="tooltip" data-placement="top" title="Phản hồi chưa đọc"></i>
+                  </td>
+                </tr>
+                @endforeach
+              @endif
+              {{-- <tr>
                 <td>
                   <input name="id[]" type="checkbox" value="2">
                 </td>
@@ -74,21 +81,7 @@
                   <i class="fa fa-check text-success" data-toggle="tooltip" data-placement="top" title="Phản hồi đã đọc"></i>
                 </td>
               </tr>
-              <tr>
-                <td>
-                  <input name="id[]" type="checkbox" value="3">
-                </td>
-                <td class="hidden-xs">3</td>
-                <td>
-                  <a href="view-contact.html">Phản hồi số 3</a>
-                </td>
-                <td class="hidden-xs">Nguyễn Văn Bảo</td>
-                <td class="hidden-sm hidden-xs">bao@gmail.com</td>
-                <td class="hidden-sm hidden-xs">2014-06-19 01:05:13</td>
-                <td>
-                  <i class="fa fa-check text-success" data-toggle="tooltip" data-placement="top" title="Phản hồi đã đọc"></i>
-                </td>
-              </tr>
+              --}}
             </tbody>
           </table>
           <div class="text-right">

@@ -29,7 +29,7 @@ class KichHoatTaiKhoanController extends Controller
           Auth::login($taikhoan);
         }
       }
-      return redirect()->route('index');
+      return redirect()->route('index')->with('home_message' => 'Chúc mừng bạn đã kích hoạt tài khoản thành công');
 
     }
     abort(404);

@@ -40,16 +40,17 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($tatca_taikhoan as $taikhoan)
               <tr>
                 <td>
                   <input name="id[]" type="checkbox" value="0">
                 </td>
                 <td class="hidden-xs">1</td>
                 <td>
-                  <a href="new-type_product.html">Sang Nguyen</a>
+                  <a href="new-type_product.html">{{$taikhoan->ten_tai_khoan}}</a>
                 </td>
-                <td class="hidden-xs">sangnguyenplus@gmail.com</td>
-                <td class="hidden-sm hidden-xs">2014-06-19 01:05:13</td>
+                <td class="hidden-xs">{{$taikhoan->email}}</td>
+                <td class="hidden-sm hidden-xs">{{date_format($taikhoan->thoi_gian_tao, 'd/m/Y H:i:s')}}</td>
                 <td>
                   <a href="new-type_product.html"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Sửa tài khoản"></i></a>
                 </td>
@@ -57,9 +58,13 @@
                   <i class="fa fa-check text-success" data-toggle="tooltip" data-placement="top" title="Đang hoạt động"></i>
                 </td>
               </tr>
+              @endforeach
             </tbody>
           </table>
-          <div class="text-right">
+          <div>
+            {{$tatca_taikhoan->links()}}
+          </div>
+          {{-- <div class="text-right">
             <ul class="pagination" id="step5">
               <li class="disabled"><span>«</span></li>
               <li class="active"><span>1</span></li>
@@ -67,7 +72,7 @@
               <li><a href="#">3</a></li>
               <li><a href="#">»</a></li>
             </ul>
-          </div>
+          </div> --}}
           <p><strong><i class="fa fa-bookmark"></i>Ghi chú: </strong></p>
           <p class="note-items"><i class="fa fa-check text-success"></i> Tài khoản đang hoạt động.</p>
           <p class="note-items"><i class="fa fa-times text-danger"></i> Tài khoản bị khóa.</p>

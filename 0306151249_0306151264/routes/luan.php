@@ -92,18 +92,17 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 		return view('admin.index');
 	})->name('admin.index');
 
-	Route::get('/phanhoi', function() {
-		return view('admin.phanhoi.index');
-	})->name('admin.phanhoi');
+	// Route::get('/phanhoi', function() {
+	// 	return view('admin.phanhoi.index');
+	// })->name('admin.phanhoi');
 
 	Route::get('/cauhinh', function() {
 		return view('admin.cauhinh.index');
 	})->name('admin.cauhinh');
 
+	// Tài khoản
 	Route::prefix('taikhoan')->group(function() {
-		Route::get('/', function() {
-			return view('admin.taikhoan.index');
-		})->name('admin.taikhoan');
+		Route::get('/', 'Admin\TaiKhoanController@getTrangQuanLyTaiKhoan')->name('admin.taikhoan');
 
 		Route::get('/them', function() {
 			return view('admin.taikhoan.them-taikhoan');
@@ -118,6 +117,17 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 		Route::post('/them', 'GioiTinhController@postThem')->name('admin.gioitinh.post_them');
 
 		// Route::post('/tacvu/{hanhdong}', 'GioiTinhController@postTacVu')->name('admin.gioitinh.post_tacvu');
+	});
+
+
+
+	//  Phản hồi
+	Route::prefix('phanhoi')->group(function() {
+		Route::get('/', 'Admin\PhanHoiController@getTrangQuanLyPhanHoi')->name('admin.phanhoi');
+
+		// Route::get('/them', function() {
+		// 	return view('admin.taikhoan.them-taikhoan');
+		// })->name('admin.taikhoan.them');
 	});
 
 
