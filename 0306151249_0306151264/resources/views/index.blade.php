@@ -181,11 +181,7 @@
 	<div style="clear: both;"></div>
 	<footer class="login-footer">
 		<ul>
-			<li>lorem</li>
-			<li>lorem</li>
-			<li>lorem</li>
-			<li>lorem</li>
-			<li>lorem</li>
+			<li><h2><a href="{{ route('huongdan') }}">Hướng dẫn</a></h2></li>
 			<li>lorem</li>
 			<li>lorem</li>
 			<li>lorem</li>
