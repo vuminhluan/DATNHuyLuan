@@ -4,6 +4,10 @@ use Illuminate\Http\Request;
 
 // Route của Luân :D
 
+Route::get('/huongdan', function ()
+{
+	return view('huongdan');
+})->name('huongdan');
 
 Route::group(['middleware' => ['MyUserAuth']], function () {
 	Route::get(
