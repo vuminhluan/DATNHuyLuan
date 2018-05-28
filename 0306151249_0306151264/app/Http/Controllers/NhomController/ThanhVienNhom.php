@@ -50,9 +50,9 @@ class ThanhVienNhom extends Controller
 
 
 
-    public function GetLstThanhVienTheoMaNhom()
+    public function GetLstThanhVienTheoMaNhom(Request $rql)
     {
-
+        return DB::table('thanh_vien_nhom')->join('nguoi_dung','thanh_vien_nhom.ma_tai_khoan','=','nguoi_dung.ma_tai_khoan')->select('thanh_vien_nhom.*','nguoi_dung.*')->where('ma_nhom',$rql->ma_nhom)->get();
     }
     public function PostUpdateThanhVienChoPheDuyet(Request $rql){
         DB::table('thanh_vien_cho_phe_duyet')

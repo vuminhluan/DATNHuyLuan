@@ -3,16 +3,9 @@ var btn_nhom = document.getElementById("div-btn-show-menu-setting-nhom");
 btn_nhom.onclick = function() {
     alert("click thong bao");
     modal_nhom.style.display = "block";
-    // $.ajax({
-    //     url: link_host+'/ajax/getnhomtheomataikhoanne', 
-    //     type: 'GET',
-    //     data:{
-    //         ma_tai_khoan :"N000001"
-    //     }
-    // }).done(function(data){
-    //     alert("hihi thanh cong send ajax");
-    //     $('#div-dynamic-menu').html(data);
-    // })
+
+    opentab_lstthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());// mặc định khi mở load list thành viên của nhóm
+
 }
 
 

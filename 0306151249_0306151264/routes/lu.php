@@ -32,3 +32,4 @@ Route::post("/ajax/postthemthanhvienvaonhomne","NhomController\ThanhVienNhom@Pos
 Route::get("/ajax/getlstnhomnguoidungdangxingianhapne","NhomController\ThanhVienNhom@GetLstNhomNguoiDungDangXinGiaNhap")->name('getlstnhomnguoidungdangxingianhap');
 Route::get("/ajax/getlstthanhviendangchopheduyettheomanhomne","NhomController\ThanhVienNhom@GetLstThanhVienDangChoPheDuyetTheoMaNhom")->name('getlstthanhviendangchopheduyettheomanhomne');
 Route::post("/ajax/postupdatethanhvienchopheduyetne","NhomController\ThanhVienNhom@PostUpdateThanhVienChoPheDuyet")->name('postupdatethanhvienchopheduyet');
+Route::get("/ajax/getlstthanhvientheomanhomne","NhomController\ThanhVienNhom@GetLstThanhVienTheoMaNhom")->name('getlstthanhvientheoManhom');

@@ -14,6 +14,25 @@ body {
   overflow-y: scroll;
   margin: 0px;
 }
+ 
+.caretl {
+  position: absolute;bottom: 100%;right: 18px;
+}
+ .caretl-outer {
+  border-bottom: 10px solid #e4e4e4;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  position: absolute;bottom: 100%;right: 18px;
+  text-align: center;
+}
+
+ .caretl-inner {
+  border-bottom: 9px solid #fff;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  position: absolute;bottom: 100%;right: 18px;
+  text-align: center;
+}
 
 
 *{
