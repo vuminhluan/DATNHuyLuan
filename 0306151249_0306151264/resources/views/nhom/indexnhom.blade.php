@@ -22,7 +22,9 @@
             
            </div>
          </div>
-         <div id="thongtinkhaccuanhom"></div>
+         <div id="thongtinkhaccuanhom">
+           <input type="hidden" id="div-hi-chu-bai-viet-ma-nhom" value="{{$t}}">
+         </div>
         </div>
         
 <!--  -->

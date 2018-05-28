@@ -328,8 +328,8 @@ function submitdangbaiviet() {
                   data:{
                   _token: $('input[name=_token]').val(),
                   ma_bai_viet: mabaiviet,
-                  ma_nguoi_viet: "BV12345869",
-                  ma_chu_bai_viet: "BV12345869",
+                  ma_nguoi_viet: $('#session-ma-tk').val(),
+                  ma_chu_bai_viet: $('#div-hi-chu-bai-viet-ma-nhom').val(),
                   noi_dung_bai_viet:$('#iptextdangbaiviet').val(),
                   binh_luan_bai_viet: thongbao,
                   hinh_anh_bai_viet: tailieu,
