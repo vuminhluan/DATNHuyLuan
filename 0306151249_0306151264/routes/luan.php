@@ -24,6 +24,7 @@ Route::group(['middleware' => ['MyUserAuth']], function () {
 		'/taikhoan/{username}/tep',
 		'TrangCaNhanController@getTep'
 	)->name('trangcanhan.tep');
+	
 });
 
 
