@@ -221,7 +221,28 @@ function showtoggletuychonthanhviennhom(idtaikhoan,manhom){
         }
     }).done(function(data){
         alert(data[0].ma_chuc_vu+"đây mã tìm được đây");
-        for (var i = 0; i < data.length; i++) {
+        for (var i = 0; i < data.length; i++) {  
+
+        }
+        var arrCN = ["Quản trị viên","Phê duyệt thành viên","Phê duyệt bài viết","Trợ giúp xuất sắc","Hỗ trợ nhiệt tình","Trục xuất"];
+        for (var i = 0; i < 5; i++) {
+                var ul= document.createElement("UL");
+                var li1= document.createElement("LI");
+                var txtli1=document.createTextNode(arrCN[i]);li1.appendChild(txtli1);ul.appendChild(li1);
+                menucon.appendChild(ul); 
+
+        }
+                //         var li2= document.createElement("LI");
+                // var txtli2=document.createTextNode("Phê duyệt thành viên"); li2.appendChild(txtli2);ul.appendChild(li2);
+                // var li3= document.createElement("LI");
+                // var txtli3=document.createTextNode("Phê duyệt bài viết");li3.appendChild(txtli3);ul.appendChild(li3);
+                // var li4= document.createElement("LI");
+                // var txtli4=document.createTextNode("Trợ giúp xuất sắc"); li4.appendChild(txtli4);ul.appendChild(li4);
+                // var li5= document.createElement("LI");
+                // var txtli5=document.createTextNode("Hỗ trợ nhiệt tình"); li5.appendChild(txtli5);ul.appendChild(li5);
+                // var li6= document.createElement("LI");
+                // var txtli6=document.createTextNode("Trục xuất"); li6.appendChild(txtli2);ul.appendChild(li6);
+                //////////////
                 // var ul= document.createElement("UL");
                 // var li1= document.createElement("LI");
                 // var txtli1=document.createTextNode("Bổ nhiệm quản lý");li1.appendChild(txtli1);
@@ -255,7 +276,7 @@ function showtoggletuychonthanhviennhom(idtaikhoan,manhom){
             //     menucon.appendChild(ul); 
             // }
 
-        }
+      
 
 
 
