@@ -15,26 +15,12 @@ class Nhom extends Controller
 {
     public function loadnhom ($idnhom)
     {
-     //   $matk =  Auth::user()->ma_tai_khoan;
-     //   $machucvu = DB::table('thanh_vien_nhom')->select("ma_chuc_vu")->where([
-     //                                                                                ["ma_nhom",$idnhom],
-     //                                                                                ["ma_tai_khoan",$matk],
-     //                                                                                ["trang_thai","1"]
-     //                                                                            ])->get();
-    	// $listbaiviet = DB::table('bai_viet')->orderBy('ma_bai_viet','desc')->take(3)->get();
-    	// $soluongbaiviet =10;
-    	// return view("nhom.indexnhom",["t"=>$idnhom,"s"=>$soluongbaiviet,"lstbaiviet"=>$listbaiviet,"quyentruycapnhomcuataikhoan"=>$machucvu]);
-        /////////////////
          $matk =  Auth::user()->ma_tai_khoan;
-       $machucvu = DB::table('thanh_vien_nhom')->select("ma_chuc_vu")->where([
-                                                                                    ["ma_nhom",$idnhom],
-                                                                                    ["ma_tai_khoan",$matk],
-                                                                                    ["trang_thai","1"]
+       $machucvu = DB::table('thanh_vien_nhom')->select("ma_chuc_vu")->where([["ma_nhom",$idnhom],["ma_tai_khoan",$matk],["trang_thai","1"]
                                                                                 ])->get();
         $listbaiviet = DB::table('bai_viet')->where("ma_chu_bai_viet",$idnhom)->orderBy('ma_bai_viet','desc')->take(10)->get();
         $soluongbaiviet =10;
         return view("nhom.indexnhom",["t"=>$idnhom,"s"=>$soluongbaiviet,"lstbaiviet"=>$listbaiviet,"quyentruycapnhomcuataikhoan"=>$machucvu]);
-
     }
     public function getmanhom()
     {
@@ -53,19 +39,11 @@ class Nhom extends Controller
         }
         return $lstnhomtimkiem;
     }
-
-
     public function getnhom(Request $rql)
     {
     	$nhom = DB::table('nhom')->where("ma_nhom",$rql->ma_nhom)->get();
     	return $nhom;
     }
-
-    // public function getviewnhom(Request $rql)
-    // {
-    // 	$nhom = $this-> getnhom($rql);
-    // 	return view()
-    // }
 
     public function posttaonhom(Request $rql)
     {

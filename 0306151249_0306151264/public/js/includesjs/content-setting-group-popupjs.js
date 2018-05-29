@@ -108,7 +108,8 @@ function opentab_lstthanhvien(idnhom) {
         url: link_host+'/ajax/getlstthanhvientheomanhomne',
         type:'GET',
         data:{
-            ma_nhom:idnhom
+            ma_nhom:idnhom,
+            trang_thai:"1" //1 là thành viên còn hoạt động
         }
     }).done(function(data){
 
@@ -159,7 +160,7 @@ function opentab_lstthanhvien(idnhom) {
         btntuchoigianhapnhom.addEventListener("click",showtoggletuychonthanhviennhomtrue);
         btntuchoigianhapnhom.myParamIdthediv="togglemenu"+data[i].ma_tai_khoan;
        // btntuchoigianhapnhom.myParamMaTaiKhoan=data[i].ma_tai_khoan;
-       btntuchoigianhapnhom.appendChild(showtoggletuychonthanhviennhom(data[i].ma_tai_khoan));
+       btntuchoigianhapnhom.appendChild(showtoggletuychonthanhviennhom(data[i].ma_tai_khoan,nhomhientaidangduocchon));
         btntuchoigianhapnhom.id="btntuchoiduyetgianhapnhom"+data[i].ma_tai_khoan;
 
         // divomhainut.appendChild(btnchophepgianhapnhom);
@@ -178,13 +179,14 @@ else
      $('#'+pr.currentTarget.myParamIdthediv).css("display","block");
 
 }
-function showtoggletuychonthanhviennhom(idtaikhoan){
+function showtoggletuychonthanhviennhom(idtaikhoan,manhom){
     var menucon = document.createElement("div");
     menucon.id="togglemenu"+idtaikhoan;
     menucon.style.marginTop="15px";
     menucon.style.width="180px";
     menucon.style.marginLeft="-147px";
-    menucon.style.height="80px";
+    menucon.style.paddingLeft="7px";
+    menucon.style.height="auto";
     menucon.style.background="white";
     menucon.style.border="solid 1px #9695d8";
     menucon.style.display="none";
@@ -208,30 +210,82 @@ function showtoggletuychonthanhviennhom(idtaikhoan){
     z.style.borderLeft ="10px solid transparent";
     z.style.borderRight="10px solid transparent";
     menucon.appendChild(z);
-    // 
-    var ul= document.createElement("UL");
-    // li1.style.borderBottom="solid 1px #9695d8";
+    // /////////////////////////
 
-    var li1= document.createElement("LI");
+    $.ajax({
+        url: link_host+'/ajax/getmachucvutaikhoanne', /// lấy mã tài khoản về đây
+        type:'GET',
+        data:{
+            ma_nhom:manhom,
+            ma_tai_khoan:idtaikhoan
+        }
+    }).done(function(data){
+        alert(data[0].ma_chuc_vu+"đây mã tìm được đây");
+    if (data[0].ma_chuc_vu=="CV01") {
+        var ul= document.createElement("UL");
+        var li2= document.createElement("LI");
+        var txtli2=document.createTextNode("Rời nhóm");li2.appendChild(txtli2);
+        li2.addEventListener("click",clickroikhoinhomnhom);
+        li2.myparamMaNhom=manhom;
+        li2.myparamMaTaiKhoan=idtaikhoan;
+        ul.appendChild(li2);
+        menucon.appendChild(ul);
+    }else{
+        var ul= document.createElement("UL");
+        var li1= document.createElement("LI");
+        var txtli1=document.createTextNode("Bổ nhiệm quản lý");li1.appendChild(txtli1);
+        var li2= document.createElement("LI");
+        var txtli2=document.createTextNode("Trục xuất");
+        li2.appendChild(txtli2);
+        li2.addEventListener("click",clicktrucxuatkhoinhom);
+        li2.myparamMaNhom=manhom;
+        li2.myparamMaTaiKhoan=idtaikhoan;
+        ul.appendChild(li1);
+        ul.appendChild(li2);
+        menucon.appendChild(ul); 
+    }})
 
-    var txtli1=document.createTextNode("Bổ nhiệm quản lý");
-
-    li1.appendChild(txtli1);
-    // 
-    var li2= document.createElement("LI");
-
-    var txtli2=document.createTextNode("Trục xuất");
-    li2.appendChild(txtli2);
-
-    ul.appendChild(li1);
-    ul.appendChild(li2);
-
-    menucon.appendChild(ul);
 
      
  
 return menucon;
 
+}
+function clicktrucxuatkhoinhom(prl){
+    var manhom=prl.currentTarget.myparamMaNhom;
+   // alert("say click"+prl.currentTarget.myparamMaNhom+"-"+prl.currentTarget.myparamMaTaiKhoan);
+    $.ajax({
+        url:link_host+'/ajax/postupdatethanhvientrongnhomne',
+        type:'POST',
+        data:{
+            _token:$('input[name=_token]').val(),
+            ma_nhom:manhom,
+            ma_tai_khoan:prl.currentTarget.myparamMaTaiKhoan,
+            trang_thai:"0"
+        }
+    }).done(function(data){
+        alert("kích thành  viên khỏi nhóm thành công");
+        alert(data);
+     //   opentab_lstthanhvien(manhom);
+    })
+}
+function clickroikhoinhomnhom(prl){
+    var manhom=prl.currentTarget.myparamMaNhom;
+   // alert("say click"+prl.currentTarget.myparamMaNhom+"-"+prl.currentTarget.myparamMaTaiKhoan);
+    $.ajax({
+        url:link_host+'/ajax/postupdatethanhvientrongnhomne',
+        type:'POST',
+        data:{
+            _token:$('input[name=_token]').val(),
+            ma_nhom:manhom,
+            ma_tai_khoan:prl.currentTarget.myparamMaTaiKhoan,
+            trang_thai:"0"
+        }
+    }).done(function(data){
+        alert("Rời nhóm viên khỏi nhóm thành công");
+        alert(data);
+     window.location = link_trangchufull;
+    })
 }
 
 // //////////////////

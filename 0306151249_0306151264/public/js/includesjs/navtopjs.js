@@ -116,18 +116,6 @@ var btn = document.getElementById("btn-show-dynamic-menu");
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
     modal.style.display = "block";
-  //  alert($("#session-ma-tk").val());
-// alert("hihi thanh cong send ajax");
-    // $.ajax({
-    //     url: link_host+'/ajax/getnhomtheomataikhoanne', 
-    //     type: 'GET',
-    //     data:{
-    //         ma_tai_khoan :$("#session-ma-tk").val()
-    //     }
-    // }).done(function(data){
-    //  //   alert("hihi thanh cong send ajax");
-    //     $('#div-dynamic-menu').html(data);
-    // })
     ajaxlstnhomdathamgia_quanly();
 }
 

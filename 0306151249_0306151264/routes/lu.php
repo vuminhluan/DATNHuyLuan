@@ -17,11 +17,8 @@ Route::post("/ajax/postbinhluanc2ne","BinhLuanController\BinhLuan@PostBinhLuanC2
 Route::get("/ajax/getmabinhluanne","BinhLuanController\BinhLuan@GetMaBinhLuan")->name('getmabinhluan');
 Route::get("/ajax/getbinhluanmoine","BinhLuanController\BinhLuan@GetBinhLuanMoi")->name('getbinhluanmoi');
 Route::get("/ajax/getbinhluanne","BinhLuanController\BinhLuan@GetBinhLuan")->name('getbinhluan');
-
-
 Route::get("/ajax/getmabaivietne","BaiVietController\BaiViet@GetMaBaiViet")->name('getmabaiviet');
 Route::get("/ajax/getbaivietmoine","BaiVietController\BaiViet@GetBaiVietMoi")->name('getbaivietmoi');
-
 Route::post("/ajax/posttaonhomne","NhomController\Nhom@posttaonhom")->name('posttaonhom');
 Route::get("/ajax/getmanhomne","NhomController\Nhom@getmanhom")->name('getmanhom');
 Route::get("/ajax/getnhomtheomataikhoanne","NhomController\ThanhVienNhom@GetNhomTheoMaTaiKhoan")->name('getnhomtheomataikhoan');
@@ -33,3 +30,6 @@ Route::get("/ajax/getlstnhomnguoidungdangxingianhapne","NhomController\ThanhVien
 Route::get("/ajax/getlstthanhviendangchopheduyettheomanhomne","NhomController\ThanhVienNhom@GetLstThanhVienDangChoPheDuyetTheoMaNhom")->name('getlstthanhviendangchopheduyettheomanhomne');
 Route::post("/ajax/postupdatethanhvienchopheduyetne","NhomController\ThanhVienNhom@PostUpdateThanhVienChoPheDuyet")->name('postupdatethanhvienchopheduyet');
 Route::get("/ajax/getlstthanhvientheomanhomne","NhomController\ThanhVienNhom@GetLstThanhVienTheoMaNhom")->name('getlstthanhvientheoManhom');
+Route::post('/ajax/postupdatethanhvientrongnhomne',"NhomController\ThanhVienNhom@PostUpdateThanhVienTrongNhom")->name('postupdatethanhvientrongnhom');
+
+Route::get('/ajax/getmachucvutaikhoanne',"NhomController\ThanhVienNhom@GetMaChucVuTaiKhoan")->name('getmachucvutaikhoan');
