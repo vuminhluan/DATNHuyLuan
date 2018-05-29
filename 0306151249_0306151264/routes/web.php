@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', 'DangNhapController@getIndex')->name('index');
 
 Route::post('/dangnhap', 'DangNhapController@postDangNhap')->name('post_dangnhap');
+Route::get('/dangnhap/google', 'DangNhapController@postDangNhapGoogle')->name('dangnhap.google');
+Route::get('/dangnhap/google/callback', 'DangNhapController@callBackDangNhapGoogle')->name('dangnhap.google.callback');
+
 // Route::get('/dangki', 'DangKiController@getDangKi')->name('get_dangki');
 Route::post('/dangki', 'DangKiController@postDangKi')->name('post_dangki');
 

@@ -8,6 +8,7 @@ use App\TaiKhoan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use Socialite;
 
 
 class DangNhapController extends Controller
@@ -64,6 +65,33 @@ class DangNhapController extends Controller
 
 		return ['success' => false, 'message' => $message];
 
+	}
+
+
+	public function postDangNhapGoogle()
+	{
+		return Socialite::driver('google')->redirect();
+	}
+
+	public function callBackDangNhapGoogle()
+	{
+		$user = Socialite::driver('google')->stateless()->user();
+
+		// return $user->getName();
+		return $this->xuLyDangNhapGoogle($user);
+		
+
+	}
+
+
+	public function xuLyDangNhapGoogle($user)
+	{
+		$taikhoan = TaiKhoan::where('email', $user->getEmail())->first();
+		if(!$taikhoan) {
+			return $user->getAvatar();
+		} else {
+			abort(404);
+		}
 	}
 
 
