@@ -9,6 +9,7 @@ use App\thanh_vien_nhom;
 use App\thanh_vien_cho_phe_duyet;
 use App\NguoiDung;
 use App\nhom_m;
+use App\chuc_vu_cua_thanh_vien_trong_nhom;
 
 
 class ThanhVienNhom extends Controller
@@ -50,8 +51,18 @@ class ThanhVienNhom extends Controller
           return "Đã thêm thành công thành viên vào nhóm";
         // return "Đã thêm thành công thành viên vào nhóm".$rql->ma_nhom.$rql->ma_tai_khoan.$rql->ma_chuc_vu.$rql->thoi_gian_vao_nhom.$rql->thoi_gian_thoat_nhom.$rql->trang_thai;
     }
+    public function PostChucVuCuaThanhVienVaoNhom(Request $rql){
+        $thanhviennhom = new chuc_vu_cua_thanh_vien_trong_nhom();
+        $thanhviennhom->ma_nhom                         = $rql->ma_nhom;
+        $thanhviennhom->ma_tai_khoan                    = $rql->ma_tai_khoan;
+        $thanhviennhom->ma_chuc_vu                      = $rql->ma_chuc_vu;
+        $thanhviennhom->trang_thai                      = $rql->trang_thai;
+        $thanhviennhom->save();
+          return "Đã thêm chức vụ vào nhóm";
+
+    }
     public function GetMaChucVuTaiKhoan(Request $rql){
-        return DB::table('thanh_vien_nhom')->select('ma_chuc_vu')->where([['ma_tai_khoan',$rql->ma_tai_khoan],['ma_nhom',$rql->ma_nhom]])->get();
+        return DB::table('chuc_vu_cua_thanh_vien_trong_nhom')->select('chuc_vu_cua_thanh_vien_trong_nhom.*')->where([['ma_tai_khoan',$rql->ma_tai_khoan],['ma_nhom',$rql->ma_nhom],['trang_thai',"1"]])->get();
     }
     public function GetLstNhomMaThanhVienGiaNhap(Request $rql)
     {

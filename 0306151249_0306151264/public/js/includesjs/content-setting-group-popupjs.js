@@ -221,29 +221,45 @@ function showtoggletuychonthanhviennhom(idtaikhoan,manhom){
         }
     }).done(function(data){
         alert(data[0].ma_chuc_vu+"đây mã tìm được đây");
-    if (data[0].ma_chuc_vu=="CV01") {
-        var ul= document.createElement("UL");
-        var li2= document.createElement("LI");
-        var txtli2=document.createTextNode("Rời nhóm");li2.appendChild(txtli2);
-        li2.addEventListener("click",clickroikhoinhomnhom);
-        li2.myparamMaNhom=manhom;
-        li2.myparamMaTaiKhoan=idtaikhoan;
-        ul.appendChild(li2);
-        menucon.appendChild(ul);
-    }else{
-        var ul= document.createElement("UL");
-        var li1= document.createElement("LI");
-        var txtli1=document.createTextNode("Bổ nhiệm quản lý");li1.appendChild(txtli1);
-        var li2= document.createElement("LI");
-        var txtli2=document.createTextNode("Trục xuất");
-        li2.appendChild(txtli2);
-        li2.addEventListener("click",clicktrucxuatkhoinhom);
-        li2.myparamMaNhom=manhom;
-        li2.myparamMaTaiKhoan=idtaikhoan;
-        ul.appendChild(li1);
-        ul.appendChild(li2);
-        menucon.appendChild(ul); 
-    }})
+        for (var i = 0; i < data.length; i++) {
+                // var ul= document.createElement("UL");
+                // var li1= document.createElement("LI");
+                // var txtli1=document.createTextNode("Bổ nhiệm quản lý");li1.appendChild(txtli1);
+                // var li2= document.createElement("LI");
+                // var txtli2=document.createTextNode("Trục xuất");
+                //             ul.appendChild(li1);
+                // ul.appendChild(li2);
+                // menucon.appendChild(ul); 
+        
+            // if (data[i].ma_chuc_vu=="CV01") {
+            //     var ul= document.createElement("UL");
+            //     var li2= document.createElement("LI");
+            //     var txtli2=document.createTextNode("Rời nhóm");li2.appendChild(txtli2);
+            //     li2.addEventListener("click",clickroikhoinhomnhom);
+            //     li2.myparamMaNhom=manhom;
+            //     li2.myparamMaTaiKhoan=idtaikhoan;
+            //     ul.appendChild(li2);
+            //     menucon.appendChild(ul);
+            // }else{
+            //     var ul= document.createElement("UL");
+            //     var li1= document.createElement("LI");
+            //     var txtli1=document.createTextNode("Bổ nhiệm quản lý");li1.appendChild(txtli1);
+            //     var li2= document.createElement("LI");
+            //     var txtli2=document.createTextNode("Trục xuất");
+            //     li2.appendChild(txtli2);
+            //     li2.addEventListener("click",clicktrucxuatkhoinhom);
+            //     li2.myparamMaNhom=manhom;
+            //     li2.myparamMaTaiKhoan=idtaikhoan;
+            //     ul.appendChild(li1);
+            //     ul.appendChild(li2);
+            //     menucon.appendChild(ul); 
+            // }
+
+        }
+
+
+
+})
 
 
      

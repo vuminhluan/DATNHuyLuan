@@ -87,7 +87,19 @@ function submittaonhom()
                     trang_thai:"1"        
 
             }}).done(function(data){
-                    alert(data);
+                      $.ajax({
+                                url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
+                                type:'POST',
+                                data:{
+                                        _token: $('input[name=_token]').val(),
+                                        ma_nhom:manhom,
+                                        ma_tai_khoan:$("#session-ma-tk").val(),
+                                        ma_chuc_vu:"CV01",
+                                        trang_thai:"1"        
+
+                                }}).done(function(data){
+                                        alert(data);
+                                })
             })
          //   alert(tennhom+"tao thanh cong");
             alert(data);
