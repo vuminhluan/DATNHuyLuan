@@ -79,8 +79,6 @@ class DangNhapController extends Controller
 
 		// return $user->getName();
 		return $this->xuLyDangNhapGoogle($user);
-		
-
 	}
 
 
