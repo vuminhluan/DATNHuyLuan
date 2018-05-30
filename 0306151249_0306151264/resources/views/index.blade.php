@@ -160,9 +160,9 @@
 						<div class="sign-in-linethrough">
 							<span>Hoặc</span>
 						</div>
-						<div style="text-align: center;">
+						{{-- <div style="text-align: center;">
 							<p class="google-sign-in-button"><a href="{{ route('dangnhap.google') }}"><i class="fa fa-google"></i> Đăng nhập với google</a></p>
-						</div>
+						</div> --}}
 						<div style="text-align: right;">
 							<a href="{{route('caidat.quen_matkhau')}}">Quên mật khẩu ?</a>
 						</div>

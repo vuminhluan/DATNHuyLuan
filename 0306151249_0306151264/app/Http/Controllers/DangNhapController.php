@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Socialite;
+use App\Traits\TaoMaTaiKhoanTrait;
 
 
 class DangNhapController extends Controller
 {
+
+	use TaoMaTaiKhoanTrait;
 
 	// For Auth, change default name "username" to what we want.
 	public function username()
@@ -84,12 +87,23 @@ class DangNhapController extends Controller
 
 	public function xuLyDangNhapGoogle($user)
 	{
-		$taikhoan = TaiKhoan::where('email', $user->getEmail())->first();
-		if(!$taikhoan) {
-			return $user->getAvatar();
-		} else {
-			abort(404);
-		}
+		// $taikhoan = TaiKhoan::where('email', $user->getEmail())->first();
+		// if(!$taikhoan) {
+		// 	return $user->user['name']['familyName'];
+		// 	// return $this->taoMaTaiKhoan();
+		// 	$taikhoan = new TaiKhoan();
+		// 	$parameter_array = [
+		// 		'ma_tai_khoan'=> $this->taoMaTaiKhoan();
+
+		// 	];
+
+
+		// } else {
+		// 	abort(404);
+		// }
+
+		// return "a";
+		return "bo tay";
 	}
 
 
