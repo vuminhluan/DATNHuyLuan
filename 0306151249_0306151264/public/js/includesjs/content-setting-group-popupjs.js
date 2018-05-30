@@ -134,15 +134,12 @@ function opentab_lstthanhvien(idnhom) {
         divkq.style.borderBottom ="solid 1px #9695d8";
         divkq.innerHTML ='<h4>'+ data[i].ho_ten_lot +" "+ data[i].ten+'</h4>';
 
-
         var divomhainut= document.createElement("div");
             divomhainut.style.width="280px";
             divomhainut.style.height="100%";
             divomhainut.style.float="right";
             divomhainut.style.paddingTop="17px";
             divomhainut.id="divomhainut"+data[i].ma_tai_khoan;
-
-
         var btntuchoigianhapnhom = document.createElement("div");
         btntuchoigianhapnhom.style.cursor="pointer";
         btntuchoigianhapnhom.style.marginTop="0px";
@@ -163,13 +160,11 @@ function opentab_lstthanhvien(idnhom) {
        // btntuchoigianhapnhom.myParamMaTaiKhoan=data[i].ma_tai_khoan;
        btntuchoigianhapnhom.appendChild(showtoggletuychonthanhviennhom(data[i].ma_tai_khoan,nhomhientaidangduocchon));
         btntuchoigianhapnhom.id="btnshowmenuluachonquanlythanhvien"+data[i].ma_tai_khoan;
-
         // divomhainut.appendChild(btnchophepgianhapnhom);
         divomhainut.appendChild(btntuchoigianhapnhom);
         divkq.appendChild(divomhainut);
         document.getElementById("divlstthanhvien").appendChild(divkq);
         }
-        ////
     })
 }
 function showtoggletuychonthanhviennhomtrue(pr)
@@ -254,14 +249,10 @@ function showtoggletuychonthanhviennhom(idtaikhoan,manhom){
               li1.addEventListener("click",clicktrucxuatkhoinhom);
               li1.myparamMaNhom=manhom;
               li1.myparamMaTaiKhoan=idtaikhoan;
-
-
           var txtli1=document.createTextNode("Trục xuất");li1.appendChild(txtli1);ul.appendChild(li1);
-
             menucon.appendChild(ul); 
       
 })
-
 return menucon;
 }
 
@@ -281,14 +272,8 @@ function   onoffcapquyenchucnangtrongnhom(prl){
             ma_nhom:idnhom,
             trang_thai:"1"
         }}).done(function(data){
-         //   alert(data);
-          //  console.log(data);
-         //   $('#sptick'+machucvu+idtaikhoan).css("display","none");
-         //   opentab_lstthanhvien(idnhom);
             $('#btnshowmenuluachonquanlythanhvien'+idtaikhoan).children().last().remove();
              $('#btnshowmenuluachonquanlythanhvien'+idtaikhoan).append(showtoggletuychonthanhviennhom(idtaikhoan,idnhom));
-         //  document.getElementById('btnshowmenuluachonquanlythanhvien'+idtaikhoan).appendChild(showtoggletuychonthanhviennhom(idtaikhoan,idnhom));
-
     })
 } 
 
