@@ -140,6 +140,7 @@ function opentab_lstthanhvien(idnhom) {
             divomhainut.style.height="100%";
             divomhainut.style.float="right";
             divomhainut.style.paddingTop="17px";
+            divomhainut.id="divomhainut"+data[i].ma_tai_khoan;
 
 
         var btntuchoigianhapnhom = document.createElement("div");
@@ -161,7 +162,7 @@ function opentab_lstthanhvien(idnhom) {
         btntuchoigianhapnhom.myParamIdthediv="togglemenu"+data[i].ma_tai_khoan;
        // btntuchoigianhapnhom.myParamMaTaiKhoan=data[i].ma_tai_khoan;
        btntuchoigianhapnhom.appendChild(showtoggletuychonthanhviennhom(data[i].ma_tai_khoan,nhomhientaidangduocchon));
-        btntuchoigianhapnhom.id="btntuchoiduyetgianhapnhom"+data[i].ma_tai_khoan;
+        btntuchoigianhapnhom.id="btnshowmenuluachonquanlythanhvien"+data[i].ma_tai_khoan;
 
         // divomhainut.appendChild(btnchophepgianhapnhom);
         divomhainut.appendChild(btntuchoigianhapnhom);
@@ -239,10 +240,10 @@ function showtoggletuychonthanhviennhom(idtaikhoan,manhom){
                                  spl.id="sptick"+arrMCN[i]+idtaikhoan; // id của span này gồm sp stick CV02 TK00001
                                  spl.className="fa fa-check";
                                  var txtli1=document.createTextNode(arrCN[i]);
-                            li1.appendChild(spl);
-                            li1.appendChild(txtli1);
-                            ul.appendChild(li1);
-                            flagl=false;
+                                 li1.appendChild(spl);
+                                 li1.appendChild(txtli1);
+                                 ul.appendChild(li1);
+                                 flagl=false;
                         }}
                     if(flagl)
                     {
@@ -280,9 +281,14 @@ function   onoffcapquyenchucnangtrongnhom(prl){
             ma_nhom:idnhom,
             trang_thai:"1"
         }}).done(function(data){
-            alert(data);
-            console.log(data);
-            $('#sptick'+machucvu+idtaikhoan).css("display","none");
+         //   alert(data);
+          //  console.log(data);
+         //   $('#sptick'+machucvu+idtaikhoan).css("display","none");
+         //   opentab_lstthanhvien(idnhom);
+            $('#btnshowmenuluachonquanlythanhvien'+idtaikhoan).children().last().remove();
+             $('#btnshowmenuluachonquanlythanhvien'+idtaikhoan).append(showtoggletuychonthanhviennhom(idtaikhoan,idnhom));
+         //  document.getElementById('btnshowmenuluachonquanlythanhvien'+idtaikhoan).appendChild(showtoggletuychonthanhviennhom(idtaikhoan,idnhom));
+
     })
 } 
 
