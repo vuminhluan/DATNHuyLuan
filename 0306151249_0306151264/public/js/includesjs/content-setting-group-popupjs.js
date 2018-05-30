@@ -220,74 +220,76 @@ function showtoggletuychonthanhviennhom(idtaikhoan,manhom){
             ma_tai_khoan:idtaikhoan
         }
     }).done(function(data){
-        alert(data[0].ma_chuc_vu+"đây mã tìm được đây");
-        for (var i = 0; i < data.length; i++) {  
+       // alert(data[0].ma_chuc_vu+"đây mã tìm được đây");
+        var arrCN = ["Quản trị viên","Phê duyệt thành viên","Phê duyệt bài viết","Trợ giúp xuất sắc","Hỗ trợ nhiệt tình"];
+        var arrMCN= ["CV02","CV03","CV04","CV05","CV06","CV07"];
+        var arrNameChucNang= ["onoffquantrivien","onoffpheduyetthanhvien","onoffpheduyetbaiviet","onofftrogiupxuatsac","onoffhotronhiettinh"];
+        var ul= document.createElement("UL");
+            for (var i = 0; i < 5; i++) {
+                    var li1= document.createElement("LI");
+                    //  var nameofevent = arrNameChucNang[i];
+                        li1.addEventListener("click",onoffcapquyenchucnangtrongnhom);
+                        li1.myParamMaChucVu=arrMCN[i];
+                        li1.myparamMaNhom=manhom;
+                        li1.myparamMaTaiKhoan=idtaikhoan;
+                    var flagl = true;
+                    for (var j = 0; j < data.length; j++) {
+                        if (data[j].ma_chuc_vu==arrMCN[i]) {
+                                 var spl = document.createElement("SPAN");
+                                 spl.id="sptick"+arrMCN[i]+idtaikhoan; // id của span này gồm sp stick CV02 TK00001
+                                 spl.className="fa fa-check";
+                                 var txtli1=document.createTextNode(arrCN[i]);
+                            li1.appendChild(spl);
+                            li1.appendChild(txtli1);
+                            ul.appendChild(li1);
+                            flagl=false;
+                        }}
+                    if(flagl)
+                    {
+                        var txtli1=document.createTextNode(arrCN[i]);li1.appendChild(txtli1);ul.appendChild(li1);
+                    }
+            }
+          var li1= document.createElement("LI");
+              li1.addEventListener("click",clicktrucxuatkhoinhom);
+              li1.myparamMaNhom=manhom;
+              li1.myparamMaTaiKhoan=idtaikhoan;
 
-        }
-        var arrCN = ["Quản trị viên","Phê duyệt thành viên","Phê duyệt bài viết","Trợ giúp xuất sắc","Hỗ trợ nhiệt tình","Trục xuất"];
-        for (var i = 0; i < 5; i++) {
-                var ul= document.createElement("UL");
-                var li1= document.createElement("LI");
-                var txtli1=document.createTextNode(arrCN[i]);li1.appendChild(txtli1);ul.appendChild(li1);
-                menucon.appendChild(ul); 
 
-        }
-                //         var li2= document.createElement("LI");
-                // var txtli2=document.createTextNode("Phê duyệt thành viên"); li2.appendChild(txtli2);ul.appendChild(li2);
-                // var li3= document.createElement("LI");
-                // var txtli3=document.createTextNode("Phê duyệt bài viết");li3.appendChild(txtli3);ul.appendChild(li3);
-                // var li4= document.createElement("LI");
-                // var txtli4=document.createTextNode("Trợ giúp xuất sắc"); li4.appendChild(txtli4);ul.appendChild(li4);
-                // var li5= document.createElement("LI");
-                // var txtli5=document.createTextNode("Hỗ trợ nhiệt tình"); li5.appendChild(txtli5);ul.appendChild(li5);
-                // var li6= document.createElement("LI");
-                // var txtli6=document.createTextNode("Trục xuất"); li6.appendChild(txtli2);ul.appendChild(li6);
-                //////////////
-                // var ul= document.createElement("UL");
-                // var li1= document.createElement("LI");
-                // var txtli1=document.createTextNode("Bổ nhiệm quản lý");li1.appendChild(txtli1);
-                // var li2= document.createElement("LI");
-                // var txtli2=document.createTextNode("Trục xuất");
-                //             ul.appendChild(li1);
-                // ul.appendChild(li2);
-                // menucon.appendChild(ul); 
-        
-            // if (data[i].ma_chuc_vu=="CV01") {
-            //     var ul= document.createElement("UL");
-            //     var li2= document.createElement("LI");
-            //     var txtli2=document.createTextNode("Rời nhóm");li2.appendChild(txtli2);
-            //     li2.addEventListener("click",clickroikhoinhomnhom);
-            //     li2.myparamMaNhom=manhom;
-            //     li2.myparamMaTaiKhoan=idtaikhoan;
-            //     ul.appendChild(li2);
-            //     menucon.appendChild(ul);
-            // }else{
-            //     var ul= document.createElement("UL");
-            //     var li1= document.createElement("LI");
-            //     var txtli1=document.createTextNode("Bổ nhiệm quản lý");li1.appendChild(txtli1);
-            //     var li2= document.createElement("LI");
-            //     var txtli2=document.createTextNode("Trục xuất");
-            //     li2.appendChild(txtli2);
-            //     li2.addEventListener("click",clicktrucxuatkhoinhom);
-            //     li2.myparamMaNhom=manhom;
-            //     li2.myparamMaTaiKhoan=idtaikhoan;
-            //     ul.appendChild(li1);
-            //     ul.appendChild(li2);
-            //     menucon.appendChild(ul); 
-            // }
+          var txtli1=document.createTextNode("Trục xuất");li1.appendChild(txtli1);ul.appendChild(li1);
 
+            menucon.appendChild(ul); 
       
-
-
-
 })
 
-
-     
- 
 return menucon;
-
 }
+
+/////////////////
+function   onoffcapquyenchucnangtrongnhom(prl){
+    alert("quản trị thành viên");
+    var idtaikhoan=prl.currentTarget.myparamMaTaiKhoan;
+    var idnhom = prl.currentTarget.myparamMaNhom
+    var machucvu=prl.currentTarget.myParamMaChucVu;
+    $.ajax({
+        url:link_host+'/ajax/postupdatechucvuthanhvientrongnhomne',
+        type:'POST',
+        data:{
+            _token:$('input[name=_token]').val(),
+            ma_chuc_vu:machucvu,
+            ma_tai_khoan:idtaikhoan,
+            ma_nhom:idnhom,
+            trang_thai:"1"
+        }}).done(function(data){
+            alert(data);
+            console.log(data);
+            $('#sptick'+machucvu+idtaikhoan).css("display","none");
+    })
+} 
+
+
+
+
+
 function clicktrucxuatkhoinhom(prl){
     var manhom=prl.currentTarget.myparamMaNhom;
    // alert("say click"+prl.currentTarget.myparamMaNhom+"-"+prl.currentTarget.myparamMaTaiKhoan);

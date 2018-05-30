@@ -14,23 +14,47 @@ use App\chuc_vu_cua_thanh_vien_trong_nhom;
 
 class ThanhVienNhom extends Controller
 {
-    public function GetNhomTheoMaTaiKhoan(Request $rq)
-    {
+    public function GetNhomTheoMaTaiKhoan(Request $rq) {
      $lstNhomCuaTaiKhoan = DB::table("thanh_vien_nhom")->join('nhom','thanh_vien_nhom.ma_nhom','=','nhom.ma_nhom')->select('thanh_vien_nhom.*','nhom.*')->where([["thanh_vien_nhom.ma_tai_khoan",$rq->ma_tai_khoan],["thanh_vien_nhom.trang_thai","1"]])->get();
-
      $lstNhomQuanLyCuaTaiKhoan = DB::table("thanh_vien_nhom")->join('nhom','thanh_vien_nhom.ma_nhom','=','nhom.ma_nhom')->select('thanh_vien_nhom.*','nhom.*')->where([["thanh_vien_nhom.ma_tai_khoan","=",$rq->ma_tai_khoan],["ma_chuc_vu","=","CV01"],["thanh_vien_nhom.trang_thai","1"]])->get();
         return view("includes.content-menu-popup",["lstnhomcuataikhoan"=>$lstNhomCuaTaiKhoan,"lstNhomQuanLyCuaTaiKhoan"=>$lstNhomQuanLyCuaTaiKhoan]);
     }
 
 
-    public function GetLstThanhVienTheoMaNhom(Request $rql)
-    {
+    public function GetLstThanhVienTheoMaNhom(Request $rql){
         return DB::table('thanh_vien_nhom')->join('nguoi_dung','thanh_vien_nhom.ma_tai_khoan','=','nguoi_dung.ma_tai_khoan')->select('thanh_vien_nhom.*','nguoi_dung.*')->where([['ma_nhom',$rql->ma_nhom],['thanh_vien_nhom.trang_thai',$rql->trang_thai]])->get();
     }
     public function PostUpdateThanhVienTrongNhom(Request $rql){
       return   DB::table('thanh_vien_nhom')
                                     ->where([['ma_nhom',$rql->ma_nhom],['ma_tai_khoan',$rql->ma_tai_khoan]])
                                     ->update(['trang_thai'=> $rql->trang_thai]);
+
+    }
+    public function PostUpdateChucVuThanhVienTrongNhom(Request $rql){
+        //return $rql->ma_tai_khoan.$rql->ma_nhom.$rql->ma_chuc_vu;
+        //kiểm tra người ngày trong nhóm này đã có chức này chưa 
+        $trang_thai= DB::table('chuc_vu_cua_thanh_vien_trong_nhom')->select('trang_thai')->where([['ma_tai_khoan',$rql->ma_tai_khoan],['ma_nhom',$rql->ma_nhom],['ma_chuc_vu',$rql->ma_chuc_vu]])->get();
+       // return "lala".$trang_thai."llili";
+        if($trang_thai=='[]')
+        {
+           $this->PostChucVuCuaThanhVienVaoNhom($rql);
+        }else{
+            if ($trang_thai[0]->trang_thai=="1") {
+               DB::table('chuc_vu_cua_thanh_vien_trong_nhom')
+            ->where([['ma_tai_khoan',$rql->ma_tai_khoan],['ma_nhom',$rql->ma_nhom],['ma_chuc_vu',$rql->ma_chuc_vu]])
+            ->update(['trang_thai' => "0"]);
+            
+            }
+
+            else{
+                DB::table('chuc_vu_cua_thanh_vien_trong_nhom')
+            ->where([['ma_tai_khoan',$rql->ma_tai_khoan],['ma_nhom',$rql->ma_nhom],['ma_chuc_vu',$rql->ma_chuc_vu]])
+            ->update(['trang_thai' => "1"]);
+            
+            }
+        }
+        //ko có insert vào
+        //đã từng thì update trạng thái ngược lại
 
     }
     public function PostUpdateThanhVienChoPheDuyet(Request $rql){
