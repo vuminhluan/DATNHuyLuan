@@ -4,7 +4,7 @@ btn_nhom.onclick = function() {
     alert("click thong bao");
     modal_nhom.style.display = "block";
 
-    opentab_lstthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());// mặc định khi mở load list thành viên của nhóm
+   // opentab_lstthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());// mặc định khi mở load list thành viên của nhóm
 
 }
 

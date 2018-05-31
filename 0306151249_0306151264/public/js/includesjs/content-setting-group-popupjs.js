@@ -2,6 +2,22 @@ var nhomhientaidangduocchon;
 function opentab_pheduyetthanhvien(pr) {
     nhomhientaidangduocchon=pr;
 //	alert("open tab phê duyệt thành viên"+pr);
+$.ajax({
+        url: link_host+'/ajax/getmachucvutaikhoanne', /// lấy mã tài khoản về đây để kiểm tra tài khoản này có chức vụ này ko ?
+        type:'GET',
+        data:{
+            ma_nhom:pr,
+            ma_tai_khoan:$('#session-ma-tk').val()
+        }
+    }).done(function(data){
+       flagkiemtraquyen = false;
+   for (var i = 0; i < data.length; i++) {
+      if( data[i].ma_chuc_vu=="CV03"){
+        flagkiemtraquyen=true;
+      }
+   }
+   if(flagkiemtraquyen)
+   {
 	$.ajax({
 		url: link_host+'/ajax/getlstthanhviendangchopheduyettheomanhomne',
 		type:'GET',
@@ -92,6 +108,11 @@ function opentab_pheduyetthanhvien(pr) {
 		}
 		////
 	})
+    }else{
+        alert("Bạn không có quyền truy cập vào đây");
+        return;
+    }
+    })
 }
 ///function tim kiếm thành viên trong list thành viên
 function timkiemthanhvien_menugrsetting(){
@@ -103,6 +124,22 @@ function timkiemthanhvien_menugrsetting(){
 // ////////////load list thành viên của nhóm
 function opentab_lstthanhvien(idnhom) {
     nhomhientaidangduocchon=idnhom;
+$.ajax({
+        url: link_host+'/ajax/getmachucvutaikhoanne', /// lấy mã tài khoản về đây để kiểm tra tài khoản này có chức vụ này ko ?
+        type:'GET',
+        data:{
+            ma_nhom:idnhom,
+            ma_tai_khoan:$('#session-ma-tk').val()
+        }
+    }).done(function(data){
+       flagkiemtraquyen = false;
+   for (var i = 0; i < data.length; i++) {
+      if( data[i].ma_chuc_vu=="CV02"||data[i].ma_chuc_vu=="CV01"){
+        flagkiemtraquyen=true;
+      }
+   }
+   if(flagkiemtraquyen)
+   {
 //  alert("open tab phê duyệt thành viên"+pr);
     $.ajax({
         url: link_host+'/ajax/getlstthanhvientheomanhomne',
@@ -166,7 +203,18 @@ function opentab_lstthanhvien(idnhom) {
         document.getElementById("divlstthanhvien").appendChild(divkq);
         }
     })
+    }
+    else{
+        alert("bạn không có quyền truy cập vào đây");
+        return;
+    }
+ })
 }
+
+
+
+
+
 function showtoggletuychonthanhviennhomtrue(pr)
 {
     if($('#'+pr.currentTarget.myParamIdthediv).css("display")=="block")
@@ -396,50 +444,35 @@ function clicktuchoigianhapnhom(prl){
 
 }
 
-//var listsearchdiv = document.getElementById('divpheduyetthanhvien');
-		//for (var i = 0; i < data.length; i++) {
-		   // var divkq = document.createElement("div");
-     //    divkq.style.height= "70px";
-     //    divkq.style.with="100%";
-     //    divkq.style.background ="white";
-     //    divkq.style.color="black";
-     //    divkq.style.borderBottom ="solid 1px #9695d8";
-     //    divkq.innerHTML = data[i].ma_tai_khoan;
 
-     //    var btnxingianhapnhom = document.createElement("div");
-     //    btnxingianhapnhom.style.cursor="pointer";
-     //    btnxingianhapnhom.style.marginTop="0px";
-     //    btnxingianhapnhom.style.marginLeft="315px";
-     //    btnxingianhapnhom.style.borderRadius="3px";
-     //    btnxingianhapnhom.style.paddingLeft="10px";
-     //    btnxingianhapnhom.style.paddingTop="3px";
-     //    btnxingianhapnhom.style.height ="29px";
-     //    btnxingianhapnhom.style.with="30px";
-     //    btnxingianhapnhom.style.background="white";
-     //    btnxingianhapnhom.style.color="black";
-     //    btnxingianhapnhom.style.border="solid 1px #9695d8";
-     //    btnxingianhapnhom.innerHTML = '<i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp; Gia nhập';
-       // btnxingianhapnhom.addEventListener("click",clickxinvaonhom);
-      //  btnxingianhapnhom.myParamManhom=data[i].ma_tai_khoan;
-
-        // btnxingianhapnhom.id="btnxingianhapnhom"+data[i].ma_nhom;
-        // for (var j = 0; j < lstNhomCuaTaiKhoanThamGia.length; j++) {
-        //     if(data[i].ma_nhom==lstNhomCuaTaiKhoanThamGia[j].ma_tai_khoan)
-        //     {
-        //         btnxingianhapnhom.innerHTML='<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Đã tham gia';
-        //         btnxingianhapnhom.removeEventListener("click",clickxinvaonhom);
-        //     }
-        // }
-       // for (var k = 0; k < lstNhomNguoiDungDangXinGiaNhap.length; k++) {
-       //  if(data[i].ma_nhom==lstNhomNguoiDungDangXinGiaNhap[k].ma_nhom){
-       //          btnxingianhapnhom.innerHTML='<i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;Chờ phê duyệt';
-       //          btnxingianhapnhom.removeEventListener("click",clickxinvaonhom);
-       //            btnxingianhapnhom.style.marginLeft="290px";
-       //      }
-       //  }
-        
+function funGetLstChucVu(manhom,idtaikhoan){
+     $.ajax({
+        url: link_host+'/ajax/getmachucvutaikhoanne', /// lấy mã tài khoản về đây
+        type:'GET',
+        data:{
+            ma_nhom:manhom,
+            ma_tai_khoan:idtaikhoan
+        }
+    }).done(function(data){
        
-        // divkq.appendChild(btnxingianhapnhom);
+    })
 
-        // document.getElementById("divpheduyetthanhvien").appendChild(divkq);
-	//	}
+}
+
+function chonchucnangtrongnhom(prl){
+
+    alert(prl);
+    $('#div-lua-chon-chuc-nang-nhom-first').css('display','none');
+    if(prl=='CV02'||prl=='CV01')
+    {
+
+       openCity(event, 'divthanhvien')
+       opentab_lstthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());
+    }
+    else
+    if(prl=='CV03'){
+         openCity(event, 'divpheduyetthanhvien');
+        opentab_pheduyetthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());
+    }
+
+}

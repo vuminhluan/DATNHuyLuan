@@ -5,6 +5,18 @@
  </head>
 
  <div style="height: 500px;width: 700px;background-color: white; margin: auto;border:solid 1px #9695d8;border-radius: 20px;">
+  <div id="div-lua-chon-chuc-nang-nhom-first" style="background-color: white;height: 500px;width: 700px;position: absolute;margin: auto;border-radius: 20px;padding: 40px;">
+    @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
+      <div onclick="chonchucnangtrongnhom('{{$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu}}')" style="width: 150px;height: 170px;margin: 27px;margin-top: 20px;margin-bottom: 20px; float: left;">
+        <div style="width: 149px;height: 130px; border:solid 1px #9695d8;border-radius: 20px;"></div>
+        <div style="padding: 7px;">
+          <center><span>{{$quyentruycapnhomcuataikhoan[$i]->ten_chuc_vu}}</span></center>
+        </div>
+      </div>
+    @endfor
+    
+
+  </div>
 
  {{--  <div id="div-head-popup-show-all-menu" >
     <span class="close">&times;</span>

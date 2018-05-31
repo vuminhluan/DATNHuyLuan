@@ -9,15 +9,19 @@ use Illuminate\Support\Facades\Auth;
 use App\nhom_m;
 use App\thanh_vien_nhom;
 use App\thanh_vien_cho_phe_duyet;
-
+use App\chuc_vu_cua_thanh_vien_trong_nhom;
+use App\chuc_vu_trong_nhom;
 
 class Nhom extends Controller
 {
     public function loadnhom ($idnhom)
     {
          $matk =  Auth::user()->ma_tai_khoan;
-       $machucvu = DB::table('thanh_vien_nhom')->select("ma_chuc_vu")->where([["ma_nhom",$idnhom],["ma_tai_khoan",$matk],["trang_thai","1"]
-                                                                                ])->get();
+       // $machucvu = DB::table('thanh_vien_nhom')->select("ma_chuc_vu")->where([["ma_nhom",$idnhom],["ma_tai_khoan",$matk],["trang_thai","1"]
+       //                                                                          ])->get();
+        $machucvu = DB::table('chuc_vu_cua_thanh_vien_trong_nhom')->join('chuc_vu_trong_nhom','chuc_vu_cua_thanh_vien_trong_nhom.ma_chuc_vu','=','chuc_vu_trong_nhom.ma_chuc_vu')->select('chuc_vu_cua_thanh_vien_trong_nhom.*','chuc_vu_trong_nhom.*')->where([['ma_tai_khoan',$matk],['ma_nhom',$idnhom],['chuc_vu_cua_thanh_vien_trong_nhom.trang_thai',"1"]])->get();
+
+
         $listbaiviet = DB::table('bai_viet')->where("ma_chu_bai_viet",$idnhom)->orderBy('ma_bai_viet','desc')->take(10)->get();
         $soluongbaiviet =10;
         return view("nhom.indexnhom",["t"=>$idnhom,"s"=>$soluongbaiviet,"lstbaiviet"=>$listbaiviet,"quyentruycapnhomcuataikhoan"=>$machucvu]);
