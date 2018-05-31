@@ -35,10 +35,15 @@ class TaiKhoan extends Model implements \Illuminate\Contracts\Auth\Authenticatab
     return $this->hasOne('App\NguoiDung', 'ma_tai_khoan', 'ma_tai_khoan');
   }
 
-  public function hasTaiKhoanGoogle()
+  public function hasManyTep()
   {
-    return $this->hasOne('App\TaiKhoanGoogle', 'ma_taikhoan_google', 'ma_tai_khoan');
+    return $this->hasMany('App\Tep', 'nguoi_tao', 'ma_tai_khoan');
   }
+
+  // public function hasTaiKhoanGoogle()
+  // {
+  //   return $this->hasOne('App\TaiKhoanGoogle', 'ma_taikhoan_google', 'ma_tai_khoan');
+  // }
 
   // Lấy dữ liệu từ bảng nguoi_dung thông qua Relationship hasOne ở trên
   // cấu trúc: get + CaiGiDo + Attribute

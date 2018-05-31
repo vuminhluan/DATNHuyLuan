@@ -11,7 +11,9 @@ trait TaoMaTepTrait {
 	public function taoMaTepTrait() {
 
 		// $lastID = DB::table('tai_khoan')->orderBy('thoi_gian_tao', 'DESC')->first()->ma_tai_khoan;
-		$latestFile = DB::table('tep')->latest('thoi_gian_tao')->first();
+		$latestFile = DB::table('tep')->latest('ma_tep')->first();
+
+		// return $latestFile->ten_tep;
 		if($latestFile === null) return "TEP0000001";
 		$lastID = $latestFile->ma_tep;
 
@@ -20,8 +22,10 @@ trait TaoMaTepTrait {
 
 		$newIDNumber =  ltrim($matches[0], '0') + 1;
 
-		$newID = "TK";
-		for ($i=0; $i < strlen($lastID) - (2 + strlen($newIDNumber)) ; $i++) {
+		// return $newIDNumber;
+
+		$newID = "TEP";
+		for ($i=0; $i < strlen($lastID) - (3 + strlen($newIDNumber)) ; $i++) {
 		  $newID.="0";
 		}
 		$newID.=$newIDNumber;

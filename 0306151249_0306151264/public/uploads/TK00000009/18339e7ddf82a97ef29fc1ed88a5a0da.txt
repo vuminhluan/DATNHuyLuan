@@ -1,0 +1,14 @@
+Admin: 
+
+- admin_123
+
+- vuminhluan/minhluan1234
+
+Nguoi dung thu:
+- nguoidung_123
+
+
+email gmail:
+
+MAIL_USERNAME=datn.ckc15@gmail.com
+MAIL_PASSWORD=admin@@123

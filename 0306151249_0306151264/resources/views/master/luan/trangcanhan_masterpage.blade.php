@@ -66,12 +66,12 @@
 					</a>
 				</li>
 				<li>
-					<a class="luan_link" href="{{route('trangcanhan.nhom', ['username'=>Auth::user()->ten_tai_khoan])}}">
+					<a class="luan_link" href="{{route('trangcanhan.nhom', ['username'=>$taikhoan->ten_tai_khoan])}}">
 						<span>Nhóm</span><span>2</span>
 					</a>
 				</li>
 				<li>
-					<a class="luan_link" href="{{route('trangcanhan.tep', ['username'=>'vuminhluan'])}}">
+					<a class="luan_link" href="{{route('trangcanhan.tep.index', ['username'=>$taikhoan->ten_tai_khoan])}}">
 						<span>Tệp</span><span>2</span>
 					</a>
 				</li>
@@ -87,7 +87,7 @@
 			<div>
 				<div class="profile-name">
 					<h2>{{$taikhoan->hasNguoiDung->ho_ten_lot.' '.$taikhoan->hasNguoiDung->ten}}</h2>
-					<p><a class="luan_link" href="{{route('trangcanhan.index', ['username'=>'vuminhluan'])}}">{{'@'.$taikhoan->ten_tai_khoan}}</a></p>
+					<p><a class="luan_link" href="{{route('trangcanhan.index', ['username'=>$taikhoan->ten_tai_khoan])}}">{{'@'.$taikhoan->ten_tai_khoan}}</a></p>
 
 				</div>
 				<div class="profile-bio">

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TaiKhoan;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use App\TaiKhoan;
 use App\Tep;
 use App\Traits\TaoMaTepTrait;
 use App\Traits\CapNhatDoiTuongTrait;
@@ -49,11 +50,6 @@ class TrangCaNhanController extends Controller
 		$taikhoan = TaiKhoan::where('ten_tai_khoan', $username)->first();
 		$tatca_gioitinh = DB::table('gioi_tinh')->get();
 		return view('trang_ca_nhan.danhsach_nhom')->with(['taikhoan'=>$taikhoan, 'tatca_gioitinh'=>$tatca_gioitinh]);
-	}
-
-	public function getTep($username)
-	{
-		return view('trang_ca_nhan.tep');
 	}
 
 	public function capNhatNguoiDung(Request $req)
@@ -127,43 +123,42 @@ class TrangCaNhanController extends Controller
 	}
 
 
-	public function postTaiTepLen(Request $req)
-	{
+	// public function postTaiTepLen(Request $req)
+	// {
 		
-		if(!$req->hasFile('uploads')) {
-			return redirect()->back();
-		}
+	// 	if(!$req->hasFile('uploads')) {
+	// 		return redirect()->back();
+	// 	}
+
+	// 	foreach ($req->uploads as $key => $file) {
+	// 		// echo "<pre>";
+	// 		if($file->getClientSize() < 25000) {
+	// 			$file_name = md5(time()+$key).'.'.$file->extension();
+	// 			$dir = "uploads/".Auth::user()->ma_tai_khoan."/";
+	// 			// print_r($dir."---".$file_name);
+	// 			// print_r($file->getClientSize());
+	// 			// print_r($this->taoMaTepTrait());
+	// 			$data = [
+	// 				"ma_tep" => $this->taoMaTepTrait(),
+	// 				"ten_tep" => $file->getClientOriginalName(),
+	// 				"duong_dan_tep" => $file_name,
+	// 				"cong_khai" => 0,
+	// 				"nguoi_tao" => Auth::user()->ma_tai_khoan,
+	// 				"trang_thai" => 1
+	// 			];
+
+	// 			$file->move($dir, $file_name);
+
+	// 			$tep = new Tep();
+	// 			$this->capNhatDoiTuong($data, $tep);
+
+	// 		}
+	// 	}
+
+	// 	return redirect()->back()->with('message', 'Thêm tệp thành công'); 
 
 
-		foreach ($req->uploads as $key => $file) {
-			// echo "<pre>";
-			if($file->getClientSize() < 25000) {
-				$file_name = md5(time()+$key).'.'.$file->extension();
-				$dir = "uploads/".Auth::user()->ma_tai_khoan."/";
-				// print_r($dir."---".$file_name);
-				// print_r($file->getClientSize());
-				// print_r($this->taoMaTepTrait());
-				$data = [
-					"ma_tep" => $this->taoMaTepTrait(),
-					"ten_tep" => $file->getClientOriginalName(),
-					"duong_dan_tep" => $file_name,
-					"cong_khai" => 0,
-					"nguoi_tao" => Auth::user()->ma_tai_khoan,
-					"trang_thai" => 1
-				];
 
-				$file->move($dir, $file_name);
-
-				$tep = new Tep();
-				$this->capNhatDoiTuong($data, $tep);
-
-			}
-		}
-
-		return redirect()->back()->with('message', 'Thêm tệp thành công'); 
-
-
-
-	}
+	// }
 
 }

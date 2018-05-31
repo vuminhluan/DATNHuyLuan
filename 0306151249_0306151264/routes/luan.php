@@ -22,12 +22,17 @@ Route::group(['middleware' => ['MyUserAuth']], function () {
 
 	Route::get(
 		'/taikhoan/{username}/tep',
-		'TrangCaNhanController@getTep'
-	)->name('trangcanhan.tep');
+		'TepController@getTepIndex'
+	)->name('trangcanhan.tep.index');
+
+	Route::get(
+		'/taikhoan/{username}/tep/congkhai',
+		'TepController@getTepCongKhai'
+	)->name('trangcanhan.tep.congkhai');
 
 	Route::post(
-		'/tep/tailen',
-		'TrangCaNhanController@postTaiTepLen'
+		'/taikhoan/{username}/tep/tailen',
+		'TepController@postTaiTepLen'
 	)->name('trangcanhan.tep.tailen');
 	
 });
