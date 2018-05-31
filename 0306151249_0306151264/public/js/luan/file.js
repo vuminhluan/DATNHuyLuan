@@ -1,4 +1,8 @@
+// $('.upload-modal').fadeOut('fast');
 $(document).ready(function() {
+
+	// alert(link_host);
+
 	
 	$('select').prop('selectedIndex', '0');
 
@@ -26,7 +30,6 @@ $(document).ready(function() {
 		var shouldSort;
 		var sort = true;
 		var count = 0;
-		var b;
 		console.log("dir: "+dir);
 		// $(dateContainer[1]).parent().insertBefore($(dateContainer[0]).parent());
 
@@ -87,19 +90,85 @@ $(document).ready(function() {
 
 		}
 
+	});
 
-		/*
-		*
-		*/
 
+	// upload file js
+
+
+	$('input#upload-modal-files').val('');
+	$('.open-upload-modal').click(function() {
+		$('.upload-modal').fadeIn('fast');
+	});
+	$('.cancel-upload').click(function() {
+		$('.upload-modal').fadeOut('fast');
+	});
+
+	function showItemBeforeUplaod(fileName, fileSize, unit, err) {
+		var icon = $("<i class='fa fa-check upload-successs'></i>");
+		if(err) {
+			icon = "<i class='fa fa-times upload-error' title='"+err+"'></i>";
+		}
+		var li = $("<li class='upload-item'></li>");
+		var itemName = $("<div class='item-name'></div>").text(fileName+ " - "+fileSize+" "+unit);
+
+		var itemMessage = $("<div class='item-message'></div>").append(icon);
+
+		li.append(itemName).append(itemMessage);
+		$('#upload-list').append(li);
+		// console.log(li);
+
+	}
+
+	formData = new FormData();
+	var x = $('<p></p>');
+	$('input#upload-modal-files').change(function(event) {
+		// alert(this.val());
+		
+		// alert(1048576/1024/1024);
+		
+		// console.log(unit[0]);
+
+		// return;
 		
 
+		var i = 0, totalFiles = $(this)[0].files.length, file;
+		// alert(totalFiles);
 
+		for (; i < totalFiles; i++) {
+			
+			file = $(this)[0].files[i];
+			err = false;
+			// console.log(file);
+			limit = 26000;
+			fileSize = file.size;
+			unit = "MB";
 
+			if(fileSize > limit) {
+				err = "Vuot qua dung luong "+limit+" bytes";
+			}
 
+			if(Math.round(fileSize/1024/1024) < 1) {
+				fileSize = Math.round(fileSize/1024);
+				unit = "KB";
+			} else {
+				fileSize = Math.round(fileSize/1024/1024);
+			}
 
+			showItemBeforeUplaod(file.name, fileSize, unit, err);
 
+		}
 
 	});
+
+	
+	
+
+
+	
+
+	// END upload file js
+
+
 
 });
