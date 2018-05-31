@@ -24,9 +24,21 @@ Route::group(['middleware' => ['MyUserAuth']], function () {
 		'/taikhoan/{username}/tep',
 		'TrangCaNhanController@getTep'
 	)->name('trangcanhan.tep');
+
+	Route::post(
+		'/tep/tailen',
+		'TrangCaNhanController@postTaiTepLen'
+	)->name('trangcanhan.tep.tailen');
 	
 });
 
+
+// Route::post('/route/ajax', function (Request $req)
+// {
+// 	// return "test ajax route";
+// 	// return "luan";
+// 	return $req;
+// });
 
 
 Route::get('/lienhe', function () {

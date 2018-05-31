@@ -13,11 +13,6 @@
 // use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-// Route::post('/luan/route', function ()
-// {
-// 	return "dit me may ajax a`";
-// })->name('index');
-
 Route::get('/', 'DangNhapController@getIndex')->name('index');
 
 Route::post('/dangnhap', 'DangNhapController@postDangNhap')->name('post_dangnhap');

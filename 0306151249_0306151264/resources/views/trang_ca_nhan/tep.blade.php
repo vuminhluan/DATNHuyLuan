@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{ asset('css/luan/profile/file.css') }}">
 	<script src="{{asset('js/jquery/jquery3.3.1.js')}}" charset="utf-8"></script>
+	
 </head>
 <body>
 
@@ -38,6 +39,11 @@
 								<button class="search-files-button"><i class="fa fa-search"></i></button>
 							</div>
 						</form>
+
+
+						<div >
+							<button class="open-upload-modal">Thêm tệp mới</button>
+						</div>
 					</div>
 					
 					
@@ -65,6 +71,7 @@
 									<i class="fa fa-chevron-down"></i>
 									<div class="action">
 										<ul>
+
 											<li>Đổi tên</li>
 											<li>Đăng bài viết với tệp này</li>
 											<li>Tải</li>
@@ -123,6 +130,7 @@
 											<li>Xóa</li>
 											<li>Công khai</li>
 											<li>Riêng tư</li>
+
 										</ul>
 									</div>
 
@@ -134,15 +142,54 @@
 				</div>
 			</div>
 
-
-
-
-			
 		</div>
 		
 	</div>
 
 	<div class="clear"></div>
+
+
+
+
+	{{-- Modal upload file --}}
+	
+	<div class="upload-modal">
+		<div class="upload-modal-content">
+			<div class="header">
+				<h2>Thêm tệp</h2>
+			</div>
+			<div class="body">
+				<form action="{{ route('trangcanhan.tep.tailen') }}" method="POST" enctype="multipart/form-data">
+					@csrf
+					<div>
+						<p class="mybutton upload-modal-files-button">
+							<input type="file" id="upload-modal-files" name="uploads[]" multiple>
+							<span>Chọn tệp từ máy tính</span>
+						</p>
+					</div>
+					<br>
+					
+					<ul id="upload-list">
+						{{-- <li class="upload-item">
+							<div class="item-name">Quasi odit nobis iure suscipit pariatur sit harum excepturi iste omnis at nihil fugit voluptate quo vel modi, minima, magni, enim ipsa hic quisquam sed neque deserunt?</div>
+							<div class="item-message"><i class="fa fa-times" title=""></i><i class="fa fa-check"></i></div>
+						</li> --}}
+					</ul>
+					<br><br>
+					<button class="save-file">Thêm tệp</button>
+				</form>
+			</div>
+			<div class="footer">
+				<button class="remove-all">Xóa tất cả</button>
+				<button class="cancel-upload">Thoát</button>
+			</div>
+		</div>
+	</div>
+
+	{{-- End modal upload file --}}
+
+
+
 
 
 
@@ -163,7 +210,8 @@
 
 	@include('includes.footer')
 
-
+	
+	<script type="text/javascript" src="{{ asset('js/globaljs/varglobal.js') }}" charset="utf-8"></script>
 	<script src="{{ asset('js/luan/file.js') }}"></script>
 	
 
