@@ -87,7 +87,8 @@ function submittaonhom()
                     trang_thai:"1"        
 
             }}).done(function(data){
-                      $.ajax({
+                
+                     $.ajax({
                                 url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
                                 type:'POST',
                                 data:{
@@ -100,6 +101,48 @@ function submittaonhom()
                                 }}).done(function(data){
                                         alert(data);
                                 })
+                     $.ajax({
+                                url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
+                                type:'POST',
+                                data:{
+                                        _token: $('input[name=_token]').val(),
+                                        ma_nhom:manhom,
+                                        ma_tai_khoan:$("#session-ma-tk").val(),
+                                        ma_chuc_vu:"CV02",
+                                        trang_thai:"1"        
+
+                                }}).done(function(data){
+                                        alert(data);
+                                })
+                    $.ajax({
+                                url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
+                                type:'POST',
+                                data:{
+                                        _token: $('input[name=_token]').val(),
+                                        ma_nhom:manhom,
+                                        ma_tai_khoan:$("#session-ma-tk").val(),
+                                        ma_chuc_vu:"CV03",
+                                        trang_thai:"1"        
+
+                                }}).done(function(data){
+                                        alert(data);
+                                })
+                    $.ajax({
+                                url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
+                                type:'POST',
+                                data:{
+                                        _token: $('input[name=_token]').val(),
+                                        ma_nhom:manhom,
+                                        ma_tai_khoan:$("#session-ma-tk").val(),
+                                        ma_chuc_vu:"CV04",
+                                        trang_thai:"1"        
+
+                                }}).done(function(data){
+                                        alert(data);
+                                })           
+                    
+                
+                     
             })
          //   alert(tennhom+"tao thanh cong");
             alert(data);

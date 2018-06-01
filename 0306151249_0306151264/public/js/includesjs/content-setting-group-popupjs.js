@@ -223,6 +223,9 @@ else
      $('#'+pr.currentTarget.myParamIdthediv).css("display","block");
 
 }
+
+
+
 function showtoggletuychonthanhviennhom(idtaikhoan,manhom){
     var menucon = document.createElement("div");
     menucon.id="togglemenu"+idtaikhoan;
@@ -293,11 +296,11 @@ function showtoggletuychonthanhviennhom(idtaikhoan,manhom){
                         var txtli1=document.createTextNode(arrCN[i]);li1.appendChild(txtli1);ul.appendChild(li1);
                     }
             }
-          var li1= document.createElement("LI");
-              li1.addEventListener("click",clicktrucxuatkhoinhom);
-              li1.myparamMaNhom=manhom;
-              li1.myparamMaTaiKhoan=idtaikhoan;
-          var txtli1=document.createTextNode("Trục xuất");li1.appendChild(txtli1);ul.appendChild(li1);
+                  var li1= document.createElement("LI");
+                      li1.addEventListener("click",clicktrucxuatkhoinhom);
+                      li1.myparamMaNhom=manhom;
+                      li1.myparamMaTaiKhoan=idtaikhoan;
+                  var txtli1=document.createTextNode("Trục xuất");li1.appendChild(txtli1);ul.appendChild(li1);
             menucon.appendChild(ul); 
       
 })
@@ -306,7 +309,7 @@ return menucon;
 
 /////////////////
 function   onoffcapquyenchucnangtrongnhom(prl){
-    alert("quản trị thành viên");
+ //   alert("quản trị thành viên");
     var idtaikhoan=prl.currentTarget.myparamMaTaiKhoan;
     var idnhom = prl.currentTarget.myparamMaNhom
     var machucvu=prl.currentTarget.myParamMaChucVu;
@@ -331,7 +334,7 @@ function   onoffcapquyenchucnangtrongnhom(prl){
 
 function clicktrucxuatkhoinhom(prl){
     var manhom=prl.currentTarget.myparamMaNhom;
-   // alert("say click"+prl.currentTarget.myparamMaNhom+"-"+prl.currentTarget.myparamMaTaiKhoan);
+    alert("say click"+prl.currentTarget.myparamMaNhom+"-"+prl.currentTarget.myparamMaTaiKhoan);
     $.ajax({
         url:link_host+'/ajax/postupdatethanhvientrongnhomne',
         type:'POST',
@@ -402,6 +405,20 @@ function clickpheduyetgianhapnhom(prl){
 				                           
 
 				            }}).done(function(data){
+                                //insert vào bảng chức vô sau khi được thêm vào nhóm
+                                    $.ajax({
+                                        url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
+                                        type:'POST',
+                                        data:{
+                                                _token: $('input[name=_token]').val(),
+                                                ma_nhom:prmanhom,
+                                                ma_tai_khoan:prmataikhoan,
+                                                ma_chuc_vu:"CV07",
+                                                trang_thai:"1"        
+
+                                        }}).done(function(data){
+                                                alert(data);
+                                        })
 				                 //   alert(data);
 				                    //sau khi hoàn tất thêm thành viên vào nhóm
 				                    $("#btnpheduyetgianhapnhom"+prmataikhoan).css("display","none");
@@ -463,16 +480,32 @@ function chonchucnangtrongnhom(prl){
 
     alert(prl);
     $('#div-lua-chon-chuc-nang-nhom-first').css('display','none');
-    if(prl=='CV02'||prl=='CV01')
+    if (prl=='CV01')
     {
-
-       openCity(event, 'divthanhvien')
+        openCity(event, 'divcaidatnhom');
+        $('#tablinkdivcaidatnhom').addClass("active");
+        //opentab_lstthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());
+    }
+    if(prl=='CV02')
+    {
+       openCity(event, 'divthanhvien');
+       $('#tablinkdivthanhvien').addClass("active");
        opentab_lstthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());
     }
     else
     if(prl=='CV03'){
          openCity(event, 'divpheduyetthanhvien');
+         $('#tablinkdivpheduyetthanhvien').addClass("active");
         opentab_pheduyetthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());
+    }
+    if(prl=='CV04'){
+         openCity(event, 'divpheduyetbaiviet');
+         $('#tablinkdivpheduyetbaiviet').addClass("active");
+        opentab_pheduyetthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());
+    }
+    if(prl=='CV08'){
+        openCity(event, 'divbaocao');
+        $('#tablinkdivbaocao').addClass("active");
     }
 
 }
