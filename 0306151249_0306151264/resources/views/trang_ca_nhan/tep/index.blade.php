@@ -18,7 +18,7 @@
 	@foreach ($tatca_tep as $tep)
 	{{-- expr --}}
 
-	<li class="item link-hover1">
+	<li class="item link-hover1" >
 		<div>
 			
 			<img class="pos-absolute item-icon" src="{{asset('myicons/tep/file.svg')}}" alt="">
@@ -28,7 +28,7 @@
 				@if (!$tep->cong_khai)
 					<i class="fa fa-lock"></i>
 				@endif
-				<a href="{{ asset('uploads/'.$tep->belongsToTaiKhoan->ma_tai_khoan.'/'.$tep->duong_dan_tep) }}" target="_blank">{{$tep->ten_tep}}</a>
+				<a  class="item-link" target="_blank" href="{{ asset('uploads/'.$tep->belongsToTaiKhoan->ma_tai_khoan.'/'.$tep->duong_dan_tep) }}">{{$tep->ten_tep}}</a>
 			</p>
 		</div>
 		<div class="item-date-created" data-date="{{date_format($tep->thoi_gian_tao, "Y-m-d")}}"><p>{{date_format($tep->thoi_gian_tao, "d/m/Y")}}</p></div>
@@ -36,14 +36,19 @@
 			<span>
 				<i class="fa fa-chevron-down"></i>
 				<div class="action">
-					<ul>
+					<ul class="list-actions" data-id="{{$tep->ma_tep}}">
 
-						<li>Đổi tên</li>
-						<li>Đăng bài viết với tệp này</li>
-						<li>Tải</li>
-						<li>Xóa</li>
-						<li>Công khai</li>
-						<li>Riêng tư</li>
+						<li class="change-name">Đổi tên</li>
+						<li class="post-with-it">Đăng bài viết với tệp này</li>
+						<li class="download">Tải</li>
+						<li class="delete">Xóa</li>
+						<li class="public-or-private">
+							@if ($tep->cong_khai)
+								Đặt tệp riêng tư
+							@else
+								Đặt tệp công khai
+							@endif
+						</li>
 					</ul>
 				</div>
 
