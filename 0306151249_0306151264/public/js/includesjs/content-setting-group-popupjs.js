@@ -480,6 +480,7 @@ function chonchucnangtrongnhom(prl){
 
     alert(prl);
     $('#div-lua-chon-chuc-nang-nhom-first').css('display','none');
+    
     if (prl=='CV01')
     {
         openCity(event, 'divcaidatnhom');
@@ -488,9 +489,7 @@ function chonchucnangtrongnhom(prl){
     }
     if(prl=='CV02')
     {
-       openCity(event, 'divthanhvien');
-       $('#tablinkdivthanhvien').addClass("active");
-       opentab_lstthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());
+      
     }
     else
     if(prl=='CV03'){
@@ -501,11 +500,16 @@ function chonchucnangtrongnhom(prl){
     if(prl=='CV04'){
          openCity(event, 'divpheduyetbaiviet');
          $('#tablinkdivpheduyetbaiviet').addClass("active");
-        opentab_pheduyetthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());
+    //    opentab_pheduyetthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());
     }
     if(prl=='CV08'){
         openCity(event, 'divbaocao');
         $('#tablinkdivbaocao').addClass("active");
+    }
+    if(prl=='CV09'){
+         openCity(event, 'divthanhvien');
+       $('#tablinkdivthanhvien').addClass("active");
+       opentab_lstthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());
     }
 
 }

@@ -25,9 +25,17 @@
              </div>
           </div>
           <div onclick="chonchucnangtrongnhom('CV08')" style="width: 150px;height: 170px;margin: 27px;margin-top: 20px;margin-bottom: 20px; float: left;">
+            {{-- CV08 là xem báo cáo --}}
             <div style="width: 149px;height: 130px; border:solid 1px #9695d8;border-radius: 20px;"></div>
              <div style="padding: 7px;">
              <center><span>Xem báo cáo</span></center>
+             </div>
+          </div>
+          <div onclick="chonchucnangtrongnhom('CV09')" style="width: 150px;height: 170px;margin: 27px;margin-top: 20px;margin-bottom: 20px; float: left;">
+            {{-- CV09 là quản lý danh thành viên --}}
+            <div style="width: 149px;height: 130px; border:solid 1px #9695d8;border-radius: 20px;"></div>
+             <div style="padding: 7px;">
+             <center><span>Quản lý thành viên</span></center>
              </div>
           </div>
         @endif
@@ -55,7 +63,7 @@
 
                 <div id="divthanhvien" style="display: block;" class="tabcontent ">
                   <div style="height: 40px;width: 100%;padding-top: 10px;overflow: auto;">
-                    <input style="border:  solid 1px transparent;border-bottom:  solid 1px #9695d8;height: 25px;border-radius: 3px;width: 100%;" onkeyup="timkiemthanhvien_menugrsetting()" id="ip-timkiemthanhvien-popup-settingnhom" type="text" placeholder="Nhập vào tên thành viên...." name="">
+                    <input style="border:  solid 1px transparent;border-bottom:  solid 1px #9695d8;height: 25px;border-radius: 3px;width: 100%;" onkeyup="timkiemthanhvien_menugrsetting()" id="ip-timkiemthanhvien-popup-settingnhom" type="text" placeholder="Tìm thành viên....." name="">
                   </div>
 
                  <div id="divlstthanhvien"> 

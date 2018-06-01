@@ -19,7 +19,7 @@
             @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
                @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV01"||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV02"||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV03"||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV04")
 
-               <div id="div-btn-show-menu-setting-nhom" style="border: solid 1px #9695d8; cursor: pointer;width: 287px;height: 36px;float: right;padding: 5px;"><h3><i class="fa fa-envelope-o" aria-hidden="true"> &nbsp;Thông báo của quản lý nhóm</i></h3>
+               <div id="div-btn-show-menu-setting-nhom" style="border: solid 1px #9695d8; cursor: pointer;width: 287px;height: 36px;float: right;padding: 5px;"><h3><i class="fa fa-envelope-o" aria-hidden="true"> &nbsp; Quản lý nhóm</i></h3>
                </div>
                @break
                @endif
