@@ -15,8 +15,33 @@ use App\chuc_vu_cua_thanh_vien_trong_nhom;
 class ThanhVienNhom extends Controller
 {
     public function GetNhomTheoMaTaiKhoan(Request $rq) {
-     $lstNhomCuaTaiKhoan = DB::table("thanh_vien_nhom")->join('nhom','thanh_vien_nhom.ma_nhom','=','nhom.ma_nhom')->select('thanh_vien_nhom.*','nhom.*')->where([["thanh_vien_nhom.ma_tai_khoan",$rq->ma_tai_khoan],["thanh_vien_nhom.trang_thai","1"]])->get();
-     $lstNhomQuanLyCuaTaiKhoan = DB::table("thanh_vien_nhom")->join('nhom','thanh_vien_nhom.ma_nhom','=','nhom.ma_nhom')->select('thanh_vien_nhom.*','nhom.*')->where([["thanh_vien_nhom.ma_tai_khoan","=",$rq->ma_tai_khoan],["ma_chuc_vu","=","CV01"],["thanh_vien_nhom.trang_thai","1"]])->get();
+     // $lstNhomCuaTaiKhoan = DB::table("thanh_vien_nhom")->join('nhom','thanh_vien_nhom.ma_nhom','=','nhom.ma_nhom')->select('thanh_vien_nhom.*','nhom.*')->where([["thanh_vien_nhom.ma_tai_khoan",$rq->ma_tai_khoan],["thanh_vien_nhom.trang_thai","1"]])->get();
+     // $lstNhomQuanLyCuaTaiKhoan = DB::table("thanh_vien_nhom")->join('nhom','thanh_vien_nhom.ma_nhom','=','nhom.ma_nhom')->select('thanh_vien_nhom.*','nhom.*')->where([["thanh_vien_nhom.ma_tai_khoan","=",$rq->ma_tai_khoan],["ma_chuc_vu","=","CV01"],["thanh_vien_nhom.trang_thai","1"]])->get();
+     //    return view("includes.content-menu-popup",["lstnhomcuataikhoan"=>$lstNhomCuaTaiKhoan,"lstNhomQuanLyCuaTaiKhoan"=>$lstNhomQuanLyCuaTaiKhoan]);
+        $lstNhomCuaTaiKhoan = DB::table("thanh_vien_nhom")
+                                ->join('nhom','thanh_vien_nhom.ma_nhom','=','nhom.ma_nhom')
+                                ->select('thanh_vien_nhom.*','nhom.*')
+                                ->where([["thanh_vien_nhom.ma_tai_khoan",$rq->ma_tai_khoan],["thanh_vien_nhom.trang_thai","1"]])
+                                ->get();
+     $lstNhomQuanLyCuaTaiKhoan = DB::table("thanh_vien_nhom")
+     ->join('nhom','thanh_vien_nhom.ma_nhom','=','nhom.ma_nhom')
+     ->join('chuc_vu_cua_thanh_vien_trong_nhom','thanh_vien_nhom.ma_nhom','=','chuc_vu_cua_thanh_vien_trong_nhom.ma_nhom')
+     ->select('thanh_vien_nhom.*','nhom.*','chuc_vu_cua_thanh_vien_trong_nhom.*')
+     ->where([["thanh_vien_nhom.ma_tai_khoan","=",$rq->ma_tai_khoan],
+              ["chuc_vu_cua_thanh_vien_trong_nhom.ma_chuc_vu","=","CV01"],
+              ["thanh_vien_nhom.trang_thai","1"]])
+     ->orWhere([["thanh_vien_nhom.ma_tai_khoan","=",$rq->ma_tai_khoan],
+              ["chuc_vu_cua_thanh_vien_trong_nhom.ma_chuc_vu","=","CV02"],
+              ["thanh_vien_nhom.trang_thai","1"]])
+     ->orWhere([["thanh_vien_nhom.ma_tai_khoan","=",$rq->ma_tai_khoan],
+              ["chuc_vu_cua_thanh_vien_trong_nhom.ma_chuc_vu","=","CV03"],
+              ["thanh_vien_nhom.trang_thai","1"]])
+     ->orWhere([["thanh_vien_nhom.ma_tai_khoan","=",$rq->ma_tai_khoan],
+              ["chuc_vu_cua_thanh_vien_trong_nhom.ma_chuc_vu","=","CV04"],
+              ["thanh_vien_nhom.trang_thai","1"]])
+     ->groupBy('chuc_vu_cua_thanh_vien_trong_nhom.ma_nhom')
+    // ->orderBy('chuc_vu_cua_thanh_vien_trong_nhom.ma_nhom','desc')
+     ->get();
         return view("includes.content-menu-popup",["lstnhomcuataikhoan"=>$lstNhomCuaTaiKhoan,"lstNhomQuanLyCuaTaiKhoan"=>$lstNhomQuanLyCuaTaiKhoan]);
     }
 

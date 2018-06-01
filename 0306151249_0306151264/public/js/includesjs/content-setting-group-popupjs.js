@@ -12,7 +12,7 @@ $.ajax({
     }).done(function(data){
        flagkiemtraquyen = false;
    for (var i = 0; i < data.length; i++) {
-      if( data[i].ma_chuc_vu=="CV03"){
+      if( data[i].ma_chuc_vu=="CV03"||data[i].ma_chuc_vu=="CV01"||data[i].ma_chuc_vu=="CV02"){
         flagkiemtraquyen=true;
       }
    }
