@@ -11,8 +11,8 @@
             <div  style="width: 100%;height: 100%;margin-top: 17px; padding-left: 20px;padding-right: 20px;" >
                   <div class="tab">
                   <button class="tablinks active" onclick="openCity(event, 'divnhom'),opencontent_nhom(event,'div-content-gr-thamgia-quanly')"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Nhóm</button>
-                  <button class="tablinks" onclick="openCity(event, 'divbanbe')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Bạn bè</button>
-                  <button class="tablinks" onclick="openCity(event, 'divkhac')">Khác&nbsp;<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></button>
+                  <button class="tablinks" onclick="openCity(event, 'divbanbe')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;xxxxx</button>
+                  <button class="tablinks" onclick="openCity(event, 'divkhac')">xxxxxx&nbsp;<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></button>
                   <div style="width: 192px;height: 44px;border-bottom: solid 1px #9695d8;margin-left: 255px;margin-right: 10px;"></div>
                   </div>
 
@@ -88,6 +88,18 @@
                         <div>
                           <input style="width: 100%;height: 35px;border:solid 1px #9695d8;padding-left: 5px;" type="text" name="txtTenNhom" id="input-tennhom" placeholder="Ví dụ: CĐTH15C">
                         </div>
+                        <div style="padding: 20px;">
+                          
+                            <p>
+                              <input type="radio" id="iploainhom1" value="LN01" name="radio-group" checked>
+                              <label style="margin-bottom: 17px;" for="iploainhom1"><strong>Nhóm công khai</strong><br> (Mọi tài liệu, bài đăng, câu hỏi của nhóm có thể được mọi người tham khảo).</label>
+                            </p>
+                            <p>
+                              <input type="radio" id="iploainhom2" value="LN02" name="radio-group">
+                              <label for="iploainhom2"><strong>Nhóm kín</strong><br> (Mọi tài liệu, bài đăng, câu hỏi của nhóm đều là riêng tư).</label>
+                            </p>
+                          
+                        </div>
                       </div>
                     </div>
                     <div id="div-bottom-tao-nhom" style="width: 100%;height: 90px;border-top: 1px solid #9695d8;padding-top: 20px;">
@@ -116,10 +128,10 @@
 
                 </div>
                 <div id="divbanbe" class="tabcontent">
-                  <h3>Bạn bè</h3>  
+                  <h3>Bxxxx</h3>  
                 </div>
                 <div id="divkhac" class="tabcontent">
-                  <h3>Khác</h3>
+                  <h3>####</h3>
                 </div>
             </div>
 

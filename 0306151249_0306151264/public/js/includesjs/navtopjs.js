@@ -1,17 +1,17 @@
-// function taonhommoi(l)
-// {
-//  //   alert("tao nhom moi");
-//  if (l) {
-//             $('#div-content-gr-thamgia-quanly').css("display","none");
-//             $('#div-content-tao-nhom').css("display","block");
-//             //div-content-tim-kiem-nhom
-//         }
-//         else{
-//             $('#div-content-gr-thamgia-quanly').css("display","block");
-//             $('#div-content-tao-nhom').css("display","none");
-//         }
+function taonhommoi(l)
+{
+ //   alert("tao nhom moi");
+ if (l) {
+            $('#div-content-gr-thamgia-quanly').css("display","none");
+            $('#div-content-tao-nhom').css("display","block");
+            //div-content-tim-kiem-nhom
+        }
+        else{
+            $('#div-content-gr-thamgia-quanly').css("display","block");
+            $('#div-content-tao-nhom').css("display","none");
+        }
    
-// }
+}
 
 
 
@@ -25,6 +25,9 @@ function submittaonhom()
 {
     var manhom="hi";
     var tennhom = $('#input-tennhom').val();
+    var loainhom = $("input:checked").val();
+   // alert(loainhom);
+
   //  alert(tennhom);
 
  //  alert(link_host);
@@ -61,7 +64,7 @@ function submittaonhom()
             ten_nhom:   tennhom   ,               
             anh:        "no"   ,              
             ma_tai_khoan:  $('#session-ma-tk').val() ,           
-            ma_loai_nhom:  "LN01"   ,          
+            ma_loai_nhom:  loainhom   ,          
             gioi_thieu_nhom:  "Describe something"  ,         
             thoi_gian_tham_gia: "2001/01/01",        
             thoi_gian_het_han_tham_gia: "2001/01/01"  ,
@@ -165,10 +168,18 @@ var modal = document.getElementById('div-dynamic-menu');
 // Get the button that opens the modal
 var btn = document.getElementById("btn-show-dynamic-menu");
 
+var btnlinhom=document.getElementById("li-nav-nhom");
 // Get the <span> element that closes the modal
 // var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
+btnlinhom.onclick=function(){
+    modal.style.display = "block";
+    ajaxlstnhomdathamgia_quanly();
+    // var temptaonhom = document.getElementById("btn-tao-nhom-in-model");
+    // temptaonhom.click();
+    //opencontent_nhom(event,'div-content-tao-nhom');
+}
 btn.onclick = function() {
     modal.style.display = "block";
     ajaxlstnhomdathamgia_quanly();

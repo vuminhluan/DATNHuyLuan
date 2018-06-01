@@ -19,11 +19,11 @@
       
       {{-- Menu trái --}}
       <ul class="navtop-left">
-        <li style="width: 150px;border-right: solid 1px #9695d8;height: 48px;margin-left: 30px;">
+        <li style="width: 150px;height: 48px;margin-left: 30px;">
           <a class="active" href="{{ route('trangchu') }}">Trang chủ</a>
         </li>
-        <li><a href="#news">xxxxxxx</a></li>
-        <li><a href="#contact">xxxxxxx</a></li>
+        <li><a id="li-nav-nhom">Nhóm</a></li>
+        <li><a id="li-nav-taonhom">xxxxx</a></li>
       </ul>
       {{-- End Menu trái --}}
 

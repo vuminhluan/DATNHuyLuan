@@ -67,6 +67,7 @@ class Nhom extends Controller
     	 $nhom->nguoi_sua					= $rql->nguoi_sua;
     	 $nhom->trang_thai  				= $rql->trang_thai;
     	 $nhom->save();
+         
     	 return "ok tao thanh cong";
     }
 
