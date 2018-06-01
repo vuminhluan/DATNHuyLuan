@@ -6,13 +6,13 @@
   font-family: "Baomoi";
   font-weight: 700;
   src: url("../../../fonts/baomoi-regular-2.0.2.woff2") format("woff2");
-}*/
+}
 
 
 .baomoi {
 	font-family: 'Baomoi' !important;
 }
-
+*/
 
 a {
 	text-decoration: none;outline: 0;color: #000;
@@ -145,7 +145,11 @@ a {
 }
 
 .action ul li {
-	padding: 8px;border-bottom: 1px solid #ddd;
+	padding: 8px;border-bottom: 1px solid #ddd;cursor: pointer;
+}
+
+.action ul li:hover {
+	background-color: rgba(200, 197, 255, 0.2);
 }
 
 
@@ -245,4 +249,34 @@ a {
 }
 
 
-/*Upload file css*/
+/*End Upload file css*/
+
+
+
+/*Alert thông báo sesssion*/
+
+.file-alert {
+  position: fixed;z-index: 11;
+  top: 0;left: 0;right:0;margin:auto;
+  min-height:80px;width: 500px;background-color: #fff;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+  transform: translateY(-200%);
+}
+.file-alert .message {
+  color: #000;font-size: 20px;
+  padding: 15px 25px;
+}
+
+.alert-animate {
+  animation: alert-animation 4s linear;
+}
+
+@keyframes alert-animation {
+  0% { transform: translateY(-200%); }
+  15% { transform: translateY(0%); }
+  90% {transform: translateY(0%);}
+  100% { transform: translateY(-200%); }
+}
+
+
+/*End alert thông báo session*/

@@ -12,6 +12,12 @@
 <body>
 
 	@include('includes.navtop')
+
+	<div class="file-alert {{session('message') ? 'alert-animate' : '' }}">
+		<div class="message">
+			<p class="baomoi">{{session('message')}}</p>
+		</div>
+	</div>
 	
 	<div class="main">
 		<div class="container">
@@ -95,6 +101,7 @@
 			</div>
 		</div>
 	</div>
+
 
 	{{-- End modal upload file --}}
 

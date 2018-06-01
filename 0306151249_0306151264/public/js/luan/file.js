@@ -3,6 +3,12 @@ $(document).ready(function() {
 
 	// alert(link_host);
 
+	$('a.prevent-reload').click(function(e) {
+		e.preventDefault();
+		if($(this).attr('href') != document.URL) {
+			window.location.href = $(this).attr('href');
+		}
+	});
 	
 	$('select').prop('selectedIndex', '0');
 
@@ -93,7 +99,7 @@ $(document).ready(function() {
 	});
 
 
-	// upload file js
+	// upload  js
 
 
 	$('input#upload-modal-files').val('');
@@ -167,7 +173,21 @@ $(document).ready(function() {
 
 	
 
-	// END upload file js
+	// END upload js
+
+
+
+	// Action on file (delete, change name, ...)
+
+	$('.action >ul > li.download').click(function() {
+		var a = $(this).parents('li.item').find('a.item-link:first');
+		$(a).attr('download', 'true');
+		a[0].click();
+		$(a).removeAttr('download');
+
+	});
+
+	// End Action on file
 
 
 
