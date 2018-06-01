@@ -8,32 +8,60 @@
   <div id="div-lua-chon-chuc-nang-nhom-first" style="background-color: white;height: 500px;width: 700px;position: absolute;margin: auto;border-radius: 20px;padding: 40px;">
     @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
     @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu!="CV01")
-        @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu!="CV02")
-           <div onclick="chonchucnangtrongnhom('{{$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu}}')" style="width: 150px;height: 170px;margin: 27px;margin-top: 20px;margin-bottom: 20px; float: left;">
-             <div style="width: 149px;height: 130px; border:solid 1px #9695d8;border-radius: 20px;"></div>
+        {{-- @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu!="CV02")
+           <div onclick="chonchucnangtrongnhom('{{$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu}}')" class="div-big-item-choose-menu-group">
+             <div  class="div-item-choose-menu-group" >
+              
+             </div>
             <div style="padding: 7px;">
              <center><span>{{$quyentruycapnhomcuataikhoan[$i]->ten_chuc_vu}}</span></center>
              </div>
          </div>
+        @endif --}}
+        @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV03")
+             <div onclick="chonchucnangtrongnhom('{{$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu}}')" class="div-big-item-choose-menu-group">
+                 <div  class="div-item-choose-menu-group" >
+                   <center><span class="fa fa-check-circle-o fa-5x"></span></center>
+                 </div>
+                <div style="padding: 7px;">
+                 <center><span>{{$quyentruycapnhomcuataikhoan[$i]->ten_chuc_vu}}</span></center>
+                 </div>
+             </div>
+        @endif
+        @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV04")
+             <div onclick="chonchucnangtrongnhom('{{$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu}}')" class="div-big-item-choose-menu-group">
+                 <div  class="div-item-choose-menu-group" >
+                   <center><span class="fa fa-pencil-square-o fa-5x"></span></center>
+                 </div>
+                <div style="padding: 7px;">
+                 <center><span>{{$quyentruycapnhomcuataikhoan[$i]->ten_chuc_vu}}</span></center>
+                 </div>
+             </div>
         @endif
      
        @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV02")
-           <div onclick="chonchucnangtrongnhom('CV01')" style="width: 150px;height: 170px;margin: 27px;margin-top: 20px;margin-bottom: 20px; float: left;">
-            <div style="width: 149px;height: 130px; border:solid 1px #9695d8;border-radius: 20px;"></div>
+           <div class="div-big-item-choose-menu-group" onclick="chonchucnangtrongnhom('CV01')" >
+            <div class="div-item-choose-menu-group" >
+               <center><span class="fa fa-cogs fa-5x"></span></center>
+            </div>
              <div style="padding: 7px;">
              <center><span>Cài đặt nhóm</span></center>
              </div>
           </div>
-          <div onclick="chonchucnangtrongnhom('CV08')" style="width: 150px;height: 170px;margin: 27px;margin-top: 20px;margin-bottom: 20px; float: left;">
+          <div onclick="chonchucnangtrongnhom('CV08')" class="div-big-item-choose-menu-group">
             {{-- CV08 là xem báo cáo --}}
-            <div style="width: 149px;height: 130px; border:solid 1px #9695d8;border-radius: 20px;"></div>
+            <div  class="div-item-choose-menu-group" >
+              <center><span class="fa fa-flag fa-5x" ></span></center>
+            </div>
              <div style="padding: 7px;">
-             <center><span>Xem báo cáo</span></center>
+             <center><span>Xem tố cáo</span></center>
              </div>
           </div>
-          <div onclick="chonchucnangtrongnhom('CV09')" style="width: 150px;height: 170px;margin: 27px;margin-top: 20px;margin-bottom: 20px; float: left;">
+          <div onclick="chonchucnangtrongnhom('CV09')" class="div-big-item-choose-menu-group">
             {{-- CV09 là quản lý danh thành viên --}}
-            <div style="width: 149px;height: 130px; border:solid 1px #9695d8;border-radius: 20px;"></div>
+            <div  class="div-item-choose-menu-group" >
+              <center><span class="fa fa-users fa-5x" ></span></center>
+            </div>
              <div style="padding: 7px;">
              <center><span>Quản lý thành viên</span></center>
              </div>

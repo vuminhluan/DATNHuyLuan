@@ -364,11 +364,14 @@ input[type="date"], focus {
      float:left; background-color:#e6ecf0; width:300px; height: 1500px; margin:4px; margin-top: 8px;
   }
   #thongtincuanhom{
-    float:left; background-color: white; width:300px; height: 300px;border-radius: 1%;
-    border: solid 1px #9695d8;
+    float:left; background-color: white; width:300px; height: 45px;border-radius: 1%;
+    border: solid 1px #9695d8;margin-bottom: 8px;border-radius: 3px;
+  }
+  #thongtincuanhom:hover{
+    background-color:#f9f9f9;
   }
   #thongtinkhaccuanhom{
-    float:left; background-color: white; width:300px; height: 500px;margin-top: 8px;border-radius: 1%;
+    float:left; background-color: white; width:300px; height: 500px;margin-top: 0px;border-radius: 1%;
     border: solid 1px #9695d8;
   }
   .content{

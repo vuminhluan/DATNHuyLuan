@@ -14,20 +14,21 @@
 </div>
 <!-- end ảnh bìa -->
        <div class="leftnav" >
-         <div id="thongtincuanhom">
-           <div style="margin-top: 5px;margin-right: 5px;">
+        
             @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
                @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV01"||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV02"||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV03"||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV04")
-
-               <div id="div-btn-show-menu-setting-nhom" style="border: solid 1px #9695d8; cursor: pointer;width: 287px;height: 36px;float: right;padding: 5px;"><h3><i class="fa fa-envelope-o" aria-hidden="true"> &nbsp; Quản lý nhóm</i></h3>
-               </div>
+                     <div id="thongtincuanhom">
+                      <div style="margin-top: 5px;margin-right: 5px;">
+                   <div id="div-btn-show-menu-setting-nhom" style=" cursor: pointer;width: 287px;height: 34px;float: right;padding: 5px;background-color: white;"><h3><i class="fa fa-envelope-o" aria-hidden="true"> &nbsp; Quản lý nhóm</i></h3>
+                   </div>
+                   
+                     </div>
+                   </div>
                @break
                @endif
             @endfor
-           
-            
-           </div>
-         </div>
+
+         
          <div id="thongtinkhaccuanhom">
            <input type="hidden" id="div-hi-chu-bai-viet-ma-nhom" value="{{$t}}">
          </div>

@@ -1,3 +1,18 @@
+.div-item-choose-menu-group{
+width: 149px;height: 130px;border-radius: 20px;padding: 25px;
+}
+
+.div-big-item-choose-menu-group{
+  width: 150px;height: 170px;margin: 27px;margin-top: 20px;margin-bottom: 20px; float: left;
+}
+.div-big-item-choose-menu-group:hover{
+  background-color: #f9f9f9;border-radius: 5px;
+  animation-name: rotateylu;
+  animation-duration: 1s;
+     
+}
+
+
 #div-content-gr-thamgia-quanly ::-webkit-scrollbar {
     width: 10px;
     height: 7px;
@@ -6,6 +21,25 @@
   width: 10px;
     height: 7px;
 }
+/**/
+@keyframes rotateylu{
+  from{transform: rotateY(0deg);}
+  to{transform: rotateY(360deg);}
+}
+
+
+@-webkit-keyframes examplelumenugr {
+    from {background-color: #9695d8;}
+    to {background-color: #f9f9f9;}
+}
+
+/* Standard syntax */
+@keyframes examplelumenugr {
+    from {background-color: #9695d8;}
+    to {background-color: #f9f9f9;}
+}
+/**/
+
 
 /* Track */
 ::-webkit-scrollbar-track {
