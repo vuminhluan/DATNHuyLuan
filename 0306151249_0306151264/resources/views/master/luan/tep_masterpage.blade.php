@@ -20,9 +20,9 @@
 				<div class="">
 					<h3 class="--title">Tệp của tôi</h3>
 					<ul class="--files-menu">
-						<li><a class="link-hover1 active" href="{{ route('trangcanhan.tep.index', $username) }}"><img class="--item-icon" src="{{asset('myicons/tep/all-files.svg')}}" alt="">Tất cả tệp</a></li>
-						<li><a class="link-hover1" href="{{ route('trangcanhan.tep.congkhai', $username) }}"><img class="--item-icon" src="{{ asset('myicons/tep/share.svg') }}" alt="">Tệp công khai</a></li>
-						<li><a class="link-hover1" href="#/"><img class="--item-icon" src="{{ asset('myicons/tep/private-files.svg') }}" alt="">Tệp cá nhân</a></li>
+						<li><a class="link-hover1 active" href="{{ route('trangcanhan.tep', [$username]) }}"><img class="--item-icon" src="{{asset('myicons/tep/all-files.svg')}}" alt="">Tất cả tệp</a></li>
+						<li><a class="link-hover1" href="{{ route('trangcanhan.tep', [$username, 'congkhai']) }}"><img class="--item-icon" src="{{ asset('myicons/tep/share.svg') }}" alt="">Tệp công khai</a></li>
+						<li><a class="link-hover1" href="{{ route('trangcanhan.tep', [$username, 'riengtu']) }}"><img class="--item-icon" src="{{ asset('myicons/tep/private-files.svg') }}" alt="">Tệp cá nhân</a></li>
 						<li><a class="link-hover1" href="#/"><img class="--item-icon" src="{{ asset('myicons/tep/google-drive.svg') }}" alt="">Google Drive</a></li>
 					</ul>
 				</div>

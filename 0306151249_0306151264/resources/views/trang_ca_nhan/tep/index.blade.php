@@ -28,7 +28,7 @@
 				@if (!$tep->cong_khai)
 					<i class="fa fa-lock"></i>
 				@endif
-				<a href="{{ asset('uploads/'.$tep->belongsToTaiKhoan->ma_tai_khoan.'/'.$tep->duong_dan_tep) }}">{{$tep->ten_tep}}</a>
+				<a href="{{ asset('uploads/'.$tep->belongsToTaiKhoan->ma_tai_khoan.'/'.$tep->duong_dan_tep) }}" target="_blank">{{$tep->ten_tep}}</a>
 			</p>
 		</div>
 		<div class="item-date-created" data-date="{{date_format($tep->thoi_gian_tao, "Y-m-d")}}"><p>{{date_format($tep->thoi_gian_tao, "d/m/Y")}}</p></div>

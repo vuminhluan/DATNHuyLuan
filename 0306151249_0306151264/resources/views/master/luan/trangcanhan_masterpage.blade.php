@@ -71,7 +71,7 @@
 					</a>
 				</li>
 				<li>
-					<a class="luan_link" href="{{route('trangcanhan.tep.index', ['username'=>$taikhoan->ten_tai_khoan])}}">
+					<a class="luan_link" href="{{route('trangcanhan.tep',[$taikhoan->ten_tai_khoan])}}">
 						<span>Tệp</span><span>2</span>
 					</a>
 				</li>

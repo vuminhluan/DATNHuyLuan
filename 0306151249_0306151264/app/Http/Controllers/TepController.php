@@ -21,10 +21,33 @@ class TepController extends Controller
 	use CapNhatDoiTuongTrait;
 
 
+  public function getTrangTep($username, $kind = "tatca")
+  {
+    // return TaiKhoan::where('ten_tai_khoan', $username)->first()->hasManyTep()->where('cong_khai', 1)->orderBy('ma_tep', 'desc')->get();
+    $tatca_tep = null;
+    $abc = TaiKhoan::where('ten_tai_khoan', $username)->first()->hasManyTep();
+    // $kind = "congkhai";
+    $a = null;
+
+    if($kind == "tatca") {
+      $tatca_tep = $abc->orderBy('ma_tep', 'desc')->get();
+    } else if ($kind == "congkhai") {
+      $tatca_tep = $abc->where('cong_khai', 1)->orderBy('ma_tep', 'desc')->get();
+    } else if($kind == "riengtu") {
+      $tatca_tep = $abc->where('cong_khai', 0)->orderBy('ma_tep', 'desc')->get();
+    }
+    // return $kind;
+    // return $tatca_tep;
+    return view('trang_ca_nhan.tep.index', ['tatca_tep' => $tatca_tep, 'username' => $username]);
+    // return "haha";
+    
+  }
+
 	public function getTepIndex($username)
 	{
 		// return $ma_tk;
-		$tatca_tep = TaiKhoan::where('ten_tai_khoan', $username)->first()->hasManyTep()->orderBy('ma_tep', 'desc')->get();
+		$abc = TaiKhoan::where('ten_tai_khoan', $username)->first()->hasManyTep();
+    $tatca_tep = $abc->orderBy('ma_tep', 'desc')->get();
 		// return $tatca_tep;
 		return view('trang_ca_nhan.tep.index', ['tatca_tep' => $tatca_tep, 'username' => $username]);
 	}
