@@ -1,5 +1,5 @@
 function gotogroup($manhom) {
-	alert($manhom);
+	//alert($manhom);
 	window.location.href = "http://localhost/DATNHuyLuan/0306151249_0306151264/public/gr/"+$manhom;
 }
 
@@ -39,7 +39,7 @@ function clickxinvaonhom(pr){
 
         }
     }).done(function(data){
-        alert(data);
+       // alert(data);
     })
     ///hàm dưới là update lại list nhóm mà người dùng đang xin gia nhập
 getlstnhomnguoidungdangxingianhap();

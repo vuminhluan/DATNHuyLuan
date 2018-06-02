@@ -102,7 +102,7 @@ function submittaonhom()
                                         trang_thai:"1"        
 
                                 }}).done(function(data){
-                                        alert(data);
+                                      //  alert(data);
                                 })
                      $.ajax({
                                 url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
@@ -115,7 +115,7 @@ function submittaonhom()
                                         trang_thai:"1"        
 
                                 }}).done(function(data){
-                                        alert(data);
+                                     //   alert(data);
                                 })
                     $.ajax({
                                 url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
@@ -128,7 +128,7 @@ function submittaonhom()
                                         trang_thai:"1"        
 
                                 }}).done(function(data){
-                                        alert(data);
+                                     //   alert(data);
                                 })
                     $.ajax({
                                 url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
@@ -141,14 +141,14 @@ function submittaonhom()
                                         trang_thai:"1"        
 
                                 }}).done(function(data){
-                                        alert(data);
+                                     //   alert(data);
                                 })           
                     
                 
                      
             })
          //   alert(tennhom+"tao thanh cong");
-            alert(data);
+          //  alert(data);
             //sau khi xong thì chuyển về tab các nhóm // hàm này bên content-menu-popupjs.js
             $('#input-tennhom').val('');
             opencontent_nhom(event,'div-content-gr-thamgia-quanly'); 
