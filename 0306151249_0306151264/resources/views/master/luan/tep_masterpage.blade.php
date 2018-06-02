@@ -24,12 +24,12 @@
 			{{-- Sidebar menu --}}
 			<div class="sidebar">
 				<div class="">
-					<h3 class="--title">Tệp của tôi</h3>
+					<h3 class="--title" data-username = "{{Auth::user()->ten_tai_khoan}}">Tệp của tôi</h3>
 					<ul class="--files-menu">
-						<li><a class="link-hover1 active" href="{{ route('trangcanhan.tep', [$username]) }}"><img class="--item-icon" src="{{asset('myicons/tep/all-files.svg')}}" alt="">Tất cả tệp</a></li>
-						<li><a class="link-hover1" href="{{ route('trangcanhan.tep', [$username, 'congkhai']) }}"><img class="--item-icon" src="{{ asset('myicons/tep/share.svg') }}" alt="">Tệp công khai</a></li>
-						<li><a class="link-hover1" href="{{ route('trangcanhan.tep', [$username, 'riengtu']) }}"><img class="--item-icon" src="{{ asset('myicons/tep/private-files.svg') }}" alt="">Tệp cá nhân</a></li>
-						<li><a class="link-hover1" href="#/"><img class="--item-icon" src="{{ asset('myicons/tep/google-drive.svg') }}" alt="">Google Drive</a></li>
+						<li><a  class="link-hover1 prevent-reload active" href="{{ route('nguoidung.tep.index', [Auth::user()->ten_tai_khoan]) }}"><img class="--item-icon" src="{{asset('myicons/tep/all-files.svg')}}" alt="">Tất cả tệp</a></li>
+						<li><a  class="link-hover1 prevent-reload" href="{{ route('nguoidung.tep.index', [$username, 'congkhai']) }}"><img class="--item-icon" src="{{ asset('myicons/tep/share.svg') }}" alt="">Tệp công khai</a></li>
+						<li><a  class="link-hover1 prevent-reload" href="{{ route('nguoidung.tep.index', [Auth::user()->ten_tai_khoan, 'riengtu']) }}"><img class="--item-icon" src="{{ asset('myicons/tep/private-files.svg') }}" alt="">Tệp cá nhân</a></li>
+						<li><a  class="link-hover1 prevent-reload" href="#/"><img class="--item-icon" src="{{ asset('myicons/tep/google-drive.svg') }}" alt="">Google Drive</a></li>
 					</ul>
 				</div>
 			</div>
@@ -75,8 +75,9 @@
 				<h2>Thêm tệp</h2>
 			</div>
 			<div class="body">
-				<form action="{{ route('trangcanhan.tep.tailen', $username) }}" method="POST" enctype="multipart/form-data">
+				<form action="{{ route('nguoidung.tep.tailen', $username) }}" method="POST" enctype="multipart/form-data">
 					@csrf
+					<input type="text" id="last-segment" name="mode" hidden>
 					<div>
 						<p class="mybutton upload-modal-files-button">
 							<input type="file" id="upload-modal-files" name="uploads[]" required multiple>
@@ -102,8 +103,21 @@
 		</div>
 	</div>
 
-
 	{{-- End modal upload file --}}
+
+
+	<div class="change-name-modal">
+		<div class="header">
+			<h2>Đổi tên tệp <img style="vertical-align: middle; display: none;" src="{{asset('pictures/luan/ajax-loader.gif')}}" alt=""></h2>
+			<span class="close-change-name-modal"><i class="fa fa-times"></i></span>
+		</div>
+		<div class="body">
+			<form id="change-name-form" action="{{ route('nguoidung.tep.capnhat', ['taikhoan111', 'TEP0000001', 'doiten' ]) }}" method="GET">
+				<input type="text" id="filename" name="new_filename" required>
+				<button>Đổi tên</button>
+			</form>
+		</div>
+	</div>
 
 
 

@@ -24,12 +24,23 @@ Route::group(['middleware' => ['MyUserAuth']], function () {
 	Route::post(
 		'/taikhoan/{username}/tep/tailen',
 		'TepController@postTaiTepLen'
-	)->name('trangcanhan.tep.tailen');
+	)->name('nguoidung.tep.tailen');
 
 	Route::get(
 		'/taikhoan/{username}/tep/{kind?}',
 		'TepController@getTrangTep'
-	)->name('trangcanhan.tep');
+	)->name('nguoidung.tep.index');
+
+	Route::get(
+		'/taikhoan/{username}/tep/{file_id}/xoa',
+		'TepController@getXoaTep'
+	)->name('nguoidung.tep.xoa');
+
+
+	Route::get(
+		'/taikhoan/{username}/tep/{file_id}/capnhat/{kind}',
+		'TepController@getCapNhat'
+	)->name('nguoidung.tep.capnhat');
 	
 	
 });

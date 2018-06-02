@@ -1,6 +1,9 @@
 // $('.upload-modal').fadeOut('fast');
 $(document).ready(function() {
 
+	var lastSegment = location.href.match(/([^\/]*)\/*$/)[1];
+	$('#last-segment').val(lastSegment);
+
 	// alert(link_host);
 
 	$('a.prevent-reload').click(function(e) {
@@ -110,6 +113,14 @@ $(document).ready(function() {
 		$('.upload-modal').fadeOut('fast');
 	});
 
+
+	// Xóa tất cả danh sách tệp trước khi upload và xáo val của input type = file 
+	$('.remove-all').click(function() {
+		$('#upload-list').html('');
+		$('#upload-modal-files').val('');
+
+	});
+
 	function showItemBeforeUplaod(fileName, fileSize, unit, err) {
 		var icon = $("<i class='fa fa-check upload-successs'></i>");
 		if(err) {
@@ -136,6 +147,9 @@ $(document).ready(function() {
 		// console.log(unit[0]);
 
 		// return;
+
+		// Xóa trắng danh sách cũ để thêm danh sách mới
+		$('#upload-list').html('');
 		
 
 		var i = 0, totalFiles = $(this)[0].files.length, file;
@@ -179,6 +193,17 @@ $(document).ready(function() {
 
 	// Action on file (delete, change name, ...)
 
+
+	// Tắt thông báo : 
+
+
+	$('.file-message .file-message-close').click(function() {
+		$(this).parent().fadeOut('fast');
+	});
+
+
+	// *** Download
+
 	$('.action >ul > li.download').click(function() {
 		var a = $(this).parents('li.item').find('a.item-link:first');
 		$(a).attr('download', 'true');
@@ -186,6 +211,112 @@ $(document).ready(function() {
 		$(a).removeAttr('download');
 
 	});
+
+
+
+	// Delete
+	$('.action >ul > li.delete').click(function() {
+		if(!confirm("Bạn muốn xóa tệp này. Xin lưu ý tệp đã xóa không thể khôi phục.")) {
+			return;
+		}
+
+		var item = $(this);
+
+		var fileID = $(this).parent().attr('data-id');
+		var username = $('.sidebar .--title').attr('data-username');
+		
+		$.ajax({
+			url: link_host+"/taikhoan/"+username+"/tep/"+fileID+"/xoa",
+			type: 'GET',
+			beforeSend: function() {
+        item.parents('li.item').children('div').css('display', 'none');
+				item.parents('li.item').children('img').css('display', 'block');
+
+      },
+      success: function() {
+        item.parents('li.item').css('display', 'none');
+      }
+		})
+		.done(function(response) {
+			// console.log(response);
+			if(response.message) {
+				$('.file-message > p').html(response.message);
+				$('.file-message').css('display', 'block');
+			}
+		});
+
+
+	});
+
+	
+
+	//  Cập nhật chế độ (công khai hoặc riêng tư)
+	
+	$('.public-or-private').click(function() {
+		var fileID = $(this).parent().attr('data-id');
+		var username = $('.sidebar .--title').attr('data-username');
+		var item = $(this);
+		var kind = 'chedo'
+
+		$.ajax({
+			url: link_host+'/taikhoan/'+username+'/tep/'+fileID+'/capnhat/'+kind,
+			type: 'GET',
+			beforeSend: function() {
+        item.parents('li.item').children('div').css('display', 'none');
+				item.parents('li.item').children('img').css('display', 'block');
+
+      },
+      success: function(response) {
+      	if(lastSegment != "tep" && lastSegment != "tatca") {
+	        item.parents('li.item').css('display', 'none');
+	      } else {
+	      	item.parents('li.item').children('div').css('display', 'block');
+					item.parents('li.item').children('img').css('display', 'none');
+
+					if(response.modeid) {
+						item.parents('li.item').find('i.fa-lock').css('display', 'none');
+						item.html('Đặt chế độ riêng tư');
+
+			    } else {
+			    	item.parents('li.item').find('a.item-link').before('<i class="fa fa-lock"></i> ');
+			    	item.html('Đặt chế độ công khai');
+			    }
+	      }
+      }
+		})
+		.done(function(response) {
+			// console.log("success");
+			// console.log(response);
+			if(response.message) {
+				$('.file-message > p').html(response.message);
+				$('.file-message').css('display', 'block');
+			}
+		});
+		
+
+	});
+
+
+	// Cập nhật tên:
+	$('.close-change-name-modal').click(function() {
+		$('.change-name-modal').fadeOut('fast');
+	});
+	
+	$('.change-name').click(function() {
+		
+		var fileID = $(this).parent().attr('data-id');
+		var username = $('.sidebar .--title').attr('data-username');
+		// var item = $(this);
+		var kind = 'doiten';
+
+		$('#change-name-form').attr('action', link_host+'/taikhoan/'+username+'/tep/'+fileID+'/capnhat/doiten');
+
+
+		$('.change-name-modal').fadeIn('fast');
+	});
+
+
+
 
 	// End Action on file
 

@@ -14,11 +14,18 @@
 			<option value="asc" >Cũ nhất</option>
 		</select>
 	</li>
+	<li>
+		<div class="file-message">
+			<p class="baomoi">Thông báo: ...</p>
+			<span class="file-message-close"><i class="fa fa-times"></i></span>
+		</div>
+	</li>
 
 	@foreach ($tatca_tep as $tep)
 	{{-- expr --}}
 
 	<li class="item link-hover1" >
+		<img style="display: none;" src="{{ asset('pictures/luan/ajax-loader.gif') }}" alt="">
 		<div>
 			
 			<img class="pos-absolute item-icon" src="{{asset('myicons/tep/file.svg')}}" alt="">
@@ -54,6 +61,7 @@
 
 			</span>
 		</div>
+
 	</li>
 	@endforeach
 

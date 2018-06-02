@@ -2,7 +2,7 @@
   max-width: 1176px; margin: 0 auto;
 }
 
-/*@font-face {
+@font-face {
   font-family: "Baomoi";
   font-weight: 700;
   src: url("../../../fonts/baomoi-regular-2.0.2.woff2") format("woff2");
@@ -12,7 +12,7 @@
 .baomoi {
 	font-family: 'Baomoi' !important;
 }
-*/
+
 
 a {
 	text-decoration: none;outline: 0;color: #000;
@@ -279,4 +279,54 @@ a {
 }
 
 
+
+/*thong bao ajax (actions : xoa, doi ten, ...)*/
+.file-message {
+	position: relative;
+	width: 90%; margin: 0 auto;border: 1px solid #c8c5ff;background-color: #eee;
+	padding: 15px 25px;
+	display: none;
+}
+
+.file-message > p.baomoi {font-size: 20px;}
+.file-message-close {
+	position: absolute;top: 10px;right: 10px;cursor: pointer;
+}
+
 /*End alert thông báo session*/
+
+
+/*Change name modal*/
+
+.change-name-modal {
+	position: fixed;top:20%;left: 50%;transform: translateX(-50%);
+	border-radius: 3px;display: none;
+	width: 400px;min-height: 100px;background-color: #fff;border: 1px solid #eee;
+	box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+}
+
+.change-name-modal .header {
+	padding: 10px;border-bottom: 1px solid #eee;
+	position: relative;
+}
+
+.change-name-modal .header .close-change-name-modal {
+	position: absolute;top: 10px; right: 10px;cursor: pointer;
+}
+
+.change-name-modal .body {
+	padding: 10px;
+}
+
+.change-name-modal .body input#filename {
+	width: 100%;padding: 7px;border: 1px solid #6667a6;display: block;
+}
+
+.change-name-modal .body button {
+	display: inline-block;padding: 5px;background-color: #6667a6;
+	width: 100%;border: 1px solid #6667a6; margin: 15px 0 0 0;color: #eee;opacity: 0.7;
+	cursor: pointer;
+}
+
+
+/*END change name modal*/
