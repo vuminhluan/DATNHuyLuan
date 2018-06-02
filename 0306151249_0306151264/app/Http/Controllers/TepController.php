@@ -21,19 +21,25 @@ class TepController extends Controller
 	use CapNhatDoiTuongTrait;
 
 
-  public function getTrangTep($username, $kind = "tatca")
+  public function getTrangTep($username, $kind = "tatca", Request $req)
   {
     // return TaiKhoan::where('ten_tai_khoan', $username)->first()->hasManyTep()->where('cong_khai', 1)->orderBy('ma_tep', 'desc')->get();
-    $tatca_tep = null;
-    $abc = TaiKhoan::where('ten_tai_khoan', $username)->first()->hasManyTep()->where('trang_thai', 1);
+    // $tatca_tep = null;
+    $tatca_tep = TaiKhoan::where('ten_tai_khoan', $username)->first()->hasManyTep()->where('trang_thai', 1);
     // $kind = "congkhai";
+    if($req->mode) {
+      $kind = $req->mode;
+    }
+    if($req->filename_keyword) {
+      $tatca_tep = $tatca_tep->where('ten_tep', 'LIKE', '%'.$req->filename_keyword.'%');
+    }
 
-    if($kind == "tatca") {
-      $tatca_tep = $abc->orderBy('ma_tep', 'desc')->get();
+    if($kind == "tatca" || $kind=="tep") {
+      $tatca_tep = $tatca_tep->orderBy('ma_tep', 'desc')->get();
     } else if ($kind == "congkhai") {
-      $tatca_tep = $abc->where('cong_khai', 1)->orderBy('ma_tep', 'desc')->get();
+      $tatca_tep = $tatca_tep->where('cong_khai', 1)->orderBy('ma_tep', 'desc')->get();
     } else if($kind == "riengtu") {
-      $tatca_tep = $abc->where('cong_khai', 0)->orderBy('ma_tep', 'desc')->get();
+      $tatca_tep = $tatca_tep->where('cong_khai', 0)->orderBy('ma_tep', 'desc')->get();
     }
     // return $kind;
     // return $tatca_tep;

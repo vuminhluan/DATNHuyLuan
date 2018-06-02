@@ -2,7 +2,7 @@
 $(document).ready(function() {
 
 	var lastSegment = location.href.match(/([^\/]*)\/*$/)[1];
-	$('#last-segment').val(lastSegment);
+	$('.last-segment').val(lastSegment);
 
 	// alert(link_host);
 

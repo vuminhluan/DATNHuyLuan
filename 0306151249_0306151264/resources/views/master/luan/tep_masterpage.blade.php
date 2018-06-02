@@ -39,9 +39,10 @@
 				<div class="library">
 
 					<div class="head">
-						<form action="javascript: void(0)">
+						<form action="{{ route('nguoidung.tep.index', [Auth::user()->ten_tai_khoan]) }}">
 							<div class="search-box">
-								<input class="search-files-input" type="text" placeholder="Tìm tệp">
+								<input class="search-files-input" name="filename_keyword" type="text" placeholder="Tìm tệp">
+								<input type="text" class="last-segment" name="mode" hidden>
 								<button class="search-files-button"><i class="fa fa-search"></i></button>
 							</div>
 						</form>
@@ -77,7 +78,7 @@
 			<div class="body">
 				<form action="{{ route('nguoidung.tep.tailen', $username) }}" method="POST" enctype="multipart/form-data">
 					@csrf
-					<input type="text" id="last-segment" name="mode" hidden>
+					<input type="text" class="last-segment" name="mode" hidden>
 					<div>
 						<p class="mybutton upload-modal-files-button">
 							<input type="file" id="upload-modal-files" name="uploads[]" required multiple>
