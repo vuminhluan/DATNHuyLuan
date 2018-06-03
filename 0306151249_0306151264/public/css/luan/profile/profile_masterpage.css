@@ -13,14 +13,19 @@ a.luan_link, a {
 
 /*Profile banner and Profile avatar*/
 .profile-image{
-  height: 320px;
+  width: 100%;margin: 0 auto;
+  height: 320px;background-color: #fff !important;
   position: relative;
 }
 .profile-banner {
   height: inherit;
   width: 100%;
+  margin: 0 auto;
   overflow: hidden;
   position: relative;
+}
+.profile-banner > img {
+  width: 100%;
 }
 .profile-avatar {
   position: absolute; bottom: -90px;
