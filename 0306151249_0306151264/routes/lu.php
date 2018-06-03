@@ -36,3 +36,4 @@ Route::get('/ajax/getmachucvutaikhoanne',"NhomController\ThanhVienNhom@GetMaChuc
 Route::post('/ajax/postchucvucuathanhvienvaonhomne',"NhomController\ThanhVienNhom@PostChucVuCuaThanhVienVaoNhom")->name('postchucvucuathanhvienvaonhom');
 
 Route::post('/ajax/postupdatechucvuthanhvientrongnhomne','NhomController\ThanhVienNhom@PostUpdateChucVuThanhVienTrongNhom')->name('postupdatechucvuthanhvientrongnhom');
+Route::get("/ajax/getviewcaidatnhomne","NhomController\CaiDatNhom@GetViewCaiDatNhom")->name('getviewcaidatnhom');

@@ -655,6 +655,16 @@ function opentab_caidatnhom(pr){
    if(flagkiemtraquyen)
    {
          $("#divcaidatnhom").css("display","block");
+         $.ajax({
+             url: link_host+'/ajax/getviewcaidatnhomne', /// lấy mã tài khoản về đây để kiểm tra tài khoản này có chức vụ này ko ?
+             type:'GET',
+              data:{
+            ma_nhom:nhomhientaidangduocchon,
+            ma_tai_khoan:$('#session-ma-tk').val()
+                     }
+         }).done(function(data){
+             $("#divcaidatnhom").html(data);
+         })
     }
 })}
 
