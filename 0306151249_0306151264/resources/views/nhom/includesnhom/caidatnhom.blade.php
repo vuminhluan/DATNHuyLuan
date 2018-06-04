@@ -1,5 +1,5 @@
 <head>
-  <script src="{{ asset('/js/jslu/nhom/caidatnhom.js') }}" type="text/javascript" charset="utf-8" async defer></script>
+  <script src="{{ asset('js/jslu/nhom/caidatnhom.js') }}" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 <div style="overflow: auto; height: 400px;width: 100%;">
                     <div>
@@ -7,27 +7,33 @@
                         <strong><i class="fa fa-arrows" aria-hidden="true"></i>&nbsp;Loại nhóm&nbsp;<i id="icon-div-content-loai-nhom-caidat" class="fa fa-plus-square-o" aria-hidden="true"></i><i id="iconhideloainhom" style="display: none;" class= "fa fa-minus-square-o" aria-hidden="true"></i></strong>
                         </div>
                         <div id="div-content-loai-nhom-caidat" style="display: none;">
-                          @if ($loainhom[0]->ma_loai_nhom=="LN01")
+                          @if ($caidatnhom[0]->ma_loai_nhom=="LN01")
                              <p>
-                              <input type="radio" id="iploainhom1" value="LN01" name="radio-group" checked>
-                              <label style="margin-bottom: 17px;" for="iploainhom1"><strong>Nhóm công khai</strong><br> (Mọi tài liệu, bài đăng, câu hỏi của nhóm có thể được mọi người tham khảo).</label>
+                              <input type="radio" id="iploainhom11" value="LN01" name="radio-groupp" checked>
+                              <label style="margin-bottom: 17px;" for="iploainhom11"><strong>Nhóm công khai</strong><br> (Mọi tài liệu, bài đăng, câu hỏi của nhóm có thể được mọi người tham khảo).</label>
                             </p>
                             <p>
-                              <input type="radio" id="iploainhom2" value="LN02" name="radio-group">
-                              <label for="iploainhom2"><strong>Nhóm kín</strong><br> (Mọi tài liệu, bài đăng, câu hỏi của nhóm đều là riêng tư).</label>
+                              <input type="radio" id="iploainhom22" value="LN02" name="radio-groupp">
+                              <label for="iploainhom22"><strong>Nhóm kín</strong><br> (Mọi tài liệu, bài đăng, câu hỏi của nhóm đều là riêng tư).</label>
                             </p>
                           @endif
-                          @if ($loainhom[0]->ma_loai_nhom=="LN02")
-                            <p>
-                              <input type="radio" id="iploainhom1" value="LN01" name="radio-group" >
-                              <label style="margin-bottom: 17px;" for="iploainhom1"><strong>Nhóm công khai</strong><br> (Mọi tài liệu, bài đăng, câu hỏi của nhóm có thể được mọi người tham khảo).</label>
-                            </p>
-                            <p>
-                              <input type="radio" id="iploainhom2" value="LN02" name="radio-group" checked>
-                              <label for="iploainhom2"><strong>Nhóm kín</strong><br> (Mọi tài liệu, bài đăng, câu hỏi của nhóm đều là riêng tư).</label>
-                            </p>
-                          @endif
+                          @if ($caidatnhom[0]->ma_loai_nhom=="LN02")
+                          
                            
+                      
+                            <p>
+                              <input type="radio" id="iploainhom11" value="LN01" name="radio-groupp" >
+                              <label style="margin-bottom: 17px;" for="iploainhom11"><strong>Nhóm công khai</strong><br> (Mọi tài liệu, bài đăng, câu hỏi của nhóm có thể được mọi người tham khảo).</label>
+                            </p>
+                            <p>
+                              <input type="radio" id="iploainhom22" value="LN02" name="radio-groupp" checked>
+                              <label for="iploainhom22"><strong>Nhóm kín</strong><br> (Mọi tài liệu, bài đăng, câu hỏi của nhóm đều là riêng tư).</label>
+                            </p>
+                                {{-- </form> --}}
+                          @endif
+                           <div style="height: 35px;border-bottom: solid 1px #f9f9f9;">
+                                <button style="background-color: white;border-radius: 3px;height: 30px;width: 80px;float: right;border:solid 1px #9695d8;cursor: pointer;" onclick="luuchinhsualoainhom('{{$caidatnhom}}')" type="button" >Lưu lại</button>
+                           </div>
                         </div>
                     </div>
                     <div>
@@ -94,7 +100,25 @@
                         </div>
                         </div>
                     </div>
+                    <div>
+                        <div onclick="showhidediv('div-content-giai-tan-nhom-caidat','1'),showhidediv('icon-div-content-giai-tan-nhom-caidat','0'),showhidediv('iconhidegiaitannhom','0')" style="width: 100%;height: 30px;">
+                        <strong><i class="fa fa-arrows" aria-hidden="true"></i>&nbsp;Giải tán nhóm&nbsp;<i id="icon-div-content-giai-tan-nhom-caidat" class="fa fa-plus-square-o" aria-hidden="true"></i><i id="iconhidegiaitannhom" style="display: none;" class= "fa fa-minus-square-o" aria-hidden="true"></i></strong>
+                        </div>
+
+                        <div id="div-content-giai-tan-nhom-caidat" style="display: none;">
+                          <div style="height: 36px; width: 100%;">
+                          <div style="width: 90%;float: left;height: 36px;border: solid 1px #f9f9f9;">
+                              <input style="border:none;width: 100%;height: 36px;" type="text" name="" value="" placeholder="">
+                           </div>
+                          <div style="width: 10%;float: left; height: 36px;">
+                            <div style="cursor: pointer;width: 100%;height: 36px;padding: 7px;">
+                               <center>Lưu</center>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                    </div>
 
 
                     {{--  --}}
-                  </div>
+</div>

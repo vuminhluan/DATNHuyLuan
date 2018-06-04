@@ -90,3 +90,42 @@ function themcauhoigianhapnhom(){
     document.getElementById("div-cac-cau-hoi").appendChild(div);
 
 }
+
+
+
+function luuchinhsualoainhom(prl){
+     prl=JSON.parse(prl);
+    if($('input[name=radio-groupp]:checked').val()=="LN01")
+        {
+            prl[0].ma_loai_nhom = "LN01";
+            updatecaidatnhomjs(prl);
+            showhidediv('div-content-loai-nhom-caidat','1');
+            showhidediv('icon-div-content-loai-nhom-caidat','0');
+            showhidediv('iconhideloainhom','0');
+        }
+        else{
+            prl[0].ma_loai_nhom = "LN02";
+            updatecaidatnhomjs(prl);
+            showhidediv('div-content-loai-nhom-caidat','1');
+            showhidediv('icon-div-content-loai-nhom-caidat','0');
+            showhidediv('iconhideloainhom','0');
+        }
+}
+function updatecaidatnhomjs(prl){
+     $.ajax({
+                            url: link_host+'/ajax/postupdatecaidatnhomne',
+                            type:'POST',
+                            data:{
+                                    _token: $('input[name=_token]').val(),
+                                    ma_nhom:                                prl[0].ma_nhom,
+                                    ma_loai_nhom:                           prl[0].ma_loai_nhom,
+                                    phe_duyet_bai_viet_an_danh:             prl[0].prmataikhoan,
+                                    phe_duyet_bai_viet_binh_thuong:         prl[0].phe_duyet_bai_viet_binh_thuong, //2 là trạng thái bị hủy xin gia nhập
+                                    trang_thai_ma_gia_nhap_nhom:            prl[0].trang_thai_ma_gia_nhap_nhom,
+                                    ma_gia_nhap_nhom:                       prl[0].ma_gia_nhap_nhom,
+                                    trang_thai_cau_hoi_gia_nhap_nhom:       prl[0].trang_thai_cau_hoi_gia_nhap_nhom,
+                                    ma_nguoi_them:                          prl[0].ma_nguoi_them,
+                                    trang_thai:                             prl[0].trang_thai
+                            }}).done(function(data){
+                            })
+}

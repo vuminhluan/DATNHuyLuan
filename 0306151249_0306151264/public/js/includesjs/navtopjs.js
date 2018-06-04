@@ -142,6 +142,24 @@ function submittaonhom()
 
                                 }}).done(function(data){
                                      //   alert(data);
+                                }) 
+                     $.ajax({
+                                url: link_host+'/ajax/postcaidatnhomne',
+                                type:'POST',
+                                data:{
+                                        _token: $('input[name=_token]').val(),
+                                        ma_nhom:manhom,
+                                        ma_loai_nhom:loainhom,
+                                        phe_duyet_bai_viet_an_danh:"0",
+                                        phe_duyet_bai_viet_binh_thuong:"0",
+                                        trang_thai_ma_gia_nhap_nhom:"0",
+                                        ma_gia_nhap_nhom:"0000",
+                                        trang_thai_cau_hoi_gia_nhap_nhom:"0",
+                                        ma_nguoi_them:$("#session-ma-tk").val(),
+                                        trang_thai:"1"        
+
+                                }}).done(function(data){
+                                     //   alert(data);
                                 })           
                     
                 

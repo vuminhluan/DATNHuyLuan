@@ -5,7 +5,6 @@ btn_nhom.onclick = function() {
     modal_nhom.style.display = "block";
 
    // opentab_lstthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());// mặc định khi mở load list thành viên của nhóm
-
 }
 
 
