@@ -9,5 +9,13 @@ var myregex = {
 
 // console.log(myregex['matkhau']);
 
-
+// function thongbao(noidung) {
+// 	var divbig= document.createElement("div");
+// 	divbig.style.width="100%";
+// 	divbig.style.height="100%";
+// 	divbig.style.position="absolute";
+// 	divbig.style.background ="white";
+// 	//return divbig;
+// 	//var divomhainut= document.createElement("div");
+// }
 

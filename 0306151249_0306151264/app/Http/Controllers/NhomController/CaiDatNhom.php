@@ -12,6 +12,7 @@ use App\NguoiDung;
 use App\nhom_m;
 use App\chuc_vu_cua_thanh_vien_trong_nhom;
 use App\cai_dat_nhom;
+use App\cau_hoi_gia_nhap_nhom;
 
 class CaiDatNhom extends Controller
 {
@@ -23,6 +24,7 @@ class CaiDatNhom extends Controller
    		$caidatmotnhom = new cai_dat_nhom();
    		$caidatmotnhom->ma_nhom 							=  $rql->ma_nhom;
    		$caidatmotnhom->ma_loai_nhom						=  $rql->ma_loai_nhom;
+      $caidatmotnhom->gioi_thieu_nhom             = $rql->gioi_thieu_nhom;
    		$caidatmotnhom->phe_duyet_bai_viet_an_danh			=  $rql->phe_duyet_bai_viet_an_danh;
    		$caidatmotnhom->phe_duyet_bai_viet_binh_thuong		=  $rql->phe_duyet_bai_viet_binh_thuong;
    		$caidatmotnhom->trang_thai_ma_gia_nhap_nhom			=  $rql->trang_thai_ma_gia_nhap_nhom;
@@ -39,6 +41,7 @@ class CaiDatNhom extends Controller
                                     ->update([
                                               
                                               'ma_loai_nhom'                      =>$rql->ma_loai_nhom,
+                                              'gioi_thieu_nhom'                   =>$rql->gioi_thieu_nhom,
                                               'phe_duyet_bai_viet_an_danh'        =>$rql->phe_duyet_bai_viet_an_danh,
                                               'phe_duyet_bai_viet_binh_thuong'    =>$rql->phe_duyet_bai_viet_binh_thuong,
                                               'trang_thai_ma_gia_nhap_nhom'       =>$rql->trang_thai_ma_gia_nhap_nhom,
@@ -53,7 +56,30 @@ class CaiDatNhom extends Controller
     	return  DB::table('cai_dat_nhom')->where("ma_nhom",$rql->ma_nhom)->get();
     }
     public function GetCauHoiGiaNhap(Request $rql){
+          return DB::table('cau_hoi_gia_nhap_nhom')->where([['ma_nhom',$rql->ma_nhom],['trang_thai',$rql->trang_thai]])->get();
+    }
+    public function PostXoaCauHoi(Request $rql){ //update trạng thái về 1
+         return   DB::table('cau_hoi_gia_nhap_nhom')
+                                    ->where('ma_cau_hoi',$rql->ma_cau_hoi)
+                                    ->update(['trang_thai'=> $rql->trang_thai]);
 
+    }
+     public function PostLuuChinhSuaCauHoi(Request $rql){ //update trạng thái về 1
+         return   DB::table('cau_hoi_gia_nhap_nhom')
+                                    ->where('ma_cau_hoi',$rql->ma_cau_hoi)
+                                    ->update(['nguoi_sua'=> $rql->nguoi_sua,
+                                              'noi_dung_cau_hoi'=>$rql->noi_dung_cau_hoi
+                                              ]);
+
+    }
+    public function PostCauHoiGiaNhapNhom(Request $rql){
+          $cauhoigianhapnhom = new cau_hoi_gia_nhap_nhom();
+          $cauhoigianhapnhom->ma_nhom           =$rql->ma_nhom;
+          $cauhoigianhapnhom->noi_dung_cau_hoi  =$rql->noi_dung_cau_hoi;
+          $cauhoigianhapnhom->nguoi_tao         =$rql->nguoi_tao;
+          $cauhoigianhapnhom->nguoi_sua         =$rql->nguoi_sua;
+          $cauhoigianhapnhom->trang_thai        =$rql->trang_thai;
+          $cauhoigianhapnhom->save();
     }
     public function GetPheDuyetBaiVietTruocKhiXuatHien(Request $rql){
 

@@ -1,0 +1,11 @@
+.divomnoidungsuacaidat{
+	display: none;padding-left: 35px;padding-right: 15px;
+}
+
+.buttoncaidatnhom{
+	cursor: pointer;width: 80px;height: 30px;padding: 4px;border: solid 1px #9695d8;margin-top: 5px;border-radius: 5px;background-color: white;
+	margin-bottom: 3px;
+}
+.buttoncaidatnhom:hover{
+	background-color: #f3eaf7;
+}

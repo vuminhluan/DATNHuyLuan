@@ -84,6 +84,12 @@
 
 .div-item-choose-menu-group{
 width: 149px;height: 130px;border-radius: 20px;padding: 25px;
+
+}
+.div-item-choose-menu-group:hover{
+/*pointer-events: none;*/
+  animation-name: rotateylu;
+  animation-duration: 0.5s;
 }
 
 .div-big-item-choose-menu-group{
@@ -91,8 +97,8 @@ width: 149px;height: 130px;border-radius: 20px;padding: 25px;
 }
 .div-big-item-choose-menu-group:hover{
   background-color: #f9f9f9;border-radius: 5px;
-  animation-name: rotateylu;
-  animation-duration: 1s;
+/*  animation-name: rotateylu;
+  animation-duration: 0.3s;*/
      
 }
 

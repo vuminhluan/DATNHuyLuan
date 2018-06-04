@@ -150,6 +150,7 @@ function submittaonhom()
                                         _token: $('input[name=_token]').val(),
                                         ma_nhom:manhom,
                                         ma_loai_nhom:loainhom,
+                                        gioi_thieu_nhom:"Chưa có",
                                         phe_duyet_bai_viet_an_danh:"0",
                                         phe_duyet_bai_viet_binh_thuong:"0",
                                         trang_thai_ma_gia_nhap_nhom:"0",
