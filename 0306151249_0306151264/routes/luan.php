@@ -108,10 +108,32 @@ Route::prefix('caidat')->group(function () {
 	Route::get('/matkhau/quen', 'CaiDatController@getQuenMatKhau')->name('caidat.quen_matkhau');
 	Route::get('/matkhau/quen/khongphaitoi', 'CaiDatController@getKhongPhaiToi')->name('caidat.quen_matkhau.khongphaitoi')->middleware('MyUserAuth');
 	Route::post('/matkhau/quen', 'CaiDatController@postQuenMatKhau')->name('caidat.post.quen_matkhau');
+});
 
 
+// Route google drive:
+
+Route::group(['middleware' => ['MyUserAuth']], function () {
+
+	Route::get('googledrive/dangki/dichvu', 'GoogleDriveController@getDangKiDichVu')->name('googledrive.dangkidichvu');
+	Route::get('googledrive/huy/dichvu', 'GoogleDriveController@getHuyBoDichVu')->name('googledrive.huydichvu');
+
+	Route::get('googledrive/tep', 'GoogleDriveController@getIndex')->name('googledrive.tep.index');
+
+	Route::post('googledrive/tep/them', 'GoogleDriveController@postThemTep')->name('googledrive.tep.them');
+
+	Route::get('googledrive/tep/tai/{id}', 'GoogleDriveController@getTaiTep')->name('googledrive.tep.tai');
+	Route::get('googledrive/tep/xoa/{id}', 'GoogleDriveController@getXoaTep')->name('googledrive.tep.xoa');
 
 });
+
+
+
+
+// END Route google drive
+
+
+
 
 
 // Các route cho admin ở dưới đây

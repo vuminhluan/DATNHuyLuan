@@ -68,12 +68,15 @@ class TepController extends Controller
   	if(!$req->hasFile('uploads')) {
   		return redirect()->back();
   	}
+    $overlimit = false;
+    $message = "Thêm tệp thành công";
 
     $mode = ($req->mode == "congkhai") ? 1 : 0;
 
   	foreach ($req->uploads as $key => $file) {
 			// echo "<pre>";
   		if($file->getClientSize() < 25000) {
+
   			$file_name = md5(time()+$key).'.'.$file->extension();
   			$dir = "uploads/".Auth::user()->ma_tai_khoan."/";
 				// print_r($dir."---".$file_name);
@@ -92,11 +95,16 @@ class TepController extends Controller
 
   			$tep = new Tep();
   			$this->capNhatDoiTuong($data, $tep);
-
-  		}
+  		} else {
+        $overlimit = true;
+      }
   	}
 
-  	return redirect()->back()->with('message', 'Thêm tệp thành công'); 
+    if($overlimit) {
+      $message = "Những tệp vượt quá kích thước sẽ không được tải lên";
+    }
+
+  	return redirect()->back()->with('slidemessage', $message); 
 
   }
 
@@ -136,7 +144,7 @@ class TepController extends Controller
   {
     $data = ["ten_tep" => $new_filename];
     $this->capNhatDoiTuong($data, $tep);
-    return redirect()->back()->with('message', 'Đổi tên tệp thành công');
+    return redirect()->back()->with('slidemessage', 'Đổi tên tệp thành công');
   }
 
 

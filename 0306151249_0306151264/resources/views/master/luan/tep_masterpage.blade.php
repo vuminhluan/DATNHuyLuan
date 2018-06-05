@@ -11,47 +11,72 @@
 </head>
 <body>
 
+	<div class="slidedown-alert {{session('slidemessage') ? 'slidedown-alert-animation' : '' }}">
+		<div class="--content">
+			<p class="baomoi">Thông báo: {{session('slidemessage')}}</p>
+		</div>
+	</div>
+
 	@include('includes.navtop')
 
-	<div class="file-alert {{session('message') ? 'alert-animate' : '' }}">
+	{{-- <div class="file-alert {{session('message') ? 'alert-animate' : '' }}">
 		<div class="message">
 			<p class="baomoi">{{session('message')}}</p>
 		</div>
-	</div>
+	</div> --}}
 	
 	<div class="main">
 		<div class="container">
 			{{-- Sidebar menu --}}
 			<div class="sidebar">
 				<div class="">
-					<h3 class="--title" data-username = "{{Auth::user()->ten_tai_khoan}}">Tệp của tôi</h3>
+					<h3 class="--title" data-username = "{{Auth::user()->ten_tai_khoan}}"><img class="--item-icon" src="{{ asset('myicons/tep/archive.svg') }}" alt="">Tệp của tôi</h3>
 					<ul class="--files-menu">
 						<li><a  class="link-hover1 prevent-reload active" href="{{ route('nguoidung.tep.index', [Auth::user()->ten_tai_khoan]) }}"><img class="--item-icon" src="{{asset('myicons/tep/all-files.svg')}}" alt="">Tất cả tệp</a></li>
 						<li><a  class="link-hover1 prevent-reload" href="{{ route('nguoidung.tep.index', [$username, 'congkhai']) }}"><img class="--item-icon" src="{{ asset('myicons/tep/share.svg') }}" alt="">Tệp công khai</a></li>
 						<li><a  class="link-hover1 prevent-reload" href="{{ route('nguoidung.tep.index', [Auth::user()->ten_tai_khoan, 'riengtu']) }}"><img class="--item-icon" src="{{ asset('myicons/tep/private-files.svg') }}" alt="">Tệp cá nhân</a></li>
-						<li><a  class="link-hover1 prevent-reload" href="#/"><img class="--item-icon" src="{{ asset('myicons/tep/google-drive.svg') }}" alt="">Google Drive</a></li>
+						
 					</ul>
 				</div>
+				{{-- Google drive --}}
+				
+				<div class="googledrive">
+					<h3 class="--title" data-username = "{{Auth::user()->ten_tai_khoan}}"><img class="--item-icon" src="{{ asset('myicons/tep/google-drive.svg') }}" alt=""> Google Drive</h3>
+					@if (!Auth::user()->thu_muc_google_drive)
+						<div class="register-box">
+							<a class="--button" href="https://facebook.com">Đăng kí dịch vụ</a>
+							{{-- {{ route('googledrive.dangkidichvu') }} --}}
+						</div>
+					@else
+						<div>
+							<a href="{{ route('googledrive.tep.index') }}"><img class="--item-icon" src="{{ asset('myicons/tep/folder.svg') }}" alt=""> Thư mục của tôi</a>
+						</div>
+						<div class="quickadd-box">
+							<h4>Thêm tệp nhanh</h4>
+							<form action="{{ route('googledrive.tep.them') }}" method="POST" enctype="multipart/form-data">
+								@csrf
+								<div>
+									Chọn tệp từ máy tính
+									<input class="--file" type="file" name="file" required>
+								</div>
+								<button class="--button">Thêm</button>
+							</form>
+						</div>
+
+						<div class="delete-box">
+							<a class="--button" href="{{ route('googledrive.huydichvu') }}">Hủy dịch vụ</a>
+						</div>
+					@endif
+				</div>
+				
+				{{-- End google drive --}}
 			</div>
 			{{-- End sidebar menu --}}
 
 			<div class="main-content">
 				<div class="library">
 
-					<div class="head">
-						<form action="{{ route('nguoidung.tep.index', [Auth::user()->ten_tai_khoan]) }}">
-							<div class="search-box">
-								<input class="search-files-input" name="filename_keyword" type="text" placeholder="Tìm tệp">
-								<input type="text" class="last-segment" name="mode" hidden>
-								<button class="search-files-button"><i class="fa fa-search"></i></button>
-							</div>
-						</form>
-
-
-						<div >
-							<button class="open-upload-modal">Thêm tệp mới</button>
-						</div>
-					</div>
+					
 					
 					@yield('file_list')
 					

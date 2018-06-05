@@ -14,6 +14,7 @@ $(document).ready(function() {
 	});
 	
 	$('select').prop('selectedIndex', '0');
+	$('.quickadd-box .--file').val('');
 
 	$('.item-action span i.fa').click(function() {
 		$(this).next().fadeToggle('fast');
@@ -206,7 +207,7 @@ $(document).ready(function() {
 
 	$('.action >ul > li.download').click(function() {
 		var a = $(this).parents('li.item').find('a.item-link:first');
-		$(a).attr('download', 'true');
+		$(a).attr('download', a.html());
 		a[0].click();
 		$(a).removeAttr('download');
 
@@ -319,6 +320,30 @@ $(document).ready(function() {
 
 
 	// End Action on file
+
+
+	// Google Drive
+
+	$('.googledrive .register-box .--button').click(function(e) {
+		e.preventDefault();
+		if(confirm('Chúng tôi sẽ cung cấp cho bạn một nơi để lưu trữ dữ liệu (không giới hạn), nhưng chúng tôi có quyền kiểm soát những tệp tin mà bạn tải lên ấy. Để đảm bảo không vi phạm chính sách của chúng tôi và bên thứ 3')) {
+			window.location.href= link_host+"/googledrive/dangki/dichvu";
+		}
+	});
+
+	$('.googledrive .delete-box .--button').click(function(e) {
+		e.preventDefault();
+		if(confirm('Bạn muốn hủy bỏ dịch vụ này ? Dữ liệu sẽ không khôi phục lại được.')) {
+			window.location.href= link_host+"/googledrive/huy/dichvu";
+		}
+	});
+
+	$('.quickadd-box .--file').change(function() {
+		console.log($(this));
+	});
+
+
+	// END Google Drive
 
 
 

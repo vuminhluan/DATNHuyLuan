@@ -40,6 +40,11 @@ class TaiKhoan extends Model implements \Illuminate\Contracts\Auth\Authenticatab
     return $this->hasMany('App\Tep', 'nguoi_tao', 'ma_tai_khoan');
   }
 
+  public function hasThuMuc()
+  {
+    return $this->hasOne('App\ThuMucGoogleDrive', 'ma_tai_khoan', 'ma_tai_khoan');
+  }
+
   // public function hasTaiKhoanGoogle()
   // {
   //   return $this->hasOne('App\TaiKhoanGoogle', 'ma_taikhoan_google', 'ma_tai_khoan');
@@ -62,13 +67,18 @@ class TaiKhoan extends Model implements \Illuminate\Contracts\Auth\Authenticatab
   public function getAnhDaiDienAttribute()
   {
     return $this->hasNguoiDung->anh_dai_dien;
-    // Phương thức tên AnhDaiDien thì lúc gọi sẽ là anh_dai_dien
+    // Phương thức tên getAnhDaiDien thì lúc gọi sẽ là anh_dai_dien
     // Lấy ảnh đại diện. Cách gọi: Auth::user()->anh_dai_dien
   }
 
   public function getNguoiDungAttribute()
   {
     return DB::table('nguoi_dung')->where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->first();
+  }
+
+  public function getThuMucGoogleDriveAttribute()
+  {
+    return DB::table('thumuc_googledrive')->where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->first();
   }
 
 
