@@ -119,12 +119,12 @@
 						</li> --}}
 					</ul>
 					<br><br>
-					<button class="save-file">Thêm tệp</button>
+					<button class="save-file upload-button"><i class="fa fa-plus"></i> Thêm tệp</button>
 				</form>
 			</div>
 			<div class="footer">
-				<button class="remove-all">Xóa tất cả</button>
-				<button class="cancel-upload">Thoát</button>
+				<button class="remove-all upload-button"><i class="fa fa-trash"></i> Xóa tất cả</button>
+				<button class="cancel-upload upload-button"><i class="fa fa-power-off"></i> Thoát</button>
 			</div>
 		</div>
 	</div>

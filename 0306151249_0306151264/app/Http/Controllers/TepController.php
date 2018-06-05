@@ -75,7 +75,7 @@ class TepController extends Controller
 
   	foreach ($req->uploads as $key => $file) {
 			// echo "<pre>";
-  		if($file->getClientSize() < 25000) {
+  		if($file->getClientSize() <= 15*1024*1024) {
 
   			$file_name = md5(time()+$key).'.'.$file->extension();
   			$dir = "uploads/".Auth::user()->ma_tai_khoan."/";
@@ -101,7 +101,7 @@ class TepController extends Controller
   	}
 
     if($overlimit) {
-      $message = "Những tệp vượt quá kích thước sẽ không được tải lên";
+      $message = "Những tệp vượt quá kích thước (15MB) sẽ không được tải lên";
     }
 
   	return redirect()->back()->with('slidemessage', $message); 
