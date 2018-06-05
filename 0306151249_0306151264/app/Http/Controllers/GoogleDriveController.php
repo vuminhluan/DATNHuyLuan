@@ -74,6 +74,10 @@ class GoogleDriveController extends Controller
 
 	public function postThemTep(Request $req)
 	{
+		if($req->file->getClientSize()/1024/1024 > 100) {
+			return redirect()->back()->with('slidemessage', 'Kích thước tệp lớn hơn 50MB');
+		}
+
 		$folderid = Auth::user()->thu_muc_google_drive->ma_thumuc;
 		$dir = "/".$folderid.'/';
 
@@ -83,9 +87,13 @@ class GoogleDriveController extends Controller
 	  $filename = $filename_without_ext.'.'.$extension;
 	  $content =  file_get_contents($req->file);
 
+	  Storage::cloud()->put($dir.$filename, fopen($req->file, 'r+'));
+
+	  // return "ok";
+
 	  // return $filename;
 
-	  Storage::cloud()->put($dir.$filename, $content);
+	  // Storage::cloud()->put($dir.$filename, $content);
 	  $recursive = false; // Get subdirectories also?
 	  $contents = collect(Storage::cloud()->listContents($dir, $recursive));
 	  // Lấy lại file đã up -> lấy id -> thay đổi quyền

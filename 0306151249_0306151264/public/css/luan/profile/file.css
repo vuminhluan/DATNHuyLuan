@@ -251,6 +251,19 @@ a {
 	color: red;
 }
 
+.upload-button {
+	display: inline-block;padding: 8px;cursor: pointer;border: 1px solid #fff;color: #fff;
+}
+
+.save-file {
+	background-color: #6667a6;
+}
+.cancel-upload {
+	background-color: #fc2856;
+}
+.remove-all {
+	background-color: #d8d52d;
+}
 
 /*End Upload file css*/
 

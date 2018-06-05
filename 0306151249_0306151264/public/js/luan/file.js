@@ -1,6 +1,10 @@
 // $('.upload-modal').fadeOut('fast');
 $(document).ready(function() {
 
+	var serverFileSizeLimit = 15; // MB
+	var googleDriveFileSizeLimit = 100; // MB
+
+
 	var lastSegment = location.href.match(/([^\/]*)\/*$/)[1];
 	$('.last-segment').val(lastSegment);
 
@@ -122,7 +126,7 @@ $(document).ready(function() {
 
 	});
 
-	function showItemBeforeUplaod(fileName, fileSize, unit, err) {
+	function showItemBeforeUpload(fileName, fileSize, unit, err) {
 		var icon = $("<i class='fa fa-check upload-successs'></i>");
 		if(err) {
 			icon = "<i class='fa fa-times upload-error' title='"+err+"'></i>";
@@ -161,12 +165,12 @@ $(document).ready(function() {
 			file = $(this)[0].files[i];
 			err = false;
 			// console.log(file);
-			limit = 26000;
+			limit = serverFileSizeLimit; //15MB
 			fileSize = file.size;
 			unit = "MB";
 
-			if(fileSize > limit) {
-				err = "Vuot qua dung luong "+limit+" bytes";
+			if(fileSize > limit*1024*1024) {
+				err = "Vuot qua dung luong "+limit+" MB";
 			}
 
 			if(Math.round(fileSize/1024/1024) < 1) {
@@ -176,7 +180,7 @@ $(document).ready(function() {
 				fileSize = Math.round(fileSize/1024/1024);
 			}
 
-			showItemBeforeUplaod(file.name, fileSize, unit, err);
+			showItemBeforeUpload(file.name, fileSize, unit, err);
 
 		}
 
@@ -338,8 +342,22 @@ $(document).ready(function() {
 		}
 	});
 
-	$('.quickadd-box .--file').change(function() {
-		console.log($(this));
+	// $('.quickadd-box .--file').change(function() {
+	// 	console.log($(this));
+	// });
+
+	$('.quickadd-box .--button').click(function(event) {
+		event.preventDefault();
+		if($('.quickadd-box input[name=file]').val() == "") {
+			return;
+		}
+		$file = $('.quickadd-box input[name=file]')[0].files[0];
+		// console.log($file); return;
+		if($file.size/1024/1024 <= googleDriveFileSizeLimit) {
+			$(this).parent().submit();
+		} else {
+			alert('Kích thước tệp vượt quá '+googleDriveFileSizeLimit+' MB');
+		}
 	});
 
 
