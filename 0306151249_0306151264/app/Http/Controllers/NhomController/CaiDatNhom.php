@@ -75,6 +75,19 @@ class CaiDatNhom extends Controller
                                     ->update(['trang_thai'=> $rql->trang_thai]);
 
     }
+
+    function GetCauTraLoiVaCauHoiCuaNhomTheoMaThanhVien(Request $rql){
+        return DB::table('cau_hoi_gia_nhap_nhom')
+                ->join('tra_loi_gia_nhap_nhom','cau_hoi_gia_nhap_nhom.ma_cau_hoi','=','tra_loi_gia_nhap_nhom.ma_cau_hoi')
+                ->select("cau_hoi_gia_nhap_nhom.*","tra_loi_gia_nhap_nhom.*")
+                ->where([['tra_loi_gia_nhap_nhom.ma_nhom',$rql->ma_nhom],["tra_loi_gia_nhap_nhom.ma_nguoi_tra_loi",$rql->ma_nguoi_tra_loi]])
+                ->get();
+    }
+
+
+
+
+
      public function PostLuuChinhSuaCauHoi(Request $rql){ //update trạng thái về 1
          return   DB::table('cau_hoi_gia_nhap_nhom')
                                     ->where('ma_cau_hoi',$rql->ma_cau_hoi)

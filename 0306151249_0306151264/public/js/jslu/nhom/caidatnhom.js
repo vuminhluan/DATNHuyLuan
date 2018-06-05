@@ -419,7 +419,7 @@ function updatetrangthaipheduyetbaivietandanh(prl1,prl2){
 function luugioithieunhom(prl){
      prl = JSON.parse(prl);
         prl[0].gioi_thieu_nhom=$('#txtaragioithieunhom').val();
-        alert(prl[0].gioi_thieu_nhom);
+       // alert(prl[0].gioi_thieu_nhom);
         updatecaidatnhomjs(prl)
         showhidediv('div-content-gioi-thieu-nhom-caidat','1');
         showhidediv('icon-div-content-gioi-thieu-nhom-caidat','0');

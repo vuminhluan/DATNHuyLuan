@@ -51,6 +51,7 @@ function clickxinvaonhom(pr){
                      divbody.id="contentcauhoibody";
                      divbody.style.height="410px";
                      divbody.style.with="100%";
+                     divbody.style.overflow="auto";
 
 
                  var divbot= document.createElement("div");
@@ -69,6 +70,7 @@ function clickxinvaonhom(pr){
 
                         divdongy.addEventListener("click",function(){
                                   //  var manhom = "NH00000004";
+                                  alert(manhom);
 
                         $.ajax({
                             url: link_host+'/ajax/getcauhoigianhapne',
@@ -91,59 +93,34 @@ function clickxinvaonhom(pr){
                                                         }
                                                     }).done(function(data){})
                                         } 
+
+                                        document.getElementById("btnxingianhapnhom"+manhom).innerHTML='<i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;Chờ phê duyệt';
+                                                                    document.getElementById("btnxingianhapnhom"+manhom).style.marginLeft="290px";
+                                                            $.ajax({
+                                                                url: link_host + '/ajax/postthanhvienxingianhapnhomne',
+                                                                type:'POST',
+                                                                data:{
+                                                                    _token:$('input[name=_token]').val(),
+                                                                    ma_nhom:manhom,
+                                                                    ma_tai_khoan:$('#session-ma-tk').val(),
+                                                                    nguoi_moi:"0000000000",
+                                                                    nguoi_phe_duyet:"0000000000",
+                                                                    thoi_gian_cho_phe_duyet:"2017/07/06",
+                                                                    trang_thai: "1"
+                                                                }
+                                                            }).done(function(data){
+                                                               // sau khi xin gia nhập nhóm thành công
+                                                               $("#contentmenupopupnav").css("display","block");
+                                                               $("#divtraloicauhoicuanhomnav").remove();
+                                                            })
+
+
                             })
 
-                                document.getElementById("btnxingianhapnhom"+manhom).innerHTML='<i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;Chờ phê duyệt';
-                                document.getElementById("btnxingianhapnhom"+manhom).style.marginLeft="290px";
-                        $.ajax({
-                            url: link_host + '/ajax/postthanhvienxingianhapnhomne',
-                            type:'POST',
-                            data:{
-                                _token:$('input[name=_token]').val(),
-                                ma_nhom:manhom,
-                                ma_tai_khoan:$('#session-ma-tk').val(),
-                                nguoi_moi:"0000000000",
-                                nguoi_phe_duyet:"0000000000",
-                                thoi_gian_cho_phe_duyet:"2017/07/06",
-                                trang_thai: "1"
-                            }
-                        }).done(function(data){
-                           // sau khi xin gia nhập nhóm thành công
-                           $("#contentmenupopupnav").css("display","block");
-                           $("#divtraloicauhoicuanhomnav").remove();
-                        })
+             
                         ///hàm dưới là update lại list nhóm mà người dùng đang xin gia nhập
                         getlstnhomnguoidungdangxingianhap();
                         })
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                       $.ajax({
                             url: link_host+'/ajax/getcauhoigianhapne',
@@ -180,7 +157,6 @@ function clickxinvaonhom(pr){
        }
        else
         if(data[0].trang_thai_cau_hoi_gia_nhap_nhom=="0"){
-            return;
                 document.getElementById("btnxingianhapnhom"+manhom).innerHTML='<i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;Chờ phê duyệt';
                 document.getElementById("btnxingianhapnhom"+manhom).style.marginLeft="290px";
                 $.ajax({

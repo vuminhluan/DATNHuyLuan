@@ -143,6 +143,10 @@ function submittaonhom()
                                 }}).done(function(data){
                                      //   alert(data);
                                 }) 
+
+
+
+                                alert(manhom+loainhom);
                      $.ajax({
                                 url: link_host+'/ajax/postcaidatnhomne',
                                 type:'POST',

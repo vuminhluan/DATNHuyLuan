@@ -40,19 +40,89 @@ $.ajax({
 		var listsearchdiv = document.getElementById('divpheduyetthanhvien');
 		for (var i = 0; i < data.length; i++) {
 		   var divkq = document.createElement("div");
-        divkq.style.height= "70px";
+        divkq.style.height= "auto";
         divkq.style.with="100%";
         divkq.style.background ="white";
         divkq.style.color="black";
         divkq.style.borderBottom ="solid 1px #9695d8";
-        divkq.innerHTML ='<h4>'+ data[i].ho_ten_lot +" "+ data[i].ten+'</h4>';
+        // divkq.innerHTML =
+        var divomanhdaidienvacautraloigianhapnhom = document.createElement("DIV");
+
+
+              var divomanhdaidienvaten = document.createElement("DIV");
+                  divomanhdaidienvaten.style.width="77px";
+                  divomanhdaidienvaten.style.height="100%";
+                  divomanhdaidienvaten.style.float="left";
+
+              var divanhdiendien = document.createElement("DIV");
+                  divanhdiendien.style.width="77px";
+                  divanhdiendien.style.height="77px";
+              var imgdaidien = document.createElement("IMG");
+                  imgdaidien.style.borderRadius="50%";
+                  imgdaidien.style.width="77px";
+                  imgdaidien.style.height="77px";
+                  imgdaidien.src= link_host+'/pictures/anh_dai_dien/'+ data[i].anh_dai_dien;
+                  divanhdiendien.appendChild(imgdaidien);
+                  divomanhdaidienvaten.appendChild(divanhdiendien);
+              var divtenthanhvien = document.createElement("DIV");
+                  divtenthanhvien.style.textAlign="center";
+                  divtenthanhvien.style.height="23px";
+                  divtenthanhvien.style.width="77px";
+                  divtenthanhvien.innerHTML='<h4>'+ data[i].ho_ten_lot +" "+ data[i].ten+'</h4>';
+                  divomanhdaidienvaten.appendChild(divtenthanhvien);
+            divomanhdaidienvacautraloigianhapnhom.appendChild(divomanhdaidienvaten);
+
+
+
+               var  divchuacautraloigianhap = document.createElement("DIV");
+                    divchuacautraloigianhap.style.width="200px;";
+                    divchuacautraloigianhap.style.height="auto";
+                    divchuacautraloigianhap.style.marginLeft="120px";
+
+                    $.ajax({
+                      url:link_host+'/ajax/getcautraloivacauhoicuanhomtheomathanhvienne',
+                      type:"GET",
+                      data:{
+                        ma_nhom:data[0].ma_nhom,
+                        ma_nguoi_tra_loi:data[0].ma_tai_khoan
+                      }
+
+                    }).done(function(data){
+                      console.log(data);
+
+                      for (var i = 0; i < data.length; i++) {
+
+                           var divcauhoicon = document.createElement("div");
+                           divcauhoicon.innerHTML='<h4><u>'+data[i].noi_dung_cau_hoi+" ?"+'</u></h4>';
+                           var divcautraloicon = document.createElement("div");
+                           divcautraloicon.textContent="- "+data[i].noi_dung_tra_loi;
+                           divchuacautraloigianhap.appendChild(divcauhoicon);
+                           divchuacautraloigianhap.appendChild(divcautraloicon);
+
+                      }
+
+                    })
+
+
+              
+
+          divomanhdaidienvacautraloigianhapnhom.appendChild(divchuacautraloigianhap);
+        divkq.appendChild(divomanhdaidienvacautraloigianhapnhom);
+
+
+
+
+
+
+
+
 
 
         var divomhainut= document.createElement("div");
-        	divomhainut.style.width="280px";
-        	divomhainut.style.height="100%";
+        	divomhainut.style.width="100%";
+        	divomhainut.style.height="50px";
         //	divomhainut.style.border="solid 1px #9695d8";
-        	divomhainut.style.float="right";
+        //	divomhainut.style.float="right";
         	divomhainut.style.paddingTop="17px";
 
         var btnchophepgianhapnhom = document.createElement("div");
@@ -63,7 +133,7 @@ $.ajax({
         btnchophepgianhapnhom.style.borderRadius="3px";
         btnchophepgianhapnhom.style.paddingLeft="10px";
         btnchophepgianhapnhom.style.width="120px";
-        btnchophepgianhapnhom.style.float="left";
+        btnchophepgianhapnhom.style.float="right";
         btnchophepgianhapnhom.style.paddingTop="3px";
         btnchophepgianhapnhom.style.height ="29px";
         btnchophepgianhapnhom.style.with="30px";
@@ -81,10 +151,11 @@ $.ajax({
         btntuchoigianhapnhom.style.cursor="pointer";
         btntuchoigianhapnhom.style.marginTop="0px";
         btntuchoigianhapnhom.style.marginLeft="5px";
+        btntuchoigianhapnhom.style.marginRight="5px";
         btntuchoigianhapnhom.style.borderRadius="3px";
         btntuchoigianhapnhom.style.paddingLeft="10px";
         btntuchoigianhapnhom.style.width="120px";
-        btntuchoigianhapnhom.style.float="left";
+        btntuchoigianhapnhom.style.float="right";
         btntuchoigianhapnhom.style.paddingTop="3px";
         btntuchoigianhapnhom.style.height ="29px";
         btntuchoigianhapnhom.style.with="30px";
