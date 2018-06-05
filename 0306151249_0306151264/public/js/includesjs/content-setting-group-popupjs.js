@@ -102,20 +102,10 @@ $.ajax({
                       }
 
                     })
-
-
               
 
           divomanhdaidienvacautraloigianhapnhom.appendChild(divchuacautraloigianhap);
         divkq.appendChild(divomanhdaidienvacautraloigianhapnhom);
-
-
-
-
-
-
-
-
 
 
         var divomhainut= document.createElement("div");

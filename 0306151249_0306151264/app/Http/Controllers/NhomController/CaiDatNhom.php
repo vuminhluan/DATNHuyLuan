@@ -111,4 +111,10 @@ class CaiDatNhom extends Controller
     public function GetGioiThieuNhom(Request $rql){
     	
     }
+
+
+    public function RestaLLTABLE(){
+      
+    }
+
 }

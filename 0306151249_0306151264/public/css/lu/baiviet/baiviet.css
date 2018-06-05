@@ -356,7 +356,7 @@ input[type="date"], focus {
       height: 1500px;
   }
   #anhbia{
-    width:1184px; height: 325px; background-color: white;border-bottom-left-radius: 10%;border-top-right-radius: 7%;
+    width:1184px; height: 325px; background-color: white;
     margin-top: 4px;
     border: solid 1px #9695d8;
   }
@@ -371,7 +371,7 @@ input[type="date"], focus {
     background-color:#f9f9f9;
   }
   #thongtinkhaccuanhom{
-    float:left; background-color: white; width:300px; height: 500px;margin-top: 0px;border-radius: 1%;
+    float:left; background-color: white; width:300px; height: 200px;margin-top: 0px;border-radius: 1%;
     border: solid 1px #9695d8;
   }
   .content{

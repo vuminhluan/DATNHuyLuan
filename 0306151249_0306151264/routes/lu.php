@@ -1,5 +1,6 @@
 <?php
 
+Route::get("resetallbangne","NhomController\CaiDatNhom@RestaLLTABLE")->name("restaLLtabLe");
 
 Route::get("mid",function(){
 

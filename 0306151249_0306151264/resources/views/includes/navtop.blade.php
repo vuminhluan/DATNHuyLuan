@@ -23,18 +23,18 @@
           <a class="active" href="{{ route('trangchu') }}">Trang chủ</a>
         </li>
         <li><a id="li-nav-nhom">Nhóm</a></li>
-        <li><a id="li-nav-taonhom">xxxxx</a></li>
+       {{--  <li><a id="li-nav-taonhom">xxxxx</a></li> --}}
       </ul>
       {{-- End Menu trái --}}
 
       {{-- Menu phải --}}
       <ul class="navtop-right">
-        <li class="search-container">
+        {{-- <li class="search-container">
           <form action="/action_page.php">
             <input id="topnav-search"  type="text" placeholder="Search.." name="search">
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
-        </li>
+        </li> --}}
         {{-- đây là cái menu động --}}
         <li><button id="btn-show-dynamic-menu"><i class="fa fa-bars" aria-hidden="true"></i></button></li>
         {{-- end menu động --}}

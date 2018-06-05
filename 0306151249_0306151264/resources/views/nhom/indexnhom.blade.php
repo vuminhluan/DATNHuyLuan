@@ -53,9 +53,9 @@
         </div>
         
 <!--  -->
-        <div class="rightnav">
+       {{--  <div class="rightnav">
         </div>
-
+ --}}
     </div>
     {{-- setting group --}}
     <div id="div-setting-nhom-menu" class="modal-setting-nhom">
