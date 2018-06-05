@@ -12,6 +12,7 @@ use App\nhom_m;
 use App\chuc_vu_cua_thanh_vien_trong_nhom;
 
 
+
 class ThanhVienNhom extends Controller
 {
     public function GetNhomTheoMaTaiKhoan(Request $rq) {
@@ -44,6 +45,7 @@ class ThanhVienNhom extends Controller
      ->get();
         return view("includes.content-menu-popup",["lstnhomcuataikhoan"=>$lstNhomCuaTaiKhoan,"lstNhomQuanLyCuaTaiKhoan"=>$lstNhomQuanLyCuaTaiKhoan]);
     }
+
 
 
     public function GetLstThanhVienTheoMaNhom(Request $rql){

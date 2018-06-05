@@ -3,7 +3,7 @@
    <link rel="stylesheet" type="text/css" href="{{ asset('css/dynamic-menu/dynamic-menucss.css') }}">
  </head>
 
- <div style="height: 500px;width: 500px;background-color: white; margin: auto;border:solid 1px #9695d8;border-radius: 20px;">
+ <div id="contentmenupopupnav" style="height: 500px;width: 500px;background-color: white; margin: auto;border:solid 1px #9695d8;border-radius: 20px;">
 
  {{--  <div id="div-head-popup-show-all-menu" >
     <span class="close">&times;</span>

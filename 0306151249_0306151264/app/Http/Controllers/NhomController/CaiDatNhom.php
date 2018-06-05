@@ -13,6 +13,7 @@ use App\nhom_m;
 use App\chuc_vu_cua_thanh_vien_trong_nhom;
 use App\cai_dat_nhom;
 use App\cau_hoi_gia_nhap_nhom;
+use App\tra_loi_gia_nhap_nhom;
 
 class CaiDatNhom extends Controller
 {
@@ -50,6 +51,16 @@ class CaiDatNhom extends Controller
                                               'ma_nguoi_them'                     =>$rql->ma_nguoi_them,
                                               'trang_thai'                        =>$rql->trang_thai
                                             ]);
+    }
+    public function PostCauTraLoiGiaNhapNhom(Request $rql){
+          $cautraloi = new  tra_loi_gia_nhap_nhom();
+          $cautraloi->ma_cau_hoi         = $rql->ma_cau_hoi;
+          $cautraloi->ma_nhom            = $rql->ma_nhom;
+          $cautraloi->ma_nguoi_tra_loi   = $rql->ma_nguoi_tra_loi;
+          $cautraloi->noi_dung_tra_loi   = $rql->noi_dung_tra_loi;
+          $cautraloi->trang_thai         = $rql->trang_thai;
+          $cautraloi->save();
+
     }
 
     public function GetCaiDatNhom(Request $rql){

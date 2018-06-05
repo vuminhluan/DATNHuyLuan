@@ -43,3 +43,5 @@ Route::post('/ajax/postcauhoigianhapnhomne',"NhomController\CaiDatNhom@PostCauHo
 Route::get('/ajax/getcauhoigianhapne',"NhomController\CaiDatNhom@GetCauHoiGiaNhap")->name('getcauhoigianhap');
 Route::post('/ajax/postxoacauhoine',"NhomController\CaiDatNhom@PostXoaCauHoi")->name('postxoacauhoi');
 Route::post('/ajax/postluuchinhsuacauhoine',"NhomController\CaiDatNhom@PostLuuChinhSuaCauHoi")->name('postluuchinhsuacauhoi');
+Route::get('/ajax/getcaidatnhomne',"NhomController\CaiDatNhom@GetCaiDatNhom")->name('getcaidatnhom');
+Route::post('/ajax/postcautraloigianhapnhomne',"NhomController\CaiDatNhom@PostCauTraLoiGiaNhapNhom")->name('postcautraloigianhapnhom');
