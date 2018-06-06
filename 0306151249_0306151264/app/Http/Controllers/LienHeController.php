@@ -26,7 +26,7 @@ class LienHeController extends Controller
   public function socketGuiTinNhan(Request $req)
   {
 
-    return $req;
+    // return $req;
     $data = [
       'ho_va_ten' => $req->fullname,
       'email' => $req->email,

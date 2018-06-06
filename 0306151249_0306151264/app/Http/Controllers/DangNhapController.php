@@ -40,10 +40,6 @@ class DangNhapController extends Controller
 
 		$account = TaiKhoan::where('ten_tai_khoan', $username)->orwhere('email', $username)->first();
 
-
-
-
-
 		// Nếu tài khoản không bị vô hiệu hóa và không bị khóa do vi phạm điều khoản sử dụng thì cho tài khoản đó đăng nhập.
 		// Nói cách khác, nếu tài khoản đó Chưa kích hoạt || Đang hoạt động || Tự khóa thì được đăng nhập.
 		if($account && $account->trang_thai != 4 && $account->trang_thai != 5) {
@@ -71,40 +67,26 @@ class DangNhapController extends Controller
 	}
 
 
-	public function postDangNhapGoogle()
-	{
-		return Socialite::driver('google')->redirect();
-	}
+	// public function postDangNhapGoogle()
+	// {
 
-	public function callBackDangNhapGoogle()
-	{
-		$user = Socialite::driver('google')->stateless()->user();
+	// 	return Socialite::driver('google')->redirect();
+	// }
 
-		// return $user->getName();
-		return $this->xuLyDangNhapGoogle($user);
-	}
+	// public function callBackDangNhapGoogle()
+	// {
+	// 	$user = Socialite::driver('google')->stateless()->user();
 
-
-	public function xuLyDangNhapGoogle($user)
-	{
-		// $taikhoan = TaiKhoan::where('email', $user->getEmail())->first();
-		// if(!$taikhoan) {
-		// 	return $user->user['name']['familyName'];
-		// 	// return $this->taoMaTaiKhoan();
-		// 	$taikhoan = new TaiKhoan();
-		// 	$parameter_array = [
-		// 		'ma_tai_khoan'=> $this->taoMaTaiKhoan();
-
-		// 	];
+	// 	// return $user->getName();
+	// 	return $this->xuLyDangNhapGoogle($user);
+	// }
 
 
-		// } else {
-		// 	abort(404);
-		// }
-
-		// return "a";
-		return "bo tay";
-	}
+	// public function xuLyDangNhapGoogle($user)
+	// {
+		
+	// 	return "bo tay";
+	// }
 
 
 }

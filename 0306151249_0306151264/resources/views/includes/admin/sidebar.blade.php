@@ -29,7 +29,10 @@
       </li> --}}
       <li class="list-group-item">
         <a href="{{route('admin.phanhoi')}}">
-          <i class="fa fa-envelope-o"></i> <span>Phản hồi<span class="badge pull-right">1</span></span>
+          @php
+            $a = 2000;
+          @endphp
+          <i class="fa fa-envelope-o"></i> <span>Phản hồi<span id="message-counter" class="badge pull-right" title="{{count($tatca_phanhoi)}}">{{count($tatca_phanhoi) > 1000 ? (count($tatca_phanhoi)/1000).' k' : count($tatca_phanhoi)}}</span></span>
         </a>
       </li>
       {{-- <li class="list-group-item">

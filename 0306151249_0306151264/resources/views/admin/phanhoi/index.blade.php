@@ -39,7 +39,7 @@
           @if (!$tatca_phanhoi)
             <p>Chưa có phản hồi nào</p>
           @endif
-          <table class="table table-bordered table-hover" id="step4">
+          <table class="table table-bordered table-hover" id="message-table">
             <thead>
               <tr>
                 <th><input id="check_all" type="checkbox"></th>
@@ -115,6 +115,45 @@
 @section('javascript')
   <script src="{{ asset('node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js') }}"></script>
   <script src="{{ asset('js/admin/admin-contact.js') }}"></script>
+
+  <script>
+    
+    var socket = io.connect( 'http://'+window.location.hostname+':3000' );
+    // console.log(socket);
+    // console.log('asd');
+    socket.on('sendMessage', function(data) {
+      // $('.alert').append('Có <strong>1</strong> phản hồi mới chưa đọc từ '+data.fullname);
+      // Update message counter
+      var messageCounter = parseInt($('#message-counter').attr('title'), 10) + 1; // cơ số 10
+      $('#message-counter').attr('title', parseInt(messageCounter));
+      if(messageCounter > 1000) {
+        messageCounter = parseInt(messageCounter/1000)+' k';
+      }
+      $('#message-counter').html(messageCounter);
+
+
+      // Update record;
+      var fullname = data.fullname;
+
+      var createdAt = new Date(data.thoi_gian_tao);
+
+      var date = createdAt.getDate() < 10 ? '0'+createdAt.getDate() : createdAt.getDate();
+      var month = createdAt.getMonth()+1 < 10 ? '0'+createdAt.getDate() : createdAt.getMonth()+1;
+      var hour = createdAt.getHours() < 10 ? '0'+createdAt.getHours() : createdAt.getHours();
+      var minute = createdAt.getMinutes() < 10 ? '0'+createdAt.getMinutes() : createdAt.getMinutes();
+      var second = createdAt.getSeconds() < 10 ? '0'+createdAt.getSeconds() : createdAt.getSeconds();
+      
+      createAt = date+'/'+month+'/'+createdAt.getFullYear()+' '+hour+':'+minute+':'+second;
+
+      var record = "<tr class='alert alert-info' style='color: #333'><td><input name='id[]' type='checkbox' value='0'></td><td><a href='view-contact.html'>Phản hồi số </a></td><td class='hidden-xs'>"+fullname+"</td><td class='hidden-sm hidden-xs'>"+{{'data.email'}}+"</td><td class='hidden-sm hidden-xs'>"+createAt+"</td><td><i class='fa fa-envelope-o' data-toggle='tooltip' data-placement='top' title='Phản hồi chưa đọc'></i></td></tr>";
+
+      $('#message-table tbody').prepend(record);
+
+
+
+
+    });
+  </script>
 @endsection
 
 
