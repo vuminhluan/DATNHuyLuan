@@ -43,7 +43,7 @@ textarea:focus{
     resize: none;
 }
 #divbigformdangbaiviet{
-	height: 175px;background-color: white; margin-bottom: 5px; 
+	height: auto;background-color: white; margin-bottom: 5px; 
 	border: 1px solid #eadcf2;
   box-shadow: 1px 2px 3px #9695d8;
 
@@ -54,13 +54,13 @@ textarea:focus{
 #divtrongformdangbaiviet{
 	height: 125px; border-bottom: 1px solid #c5cfd6;
 }
-#divbottomformdangbaiviet{
+/*#divbottomformdangbaiviet{
   height: 50px;
-}
+}*/
 #btndangbaiviet {
-	margin-top: 7px;
+	margin-top: 9px;
 	margin-right: 5px;
-    border: 2px solid black;
+    border: 1px solid #eadcf2;
     background-color: white;
     color: black;
     padding: 5px 17px;
@@ -81,12 +81,12 @@ textarea:focus{
 	height: 50px;
 }
 #divoptionradiobutton{
-	height: 30px;
+  margin-top: 5px;
+	height: auto;
 	padding-left: 0px;
 }
 #divbtndangbaiviet{
 	float: right;
-	width: 25%;
 }
 #divbigformdangbaiviet input[type="file"] {
     display: none;
@@ -119,6 +119,7 @@ textarea:focus{
 .optionlevel2{
 	margin-top: 50px;
 	display: none;
+  margin-bottom: 20px;
 }
 .datetimepickker{
   border-radius: 3px;
@@ -127,18 +128,20 @@ textarea:focus{
   border-color: #9695d8;
 }
 .divoptionradio{
+
 	float: right;
 	width: 21%;
-	height: 30px;
+	height: auto;
+  border-top: 50%;
+  margin-right: 5px;
 	/*border: solid 1px;*/
 	/*border-radius: 1px;*/
 	/*border-color: transparent transparent  #9695d8 transparent;*/
-	border-top: 50%;
-	margin-right: 5px;
-	-webkit-user-select: none;
+	
+/*	-webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
+    user-select: none;*/
 }
 .container {
 	float: left;
@@ -164,7 +167,7 @@ textarea:focus{
 
 /* Create a custom checkbox */
 .checkmark {
-    position: absolute;
+     position: absolute;
     top: 0;
     left: 0;
     height: 25px;
@@ -207,9 +210,7 @@ textarea:focus{
     transform: rotate(45deg);
 }
 
-#optionthongbao{
 
-}
 #optionthubai{
 
 }

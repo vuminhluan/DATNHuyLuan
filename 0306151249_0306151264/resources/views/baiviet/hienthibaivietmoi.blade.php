@@ -22,10 +22,13 @@
                     <div class="texttus" >
                         <span><h4>{{$lstbaiviett[0]->noi_dung_bai_viet}}</h4></span>
                     </div>
-                    <div class="divimagetus" >
-                        <img class="imgtus" 
-                       src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View">
-                    </div>
+                    @if ($lstbaiviett[0]->ma_hinh_anh!="")
+                        <div class="divimagetus" >
+                            <img class="imgtus" 
+                           src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View">
+                        </div>
+                    @endif
+                    
 
                  </div>
                  @include('binhluan.hienthibinhluanchobaivietmoi')

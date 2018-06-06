@@ -15,13 +15,14 @@
 
 
 
-<div id="divbigformdangbaiviet" >
+<div id="divbigformdangbaiviet" style="clear:both;" >
 	{{-- <div id="data" style="width: 100%;height: 50px;background-color: red;"></div> --}}
 	{{-- <form  id="frmdangbaiviet" action="/" method="post" accept-charset="utf-8" name="frmnamedangbaiviet"> --}}
 		 @csrf 
-		<div id="divtrongformdangbaiviet" >
-			<div>
-				<div id="divnoidungbaiviet">
+		 {{-- id="divtrongformdangbaiviet" --}}
+		<div  style="width: 100%; height: auto;" >
+				{{-- id="divnoidungbaiviet" --}}
+				<div style="height: 60px;" >
 					<img id="imgdangbaiviet" " src=" {{asset('pictures/anh_dai_dien/'.Auth::user()->anh_dai_dien)}}" alt="Mountain View">
 					<div style="padding-top: 5px;padding-left: 50px;padding-right: 7px;">
 						<div style="width: auto;height: 0px;">
@@ -31,23 +32,39 @@
 					{{-- <div id="iptextdangbaiviet" contenteditable="true">	</div> --}}
 					{{-- <textarea id="iptextdangbaiviet" rows="5" cols="50"></textarea> --}}
 				</div>
-				<div id="divluachondinhkem">
-					<div id="divcacluachondinhkem">
-						<div id="divthemanhbaidang">
-							<label for="file-upload-img" class="custom-file-upload">
+
+				<div id="divanhxemtruocduocthemvao" style="width: 100%;height: auto;display: none;margin-top: 20px;">
+					<div style="width: 50%;height: auto;float: left;padding: 2px;padding-left: 13%;">
+							<img id="blah" src="#" alt="your image" style="width: 77px;height: 77px;border-radius: 3px;" />
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+
+				<div style="width: 86%;height: auto;border-bottom: solid 1px #e4e6e8;margin-left: 14%;">
+					{{-- id="divcacluachondinhkem" --}}
+					{{--  id="divthemanhbaidang" --}}
+						<div style="float: left;">
+							
+							<div style="float: left;">
+							<label for="imgInp" class="custom-file-upload">
 								<i class="fa fa-picture-o" aria-hidden="true"></i>
 							</label>
-							<input id="file-upload-img" type="file"/>
+							<form action="uploadanh" id="uploadanh" method="get" enctype="multipart/form-data">
+								<input id="imgInp" type="file"/>
+							</form>
+							
+							</div>
 						</div>
-						<div id="divthemteptinbaidang">
+						<div style="float: left;" id="divthemteptinbaidang">
 							<label for="file-upload-file" class="custom-file-upload">
 								<i class="fa fa-paperclip" aria-hidden="true"></i>
 							</label>
 							<input id="file-upload-file" type="file"/>
 						</div>
-					</div>
+						<div style="clear: both;"></div>
 				</div>
-				<div id="divoptionradiobutton">		
+				<div id="divoptionradiobutton" style="clear:both;padding-bottom: 3px;padding-top: 3px;">		
+					
 					<div class="divoptionradio"  >	
 						<label class="container">Ẩn bài
 		  				<input id="ckbthongbao" type="checkbox"  onclick='clickoption("optionthongbao")'>
@@ -72,6 +89,9 @@
 						</div>
 					</div>
 					<div class="divoptionradio" >
+						<div>
+							
+						</div>
 						<label class="container">Khảo sát
 		 				<input id="ckbkhaosat" type="checkbox"  onclick='clickoption("optionkhaosat")'>
 		  				<span class="checkmark"></span>
@@ -84,7 +104,8 @@
 							<br>
 						</div>
 					</div>
-					
+					<div style="clear: both;" ></div>
+				
 {{-- 					<div class="divoptionradio" >
 						<label class="container">Tài liệu
 		  				<input id="ckbtailieu" type="checkbox"  onclick='clickoption("optiontailieu")'>
@@ -103,24 +124,25 @@
 						 				 
  					
 				</div>
-       		</div>
+       		
 
 		</div>
-		<div class="divbottomformdangbaiviet">
-		<div class="custom-select" >
- 			 <select id="cbbloaibaiviet">
-   				<option value="LBV001">Công khai</option>
-   				<option value="LBV002">Chỉ ẩn tên người đăng</option>
-			    <option value="LBV003">Chỉ ẩn tên người bình luận</option>
-			    <option value="LBV004">Ẩn tên cả người đăng và người bình luận</option>
-			   
-			  </select>
-		</div>
-		<div id="divbtndangbaiviet">
-		{{-- <input id="btndangbaiviet" type="submit"  value="Đăng"/> --}}
-		<input type="submit" id="btndangbaiviet" onclick="submitdangbaiviet()"  name="btndangbaiviet" value="Đăng">
-		{{-- <button id="btnn">DANGGG</button> --}}
-		</div>
+		{{-- class="divbottomformdangbaiviet" --}}
+		<div style="width: 100%;height: 50px;border-top: solid 1px #e4e6e8;" >
+			{{-- class="custom-select" --}}
+				<div style="width: 80%;float: left;padding: 9px;">
+		 			 <select id="cbbloaibaiviet" style="margin-left: 43%;height: 30px;width: 277px;padding-left: 10px;border-radius: 3px;">
+		   				<option value="LBV001">Công khai</option>
+		   				<option value="LBV002">Chỉ ẩn tên người đăng</option>
+					    <option value="LBV003">Chỉ ẩn tên người bình luận</option>
+					    <option value="LBV004">Ẩn tên cả người đăng và người bình luận</option>
+					   
+					  </select>
+				</div>
+				{{-- id="divbtndangbaiviet" --}}
+				<div style="width: 20%;float: left;" >
+					<input type="submit" id="btndangbaiviet" onclick="submitdangbaiviet()"  name="btndangbaiviet" value="Đăng">
+				</div>
 		</div>
 
 	{{-- </form> --}}

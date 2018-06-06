@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class hinh_anh_bai_viet extends Model
 {
       protected $table = "hinh_anh_bai_viet";
-	  public $timestamps = false;
+	  protected $primaryKey = "ma_hinh_anh";
+	  const CREATED_AT = 'ngay_up_load';
+	  const UPDATED_AT = 'ngay_chinh_sua';
 }

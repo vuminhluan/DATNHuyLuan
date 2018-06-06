@@ -15,7 +15,7 @@
                         <div class="divlikecmt">
 
                                <div class="divbtnlike" onclick="clicklike('div-content-all-cmt-157')">
-                                    <h3><i class="fa fa-thumbs-o-up" aria-hidden="true"><strong>&ensp;Thích</strong></i></h3>
+                                    <h3><i class="fa fa-thumbs-o-up" aria-hidden="true"><strong>&ensp;Hay</strong></i></h3>
                                 </div>
                              
                                 <div class="divbtncmt" onclick="clickbinhluan('{{ $lstbaiviet[$i]->ma_bai_viet }}')" >
@@ -24,7 +24,7 @@
 
                         </div>
                         {{--tren  --}}
-                    <div id="dv-div-big-{{ $lstbaiviet[$i]->ma_bai_viet }}" class="div-tatca-cmt" >
+                    <div id="dv-div-big-{{ $lstbaiviet[$i]->ma_bai_viet }}" class="div-tatca-cmt"  >
                         <div style="margin-left: 12px;margin-right: 12px; height: 12px;"> </div>
                         <div style="margin-left: 12px;margin-right: 12px; height: 30px;"> </div>
                         <div id="div-content-all-cmt-{{ $lstbaiviet[$i]->ma_bai_viet }}" style="display: none;border-top: solid 1px #c5cfd6;margin-left: 12px;margin-right: 12px; height: auto;    padding-bottom: 10px"> 

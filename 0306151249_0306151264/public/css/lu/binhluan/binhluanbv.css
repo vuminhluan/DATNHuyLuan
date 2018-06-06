@@ -9,7 +9,7 @@ textarea:disabled {
 
 
 .div-tatca-cmt{
-	 height: auto; background-color: #f2f3f5 ;border-top: solid 1px #c5cfd6;
+	 height: auto; background-color: #f2f3f5 ;border-top: solid 1px #c5cfd6;display: none;
 }
 
 

@@ -2,6 +2,7 @@ var host="/DATNHuyLuan/0306151249_0306151264/public/"; // tam thoi de day
 
 function clickbinhluan(mabaiviet)
 {
+  $('#dv-div-big-'+mabaiviet).css("display","block");
 	$('#div-content-all-cmt-'+mabaiviet).css("display","block");
 	$('#div-input-binhluan-'+mabaiviet).css("display","block");
      	  		$.ajax(

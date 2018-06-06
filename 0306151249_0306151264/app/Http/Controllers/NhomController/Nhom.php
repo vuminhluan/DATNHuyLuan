@@ -38,7 +38,7 @@ class Nhom extends Controller
                                 ->get();
         $listbaiviet      = DB::table('bai_viet')
                                 ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
-                                ->join('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
+                                ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','LIKE','hinh_anh_bai_viet.ma_bai_viet')
                                 ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*')
                                 ->where("bai_viet.ma_chu_bai_viet",$idnhom)
                                 ->orderBy('bai_viet.ma_bai_viet','desc')
