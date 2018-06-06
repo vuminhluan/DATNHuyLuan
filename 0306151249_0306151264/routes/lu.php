@@ -13,6 +13,7 @@ Route::get("baiviet", function(){
 });
 
 Route::post("/ajax/postbaivietne","BaiVietController\BaiViet@Postbaiviet")->name('postbaiviet');
+Route::get('/ajax/getbaiviettheonguoivietvanguoisohuune',"BaiVietController\BaiViet@Getbaiviettheonguoivietvanguoisohuu")->name('getbaiviettheonguoivietvanguoisohuu');
 Route::post("/ajax/postbinhluanne","BinhLuanController\BinhLuan@PostBinhLuan")->name('postbinhluan');
 Route::post("/ajax/postbinhluanc2ne","BinhLuanController\BinhLuan@PostBinhLuanC2")->name('postbinhluanc2');
 Route::get("/ajax/getmabinhluanne","BinhLuanController\BinhLuan@GetMaBinhLuan")->name('getmabinhluan');

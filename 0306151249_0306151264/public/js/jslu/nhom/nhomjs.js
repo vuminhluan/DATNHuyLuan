@@ -18,3 +18,23 @@ window.onclick = function(event) {
         modal_nhom.style.display="none";
     }
 }
+
+
+
+function clickthanhvienturoikhoinhomnhom(prl){
+    var manhom=prl;
+   // alert("say click"+prl.currentTarget.myparamMaNhom+"-"+prl.currentTarget.myparamMaTaiKhoan);
+    $.ajax({
+        url:link_host+'/ajax/postupdatethanhvientrongnhomne',
+        type:'POST',
+        data:{
+            _token:$('input[name=_token]').val(),
+            ma_nhom:manhom,
+            ma_tai_khoan:$("#session-ma-tk").val(),
+            trang_thai:"0"
+        }
+    }).done(function(data){
+
+     window.location = link_trangchufull;
+    })
+}

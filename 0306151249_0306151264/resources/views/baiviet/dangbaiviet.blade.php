@@ -22,7 +22,7 @@
 		<div id="divtrongformdangbaiviet" >
 			<div>
 				<div id="divnoidungbaiviet">
-					<img id="imgdangbaiviet" " src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View">
+					<img id="imgdangbaiviet" " src=" {{asset('pictures/anh_dai_dien/'.Auth::user()->anh_dai_dien)}}" alt="Mountain View">
 					<div style="padding-top: 5px;padding-left: 50px;padding-right: 7px;">
 						<div style="width: auto;height: 0px;">
 						<textarea cols="60"  id="iptextdangbaiviet" rows="2" placeholder="Viết điều gì đó..."></textarea>
@@ -49,7 +49,7 @@
 				</div>
 				<div id="divoptionradiobutton">		
 					<div class="divoptionradio"  >	
-						<label class="container">Thông báo
+						<label class="container">Ẩn bài
 		  				<input id="ckbthongbao" type="checkbox"  onclick='clickoption("optionthongbao")'>
 		 				<span class="checkmark"></span>
 						</label>
@@ -84,7 +84,8 @@
 							<br>
 						</div>
 					</div>
-					<div class="divoptionradio" >
+					
+{{-- 					<div class="divoptionradio" >
 						<label class="container">Tài liệu
 		  				<input id="ckbtailieu" type="checkbox"  onclick='clickoption("optiontailieu")'>
 		 				 <span class="checkmark"></span>
@@ -98,7 +99,7 @@
 							
 							
 						</div>
-					</div>
+					</div> --}}
 						 				 
  					
 				</div>

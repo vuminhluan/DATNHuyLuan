@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\bai_viet;
+use App\NguoiDung;
 use App\Traits\BaiVietTrait;
 
 
@@ -56,6 +57,16 @@ class BaiViet extends Controller
         // $listbaiviet = DB::table('bai_viet')->where("ma_bai_viet",$mabaiviet)->get();
         
         // return view("baiviet.hienthibaivietmoi",["mabaivietmoi"=>$mabaiviet,"lstbaiviett"=>$listbaiviet]);
+    }
+    public function Getbaiviettheonguoivietvanguoisohuu(Request $rql )
+    {
+        $listbaiviet = DB::table('bai_viet')
+        ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
+        ->select('nguoi_dung.*','bai_viet.*')
+        ->where([["bai_viet.ma_nguoi_viet",$rql->ma_nguoi_viet],["bai_viet.ma_chu_bai_viet",$rql->ma_chu_bai_viet]])
+        ->orderBy('bai_viet.ma_bai_viet','desc')
+        ->get();
+        return view("baiviet.hienthibaivietmoi",["lstbaiviett"=>$listbaiviet]);
     }
 
 

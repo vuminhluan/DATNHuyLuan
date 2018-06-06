@@ -49,7 +49,21 @@ class ThanhVienNhom extends Controller
 
 
     public function GetLstThanhVienTheoMaNhom(Request $rql){
-        return DB::table('thanh_vien_nhom')->join('nguoi_dung','thanh_vien_nhom.ma_tai_khoan','=','nguoi_dung.ma_tai_khoan')->select('thanh_vien_nhom.*','nguoi_dung.*')->where([['ma_nhom',$rql->ma_nhom],['thanh_vien_nhom.trang_thai',$rql->trang_thai]])->get();
+        $tenthanhvien =  $rql->ten_thanh_vien;
+        if($tenthanhvien==""){
+            return DB::table('thanh_vien_nhom')->join('nguoi_dung','thanh_vien_nhom.ma_tai_khoan','=','nguoi_dung.ma_tai_khoan')->select('thanh_vien_nhom.*','nguoi_dung.*')->where([['ma_nhom',$rql->ma_nhom],['thanh_vien_nhom.trang_thai',$rql->trang_thai]])->get();
+        }else{
+          return DB::table('thanh_vien_nhom')
+          ->join('nguoi_dung','thanh_vien_nhom.ma_tai_khoan','=','nguoi_dung.ma_tai_khoan')
+          ->select('thanh_vien_nhom.*','nguoi_dung.*')
+          ->where([['ma_nhom',$rql->ma_nhom],['thanh_vien_nhom.trang_thai',$rql->trang_thai],["nguoi_dung.ho_ten_lot","LIKE","%$tenthanhvien%"]])
+          ->orWhere([['ma_nhom',$rql->ma_nhom],['thanh_vien_nhom.trang_thai',$rql->trang_thai],["nguoi_dung.ten","LIKE","%$tenthanhvien%"]])
+          ->groupBy('nguoi_dung.ho_ten_lot')
+          ->get();
+       }
+
+
+
     }
     public function PostUpdateThanhVienTrongNhom(Request $rql){
       return   DB::table('thanh_vien_nhom')

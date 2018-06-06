@@ -9,11 +9,11 @@
                 <!--  -->
                  <div class="headtus" style=" height: 60px;  " >
                     <div class="divtopcontent" >
-                      <img class="imgavtnguoidang" src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View">
+                      <img class="imgavtnguoidang" src=" {{ asset( 'pictures/anh_dai_dien/'.$lstbaiviet[0]->anh_dai_dien) }}" alt="Mountain View">
                     </div>
                     <div class="divtennguoidang" >
-                      <span> <h3 class="spantennguoidang">  {{ $lstbaiviet[$i]->ma_bai_viet }} </h3> </span><br>
-                      <span> <h5 class="spanthoigiandang"> 22/02/2018 18:07 </h5> <span>
+                      <span> <h3 class="spantennguoidang">  {{ $lstbaiviet[0]->ho_ten_lot }} {{ $lstbaiviet[0]->ten }} </h3> </span><br>
+                      <span> <h5 class="spanthoigiandang"> {{ $lstbaiviet[0]->thoi_gian_dang}} </h5> <span>
                     </div>
                  </div>
                  <!--  -->
@@ -21,10 +21,13 @@
                     <div class="texttus" >
                         <span><h4>{{$lstbaiviet[$i]->noi_dung_bai_viet}}</h4></span>
                     </div>
-                    <div class="divimagetus" >
+                    @if ($lstbaiviet[0]->ma_hinh_anh!="")
+                       <div class="divimagetus" >
                         <img class="imgtus" 
                        src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View">
-                    </div>
+                        </div>
+                    @endif
+                    
 
                  </div>
                  @include('binhluan.hienthibinhluan')

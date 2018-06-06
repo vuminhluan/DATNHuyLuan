@@ -110,10 +110,10 @@ $.ajax({
 
         var divomhainut= document.createElement("div");
         	divomhainut.style.width="100%";
-        	divomhainut.style.height="50px";
+        	divomhainut.style.height="100px";
         //	divomhainut.style.border="solid 1px #9695d8";
         //	divomhainut.style.float="right";
-        	divomhainut.style.paddingTop="17px";
+        	divomhainut.style.paddingTop="60px";
 
         var btnchophepgianhapnhom = document.createElement("div");
         btnchophepgianhapnhom.style.cursor="pointer";
@@ -176,15 +176,19 @@ $.ajax({
     })
 }
 ///function tim kiếm thành viên trong list thành viên
-function timkiemthanhvien_menugrsetting(){
- //   alert($('#ip-timkiemthanhvien-popup-settingnhom').val());
+function timkiemthanhvien_menugrsetting(manhom){
+   //alert($('#ip-timkiemthanhvien-popup-settingnhom').val());
+  // alert(manhom+$('#ip-timkiemthanhvien-popup-settingnhom').val());return;
+   opentab_lstthanhvien(manhom,$('#ip-timkiemthanhvien-popup-settingnhom').val());
 }
 ///
 
 var lstquyentk_hientai;
 // ////////////load list thành viên của nhóm
-function opentab_lstthanhvien(idnhom) {
+function opentab_lstthanhvien(idnhom,tenthanhvien) {
     nhomhientaidangduocchon=idnhom;
+    var tenthanhvientv = tenthanhvien;
+   // alert(idnhom+"-"+tenthanhvientv+"-");
 $.ajax({
         url: link_host+'/ajax/getmachucvutaikhoanne', /// lấy mã tài khoản về đây để kiểm tra tài khoản này có chức vụ này ko ?
         type:'GET',
@@ -200,14 +204,15 @@ $.ajax({
         flagkiemtraquyen=true;
       }
    }
-   if(flagkiemtraquyen)
-   {
+   // if(flagkiemtraquyen)
+   // {
 //  alert("open tab phê duyệt thành viên"+pr);
     $.ajax({
         url: link_host+'/ajax/getlstthanhvientheomanhomne',
         type:'GET',
         data:{
             ma_nhom:idnhom,
+            ten_thanh_vien:tenthanhvientv,
             trang_thai:"1" //1 là thành viên còn hoạt động
         }
     }).done(function(data){
@@ -226,12 +231,47 @@ $.ajax({
         var listsearchdiv = document.getElementById('divlstthanhvien');
         for (var i = 0; i < data.length; i++) {
         var divkq = document.createElement("div");
-        divkq.style.height= "70px";
+        divkq.style.height= "100px";
         divkq.style.with="100%";
         divkq.style.background ="white";
         divkq.style.color="black";
-        divkq.style.borderBottom ="solid 1px #9695d8";
-        divkq.innerHTML ='<h4>'+ data[i].ho_ten_lot +" "+ data[i].ten+'</h4>';
+        divkq.style.borderBottom ="solid 1px #eadcf2";
+        divkq.style.borderLeft="transparent";
+        // divkq.innerHTML ='<h4>'+ data[i].ho_ten_lot +" "+ data[i].ten+'</h4>';
+        divkq.style.paddingRight="7px";
+        divkq.style.marginBottom="10px";
+        divkq.style.boxShadow="1px 2px 1px #9695d8";
+
+      var divomanhdaidienvacautraloigianhapnhom = document.createElement("DIV");
+          divomanhdaidienvacautraloigianhapnhom.style.marginLeft="10px";
+
+
+              var divomanhdaidienvaten = document.createElement("DIV");
+                  divomanhdaidienvaten.style.width="120px";
+                  divomanhdaidienvaten.style.height="100%";
+                  divomanhdaidienvaten.style.float="left";
+
+              var divanhdiendien = document.createElement("DIV");
+                  divanhdiendien.style.width="120px";
+                  divanhdiendien.style.height="77px";
+                  divanhdiendien.style.paddingLeft="17%";
+              var imgdaidien = document.createElement("IMG");
+                  imgdaidien.style.borderRadius="50%";
+                  imgdaidien.style.width="77px";
+                  imgdaidien.style.height="77px";
+                  imgdaidien.src= link_host+'/pictures/anh_dai_dien/'+ data[i].anh_dai_dien;
+                  divanhdiendien.appendChild(imgdaidien);
+                  divomanhdaidienvaten.appendChild(divanhdiendien);
+              var divtenthanhvien = document.createElement("DIV");
+                  divtenthanhvien.style.textAlign="center";
+                  divtenthanhvien.style.height="23px";
+                  divtenthanhvien.style.width="120px";
+                  divtenthanhvien.innerHTML='<h4>'+ data[i].ho_ten_lot +" "+ data[i].ten+'</h4>';
+                  divomanhdaidienvaten.appendChild(divtenthanhvien);
+            divomanhdaidienvacautraloigianhapnhom.appendChild(divomanhdaidienvaten);
+
+            divkq.appendChild(divomanhdaidienvacautraloigianhapnhom);
+
 
         var divomhainut= document.createElement("div");
             divomhainut.style.width="280px";
@@ -241,9 +281,10 @@ $.ajax({
             divomhainut.id="divomhainut"+data[i].ma_tai_khoan;
         var btntuchoigianhapnhom = document.createElement("div");
         btntuchoigianhapnhom.style.cursor="pointer";
-        btntuchoigianhapnhom.style.marginTop="0px";
-        btntuchoigianhapnhom.style.marginLeft="5px";
+        btntuchoigianhapnhom.style.marginTop="25px";
+        btntuchoigianhapnhom.style.marginLeft="15px";
         btntuchoigianhapnhom.style.borderRadius="3px";
+        btntuchoigianhapnhom.style.marginRight="15px";
         btntuchoigianhapnhom.style.paddingLeft="10px";
         btntuchoigianhapnhom.style.width="33px";
         btntuchoigianhapnhom.style.float="right";
@@ -260,16 +301,20 @@ $.ajax({
        btntuchoigianhapnhom.appendChild(showtoggletuychonthanhviennhom(data[i].ma_tai_khoan,nhomhientaidangduocchon));
         btntuchoigianhapnhom.id="btnshowmenuluachonquanlythanhvien"+data[i].ma_tai_khoan;
         // divomhainut.appendChild(btnchophepgianhapnhom);
-        divomhainut.appendChild(btntuchoigianhapnhom);
-        divkq.appendChild(divomhainut);
+        if(flagkiemtraquyen)
+           {
+            divomhainut.appendChild(btntuchoigianhapnhom);
+            divkq.appendChild(divomhainut);
+           }
+        
         document.getElementById("divlstthanhvien").appendChild(divkq);
         }
     })
-    }
-    else{
-      //  alert("bạn không có quyền truy cập vào đây");
-        return;
-    }
+    //}
+    // else{
+    //   //  alert("bạn không có quyền truy cập vào đây");
+    //     return;
+    // }
  })
 }
 
@@ -304,6 +349,7 @@ function showtoggletuychonthanhviennhom(idtaikhoan,manhom){
     menucon.style.display="none";
     menucon.style.borderRadius="5px";
     menucon.style.position="relative";
+    menucon.style.boxShadow ="1px 2px 3px #9695d8"
     // 
     var x = document.createElement("SPAN");
     x.style.position="absolute";
@@ -514,7 +560,7 @@ function clicktrucxuatkhoinhom(prl){
     }).done(function(data){
         alert("kích thành  viên khỏi nhóm thành công");
         alert(data);
-        opentab_lstthanhvien(manhom);
+        opentab_lstthanhvien(manhom,"");
     })
 }
 function clickroikhoinhomnhom(prl){
@@ -688,7 +734,7 @@ function chonchucnangtrongnhom(prl){
     if(prl=='CV09'){
          openCity(event, 'divthanhvien');
        $('#tablinkdivthanhvien').addClass("active");
-       opentab_lstthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());
+       opentab_lstthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val(),"");
     }
 
 }

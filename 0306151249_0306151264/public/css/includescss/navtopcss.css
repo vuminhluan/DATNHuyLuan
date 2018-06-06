@@ -345,11 +345,12 @@ ul.navtop-right {float: right;display: inline-block;}
  background-color: white;
  position: sticky;
  top: 0;
- border-bottom-color: rgb(118, 223, 236);
+ border-bottom-color: #eadcf2;
  border-style: solid;
  border-width: 0px;
  border-bottom-width: 1px;
  z-index: 10;
+ box-shadow: 1px 1px 2px #9695d8;
 
 
 }

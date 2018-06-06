@@ -10,11 +10,11 @@
                 <!--  -->
                  <div class="headtus" style=" height: 60px;  " >
                     <div class="divtopcontent" >
-                      <img class="imgavtnguoidang" src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View">
+                      <img class="imgavtnguoidang" src="{{ asset( 'pictures/anh_dai_dien/'.$lstbaiviett[0]->anh_dai_dien) }}" alt="Mountain View">
                     </div>
                     <div class="divtennguoidang" >
-                      <span> <h3 class="spantennguoidang">  {{ $mabaivietmoi }} </h3> </span><br>
-                      <span> <h5 class="spanthoigiandang"> 22/02/2018 18:07 </h5> <span>
+                      <span> <h3 class="spantennguoidang">  {{ $lstbaiviett[0]->ho_ten_lot }} {{ $lstbaiviett[0]->ten }} </h3> </span><br>
+                      <span> <h5 class="spanthoigiandang">{{ $lstbaiviett[0]->thoi_gian_dang}}</h5> <span>
                     </div>
                  </div>
                  <!--  -->

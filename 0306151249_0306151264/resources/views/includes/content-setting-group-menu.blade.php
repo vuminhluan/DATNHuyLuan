@@ -82,7 +82,7 @@
             <div  style="width: 100%;height: 100%;margin-top: 17px; padding-left: 20px;padding-right: 20px;" >
                   <div class="tab">
                   <button class="tablinks active" id="tablinkdivthanhvien" onclick="openCity(event, 'divthanhvien'),opentab_lstthanhvien('{{$t}}')"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Thành viên</button>
-                  <button class="tablinks" id="tablinkdivpheduyetthanhvien" onclick="openCity(event, 'divpheduyetthanhvien'),opentab_pheduyetthanhvien('{{$t}}')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Phê duyệt thành viên</button>
+                  <button class="tablinks" id="tablinkdivpheduyetthanhvien" onclick="openCity(event, 'divpheduyetthanhvien'),opentab_pheduyetthanhvien('{{$t}}','')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Phê duyệt thành viên</button>
                   <button class="tablinks" id="tablinkdivpheduyetbaiviet" onclick="openCity(event, 'divpheduyetbaiviet')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Phê duyệt bài viết</button>
                   <button class="tablinks" id="tablinkdivbaocao" onclick="openCity(event, 'divbaocao')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Báo cáo</button>
                   <button class="tablinks" id="tablinkdivcaidatnhom" onclick="openCity(event, 'divcaidatnhom')"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;Cài đặt</button>
@@ -90,11 +90,11 @@
                   </div>
 
                 <div id="divthanhvien" style="display: block;" class="tabcontent ">
-                  <div style="height: 40px;width: 100%;padding-top: 10px;overflow: auto;display: none;">
-                    <input style="border:  solid 1px transparent;border-bottom:  solid 1px #9695d8;height: 25px;border-radius: 3px;width: 100%;" onkeyup="timkiemthanhvien_menugrsetting()" id="ip-timkiemthanhvien-popup-settingnhom" type="text" placeholder="Tìm thành viên....." name="">
+                  <div style="height: 45px;width: 100%;padding-top: 10px;overflow: auto;margin-bottom: 5px;padding-left: 5px;padding-right: 5px;">
+                    <input style="border:  solid 1px transparent;box-shadow: 1px 0px 2px #9695d8;border-bottom:  solid 1px #eadcf2;;height: 25px;border-radius: 3px;width: 100%;" onkeyup="timkiemthanhvien_menugrsetting('{{$t}}')" id="ip-timkiemthanhvien-popup-settingnhom" type="text" placeholder="Tìm thành viên....." name="">
                   </div>
 
-                 <div id="divlstthanhvien"> 
+                 <div id="divlstthanhvien" style="height: 350px;overflow: auto;"> 
                 </div>
               </div>
 
