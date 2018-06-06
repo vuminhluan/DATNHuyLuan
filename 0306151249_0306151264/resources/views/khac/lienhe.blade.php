@@ -75,15 +75,15 @@
 						@csrf
 						<div>
 							<label for="fullname">Họ và tên</label>
-							<input type="text" id="fullname" name="fullname" value="{{Auth::check() ? Auth::user()->ho_ten_lot.' '.Auth::user()->ten : ''}}">
+							<input data-info="1" type="text" id="fullname" name="fullname" value="{{Auth::check() ? Auth::user()->ho_ten_lot.' '.Auth::user()->ten : ''}}">
 						</div>
 						<div>
 							<label for="email">Email</label>
-							<input type="text" id="email" name="email" value="{{Auth::check() ? Auth::user()->email : ''}}">
+							<input data-info="1" type="text" id="email" name="email" value="{{Auth::check() ? Auth::user()->email : ''}}">
 						</div>
 						<div>
 							<label for="message">Tin nhắn</label>
-							<textarea id="message" name="message" rows="5" cols="80"></textarea>
+							<textarea data-info="1" id="message" name="message" rows="5" cols="80"></textarea>
 						</div>
 						<div>
 							<button class="send-message-button">Gửi</button>
@@ -101,14 +101,55 @@
 
 	<script src="{{asset('js/jquery/jquery3.3.1.js')}}"></script>
 	<script src="{{asset('js/jquery/jquery-validate.min.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('js/globaljs/varglobal.js') }}"></script>
 	<script src="{{asset('js/luan/contact.js')}}"></script>
 
-	<script>
+	{{-- socket io here --}}
+	<script src="{{ asset('node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js') }}"></script>
+	
 
-	</script>
 
 
   <script>
+  	$(document).ready(function() {
+
+
+  		
+
+  		// $('.send-message-button').click(function(event) {
+  		// 	event.preventDefault();
+
+  		// 	// alert(link_host);
+  		// 	var dataString = {
+  		// 		_token : $('[name=_token']).val();
+  		// 		fullname: $('[name=_token']).val();
+  		// 	};
+
+  		// 	$.ajax({
+  		// 		url: link_host+'/path/to/file',
+  		// 		type: 'default GET (Other values: POST)',
+  		// 		dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+  		// 		data: {param1: 'value1'},
+  		// 	})
+  		// 	.done(function() {
+  		// 		console.log("success");
+  		// 	})
+  		// 	.fail(function() {
+  		// 		console.log("error");
+  		// 	})
+  		// 	.always(function() {
+  		// 		console.log("complete");
+  		// 	});
+  			
+
+  		// });
+
+
+
+
+  	}); // End document ready
   </script>
+
+
 </body>
 </html>

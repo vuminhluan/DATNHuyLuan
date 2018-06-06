@@ -59,6 +59,10 @@ Route::get('/lienhe', function () {
 })->name('lienhe');
 Route::post('/lienhe', 'LienHeController@postLienHe')->name('lienhe.post');
 
+Route::post('/socket/gui/tinnhan', 'LienHeController@socketGuiTinNhan')->name('socket.post.tinnhan');
+
+
+
 Route::post('/taikhoan/{username}/thongtin/capnhat', 'TrangCaNhanController@capNhatNguoiDung')->name('post_taikhoan.thongtin_canhan.capnhat');
 Route::post('/taikhoan/{kind_of_image}/capnhat', 'TrangCaNhanController@capNhatAnhNguoiDung')->name('post_taikhoan.anh.capnhat');
 

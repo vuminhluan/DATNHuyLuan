@@ -1,5 +1,10 @@
 @extends('master.adminmasterpage')
 
+
+@section('css')
+  <link rel="stylesheet" href="{{ asset('css/admin/admin-contact.css') }}">
+@endsection
+
 @section('admin_content')
 
 
@@ -105,3 +110,11 @@
 
   <!--END #main-->
 @endsection
+
+
+@section('javascript')
+  <script src="{{ asset('node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js') }}"></script>
+  <script src="{{ asset('js/admin/admin-contact.js') }}"></script>
+@endsection
+
+
