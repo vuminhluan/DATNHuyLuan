@@ -144,9 +144,7 @@ Route::group(['middleware' => ['MyUserAuth']], function () {
 
 Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 
-	Route::get('/', function() {
-		return view('admin.index');
-	})->name('admin.index');
+	Route::get('/', 'Admin\AdminController@getIndex')->name('admin.index');
 
 	// Route::get('/phanhoi', function() {
 	// 	return view('admin.phanhoi.index');

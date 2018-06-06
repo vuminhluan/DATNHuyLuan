@@ -17,7 +17,7 @@ class DangKiController extends Controller
 
   public function postDangKi(Request $req)
   {
-    // Kiểm tra dữ liệu
+    // Kiểm tra dữ liệu // Chưa kiểm tra khi tài khoản bị vô hiệu hóa
     $rules = [
       'username' => 'unique:tai_khoan,ten_tai_khoan',
       'email'    => 'unique:tai_khoan,email'

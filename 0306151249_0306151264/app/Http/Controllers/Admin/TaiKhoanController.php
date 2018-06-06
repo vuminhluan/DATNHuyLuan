@@ -10,7 +10,8 @@ class TaiKhoanController extends Controller
 {
   public function getTrangQuanLyTaiKhoan()
   {
+  	$tatca_phanhoi = TinNhanLienHe::orderBy('thoi_gian_tao', 'desc')->get();
   	$tatca_taikhoan = TaiKhoan::paginate(5);
-  	return view('admin.taikhoan.index', ['tatca_taikhoan' => $tatca_taikhoan]);
+  	return view('admin.taikhoan.index', ['tatca_taikhoan' => $tatca_taikhoan, 'tatca_phanhoi' => $tatca_phanhoi]);
   }
 }
