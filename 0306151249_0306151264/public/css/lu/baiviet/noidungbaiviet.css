@@ -26,10 +26,11 @@
 	margin-bottom: 7px; margin-top: 5px; font-family: inherit;
 }
 .divimagetus{
-	height: 357px;
+	height: auto;
+	
 }
 .imgtus{
-	width: 536px; height: 357px;
+	width: 536px; height:auto;max-height: 500px;
 }
 
 

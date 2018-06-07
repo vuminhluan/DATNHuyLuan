@@ -71,10 +71,44 @@ class BaiViet extends Controller
         return view("baiviet.hienthibaivietmoi",["lstbaiviett"=>$listbaiviet]);
     }
 
-    public function Postanh(Request  $rql){
-        // print_r($rql->all());
-        // return $rql->filex;
+    public function Postanh(Request $rql){
+                
+        if ($rql->hasFile('imgInp')) {
+           // return $this->Getmaanh()+1;
+
+            $mabaiviet = $this->Getmabaiviet()+1;
+            $mahinhanh = $this->Getmaanh()+1;
+            $duongdananh= 'images/'.$rql->chu_cua_bai_dang.$rql->nguoi_dang;
+            $tenanh = $rql->chu_cua_bai_dang.$rql->nguoi_dang.$mabaiviet.$mahinhanh.'.png';
+           $rql->file('imgInp')->move($duongdananh,$tenanh);
+
+         //  return $mabaiviet.$duongdananh.$tenanh.$rql->chu_cua_bai_dang.$rql->nguoi_dang.$rql->trang_thai;
+            $anhbaiviet = new hinh_anh_bai_viet();
+            $anhbaiviet->ma_bai_viet = $mabaiviet;
+            $anhbaiviet->duong_dan_anh= $duongdananh.'/'.$tenanh;
+            $anhbaiviet->chu_so_huu_anh = $rql->chu_cua_bai_dang;
+            $anhbaiviet->nguoi_dang_anh = $rql->nguoi_dang;
+            $anhbaiviet->trang_thai = $rql->trang_thai;
+            $anhbaiviet->save();
+
+
+
+           }
+      
+        //return $this->Getmaanh()+1;
+        // return $this->Getmabaiviet()+1;
         
     }
+    public function Getmaanh(){
+       // return DB::table('hinh_anh_bai_viet')->select('ma_hinh_anh')->orderBy('ma_hinh_anh','desc')->get()->first();
+        $ma =  DB::table('hinh_anh_bai_viet')->select('ma_hinh_anh')->orderBy('ma_hinh_anh','desc')->get()->first();
+        if($ma==''){
+            return '0';
+        }
+        return $ma->ma_hinh_anh;
+    }
+    // public function Getmabaiviet(){
+    //        return DB::table('bai_viet')->select('ma_bai_viet')->orderBy('ma_bai_viet','desc')->take(1)->get();
+    // }
 
 }

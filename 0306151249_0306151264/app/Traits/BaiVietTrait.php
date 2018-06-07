@@ -52,6 +52,9 @@ trait BaiVietTrait{
     public function GetMaBaiVietT()
     {
         $ma =  DB::table('bai_viet')->select('ma_bai_viet')->orderBy('ma_bai_viet','desc')->get()->first();
+        if($ma==''){
+            return '0';
+        }
         return $ma->ma_bai_viet;
     }
     public function GetBaiVietMoiT( $rq)

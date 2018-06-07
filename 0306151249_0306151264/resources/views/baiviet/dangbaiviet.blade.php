@@ -14,6 +14,7 @@
 
 
 
+<form id="formdangbaiviet" action="dangbaiviet_submit" method="get" accept-charset="utf-8">
 
 <div id="divbigformdangbaiviet" style="clear:both;" >
 	{{-- <div id="data" style="width: 100%;height: 50px;background-color: red;"></div> --}}
@@ -23,7 +24,7 @@
 		<div  style="width: 100%; height: auto;" >
 				{{-- id="divnoidungbaiviet" --}}
 				<div style="height: 60px;" >
-					<img id="imgdangbaiviet" " src=" {{asset('pictures/anh_dai_dien/'.Auth::user()->anh_dai_dien)}}" alt="Mountain View">
+					<img id="imgdangbaiviet" src=" {{asset('pictures/anh_dai_dien/'.Auth::user()->anh_dai_dien)}}" alt="Mountain View">
 					<div style="padding-top: 5px;padding-left: 50px;padding-right: 7px;">
 						<div style="width: auto;height: 0px;">
 						<textarea cols="60"  id="iptextdangbaiviet" rows="2" placeholder="Viết điều gì đó..."></textarea>
@@ -49,9 +50,9 @@
 							<label for="imgInp" class="custom-file-upload">
 								<i class="fa fa-picture-o" aria-hidden="true"></i>
 							</label>
-							<form action="uploadanh" id="uploadanh" method="get" enctype="multipart/form-data">
-								<input id="imgInp" type="file"/>
-							</form>
+						{{-- <form action="{{ route('postanh') }}" id="uploadanh" method="get" enctype="multipart/form-data"> --}}
+								<input id="imgInp" name="imgInp" type="file"/>
+							
 							
 							</div>
 						</div>
@@ -141,9 +142,12 @@
 				</div>
 				{{-- id="divbtndangbaiviet" --}}
 				<div style="width: 20%;float: left;" >
-					<input type="submit" id="btndangbaiviet" onclick="submitdangbaiviet()"  name="btndangbaiviet" value="Đăng">
+					{{-- onclick="submitdangbaiviet()"  --}}
+					<input type="submit" id="btndangbaiviet"  name="btndangbaiviet" value="Đăng">
 				</div>
+				{{-- </form> --}}
 		</div>
 
 	{{-- </form> --}}
 </div>
+</form>

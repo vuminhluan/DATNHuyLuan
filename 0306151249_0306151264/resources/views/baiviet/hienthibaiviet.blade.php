@@ -21,10 +21,10 @@
                     <div class="texttus" >
                         <span><h4>{{$lstbaiviet[$i]->noi_dung_bai_viet}}</h4></span>
                     </div>
-                    @if ($lstbaiviet[0]->ma_hinh_anh!="")
+                    @if ($lstbaiviet[$i]->ma_hinh_anh!="")
                        <div class="divimagetus" >
                         <img class="imgtus" 
-                       src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View">
+                       src=" {{ asset($lstbaiviet[$i]->duong_dan_anh) }}" alt="Mountain View">
                         </div>
                     @endif
                     

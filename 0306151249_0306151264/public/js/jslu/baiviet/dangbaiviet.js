@@ -269,28 +269,87 @@ var mabaiviet="hi";
 //   console.log(data.currentTarget.response);
 // }
 
+$( document ).ready(function() {
+
+  $('#formdangbaiviet').submit(function(event) {
+    event.preventDefault();
+
+
+
+    var formData = new FormData($(this)[0]);
+        formData.append('nguoi_dang',$('#session-ma-tk').val());
+        formData.append('chu_cua_bai_dang',$('#div-hi-chu-bai-viet-ma-nhom').val());
+        formData.append('trang_thai','1');
+    $.ajax({
+        url:  link_host+'/uploadanh',
+        type: 'POST',  
+        processData: false,
+        contentType: false,              
+        data: formData
+    }).done(function(data){
+      submitdangbaiviet();
+      document.getElementById("formdangbaiviet").reset();
+      document.getElementById("imgInp").value="";
+      $('#divanhxemtruocduocthemvao').css("display","none");
+    });
+    
+});
+
+
+
+
+   // $('#formdangbaiviet').submit(function(event) {
+   //      event.preventDefault();
+   //      var formData = new FormData($(this)[0]);
+   //      $.ajax({
+   //          url: link_host+'/uploadanh',
+   //          type: 'POST',
+   //          processData: false,
+   //          contentType: false,              
+   //          data: formData
+   //      });
+   //    });
+});
+
 
 function submitdangbaiviet() {
 
+          // var formData = new FormData();
+          // formData.append('file', $('#imgInp')[0].files[0]);
+
+          // $.ajax({
+          //        url :  link_host+'/uploadanh',
+          //        type : 'POST',
+          //        data : formData,
+          //        // processData: false,  // tell jQuery not to process the data
+          //        // contentType: false,  // tell jQuery not to set contentType
+          //        _token:$('input[name=_token]').val()
+
+          // }).done(function(data){                 
+          //            console.log(data);
+          //            alert(data);
+          // })
+
          //  var form=document.getElementById("uploadanh");
-          var filee = document.getElementById("imgInp");
-         //  var request = new XMLHttpRequest(form);
+         //  var filee = document.getElementById("imgInp");
+         // //  var request = new XMLHttpRequest(form);
 
-         var myFormData = new FormData();
-          myFormData.append('pictureFile', filee.files[0]);
+         // var myFormData = new FormData();
+         //  myFormData.append('pictureFile', filee.files[0]);
 
-          $.ajax({
-            url: link_host+'/uploadanh',
-            type: 'POST',
-            processData: false, // important
-            contentType: false, // important
-            dataType : 'json',
-            data:
-              //_token:$('input[name=_token]').val(),
-             myFormData
-          }).done(function(data){
-            console.log(data)
-          });
+         //  $.ajax({
+         //    url: link_host+'/uploadanh',
+         //    type: 'POST',
+         //    processData: false, // important
+         //    contentType: false, // important
+         //    dataType : 'json',
+         //    data:{
+         //      _token:$('input[name=_token]').val(),
+         //     myFormData:myFormData
+         //     }
+         //  }).done(function(data){
+         //    console.log(data)
+         //  });
 
          //  var formdata = new FormData(form);
          //  console.log(formdata);

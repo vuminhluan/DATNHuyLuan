@@ -25,7 +25,7 @@
                     @if ($lstbaiviett[0]->ma_hinh_anh!="")
                         <div class="divimagetus" >
                             <img class="imgtus" 
-                           src=" {{ asset('pictures/avt1.jpg') }}" alt="Mountain View">
+                           src=" {{ asset($lstbaiviett[0]->duong_dan_anh) }}" alt="Mountain View">
                         </div>
                     @endif
                     
