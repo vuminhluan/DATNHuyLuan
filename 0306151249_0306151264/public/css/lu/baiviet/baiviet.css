@@ -13,7 +13,31 @@ textarea:focus{
   margin-left: 15px;
   float: left;
 }
+.ipbaivietnopfile{
+  padding: 2px;
+}
 
+.submitnopbai{
+  float: right;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border:solid 1px #eadcf2;
+/*  box-shadow: 1px 1px 1px #9695d8;*/
+  background-color:white;
+}
+
+
+.divtopfiletus{
+
+  margin-top: 20px;
+  padding: 13px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e4e6e8;
+  border-top: 1px solid #e4e6e8;
+  width: 534px;
+  height: 55px;
+}
 #divcacluachondinhkem{
   padding-bottom: 4px;
   margin-left: 60px;

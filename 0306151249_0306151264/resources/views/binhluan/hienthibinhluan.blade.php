@@ -21,7 +21,6 @@
                                 <div  class="divbtncmt" onclick="clickbinhluan('{{ $lstbaiviet[$i]->ma_bai_viet }}')" >
                                     <h3><i class="fa fa-comment-o" aria-hidden="true" ><strong>&ensp;Bình luận</strong></i></h3>
                                 </div>
-
                         </div>
                         {{--tren  --}}
                     <div id="dv-div-big-{{ $lstbaiviet[$i]->ma_bai_viet }}" class="div-tatca-cmt"  >

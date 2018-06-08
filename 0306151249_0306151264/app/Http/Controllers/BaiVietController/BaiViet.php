@@ -53,8 +53,6 @@ class BaiViet extends Controller
     {
         return $this->GetBaiVietMoiT($rq);
         //     $mabaiviet=$rq->mabaiviet;
-
-
         // $listbaiviet = DB::table('bai_viet')->where("ma_bai_viet",$mabaiviet)->get();
         
         // return view("baiviet.hienthibaivietmoi",["mabaivietmoi"=>$mabaiviet,"lstbaiviett"=>$listbaiviet]);
@@ -91,10 +89,7 @@ class BaiViet extends Controller
             $anhbaiviet->trang_thai = $rql->trang_thai;
             $anhbaiviet->save();
 
-
-
            }
-      
         //return $this->Getmaanh()+1;
         // return $this->Getmabaiviet()+1;
         
