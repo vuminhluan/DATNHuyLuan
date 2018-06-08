@@ -89,15 +89,12 @@
               --}}
             </tbody>
           </table>
-          <div class="text-right">
-            <ul class="pagination" id="step5">
-              <li class="disabled"><span>«</span></li>
-              <li class="active"><span>1</span></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">»</a></li>
-            </ul>
+          {{-- paginate --}}
+          <div>
+            {{$tatca_phanhoi->links()}}
           </div>
+          {{-- paginate --}}
+
           <div id="step6">
             <p><strong><i class="fa fa-bookmark"></i>Ghi chú: </strong></p>
             <p class="note-items"><i class="fa fa-envelope-o"></i> Phản hồi chưa đọc.</p>

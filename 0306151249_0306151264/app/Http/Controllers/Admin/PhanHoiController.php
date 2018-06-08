@@ -10,7 +10,7 @@ class PhanHoiController extends Controller
 {
   public function getTrangQuanLyPhanHoi()
   {
-  	$tatca_phanhoi = TinNhanLienHe::orderBy('thoi_gian_tao', 'desc')->get();
+  	$tatca_phanhoi = TinNhanLienHe::orderBy('thoi_gian_tao', 'desc')->paginate(2);
   	return view('admin.phanhoi.index',['tatca_phanhoi' => $tatca_phanhoi]);
   }
 }

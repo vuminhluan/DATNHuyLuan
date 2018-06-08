@@ -9,41 +9,46 @@ use App\ThuMucGoogleDrive;
 use Storage;
 
 use App\Traits\CapNhatDoiTuongTrait;
+use App\Traits\ThemTepGoogleDriveTrait;
+use App\Traits\TaoThuMucGoogleDriveTrait;
 
 class GoogleDriveController extends Controller
 {
 
 	use CapNhatDoiTuongTrait;
 
+	use ThemTepGoogleDriveTrait;
+	use TaoThuMucGoogleDriveTrait;
+
 	public function getDangKiDichVu()
 	{
 		$root = env('GOOGLE_DRIVE_FOLDER_ID');
 		$foldername = Auth::user()->ma_tai_khoan;
+		// $foldername = date('dmY_His');
 
-		// Tên thư mục tạm thời sẽ là mã tài khoản => Không sợ bị trùng.
-		Storage::cloud()->makeDirectory($root.'/'.$foldername);
+		$path = $root.'/'.$foldername;
 
-
-  	// $dir = '/'; // thư mục gốc (trong file env có khai báo id của thư mục gốc.)
-	  $recursive = false; // Get subdirectories also? //false => Chỉ sử dụng ở thư mục hiện tại, không tìm kiếm ở cácthư mục con.
-	  $contents = collect(Storage::cloud()->listContents($root, $recursive));
+		//Tạo tệp trên drive:
+		$folder = $this->taoThuMucGoogleDrive($path, $root, $foldername);
 		
-	  $dir = $contents->where('type', '=', 'dir')
-	    ->where('filename', '=', $foldername)
-	    ->first(); // There could be duplicate directory names!
-		
+		// Lưu id thư mục mới vào database
 	  $thumuc_googledrive = new ThuMucGoogleDrive();
 	  $data = [
 			'ma_tai_khoan' => Auth::user()->ma_tai_khoan,
-			'ma_thumuc'    => $dir['basename'],
+			'ma_thumuc'    => $folder['basename'],
 			'trang_thai'   => 1
 	  ];
-
 	  $this->capNhatDoiTuong($data, $thumuc_googledrive);
 
-	  sleep(2); //Sleep 2s để cho google drive tạo thư mục
+	  // Nếu chưa đăng kí sử dụng dịch vụ
+	  // if(!Auth::user()->thu_muc_google_drive)
+
+	  //Lấy mã thư mục được cấp khi đăng kí dịch vụ
+	  //$myfolder = Auth::user()->thu_muc_google_drive->ma_thumuc;
+
 
 	  return redirect()->back()->with('slidemessage', 'Chúc mừng bạn đã đăng kí dịch vụ thành công.');
+
 	}
 
 	public function getHuyBoDichVu()
@@ -53,9 +58,11 @@ class GoogleDriveController extends Controller
 
 		Storage::cloud()->deleteDirectory($ma_thumuc);
 
-	  sleep(3);
-	  return redirect()->back()->with('slidemessage', 'Đã hủy bỏ dịch vụ bạn đã đăng kí');
+	  sleep(3); // Sleep 3s để drive xóa thư mục online
 
+	  // return route('nguoidung.tep.index', ['username' => Auth::user()->ten_tai_khoan])->with('slidemessage', 'Đã hủy bỏ dịch vụ bạn đã đăng kí');
+
+	  return redirect('/taikhoan/'.Auth::user()->ten_tai_khoan.'/tep/')->with('slidemessage', 'Đã hủy bỏ dịch vụ bạn đã đăng kí');
 	}
 
 	public function getIndex()
@@ -67,46 +74,25 @@ class GoogleDriveController extends Controller
 	  $contents = collect(Storage::cloud()->listContents($dir, $recursive));
 
 	  $files = $contents->where('type', '=', 'file'); // files
+	  $folders = $contents->where('type', '=', 'dir'); // directory
 
-		return view('trang_ca_nhan.tep.googledrive')->with(['files'=>$files, 'username'=>Auth::user()->ten_tai_khoan]);
+		return view('trang_ca_nhan.tep.googledrive')->with(['files'=>$files, 'folders'=>$folders, 'username'=>Auth::user()->ten_tai_khoan]);
 		// return $files;
 	}
 
 	public function postThemTep(Request $req)
 	{
-		if($req->file->getClientSize()/1024/1024 > 100) {
-			return redirect()->back()->with('slidemessage', 'Kích thước tệp lớn hơn 50MB');
+
+		$client_file = $req->file;
+		$root_id     = Auth::user()->thu_muc_google_drive->ma_thumuc;
+		$folder_id   = $root_id;
+
+		if($this->themTepGoogleDrive($client_file, $root_id, $folder_id)['success']) {
+			return redirect()->back()->with('slidemessage', 'Tai tep thanh cong');
+		} else {
+			return redirect()->back()->with('slidemessage', 'Tai tep that bai, file > 50 MB');
 		}
 
-		$folderid = Auth::user()->thu_muc_google_drive->ma_thumuc;
-		$dir = "/".$folderid.'/';
-
-		$extension = $req->file->extension();
-		$filename_without_ext = pathinfo($req->file->getClientOriginalName(), PATHINFO_FILENAME);
-		$filename_without_ext = str_replace(' ', '-', $filename_without_ext);
-	  $filename = $filename_without_ext.'.'.$extension;
-	  $content =  file_get_contents($req->file);
-
-	  Storage::cloud()->put($dir.$filename, fopen($req->file, 'r+'));
-
-	  // return "ok";
-
-	  // return $filename;
-
-	  // Storage::cloud()->put($dir.$filename, $content);
-	  $recursive = false; // Get subdirectories also?
-	  $contents = collect(Storage::cloud()->listContents($dir, $recursive));
-	  // Lấy lại file đã up -> lấy id -> thay đổi quyền
-	  $file = $this->getFileByName($filename, $contents);
-
-	  $service = Storage::cloud()->getAdapter()->getService();
-    $permission = new \Google_Service_Drive_Permission();
-    $permission->setRole('reader');
-    $permission->setType('anyone');
-    $permission->setAllowFileDiscovery(false);
-    $permissions = $service->permissions->create($file['basename'], $permission);
-
-    return redirect()->back()->with('slidemessage', 'Đã tải tệp '.$filename.' lên Google Drive');
 	}
 
 	public function getFileByName($filename, $contents)

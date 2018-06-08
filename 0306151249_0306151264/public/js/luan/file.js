@@ -330,8 +330,10 @@ $(document).ready(function() {
 
 	$('.googledrive .register-box .--button').click(function(e) {
 		e.preventDefault();
-		if(confirm('Chúng tôi sẽ cung cấp cho bạn một nơi để lưu trữ dữ liệu (không giới hạn), nhưng chúng tôi có quyền kiểm soát những tệp tin mà bạn tải lên ấy. Để đảm bảo không vi phạm chính sách của chúng tôi và bên thứ 3')) {
+		if(confirm('Chúng tôi sẽ cung cấp cho bạn một nơi để lưu trữ dữ liệu (không giới hạn), nhưng mỗi tệp tin chỉ được phép có dung lượng tối đa 100MB và chúng tôi có quyền kiểm soát những tệp tin mà bạn tải lên ấy. Để đảm bảo không vi phạm chính sách của chúng tôi và bên thứ 3')) {
+
 			window.location.href= link_host+"/googledrive/dangki/dichvu";
+			
 		}
 	});
 

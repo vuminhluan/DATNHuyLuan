@@ -44,13 +44,14 @@
 					<h3 class="--title" data-username = "{{Auth::user()->ten_tai_khoan}}"><img class="--item-icon" src="{{ asset('myicons/tep/google-drive.svg') }}" alt=""> Google Drive</h3>
 					@if (!Auth::user()->thu_muc_google_drive)
 						<div class="register-box">
-							<a class="--button" href="https://facebook.com">Đăng kí dịch vụ</a>
+							<a class="--button" href="">Đăng kí dịch vụ</a>
 							{{-- {{ route('googledrive.dangkidichvu') }} --}}
 						</div>
 					@else
 						<div>
-							<a href="{{ route('googledrive.tep.index') }}"><img class="--item-icon" src="{{ asset('myicons/tep/folder.svg') }}" alt=""> Thư mục của tôi</a>
+							<a href="{{ route('googledrive.tep.index') }}"><img class="--item-icon" src="{{ asset('myicons/tep/folder.svg') }}" alt=""> Thư mục gốc</a>
 						</div>
+						
 						<div class="quickadd-box">
 							<h4>Thêm tệp nhanh</h4>
 							<form action="{{ route('googledrive.tep.them') }}" method="POST" enctype="multipart/form-data">
