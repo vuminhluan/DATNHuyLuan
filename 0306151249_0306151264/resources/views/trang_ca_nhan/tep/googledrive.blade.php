@@ -16,6 +16,18 @@
 	{{-- <div >
 		<button class="open-upload-modal">Thêm tệp mới</button>
 	</div> --}}
+	@if (count($folders) > 0)
+		<div class="another-folder">
+			<p>Thư mục khác</p>
+			<ul class="--list">
+				@foreach ($folders as $folder)
+					<li>
+						<a href="https://drive.google.com/drive/folders/{{$folder['basename']}}" target="_blank"> <i class="fa fa-folder-o"></i> {{$folder['name']}}</a>
+					</li>
+				@endforeach
+			</ul>
+		</div>
+	@endif
 </div>
 <ul class="file-list">
 

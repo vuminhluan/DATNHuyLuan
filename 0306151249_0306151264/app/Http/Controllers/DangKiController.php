@@ -21,7 +21,6 @@ class DangKiController extends Controller
     $rules = [
       'username' => 'unique:tai_khoan,ten_tai_khoan',
       'email'    => 'unique:tai_khoan,email'
-
     ];
     $messages = [
       'username.unique' => 'Tên tài khoản đã có người sử dụng.',

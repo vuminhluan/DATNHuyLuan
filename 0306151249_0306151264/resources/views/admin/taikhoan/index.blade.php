@@ -75,7 +75,10 @@
           </div> --}}
           <p><strong><i class="fa fa-bookmark"></i>Ghi chú: </strong></p>
           <p class="note-items"><i class="fa fa-check text-success"></i> Tài khoản đang hoạt động.</p>
-          <p class="note-items"><i class="fa fa-times text-danger"></i> Tài khoản bị khóa.</p>
+          <p class="note-items"><i class="fa fa-bolt text" style="color: #d0d32c"></i> Tài khoản chưa kích hoạt.</p>
+          <p class="note-items"><i class="fa fa-lock text-danger"></i> Tài khoản bị khóa.</p>
+          <p class="note-items"><i class="fa fa-ban text-danger"></i> Tài khoản bị khóa do vi phạm.</p>
+          <p class="note-items"><i class="fa fa-times text-danger"></i> Tài khoản đã vô hiệu hóa (xóa).</p>
         </div>
       </form>
     </div>

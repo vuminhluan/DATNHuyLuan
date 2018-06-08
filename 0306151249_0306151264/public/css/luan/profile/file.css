@@ -422,6 +422,20 @@ a {
 	display: block;
 }
 
+.another-folder .--list > li {
+	display: inline-block;border: 1px solid #eee;border-radius: 8px;
+	margin: 4px 4px;
+}
+.another-folder .--list > li:hover {
+	border-color: #9695d8;
+}
+.another-folder .--list > li a {
+	display: block; padding: 8px;color: #666;
+}
+.another-folder .--list > li a:hover {
+	color: #9695d8;
+}
+
 
 
 /*End Google Drive*/
