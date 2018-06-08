@@ -16,7 +16,7 @@ class GoogleDriveController extends Controller
 {
 
 	use CapNhatDoiTuongTrait;
-	
+
 	use ThemTepGoogleDriveTrait;
 	use TaoThuMucGoogleDriveTrait;
 
@@ -42,6 +42,7 @@ class GoogleDriveController extends Controller
 
 	  // Nếu chưa đăng kí sử dụng dịch vụ
 	  // if(!Auth::user()->thu_muc_google_drive)
+	  //$myfolder = Auth::user()->thu_muc_google_drive->ma_thumuc;
 
 
 	  return redirect()->back()->with('slidemessage', 'Chúc mừng bạn đã đăng kí dịch vụ thành công.');
