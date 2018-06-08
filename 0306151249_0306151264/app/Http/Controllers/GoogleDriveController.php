@@ -42,11 +42,12 @@ class GoogleDriveController extends Controller
 
 	  // Nếu chưa đăng kí sử dụng dịch vụ
 	  // if(!Auth::user()->thu_muc_google_drive)
+
+	  //Lấy mã thư mục được cấp khi đăng kí dịch vụ
 	  //$myfolder = Auth::user()->thu_muc_google_drive->ma_thumuc;
 
 
 	  return redirect()->back()->with('slidemessage', 'Chúc mừng bạn đã đăng kí dịch vụ thành công.');
-
 
 	}
 
