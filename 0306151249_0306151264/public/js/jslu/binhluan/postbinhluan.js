@@ -69,7 +69,7 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet){
                   var divcon122 = document.createElement("div");
                       divcon122.className="div-btn-like-cmt";
                       var i122  = document.createElement("i");
-                          i122.className="fa fa-star-o";
+                        //  i122.className="fa fa-star-o";
                   var divcon123 = document.createElement("div");
                       divcon123.className="div-btn-rep-cmt";
                       divcon123.addEventListener("click",function(){repbinhluan(mabinhluancap1);});
@@ -162,7 +162,7 @@ function reloadlstcmtrep(prl){
         }).done(function(data){
              $("#divrepcmt"+prl).empty();
           for (var i = 0; i < data.length; i++) {
-              taoramotrepcmt(data[i].noi_dung_binh_luan,data[i].ma_binh_luan,data[i].anh_dai_dien,data[i].ho_ten_lot+data[i].ten,data[i].ma_binh_luan_cap_2);
+              taoramotrepcmt(data[i].noi_dung_binh_luan,data[i].ma_binh_luan,data[i].anh_dai_dien,data[i].ho_ten_lot+' '+data[i].ten,data[i].ma_binh_luan_cap_2);
           }
 
         })
@@ -185,7 +185,7 @@ function taoramotrepcmt(noidung,mabinhluancap1,duongdananh,tennguoicmt,mabinhlua
                 var textarea = document.createElement("TEXTAREA");
                     textarea.disabled =true;
                     textarea.className="tara-read-rep-cmt";
-                    textarea.value=noidung;
+                    textarea.value=tennguoicmt+': '+noidung;
                 divchuatext.appendChild(textarea);
             var divlikecmt = document.createElement("div");
                 var divspaniconlike = document.createElement("SPAN");
@@ -256,6 +256,8 @@ function submitme(event,mabaivietl)
 {	
 	var mabl= "hi";
 	var ndbinhluan="hi";
+  ndbinhluan = $('#input-binhluan-'+mabaivietl).val().trim();
+  if (ndbinhluan=="") return
 	if (window.event.keyCode == 13)
     {
     	//	 alert("ban vua enter");
