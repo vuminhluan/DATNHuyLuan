@@ -62,6 +62,7 @@
           </ul>
         </li>
         <li><input type="hidden" id="session-ma-tk" value="{{Auth::user()->ma_tai_khoan}}"></li>
+        <li><input type="hidden" id="session-anh-dai-dien-tk" value="{{Auth::user()->anh_dai_dien}}"></li>
         @endif
       </ul>
       {{-- End Menu phải --}}

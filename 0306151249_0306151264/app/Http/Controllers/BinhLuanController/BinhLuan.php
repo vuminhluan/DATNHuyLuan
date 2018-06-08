@@ -41,7 +41,8 @@ class BinhLuan extends Controller
                         ->select('bai_viet.*','binh_luan_bai_viet.*','nguoi_dung.*')
                         ->where('bai_viet.ma_bai_viet',$rq->ma_bai_viet)->take(15)->get();
 		 
-		return View('binhluan.motbinhluan',["lstbinhluan"=>$lstbinhluan,"mabaivietl"=>$rq->ma_bai_viet]);
+         return $lstbinhluan;
+	 //	return View('binhluan.motbinhluan',["lstbinhluan"=>$lstbinhluan,"mabaivietl"=>$rq->ma_bai_viet]);
 	}
     public function GetBinhLuanCap2(Request $rq)
     {

@@ -35,10 +35,10 @@ textarea:disabled {
 
 	}
 .div-btn-like-cmt{
-	width: auto	;height: 17px;float: left;margin-top: -2px;margin-left: -20px;
+	width: auto	;height: 17px;float: left;margin-top: -2px;margin-left: -20px;color: #9695d8;
 	}
 .div-btn-rep-cmt{
-	width: 17px	;height: 17px;float: right;margin-top: -2px;
+	width: 17px	;height: 17px;float: right;margin-top: -2px;color: #9695d8;
 	}
 
 .div-btn-show-allcmt:hover{
@@ -68,6 +68,7 @@ textarea:disabled {
 
 
 .cl-div-tare-read{
+	padding-left: 15px;
   margin-top: 6px;
   width: 494px;
   float: left; 
@@ -281,10 +282,10 @@ color: #9695d8;
     outline: none;
 }
 .cl-divrepcmt{
-	width: 91%;margin-left: 9%;height: auto;margin-top: 5px;
+	width: 91%;margin-left: 9%;height: auto;margin-top: 5px; display: none;
 }
 .divchuacmtbac1{
-	width: 457px;float: left;height: auto;padding-right: 5px;
+	width: 457px;float: left;height: auto;padding-right: 5px;margin-left: 10px;
 }
 .divchuacmtbac2{
 	width: 457px;float: left;height: auto;padding-right: 5px;padding-left: 10px;
@@ -293,4 +294,7 @@ color: #9695d8;
 
 .divbigbigchuamotcmt{
 	height: auto;width: 100%;padding-bottom: 7px;
+}
+.iprepcmtcmt{
+	width: 93%;margin-left: 7%;height: 55px;display: none;margin-top: 5px;
 }

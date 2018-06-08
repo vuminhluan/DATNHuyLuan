@@ -2,7 +2,7 @@
 @for ($k = 0; $k <count($lstbinhluan) ; $k++)
    
 
-<div class="divbigbigchuamotcmt" style="height: auto;width: 100%;padding-bottom: 7px;">
+<div class="divbigbigchuamotcmt" >
                                 <div id="dv-div-tare-cmt-{{$lstbinhluan[$k]->ma_binh_luan}}"  class="cl-div-content-boxreadcmt-avt" >
                                     <div class="cl-div-avt-cmt" >
                                         <img class="imgaccountcmt"  src=" {{ asset( 'pictures/anh_dai_dien/'.$lstbinhluan[$k]->anh_dai_dien) }}" alt="Mountain View" >
@@ -24,14 +24,14 @@
                                     </div>
                                 </div>
 
-            <div class="cl-divrepcmt" id="divrepcmt{{ $lstbinhluan[$k]->ma_binh_luan }}" style="display: none;" >
+            <div class="cl-divrepcmt" id="divrepcmt{{ $lstbinhluan[$k]->ma_binh_luan }}" >
                                 {{-- 1cmt con --}}
                                {{--  @for ($i = 0; $i <5 ; $i++)
                                     @include('binhluan.mottraloibinhluan')
                                 @endfor --}}
                                 {{-- end 1 cmt con --}}
             </div>
-            <div id="inputrepcmt-{{ $lstbinhluan[$k]->ma_binh_luan }}" style="width: 93%;margin-left: 7%;height: 55px;display: none;margin-top: 5px;">
+            <div id="inputrepcmt-{{ $lstbinhluan[$k]->ma_binh_luan }}" class="iprepcmtcmt" >
 
                  <div class="divrepcmt" id="div-input-binhluan-{{ $lstbinhluan[$k]->ma_binh_luan }}"  >
                             <div>

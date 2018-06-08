@@ -15,7 +15,7 @@
                         <div class="divlikecmt">
 
                                <div class="divbtnlike" onclick="clicklike('div-content-all-cmt-157')">
-                                    <h3><i class="fa fa-star-o" aria-hidden="true"><strong>&ensp;Hay</strong></i></h3>
+                                    <h3 ><i  class="fa fa-star-o" aria-hidden="true"><strong class="baomoi">&ensp;Hay</strong></i></h3>
                                 </div>
                              
                                 <div  class="divbtncmt" onclick="clickbinhluan('{{ $lstbaiviet[$i]->ma_bai_viet }}')" >
@@ -46,7 +46,7 @@
                                     placeholder="Viết bình luận..." type="text" >
                                 </div>
                                 <div class="btnsendcmt" >
-                                    <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                    <i onclick="sendbinhluan('{{ $lstbaiviet[$i]->ma_bai_viet }}')" class="fa fa-paper-plane-o" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
