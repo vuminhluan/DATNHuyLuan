@@ -61,7 +61,7 @@ class BaiViet extends Controller
             // return redirect()->back()->with('slidemessage', 'Tai tep thanh cong');
             return "Thanh cong"; //sida :v
         } else {
-            // return redirect()->back()->with('slidemessage', 'Tai tep that bai, file > 50 MB');
+           //  return redirect()->back()->with('slidemessage', 'Tai tep that bai, file > 50 MB');
             return "That bai file > 100 MB";
         }
 
