@@ -37,9 +37,12 @@
                                 </div>
                              
                                 <div class="divtopfiletus" id="div-nopfile-{{$lstbaiviet[$i]->ma_bai_viet}}" style="display: none;">
-                                   <form action="hi" id="submitfile" method="POST" accept-charset="utf-8">
+                                   <form action="{{ route('postfilenopbaithanhvien') }}" enctype="multipart/form-data" id="submitfile" method="POST" accept-charset="utf-8">
+                                    @csrf
+                                    <input type="hidden" value="{{$lstbaiviet[$i]->ma_bai_viet}}" name="ma_bai_viet">
+                                    <input type="hidden" value="{{$lstbaiviet[$i]->ma_thumuc}}" name="ma_thumuc">
                                             <div style="width: 50%;float: left;">
-                                              <input type="file" class="ipbaivietnopfile" name="inputfilenopbai+{{$lstbaiviet[$i]->ma_bai_viet}}" value="" placeholder="">
+                                              <input type="file" class="ipbaivietnopfile" name="inputfilenopbai-{{$lstbaiviet[$i]->ma_bai_viet}}" value="" placeholder="">
                                             </div>
                                             <div style="width: 50%;float: left;">
                                               <button  class="submitnopbai" name="inputsubmitnopbai-{{$lstbaiviet[$i]->ma_bai_viet}}" type="submit">Nộp bài&nbsp;<i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>

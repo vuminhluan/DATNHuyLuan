@@ -367,7 +367,33 @@ function submitdangbaiviet() {
           }
           if ($('#ckbthubai').is(":checked"))
           {
-            thubai="1";
+            thubai="1";   //
+
+             $.ajax({
+              url: link_host+ '/ajax/getmabaivietne',
+              type:"GET",
+              data:{}
+            }).done(function(data){
+              var mabaivietmoi = parseInt(data)+1;
+                $.ajax({
+                  url: link_host+ '/taofolderchuatepthubaine',
+                  type:"GET",
+                  data:{
+                            ma_bai_viet:mabaivietmoi,
+                            nguoi_tao:$("#session-ma-tk").val()
+                  }
+                }).done(function(data){
+                  console.log(data);
+                  alert(data);
+                });
+
+            })
+
+
+
+
+
+
           }
           if ($('#ckbkhaosat').is(":checked"))
           {

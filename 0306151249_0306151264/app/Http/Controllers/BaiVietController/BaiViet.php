@@ -9,6 +9,13 @@ use App\bai_viet;
 use App\NguoiDung;
 use App\Traits\BaiVietTrait;
 use App\hinh_anh_bai_viet;
+use App\ThuMucThuBai;
+
+use Illuminate\Support\Facades\Auth;
+
+
+use App\Traits\TaoThuMucGoogleDriveTrait;
+use App\Traits\ThemTepGoogleDriveTrait;
 
 
 
@@ -16,6 +23,8 @@ class BaiViet extends Controller
 {
 
     use BaiVietTrait;
+    use TaoThuMucGoogleDriveTrait;
+    use ThemTepGoogleDriveTrait;
 
     public function Postbaiviet(Request $request)
     {
@@ -38,6 +47,76 @@ class BaiViet extends Controller
      //    return "hihi";	
         return $this->PostbaivietT($request);	
     }
+    public function postfilenopbaithanhvien(Request $rql){
+       // return "ok route";
+        // ma_bai_viet
+        $client_file = $rql['inputfilenopbai-'.$rql->ma_bai_viet];
+
+        $root_id     = Auth::user()->thu_muc_google_drive->ma_thumuc;
+        $folder_id   = $rql->ma_thumuc;
+
+        // return $client_file. '--'.$root_id.'--'.$folder_id;
+
+        if($this->themTepGoogleDrive($client_file, $root_id, $folder_id)['success']) {
+            // return redirect()->back()->with('slidemessage', 'Tai tep thanh cong');
+            return "Thanh cong"; //sida :v
+        } else {
+            // return redirect()->back()->with('slidemessage', 'Tai tep that bai, file > 50 MB');
+            return "That bai file > 100 MB";
+        }
+
+    }
+
+     // tạo folder theo mã bài viết + mã tài khoản ở đây nha 
+
+    public function taofolderchuatepthubai(Request $rql){
+        $root = env('GOOGLE_DRIVE_FOLDER_ID');
+
+        $thumuc_dangbai = Auth::user()->thu_muc_google_drive->ma_thumuc;
+
+        // return Auth::user()->thu_muc_google_drive->ma_thumuc;
+
+        //Tạo tệp trên drive:
+        // $folder = $this->taoThuMucGoogleDrive($path, $root, $foldername);
+        
+        // if(!Auth::user()->thu_muc_google_drive) {
+
+        //     $foldername = Auth::user()->ma_tai_khoan;
+        //     $path = $root.'/'.$foldername;
+
+        //     $folder = $this->taoThuMucGoogleDrive($path, $root, $foldername);
+
+        //     $thumuc_googledrive = new ThuMucGoogleDrive();
+        //     $thumuc_googledrive->ma_tai_khoan => Auth::user()->ma_tai_khoan;
+        //     $thumuc_googledrive->ma_thumuc    => $folder['basename'];
+        //     $thumuc_googledrive->trang_thai  => 1;
+        //     $thumuc_googledrive->save();
+        // }
+
+        // return $rql; // cais nayf la gi : 
+
+        $new_folder = 'folder'.$rql->ma_bai_viet.$rql->nguoi_tao;
+        $path = $root.'/'.$thumuc_dangbai.'/'.$new_folder;
+        $folder = $this->taoThuMucGoogleDrive($path, $root, $new_folder);
+        // nó ko trả về kết quả được :v lỗi từ khúc này trở xuống
+
+        // return $folder['basename'];
+
+
+        $thumuc_thubai = new ThuMucThuBai();
+        $thumuc_thubai->ma_thumuc = $folder['basename'];
+        $thumuc_thubai->ma_bai_viet = $rql->ma_bai_viet;
+        $thumuc_thubai->nguoi_tao = $rql->nguoi_tao;
+        $thumuc_thubai->trang_thai = 1;
+        $thumuc_thubai->save();
+
+        return "OK";
+
+    }
+
+
+
+
     public function GetMaBaiViet()
     {
       return  $this->GetMaBaiVietT();

@@ -13,7 +13,8 @@ trait TaoThuMucGoogleDriveTrait {
 
 		Storage::cloud()->makeDirectory($path);
 
-		$recursive = false; // Get subdirectories also?
+		$recursive = true; // Get subdirectories also?
+		// true: Nó quét từ thư mục gốc -> thư mục con. false: chỉ quét ở thư mục hiện tại -_-:)
 	  $contents = collect(Storage::cloud()->listContents($root, $recursive));
 
 	  $dir = $contents->where('type', '=', 'dir')

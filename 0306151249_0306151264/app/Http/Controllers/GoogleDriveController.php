@@ -30,6 +30,8 @@ class GoogleDriveController extends Controller
 
 		//Tạo tệp trên drive:
 		$folder = $this->taoThuMucGoogleDrive($path, $root, $foldername);
+
+		// return $folder;
 		
 		// Lưu id thư mục mới vào database
 	  $thumuc_googledrive = new ThuMucGoogleDrive();
@@ -47,7 +49,7 @@ class GoogleDriveController extends Controller
 	  //$myfolder = Auth::user()->thu_muc_google_drive->ma_thumuc;
 
 
-	  return redirect()->back()->with('slidemessage', 'Chúc mừng bạn đã đăng kí dịch vụ thành công.');
+	  return redirect()->back()->with('slidemessage', $folder['basename']);
 
 	}
 

@@ -73,3 +73,8 @@ Route::get('/ajax/getlsttepduocnoptheomabaivietne',"NhomController\Nhom@getlstte
 Route::post('/uploadanh',"BaiVietController\BaiViet@Postanh")->name('postanh');
 
 
+Route::get("taofolderchuatepthubaine","BaiVietController\BaiViet@taofolderchuatepthubai")->name("taofolderchuatepthubai");
+
+
+
+Route::post("/postfilenopbaithanhvienne","BaiVietController\BaiViet@postfilenopbaithanhvien")->name("postfilenopbaithanhvien");

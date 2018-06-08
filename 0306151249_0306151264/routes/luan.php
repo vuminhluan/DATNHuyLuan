@@ -119,7 +119,10 @@ Route::prefix('caidat')->group(function () {
 
 Route::group(['middleware' => ['MyUserAuth']], function () {
 
+	//Cho no toi route nay
 	Route::get('googledrive/dangki/dichvu', 'GoogleDriveController@getDangKiDichVu')->name('googledrive.dangkidichvu');
+
+
 	Route::get('googledrive/huy/dichvu', 'GoogleDriveController@getHuyBoDichVu')->name('googledrive.huydichvu');
 
 	Route::get('googledrive/tep', 'GoogleDriveController@getIndex')->name('googledrive.tep.index');
