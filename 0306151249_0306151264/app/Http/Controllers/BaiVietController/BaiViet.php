@@ -10,6 +10,7 @@ use App\NguoiDung;
 use App\Traits\BaiVietTrait;
 use App\hinh_anh_bai_viet;
 use App\ThuMucThuBai;
+use App\tep_duoc_nop;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -51,7 +52,7 @@ class BaiViet extends Controller
        // return "ok route";
         // ma_bai_viet
         $client_file = $rql['inputfilenopbai-'.$rql->ma_bai_viet];
-        $root_id     = Auth::user()->thu_muc_google_drive->ma_thumuc;
+        $root_id     = $rql->ma_thumuc;//Auth::user()->thu_muc_google_drive->ma_thumuc;
         $folder_id   = $rql->ma_thumuc;
 
         // return $client_file. '--'.$root_id.'--'.$folder_id;
@@ -183,5 +184,15 @@ class BaiViet extends Controller
     // public function Getmabaiviet(){
     //        return DB::table('bai_viet')->select('ma_bai_viet')->orderBy('ma_bai_viet','desc')->take(1)->get();
     // }
+    public function posttepduocnop(Request $rql){
+        $tepduocnop = new tep_duoc_nop();
+        $tepduocnop->ma_bai_viet    = $rql->ma_bai_viet;
+        $tepduocnop->ma_nguoi_nop   = $rql->ma_nguoi_nop; 
+        $tepduocnop->ten_tep         = $rql->ten_tep;
+        $tepduocnop->trang_thai     = $rql->trang_thai;
+        $tepduocnop->save();
+        return "haha"; //$rql->ma_bai_viet.$rql->ma_nguoi_nop.$rql->ma_tep.$rql->trang_thai;
+
+    }
 
 }

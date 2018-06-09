@@ -1,53 +1,56 @@
 function shownoptep(prl) {
 	//alert(prl);
-	if ($("#div-click-"+prl).css("display")=="block" && $("#div-nopfile-"+prl).css("display")=="none") {
-		$("#div-click-"+prl).css("display","none"); 
-		$("#div-nopfile-"+prl).css("display","block");
-	}
-	else{
-		$("#div-click-"+prl).css("display","block"); 
-		$("#div-nopfile-"+prl).css("display","none");
-	}
+	// if ($("#div-click-"+prl).css("display")=="block" && $("#div-nopfile-"+prl).css("display")=="none") {
+		
+	// 	
+	// }
+	// else{
+		
+	// }
 
-	// $.ajax({
-	// 	url:link_host+'/ajax/getlsttepduocnoptheomabaivietne',
-	// 	type:"GET",
-	// 	data:{
-	// 			ma_nguoi_nop:$('#session-ma-tk').val(),
-	// 			ma_bai_viet:prl
-	// 	}
-	// }).done(function(data){
-	// 	console.log(data);
-	// 	// alert(data[0].soluong);
-	// })
+	$.ajax({
+		url:link_host+'/ajax/getlsttepduocnoptheomabaivietne',
+		type:"GET",
+		data:{
+				ma_nguoi_nop:$('#session-ma-tk').val(),
+				ma_bai_viet:prl
+		}
+	}).done(function(data){	 
+		 if(data[0].soluong>0){
+		 	$("#div-nopfile-"+prl).css("display","block");
+		 	$("#divdanopfileroi-"+prl).css("display","block");
+		 	$("#div-click-"+prl).css("display","none"); 
+		 	$("#divomformnopbai-"+prl).css("display","none");
+		 }
+		 else{
+		 	$("#div-click-"+prl).css("display","none"); 
+		 	$("#div-nopfile-"+prl).css("display","block");
+			
+		 }
+	})
 }
 
-function submitnopbaine(prl,prl_mathumuc,prl_mabaiviet){
-//	alert($("#inputfilenopbai-"+prl_mabaiviet).val());
-//	alert(document.getElementById("inputfilenopbai-"+prl_mabaiviet).required());
-// if(document.getElementById("inputfilenopbai-"+prl_mabaiviet).files.length == 0)
+function submitnopbaine(prl,prl_mathumuc,prl_mabaiviet){	
 
-// {
-
-//  alert("khong co file");
- 
-// }
-// else{
-// 	 alert("có file");
-// }
-
-
-		
 	  $('#submitfile-'+prl).submit(function(event) {
 	    event.preventDefault();
+		if( document.getElementById("inputfilenopbai-"+prl_mabaiviet).files.length == 0 )
+			{
+
+				alert("Chưa chọn tập tin");
+				return;
+			}
+
+		var locallink= document.getElementById("inputfilenopbai-"+prl_mabaiviet).value;
+		var lsts = locallink.lastIndexOf("\\");
+		//alert(lsts+"-"+locallink.length);
+		var tenfile = locallink.substring(lsts+1,locallink.length);
+		// alert(tenfile);return;
 
 
-if (document.getElementById("inputfilenopbai-"+prl_mabaiviet).value!="") {
-    alert("No files selected.");
-}
 
 
-return;
+
 		$("#divomformnopbai-"+prl_mabaiviet).css("display","none");
 		$("#divloaddingupfile-"+prl_mabaiviet).css("display","block");
 		var spannd = document.createElement("SPAN");
@@ -58,15 +61,9 @@ return;
 		document.getElementById("divloaddingupfile-"+prl_mabaiviet).appendChild(spannd);
 
 
-
-
-
-
-
-
-    var formData = new FormData($(this)[0]);
-        formData.append('ma_thumuc',prl_mathumuc);
-        formData.append('ma_bai_viet',prl_mabaiviet);
+	    var formData = new FormData($(this)[0]);
+	        formData.append('ma_thumuc',prl_mathumuc);
+	        formData.append('ma_bai_viet',prl_mabaiviet);
 
     $.ajax({
         url:  link_host+'/postfilenopbaithanhvienne',
@@ -75,8 +72,22 @@ return;
         contentType: false,              
         data: formData
     }).done(function(data){
-    		// alert(data);
-    		// alert("post file thành công");
+    		$.ajax({
+			 url:  link_host+'/ajax/posttepduocnopne',
+			 type: 'POST',            
+			 data: {
+			 	_token:$('input[name=_token]').val(),
+			 	ma_bai_viet:prl_mabaiviet,
+			 	ma_nguoi_nop:$("#session-ma-tk").val(),
+			 	ten_tep:tenfile,
+			 	trang_thai:"1"
+			 }
+    		}).done(function(data){
+    			alert(data);
+    		});
+    		//alert(prl_mabaiviet+$("#session-ma-tk").val()+tenfile);
+
+    		// 
     		$("#divloaddingupfile-"+prl_mabaiviet).empty();
     		var spannd = document.createElement("SPAN");
 			spannd.textContent = data;

@@ -70,6 +70,9 @@ Route::post('/ajax/postcautraloigianhapnhomne',"NhomController\CaiDatNhom@PostCa
 Route::get('/ajax/getcautraloivacauhoicuanhomtheomathanhvienne',"NhomController\CaiDatNhom@GetCauTraLoiVaCauHoiCuaNhomTheoMaThanhVien")->name('getcautraloivacauhoicuanhomtheomathanhvien');
 Route::get('/ajax/getlsttepduocnoptheomabaivietne',"NhomController\Nhom@getlsttepduocnoptheomabaiviet")->name('getlsttepduocnoptheomabaiviet');
 
+
+Route::post('/ajax/posttepduocnopne',"BaiVietController\BaiViet@posttepduocnop")->name("posttepduocnop");
+
 Route::post('/uploadanh',"BaiVietController\BaiViet@Postanh")->name('postanh');
 
 
