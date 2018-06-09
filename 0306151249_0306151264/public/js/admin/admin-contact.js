@@ -31,3 +31,12 @@
 
 // });
 
+$(document).ready(function() {
+	curPage = $('input#current-page').val();
+	totalPages = $('#total-page').html();
+	alert(totalPages);
+	$('input#current-page').blur(function(event) {
+		alert('ád');
+	});
+});
+
