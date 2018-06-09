@@ -375,6 +375,7 @@ function submitdangbaiviet() {
               data:{}
             }).done(function(data){
               var mabaivietmoi = parseInt(data)+1;
+              
                 $.ajax({
                   url: link_host+ '/taofolderchuatepthubaine',
                   type:"GET",

@@ -51,7 +51,6 @@ class BaiViet extends Controller
        // return "ok route";
         // ma_bai_viet
         $client_file = $rql['inputfilenopbai-'.$rql->ma_bai_viet];
-
         $root_id     = Auth::user()->thu_muc_google_drive->ma_thumuc;
         $folder_id   = $rql->ma_thumuc;
 
@@ -59,10 +58,10 @@ class BaiViet extends Controller
 
         if($this->themTepGoogleDrive($client_file, $root_id, $folder_id)['success']) {
             // return redirect()->back()->with('slidemessage', 'Tai tep thanh cong');
-            return "Thanh cong"; //sida :v
+            return "Tải tập tin thành công"; //sida :v
         } else {
            //  return redirect()->back()->with('slidemessage', 'Tai tep that bai, file > 50 MB');
-            return "That bai file > 100 MB";
+            return "That bai file > 100 MB, thử lại sau";
         }
 
     }
