@@ -70,7 +70,7 @@ function clickxinvaonhom(pr){
 
                         divdongy.addEventListener("click",function(){
                                   //  var manhom = "NH00000004";
-                                  alert(manhom);
+                                //  alert(manhom);
 
                         $.ajax({
                             url: link_host+'/ajax/getcauhoigianhapne',

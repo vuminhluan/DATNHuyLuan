@@ -38,7 +38,6 @@ class Nhom extends Controller
                                 ->select('thanh_vien_nhom.*','nguoi_dung.*')
                                 ->where([['ma_nhom',$idnhom],['thanh_vien_nhom.trang_thai',"1"]])
                                 ->get();
-
         $listbaiviet      = DB::table('bai_viet')
                                 ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
                                 ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
@@ -50,12 +49,14 @@ class Nhom extends Controller
                                 ->orderBy('bai_viet.ma_bai_viet','desc')
                                 ->take(10)->get();
 
-
+// "lstykienbinhchon"=>$lstbinhchonykien
 
 
         $soluongbaiviet =10;
         return view("nhom.indexnhom",["t"=>$idnhom,"s"=>$soluongbaiviet,"lstbaiviet"=>$listbaiviet,"quyentruycapnhomcuataikhoan"=>$machucvu,"caidatnhom"=>$caidatnhom,"thontinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom]);
     }
+
+
 
     public function getlsttepduocnoptheomabaiviet(Request $rql){
                  return DB::table('tep_duoc_nop')->select(DB::raw('count(*) as soluong'))->where([["ma_nguoi_nop",$rql->ma_nguoi_nop],["ma_bai_viet",$rql->ma_bai_viet]])->get();

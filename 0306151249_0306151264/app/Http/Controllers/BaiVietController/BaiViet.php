@@ -12,10 +12,8 @@ use App\hinh_anh_bai_viet;
 use App\ThuMucThuBai;
 use App\tep_duoc_nop;
 use App\y_kien_binh_chon_bai_viet;
-
+use App\nguoi_chon_y_kien;
 use Illuminate\Support\Facades\Auth;
-
-
 use App\Traits\TaoThuMucGoogleDriveTrait;
 use App\Traits\ThemTepGoogleDriveTrait;
 
@@ -174,7 +172,11 @@ class BaiViet extends Controller
     }
     public function Getmaanh(){
        // return DB::table('hinh_anh_bai_viet')->select('ma_hinh_anh')->orderBy('ma_hinh_anh','desc')->get()->first();
-        $ma =  DB::table('hinh_anh_bai_viet')->select('ma_hinh_anh')->orderBy('ma_hinh_anh','desc')->get()->first();
+        $ma =  DB::table('hinh_anh_bai_viet')
+        ->select('ma_hinh_anh')
+        ->orderBy('ma_hinh_anh','desc')
+        ->get()
+        ->first();
         if($ma==''){
             return '0';
         }
@@ -205,7 +207,53 @@ class BaiViet extends Controller
         return "success";
     }
     public function getykienvotebaiviet(Request $rql){
-        return DB::table("y_kien_binh_chon_bai_viet")->where([["ma_bai_viet",$rql->ma_bai_viet],["trang_thai","1"]])->get();
+        return DB::table("y_kien_binh_chon_bai_viet")
+        ->where([["ma_bai_viet",$rql->ma_bai_viet],["trang_thai","1"]])
+        ->get();
     }
+    public function postbinhchonykien($rql){
+        $nguoichonykien = new   nguoi_chon_y_kien();
+        $nguoichonykien->ma_y_kien              = $rql->ma_y_kien; 
+        $nguoichonykien->ma_bai_viet            = $rql->ma_bai_viet;
+        $nguoichonykien->ma_tai_khoan_chon      = $rql->ma_tai_khoan_chon;
+        $nguoichonykien->trang_thai             = $rql->trang_thai;
+        $nguoichonykien->save();
+    }
+    public function themhuyluachonykienbaiviet(Request $rql){
+        if($this->kiemtradatontaichua($rql,"0")[0]->soluong>0)
+        {
+            $this->updateykienbinhchon($rql,"1");
+        }
+        else
+        if($this->kiemtradatontaichua($rql,"1")[0]->soluong>0)
+        {
+            $this->updateykienbinhchon($rql,"0");
+        }
+        else
+        if($this->kiemtradatontaichua($rql,"0")[0]->soluong==0&&$this->kiemtradatontaichua($rql,"1")[0]->soluong==0)
+        {
+            $this->postbinhchonykien($rql);
+        }
+      //  return $this->kiemtradatontaichua($rql,"0")[0]->soluong;
+
+    }
+
+
+
+
+    public function updateykienbinhchon($rql,$trangthai){
+        DB::table("nguoi_chon_y_kien")
+                ->where([["ma_y_kien",$rql->ma_y_kien],["ma_tai_khoan_chon",$rql->ma_tai_khoan_chon]])
+                ->update(['trang_thai'=> $trangthai]);
+
+    }
+
+    public function kiemtradatontaichua($rql,$trangthai){
+        return DB::table("nguoi_chon_y_kien")
+        ->select(DB::raw("count(*) as soluong"))
+        ->where([["ma_y_kien",$rql->ma_y_kien],["ma_tai_khoan_chon",$rql->ma_tai_khoan_chon],["trang_thai",$trangthai]])
+        ->get();
+    }
+
 
 }

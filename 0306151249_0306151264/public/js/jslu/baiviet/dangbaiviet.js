@@ -238,6 +238,7 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
                   $("#ckbthubai").prop("checked",false);
                   $("#ckbthongbao").prop("checked",false);
                   $('.ykienremove').remove(); //remove các ý kiên lựa chọn;
+                  $("#divbigchuacackhaosat").css("display","none");
                   soluongluachon=2; // reset số lượng lựa chọn về 2
 
                   $.ajax({

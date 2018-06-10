@@ -31,6 +31,16 @@
                              src=" {{ asset($lstbaiviet[$i]->duong_dan_anh) }}" alt="Mountain View">
                               </div>
                           @endif
+                          @if ($lstbaiviet[$i]->khao_sat_y_kien=="1")
+                                <div class="divclickbinhchon" id="div-click-show-y-kien-{{$lstbaiviet[$i]->ma_bai_viet}}" onclick="showbinhchonykien('{{$lstbaiviet[$i]->ma_bai_viet}}')"><center>
+                                     Nhấn để tham gia bình chọn &nbsp; &nbsp;<i class="fa fa-list" aria-hidden="true"></i></center>
+                                </div>                          
+                                <div id="divomcacvotebaiviet-{{$lstbaiviet[$i]->ma_bai_viet}}" class="divcacluachonvote">                             
+                                </div>
+                          @endif
+
+
+                          
                           @if ($lstbaiviet[$i]->nop_tep=="1")
                                 <div class="divclicknopbai" id="div-click-{{$lstbaiviet[$i]->ma_bai_viet}}" onclick="shownoptep('{{$lstbaiviet[$i]->ma_bai_viet}}')"><center>
                                      Nhấn nộp tài liệu &nbsp; &nbsp;<i class="fa fa-file-archive-o fa-2x" aria-hidden="true"></i></center>
