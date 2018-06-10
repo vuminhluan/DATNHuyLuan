@@ -90,8 +90,18 @@
             </tbody>
           </table>
           {{-- paginate --}}
-          <div>
+          {{-- <div>
             {{$tatca_phanhoi->links()}}
+          </div> --}}
+
+
+          <div>
+            
+            <div class="pagination" style="font-size: 17px;">
+              <a href="{{$tatca_phanhoi->previousPageUrl()}}" class="page-link"><i class="fa fa-caret-left"></i></a>
+              <span class="page-number"> <input id="current-page" type="text" value="{{$tatca_phanhoi->currentPage()}}"> / <span id="total-page">{{$tatca_phanhoi->total()}}</span></span>
+              <a href="{{$tatca_phanhoi->nextPageUrl()}}" class="page-link"><i class="fa fa-caret-right"></i></a>
+            </div>
           </div>
           {{-- paginate --}}
 
@@ -100,6 +110,7 @@
             <p class="note-items"><i class="fa fa-envelope-o"></i> Phản hồi chưa đọc.</p>
             <p class="note-items"><i class="fa fa-check text-success"></i> Phản hồi đã đọc.</p>
           </div>
+
         </div>
       </form>
     </div>

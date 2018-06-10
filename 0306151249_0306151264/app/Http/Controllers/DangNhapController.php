@@ -9,13 +9,19 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Socialite;
+use Storage;
+use App\ThuMucGoogleDrive;
 use App\Traits\TaoMaTaiKhoanTrait;
+use App\Traits\TaoThuMucGoogleDriveTrait;
+use App\Traits\CapNhatDoiTuongTrait;
 
 
 class DangNhapController extends Controller
 {
 
+	use CapNhatDoiTuongTrait;
 	use TaoMaTaiKhoanTrait;
+	use TaoThuMucGoogleDriveTrait;
 
 	// For Auth, change default name "username" to what we want.
 	public function username()
@@ -45,6 +51,22 @@ class DangNhapController extends Controller
 		if($account && $account->trang_thai != 4 && $account->trang_thai != 5) {
 			if ( Auth::attempt(['ten_tai_khoan' => $username, 'password' => $password], $remember) || Auth::attempt(['email' => $username, 'password' => $password], $remember) ) {
 				$success = true;
+
+				// Tạo thư mục google drive (có tên là mã tài khoản) nếu chưa có
+				if(!Auth::user()->thu_muc_google_drive) {
+					$root = env('GOOGLE_DRIVE_FOLDER_ID');
+					$foldername = Auth::user()->ma_tai_khoan;
+					$path = $root.'/'.$foldername;
+					$folder = $this->taoThuMucGoogleDrive($path, $root, $foldername);
+					$thumuc_googledrive = new ThuMucGoogleDrive();
+				  $data = [
+						'ma_tai_khoan' => Auth::user()->ma_tai_khoan,
+						'ma_thumuc'    => $folder['basename'],
+						'trang_thai'   => 1
+				  ];
+				  $this->capNhatDoiTuong($data, $thumuc_googledrive);
+				}
+
 				return ['success' => true, 'message' => 'Đăng nhập thành công !'];
 	  	} else {
 				return ['success' => false, 'message' => 'Xin hãy kiểm tra lại mật khẩu !'];
