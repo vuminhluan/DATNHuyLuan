@@ -71,6 +71,11 @@ Route::get('/ajax/getcautraloivacauhoicuanhomtheomathanhvienne',"NhomController\
 Route::get('/ajax/getlsttepduocnoptheomabaivietne',"NhomController\Nhom@getlsttepduocnoptheomabaiviet")->name('getlsttepduocnoptheomabaiviet');
 
 
+Route::post('/ajax/postykienvotebaivietne',"BaiVietController\BaiViet@postykienvotebaiviet")->name("postykienvotebaiviet");
+
+
+
+
 Route::post('/ajax/posttepduocnopne',"BaiVietController\BaiViet@posttepduocnop")->name("posttepduocnop");
 
 Route::post('/uploadanh',"BaiVietController\BaiViet@Postanh")->name('postanh');

@@ -12,7 +12,7 @@ trait ThemTepGoogleDriveTrait {
 	public function themTepGoogleDrive($client_file, $root_id, $folder_id) {
 
 		// Giới hạn 100 MB
-    if($client_file->getClientSize()/1024/1024 > 100) {
+    if($client_file->getClientSize()/1024/1024 > 50) {
 			$message = [
 				'success'      => false,
 				'slidemessage' => 'Kích thước tệp lớn hơn 100MB'

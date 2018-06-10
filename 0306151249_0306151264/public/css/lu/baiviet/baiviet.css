@@ -3,8 +3,33 @@ textarea:focus{
     -webkit-appearance:none;
 }
 
-
-
+.ykienkhaosat{
+  width: 100%;
+  height: 30px;
+  border-radius: 1px;
+  border:solid 1px #eadcf2;;
+  margin-bottom: 3px;
+  padding-left: 7px;
+}
+.divchuaykienkhaosat{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15%;
+  padding-right: 10%;
+  display: none;
+/*  border-bottom:solid 1px #e4e6e8;*/
+}
+.divbtnxoaykiendangbaiviet{
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  padding: 8px;
+  color: #e4e6e8;
+  cursor: pointer;
+}
+.btnaddkhaosat{
+  width: 25px;height: 25px;border-radius: 1px;border: solid 1px #e4e6e8;padding: 2px;padding-left: 6px;cursor: pointer;
+}
 #divthemanhbaidang{
   margin-left: 15px; 
   float: left;

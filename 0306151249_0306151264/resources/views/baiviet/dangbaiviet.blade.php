@@ -24,7 +24,7 @@
 		<div  style="width: 100%; height: auto;" >
 				{{-- id="divnoidungbaiviet" --}}
 				<div style="height: 60px;" >
-					<img id="imgdangbaiviet" src=" {{asset('pictures/anh_dai_dien/'.Auth::user()->anh_dai_dien)}}" alt="Mountain View">
+					<img id="imgdangbaiviet" src=" {{asset('pictures/anh_dai_dien/'.Auth::user()->anh_dai_dien)}}" alt="lu">
 					<div style="padding-top: 5px;padding-left: 50px;padding-right: 7px;">
 						<div style="width: auto;height: 0px;">
 						<textarea cols="60"  id="iptextdangbaiviet" rows="2" placeholder="Viết điều gì đó..."></textarea>
@@ -64,29 +64,47 @@
 						</div>
 						<div style="clear: both;"></div>
 				</div>
+				<div id="divbigchuacackhaosat" class="divchuaykienkhaosat">
+					<div id="divchuacackhaosat" style="height: auto;">
+						<div>
+							<input  class="ykienkhaosat" type="text" name="" value="" placeholder="Lựa chọn 1">
+						</div>
+						<div>
+							<input  class="ykienkhaosat" type="text" name="" value="" placeholder="Lựa chọn 2">
+						</div>
+					</div>
+					
+					<div>
+						<div class="btnaddkhaosat" onclick="themcaukhaosat()" >
+							<i class="fa fa-plus" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div style="width: 80%;margin-left: 20%;border-bottom:solid 1px #e4e6e8 "></div>
+					
+				</div>
 				<div id="divoptionradiobutton" style="clear:both;padding-bottom: 3px;padding-top: 3px;">		
 					
 					<div class="divoptionradio"  >	
 						<label class="container">Ẩn bài
-		  				<input id="ckbthongbao" type="checkbox"  onclick='clickoption("optionthongbao")'>
+		  				<input id="ckbthongbao" type="checkbox"  onclick='($("#optionthongbao").css("display")=="none")?$("#optionthongbao").css("display","block"):$("#optionthongbao").css("display","none")'>
 		 				<span class="checkmark"></span>
 						</label>
 						<div class="optionlevel2" id="optionthongbao">
 							
-							Ngày ẩn:<br><input class="datetimepickker"  type="date" name="" value="" placeholder="">
+							Ngày ẩn:<br><input class="datetimepickker"  type="date" id="ipdtngayanbaiviet" name="" value="" placeholder="">
 							<br>
-							
+							{{-- clickoption("optionthongbao") --}}
 						</div>
 					</div>
 					<div class="divoptionradio" >
 						<label class="container">Thu bài
-		  				<input id="ckbthubai" type="checkbox" onclick='clickoption("optionthubai")'>
+		  				<input id="ckbthubai" type="checkbox" onclick='($("#optionthubai").css("display")=="none")?$("#optionthubai").css("display","block"):$("#optionthubai").css("display","none")'>
 		 				<span class="checkmark"></span>
 						</label>
 						<div class="optionlevel2" id="optionthubai">
-							Từ ngày:<br><input class="datetimepickker"   type="date" name="" value="" placeholder="">
-							<br>
-							Đến ngày:<br><input class="datetimepickker"  type="date" name="" value="" placeholder="">
+{{-- 							Từ ngày:<br><input class="datetimepickker"  id="ngaybatdauthubaiviet"  type="date" name="" value="" placeholder="">
+							<br> --}}
+							Đến ngày:<br><input class="datetimepickker" id="ngayhethanthubaiviet" type="date" name="" value="" placeholder="">
 						</div>
 					</div>
 					<div class="divoptionradio" >
@@ -94,14 +112,14 @@
 							
 						</div>
 						<label class="container">Khảo sát
-		 				<input id="ckbkhaosat" type="checkbox"  onclick='clickoption("optionkhaosat")'>
+		 				<input id="ckbkhaosat" type="checkbox"  onclick='($("#optionkhaosat").css("display")=="none")?($("#optionkhaosat").css("display","block"),$("#divbigchuacackhaosat").css("display","block")):($("#optionkhaosat").css("display","none"),$("#divbigchuacackhaosat").css("display","none"))'>
 		  				<span class="checkmark"></span>
 						</label>
 						<div class="optionlevel2" id="optionkhaosat" >
-							Từ ngày:
-							<input class="datetimepickker"  type="date" name="" value="" placeholder="">
+{{-- 							Từ ngày:
+							<input class="datetimepickker"  type="date" name="" value="" placeholder=""> --}}
 							Đến ngày:
-								<br><input class="datetimepickker"  type="date" name="" value="" placeholder="">
+								<br><input class="datetimepickker" id="ngayhethankhaosat"  type="date" name="" value="" placeholder="">
 							<br>
 						</div>
 					</div>

@@ -11,6 +11,7 @@ use App\Traits\BaiVietTrait;
 use App\hinh_anh_bai_viet;
 use App\ThuMucThuBai;
 use App\tep_duoc_nop;
+use App\y_kien_binh_chon_bai_viet;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -54,15 +55,13 @@ class BaiViet extends Controller
         $client_file = $rql['inputfilenopbai-'.$rql->ma_bai_viet];
         $root_id     = $rql->ma_thumuc;//Auth::user()->thu_muc_google_drive->ma_thumuc;
         $folder_id   = $rql->ma_thumuc;
-
         // return $client_file. '--'.$root_id.'--'.$folder_id;
-
         if($this->themTepGoogleDrive($client_file, $root_id, $folder_id)['success']) {
             // return redirect()->back()->with('slidemessage', 'Tai tep thanh cong');
             return "Tải tập tin thành công"; //sida :v
         } else {
            //  return redirect()->back()->with('slidemessage', 'Tai tep that bai, file > 50 MB');
-            return "That bai file > 100 MB, thử lại sau";
+            return "Thất bại file > 100 MB, thử lại sau";
         }
 
     }
@@ -193,6 +192,20 @@ class BaiViet extends Controller
         $tepduocnop->save();
         return "haha"; //$rql->ma_bai_viet.$rql->ma_nguoi_nop.$rql->ma_tep.$rql->trang_thai;
 
+    }
+
+    public function postykienvotebaiviet(Request $rql){
+        $ykienvote = new y_kien_binh_chon_bai_viet(); 
+        $ykienvote->ma_bai_viet              = $rql->ma_bai_viet;
+        $ykienvote->noi_dung_y_kien          = $rql->noi_dung_y_kien;
+        $ykienvote->nguoi_tao_y_kien         = $rql->nguoi_tao_y_kien;
+        $ykienvote->nguoi_sua                = $rql->nguoi_sua;
+        $ykienvote->trang_thai               = $rql->trang_thai;
+        $ykienvote->save();
+        return "success";
+    }
+    public function getykienvotebaiviet(Request $rql){
+        return DB::table("y_kien_binh_chon_bai_viet")->where([["ma_bai_viet",$rql->ma_bai_viet],["trang_thai","1"]])->get();
     }
 
 }

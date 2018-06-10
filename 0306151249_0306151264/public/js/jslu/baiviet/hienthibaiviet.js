@@ -36,10 +36,13 @@ function submitnopbaine(prl,prl_mathumuc,prl_mabaiviet){
 	    event.preventDefault();
 		if( document.getElementById("inputfilenopbai-"+prl_mabaiviet).files.length == 0 )
 			{
-
-				alert("Chưa chọn tập tin");
-				return;
+				alert("Chưa chọn tập tin");return;
 			}
+		if(document.getElementById("inputfilenopbai-"+prl_mabaiviet).files[0].size/1024/1024>50)
+			{
+				alert("Dung lượng file vượt quá 50MB");return;
+			}
+				
 
 		var locallink= document.getElementById("inputfilenopbai-"+prl_mabaiviet).value;
 		var lsts = locallink.lastIndexOf("\\");

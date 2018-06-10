@@ -33,168 +33,32 @@ function getdodaiheightdivbigvadivtrong(){
   heightofdivbigformdanbaiviet = $('#divbigformdangbaiviet').height();
 }
 
-//tu dong them dong textarea ///// textarea
-// $('#iptextdangbaiviet').each(function () {
-//   this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
-// }).on('input', function () {
-//   getdodaiheightdivbigvadivtrong();
-//   // alert(this.scrollHeight);
-//   // alert(this.scrollHeight+"day la cai gi do");
-//   this.style.height = 'auto';
-//   this.style.height = (this.scrollHeight) + 'px';
+var soluongluachon = 2;
+function themcaukhaosat(){
+  var divchuainput = document.createElement("DIV");
+      divchuainput.id="luachon"+soluongluachon;soluongluachon+=1;
+      divchuainput.className="ykienremove";
+      var inputcaukhaosat = document.createElement("INPUT");
+          // inputcaukhaosat.id="ykien"+soluongluachon;
+          inputcaukhaosat.className="ykienkhaosat";
+          inputcaukhaosat.placeholder ="Lựa chọn "+soluongluachon; 
+      divchuainput.appendChild(inputcaukhaosat);
+      var spanx = document.createElement("SPAN");
+          spanx.className="fa fa-times divbtnxoaykiendangbaiviet";
+          spanx.addEventListener("click",function(){
+              var e = document.getElementById(this.parentNode.id);
+                  e.parentNode.removeChild(e);soluongluachon-=1;  
+                    for (var i = 5; i < document.getElementById("divchuacackhaosat").childNodes.length; i++) {
+                        document.getElementById("divchuacackhaosat").childNodes[i].childNodes[0].placeholder="Lựa chọn "+(i-2);
+                    }
+                      // alert(document.getElementById("divchuacackhaosat").childNodes.length);
+                      // console.log(document.getElementById("divchuacackhaosat").childNodes[10].childNodes[0]);
 
-//   if(tongsoluachon<1)
-//   {
-//       var dodaimot= 20+parseInt(this.style.height);
-//       var strdodaimot = dodaimot+'px';
-//       $('#divnoidungbaiviet').height(strdodaimot);
-//       ///////////////
-//       var dodaihai = 94+parseInt(this.style.height);
-//           heightofdivtrongformdangbaiviet=dodaihai;
-//           dodaihai=heightofdivtrongformdangbaiviet;
-//       var strdodaihai = dodaihai+'px';
-//       $('#divtrongformdangbaiviet').height(strdodaihai);
-//       ////////////////
-//       var dodaiba = 143+parseInt(this.style.height); 
-//           heightofdivbigformdanbaiviet= dodaiba;
-//           dodaiba=heightofdivbigformdanbaiviet;
-//       var strdodaiba = dodaiba+'px';
-//       $('#divbigformdangbaiviet').height(strdodaiba);
-//   }
-//   else
-//   {
-//       var dodaimot= 20+parseInt(this.style.height);
-//       var strdodaimot = dodaimot+'px';
-//       $('#divnoidungbaiviet').height(strdodaimot);
-//       ///////////////
-//       var dodaihai = 94+parseInt(this.style.height)+125;
-//           heightofdivtrongformdangbaiviet=dodaihai;
-//           dodaihai=heightofdivtrongformdangbaiviet;
-//       var strdodaihai = dodaihai+'px';
-//       $('#divtrongformdangbaiviet').height(strdodaihai);
-//       ////////////////
-//       var dodaiba = 143+parseInt(this.style.height)+125; 
-//           heightofdivbigformdanbaiviet= dodaiba;
-//           dodaiba=heightofdivbigformdanbaiviet;
-//       var strdodaiba = dodaiba+'px';
-//       $('#divbigformdangbaiviet').height(strdodaiba);
-//   }
+                      })
 
 
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var tongsoluachon= 0;
-//var z = true;
-// function clickckbb(z) {
-//   if (z)  {
-//            getdodaiheightdivbigvadivtrong();
-//             if(tongsoluachon>0&&tongsoluachon<2)
-//             {
-//               heightofdivtrongformdangbaiviet+=125;
-//               heightofdivbigformdanbaiviet+=125;
-//             }
-//             var strheightofdivtrongformdangbaiviet = heightofdivtrongformdangbaiviet + 'px';
-//             var strheightofdivbigformdangbaiviet = heightofdivbigformdanbaiviet + 'px';
-//             // z=!z;
-//                  $('#divbigformdangbaiviet').height(strheightofdivbigformdangbaiviet);
-//                  $('#divtrongformdangbaiviet').height(strheightofdivtrongformdangbaiviet);
-//                  var a =    document.getElementsByClassName("divoptionradio");
-//                 // var c =    document.getElementsByClassName("optionlevel2");
-//                  for (var i = 0; i < a.length; i++) {
-//                    a[i].style.height="140px";
-//                  //  c[i].style.display="none";
-//                  }
-//             getdodaiheightdivbigvadivtrong();
-              
-//           }
-//   else{
-//             getdodaiheightdivbigvadivtrong();
-//             if(tongsoluachon<1)
-//             {
-//             heightofdivtrongformdangbaiviet-=125;
-//             heightofdivbigformdanbaiviet-=125;
-//             }
-//             var strheightofdivtrongformdangbaiviet = heightofdivtrongformdangbaiviet + 'px';
-//             var strheightofdivbigformdangbaiviet = heightofdivbigformdanbaiviet + 'px';
-//             //  z=!z;
-//               $('#divbigformdangbaiviet').height(strheightofdivbigformdangbaiviet);
-//                  $('#divtrongformdangbaiviet').height(strheightofdivtrongformdangbaiviet);
-//               var b =    document.getElementsByClassName("divoptionradio");
-//            //   var d =    document.getElementsByClassName("optionlevel2");
-//                for (var i = 0; i < b.length; i++) {
-//                  b[i].style.height="30px";
-//             //     d[i].style.display="none";
-//                  }
-//                  getdodaiheightdivbigvadivtrong();
-//         }
-//       }
-
-var za=zb=zc=zd= true;
-
-
-function clickoption(l) {
-      
-  getdodaiheightdivbigvadivtrong();
-
-  if (za&&l=="optionthubai") {
-               tongsoluachon+=1;
-             za=!za;
-             document.getElementById(l).style.display="block";    
-
-          }
-          else if(l=="optionthubai"){
-               tongsoluachon-=1;
-              za=!za;
-              document.getElementById(l).style.display="none";
-
-          }
-  if (zb&&l=="optionkhaosat") {
-               tongsoluachon+=1;
-             zb=!zb;
-             document.getElementById(l).style.display="block";    
-
-          }
-          else if(l=="optionkhaosat"){
-               tongsoluachon-=1;
-              zb=!zb;
-              document.getElementById(l).style.display="none";
-
-          }
-  if (zc&&l=="optiontailieu") {
-               tongsoluachon+=1;
-             zc=!zc;
-             document.getElementById(l).style.display="block";    
-
-          }
-          else if(l=="optiontailieu"){
-               tongsoluachon-=1;
-              zc=!zc;
-              document.getElementById(l).style.display="none";
-          }
-  if (zd&&l=="optionthongbao") {
-               tongsoluachon+=1;
-             zd=!zd;
-             document.getElementById(l).style.display="block";    
-          }
-          else if(l=="optionthongbao"){
-               tongsoluachon-=1;
-              zd=!zd;
-              document.getElementById(l).style.display="none";
-          }
+      divchuainput.appendChild(spanx);
+  document.getElementById("divchuacackhaosat").appendChild(divchuainput);
 }
 
 function displaydivoption(p)
@@ -205,63 +69,10 @@ function displaydivoption(p)
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // comboxx các loại ẩn danh
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //////////////////////////////////////////////////////////////////////////////////
 
-var thongbao=thubai=khaosat=tailieu= "0";
+
 var mabaiviet="hi";
  var ngaygiohientai = getdatetime();
 
@@ -288,7 +99,7 @@ $( document ).ready(function() {
         data: formData
     }).done(function(data){
       submitdangbaiviet();
-      document.getElementById("formdangbaiviet").reset();
+      
       document.getElementById("imgInp").value="";
       $('#divanhxemtruocduocthemvao').css("display","none");
     });
@@ -296,110 +107,107 @@ $( document ).ready(function() {
 });
 
 
-
-
-   // $('#formdangbaiviet').submit(function(event) {
-   //      event.preventDefault();
-   //      var formData = new FormData($(this)[0]);
-   //      $.ajax({
-   //          url: link_host+'/uploadanh',
-   //          type: 'POST',
-   //          processData: false,
-   //          contentType: false,              
-   //          data: formData
-   //      });
-   //    });
 });
 
 
+
+
 function submitdangbaiviet() {
-
-          // var formData = new FormData();
-          // formData.append('file', $('#imgInp')[0].files[0]);
-
-          // $.ajax({
-          //        url :  link_host+'/uploadanh',
-          //        type : 'POST',
-          //        data : formData,
-          //        // processData: false,  // tell jQuery not to process the data
-          //        // contentType: false,  // tell jQuery not to set contentType
-          //        _token:$('input[name=_token]').val()
-
-          // }).done(function(data){                 
-          //            console.log(data);
-          //            alert(data);
-          // })
-
-         //  var form=document.getElementById("uploadanh");
-         //  var filee = document.getElementById("imgInp");
-         // //  var request = new XMLHttpRequest(form);
-
-         // var myFormData = new FormData();
-         //  myFormData.append('pictureFile', filee.files[0]);
-
-         //  $.ajax({
-         //    url: link_host+'/uploadanh',
-         //    type: 'POST',
-         //    processData: false, // important
-         //    contentType: false, // important
-         //    dataType : 'json',
-         //    data:{
-         //      _token:$('input[name=_token]').val(),
-         //     myFormData:myFormData
-         //     }
-         //  }).done(function(data){
-         //    console.log(data)
-         //  });
-
-         //  var formdata = new FormData(form);
-         //  console.log(formdata);
-         //  console.log(filee.files);
-         //  console.log(filee.files[0]);
-         //  request.open('post','DATNHuyLuan/0306151249_0306151264/public/uploadanh');
-         // request.addEventListener("load", transferComplete);
-         //  request.send(filee.files[0]);
+  // var i = new Date();
+  // alert(i.date());
+  // return;
+// alert(new Date());
+var Thoigiananbaiviet = "2222/01/01";
+var Thoigiankhaosatbaiviet="";
+var Thoigianthubaiviet="";
+var thongbao=thubai=khaosat=tailieu= "0";
+var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
+          
+          if(noidungbaiviet=="")return;
 
 
-          // 
           if ($('#ckbthongbao').is(":checked"))
           {
-            thongbao="1";
+            anbai="1";
+            if($("#ipdtngayanbaiviet").val()=="")
+            {
+              alert("Bạn cung cấp thiếu ngày ẩn bài viết");return;
+            }
+            // if(new Date()> new Date($("#ipdtngayanbaiviet").val())){
+            //   // alert(new Date());
+            //   alert("Ngày ẩn bài không được ít hơn ngày hiện tại");return;
+            // }
+            
+            else{
+              Thoigiananbaiviet=$("#ipdtngayanbaiviet").val();
+            }
           }
+         // return;
           if ($('#ckbthubai').is(":checked"))
           {
-            thubai="1";   //
-
-             $.ajax({
-              url: link_host+ '/ajax/getmabaivietne',
-              type:"GET",
-              data:{}
-            }).done(function(data){
-              var mabaivietmoi = parseInt(data)+1;
-              
-                $.ajax({
-                  url: link_host+ '/taofolderchuatepthubaine',
-                  type:"GET",
-                  data:{
-                            ma_bai_viet:mabaivietmoi,
-                            nguoi_tao:$("#session-ma-tk").val()
-                  }
-                }).done(function(data){
-                  console.log(data);
-                  alert(data);
-                });
-
-            })
-
-
-
-
-
-
+                  thubai="1";  
+                    if($("#ngayhethanthubaiviet").val()==""){
+                      alert("Bạn cung cấp thiếu hạn cuối thu bài viết");return;}
+                    else{
+                      Thoigianthubaiviet=$("#ngayhethanthubaiviet").val();
+                       $.ajax({
+                        url: link_host+ '/ajax/getmabaivietne',
+                        type:"GET",
+                        data:{}
+                      }).done(function(data){
+                        var mabaivietmoi = parseInt(data)+1;
+                          $.ajax({
+                            url: link_host+ '/taofolderchuatepthubaine',
+                            type:"GET",
+                            data:{
+                                      ma_bai_viet:mabaivietmoi,
+                                      nguoi_tao:$("#session-ma-tk").val()
+                            }
+                          }).done(function(data){
+                            console.log(data);
+                            alert(data);
+                          });})}
           }
+
           if ($('#ckbkhaosat').is(":checked"))
           {
+            var arrcauhoi = [];
             khaosat="1";
+            if($("#ngayhethankhaosat").val()==""){
+                alert("Bạn cung cấp thiếu ngày hết hạn khảo sát");return;}
+            else{
+                Thoigiankhaosatbaiviet=$("#ngayhethankhaosat").val();}
+                for (var i = 1; i < document.getElementById("divchuacackhaosat").childNodes.length; i++) {
+                  if(i<5){
+                    arrcauhoi.push(document.getElementById("divchuacackhaosat").childNodes[i].childNodes[1].value);i++;}
+                  else{
+                    arrcauhoi.push(document.getElementById("divchuacackhaosat").childNodes[i].childNodes[0].value);}
+                }
+                      $.ajax({
+                        url: link_host+ '/ajax/getmabaivietne',
+                        type:"GET",
+                        data:{}
+                      }).done(function(data){
+                        var mabaivietmoine=parseInt(data)+1;
+                        for (var i = 0; i < arrcauhoi.length; i++) {
+                            $.ajax({
+                              url:link_host+'/ajax/postykienvotebaivietne',
+                              type:'POST',
+                              data:{
+                                _token: $('input[name=_token]').val(),
+                                ma_bai_viet:mabaivietmoine,
+                                noi_dung_y_kien:arrcauhoi[i],
+                                nguoi_tao_y_kien:$('#session-ma-tk').val(),
+                                nguoi_sua:$('#session-ma-tk').val(),
+                                trang_thai:"1"
+                              }
+                            }).done(function(data){})}
+                          })
+
+
           }
+          //   alert(arrcauhoi);
+          // return;
 
           var e = document.getElementById("cbbloaibaiviet");
           var valueselectedoption = e.options[e.selectedIndex].value;
@@ -411,15 +219,16 @@ function submitdangbaiviet() {
                   data:{
                   _token: $('input[name=_token]').val(),
                   ma_nguoi_viet: $('#session-ma-tk').val(),
-                  ma_chu_bai_viet: $('#div-hi-chu-bai-viet-ma-nhom').val(),
-                  noi_dung_bai_viet:$('#iptextdangbaiviet').val(),
-                  binh_luan_bai_viet: thongbao,
+                  ma_chu_bai_viet: $('#div-hi-chu-bai-viet-ma-nhom').val(), // hiện tại đăng trong nhóm nên sẽ là của nhóm
+                  noi_dung_bai_viet:noidungbaiviet,
                   hinh_anh_bai_viet: tailieu,
                   nop_tep: thubai,
                   khao_sat_y_kien: khaosat,
+                  thoi_gian_thu_bai_viet:Thoigianthubaiviet,
+                  thoi_gian_khao_sat_bai_viet:Thoigiankhaosatbaiviet,
                   ma_loai_bai_viet: valueselectedoption,
-                  thoi_gian_an_bai_viet: "2001/01/01",
-                  nguoi_sua: "NV12345869" 
+                  thoi_gian_an_bai_viet: Thoigiananbaiviet,
+                  nguoi_sua: $('#session-ma-tk').val()
               }
               }).done(function(data) {
                   displaydivoption("none");
@@ -428,6 +237,9 @@ function submitdangbaiviet() {
                   $("#ckbkhaosat").prop("checked",false);
                   $("#ckbthubai").prop("checked",false);
                   $("#ckbthongbao").prop("checked",false);
+                  $('.ykienremove').remove(); //remove các ý kiên lựa chọn;
+                  soluongluachon=2; // reset số lượng lựa chọn về 2
+
                   $.ajax({
                       url: link_host+'/ajax/getbaiviettheonguoivietvanguoisohuune',
                       type: 'GET',
@@ -436,7 +248,7 @@ function submitdangbaiviet() {
                         ma_chu_bai_viet: $('#div-hi-chu-bai-viet-ma-nhom').val()
                       }
                   }).done(function(data){
-
+                    document.getElementById("formdangbaiviet").reset();
                     $('#iptextdangbaiviet').val("");
                         var econ = document.createElement("div");
                         econ.setAttribute("id", "ssa");
@@ -449,26 +261,6 @@ function submitdangbaiviet() {
 }
 
       /////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //////////////////// tao ra div sau khi dang bai
 function creatediv() {
 
@@ -596,4 +388,213 @@ function creatediv() {
 
 
 // }
+//var z = true;
+// function clickckbb(z) {
+//   if (z)  {
+//            getdodaiheightdivbigvadivtrong();
+//             if(tongsoluachon>0&&tongsoluachon<2)
+//             {
+//               heightofdivtrongformdangbaiviet+=125;
+//               heightofdivbigformdanbaiviet+=125;
+//             }
+//             var strheightofdivtrongformdangbaiviet = heightofdivtrongformdangbaiviet + 'px';
+//             var strheightofdivbigformdangbaiviet = heightofdivbigformdanbaiviet + 'px';
+//             // z=!z;
+//                  $('#divbigformdangbaiviet').height(strheightofdivbigformdangbaiviet);
+//                  $('#divtrongformdangbaiviet').height(strheightofdivtrongformdangbaiviet);
+//                  var a =    document.getElementsByClassName("divoptionradio");
+//                 // var c =    document.getElementsByClassName("optionlevel2");
+//                  for (var i = 0; i < a.length; i++) {
+//                    a[i].style.height="140px";
+//                  //  c[i].style.display="none";
+//                  }
+//             getdodaiheightdivbigvadivtrong();
+              
+//           }
+//   else{
+//             getdodaiheightdivbigvadivtrong();
+//             if(tongsoluachon<1)
+//             {
+//             heightofdivtrongformdangbaiviet-=125;
+//             heightofdivbigformdanbaiviet-=125;
+//             }
+//             var strheightofdivtrongformdangbaiviet = heightofdivtrongformdangbaiviet + 'px';
+//             var strheightofdivbigformdangbaiviet = heightofdivbigformdanbaiviet + 'px';
+//             //  z=!z;
+//               $('#divbigformdangbaiviet').height(strheightofdivbigformdangbaiviet);
+//                  $('#divtrongformdangbaiviet').height(strheightofdivtrongformdangbaiviet);
+//               var b =    document.getElementsByClassName("divoptionradio");
+//            //   var d =    document.getElementsByClassName("optionlevel2");
+//                for (var i = 0; i < b.length; i++) {
+//                  b[i].style.height="30px";
+//             //     d[i].style.display="none";
+//                  }
+//                  getdodaiheightdivbigvadivtrong();
+//         }
+//       }
+//tu dong them dong textarea ///// textarea
+// $('#iptextdangbaiviet').each(function () {
+//   this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+// }).on('input', function () {
+//   getdodaiheightdivbigvadivtrong();
+//   // alert(this.scrollHeight);
+//   // alert(this.scrollHeight+"day la cai gi do");
+//   this.style.height = 'auto';
+//   this.style.height = (this.scrollHeight) + 'px';
 
+//   if(tongsoluachon<1)
+//   {
+//       var dodaimot= 20+parseInt(this.style.height);
+//       var strdodaimot = dodaimot+'px';
+//       $('#divnoidungbaiviet').height(strdodaimot);
+//       ///////////////
+//       var dodaihai = 94+parseInt(this.style.height);
+//           heightofdivtrongformdangbaiviet=dodaihai;
+//           dodaihai=heightofdivtrongformdangbaiviet;
+//       var strdodaihai = dodaihai+'px';
+//       $('#divtrongformdangbaiviet').height(strdodaihai);
+//       ////////////////
+//       var dodaiba = 143+parseInt(this.style.height); 
+//           heightofdivbigformdanbaiviet= dodaiba;
+//           dodaiba=heightofdivbigformdanbaiviet;
+//       var strdodaiba = dodaiba+'px';
+//       $('#divbigformdangbaiviet').height(strdodaiba);
+//   }
+//   else
+//   {
+//       var dodaimot= 20+parseInt(this.style.height);
+//       var strdodaimot = dodaimot+'px';
+//       $('#divnoidungbaiviet').height(strdodaimot);
+//       ///////////////
+//       var dodaihai = 94+parseInt(this.style.height)+125;
+//           heightofdivtrongformdangbaiviet=dodaihai;
+//           dodaihai=heightofdivtrongformdangbaiviet;
+//       var strdodaihai = dodaihai+'px';
+//       $('#divtrongformdangbaiviet').height(strdodaihai);
+//       ////////////////
+//       var dodaiba = 143+parseInt(this.style.height)+125; 
+//           heightofdivbigformdanbaiviet= dodaiba;
+//           dodaiba=heightofdivbigformdanbaiviet;
+//       var strdodaiba = dodaiba+'px';
+//       $('#divbigformdangbaiviet').height(strdodaiba);
+//   }
+
+
+// });
+
+
+
+          // var formData = new FormData();
+          // formData.append('file', $('#imgInp')[0].files[0]);
+
+          // $.ajax({
+          //        url :  link_host+'/uploadanh',
+          //        type : 'POST',
+          //        data : formData,
+          //        // processData: false,  // tell jQuery not to process the data
+          //        // contentType: false,  // tell jQuery not to set contentType
+          //        _token:$('input[name=_token]').val()
+
+          // }).done(function(data){                 
+          //            console.log(data);
+          //            alert(data);
+          // })
+
+         //  var form=document.getElementById("uploadanh");
+         //  var filee = document.getElementById("imgInp");
+         // //  var request = new XMLHttpRequest(form);
+
+         // var myFormData = new FormData();
+         //  myFormData.append('pictureFile', filee.files[0]);
+
+         //  $.ajax({
+         //    url: link_host+'/uploadanh',
+         //    type: 'POST',
+         //    processData: false, // important
+         //    contentType: false, // important
+         //    dataType : 'json',
+         //    data:{
+         //      _token:$('input[name=_token]').val(),
+         //     myFormData:myFormData
+         //     }
+         //  }).done(function(data){
+         //    console.log(data)
+         //  });
+
+         //  var formdata = new FormData(form);
+         //  console.log(formdata);
+         //  console.log(filee.files);
+         //  console.log(filee.files[0]);
+         //  request.open('post','DATNHuyLuan/0306151249_0306151264/public/uploadanh');
+         // request.addEventListener("load", transferComplete);
+         //  request.send(filee.files[0]);
+
+
+
+
+   // $('#formdangbaiviet').submit(function(event) {
+   //      event.preventDefault();
+   //      var formData = new FormData($(this)[0]);
+   //      $.ajax({
+   //          url: link_host+'/uploadanh',
+   //          type: 'POST',
+   //          processData: false,
+   //          contentType: false,              
+   //          data: formData
+   //      });
+   //    });
+
+
+
+// var tongsoluachon= 0;
+// var za=zb=zc=zd= true;
+// function clickoption(l) {
+      
+//   getdodaiheightdivbigvadivtrong();
+
+//   if (za&&l=="optionthubai") {
+//                tongsoluachon+=1;
+//              za=!za;
+//              document.getElementById(l).style.display="block";    
+
+//           }
+//           else if(l=="optionthubai"){
+//                tongsoluachon-=1;
+//               za=!za;
+//               document.getElementById(l).style.display="none";
+
+//           }
+//   if (zb&&l=="optionkhaosat") {
+//                tongsoluachon+=1;
+//              zb=!zb;
+//              document.getElementById(l).style.display="block";    
+
+//           }
+//           else if(l=="optionkhaosat"){
+//                tongsoluachon-=1;
+//               zb=!zb;
+//               document.getElementById(l).style.display="none";
+
+//           }
+//   if (zc&&l=="optiontailieu") {
+//                tongsoluachon+=1;
+//              zc=!zc;
+//              document.getElementById(l).style.display="block";    
+
+//           }
+//           else if(l=="optiontailieu"){
+//                tongsoluachon-=1;
+//               zc=!zc;
+//               document.getElementById(l).style.display="none";
+//           }
+//   if (zd&&l=="optionthongbao") {
+//                tongsoluachon+=1;
+//              zd=!zd;
+//              document.getElementById(l).style.display="block";    
+//           }
+//           else if(l=="optionthongbao"){
+//                tongsoluachon-=1;
+//               zd=!zd;
+//               document.getElementById(l).style.display="none";
+//           }
+// }
