@@ -257,17 +257,18 @@ class BaiViet extends Controller
 
     public function getsoluongluachoncuaykien(Request $rql){
          return DB::table("nguoi_chon_y_kien")
-        ->select(DB::raw("count(*) as soluong"))//,ma_y_kien
+        ->select(DB::raw("count(*) as soluong, ma_y_kien"))//,ma_y_kien
         ->where([["ma_y_kien",$rql->ma_y_kien],["trang_thai","1"]])
-        ->get()[0]->soluong;
+        ->get();
     }
 
-        public function getsoluongluachoncuaykientheomabaiviet(Request $rql){
-         return DB::table("nguoi_chon_y_kien")
-        ->select(DB::raw("count(*) as soluong"))//,ma_y_kien
-        ->where([["ma_y_kien",$rql->ma_y_kien],["trang_thai","1"]])
-        ->get()[0]->soluong;
+    public function getkiemtravoteykien(Request $rql){
+        return DB::table("nguoi_chon_y_kien")
+        ->select(DB::raw("count(*) as soluong, ma_y_kien"))
+        ->where([["ma_tai_khoan_chon",$rql->ma_tai_khoan_chon],["ma_bai_viet",$rql->ma_bai_viet]])
+        ->get();
     }
+
 
 
 }

@@ -1,42 +1,105 @@
 
 function showbinhchonykien(prl_mabaiviet){
 	//alert(prl_mabaiviet);
+	$("#divthoigianhethanvote-"+prl_mabaiviet).css("display","block");
 
-	$("#divomcacvotebaiviet-"+prl_mabaiviet).css("display","block");
-	$("#div-click-show-y-kien-"+prl_mabaiviet).css("display","none");
-	
-		$.ajax({
-		url:link_host+'/ajax/getykienvotebaivietne',
-		type:"GET",
+	$.ajax({
+		url:link_host+'/ajax/getkiemtravoteykienne',
+		type:'GET',
 		data:{
-				ma_bai_viet:prl_mabaiviet
+			ma_tai_khoan_chon:$("#session-ma-tk").val(),
+			ma_bai_viet:prl_mabaiviet
 		}
-	}).done(function(data){	
-		//console.log(data);
-		for (var i = 0; i < data.length; i++) {
-			var divchuaykien = document.createElement("div");
-				divchuaykien.addEventListener("click",clickthemorbobinhchon);
-				divchuaykien.prma_y_kien=data[i].ma_y_kien;
-				divchuaykien.prma_baiviet=prl_mabaiviet;
-					var inputykien = document.createElement("INPUT");
-						inputykien.className="ykienkhaosatshow";
-						inputykien.disabled =true;
-						inputykien.value=data[i].noi_dung_y_kien;
-						divchuaykien.appendChild(inputykien);
-			document.getElementById("divomcacvotebaiviet-"+prl_mabaiviet).appendChild(divchuaykien);
+	}).done(function(dt){
+		if(dt[0].soluong>0){
+					$("#xemketquakhaosat-"+prl_mabaiviet).css("display","block");
+					$("#divomcacvotebaiviet-"+prl_mabaiviet).css("display","block");
+					$("#div-click-show-y-kien-"+prl_mabaiviet).css("display","none");
+					$("#divomcacvotebaiviet-"+prl_mabaiviet).empty();
+					$.ajax({
+					url:link_host+'/ajax/getykienvotebaivietne',
+					type:"GET",
+					data:{ ma_bai_viet:prl_mabaiviet}
+					}).done(function(data){	
+							var big = data;
+							for (var i = 0; i < data.length; i++) {
+								var divchuaykien = document.createElement("div");
+									// divchuaykien.addEventListener("click",clickthemorbobinhchon);
+									// divchuaykien.prma_y_kien=data[i].ma_y_kien;
+									// divchuaykien.prma_baiviet=mabaiviet;
+										var inputykien = document.createElement("INPUT");
+											inputykien.className="ykienkhaosatshow";
+											inputykien.id="ykien"+data[i].ma_y_kien;
+											if(dt[0].ma_y_kien==data[i].ma_y_kien){
+												inputykien.style.background="#0aabf83b";
+											}
+											inputykien.disabled =true;
+											inputykien.value=data[i].noi_dung_y_kien;
+											divchuaykien.appendChild(inputykien);
+
+										var spansl = document.createElement("SPAN");
+											spansl.className="spansoluongnguoichon";
+											spansl.id="idsoluongchonykien"+data[i].ma_y_kien;
+											if(dt[0].ma_y_kien==data[i].ma_y_kien){
+												spansl.style.border="solid 1px #0aabf83b";
+												spansl.style.background="#e9f4fc82";
+											}
+											$.ajax({
+													url:link_host+'/ajax/getsoluongluachoncuaykienne',
+													type:"GET",
+													data:{ ma_y_kien:data[i].ma_y_kien}
+													}).done(function(diti){	
+														lstsoluong.push(diti[0]);//	alert(lstsoluong[0]);				
+													})
+													divchuaykien.appendChild(spansl);
+											document.getElementById("divomcacvotebaiviet-"+prl_mabaiviet).appendChild(divchuaykien);
+							}		
+					})
+		}
+		else{
+				$("#divomcacvotebaiviet-"+prl_mabaiviet).css("display","block");
+				$("#div-click-show-y-kien-"+prl_mabaiviet).css("display","none");
+				
+					$.ajax({
+					url:link_host+'/ajax/getykienvotebaivietne',
+					type:"GET",
+					data:{
+							ma_bai_viet:prl_mabaiviet
+					}
+				}).done(function(data){	
+					//console.log(data);
+					for (var i = 0; i < data.length; i++) {
+						var divchuaykien = document.createElement("div");
+							divchuaykien.addEventListener("click",clickthemorbobinhchon);
+							divchuaykien.prma_y_kien=data[i].ma_y_kien;
+							divchuaykien.prma_baiviet=prl_mabaiviet;
+								var inputykien = document.createElement("INPUT");
+									inputykien.className="ykienkhaosatshow";
+									inputykien.disabled =true;
+									inputykien.value=data[i].noi_dung_y_kien;
+									divchuaykien.appendChild(inputykien);
+						document.getElementById("divomcacvotebaiviet-"+prl_mabaiviet).appendChild(divchuaykien);
+					}
+				})			
 		}
 	})
+
+
+return;
+
+
 	
 }
-
+var lstsoluong = [];
 function clickthemorbobinhchon(prl){
-
-//alert(prl.currentTarget.prma_baiviet+"-"+prl.currentTarget.prma_y_kien);
+lstsoluong=[];
 var mabaiviet = prl.currentTarget.prma_baiviet;
 var maykien = prl.currentTarget.prma_y_kien;
-// ma_y_kien,ma_bai_viet,ma_tai_khoan_chon,trang_thai
-//alert("hhii");
-var lstsoluong = [];
+
+$("#xemketquakhaosat-"+mabaiviet).css("display","block");
+
+
+
 $.ajax({
 		url:link_host+'/ajax/themhuyluachonykienbaivietne',
 		type:"POST",
@@ -57,41 +120,52 @@ $.ajax({
 				var big = data;
 				for (var i = 0; i < data.length; i++) {
 					var divchuaykien = document.createElement("div");
-						//divchuaykien.addEventListener("click",clickthemorbobinhchon);
-						//divchuaykien.prma_y_kien=data[i].ma_y_kien;
-						//divchuaykien.prma_baiviet=mabaiviet;
+						// divchuaykien.addEventListener("click",clickthemorbobinhchon);
+						// divchuaykien.prma_y_kien=data[i].ma_y_kien;
+						// divchuaykien.prma_baiviet=mabaiviet;
 							var inputykien = document.createElement("INPUT");
 								inputykien.className="ykienkhaosatshow";
 								inputykien.disabled =true;
 								inputykien.value=data[i].noi_dung_y_kien;
+								if(maykien==data[i].ma_y_kien){
+									inputykien.style.background="#0aabf83b";
+									}
 								divchuaykien.appendChild(inputykien);
 
 							var spansl = document.createElement("SPAN");
 								spansl.className="spansoluongnguoichon";
-								spansl.id=data[i].ma_y_kien;
+								spansl.id="idsoluongchonykien"+data[i].ma_y_kien;
+								if(maykien==data[i].ma_y_kien){
+										spansl.style.border="solid 1px #0aabf83b";
+										spansl.style.background="#e9f4fc82";
+									}
 								$.ajax({
 										url:link_host+'/ajax/getsoluongluachoncuaykienne',
 										type:"GET",
 										data:{ ma_y_kien:data[i].ma_y_kien}
 										}).done(function(diti){	
-											console.log(diti);
-											lstsoluong.push(diti);	alert(lstsoluong[0]);				
+											//console.log(diti[0]);
+											lstsoluong.push(diti[0]);//	alert(lstsoluong[0]);				
 										})
 										divchuaykien.appendChild(spansl);
 								document.getElementById("divomcacvotebaiviet-"+mabaiviet).appendChild(divchuaykien);
 				}		
 		})
-	// alert(lstsoluong[0]);
-	// 	for (var i = 0; i < lstsoluong.length; i++) {
-	// 		alert(lstsoluong[i]);
-	// 	}
 })
 
 
 
+
 }
+
 function showaaaa(){
-	console.log(lstsoluong);
+	for (var i = 0; i < lstsoluong.length; i++) {
+		// alert(lstsoluong[i].ma_y_kien);
+		if(lstsoluong[i].ma_y_kien!=null)
+		{
+			 document.getElementById("idsoluongchonykien"+lstsoluong[i].ma_y_kien).textContent=lstsoluong[i].soluong;
+	 	}
+	}
 }
 
 
@@ -191,6 +265,24 @@ function submitnopbaine(prl,prl_mathumuc,prl_mabaiviet){
 });
 }
 
+
+function demnguoithoigian(rql,tag){
+	var countDownDate = new Date(rql).getTime();
+var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById(tag).innerHTML = '<i class="fa fa-clock-o" aria-hidden="true"></i>'+ " Cuộc khảo sát này kết thúc trong: " +'<p style="color:#9596d8;display:inline-block;">' + days + "ngày " + hours + "giờ "
+    + minutes + "phút " + seconds + "giây "+'</p>';
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById(tag).innerHTML = "Hết hạn bình chọn";
+    }
+}, 1000);
+}
 
 
 // $( document ).ready(function() {

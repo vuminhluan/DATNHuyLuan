@@ -19,6 +19,7 @@ textarea:focus{
   margin-bottom: 3px;
   padding-left: 7px;
   cursor: pointer;
+  background-color: #fcfcfc;
 }
 .divchuaykienkhaosat{
   padding-top: 10px;

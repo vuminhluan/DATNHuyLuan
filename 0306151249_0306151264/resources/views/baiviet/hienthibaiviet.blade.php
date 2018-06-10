@@ -31,13 +31,20 @@
                              src=" {{ asset($lstbaiviet[$i]->duong_dan_anh) }}" alt="Mountain View">
                               </div>
                           @endif
+
                           @if ($lstbaiviet[$i]->khao_sat_y_kien=="1")
-                                <div class="divclickbinhchon" id="div-click-show-y-kien-{{$lstbaiviet[$i]->ma_bai_viet}}" onclick="showbinhchonykien('{{$lstbaiviet[$i]->ma_bai_viet}}')"><center>
+                                <div class="divclickbinhchon" id="div-click-show-y-kien-{{$lstbaiviet[$i]->ma_bai_viet}}" onclick="showbinhchonykien('{{$lstbaiviet[$i]->ma_bai_viet}}'),demnguoithoigian('{{$lstbaiviet[$i]->thoi_gian_khao_sat_bai_viet}}','timehet-{{$lstbaiviet[$i]->ma_bai_viet}}')"><center>
                                      Nhấn để tham gia bình chọn &nbsp; &nbsp;<i class="fa fa-list" aria-hidden="true"></i></center>
+                                </div>
+                                <div id="divthoigianhethanvote-{{$lstbaiviet[$i]->ma_bai_viet}}" class="cldivthoigianhetvote">
+                                  <p id="timehet-{{$lstbaiviet[$i]->ma_bai_viet}}"></p>
                                 </div>                          
                                 <div id="divomcacvotebaiviet-{{$lstbaiviet[$i]->ma_bai_viet}}" class="divcacluachonvote">                             
                                 </div>
-                                <div style="background-color: red;width: 50px;height: 50px;" onclick="showaaaa()"></div>
+                                
+                                <div id="xemketquakhaosat-{{$lstbaiviet[$i]->ma_bai_viet}}" class="clxemketquakhaosat"  onclick="showaaaa()">
+                                  <span>Xem kết quả của cuộc khảo sát hiện tại</span>
+                                </div>
                           @endif
 
 
