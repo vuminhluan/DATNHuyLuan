@@ -116,6 +116,9 @@ Route::get('/ajax/getykienvotebaivietne',"BaiVietController\BaiViet@getykienvote
 Route::post('/ajax/themhuyluachonykienbaivietne',"BaiVietController\BaiViet@themhuyluachonykienbaiviet")
 ->name("themhuyluachonykienbaiviet");
 
+Route::get('/ajax/getsoluongluachoncuaykienne',"BaiVietController\BaiViet@getsoluongluachoncuaykien")
+->name("getsoluongluachoncuaykien");
+
 Route::post('/ajax/posttepduocnopne',"BaiVietController\BaiViet@posttepduocnop")
 ->name("posttepduocnop");
 

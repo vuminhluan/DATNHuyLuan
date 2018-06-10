@@ -37,10 +37,11 @@
                                 </div>                          
                                 <div id="divomcacvotebaiviet-{{$lstbaiviet[$i]->ma_bai_viet}}" class="divcacluachonvote">                             
                                 </div>
+                                <div style="background-color: red;width: 50px;height: 50px;" onclick="showaaaa()"></div>
                           @endif
 
 
-                          
+
                           @if ($lstbaiviet[$i]->nop_tep=="1")
                                 <div class="divclicknopbai" id="div-click-{{$lstbaiviet[$i]->ma_bai_viet}}" onclick="shownoptep('{{$lstbaiviet[$i]->ma_bai_viet}}')"><center>
                                      Nhấn nộp tài liệu &nbsp; &nbsp;<i class="fa fa-file-archive-o fa-2x" aria-hidden="true"></i></center>

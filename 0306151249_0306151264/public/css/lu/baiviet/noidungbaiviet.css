@@ -45,6 +45,18 @@
 	display: none;
 }
 
+.spansoluongnguoichon{
+	margin-left: 10px;
+	padding-top:  4px;
+	text-align: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border:solid 1px #9695d8;
+	float: left;
+    position: absolute;
+}
+
 
 
 

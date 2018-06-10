@@ -12,18 +12,9 @@ function showbinhchonykien(prl_mabaiviet){
 				ma_bai_viet:prl_mabaiviet
 		}
 	}).done(function(data){	
-
-// function(){
-// 								console.log(maykien);
-// 								clickthemorbobinhchon(maykien,prl_mabaiviet,$('#session-ma-tk').val(),"1");
-// 						}
-
-		console.log(data);
-		var maykien=0;
+		//console.log(data);
 		for (var i = 0; i < data.length; i++) {
-			//maykien= data[i].ma_y_kien;
 			var divchuaykien = document.createElement("div");
-				// divchuaykien.id=data[i].ma_y_kien;
 				divchuaykien.addEventListener("click",clickthemorbobinhchon);
 				divchuaykien.prma_y_kien=data[i].ma_y_kien;
 				divchuaykien.prma_baiviet=prl_mabaiviet;
@@ -33,10 +24,7 @@ function showbinhchonykien(prl_mabaiviet){
 						inputykien.value=data[i].noi_dung_y_kien;
 						divchuaykien.appendChild(inputykien);
 			document.getElementById("divomcacvotebaiviet-"+prl_mabaiviet).appendChild(divchuaykien);
-			
 		}
-
-
 	})
 	
 }
@@ -48,6 +36,7 @@ var mabaiviet = prl.currentTarget.prma_baiviet;
 var maykien = prl.currentTarget.prma_y_kien;
 // ma_y_kien,ma_bai_viet,ma_tai_khoan_chon,trang_thai
 //alert("hhii");
+var lstsoluong = [];
 $.ajax({
 		url:link_host+'/ajax/themhuyluachonykienbaivietne',
 		type:"POST",
@@ -58,14 +47,52 @@ $.ajax({
 			ma_tai_khoan_chon:$("#session-ma-tk").val(),
 			trang_thai:"1"
 		}
-	}).done(function(data){	 
-		// alert(data);
-		// console.log(data);
-		// alert("giải quyết thành công");
-	})
-        
-}
+	}).done(function(data){	
+		$("#divomcacvotebaiviet-"+mabaiviet).empty();
+		$.ajax({
+		url:link_host+'/ajax/getykienvotebaivietne',
+		type:"GET",
+		data:{ ma_bai_viet:mabaiviet}
+		}).done(function(data){	
+				var big = data;
+				for (var i = 0; i < data.length; i++) {
+					var divchuaykien = document.createElement("div");
+						//divchuaykien.addEventListener("click",clickthemorbobinhchon);
+						//divchuaykien.prma_y_kien=data[i].ma_y_kien;
+						//divchuaykien.prma_baiviet=mabaiviet;
+							var inputykien = document.createElement("INPUT");
+								inputykien.className="ykienkhaosatshow";
+								inputykien.disabled =true;
+								inputykien.value=data[i].noi_dung_y_kien;
+								divchuaykien.appendChild(inputykien);
 
+							var spansl = document.createElement("SPAN");
+								spansl.className="spansoluongnguoichon";
+								spansl.id=data[i].ma_y_kien;
+								$.ajax({
+										url:link_host+'/ajax/getsoluongluachoncuaykienne',
+										type:"GET",
+										data:{ ma_y_kien:data[i].ma_y_kien}
+										}).done(function(diti){	
+											console.log(diti);
+											lstsoluong.push(diti);	alert(lstsoluong[0]);				
+										})
+										divchuaykien.appendChild(spansl);
+								document.getElementById("divomcacvotebaiviet-"+mabaiviet).appendChild(divchuaykien);
+				}		
+		})
+	// alert(lstsoluong[0]);
+	// 	for (var i = 0; i < lstsoluong.length; i++) {
+	// 		alert(lstsoluong[i]);
+	// 	}
+})
+
+
+
+}
+function showaaaa(){
+	console.log(lstsoluong);
+}
 
 
 
