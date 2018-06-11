@@ -32,11 +32,84 @@
 // });
 
 $(document).ready(function() {
-	curPage = $('input#current-page').val();
-	totalPages = $('#total-page').html();
-	alert(totalPages);
-	$('input#current-page').blur(function(event) {
-		alert('ád');
+
+
+	$('#page-list').change(function(event) {
+		window.location.href = $(this).val();
 	});
+
+
+	// Xem chi tiết tin nhắn
+	// $('body').on('click', '.detail-message', function(event) {
+	// 	event.preventDefault();
+	// 	var id = $(this).attr('id');
+	// 	alert(id); return;
+	// });
+
+	$('body').on('click', '.detail-message', function(event) {
+
+		$('.myloader').show();
+		var id = $(this).attr('id');
+		// alert(id); return;
+		var seen = 0;
+
+		if($('#seen'+id).attr('data-seen') == 1) {
+			seen = 1;
+
+		} else {
+			$('#seen'+id).attr('class', 'fa fa-check text-success');
+		}
+
+		var data = {
+			id    : id,
+			seen  : seen,
+			_token: $('[name=_token]').val()
+		};
+
+		$.ajax({
+			url: link_host+'/admin/phanhoi/xemchitiet',
+			type: 'POST',
+			data: data,
+		})
+		.done(function(response) {
+			
+
+			$('#contact-fullname').html(response.ho_va_ten);
+			$('#contact-email').html(response.email);
+			$('#contact-created-at').html(response.thoi_gian_tao);
+			$('#contact-id').html(response.ma);
+			$('#contact-message code').html(response.tin_nhan);
+
+			$('.myloader').hide();
+		})
+		.fail(function() {
+			console.log("error");
+		});
+		
+	});
+
+
+	// Action: Xóa, ...
+
+	// $('#task').change(function(){
+
+	// 	if($('input:checkbox:checked').length < 0) { 
+	// 		return;
+	// 	}
+ //    var check = true;
+ //    if ($(this).val()=="delete") {
+ //      check = confirm('Có chắc bạn muốn xóa?');
+ //    }
+
+ //    if (check) {
+ //      $('#post_form').submit();
+ //    }
+    
+    
+
+ //    $('#task option:first-child').prop('selected', true);
+    
+ //  });
+
 });
 

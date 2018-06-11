@@ -7,6 +7,11 @@
 	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
 </head>
 <body>
+
+	<div class="myloader">
+  {{-- <img src="{{ asset('pictures/luan/ajax-loader2.gif') }}" alt=""> --}}
+	  <img src="" alt="">
+	</div>
 	
 	<div class="contact-alert {{session('success_message') ? 'alert-animate' : '' }}">
 		<div class="message baomoi">
@@ -99,6 +104,7 @@
 
 
 
+
 	<script src="{{asset('js/jquery/jquery3.3.1.js')}}"></script>
 	<script src="{{asset('js/jquery/jquery-validate.min.js')}}"></script>
 	<script type="text/javascript" src="{{ asset('js/globaljs/varglobal.js') }}"></script>
@@ -111,43 +117,12 @@
 
 
   <script>
-  	$(document).ready(function() {
-
-
-  		
-
-  		// $('.send-message-button').click(function(event) {
-  		// 	event.preventDefault();
-
-  		// 	// alert(link_host);
-  		// 	var dataString = {
-  		// 		_token : $('[name=_token']).val();
-  		// 		fullname: $('[name=_token']).val();
-  		// 	};
-
-  		// 	$.ajax({
-  		// 		url: link_host+'/path/to/file',
-  		// 		type: 'default GET (Other values: POST)',
-  		// 		dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
-  		// 		data: {param1: 'value1'},
-  		// 	})
-  		// 	.done(function() {
-  		// 		console.log("success");
-  		// 	})
-  		// 	.fail(function() {
-  		// 		console.log("error");
-  		// 	})
-  		// 	.always(function() {
-  		// 		console.log("complete");
-  		// 	});
-  			
-
-  		// });
-
-
-
-
-  	}); // End document ready
+    var loaderPath = "{{ asset('pictures/luan/ajax-loader2.gif') }}";
+    $('.myloader img').attr('src', loaderPath);
+    $(document).ready(function() {
+    	
+      $('.myloader').hide();
+    });
   </script>
 
 

@@ -29,10 +29,8 @@
       </li> --}}
       <li class="list-group-item">
         <a href="{{route('admin.phanhoi')}}">
-          @php
-            $a = 2000;
-          @endphp
-          <i class="fa fa-envelope-o"></i> <span>Phản hồi<span id="message-counter" class="badge pull-right" title="{{count($tatca_phanhoi)}}">{{count($tatca_phanhoi) > 1000 ? (count($tatca_phanhoi)/1000).' k' : count($tatca_phanhoi)}}</span></span>
+          {{-- <i class="fa fa-envelope-o"></i> <span>Phản hồi<span id="message-counter" class="badge pull-right" title="{{count($tatca_phanhoi)}}">{{count($tatca_phanhoi) > 1000 ? (count($tatca_phanhoi)/1000).' k' : count($tatca_phanhoi)}}</span></span> --}}
+          <i class="fa fa-envelope-o"></i> <span>Phản hồi</span>
         </a>
       </li>
       {{-- <li class="list-group-item">

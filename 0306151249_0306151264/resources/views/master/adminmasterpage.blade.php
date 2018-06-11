@@ -30,6 +30,7 @@
   <script type="text/javascript" src="{{asset('js/jquery/jquery3.3.1.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/admin/admin.js')}}"></script>
+  <script type="text/javascript" src="{{ asset('js/globaljs/varglobal.js') }}" charset="utf-8"></script>
 
   @yield('javascript')
 </body>

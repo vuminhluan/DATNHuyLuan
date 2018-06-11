@@ -60,13 +60,9 @@ $(document).ready(function() {
   });
 
   function sendRealtimeMessage() {
-    
-    // alert(link_host);
-
+  
+    $('.myloader').show();
     var dataString = getFormData('contact-form');
-    // console.log(dataString);
-
-
 
     $.ajax({
       url: link_host+'/socket/gui/tinnhan',
@@ -75,7 +71,7 @@ $(document).ready(function() {
       cache : false,
     })
     .done(function(response) {
-      console.log(response);
+      // console.log(response);
 
       // socket io
       var socket = io.connect( 'http://'+window.location.hostname+':3000' );
@@ -83,14 +79,13 @@ $(document).ready(function() {
 
       socket.emit('sendMessage', response);
 
+      $('.myloader').hide();
+      $('textarea#message').val('');
+
+
     });
-    
-
-
-
-
+  
   }
-
 
 
 

@@ -1,4 +1,17 @@
-.page-number input#current-page {
-	max-width: 30px; height: 100%;text-align: right;
-	padding: 0; margin: 0 10px;border: 0;appearance: none;
+select#page-list {
+	-moz-appearance: none;-webkit-appearance: none; text-align: center;
+	border: 0;
 }
+
+
+pre#contact-message {
+	padding: 0px !important; margin:0 !important;
+	white-space: pre-wrap;word-break: unset;
+	line-height: 20px;
+	background-color: #fff;border: none;
+	max-height: 200px;overflow-y: auto;font-size: 14px;
+}
+pre#contact-message code {
+	font-family: "Arial";
+}
+

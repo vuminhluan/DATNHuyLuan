@@ -181,10 +181,9 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 	//  Phản hồi
 	Route::prefix('phanhoi')->group(function() {
 		Route::get('/', 'Admin\PhanHoiController@getTrangQuanLyPhanHoi')->name('admin.phanhoi');
+		Route::post('/xemchitiet', 'Admin\PhanHoiController@postXemPhanHoi')->name('admin.phanhoi.xem');
+		Route::post('/xoa', 'Admin\PhanHoiController@postXoaPhanHoi')->name('admin.phanhoi.xoa');
 
-		// Route::get('/them', function() {
-		// 	return view('admin.taikhoan.them-taikhoan');
-		// })->name('admin.taikhoan.them');
 	});
 
 
