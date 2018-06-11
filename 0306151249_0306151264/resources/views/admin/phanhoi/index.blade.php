@@ -39,7 +39,7 @@
             </div>
             
             <div class="btn-group pull-right hidden-xs" id="div-search">
-              <input id="search" name="search" type="text" value="" class="form-control" placeholder="Tìm kiếm">
+              <input id="search" name="search" type="text" value="" class="form-control" placeholder="Tên người gửi">
               <span class="fa fa-search"></span>
             </div>
           </div>

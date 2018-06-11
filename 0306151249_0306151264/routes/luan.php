@@ -184,6 +184,7 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 		Route::post('/xemchitiet', 'Admin\PhanHoiController@postXemPhanHoi')->name('admin.phanhoi.xem');
 		// Route::post('/xoa', 'Admin\PhanHoiController@postXoaPhanHoi')->name('admin.phanhoi.xoa');
 		Route::post('/capnhat', 'Admin\PhanHoiController@postCapNhat')->name('admin.phanhoi.capnhat');
+		Route::get('/timkiem/{tukhoa}', 'Admin\PhanHoiController@getTimKiemTheoTenNguoiGui')->name('admin.phanhoi.timkiem');
 
 	});
 

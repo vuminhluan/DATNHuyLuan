@@ -28,8 +28,13 @@ class PhanHoiController extends Controller
 
   public function postCapNhat(Request $req)
   {
-    // return $req->id;
+    
+    if($req->search) {
+      return redirect()->route('admin.phanhoi.timkiem', [$req->search]);
+    }
 
+    // return "khong co search";
+    // return $req->id;
     $message = "";
     if($req->task == "delete") {
       TinNhanLienHe::whereIn('ma', $req->id)->update(['trang_thai'=> 0]);
@@ -44,5 +49,12 @@ class PhanHoiController extends Controller
 
     // TinNhanLienHe::whereIn('ma', $req->id)->update(['trang_thai'=> 0]);
     return redirect()->back()->with('slidemessage', 'Đã '.$message.' (những) phản hồi được chọn');
+    // return redirect()->back();
+  }
+
+  public function getTimKiemTheoTenNguoiGui($keyword)
+  {
+    $tatca_phanhoi = TinNhanLienHe::where('trang_thai', '1')->where('ho_va_ten', 'LIKE', '%'.$keyword.'%')->orderBy('thoi_gian_tao', 'desc')->paginate(8);
+    return view('admin.phanhoi.index',['tatca_phanhoi' => $tatca_phanhoi]);
   }
 }
