@@ -24,7 +24,7 @@
       </li>
     </ol>
     <div class="col-xs-12">
-      <form id="post_form" method="post" action="{{ route('admin.phanhoi.xoa') }}" role="form">
+      <form id="post_form" method="post" action="{{ route('admin.phanhoi.capnhat') }}" role="form">
         @csrf
         <div class="col-xs-12">
           <div class="form-group">
@@ -33,13 +33,13 @@
               <select id="task" name="task" class="form-control">
                 <option>Tác vụ</option>
                 <option value="delete">Xóa phản hồi</option>
-                <option value="">Đánh dấu đã đọc</option>
-                <option value="">Đánh dấu chưa đọc</option>
+                <option value="mark_as_seen">Đánh dấu đã đọc</option>
+                <option value="mark_as_unread">Đánh dấu chưa đọc</option>
               </select>
             </div>
             
             <div class="btn-group pull-right hidden-xs" id="div-search">
-              <input id="search" name="search" type="text" value="" class="form-control" placeholder="Tìm kiếm">
+              <input id="search" name="search" type="text" value="" class="form-control" placeholder="Tên người gửi">
               <span class="fa fa-search"></span>
             </div>
           </div>
@@ -142,7 +142,7 @@
             <p><strong><i class="fa fa-bookmark"></i>Ghi chú: </strong></p>
             <p class="note-items"><i class="fa fa-envelope-o"></i> Phản hồi chưa đọc.</p>
             <p class="note-items"><i class="fa fa-check text-success"></i> Phản hồi đã đọc.</p>
-            <p class="note-items"><i class="fa fa-times text-danger"></i> Phản hồi đã xóa.</p>
+            {{-- <p class="note-items"><i class="fa fa-times text-danger"></i> Phản hồi đã xóa.</p> --}}
           </div>
 
         </div>

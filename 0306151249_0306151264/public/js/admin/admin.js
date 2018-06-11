@@ -20,15 +20,25 @@ $(document).ready(function() {
 
   $('#task').change(function(){
 
-    if($('input:checkbox:checked').length < 0) { 
+    if($('input:checkbox:checked').length <= 0) { 
+      $('#task option:first-child').prop('selected', true);
+      alert('Bạn cần chọn đối tượng cần cập nhật');
       return;
     }
+    var kindOfUpdate = $(this).val();
     var check = true;
-    if ($(this).val()=="delete") {
+    if (kindOfUpdate=="delete") {
       check = confirm('Có chắc bạn muốn xóa?');
+    } else if (kindOfUpdate=="mark_as_seen") {
+      check = confirm('Bạn muốn đánh dấu đã đọc những phản hồi được chọn ?');
+    } else {
+      check = confirm('Bạn muốn đánh dấu chưa đọc những phản hồi được chọn ?');
     }
 
+
+
     if (check) {
+      $('.myloader').show();
       $('#post_form').submit();
     }
     
@@ -37,6 +47,9 @@ $(document).ready(function() {
     $('#task option:first-child').prop('selected', true);
     
   });
+
+
+
 
   $('#search').keyup(function(e){
     if (e.which==13) {
