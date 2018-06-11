@@ -13,6 +13,12 @@ Route::get("baiviet", function(){
 	return view("baiviet.hienthibaiviet");
 });
 
+Route::get("/ajax/getbaivietphantrangne","BaiVietController\BaiViet@GetBaiVietPhanTrang")
+->name("baiviet.trang");
+
+Route::get("/ajax/getsoluongbaivietcuamotnhomne",'BaiVietController\BaiViet@getsoluongbaivietcuamotnhom')
+->name("getsoluongbaivietcuamotnhom");
+
 Route::post("/ajax/postbaivietne","BaiVietController\BaiViet@Postbaiviet")
 ->name('postbaiviet');
 Route::get('/ajax/getbaiviettheonguoivietvanguoisohuune',"BaiVietController\BaiViet@Getbaiviettheonguoivietvanguoisohuu")->name('getbaiviettheonguoivietvanguoisohuu');
@@ -44,7 +50,8 @@ Route::get("/ajax/getnhomtheomataikhoanne","NhomController\ThanhVienNhom@GetNhom
 ->name('getnhomtheomataikhoan');
 
 
-
+Route::post('/ajax/updatebinhluanne',"BinhLuanController\BinhLuan@updatebinhluan")->name("updatebinhluan");
+Route::post('/ajax/updatebinhluancap2n2',"BinhLuanController\BinhLuan@updatebinhluancap2")->name("updatebinhluancap2");
 
 
 

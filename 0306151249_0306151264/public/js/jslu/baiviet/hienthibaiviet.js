@@ -21,8 +21,16 @@ function xoabaivietnay(prl_mabaiviet){
 }
 
 
+// $(document).ready(function(){
+// $('.page-item a').on('click', function(e){
+//     e.preventDefault();
+//     // var url = $(this).attr('href');
+//     // $.post(url, $('#search').serialize(), function(data){
+//     //     $('#posts').html(data);
+//     // });
+// });
 
-
+// });
 
 
 

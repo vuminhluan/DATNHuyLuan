@@ -25,11 +25,6 @@
                                 </div>
 
             <div class="cl-divrepcmt" id="divrepcmt{{ $lstbinhluan[$k]->ma_binh_luan }}" >
-                                {{-- 1cmt con --}}
-                               {{--  @for ($i = 0; $i <5 ; $i++)
-                                    @include('binhluan.mottraloibinhluan')
-                                @endfor --}}
-                                {{-- end 1 cmt con --}}
             </div>
             <div id="inputrepcmt-{{ $lstbinhluan[$k]->ma_binh_luan }}" class="iprepcmtcmt" >
 

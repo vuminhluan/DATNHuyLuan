@@ -38,6 +38,9 @@ class Nhom extends Controller
                                 ->select('thanh_vien_nhom.*','nguoi_dung.*')
                                 ->where([['ma_nhom',$idnhom],['thanh_vien_nhom.trang_thai',"1"]])
                                 ->get();
+        $totalbaiviet =     DB::table('bai_viet')->select(DB::raw('count(*) as soluongbaivietcuanhom'))
+                                ->where([["ma_chu_bai_viet",$idnhom],["trang_thai","1"]])
+                                ->get()[0]->soluongbaivietcuanhom;
         $listbaiviet      = DB::table('bai_viet')
                                 ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
                                 ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
@@ -47,13 +50,16 @@ class Nhom extends Controller
                                 ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet')//
                                 ->where([["bai_viet.ma_chu_bai_viet",$idnhom],["bai_viet.trang_thai","1"]])
                                 ->orderBy('bai_viet.ma_bai_viet','desc')
-                                ->take(10)->get();
+
+                                // ->paginate(5)
+                                // ->setPath("baiviet/trang");
+                               ->take(10)->get();
 
 // "lstykienbinhchon"=>$lstbinhchonykien
 
-
-        $soluongbaiviet =10;
-        return view("nhom.indexnhom",["t"=>$idnhom,"s"=>$soluongbaiviet,"lstbaiviet"=>$listbaiviet,"quyentruycapnhomcuataikhoan"=>$machucvu,"caidatnhom"=>$caidatnhom,"thontinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom]);
+// 
+        //$soluongbaiviet =10; //,"s"=>$soluongbaiviet
+        return view("nhom.indexnhom",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thontinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom]);
     }
 
 

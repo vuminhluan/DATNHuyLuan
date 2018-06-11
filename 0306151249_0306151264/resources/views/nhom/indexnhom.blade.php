@@ -17,11 +17,11 @@
         
             @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
                @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV01"||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV02"||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV03"||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV04")
-                     <div id="thongtincuanhom">
-                      <div style="margin-top: 5px;margin-right: 5px;">
-                   <div id="div-btn-show-menu-setting-nhom" style=" cursor: pointer;width: 287px;height: 34px;float: right;padding: 5px;background-color: white;"><h3><i class="fa fa-cog" aria-hidden="true"> &nbsp; Quản lý nhóm</i></h3>
-                   </div>
-                   
+                   <div id="thongtincuanhom">
+                      <div class="divomshowcaidatnhomhi" >
+                       <div id="div-btn-show-menu-setting-nhom" onclick="($('#div-setting-nhom-menu').css('display')=='none')?$('#div-setting-nhom-menu').css('display','block'):$('#div-setting-nhom-menu').css('display','none')" class="dvbtnshowcaidatnhom">
+                            <h3><i class="fa fa-cog" aria-hidden="true"> &nbsp; Quản lý nhóm</i></h3>
+                       </div>
                      </div>
                    </div>
                @break
@@ -30,51 +30,52 @@
 
          <div class="thongtinkhaccuanhom">
            <input type="hidden" id="div-hi-chu-bai-viet-ma-nhom" value="{{$t}}">
-           <div style="width: 100%;height: 37px;">
-                <div style="padding-top: 7px;padding-left: 47%;"><i style="color:#9695d8; " class="fa fa-flag-o fa-2x" aria-hidden="true"></i></div>
-                <div style="padding: 7px;padding-top: 11px;float: left;text-align: center;width: 100%;"><H3 style="display: inline-block; text-align: center;"><center> {{$thontinnhom[0]->ten_nhom}}</center></H3></div>
+           <input type="hidden" id="div-hi-soluongbaiviethientainhom" value="{{$totalbaiviet}}">
+           <div class="divchuaallttnhom">
+                <div class="divchuaittnhom" ><i class="fa fa-flag-o fa-2x" aria-hidden="true"></i></div>
+                <div class="divttinhom">
+                  <H3 class="h3ttnhom" ><center> {{$thontinnhom[0]->ten_nhom}}</center></H3>
+                </div>
            </div>
          </div>
 
          <div class="thongtinkhaccuanhom">
            <input type="hidden" id="div-hi-chu-bai-viet-ma-nhom" value="{{$t}}">
-           <div style="width: 100%;height: 37px;">
-                <div style="padding-top: 7px;padding-left: 7px;float: left;"><i style="color:#9695d8; display: inline-block;" class="fa fa-globe fa-2x" aria-hidden="true"></i></div>
-                <div style="padding: 7px;padding-top: 11px;float: left;"><H3 style="display: inline-block;"> Giới thiệu</H3></div>
+           <div class="divomallthongtinkhacgioithieu">
+                <div class="divittkhacnhom" ><i class="fa fa-globe fa-2x iglow" aria-hidden="true"></i></div>
+                <div class="divtextgioithieu"><H3 class="h3chugioithieu"> Giới thiệu</H3></div>
            </div>
-           <div style="padding-left:  7px;padding-top: 7px;width: 80%;margin:auto;">{{$caidatnhom[0]->gioi_thieu_nhom}}</div>
+           <div class="divtextgioithieunhom" >{{$caidatnhom[0]->gioi_thieu_nhom}}</div>
          </div>
         </div>
         
 <!--  -->
        
         <div id="divcontent" class="content"  >
-          <div id="divdangbaiviet">
-            @include('baiviet.dangbaiviet')
-            {{-- <div id="baivietmoidang" style="width: 100%;height: 50px;background-color: red;"></div> --}}
-         </div>
-         <div id="divnoidungcon">
-
-            <!--  -->
-           
-          @for ($i = 0; $i < count($lstbaiviet) ; $i++)
-               @include('baiviet.hienthibaiviet')
-          @endfor
-          </div>
+             <div id="divdangbaiviet">
+                   @include('baiviet.dangbaiviet')
+             </div>
+             <div id="divnoidungcon">
+                   @include('baiviet.hienthibaiviet')
+             </div>
+{{--              <div class="xemthembaiviet">
+                    <span>Chưa hiện tại chưa có bài viết để hiển thị thêm</span>
+             </div> --}}
             <!--  -->
         </div>
         
 <!--  -->
         <div class="rightnav">
           <div class="divtoprightnav">
-              <div style="float: left;width: 81%;padding-top: 11px;"><center>({{count($lstthanhviennhom)}})&nbsp;Thành viên</center></div>
-              <div style="float: right;width: 19%;padding: 7px;padding-left: 10px;border-left: solid 1px #eadcf2;"
-                onclick="($('#tuychonnhom').css('display')=='block')?$('#tuychonnhom').css('display','none'):$('#tuychonnhom').css('display','block');"><i class="fa fa-ellipsis-h fa-2x" aria-hidden="true"></i>
+              <div class="divslthanhviennhom"><center>({{count($lstthanhviennhom)}})&nbsp;Thành viên</center></div>
+              <div class="divbtnshowtuychontvn" onclick="($('#tuychonnhom').css('display')=='block')?$('#tuychonnhom').css('display','none'):$('#tuychonnhom').css('display','block');"><i class="fa fa-ellipsis-h fa-2x" aria-hidden="true"></i>
               </div>
-              <div id="tuychonnhom" style="padding: 7px;border-radius: 3px;border:solid 1px #eadcf2;box-shadow: 1px 2px 3px #9695d8; display: none;background-color: white;width: 100px;position: absolute;margin-top: 50px;margin-left: 150px;">
-                <span style="    margin-left: 70px;position: absolute; bottom: 100%;border-bottom:  solid 10px white;border-left: solid 10px transparent;border-right: solid 10px transparent;"></span>
+              <div id="tuychonnhom">
+                <span class="spansomethinghh"></span>
                 <ul>
-                  <li onclick="clickthanhvienturoikhoinhomnhom('{{$t}}')">Rời nhóm</li>
+                  <li class="lituychonthemnhom"><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;Báo cáo nhóm </li>
+                  <li class="lituychonthemnhom" onclick="clickthanhvienturoikhoinhomnhom('{{$t}}')"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Rời nhóm</li>
+
                 </ul>
               </div>
           </div>

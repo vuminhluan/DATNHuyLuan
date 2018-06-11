@@ -9,6 +9,9 @@
                console.log(d);
               }
              </script>   --}} 
+ 
+{{-- <div id="chuatatca"> --}}
+@for ($i = 0; $i < count($lstbaiviet) ; $i++)
                 {{-- css file noidungbaiviet.css --}}
                 @if ($lstbaiviet[$i]->ma_loai_bai_viet=="LBV001")
                     <div class="subcontent" id="divbignoidungmotbaiviet-{{$lstbaiviet[$i]->ma_bai_viet}}" >
@@ -185,6 +188,9 @@
                 @endif
 
 
+ @endfor
+
 
 
             <!--  -->
+{{-- </div> --}}

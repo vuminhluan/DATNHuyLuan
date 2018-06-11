@@ -23,7 +23,7 @@
 	@yield('css')
 
 </head>
-<body>
+<body id="bodymaster">
 
 	@include('includes.navtop')
 

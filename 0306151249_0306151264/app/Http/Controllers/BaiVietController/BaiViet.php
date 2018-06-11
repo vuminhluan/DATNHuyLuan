@@ -17,6 +17,16 @@ use Illuminate\Support\Facades\Auth;
 use App\Traits\TaoThuMucGoogleDriveTrait;
 use App\Traits\ThemTepGoogleDriveTrait;
 
+//
+use App\nhom_m;
+use App\thanh_vien_nhom;
+use App\thanh_vien_cho_phe_duyet;
+use App\chuc_vu_cua_thanh_vien_trong_nhom;
+use App\chuc_vu_trong_nhom;
+use App\cai_dat_nhom;
+//
+
+
 
 
 class BaiViet extends Controller 
@@ -28,23 +38,6 @@ class BaiViet extends Controller
 
     public function Postbaiviet(Request $request)
     {
-        // return  
-    	// $baiviet = new bai_viet();
-    	// $baiviet->ma_bai_viet 			= $request->ma_bai_viet;
-    	// $baiviet->ma_nguoi_viet			= $request->ma_nguoi_viet;
-    	// $baiviet->ma_chu_bai_viet		= $request->ma_chu_bai_viet;
-    	// $baiviet->noi_dung_bai_viet		= $request->noi_dung_bai_viet; 
-    	// $baiviet->binh_luan_bai_viet	= $request->binh_luan_bai_viet;
-    	// $baiviet->hinh_anh_bai_viet		= $request->hinh_anh_bai_viet;
-    	// $baiviet->nop_tep				= $request->nop_tep;
-    	// $baiviet->khao_sat_y_kien		= $request->khao_sat_y_kien;
-    	// $baiviet->ma_loai_bai_viet		= $request->ma_loai_bai_viet;
-    	// $baiviet->thoi_gian_dang		= $request->thoi_gian_dang;
-    	// $baiviet->thoi_gian_an_bai_viet	= $request->thoi_gian_an_bai_viet;
-    	// $baiviet->thoi_gian_sua			= $request->thoi_gian_sua;
-    	// $baiviet->nguoi_sua				= $request->nguoi_sua;
-    	// $baiviet->save();							
-     //    return "hihi";	
         return $this->PostbaivietT($request);	
     }
     public function postfilenopbaithanhvien(Request $rql){
@@ -244,6 +237,27 @@ class BaiViet extends Controller
 
     }
 
+    public function GetBaiVietPhanTrang(Request $rql){
+          // $path = "?manho"
+        $soluongbaivietdalay = $rql->soluongbaivietdalay;
+        $soluongbaivietcanlay = $rql->soluongbaivietcanlay;
+                $listbaiviet      = DB::table('bai_viet')
+                                ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
+                                ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
+                                ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
+                                // ->leftJoin('thumuc_googledrive','bai_viet.ma_nguoi_viet','=','thumuc_googledrive.ma_tai_khoan')
+                                // 'thumuc_googledrive.*',
+                                ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet')//
+                                ->where([["bai_viet.ma_chu_bai_viet",$rql->ma_nhom],["bai_viet.trang_thai","1"]])
+                                ->orderBy('bai_viet.ma_bai_viet','desc')
+                                // ->paginate(5)
+                                ->offset($soluongbaivietdalay)
+                                ->limit($soluongbaivietcanlay)   
+                                ->get();
+                                // ->setPath("?ma_nhom=".$rql->ma_nhom);
+          return  view("baiviet.hienthibaiviet",["lstbaiviet"=>$listbaiviet]);
+    }
+
 
 
     public function updateykienbinhchon($rql,$trangthai){
@@ -272,6 +286,12 @@ class BaiViet extends Controller
         ->select(DB::raw("count(*) as soluong, ma_y_kien"))
         ->where([["ma_tai_khoan_chon",$rql->ma_tai_khoan_chon],["ma_bai_viet",$rql->ma_bai_viet]])
         ->get();
+    }
+
+
+    public function getsoluongbaivietcuamotnhom(Request $rql){
+        return DB::table('bai_viet')->select(DB::raw('count(*) as soluongbaivietcuanhom'))
+        ->where([["ma_chu_bai_viet",$rql->ma_chu_bai_viet],["trang_thai","1"]])->get()[0]->soluongbaivietcuanhom;
     }
 
 
