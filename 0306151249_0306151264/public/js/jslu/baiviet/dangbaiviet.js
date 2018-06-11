@@ -84,6 +84,9 @@ $( document ).ready(function() {
   $('#formdangbaiviet').submit(function(event) {
     event.preventDefault();
     
+    $("#btndangbaiviet").css("display","none");
+
+
     var danganhcheck=true;
     var formData = new FormData($(this)[0]);
         formData.append('nguoi_dang',$('#session-ma-tk').val());
@@ -369,7 +372,8 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
                                                 thoi_gian_khao_sat_bai_viet:Thoigiankhaosatbaiviet,
                                                 ma_loai_bai_viet: valueselectedoption,
                                                 thoi_gian_an_bai_viet: Thoigiananbaiviet,
-                                                nguoi_sua: $('#session-ma-tk').val()
+                                                nguoi_sua: $('#session-ma-tk').val(),
+                                                trang_thai:"1"
                                             }
                                             }).done(function(data) {
                                                 displaydivoption("none");
@@ -390,6 +394,7 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
                                                       ma_chu_bai_viet: $('#div-hi-chu-bai-viet-ma-nhom').val()
                                                     }
                                                 }).done(function(data){
+                                                  $("#btndangbaiviet").css("display","block");
                                                   document.getElementById("formdangbaiviet").reset();
                                                   $('#iptextdangbaiviet').val("");
                                                       var econ = document.createElement("div");

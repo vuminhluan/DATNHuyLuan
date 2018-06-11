@@ -1,4 +1,53 @@
 
+function thaotacthembaiviet(prl_mabaiviet,prl_manguoiviet){
+($("#divxbaiviet-"+prl_mabaiviet).css("display")=="none")
+?$("#divxbaiviet-"+prl_mabaiviet).css("display","block")
+:$("#divxbaiviet-"+prl_mabaiviet).css("display","none");
+}
+
+
+function xoabaivietnay(prl_mabaiviet){
+	$.ajax({
+		url:link_host+'/ajax/updatebaivietne',
+		type:'POST',
+		data:{
+			_token:$('input[name=_token]').val(),
+			ma_bai_viet:prl_mabaiviet,
+			trang_thai:"0"
+		}
+	}).done(function(data){
+		$("#divbignoidungmotbaiviet-"+prl_mabaiviet).css("display","none");
+	})
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function showbinhchonykien(prl_mabaiviet){
 	//alert(prl_mabaiviet);
 	$("#divthoigianhethanvote-"+prl_mabaiviet).css("display","block");

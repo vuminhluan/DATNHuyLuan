@@ -42,6 +42,7 @@ trait BaiVietTrait{
         $baiviet->thoi_gian_khao_sat_bai_viet     = $request->thoi_gian_khao_sat_bai_viet;
     	//$baiviet->thoi_gian_sua			= $request->thoi_gian_sua;
     	$baiviet->nguoi_sua				          = $request->nguoi_sua;
+        $baiviet->trang_thai                      = $request->trang_thai;
     	$baiviet->save();							
         return "hihi-trait";		
     }

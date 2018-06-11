@@ -237,7 +237,12 @@ class BaiViet extends Controller
       //  return $this->kiemtradatontaichua($rql,"0")[0]->soluong;
 
     }
+    public function updatebaiviet(Request $rql){
+        DB::table("bai_viet")
+                ->where("ma_bai_viet",$rql->ma_bai_viet)
+                ->update(['trang_thai'=> $rql->trang_thai]);
 
+    }
 
 
 

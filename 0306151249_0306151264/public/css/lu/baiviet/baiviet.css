@@ -21,6 +21,52 @@ textarea:focus{
   cursor: pointer;
   background-color: #fcfcfc;
 }
+.divomshowxbaiviet{
+  display: none;
+  margin-left: 525px;margin-top: 40px;
+  width: 150px;height: auto;
+  background-color: white;position: absolute;
+  border-radius: 10px;
+  border:solid 1px #3a11510d;
+  /*border-top-left-radius:6px;*/
+  box-shadow: 1px 1px 1px #9695d8;
+  padding-left: 12px; 
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+}
+
+.lixpopup{
+  border-bottom: 1px solid #eadcf2;
+  margin-right: 10px;
+}
+.lixpopup:hover{
+  border-radius: 3px;
+  background-color: #eadcf270;
+  cursor: pointer;
+}
+.spanshowxbaiviet{
+    margin-left: 0px;
+      bottom: 100%;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-bottom: solid 15px white;
+    border-left: solid 12px transparent;
+    border-right: solid 18px transparent;
+}
+.spanclickxbaiviet{
+ padding-left: 4px;
+ position: absolute; 
+ background-color: transparent;
+ color: #2b0d3c0d;
+ height: 30px;
+ width: 30px;
+ margin-left: 526px;
+ float: right;
+ margin-top: 2px;
+ cursor: pointer;
+}
 .divchuaykienkhaosat{
   padding-top: 10px;
   padding-bottom: 10px;

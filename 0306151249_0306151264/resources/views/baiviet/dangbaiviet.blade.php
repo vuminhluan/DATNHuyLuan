@@ -17,6 +17,7 @@
 <form id="formdangbaiviet" action="dangbaiviet_submit" method="get" accept-charset="utf-8">
 
 <div id="divbigformdangbaiviet" style="clear:both;" >
+{{-- <div style="position: relative;width: 100%;height: 100%;background-color: black;"></div> --}}
 	{{-- <div id="data" style="width: 100%;height: 50px;background-color: red;"></div> --}}
 	{{-- <form  id="frmdangbaiviet" action="/" method="post" accept-charset="utf-8" name="frmnamedangbaiviet"> --}}
 		 @csrf 

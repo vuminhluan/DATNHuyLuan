@@ -45,7 +45,7 @@ class Nhom extends Controller
                                 // ->leftJoin('thumuc_googledrive','bai_viet.ma_nguoi_viet','=','thumuc_googledrive.ma_tai_khoan')
                                 // 'thumuc_googledrive.*',
                                 ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet')//
-                                ->where("bai_viet.ma_chu_bai_viet",$idnhom)
+                                ->where([["bai_viet.ma_chu_bai_viet",$idnhom],["bai_viet.trang_thai","1"]])
                                 ->orderBy('bai_viet.ma_bai_viet','desc')
                                 ->take(10)->get();
 
