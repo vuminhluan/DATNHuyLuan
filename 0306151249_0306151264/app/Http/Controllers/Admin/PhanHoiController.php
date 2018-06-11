@@ -10,7 +10,7 @@ class PhanHoiController extends Controller
 {
   public function getTrangQuanLyPhanHoi()
   {
-  	$tatca_phanhoi = TinNhanLienHe::orderBy('thoi_gian_tao', 'desc')->paginate(8);
+  	$tatca_phanhoi = TinNhanLienHe::where('trang_thai', '1')->orderBy('thoi_gian_tao', 'desc')->paginate(8);
   	return view('admin.phanhoi.index',['tatca_phanhoi' => $tatca_phanhoi]);
   }
 
@@ -26,11 +26,23 @@ class PhanHoiController extends Controller
 
   }
 
-  public function postXoaPhanHoi(Request $req)
+  public function postCapNhat(Request $req)
   {
     // return $req->id;
 
-    TinNhanLienHe::whereIn('ma', $req->id)->update(['trang_thai'=> 0]);
-    return redirect()->back()->with('slidemessage', 'Đã xóa (những) phản hồi được chọn');
+    $message = "";
+    if($req->task == "delete") {
+      TinNhanLienHe::whereIn('ma', $req->id)->update(['trang_thai'=> 0]);
+      $message = "Xóa";
+    } else if($req->task == "mark_as_seen") {
+      TinNhanLienHe::whereIn('ma', $req->id)->update(['da_xem'=> 1]);
+      $message = "Đánh dấu đã đọc";
+    } else {
+      TinNhanLienHe::whereIn('ma', $req->id)->update(['da_xem'=> 0]);
+      $message = "Đánh dấu chưa đọc";
+    }
+
+    // TinNhanLienHe::whereIn('ma', $req->id)->update(['trang_thai'=> 0]);
+    return redirect()->back()->with('slidemessage', 'Đã '.$message.' (những) phản hồi được chọn');
   }
 }

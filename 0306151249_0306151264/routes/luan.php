@@ -182,7 +182,8 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 	Route::prefix('phanhoi')->group(function() {
 		Route::get('/', 'Admin\PhanHoiController@getTrangQuanLyPhanHoi')->name('admin.phanhoi');
 		Route::post('/xemchitiet', 'Admin\PhanHoiController@postXemPhanHoi')->name('admin.phanhoi.xem');
-		Route::post('/xoa', 'Admin\PhanHoiController@postXoaPhanHoi')->name('admin.phanhoi.xoa');
+		// Route::post('/xoa', 'Admin\PhanHoiController@postXoaPhanHoi')->name('admin.phanhoi.xoa');
+		Route::post('/capnhat', 'Admin\PhanHoiController@postCapNhat')->name('admin.phanhoi.capnhat');
 
 	});
 
