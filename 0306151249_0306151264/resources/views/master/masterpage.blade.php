@@ -24,11 +24,9 @@
 
 </head>
 <body id="bodymaster">
-
 	@include('includes.navtop')
 
 	@yield('main')
-
 
 	<div class="clear"></div>
 	@include('includes.footer')
@@ -37,6 +35,9 @@
 {{-- 	<script src="{{asset('js/jquery/jquery3.3.1.js')}}" charset="utf-8"></script> --}}
 	@yield('javascript')
 
+  <!-- Modal content -->
+ {{-- @include ('includes.content-menu-popup'); --}}
 
+	{{-- <div id="masterpopup" style="display: block;" class="modal"></div> --}}
 </body>
 </html>

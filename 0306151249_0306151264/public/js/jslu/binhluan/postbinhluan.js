@@ -44,21 +44,27 @@ function reloadbinhluan(mabaiviet){
             })
 }
 
-// function createboxhoilydotocao(){
-//   var divto = document.createElement("div");
-//       divto.style.width="100%";
-//       divto.style.position="absolute";
-//       divto.style.height="100%";
-//       divto.style.zIndex=999999;
-//       $(document).appendChild(divto);
-//         var divto = document.createElement("div");
-//       divto.style.width="100%";
-//       divto.style.position="absolute";
-//       divto.style.height="100%";
-//       divto.style.zIndex=999999;
-//       document.getElementById("bodymaster").appendChild(divto);
+function createboxhoilydotocao(idtag){
 
-// }
+        var divto = document.createElement("div");
+        divto.className="modal";
+        divto.style.display="block";
+
+        var divnoidung = document.createElement("div");
+            var ipp= document.createElement("input");
+            divnoidung.appendChild(ipp);
+            divto.appendChild(divnoidung);
+
+      // // divto.style.width="100%";
+      // // divto.style.background="#00000047";
+      // // divto.style.position="absolute";
+      // // divto.style.height=$(document).height()+"px";
+      // // divto.style.zIndex=999999;
+      // var ex =  document.getElementById("bodymaster");
+      // ex.insertBefore(divto,ex.firstChild);
+     // $("#div-dynamic-menu-ys-no").css("display","block");
+      document.getElementById("bodymaster").appendChild(divto);
+}
 
 function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt){
 
@@ -125,7 +131,9 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt)
                                                             var phecanlove = document.createElement("LI");
                                                                 phecanlove.className="lituychonthemnhom";
                                                                 phecanlove.textContent="Báo cáo bình luận này cho quản trị viên";
-                                                                phecanlove.addEventListener("click",function(){})
+                                                                phecanlove.addEventListener("click",function(){
+                                                                  createboxhoilydotocao("divtonhatbinhluancap1"+mabinhluancap1);
+                                                                })
                                                                 ull.appendChild(phecanlove);
                                                                 
                                                             var phecanlove1 = document.createElement("LI");
