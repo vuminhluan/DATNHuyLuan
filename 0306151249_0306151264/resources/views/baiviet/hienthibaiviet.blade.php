@@ -17,7 +17,7 @@
                     <div class="subcontent" id="divbignoidungmotbaiviet-{{$lstbaiviet[$i]->ma_bai_viet}}" >
                       <div class="headtus" style=" height: 60px;  " >
                         <div>
-                         <span onclick="thaotacthembaiviet('{{$lstbaiviet[$i]->ma_bai_viet}}','{{$lstbaiviet[$i]->ma_nguoi_viet}}')" class="spanclickxbaiviet" >
+                         <span onclick="thaotacthembaiviet('{{$lstbaiviet[$i]->ma_bai_viet}}')" class="spanclickxbaiviet" >
                           <ion-icon name="more" size="large"></ion-icon>
                         </span>
                           <div id="divxbaiviet-{{$lstbaiviet[$i]->ma_bai_viet}}" class="divomshowxbaiviet" >
@@ -26,11 +26,13 @@
                             <span class="spanshowxbaiviet"></span>
                             <ul> 
                               @if ($lstbaiviet[$i]->ma_nguoi_viet!=Auth::user()->ma_tai_khoan)
-                                <li class="lixpopup">Báo cáo bài viết tới quản trị viên</li>
-                                <li class="lixpopup">Báo cáo bài viết tơi nhà quản trị</li>
+                                <li class="lixpopup" onclick='createboxhoilydotocao("LBC03","NNBC2",$("#session-ma-tk").val(),"{{$lstbaiviet[$i]->ma_bai_viet}}",$("#div-hi-chu-bai-viet-ma-nhom").val()),thaotacthembaiviet("{{$lstbaiviet[$i]->ma_bai_viet}}")'>Báo cáo bài viết tới quản trị viên</li>
+                                <li class="lixpopup" onclick='createboxhoilydotocao("LBC03","NNBC1",$("#session-ma-tk").val(),"{{$lstbaiviet[$i]->ma_bai_viet}}",$("#div-hi-chu-bai-viet-ma-nhom").val()),thaotacthembaiviet("{{$lstbaiviet[$i]->ma_bai_viet}}")' >Báo cáo bài viết tơi nhà quản trị</li>
+                                 <li class="lixpopup" onclick='thaotacthembaiviet("{{$lstbaiviet[$i]->ma_bai_viet}}")'>Hủy bỏ</li>
                               @endif
                               @if ($lstbaiviet[$i]->ma_nguoi_viet==Auth::user()->ma_tai_khoan)
-                              <li onclick="xoabaivietnay('{{$lstbaiviet[$i]->ma_bai_viet}}')" class="lixpopup" >Xóa bài viết</li>
+                              <li onclick="thucthifuncysno('{{$lstbaiviet[$i]->ma_bai_viet}}','xoabaivietnay','Xóa bài viết này','Bạn có chắc chắn muốn xóa bài viết này không')" class="lixpopup" >Xóa bài viết</li>
+                               <li class="lixpopup" onclick='thaotacthembaiviet("{{$lstbaiviet[$i]->ma_bai_viet}}")'>Hủy bỏ</li>
                               @endif
                             </ul>
                           </div>

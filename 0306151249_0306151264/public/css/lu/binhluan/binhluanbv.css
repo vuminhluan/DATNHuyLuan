@@ -113,6 +113,10 @@ textarea:disabled {
 
 
 .tara-read-cmt{
+
+
+        font-family:  'myFont', Arial, Helvetica, sans-serif;
+  font-size: 13px;
 	height: 15px;
 	border-style: none; 
     border-color: Transparent; 
@@ -128,7 +132,11 @@ textarea:disabled {
 }
 
 .tara-read-rep-cmt{
+
+        font-family:  'myFont', Arial, Helvetica, sans-serif;
+  font-size: 13px;
 	height: 15px;
+/*    height: auto;*/
 	border-style: none; 
     border-color: Transparent; 
     overflow: auto;  
@@ -171,12 +179,20 @@ textarea:disabled {
 	font-family: inherit; 
 	cursor: pointer;
 	border-radius: 5px;
+        font-family:  'myFont', Arial, Helvetica, sans-serif;
+  font-size: 15px;
 }
 .divbtnlike:hover{
 	background-color: #c5cfd6;
 
 }
+.like-cmt{
+        font-family:  'myFont', Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
 .divbtncmt{
+        font-family:  'myFont', Arial, Helvetica, sans-serif;
+  font-size: 15px;
 	float: left;
 	height: 100%;
 	width: 48%;

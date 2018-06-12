@@ -7,6 +7,12 @@ var modal_nhom = document.getElementById('div-setting-nhom-menu');
 //    // opentab_lstthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());// mặc định khi mở load list thành viên của nhóm
 // }
 
+
+
+function showhidepoprpnhom(){
+    ($("#tuychonnhom").css("display")=="block")?$("#tuychonnhom").css("display","none"):$("#tuychonnhom").css("display","block");
+}
+
 var soluongbaivietdalay=10;
 var soluongbaivietcanlay=4;
 $(document).scroll(function() {
@@ -95,9 +101,9 @@ function loadxemthembaiviet(prlmanhom){
 
 
 
-function clickthanhvienturoikhoinhomnhom(prl){
+function roinhom11(prl){
     var manhom=prl;
-   // alert("say click"+prl.currentTarget.myparamMaNhom+"-"+prl.currentTarget.myparamMaTaiKhoan);
+ //  alert("say click"+prl.currentTarget.myparamMaNhom+"-"+prl.currentTarget.myparamMaTaiKhoan);
     $.ajax({
         url:link_host+'/ajax/postupdatethanhvientrongnhomne',
         type:'POST',
@@ -111,9 +117,13 @@ function clickthanhvienturoikhoinhomnhom(prl){
 
      window.location = link_trangchufull;
     })
+    // console.log("hohohoho");
 }
 
+// var NH00000003 = function(){
 
+//     console.log("haha");
+// };
 
 
 

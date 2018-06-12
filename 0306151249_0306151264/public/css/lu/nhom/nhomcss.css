@@ -17,7 +17,7 @@
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 999; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 50px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -85,6 +85,7 @@ margin-top: 5px;margin-right: 5px;
   display: inline-block;
 }
 .lituychonthemnhom{
+  cursor: pointer;
   border-bottom: 1px solid #eadcf2;
   padding-left: 5px;
   padding-top: 7px;

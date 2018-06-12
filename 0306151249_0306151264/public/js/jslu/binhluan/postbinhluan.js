@@ -44,27 +44,6 @@ function reloadbinhluan(mabaiviet){
             })
 }
 
-function createboxhoilydotocao(idtag){
-
-        var divto = document.createElement("div");
-        divto.className="modal";
-        divto.style.display="block";
-
-        var divnoidung = document.createElement("div");
-            var ipp= document.createElement("input");
-            divnoidung.appendChild(ipp);
-            divto.appendChild(divnoidung);
-
-      // // divto.style.width="100%";
-      // // divto.style.background="#00000047";
-      // // divto.style.position="absolute";
-      // // divto.style.height=$(document).height()+"px";
-      // // divto.style.zIndex=999999;
-      // var ex =  document.getElementById("bodymaster");
-      // ex.insertBefore(divto,ex.firstChild);
-     // $("#div-dynamic-menu-ys-no").css("display","block");
-      document.getElementById("bodymaster").appendChild(divto);
-}
 
 function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt){
 
@@ -124,15 +103,24 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt)
                                                                 phecanlove2.className="lituychonthemnhom";
                                                                 phecanlove2.textContent="Xóa";
                                                                 phecanlove2.addEventListener("click",function(){
-                                                                  xoabinhluancap1(mabinhluancap1);
+                                                                  thucthifuncysno(mabinhluancap1,'xoabinhluancap1','Xóa bình luận','Bạn chắc chắn xóa bình luận này không?');
+                                                                  // xoabinhluancap1(mabinhluancap1);
                                                                 })  
                                                                  ull.appendChild(phecanlove2);
+                                                                var phecanlove3 = document.createElement("LI");
+                                                                phecanlove3.className="lituychonthemnhom";
+                                                                phecanlove3.textContent="Hủy bỏ";
+                                                                phecanlove3.addEventListener("click",function(){
+                                                                  // createboxhoilydotocao();
+                                                                })
+                                                                ull.appendChild(phecanlove3);
                                                            }else{
                                                             var phecanlove = document.createElement("LI");
                                                                 phecanlove.className="lituychonthemnhom";
                                                                 phecanlove.textContent="Báo cáo bình luận này cho quản trị viên";
                                                                 phecanlove.addEventListener("click",function(){
-                                                                  createboxhoilydotocao("divtonhatbinhluancap1"+mabinhluancap1);
+                                                                  createboxhoilydotocao("LBC04","NNBC2",$("#session-ma-tk").val(),mabinhluancap1,$("#div-hi-chu-bai-viet-ma-nhom").val());
+                                                                  //LBC04 : loại báo cáo cmt cấp 1, : NNBC2 nơi nhận báo cáo nhóm
                                                                 })
                                                                 ull.appendChild(phecanlove);
                                                                 
@@ -268,14 +256,22 @@ function taoramotrepcmt(noidung,mabinhluancap1,duongdananh,tennguoicmt,mabinhlua
                                                                 phecanlove2.className="lituychonthemnhom";
                                                                 phecanlove2.textContent="Xóa";
                                                                 phecanlove2.addEventListener("click",function(){
-                                                                  xoabinhluancap2(mabinhluancap2);
+                                                                  thucthifuncysno(mabinhluancap2,'xoabinhluancap2','Xóa bình luận','Bạn chắc chắn xóa bình luận này không?');
+                                                                  // xoabinhluancap2(mabinhluancap2);
                                                                 })  
                                                                  ull.appendChild(phecanlove2);
+                                                            var phecanlove3 = document.createElement("LI");
+                                                                phecanlove3.className="lituychonthemnhom";
+                                                                phecanlove3.textContent="Hủy bỏ";
+                                                                phecanlove3.addEventListener("click",function(){})
+                                                                ull.appendChild(phecanlove3);
                                                            }else{
                                                             var phecanlove = document.createElement("LI");
                                                                 phecanlove.className="lituychonthemnhom";
                                                                 phecanlove.textContent="Báo cáo bình luận này cho quản trị viên";
-                                                                phecanlove.addEventListener("click",function(){})
+                                                                phecanlove.addEventListener("click",function(){
+                                                                  createboxhoilydotocao("LBC05","NNBC2",$("#session-ma-tk").val(),mabinhluancap2,$("#div-hi-chu-bai-viet-ma-nhom").val());
+                                                                })
                                                                 ull.appendChild(phecanlove);
                                                                 
                                                             var phecanlove1 = document.createElement("LI");

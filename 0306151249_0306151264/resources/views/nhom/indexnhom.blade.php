@@ -73,8 +73,8 @@
               <div id="tuychonnhom">
                 <span class="spansomethinghh"></span>
                 <ul>
-                  <li class="lituychonthemnhom"><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;Báo cáo nhóm </li>
-                  <li class="lituychonthemnhom" onclick="clickthanhvienturoikhoinhomnhom('{{$t}}')"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Rời nhóm</li>
+                  <li class="lituychonthemnhom"  onclick='createboxhoilydotocao("LBC01","NNBC1",$("#session-ma-tk").val(),"{{$t}}","ADMIN"),showhidepoprpnhom()'><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;Báo cáo nhóm </li>
+                  <li class="lituychonthemnhom" onclick="thucthifuncysno('{{$t}}','roinhom11','Rời khỏi nhóm','Bạn có chắc chắn muốn rời nhóm này không?')"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Rời nhóm</li>
 
                 </ul>
               </div>

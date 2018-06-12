@@ -12,6 +12,8 @@
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/includescss/navtopcss.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/lu/baiviet/baiviet.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/globalcss/cssglobal.css') }}">
+
 	{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
 	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
 	{{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" charset="utf-8"></script> --}}

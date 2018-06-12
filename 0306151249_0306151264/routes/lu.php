@@ -50,10 +50,13 @@ Route::get("/ajax/getnhomtheomataikhoanne","NhomController\ThanhVienNhom@GetNhom
 ->name('getnhomtheomataikhoan');
 
 
-Route::post('/ajax/updatebinhluanne',"BinhLuanController\BinhLuan@updatebinhluan")->name("updatebinhluan");
-Route::post('/ajax/updatebinhluancap2n2',"BinhLuanController\BinhLuan@updatebinhluancap2")->name("updatebinhluancap2");
+Route::post('/ajax/updatebinhluanne',"BinhLuanController\BinhLuan@updatebinhluan")
+->name("updatebinhluan");
+Route::post('/ajax/updatebinhluancap2n2',"BinhLuanController\BinhLuan@updatebinhluancap2")
+->name("updatebinhluancap2");
 
-
+Route::post('/ajax/postbaocaoviphamne',"BaoCaoController\BaoCao@postbaocaovipham")
+->name("postbaocaovipham");
 
 
 

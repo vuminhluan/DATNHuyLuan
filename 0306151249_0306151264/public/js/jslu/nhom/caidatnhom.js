@@ -258,6 +258,12 @@ function luuchinhsuacauhoigianhapnhom(prl){
 }
 
 function luumagianhap(prl){
+
+ thucthifuncysno(prl,'luumagianhapnon','Lưu mã gia nhập nhóm nhanh','Bạn chắn chắc muốn lưu mã gia nhập nhóm nhanh này?');
+        
+}
+
+function luumagianhapnon(prl){
      prl=JSON.parse(prl);
 
             prl[0].ma_gia_nhap_nhom = $("#inputmagianhapnhom").val();
@@ -271,7 +277,14 @@ function xoacauhoigianhapnhom(prl){
     var manhom = prl.currentTarget.myparamMaNhom;
     var macauhoi= prl.currentTarget.myparamMaCauHoi;
    // thongbao("hi");
-     $.ajax({
+   thucthifuncysno2p(macauhoi,manhom,'xoacauhoivaonhom','Xóa câu hỏi gia nhập','Bạn chắn chắc muốn xóa câu hỏi này chứ?');
+// xoacauhoivaonhom(macauhoi,manhom);
+
+}
+
+function xoacauhoivaonhom(macauhoi,manhom)
+{
+         $.ajax({
                             url: link_host+'/ajax/postxoacauhoine',
                             type:'POST',
                             data:{
@@ -285,11 +298,15 @@ function xoacauhoigianhapnhom(prl){
                                     }
                                 cauhoigianhapnhomdocratudatabase(manhom);
                             })
-
 }
 
 
+
 function luuchinhsualoainhom(prl){
+     thucthifuncysno(prl,'luuchinhsualoainhomnon','Lưu loại nhóm','Bạn chắn chắc muốn lưu loại nhóm này?');
+}
+
+function luuchinhsualoainhomnon(prl){
      prl=JSON.parse(prl);
     if($('input[name=radio-groupp]:checked').val()=="LN01")
         {
@@ -307,6 +324,8 @@ function luuchinhsualoainhom(prl){
             showhidediv('iconhideloainhom','0');
         }
 }
+
+
 function updatecaidatnhomjs(prl){
      $.ajax({
                             url: link_host+'/ajax/postupdatecaidatnhomne',
@@ -337,6 +356,9 @@ function loadlistcauhoicuanhom(prl){
 
 }
 function updatetrangthaicauhoigianhapnhom(prl1,prl2){
+thucthifuncysno2p(prl1,prl2,'updatetrangthaicauhoigianhapnhomnon','Lưu cài đặt nhóm','Bạn chắn chắc muốn lưu cài đặt này chứ?');
+}
+function updatetrangthaicauhoigianhapnhomnon(prl1,prl2){
     prl1 = JSON.parse(prl1);
     if (prl2=="0") {
         prl1[0].trang_thai_cau_hoi_gia_nhap_nhom="1";
@@ -358,6 +380,11 @@ function updatetrangthaicauhoigianhapnhom(prl1,prl2){
 
 
 function updatetrangthaimagianhapnhom(prl1,prl2){
+
+thucthifuncysno2p(prl1,prl2,'updatetrangthaimagianhapnhomnon','Lưu cài đặt nhóm','Bạn chắn chắc muốn lưu cài đặt này chứ?');
+}
+
+function updatetrangthaimagianhapnhomnon(prl1,prl2){
     prl1 = JSON.parse(prl1);
     if (prl2=="0") {
         prl1[0].trang_thai_ma_gia_nhap_nhom="1";
@@ -376,8 +403,28 @@ function updatetrangthaimagianhapnhom(prl1,prl2){
     }
 
 }
+    var soluongkitutocao = 5;
+    var noidung="";
+function nhapmagianhapnhomnhanh(){
+
+        var soluongconlai = soluongkitutocao - parseInt($("#inputmagianhapnhom").val().length);
+        if(soluongconlai>0){
+            noidung=$("#inputmagianhapnhom").val();
+        }
+        else{
+            $("#inputmagianhapnhom").val(noidung);
+        }
+       // document.getElementById("spanslkitu"+ma_doi_tuong_bi_bao_cao).textContent=soluongconlai;
+
+
+
+}
 
 function updatetrangthaipheduyetbaivietcongkhai(prl1,prl2){
+    thucthifuncysno2p(prl1,prl2,'updatetrangthaipheduyetbaivietcongkhainon','Lưu cài đặt nhóm','Bạn chắn chắc muốn lưu cài đặt này chứ?');
+}
+
+function updatetrangthaipheduyetbaivietcongkhainon(prl1,prl2){
      prl1 = JSON.parse(prl1);
     if (prl2=="0") {
         prl1[0].phe_duyet_bai_viet_binh_thuong="1";
@@ -395,11 +442,18 @@ function updatetrangthaipheduyetbaivietcongkhai(prl1,prl2){
         }
     }
 }
+//thucthifuncysno2p
+
 
 function updatetrangthaipheduyetbaivietandanh(prl1,prl2){
-      prl1 = JSON.parse(prl1);
+    thucthifuncysno2p(prl1,prl2,'updatetrangthaipheduyetbaivietandanhnon','Lưu cài đặt nhóm','Bạn chắn chắc muốn lưu cài đặt này chứ?');
+}
+
+function updatetrangthaipheduyetbaivietandanhnon(prl1,prl2){
+          prl1 = JSON.parse(prl1);
     if (prl2=="0") {
         prl1[0].phe_duyet_bai_viet_an_danh="1";
+      //  thucthifuncysno(prl1,'updatecaidatnhomjs','Lưu cài đặt nhóm','Bạn chắn chắc muốn lưu cài đặt này chứ?');
         updatecaidatnhomjs(prl1)
         $("#divpheduyetbaivietandanhdangduoctat").css("display","none");
         $("#divpheduyetbaivietandanhdangduocbat").css("display","block");
@@ -408,6 +462,7 @@ function updatetrangthaipheduyetbaivietandanh(prl1,prl2){
     }else{
         if (prl2=="1") {
             prl1[0].phe_duyet_bai_viet_an_danh="0";
+            // thucthifuncysno(prl1,'updatecaidatnhomjs','Lưu cài đặt nhóm','Bạn chắn chắc muốn lưu cài đặt này chứ?');
             updatecaidatnhomjs(prl1)
         $("#divpheduyetbaivietandanhdangduoctat").css("display","block");
         $("#divpheduyetbaivietandanhdangduocbat").css("display","none");
@@ -416,12 +471,21 @@ function updatetrangthaipheduyetbaivietandanh(prl1,prl2){
 }
 
 
+
+
 function luugioithieunhom(prl){
-     prl = JSON.parse(prl);
+
+   thucthifuncysno(prl,'upgioithieunhom','Lưu giới thiệu nhóm','Bạn chắn chắc muốn lưu giới thiệu này chứ?');
+}
+
+function upgioithieunhom(prl){
+
+         prl = JSON.parse(prl);
         prl[0].gioi_thieu_nhom=$('#txtaragioithieunhom').val();
        // alert(prl[0].gioi_thieu_nhom);
         updatecaidatnhomjs(prl)
         showhidediv('div-content-gioi-thieu-nhom-caidat','1');
         showhidediv('icon-div-content-gioi-thieu-nhom-caidat','0');
         showhidediv('iconhidegioithieunhom','0');
+
 }

@@ -146,6 +146,8 @@ textarea:focus{
 	margin-left: 10px; float: left;
 }
 #iptextdangbaiviet{
+      font-family:  'myFont', Arial, Helvetica, sans-serif;
+  font-size: 15px;
 	border: 1px solid #c5cfd6; border-radius: 3px; float:left;width: 493px;
 	 margin-left: 10px;margin-top: 15px;
 	 border-color: #9695d8;

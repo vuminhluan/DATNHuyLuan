@@ -15,11 +15,11 @@
                         <div class="divlikecmt">
 
                                <div class="divbtnlike" onclick="clicklike('div-content-all-cmt-157')">
-                                    <h3 ><i  class="fa fa-star-o" aria-hidden="true"><strong class="baomoi">&ensp;Hay</strong></i></h3>
+                                    <h3  ><i  class="fa fa-star-o" aria-hidden="true"><strong class="like-cmt" >&ensp;Hay</strong></i></h3>
                                 </div>
                              
                                 <div  class="divbtncmt" onclick="clickbinhluan('{{ $lstbaiviet[$i]->ma_bai_viet }}')" >
-                                    <h3><i class="fa fa-comment-o" aria-hidden="true" ><strong>&ensp;Bình luận</strong></i></h3>
+                                    <h3 ><i class="fa fa-comment-o" aria-hidden="true" ><strong class="like-cmt">&ensp;Bình luận</strong></i></h3>
                                 </div>
                         </div>
                         {{--tren  --}}

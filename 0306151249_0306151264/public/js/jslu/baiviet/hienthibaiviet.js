@@ -1,5 +1,5 @@
 
-function thaotacthembaiviet(prl_mabaiviet,prl_manguoiviet){
+function thaotacthembaiviet(prl_mabaiviet){
 ($("#divxbaiviet-"+prl_mabaiviet).css("display")=="none")
 ?$("#divxbaiviet-"+prl_mabaiviet).css("display","block")
 :$("#divxbaiviet-"+prl_mabaiviet).css("display","none");

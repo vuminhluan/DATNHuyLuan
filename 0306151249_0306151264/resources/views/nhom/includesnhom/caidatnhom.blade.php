@@ -90,7 +90,7 @@
                         <div id="div-content-ma-gia-nhap-caidat" class="divomnoidungsuacaidat" >
                           <div style="height: 36px; width: 100%;padding: 2px;margin-bottom: 10px;">
                           <div style="width: 80%;float: left;height: 36px;border: solid 1px #c7d2e2;">
-                            <input id="inputmagianhapnhom" style="border:none;width: 100%;height: 34px;padding-left: 15px;" disabled="true" type="text" name="" value="{{$caidatnhom[0]->ma_gia_nhap_nhom}}" placeholder=""></div>
+                            <input id="inputmagianhapnhom" onkeyup="nhapmagianhapnhomnhanh()" style="border:none;width: 100%;height: 34px;padding-left: 15px;" disabled="true" type="text" name="" value="{{$caidatnhom[0]->ma_gia_nhap_nhom}}" placeholder=""></div>
                           <div style="width: 20%;float: left; height: 36px;">
                               <div style="cursor: pointer;width: 50%;height: 36px;padding: 7px;float: left;" onclick="$('#inputmagianhapnhom').prop('disabled',false)"> <center>Sửa</center></div>
                               <div style="cursor: pointer;width: 50%;height: 36px;padding: 7px;float: left;" onclick="luumagianhap('{{$caidatnhom}}')"> <center>Lưu</center></div>
