@@ -65,7 +65,7 @@
                                               <input type="file"  onchange="$('#div-btn-nopbai-'+{{$lstbaiviet[$i]->ma_bai_viet}}).css('display','block');" class="ipbaivietnopfile" id="inputfilenopbai-{{$lstbaiviet[$i]->ma_bai_viet}}" name="inputfilenopbai-{{$lstbaiviet[$i]->ma_bai_viet}}" value="" placeholder="">
                                             </div>
                                             <div id="div-btn-nopbai-{{$lstbaiviet[$i]->ma_bai_viet}}" style="width: 50%;float: left;display: none;">
-                                              <button onclick="submitnopbaine('{{$lstbaiviet[$i]->ma_bai_viet}}','{{$lstbaiviet[$i]->ma_thumuc}}','{{$lstbaiviet[$i]->ma_bai_viet}}')"  class="submitnopbai" name="inputsubmitnopbai-{{$lstbaiviet[$i]->ma_bai_viet}}" type="submit">Nộp bài&nbsp;<i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+ {{--                                              <button onclick="submitnopbaine('{{$lstbaiviet[$i]->ma_bai_viet}}','{{$lstbaiviet[$i]->ma_thumuc}}','{{$lstbaiviet[$i]->ma_bai_viet}}')"  class="submitnopbai" name="inputsubmitnopbai-{{$lstbaiviet[$i]->ma_bai_viet}}" type="submit">Nộp bài&nbsp;<i class="fa fa-paper-plane-o" aria-hidden="true"></i></button> --}}
                                             </div>
                                      </form>
                                    </div>

@@ -273,7 +273,7 @@ class BaiViet extends Controller
                                 ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
                                 ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
                                 ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet')//
-                                ->where([["bai_viet.ma_chu_bai_viet",$rql->ma_nhom],["bai_viet.trang_thai","1"]])
+                                ->where([["bai_viet.ma_chu_bai_viet",$rql->ma_nhom],["bai_viet.trang_thai","2"]])
                                 ->orderBy('bai_viet.ma_bai_viet','desc')
                                 ->offset($soluongbaivietdalay)
                                 ->limit($soluongbaivietcanlay)   

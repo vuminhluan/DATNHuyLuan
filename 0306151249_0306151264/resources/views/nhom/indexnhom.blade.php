@@ -31,6 +31,9 @@
          <div class="thongtinkhaccuanhom">
            <input type="hidden" id="div-hi-chu-bai-viet-ma-nhom" value="{{$t}}">
            <input type="hidden" id="div-hi-soluongbaiviethientainhom" value="{{$totalbaiviet}}">
+           <input type="hidden" id="div-hi-phe_duyet_bai_viet_an_danh" value="{{$caidatnhom[0]->phe_duyet_bai_viet_an_danh}}">
+           <input type="hidden" id="div-hi-phe_duyet_bai_viet_binh_thuong" value="{{$caidatnhom[0]->phe_duyet_bai_viet_binh_thuong}}">
+           
            <div class="divchuaallttnhom">
                 <div class="divchuaittnhom" ><i class="fa fa-flag-o fa-2x" aria-hidden="true"></i></div>
                 <div class="divttinhom">
