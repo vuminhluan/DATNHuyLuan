@@ -80,7 +80,7 @@ function submittaonhom()
         }
 
     }).done(function(data){
-
+            var vCV01=cCV02=cCV03=cCV04=cCaiDat=true;
             //Thêm chính người tạo nhóm này là thành viên của nhóm
             $.ajax({
             url: link_host+'/ajax/postthemthanhvienvaonhomne',
@@ -96,6 +96,8 @@ function submittaonhom()
 
             }}).done(function(data){
                 
+                if(vCV01){
+                    vCV01=!vCV01;
                      $.ajax({
                                 url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
                                 type:'POST',
@@ -109,6 +111,9 @@ function submittaonhom()
                                 }}).done(function(data){
                                       //  alert(data);
                                 })
+                         }
+                if(cCV02){
+                    cCV02=!cCV02;
                      $.ajax({
                                 url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
                                 type:'POST',
@@ -122,6 +127,9 @@ function submittaonhom()
                                 }}).done(function(data){
                                      //   alert(data);
                                 })
+                            }
+                if(cCV03){
+                    cCV03=!cCV03;
                     $.ajax({
                                 url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
                                 type:'POST',
@@ -135,6 +143,9 @@ function submittaonhom()
                                 }}).done(function(data){
                                      //   alert(data);
                                 })
+                            }
+                if(cCV04){
+                    cCV04=!cCV04;
                     $.ajax({
                                 url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
                                 type:'POST',
@@ -148,10 +159,10 @@ function submittaonhom()
                                 }}).done(function(data){
                                      //   alert(data);
                                 }) 
-
-
-
-                                alert(manhom+loainhom);
+}
+                if(cCaiDat){
+                    cCaiDat=!cCaiDat;
+                             //   alert(manhom+loainhom);
                      $.ajax({
                                 url: link_host+'/ajax/postcaidatnhomne',
                                 type:'POST',
@@ -170,17 +181,20 @@ function submittaonhom()
 
                                 }}).done(function(data){
                                      //   alert(data);
-                                })           
+                                })     
+                                }      
                     
                 
-                     
+                              $('#input-tennhom').val('');
+            gotogroup(manhom);   
             })
          //   alert(tennhom+"tao thanh cong");
           //  alert(data);
             //sau khi xong thì chuyển về tab các nhóm // hàm này bên content-menu-popupjs.js
-            $('#input-tennhom').val('');
-            opencontent_nhom(event,'div-content-gr-thamgia-quanly'); 
-             ajaxlstnhomdathamgia_quanly();
+
+            // ajaxlstnhomdathamgia_quanly();
+            // opencontent_nhom(event,'div-content-gr-thamgia-quanly'); 
+
     })
     })
 }
@@ -194,7 +208,7 @@ function submittaonhom()
 var modal = document.getElementById('div-dynamic-menu');
 
 // Get the button that opens the modal
-var btn = document.getElementById("btn-show-dynamic-menu");
+var btnx = document.getElementById("btn-show-dynamic-menu");
 
 var btnlinhom=document.getElementById("li-nav-nhom");
 // Get the <span> element that closes the modal
@@ -208,7 +222,7 @@ btnlinhom.onclick=function(){
     // temptaonhom.click();
     //opencontent_nhom(event,'div-content-tao-nhom');
 }
-btn.onclick = function() {
+btnx.onclick = function() {
     modal.style.display = "block";
     ajaxlstnhomdathamgia_quanly();
 }

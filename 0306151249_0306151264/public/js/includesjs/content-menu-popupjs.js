@@ -1,7 +1,7 @@
-function gotogroup($manhom) {
-	//alert($manhom);
-	window.location.href = "http://localhost/DATNHuyLuan/0306151249_0306151264/public/gr/"+$manhom;
-}
+// function gotogroup($manhom) {
+// 	//alert($manhom);
+// 	window.location.href = "http://localhost/DATNHuyLuan/0306151249_0306151264/public/gr/"+$manhom;
+// }
 
 function opencontent_nhom(evt, cityName) {
     // Declare all variables
@@ -17,7 +17,8 @@ function opencontent_nhom(evt, cityName) {
     // evt.currentTarget.className += " active";
 
     //hàm dưới đây để lấy list nhóm của tài khoản đăng nhập = cách sau mỗi lần chọn tab mới trong dynamic-menu
-    getlstnhomcuataikhoanthamgia();getlstnhomnguoidungdangxingianhap();
+    getlstnhomcuataikhoanthamgia();
+    getlstnhomnguoidungdangxingianhap();
 }
 
 //dành cho thứ bảy 26/6/2018

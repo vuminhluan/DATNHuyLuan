@@ -8,6 +8,13 @@ var myregex = {
 };
 
 
+function gotogroup($manhom) {
+  //alert($manhom);
+  window.location.href = "http://localhost/DATNHuyLuan/0306151249_0306151264/public/gr/"+$manhom;
+}
+
+
+
 function createboxhoilydotocao(ma_loai_bao_cao,ma_noi_nhan_bao_cao,nguoi_gui_bao_cao,ma_doi_tuong_bi_bao_cao,ma_noi_tiep_nhan_bao_cao){
 	var soluongkitutocao = 267;
 	var noidung="";

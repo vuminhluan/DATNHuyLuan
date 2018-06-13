@@ -101,9 +101,16 @@ function showlistbaivietchopheduyet(manhom){
                     var divtop = document.createElement("div");
                         divtop.className="toppopuptocaopd";
                         divtop.textContent="Phê duyệt bài viết";
+                        divtop.id="divtoppheduyetbaiviet";
                             var spanx= document.createElement("SPAN");
                                 spanx.className="fa fa-times";
                                 spanx.style.marginLeft="575px";
+                                spanx.addEventListener("click",function(){
+                                    // var e = document.getElementById("popupbaocao");
+                                    // e.parentNode.removeChild(e);
+                                   var e = document.getElementById("popuppheduyetbaiviet");
+                                    e.parentNode.removeChild(e);
+                                })
                         divtop.appendChild(spanx);
 
                     var divbody = document.createElement("div");
