@@ -153,11 +153,6 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
               Thoigiananbaiviet=$("#ipdtngayanbaiviet").val();
             }
           }
-
-
-
-
-
           if ($('#ckbthubai').is(":checked")&&$('#ckbkhaosat').is(":checked"))
           {
 //đoạn này đầu tạo folder khi cả 2 cùng chẹck

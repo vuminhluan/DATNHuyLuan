@@ -236,6 +236,12 @@ class BaiViet extends Controller
                 ->update(['trang_thai'=> $rql->trang_thai]);
 
     }
+    public function updatetatcabaiviet(Request $rql){
+        DB::table("bai_viet")
+                ->where([["ma_chu_bai_viet",$rql->ma_chu_bai_viet],["trang_thai","2"]])
+                ->update(['trang_thai'=> $rql->trang_thai]);
+
+    }
 
     public function GetBaiVietPhanTrang(Request $rql){
           // $path = "?manho"
@@ -258,7 +264,23 @@ class BaiViet extends Controller
           return  view("baiviet.hienthibaiviet",["lstbaiviet"=>$listbaiviet]);
     }
 
-
+    public function GetBaiVietPhanTrangKiemDuyet(Request $rql){
+          // $path = "?manho"
+        $soluongbaivietdalay = $rql->soluongbaivietkiemduyetdalay;
+        $soluongbaivietcanlay = $rql->soluongbaivietkiemduyetcanlay;
+                $listbaiviet      = DB::table('bai_viet')
+                                ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
+                                ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
+                                ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
+                                ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet')//
+                                ->where([["bai_viet.ma_chu_bai_viet",$rql->ma_nhom],["bai_viet.trang_thai","1"]])
+                                ->orderBy('bai_viet.ma_bai_viet','desc')
+                                ->offset($soluongbaivietdalay)
+                                ->limit($soluongbaivietcanlay)   
+                                ->get();
+                                // ->setPath("?ma_nhom=".$rql->ma_nhom);
+          return  view("baiviet.hienthibaivietkiemduyet",["lstbaiviet"=>$listbaiviet]);
+    }
 
     public function updateykienbinhchon($rql,$trangthai){
         DB::table("nguoi_chon_y_kien")

@@ -111,44 +111,85 @@ margin-top: 5px;margin-right: 5px;
 
 
 .divmainnoidungpopuppd{
-  margin-top: -75px;
+  margin-top: -94px;
   border-radius: 3px;
   /*border:solid 1px #9695d8;*/
   position: fixed;
-  margin-left:  23%;
-  width: 750px;
-  height: 600px;
+  margin-left:  20%;
+  width: 830px;
+  height: 650px;
   background-color: white;
 
 }
 .toppopuptocaopd{
       font-family:  'myFont', Arial, Helvetica, sans-serif;
-  font-size: 15px;
+  font-size: 18px;
+  background-color: #e4e6e83d;
   float: left;
   font-weight: bold;
   border-top-left-radius:  5px;
   border-top-right-radius:  5px;
   padding: 5px;
-  padding-top: 13px;
+  padding-top: 9px;
   width: 100%;
-  height: 50px;
+  height: 40px;
   text-align: center;
    border-bottom: solid 1px #eadcf238;
 
 }
 .divbodynoidungpopuppd{
   padding: 10px;
-  padding-left: 20px;
+  padding-right: 2px;
+  padding-left: 10px;
    /*border-top: solid 1px #eadcf2; */
-  height: 590px;
+  height: 650px;
 }
+
+.divtopbodypheduyetbaiviet{
+  /*margin-top: 40px;*/
+height: 40px;
+}
+.divbodybodypheduyetbaiviet{
+height: 560px;
+overflow: auto;
+}
+
+.divbotbodybodypheduyetbaiviet{
+  height: 90%;
+}
+.divbotbodypheduyetbaiviet{
+  cursor: pointer;
+  padding-top: 0px;
+  border-radius: 10px;
+  margin-top: 13px;
+  height: 20px;
+  text-align: center;
+  background-color:#d1d3f540;
+}
+.divbotbodypheduyetbaiviet:hover{
+  background-color:#d1d3f599;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .divbotpopuptocaopd{
   width: 96%;
   margin-left: 2%;
   margin-right: 2%;
   height: 30px;
   padding: 6px;
-  border-top: solid 1px #eadcf238; 
+  /*border-top: solid 1px #eadcf238; */
 }
 
 
@@ -192,4 +233,111 @@ margin-top: 5px;margin-right: 5px;
   color: white;
   background-color: #9695d8;
   box-shadow: 1px 1px 1px #9695d8;
+}
+
+
+.divbtnduyetbaivietkiemduyet{
+   font-weight: bold;
+  color: green;
+  text-align: center;
+  padding: 8px;
+   border:solid 1px transparent; width: 80px;height: 40px;float: left;
+   border-radius: 3px;margin-bottom: 5px;margin-top: 5px;
+     background-color:  #ccf3c730; 
+}
+.divbtnduyetbaivietkiemduyet:hover{
+  background-color:  #ccf3c7ab; 
+  cursor: pointer;
+  color: white;
+}
+.divbtnhuybaivietkiemduyet{
+   font-weight: bold;
+  color: red;
+    text-align: center;
+    padding: 8px;
+     border:solid 1px transparent; width: 80px;height: 40px;float: left;
+   border-radius: 3px;margin-bottom: 5px;
+    background-color:  #f36d6d0d; 
+}
+.divbtnhuybaivietkiemduyet:hover{
+     background-color:  #f36d6d94; 
+       cursor: pointer;
+       color: white;
+}
+
+
+.btndongyduyetbai{
+    font-family:  'myFont', Arial, Helvetica, sans-serif;
+  font-size: 15px;
+ /*// padding: 1px;*/
+  text-align: center;
+  cursor: pointer;
+  width: 80px;
+  height: 25px;
+  border-radius: 2px;
+  border:solid 1px transparent;
+  float: right;
+  margin-right: 5px;
+  /*background-color: #b3b7d812;*/
+  color: #24eb0cab;
+}
+
+.btnhuyduyetbai{
+    font-family:  'myFont', Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  /*//padding: 4px;*/
+  text-align: center;
+  cursor: pointer;
+  width: 80px;
+  height: 25px;
+  border-radius: 2px;
+  border:solid 1px transparent;
+  float: right;
+  margin-right: 5px;
+  /*background-color: #b3b7d812;*/
+  color: #ff000094;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#divbodybodykiemduyetbaiviet::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+  background-color: #e4e6e82b;
+}
+
+#divbodybodykiemduyetbaiviet::-webkit-scrollbar
+{
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+#divbodybodykiemduyetbaiviet::-webkit-scrollbar-thumb
+{
+  background-color: #18222c47;
+/*  border: 1px solid #18222c47;*/
 }

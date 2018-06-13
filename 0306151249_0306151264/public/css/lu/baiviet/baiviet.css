@@ -498,9 +498,7 @@ input[type="date"], focus {
   .content{
     float:left;   width:560px; margin: 4px;margin-top: 8px;
   }
-  .subcontent{
-    float:left; background-color: white;  width:560px; height: 500px;margin-bottom: 8px;box-shadow: 1px 2px 5px #9695d8;border: solid 1px #eadcf2;
-  }
+
   .rightnav{
      float:left; background-color: transparent; width:240px; height: auto;margin: 4px;margin-top: 8px;border-radius: 1%;
      /*box-shadow: 1px 2px 5px #9695d8;border: solid 1px #eadcf2;*/

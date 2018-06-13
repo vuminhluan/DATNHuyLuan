@@ -91,6 +91,10 @@ function roinhom11(prl){
     // console.log("hohohoho");
 }
 
+
+var soluongbaivietkiemduyetdalay=0;
+var soluongbaivietkiemduyetcanlay=3;
+
 function showlistbaivietchopheduyet(manhom){
         var divtobig = document.createElement("div");
             divtobig.className="modal";
@@ -104,44 +108,103 @@ function showlistbaivietchopheduyet(manhom){
                         divtop.id="divtoppheduyetbaiviet";
                             var spanx= document.createElement("SPAN");
                                 spanx.className="fa fa-times";
-                                spanx.style.marginLeft="575px";
+                                spanx.style.marginLeft="315px";
+                                spanx.style.cursor="pointer";
+                                spanx.style.position="absolute";
                                 spanx.addEventListener("click",function(){
                                     // var e = document.getElementById("popupbaocao");
                                     // e.parentNode.removeChild(e);
                                    var e = document.getElementById("popuppheduyetbaiviet");
                                     e.parentNode.removeChild(e);
+                                    soluongbaivietkiemduyetdalay=0;
                                 })
                         divtop.appendChild(spanx);
 
                     var divbody = document.createElement("div");
                         divbody.className="divbodynoidungpopuppd";
-                        divbody.textContent="";
+                        divbody.id="contentpheduyetbody";
+                        // divbody.textContent="";
+                            var divtopbody = document.createElement("div");
+                                divtopbody.className="divtopbodypheduyetbaiviet";
+
+                            var divbodybody = document.createElement("div");
+                                divbodybody.className="divbodybodypheduyetbaiviet";
+                                divbodybody.id="divbodybodykiemduyetbaiviet";
+                                    //  var divscroll = document.createElement("div");
+                                    // divscroll.className="force-overflow";
+                                    //  divbodybody.appendChild(divscroll);
+                               
+
+                            var divbotbody = document.createElement("div");
+                                divbotbody.className="divbotbodypheduyetbaiviet";
+                                divbotbody.textContent="Xem thêm";
+                                divbotbody.id="botbodyxemthempheduyetbaiviet";
+                                divbotbody.addEventListener("click",function(){
+                                   // alert();
+                                   // alert($('#divbodybodykiemduyetbaiviet')[0].scrollHeight)
+                                   // alert($("#divbodybodykiemduyetbaiviet").scrollTop());
+                                    $("#divbodybodykiemduyetbaiviet").scrollTop( document.getElementById("divbodybodykiemduyetbaiviet").scrollHeight);
+                                    loadthemduyetbaiviet();
+                                })
+
+                           
+                        // divbody.appendChild(divscroll);
+                        divbody.appendChild(divtopbody);
+                        divbody.appendChild(divbodybody);
+                        divbody.appendChild(divbotbody);
                     var divbot = document.createElement("div");
                         divbot.className="divbotpopuptocaopd";
-                        // var btndongy = document.createElement("div");
-                        //     btndongy.textContent="Đồng ý"
-                        //     btndongy.className="btndongypopupys";
-                        //     btndongy.addEventListener("click",function(){
-                        //        //   eval(namef+'(prl);');
-                        //        var e = document.getElementById("popupbaocao");
-                        //            e.parentNode.removeChild(e);
-                        //     })
-                        // var btnhuybo = document.createElement("div");
-                        //     btnhuybo.className="btnhuypopupys";
-                        //     btnhuybo.textContent="Xác nhận";
-                        //     btnhuybo.addEventListener("click",function(){
-                        //        var e = document.getElementById("popupbaocao");
-                        //         e.parentNode.removeChild(e);
-                        //     })
-                       // divbot.appendChild(btndongy);
-                        // divbot.appendChild(btnhuybo);
+
+
                      divto.appendChild(divtop);
                      divto.appendChild(divbody);
                      divto.appendChild(divbot);
             divtobig.appendChild(divto);
+
       document.getElementById("bodymaster").appendChild(divtobig);
+loadthemduyetbaiviet();
 }
 
+// $("#divbodybodykiemduyetbaiviet").scroll(function() {
+// alert("hihihi");
+// if ($("#divbodybodykiemduyetbaiviet").scrollTop()==document.getElementById("divbodybodykiemduyetbaiviet").scrollHeight) {
+//     $("#botbodyxemthempheduyetbaiviet").css("display","block");
+
+// }else{
+//     $("#botbodyxemthempheduyetbaiviet").css("display","none");
+// }
+
+// })
+
+
+
+
+
+
+function loadthemduyetbaiviet(){
+                                    var blockdongbopheduyetbaiviet = true;
+                               if (blockdongbopheduyetbaiviet) {
+                                            blockdongbopheduyetbaiviet=!blockdongbopheduyetbaiviet;
+                                           
+                                      $.ajax({
+                                        url:link_host+'/ajax/getbaivietphantrangkiemduyetne',
+                                        type:'GET',
+                                        data:{
+                                            ma_nhom:$("#div-hi-chu-bai-viet-ma-nhom").val(),
+                                            soluongbaivietkiemduyetdalay:soluongbaivietkiemduyetdalay,
+                                            soluongbaivietkiemduyetcanlay:soluongbaivietkiemduyetcanlay
+                                        }
+                                    }).done(function(data){
+                                        
+                                       // console.log(data);
+                                        var divpost = document.createElement("div");
+                                            divpost.innerHTML=data;
+                                        document.getElementById('divbodybodykiemduyetbaiviet').appendChild(divpost); 
+                                    }) 
+                                     soluongbaivietkiemduyetdalay+=2;
+                                }
+
+}
 
 
 

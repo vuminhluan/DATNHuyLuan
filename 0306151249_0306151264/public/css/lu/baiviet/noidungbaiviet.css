@@ -1,5 +1,28 @@
 .subcontent{
-	height: auto; margin-bottom:8px;border-radius: 3px; border: solid 1px #eadcf2;
+	height: auto; 
+	margin-bottom:8px;
+	border-radius: 3px; 
+	border: solid 1px #eadcf2;
+    float:left; 
+    background-color: white;  
+    width:560px;
+    box-shadow: 1px 2px 5px #9695d8;
+
+  
+  
+}
+.subcontentpheduyet{
+	height: auto; 
+	margin-bottom:8px;
+	border-radius: 3px; 
+	border: solid 1px #e4e6e8;
+    float:left; 
+    background-color: white;  
+    width:560px;
+    /*box-shadow: 1px 2px 5px #9695d8;*/
+
+  
+  
 }
 .headtus{
 

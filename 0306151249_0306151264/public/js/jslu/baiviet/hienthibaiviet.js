@@ -13,14 +13,54 @@ function xoabaivietnay(prl_mabaiviet){
 		data:{
 			_token:$('input[name=_token]').val(),
 			ma_bai_viet:prl_mabaiviet,
-			trang_thai:"0"
+			trang_thai:"0" // xóa bài viết
 		}
 	}).done(function(data){
 		$("#divbignoidungmotbaiviet-"+prl_mabaiviet).css("display","none");
 	})
 }
 
+function pheduyetbaivietnay(prl_mabaiviet){
+	$.ajax({
+		url:link_host+'/ajax/updatebaivietne',
+		type:'POST',
+		data:{
+			_token:$('input[name=_token]').val(),
+			ma_bai_viet:prl_mabaiviet,
+			trang_thai:"1" // được phê duyệt / 2 là chờ
+		}
+	}).done(function(data){
+		 $("#divbignoidungmotbaiviet-"+prl_mabaiviet).css("display","none");
+	})
+}
+function khongpheduyetbaivietnay(prl_mabaiviet){
+	$.ajax({
+		url:link_host+'/ajax/updatebaivietne',
+		type:'POST',
+		data:{
+			_token:$('input[name=_token]').val(),
+			ma_bai_viet:prl_mabaiviet,
+			trang_thai:"3" //3 là không được phê duyệt
+		}
+	}).done(function(data){
+		 $("#divbignoidungmotbaiviet-"+prl_mabaiviet).css("display","none");
+	})
+}
 
+
+function updatetatcabaiviet(manhom,trangthaiup){
+	$.ajax({
+		url:link_host+'/ajax/updatetatcabaivietne',
+		type:'POST',
+		data:{
+			_token:$('input[name=_token]').val(),
+			ma_chu_bai_viet:manhom,
+			trang_thai:trangthaiup //3 là không được phê duyệt
+		}
+	}).done(function(data){
+		$("#divbodybodykiemduyetbaiviet").empty();
+	})
+}
 // $(document).ready(function(){
 // $('.page-item a').on('click', function(e){
 //     e.preventDefault();

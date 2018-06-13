@@ -15,6 +15,8 @@ Route::get("baiviet", function(){
 
 Route::get("/ajax/getbaivietphantrangne","BaiVietController\BaiViet@GetBaiVietPhanTrang")
 ->name("baiviet.trang");
+Route::get("/ajax/getbaivietphantrangkiemduyetne","BaiVietController\BaiViet@GetBaiVietPhanTrangKiemDuyet")
+->name("baiviet.trangkiemduyet");
 
 Route::get("/ajax/getsoluongbaivietcuamotnhomne",'BaiVietController\BaiViet@getsoluongbaivietcuamotnhom')
 ->name("getsoluongbaivietcuamotnhom");
@@ -128,6 +130,10 @@ Route::get('/ajax/getkiemtravoteykienne',"BaiVietController\BaiViet@getkiemtravo
 
 Route::post('/ajax/updatebaivietne',"BaiVietController\BaiViet@updatebaiviet")
 ->name("updatebaiviet");
+
+Route::post('/ajax/updatetatcabaivietne',"BaiVietController\BaiViet@updatetatcabaiviet")
+->name("updatetatcabaiviet");
+
 
 Route::post('/ajax/themhuyluachonykienbaivietne',"BaiVietController\BaiViet@themhuyluachonykienbaiviet")
 ->name("themhuyluachonykienbaiviet");

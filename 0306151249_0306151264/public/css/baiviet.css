@@ -347,9 +347,7 @@ input[type="date"], focus {
   .content{
     float:left;   width:560px; margin: 4px;margin-top: 8px;
   }
-  .subcontent{
-    float:left; background-color: white;  width:560px; height: 600px;margin-bottom: 8px;
-  }
+
   .rightnav{
      float:left; background-color: rgb(118, 223, 236); width:300px; height: 700px;margin: 4px;margin-top: 8px;border-radius: 1%;
   }
