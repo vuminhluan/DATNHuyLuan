@@ -506,8 +506,8 @@ input[type="date"], focus {
      /*box-shadow: 1px 2px 5px #9695d8;border: solid 1px #eadcf2;*/
   }
   .divtoprightnav{
-     float:left; background-color: white; width:240px; height: 45px;border-radius: 2%;
-     box-shadow: 1px 2px 5px #9695d8;border: solid 1px #eadcf2;
+     float:left; background-color: white; width:240px; height: 45px;border-radius: 3%;
+     box-shadow: 1px 2px 5px #9695d8;border: solid 1px #eadcf2;margin-bottom: 5px;
   }
   #tuychonnhom{
       

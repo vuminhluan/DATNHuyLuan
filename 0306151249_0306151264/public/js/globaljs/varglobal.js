@@ -68,12 +68,15 @@ function createboxhoilydotocao(ma_loai_bao_cao,ma_noi_nhan_bao_cao,nguoi_gui_bao
 	        					}).done(function(data){
 	        						console.log(data);
 	        						if(data=="1"){
-	        							alert("Báo cáo thành công");
-	        						}else{
-	        							alert("Bạn đã báo cáo nội dung này");
-	        						}
-                  							  var e = document.getElementById("popupbaocao"+ma_doi_tuong_bi_bao_cao);
+	        							var e = document.getElementById("popupbaocao"+ma_doi_tuong_bi_bao_cao);
                   							  e.parentNode.removeChild(e);
+	        							thongbaopopupy("Thông báo","Báo cáo thành công");
+	        						}else{
+	        							var e = document.getElementById("popupbaocao"+ma_doi_tuong_bi_bao_cao);
+                  							  e.parentNode.removeChild(e);
+	        							thongbaopopupy("Thông báo","Bạn đã báo cáo nội dung này");
+	        						}
+                  							  
 	        					})
 	        				})
 	        			var btnhuybo = document.createElement("div");
@@ -175,7 +178,45 @@ function thucthifuncysno2p(prl1,prl2,namef,noidungcanhbao,textcanhbao){
 }
 
 
+function thongbaopopupy(noidungcanhbao,textcanhbao){
+        var divtobig = document.createElement("div");
+            divtobig.className="modal";
+            divtobig.style.display="block";
+            divtobig.id="popupbaocao";
+                var divto = document.createElement("div");
+                    divto.className="divmainnoidungpopupys";
+                    var divtop = document.createElement("div");
+                        divtop.className="toppopuptocaoys";
+                        divtop.textContent=noidungcanhbao;
 
+                    var divbody = document.createElement("div");
+                        divbody.className="divbodynoidungpopupys";
+                        divbody.textContent=textcanhbao;
+                    var divbot = document.createElement("div");
+                        divbot.className="divbotpopuptocaoys";
+                        var btndongy = document.createElement("div");
+                            btndongy.textContent="Đồng ý"
+                            btndongy.className="btndongypopupys";
+                            btndongy.addEventListener("click",function(){
+                               //   eval(namef+'(prl);');
+                               var e = document.getElementById("popupbaocao");
+                                   e.parentNode.removeChild(e);
+                            })
+                        // var btnhuybo = document.createElement("div");
+                        //     btnhuybo.className="btnhuypopupys";
+                        //     btnhuybo.textContent="Xác nhận";
+                        //     btnhuybo.addEventListener("click",function(){
+                        //        var e = document.getElementById("popupbaocao");
+                        //         e.parentNode.removeChild(e);
+                        //     })
+                        divbot.appendChild(btndongy);
+                        // divbot.appendChild(btnhuybo);
+                     divto.appendChild(divtop);
+                     divto.appendChild(divbody);
+                     divto.appendChild(divbot);
+            divtobig.appendChild(divto);
+      document.getElementById("bodymaster").appendChild(divtobig);
+}
 
 
 

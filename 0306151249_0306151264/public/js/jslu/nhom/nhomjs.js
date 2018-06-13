@@ -1,18 +1,10 @@
 var modal_nhom = document.getElementById('div-setting-nhom-menu');
-// var btn_nhom = document.getElementById("div-btn-show-menu-setting-nhom");
-// btn_nhom.onclick = function() {
-//     //alert("click thong bao");
-//     modal_nhom.style.display = "block";
-
-//    // opentab_lstthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());// mặc định khi mở load list thành viên của nhóm
-// }
-
-
 
 function showhidepoprpnhom(){
-    ($("#tuychonnhom").css("display")=="block")?$("#tuychonnhom").css("display","none"):$("#tuychonnhom").css("display","block");
+    ($("#tuychonnhom").css("display")=="block")
+    ?$("#tuychonnhom").css("display","none")
+    :$("#tuychonnhom").css("display","block");
 }
-
 var soluongbaivietdalay=10;
 var soluongbaivietcanlay=4;
 $(document).scroll(function() {
@@ -37,15 +29,8 @@ $(document).scroll(function() {
                                     console.log(data);
                                     var divpost = document.createElement("div");
                                         divpost.innerHTML=data;
-                                    document.getElementById('divnoidungcon').appendChild(divpost);
-                                   
-                                })
-                                }
-                            }
-                     
-     }
-
-    
+                                    document.getElementById('divnoidungcon').appendChild(divpost); 
+                                })}}} 
 })
 
 
@@ -87,20 +72,6 @@ function loadxemthembaiviet(prlmanhom){
 }
 
 
-// $(document).ready(function(){
-// $('.page-link').on('click', function(e){
-//     e.preventDefault();
-//     // var url = $(this).attr('href');
-//     // $.post(url, $('#search').serialize(), function(data){
-//     //     $('#posts').html(data);
-//     // });
-// });
-
-// });
-
-
-
-
 function roinhom11(prl){
     var manhom=prl;
  //  alert("say click"+prl.currentTarget.myparamMaNhom+"-"+prl.currentTarget.myparamMaTaiKhoan);
@@ -120,18 +91,82 @@ function roinhom11(prl){
     // console.log("hohohoho");
 }
 
-// var NH00000003 = function(){
+function showlistbaivietchopheduyet(manhom){
+        var divtobig = document.createElement("div");
+            divtobig.className="modal";
+            divtobig.style.display="block";
+            divtobig.id="popuppheduyetbaiviet";
+                var divto = document.createElement("div");
+                    divto.className="divmainnoidungpopuppd";
+                    var divtop = document.createElement("div");
+                        divtop.className="toppopuptocaopd";
+                        divtop.textContent="Phê duyệt bài viết";
+                            var spanx= document.createElement("SPAN");
+                                spanx.className="fa fa-times";
+                                spanx.style.marginLeft="575px";
+                        divtop.appendChild(spanx);
 
-//     console.log("haha");
-// };
+                    var divbody = document.createElement("div");
+                        divbody.className="divbodynoidungpopuppd";
+                        divbody.textContent="";
+                    var divbot = document.createElement("div");
+                        divbot.className="divbotpopuptocaopd";
+                        // var btndongy = document.createElement("div");
+                        //     btndongy.textContent="Đồng ý"
+                        //     btndongy.className="btndongypopupys";
+                        //     btndongy.addEventListener("click",function(){
+                        //        //   eval(namef+'(prl);');
+                        //        var e = document.getElementById("popupbaocao");
+                        //            e.parentNode.removeChild(e);
+                        //     })
+                        // var btnhuybo = document.createElement("div");
+                        //     btnhuybo.className="btnhuypopupys";
+                        //     btnhuybo.textContent="Xác nhận";
+                        //     btnhuybo.addEventListener("click",function(){
+                        //        var e = document.getElementById("popupbaocao");
+                        //         e.parentNode.removeChild(e);
+                        //     })
+                       // divbot.appendChild(btndongy);
+                        // divbot.appendChild(btnhuybo);
+                     divto.appendChild(divtop);
+                     divto.appendChild(divbody);
+                     divto.appendChild(divbot);
+            divtobig.appendChild(divto);
+      document.getElementById("bodymaster").appendChild(divtobig);
+}
 
 
 
 
 
-              // $.ajax({
-              //   url:link_host+'/ajax/getsoluongbaivietcuamotnhomne',
-              //   type:'GET',
-              //   data:{
-              //       ma_chu_bai_viet:$("#div-hi-chu-bai-viet-ma-nhom").val(),
-              //   }}).done(function(data){   })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var btn_nhom = document.getElementById("div-btn-show-menu-setting-nhom");
+// btn_nhom.onclick = function() {
+//     //alert("click thong bao");
+//     modal_nhom.style.display = "block";
+
+//    // opentab_lstthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());// mặc định khi mở load list thành viên của nhóm
+// }

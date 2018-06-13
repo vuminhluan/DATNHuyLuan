@@ -14,9 +14,9 @@
 </div>
 <!-- end ảnh bìa -->
        <div class="leftnav" >
-        
+        {{-- ||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV03"||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV04" --}}
             @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
-               @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV01"||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV02"||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV03"||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV04")
+               @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV01"||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV02")
                    <div id="thongtincuanhom">
                       <div class="divomshowcaidatnhomhi" >
                        <div id="div-btn-show-menu-setting-nhom" onclick="($('#div-setting-nhom-menu').css('display')=='none')?$('#div-setting-nhom-menu').css('display','block'):$('#div-setting-nhom-menu').css('display','none')" class="dvbtnshowcaidatnhom">
@@ -79,6 +79,27 @@
                 </ul>
               </div>
           </div>
+          
+           @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
+               @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV03")
+                  <div id="divpheduyetbaivietnhom" class="divtoprightnav" style="padding: 12px;cursor: pointer;">
+                   <center><ion-icon name="contacts"></ion-icon>&nbsp;<span>Phê duyệt thành viên</span>&nbsp;&nbsp;</center>
+                  </div>
+                  @break
+               @endif
+            @endfor
+
+
+           @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
+               @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV04")
+                  <div id="pheduyetthanhviengianhapnhom" class="divtoprightnav" onclick="showlistbaivietchopheduyet('{{$t}}')" style="padding: 12px;cursor: pointer;">
+                  <center><ion-icon name="clipboard"></ion-icon>  <span>Phê duyệt bài viết</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+                  </div>
+                  @break
+               @endif
+            @endfor
+          
+
         </div>
 
     </div>
