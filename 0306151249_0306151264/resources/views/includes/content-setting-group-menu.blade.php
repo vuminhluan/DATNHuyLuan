@@ -18,7 +18,7 @@
              </div>
          </div>
         @endif --}}
-        @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV03")
+{{--         @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV03")
              <div onclick="chonchucnangtrongnhom('{{$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu}}')" class="div-big-item-choose-menu-group">
                  <div  class="div-item-choose-menu-group" >
                    <center><span class="fa fa-check-circle-o fa-5x"></span></center>
@@ -37,7 +37,7 @@
                  <center><span>{{$quyentruycapnhomcuataikhoan[$i]->ten_chuc_vu}}</span></center>
                  </div>
              </div>
-        @endif
+        @endif --}}
      
        @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV02")
            <div class="div-big-item-choose-menu-group" onclick="chonchucnangtrongnhom('CV01')" >
@@ -82,10 +82,10 @@
             <div  style="width: 100%;height: 100%;margin-top: 17px; padding-left: 20px;padding-right: 20px;" >
                   <div class="tab">
                   <button class="tablinks active" id="tablinkdivthanhvien" onclick="openCity(event, 'divthanhvien'),opentab_lstthanhvien('{{$t}}')"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Thành viên</button>
-                  <button class="tablinks" id="tablinkdivpheduyetthanhvien" onclick="openCity(event, 'divpheduyetthanhvien'),opentab_pheduyetthanhvien('{{$t}}','')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Phê duyệt thành viên</button>
-                  <button class="tablinks" id="tablinkdivpheduyetbaiviet" onclick="openCity(event, 'divpheduyetbaiviet')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Phê duyệt bài viết</button>
+{{--                   <button class="tablinks" id="tablinkdivpheduyetthanhvien" onclick="openCity(event, 'divpheduyetthanhvien'),opentab_pheduyetthanhvien('{{$t}}','')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Phê duyệt thành viên</button>
+                  <button class="tablinks" id="tablinkdivpheduyetbaiviet" onclick="openCity(event, 'divpheduyetbaiviet')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Phê duyệt bài viết</button> --}}
                   <button class="tablinks" id="tablinkdivbaocao" onclick="openCity(event, 'divbaocao')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Báo cáo</button>
-                  <button class="tablinks" id="tablinkdivcaidatnhom" onclick="openCity(event, 'divcaidatnhom')"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;Cài đặt</button>
+                  <button class="tablinks" id="tablinkdivcaidatnhom" onclick="openCity(event, 'divcaidatnhom'),chonchucnangtrongnhom('CV01')"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;Cài đặt</button>
                   {{-- <div style="width: 192px;height: 44px;border-bottom: solid 1px #9695d8;margin-left: 255px;margin-right: 10px;"></div> --}}
                   </div>
 

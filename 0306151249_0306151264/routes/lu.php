@@ -21,6 +21,9 @@ Route::get("/ajax/getbaivietphantrangkiemduyetne","BaiVietController\BaiViet@Get
 Route::get("/ajax/getsoluongbaivietcuamotnhomne",'BaiVietController\BaiViet@getsoluongbaivietcuamotnhom')
 ->name("getsoluongbaivietcuamotnhom");
 
+Route::post("/ajax/postupdatetatcathanhvientrongnhomne","NhomController\ThanhVienNhom@PostUpdateTatCaThanhVienTrongNhom")
+->name("PostUpdateTatCaThanhVienTrongNhom");
+
 Route::post("/ajax/postbaivietne","BaiVietController\BaiViet@Postbaiviet")
 ->name('postbaiviet');
 Route::get('/ajax/getbaiviettheonguoivietvanguoisohuune',"BaiVietController\BaiViet@Getbaiviettheonguoivietvanguoisohuu")->name('getbaiviettheonguoivietvanguoisohuu');

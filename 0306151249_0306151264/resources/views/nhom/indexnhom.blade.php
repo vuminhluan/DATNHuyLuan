@@ -78,14 +78,13 @@
                 <ul>
                   <li class="lituychonthemnhom"  onclick='createboxhoilydotocao("LBC01","NNBC1",$("#session-ma-tk").val(),"{{$t}}","ADMIN"),showhidepoprpnhom()'><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;Báo cáo nhóm </li>
                   <li class="lituychonthemnhom" onclick="thucthifuncysno('{{$t}}','roinhom11','Rời khỏi nhóm','Bạn có chắc chắn muốn rời nhóm này không?')"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Rời nhóm</li>
-
                 </ul>
               </div>
           </div>
           
            @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
                @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV03")
-                  <div id="divpheduyetbaivietnhom" class="divtoprightnav" style="padding: 12px;cursor: pointer;">
+                  <div id="divpheduyetbaivietnhom" onclick="showlistthanhvienchopheduyet('{{$t}}')" class="divtoprightnav" style="padding: 12px;cursor: pointer;">
                    <center><ion-icon name="contacts"></ion-icon>&nbsp;<span>Phê duyệt thành viên</span>&nbsp;&nbsp;</center>
                   </div>
                   @break

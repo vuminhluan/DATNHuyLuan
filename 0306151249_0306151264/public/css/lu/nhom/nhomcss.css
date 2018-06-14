@@ -133,7 +133,8 @@ margin-top: 5px;margin-right: 5px;
   padding-top: 9px;
   width: 100%;
   height: 40px;
-  text-align: center;
+  text-align: left;
+  padding-left: 13px;
    border-bottom: solid 1px #eadcf238;
 
 }
@@ -149,6 +150,21 @@ margin-top: 5px;margin-right: 5px;
   /*margin-top: 40px;*/
 height: 40px;
 }
+
+.divtopbodypheduyetthanhvien{
+  /*margin-top: 40px;*/
+height: 80px;
+border-bottom: solid 1px #eadcf2;
+margin-bottom: 10px;
+width: 99%; 
+/*padding-top: 10px;
+padding-left: 20px;*/
+}
+
+
+
+
+
 .divbodybodypheduyetbaiviet{
 height: 560px;
 overflow: auto;
@@ -244,6 +260,7 @@ overflow: auto;
    border:solid 1px transparent; width: 80px;height: 40px;float: left;
    border-radius: 3px;margin-bottom: 5px;margin-top: 5px;
      background-color:  #ccf3c730; 
+     color: #24eb0cab;
 }
 .divbtnduyetbaivietkiemduyet:hover{
   background-color:  #ccf3c7ab; 
@@ -258,6 +275,7 @@ overflow: auto;
      border:solid 1px transparent; width: 80px;height: 40px;float: left;
    border-radius: 3px;margin-bottom: 5px;
     background-color:  #f36d6d0d; 
+    color: #ff000094;
 }
 .divbtnhuybaivietkiemduyet:hover{
      background-color:  #f36d6d94; 
@@ -269,7 +287,6 @@ overflow: auto;
 .btndongyduyetbai{
     font-family:  'myFont', Arial, Helvetica, sans-serif;
   font-size: 15px;
- /*// padding: 1px;*/
   text-align: center;
   cursor: pointer;
   width: 80px;
@@ -278,14 +295,12 @@ overflow: auto;
   border:solid 1px transparent;
   float: right;
   margin-right: 5px;
-  /*background-color: #b3b7d812;*/
   color: #24eb0cab;
 }
 
 .btnhuyduyetbai{
     font-family:  'myFont', Arial, Helvetica, sans-serif;
   font-size: 15px;
-  /*//padding: 4px;*/
   text-align: center;
   cursor: pointer;
   width: 80px;
@@ -294,7 +309,6 @@ overflow: auto;
   border:solid 1px transparent;
   float: right;
   margin-right: 5px;
-  /*background-color: #b3b7d812;*/
   color: #ff000094;
 }
 
@@ -306,7 +320,23 @@ overflow: auto;
 
 
 
+#divbodybodykiemduyetthanhvien::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+  background-color: #e4e6e82b;
+}
 
+#divbodybodykiemduyetthanhvien::-webkit-scrollbar
+{
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+#divbodybodykiemduyetthanhvien::-webkit-scrollbar-thumb
+{
+  background-color: #18222c47;
+/*  border: 1px solid #18222c47;*/
+}
 
 
 
@@ -340,4 +370,140 @@ overflow: auto;
 {
   background-color: #18222c47;
 /*  border: 1px solid #18222c47;*/
+}
+
+
+
+.btnchophepthanhviengianhapnhomcss{
+
+  font-family:  'myFont', Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+  width: 120px;
+  height: 29px;
+  border-radius: 2px;
+  border:solid 1px transparent;
+  float: right;
+  margin-right: 5px;
+  color: #24eb0cab;
+  padding-left: 10px;
+  padding-top: 3px;
+    font-weight: bold;
+    background-color: #f1fdf1;
+    padding-right: 5px;
+
+}
+.btnchophepthanhviengianhapnhomcss:hover{
+  background-color:  #ccf3c7ab; color: white;
+}
+
+
+
+
+
+.btntuchoithanhviengianhapnhomcss{
+
+    font-family:  'myFont', Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+  width: 120px;
+  height: 29px;
+  border-radius: 2px;
+  border:solid 1px transparent;
+  float: right;
+  margin-right: 5px;
+  color: #ff000094;
+  padding-left: 10px;
+    padding-top: 3px;
+  font-weight: bold;
+  background-color: #fff2f2;
+
+}
+
+.btntuchoithanhviengianhapnhomcss:hover{
+
+ background-color: #f36d6d94;color: white;
+}
+
+
+
+
+
+
+
+
+.btnchopheptatcathanhviengianhapnhomcss{
+
+  font-family:  'myFont', Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+  width: 160px;
+  height: 29px;
+  border-radius: 2px;
+  border:solid 1px transparent;
+  float: right;
+  margin-right: 15px;
+  color: #24eb0cab;
+  padding-left: 10px;
+  padding-top: 3px;
+    font-weight: bold;
+  margin-top: 10px;
+  background-color: #f1fdf1;
+  padding-right: 5px;
+
+}
+.btnchopheptatcathanhviengianhapnhomcss:hover{
+  background-color:  #ccf3c7ab; color: white;
+}
+
+
+.btntuchoitatcathanhviengianhapnhomcss{
+margin-top: 10px;
+    font-family:  'myFont', Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+  width: 150px;
+  height: 29px;
+  border-radius: 2px;
+  border:solid 1px transparent;
+  float: right;
+  margin-right: 15px;
+  color: #ff000094;
+  padding-left: 10px;
+    padding-top: 3px;
+  font-weight: bold;
+  background-color: #fff2f2;
+
+}
+
+.btntuchoitatcathanhviengianhapnhomcss:hover{
+
+ background-color: #f36d6d94;
+ color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.divbodybodypheduyetthanhvien{
+  padding-left: 30px;
+height: 560px;
+overflow: auto;
 }

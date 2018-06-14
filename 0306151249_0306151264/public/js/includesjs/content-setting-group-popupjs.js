@@ -625,7 +625,7 @@ function clickpheduyetgianhapnhom(prl){
 				                    _token: $('input[name=_token]').val(),
 				                    ma_nhom:prmanhom,
 				                    ma_tai_khoan:prmataikhoan,
-                                    trang_thai:"0",
+                            trang_thai:"0",//bảng thành viên chờ phê duyệt đã bị hủy
 				                    nguoi_phe_duyet:$("#session-ma-tk").val()
 				                           
 
@@ -682,7 +682,7 @@ function clicktuchoigianhapnhom(prl){
                                      ////
                                     opentab_pheduyetthanhvien(nhomhientaidangduocchon);// cái này là gọi lại hàm cập nhật người tham gia
                             })
-
+///ajax/postupdatetatcathanhvientrongnhomne
 
 }
 

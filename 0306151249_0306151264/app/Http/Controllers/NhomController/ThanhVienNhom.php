@@ -71,6 +71,14 @@ class ThanhVienNhom extends Controller
                                     ->update(['trang_thai'=> $rql->trang_thai]);
 
     }
+
+    public function PostUpdateTatCaThanhVienTrongNhom(Request $rql){
+      return   DB::table('thanh_vien_cho_phe_duyet')
+                                    ->where([['ma_nhom',$rql->ma_nhom],['trang_thai',"2"]])
+                                    ->update(['trang_thai'=> $rql->trang_thai,'nguoi_phe_duyet'=>$rql->nguoi_phe_duyet]);
+    }
+
+
     public function PostUpdateChucVuThanhVienTrongNhom(Request $rql){
         //return $rql->ma_tai_khoan.$rql->ma_nhom.$rql->ma_chuc_vu;
         //kiểm tra người ngày trong nhóm này đã có chức này chưa 
