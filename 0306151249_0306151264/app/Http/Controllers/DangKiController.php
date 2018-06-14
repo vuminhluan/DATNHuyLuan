@@ -18,13 +18,31 @@ class DangKiController extends Controller
   public function postDangKi(Request $req)
   {
     // Kiểm tra dữ liệu // Chưa kiểm tra khi tài khoản bị vô hiệu hóa
-    $rules = [
-      'username' => 'unique:tai_khoan,ten_tai_khoan',
-      'email'    => 'unique:tai_khoan,email'
-    ];
+
+    $username_rules = 'required';
+    $email_rules = 'required';
     $messages = [
-      'username.unique' => 'Tên tài khoản đã có người sử dụng.',
-      'email.unique'    => 'Email đã có người sử dụng.'
+      'username.required' => 'Tên tài khoản không thể để trống.',
+      'email.required'    => 'Email không thể để trống.'
+    ];
+
+    $taikhoan_tentaikhoan = TaiKhoan::where('ten_tai_khoan', $req->username)->first();
+    if($taikhoan_tentaikhoan && $taikhoan_tentaikhoan->trang_thai != 4) {
+      $username_rules.='|unique:tai_khoan,ten_tai_khoan';
+      $messages['username.unique'] = 'Tên tài khoản đã có người sử dụng.';
+      // return $username_rules;
+    }
+
+    $taikhoan_email = TaiKhoan::where('email', $req->email)->first();
+    if($taikhoan_email && $taikhoan_email->trang_thai != 4) {
+      $email_rules.='|unique:tai_khoan,email';
+      $messages ['email.unique'] = 'Email đã có người sử dụng.';
+    }
+
+
+    $rules = [
+      'username' => $username_rules,
+      'email'    => $email_rules
     ];
 
     $validator = Validator::make($req->all(), $rules, $messages);
@@ -77,7 +95,7 @@ class DangKiController extends Controller
   public function themThongTinNguoiDung($ma_tai_khoan, $ho_ten_lot, $ten, $thoigian_hientai)
   {
     $anh_daidien = "default-avatar.jpg";
-    $anh_bia = "default-banner.jpg";
+    $anh_bia = "default-banner.png";
 
     $data = [
       'ma_tai_khoan'  => $ma_tai_khoan,

@@ -47,12 +47,13 @@ class DangNhapController extends Controller
 		$password = $req->password;
 		$remember = $req->remember;
 
-		$account = TaiKhoan::where('ten_tai_khoan', $username)->orwhere('email', $username)->first();
+		//  != 4 nghĩa là tìm tài khoản chưa bị vô hiệu hóa => những tài khoản bị vô hiệu hóa coi như không tồn tại trong database
+		$account = TaiKhoan::where('trang_thai', '!=', 4)->where('ten_tai_khoan', $username)->orwhere('email', $username)->first();
 
 		// Nếu tài khoản không bị vô hiệu hóa và không bị khóa do vi phạm điều khoản sử dụng thì cho tài khoản đó đăng nhập.
 		// Nói cách khác, nếu tài khoản đó Chưa kích hoạt || Đang hoạt động || Tự khóa thì được đăng nhập.
-		if($account && $account->trang_thai != 4 && $account->trang_thai != 5) {
-			if ( Auth::attempt(['ten_tai_khoan' => $username, 'password' => $password], $remember) || Auth::attempt(['email' => $username, 'password' => $password], $remember) ) {
+		if($account && $account->trang_thai != 5) {
+			if ( Auth::attempt(['ten_tai_khoan' => $username, 'password' => $password, 'hoat_dong' => 1], $remember) || Auth::attempt(['email' => $username, 'password' => $password, 'hoat_dong' => 1], $remember) ) {
 				$success = true;
 
 				// Tạo thư mục google drive (có tên là mã tài khoản) nếu chưa có

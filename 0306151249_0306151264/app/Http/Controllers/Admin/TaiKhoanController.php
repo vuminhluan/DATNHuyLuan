@@ -90,10 +90,9 @@ class TaiKhoanController extends Controller
   public function postThemTaiKhoan(Request $req)
   {
 
-  	
-
   	$slidemessage = "";
-  	$user_rules = 'required';
+  	
+  	$username_rules = 'required';
   	$email_rules = 'required';
   	$messages = [
       'username.required' => 'Tên tài khoản không thể để trống.',
@@ -105,12 +104,12 @@ class TaiKhoanController extends Controller
   	// Kiểm tra tài khoản có chứa email đó đã bị vô hiệu hóa hay chưa
   	$taikhoan_tentaikhoan = TaiKhoan::where('ten_tai_khoan', $req->username)->first();
   	if($taikhoan_tentaikhoan && $taikhoan_tentaikhoan->trang_thai != 4) {
-  		$user_rules.='|unique:tai_khoan,ten_tai_khoan';
+  		$username_rules.='|unique:tai_khoan,ten_tai_khoan';
   		$messages['username.unique'] = 'Tên tài khoản đã có người sử dụng.';
-  		// return $user_rules;
+  		// return $username_rules;
   	}
 
-  	// return $user_rules;
+  	// return $username_rules;
 
   	$taikhoan_email = TaiKhoan::where('email', $req->email)->first();
   	if($taikhoan_email && $taikhoan_email->trang_thai != 4) {
@@ -121,8 +120,8 @@ class TaiKhoanController extends Controller
   	// return $messages;
 
   	$rules = [
-      'username' => 'required|unique:tai_khoan,ten_tai_khoan',
-      'email'    => 'required|unique:tai_khoan,email'
+      'username' => $username_rules,
+      'email'    => $email_rules
     ];
     
     $validator = Validator::make($req->all(), $rules, $messages);
@@ -162,7 +161,7 @@ class TaiKhoanController extends Controller
 
   	$taikhoan->hasNguoiDung()->save($nguoidung);
 
-  	return redirect()->back()->with('slidemessage', 'Tao tai khoan thanh cong')->withInput();
+  	return redirect()->back()->with('slidemessage', 'Tạo tài khoản Mod thành công')->withInput();
 
   }
 

@@ -105,16 +105,16 @@ class CaiDatController extends Controller
   public function postVoHieuHoaTaiKhoan(Request $req)
   {
 
-
     if(! $this->xacNhanMatKhau($req->confirm_password) ) {
       return ['errors' => "Mật khẩu xác nhận không đúng"];
     }
 
     $data = [
-      "trang_thai" => 3,
+      "trang_thai" => 4,
+      "hoat_dong" => 0
     ];
 
-    $taikhoan = TaiKhoan::where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->first();
+    $taikhoan = TaiKhoan::where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->where('hoat_dong', 1)->first();
 
     // CapNhatDoiTuongTrait
     $this->capNhatDoiTuong($data, $taikhoan);
