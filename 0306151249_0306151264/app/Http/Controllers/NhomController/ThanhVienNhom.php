@@ -74,7 +74,7 @@ class ThanhVienNhom extends Controller
 
     public function PostUpdateTatCaThanhVienTrongNhom(Request $rql){
       return   DB::table('thanh_vien_cho_phe_duyet')
-                                    ->where([['ma_nhom',$rql->ma_nhom],['trang_thai',"2"]])
+                                    ->where([['ma_nhom',$rql->ma_nhom],['trang_thai',"1"]])
                                     ->update(['trang_thai'=> $rql->trang_thai,'nguoi_phe_duyet'=>$rql->nguoi_phe_duyet]);
     }
 
@@ -117,8 +117,8 @@ class ThanhVienNhom extends Controller
         $thanhviennhom->ma_nhom                         = $rql->ma_nhom;
         $thanhviennhom->ma_tai_khoan                    = $rql->ma_tai_khoan;
         $thanhviennhom->ma_chuc_vu                      = $rql->ma_chuc_vu;
-        $thanhviennhom->thoi_gian_vao_nhom              = $rql->thoi_gian_vao_nhom;
-        $thanhviennhom->thoi_gian_thoat_nhom            = $rql->thoi_gian_thoat_nhom;
+        // $thanhviennhom->thoi_gian_vao_nhom              = $rql->thoi_gian_vao_nhom;
+        // $thanhviennhom->thoi_gian_thoat_nhom            = $rql->thoi_gian_thoat_nhom;
         $thanhviennhom->trang_thai                      = $rql->trang_thai;
         $thanhviennhom->save();
           return "Đã thêm thành công thành viên vào nhóm";

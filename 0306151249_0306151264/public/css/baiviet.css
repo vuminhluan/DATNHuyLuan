@@ -328,10 +328,7 @@ input[type="date"], focus {
       /* background-color: cadetblue; */
       height: 1500px;
   }
-  #anhbia{
-    width:1184px; height: 325px; background-color: pink;border-bottom-left-radius: 10%;border-top-right-radius: 7%;
-    margin-top: 4px;
-  }
+
   .leftnav{
      float:left; background-color:#e6ecf0; width:300px; height: 1500px; margin:4px; margin-top: 8px;
   }

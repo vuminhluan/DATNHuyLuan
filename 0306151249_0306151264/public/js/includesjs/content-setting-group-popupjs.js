@@ -609,8 +609,8 @@ function clickpheduyetgianhapnhom(prl){
                     ma_nhom:prmanhom,
                     ma_tai_khoan:prmataikhoan,
                     ma_chuc_vu:"CV07",
-                    thoi_gian_vao_nhom:"2001/01/01",
-                    thoi_gian_thoat_nhom:"2001/01/01",
+                    // thoi_gian_vao_nhom:"2001/01/01",
+                    // thoi_gian_thoat_nhom:"2001/01/01",
                     trang_thai:"1"        
 
             }}).done(function(data){

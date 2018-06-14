@@ -1,5 +1,63 @@
 var modal_nhom = document.getElementById('div-setting-nhom-menu');
 
+
+
+
+
+function chonthayanhbianhom(){
+    $("#luuthayanhbianhom").css("display","block");
+    $("#huythaydoianhbianhom").css("display","block");
+    $("#chonanhthayanhbianhom").css("display","none");
+}
+
+function luuthayanhbianhom(manhom){
+    $("#luuthayanhbianhom").css("display","none");
+    $("#huythaydoianhbianhom").css("display","none");
+    $("#chonanhthayanhbianhom").css("display","block");
+}
+
+function huybothayanhbianhom(manhom){
+    // huythaydoianhbianhom
+    $("#luuthayanhbianhom").css("display","none");
+    $("#huythaydoianhbianhom").css("display","none");
+    $("#chonanhthayanhbianhom").css("display","block");
+}
+
+
+
+$( document ).ready(function() {
+  
+  function readURL(input) {
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#imganhbianhom').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#ipanhbianhom").change(function() {
+  readURL(this);
+  chonthayanhbianhom();
+});
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
 function showhidepoprpnhom(){
     ($("#tuychonnhom").css("display")=="block")
     ?$("#tuychonnhom").css("display","none")
@@ -7,6 +65,12 @@ function showhidepoprpnhom(){
 }
 var soluongbaivietdalay=10;
 var soluongbaivietcanlay=4;
+
+
+
+
+
+
 $(document).scroll(function() {
     // alert("vao r");
      if(parseFloat($(document).scrollTop())/parseFloat($(document).height())>0.4){
@@ -234,33 +298,28 @@ function showlistthanhvienchopheduyet(manhom){
                                         divpheduyettatcathanhvien.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i> &nbsp; Phê duyệt tất cả';
                                         divpheduyettatcathanhvien.className="btnchopheptatcathanhviengianhapnhomcss";
                                         divpheduyettatcathanhvien.addEventListener("click",function(){
-                                        // $.ajax({
-                                        // url: link_host+'/ajax/postupdatetatcathanhvientrongnhomne',
-                                        // type:'POST',
-                                        // data:{
-                                        //         _token: $('input[name=_token]').val(),
-                                        //         ma_nhom:prmanhom,
-                                        //         ma_tai_khoan:prmataikhoan,
-                                        //         trang_thai:"2", //2 là trạng thái bị hủy xin gia nhập
-                                        //         nguoi_phe_duyet:$("#session-ma-tk").val()
-                                                       
-
-                                        // }}).done(function(data){
-                                        //        // alert(data);
-                                        //         //sau khi hoàn tất thêm thành viên vào nhóm
-                                        //         $("#btnpheduyetgianhapnhom"+prmataikhoan).css("display","none");
-                                        //          $("#btntuchoiduyetgianhapnhom"+prmataikhoan).css("display","none");
-                                        //          ////
-                                        //         opentab_pheduyetthanhvien(nhomhientaidangduocchon);// cái này là gọi lại hàm cập nhật người tham gia
-                                        // })
-///ajax/postupdatetatcathanhvientrongnhomne
+                                            clickpheduyettatcagiathanhviennhapnhom($("#div-hi-chu-bai-viet-ma-nhom").val());
                                             $("#divbodybodykiemduyetthanhvien").empty();
+
                                         })
                                     var divtuchoitatcathanhvien = document.createElement("div");
                                         divtuchoitatcathanhvien.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i> &nbsp; Từ chối tất cả';
                                         divtuchoitatcathanhvien.className="btntuchoitatcathanhviengianhapnhomcss";
                                         divtuchoitatcathanhvien.addEventListener("click",function(){
+                                           
+                                        $.ajax({
+                                        url: link_host+'/ajax/postupdatetatcathanhvientrongnhomne',
+                                        type:'POST',
+                                        data:{
+                                                _token: $('input[name=_token]').val(),
+                                                ma_nhom:manhom,
+                                                trang_thai:"2", //2 là trạng thái bị hủy xin gia nhập
+                                                nguoi_phe_duyet:$("#session-ma-tk").val()
+                                        }}).done(function(data){
                                             $("#divbodybodykiemduyetthanhvien").empty();
+                                        })
+// /ajax/postupdatetatcathanhvientrongnhomne
+
                                         })
                                 divtopbody.appendChild(divpheduyettatcathanhvien);
                                 divtopbody.appendChild(divtuchoitatcathanhvien);
@@ -406,5 +465,68 @@ function pheduyetthanhvienvaonhomcreateelement(pr){
         document.getElementById("divbodybodykiemduyetthanhvien").appendChild(divkq);
         }
         ////
+    })
+}
+
+
+
+
+
+
+// phê duyệt tất cả các thành viên gia nhập nhóm
+function clickpheduyettatcagiathanhviennhapnhom(prmanhom){
+
+        $.ajax({
+        url: link_host+'/ajax/getlstthanhviendangchopheduyettheomanhomne',
+        type:'GET',
+        data:{
+            ma_nhom:prmanhom
+        }
+    }).done(function(data){
+
+        for (var i = 0; i < data.length; i++) {
+        var bdb1 = bdb2=bdb3=true;
+        if(bdb1){
+            bdb1=!bdb1;
+             $.ajax({
+                    url: link_host+'/ajax/postthemthanhvienvaonhomne',
+                    type:'POST',
+                    data:{
+                            _token: $('input[name=_token]').val(),
+                            ma_nhom:prmanhom,
+                            ma_tai_khoan:data[i].ma_tai_khoan,
+                            ma_chuc_vu:"CV07",
+                            trang_thai:"1"        
+                    }}).done(function(dt1){})        
+         }
+         if(bdb2){
+            bdb2=!bdb2;
+            $.ajax({
+                            url: link_host+'/ajax/postupdatethanhvienchopheduyetne',
+                            type:'POST',
+                            data:{
+                                    _token: $('input[name=_token]').val(),
+                                    ma_nhom:prmanhom,
+                                    ma_tai_khoan:data[i].ma_tai_khoan,
+                            trang_thai:"0",//bảng thành viên chờ phê duyệt đã bị hủy
+                                    nguoi_phe_duyet:$("#session-ma-tk").val()
+                            }}).done(function(dt2){})
+        }
+         if(bdb3){
+            bdb3=!bdb3;
+            $.ajax({
+                            url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
+                            type:'POST',
+                            data:{
+                                    _token: $('input[name=_token]').val(),
+                                    ma_nhom:prmanhom,
+                                    ma_tai_khoan:data[i].ma_tai_khoan,
+                                    ma_chuc_vu:"CV07",
+                                    trang_thai:"1"        
+                            }}).done(function(dt3){})
+        }
+            
+
+        }
     })
 }
