@@ -33,19 +33,6 @@
 
 $(document).ready(function() {
 
-
-	$('#page-list').change(function(event) {
-		window.location.href = $(this).val();
-	});
-
-
-	// Xem chi tiết tin nhắn
-	// $('body').on('click', '.detail-message', function(event) {
-	// 	event.preventDefault();
-	// 	var id = $(this).attr('id');
-	// 	alert(id); return;
-	// });
-
 	$('body').on('click', '.detail-message', function(event) {
 
 		$('.myloader').show();
@@ -88,28 +75,6 @@ $(document).ready(function() {
 		
 	});
 
-
-	// Action: Xóa, ...
-
-	// $('#task').change(function(){
-
-	// 	if($('input:checkbox:checked').length < 0) { 
-	// 		return;
-	// 	}
- //    var check = true;
- //    if ($(this).val()=="delete") {
- //      check = confirm('Có chắc bạn muốn xóa?');
- //    }
-
- //    if (check) {
- //      $('#post_form').submit();
- //    }
-    
-    
-
- //    $('#task option:first-child').prop('selected', true);
-    
- //  });
 
 });
 

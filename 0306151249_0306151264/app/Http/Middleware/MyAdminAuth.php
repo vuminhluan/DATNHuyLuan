@@ -16,7 +16,7 @@ class MyAdminAuth
   */
   public function handle($request, Closure $next)
   {
-    if(Auth::check() && Auth::user()->quyen == "Q0001") {
+    if(Auth::check() && (Auth::user()->quyen == "Q0001" || Auth::user()->quyen == "Q0003") ) {
       return $next($request);
     }
     if(!Auth::check()) {

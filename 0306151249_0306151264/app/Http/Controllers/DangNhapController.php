@@ -39,6 +39,9 @@ class DangNhapController extends Controller
 
 	public function postDangNhap(Request $req)
 	{
+		// session(['test'=>'Đây là session test']);
+
+		
 
 		$username = $req->username;
 		$password = $req->password;
@@ -53,7 +56,7 @@ class DangNhapController extends Controller
 				$success = true;
 
 				// Tạo thư mục google drive (có tên là mã tài khoản) nếu chưa có
-				if(!Auth::user()->thu_muc_google_drive) {
+				if(!Auth::user()->thu_muc_google_drive && Auth::user()->quyen == "Q0002") {
 					$root = env('GOOGLE_DRIVE_FOLDER_ID');
 					$foldername = Auth::user()->ma_tai_khoan;
 					$path = $root.'/'.$foldername;

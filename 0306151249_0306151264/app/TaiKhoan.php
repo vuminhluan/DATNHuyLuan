@@ -18,6 +18,10 @@ class TaiKhoan extends Model implements \Illuminate\Contracts\Auth\Authenticatab
   const CREATED_AT = 'thoi_gian_tao';
   const UPDATED_AT = 'thoi_gian_sua';
 
+  protected $hidden = [
+    'mat_khau', 'remember_token',
+  ];
+
   public function getAuthPassword()
   {
     return $this->mat_khau;

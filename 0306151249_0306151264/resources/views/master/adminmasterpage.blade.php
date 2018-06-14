@@ -19,6 +19,17 @@
   @yield('css')
 </head>
 <body>
+  
+  <div class="myloader">
+    {{-- <img src="{{ asset('pictures/luan/ajax-loader2.gif') }}" alt=""> --}}
+    <img src="" alt="">
+  </div>
+
+  <div class="slidedown-alert {{session('slidemessage') ? 'slidedown-alert-animation' : '' }}">
+    <div class="--content">
+      <p class="baomoi">Thông báo: {{session('slidemessage')}}</p>
+    </div>
+  </div>
 
   @include('includes.admin.topnavbar')
 
@@ -31,6 +42,13 @@
   <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/admin/admin.js')}}"></script>
   <script type="text/javascript" src="{{ asset('js/globaljs/varglobal.js') }}" charset="utf-8"></script>
+
+  <script>
+    {{-- Tạo loader cho tất cả các trang admin Phải tạo bên ngoài ready function jquery vì nếu để ở trong mỗi lần refresh trang hình loader sẽ bị giật giật do phải render css --}}
+    var loaderPath = "{{ asset('pictures/luan/ajax-loader2.gif') }}";
+    $('.myloader img').attr('src', loaderPath);
+
+  </script>
 
   @yield('javascript')
 </body>

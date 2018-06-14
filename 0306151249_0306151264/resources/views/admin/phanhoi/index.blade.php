@@ -7,13 +7,6 @@
 
 @section('admin_content')
 
-  <div class="slidedown-alert {{session('slidemessage') ? 'slidedown-alert-animation' : '' }}">
-    <div class="--content">
-      <p class="baomoi">Thông báo: {{session('slidemessage')}}</p>
-    </div>
-  </div>
-
-
   <div id="main">
     <ol class="breadcrumb" id="step2">
       <li><a href="index.html"><i class="fa fa-home"></i> Trang quản trị</a></li>
@@ -90,32 +83,10 @@
                 </tr>
                 @endforeach
               @endif
-              {{-- <tr>
-                <td>
-                  <input name="id[]" type="checkbox" value="2">
-                </td>
-                <td class="hidden-xs">2</td>
-                <td>
-                  <a href="view-contact.html">Phản hồi số 2</a>
-                </td>
-                <td class="hidden-xs">Quang Trung</td>
-                <td class="hidden-sm hidden-xs">abc@gmail.com</td>
-                <td class="hidden-sm hidden-xs">2014-06-19 01:05:13</td>
-                <td>
-                  <i class="fa fa-check text-success" data-toggle="tooltip" data-placement="top" title="Phản hồi đã đọc"></i>
-                </td>
-              </tr>
-              --}}
             </tbody>
           </table>
           {{-- paginate --}}
-          {{-- <div>
-            {{$tatca_phanhoi->links()}}
-          </div> --}}
-
-
           <div>
-            
             <div class="pagination" style="font-size: 17px;">
               @if ($tatca_phanhoi->currentPage() != 1)
                 <a href="{{$tatca_phanhoi->previousPageUrl()}}" class="page-link"><i class="fa fa-caret-left"></i></a>
@@ -124,12 +95,13 @@
               {{-- <span class="page-number"> <input id="current-page" type="text" value="{{$tatca_phanhoi->currentPage()}}"> / <span id="total-page">{{$tatca_phanhoi->total()}}</span></span> --}}
 
               <span class="page-number">
-              <select name="page_list" id="page-list" style="" >
-                @for ($i = 1; $i <= ceil($tatca_phanhoi->total()/$tatca_phanhoi->perPage()); $i++)
-                  <option {{$tatca_phanhoi->currentPage() == $i ? "selected" : ""}} value="{{$tatca_phanhoi->url($i)}}">{{$i}}</option>
-                @endfor
-              </select>
-              / <span id="total-page">{{$tatca_phanhoi->lastPage()}}</span></span>
+                <select name="page_list" id="page-list" style="" >
+                  @for ($i = 1; $i <= ceil($tatca_phanhoi->total()/$tatca_phanhoi->perPage()); $i++)
+                    <option {{$tatca_phanhoi->currentPage() == $i ? "selected" : ""}} value="{{$tatca_phanhoi->url($i)}}">{{$i}}</option>
+                  @endfor
+                </select>
+                / <span id="total-page">{{$tatca_phanhoi->lastPage()}}</span>
+              </span>
 
               @if ($tatca_phanhoi->currentPage() != $tatca_phanhoi->lastPage())
                 <a href="{{$tatca_phanhoi->nextPageUrl()}}"><i class="fa fa-caret-right"></i></a>
@@ -152,12 +124,6 @@
 
   <!--END #main-->
 @endsection
-
-<div class="myloader">
-  {{-- <img src="{{ asset('pictures/luan/ajax-loader2.gif') }}" alt=""> --}}
-  <img src="" alt="">
-</div>
-
 
 <!-- Modal -->
 <div class="modal fade show-message-modal" id="show-message-modal" role="dialog">
@@ -186,24 +152,14 @@
     
   </div>
 </div>
+{{-- Modal --}}
 
-{{-- Loader --}}
-
-
-
-{{-- End Loader --}}
 
 
 @section('javascript')
   <script src="{{ asset('node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js') }}"></script>
   <script src="{{ asset('js/admin/admin-contact.js') }}"></script>
-  <script>
-    var loaderPath = "{{ asset('pictures/luan/ajax-loader2.gif') }}";
-    $('.myloader img').attr('src', loaderPath);
-    $(document).ready(function() {
-      $('.myloader').hide();
-    });
-  </script>
+  
   <script>
     
     var socket = io.connect( 'http://'+window.location.hostname+':3000' );
