@@ -161,8 +161,13 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 	Route::prefix('taikhoan')->group(function() {
 		
 		Route::get('/them', function() {
+			if(Auth::user()->quyen != 'Q0001') {
+	  		abort(404);
+	  	}
 			return view('admin.taikhoan.them-taikhoan');
 		})->name('admin.taikhoan.them');
+
+		Route::post('/them', 'Admin\TaiKhoanController@postThemTaiKhoan')->name('admin.taikhoan.them.post');
 
 
 		Route::get('/{quyen?}', 'Admin\TaiKhoanController@getTrangQuanLyTaiKhoan')->name('admin.taikhoan');

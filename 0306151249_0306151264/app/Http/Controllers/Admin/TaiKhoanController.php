@@ -5,11 +5,20 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Validator;
+use Carbon\Carbon;
 use App\TaiKhoan;
 use App\NguoiDung;
 
+use App\Traits\CapNhatDoiTuongTrait;
+use App\Traits\TaoMaTaiKhoanTrait;
+
 class TaiKhoanController extends Controller
 {
+
+	use CapNhatDoiTuongTrait;
+	use TaoMaTaiKhoanTrait;
+
   public function getTrangQuanLyTaiKhoan($role = "Q0002")
   {
   	if($role == "Q0001") {
@@ -75,9 +84,86 @@ class TaiKhoanController extends Controller
   		$message = "Khóa";
   	}
 
-
-
-
   	return redirect()->back()->with('slidemessage', 'Đã '.$message.' những tài khoản được chọn');
   }
+
+  public function postThemTaiKhoan(Request $req)
+  {
+
+  	
+
+  	$slidemessage = "";
+  	$user_rules = 'required';
+  	$email_rules = 'required';
+  	$messages = [
+      'username.required' => 'Tên tài khoản không thể để trống.',
+      'email.required'    => 'Email không thể để trống.'
+    ];
+
+  	// Kiểm tra tài khoản chứa tên tài khoản đó đã bị vô hiệu hóa hay chưa
+
+  	// Kiểm tra tài khoản có chứa email đó đã bị vô hiệu hóa hay chưa
+  	$taikhoan_tentaikhoan = TaiKhoan::where('ten_tai_khoan', $req->username)->first();
+  	if($taikhoan_tentaikhoan && $taikhoan_tentaikhoan->trang_thai != 4) {
+  		$user_rules.='|unique:tai_khoan,ten_tai_khoan';
+  		$messages['username.unique'] = 'Tên tài khoản đã có người sử dụng.';
+  		// return $user_rules;
+  	}
+
+  	// return $user_rules;
+
+  	$taikhoan_email = TaiKhoan::where('email', $req->email)->first();
+  	if($taikhoan_email && $taikhoan_email->trang_thai != 4) {
+  		$email_rules.='|unique:tai_khoan,email';
+  		$messages ['email.unique'] = 'Email đã có người sử dụng.';
+  	}
+
+  	// return $messages;
+
+  	$rules = [
+      'username' => 'required|unique:tai_khoan,ten_tai_khoan',
+      'email'    => 'required|unique:tai_khoan,email'
+    ];
+    
+    $validator = Validator::make($req->all(), $rules, $messages);
+
+    if($validator->fails()) {
+  		$slidemessage = "";
+	  	foreach ($validator->errors()->all() as $key => $value) {
+	  		$slidemessage.= $value." ";
+	  	}
+
+	  	return redirect()->back()->with('slidemessage', $slidemessage)->withInput();
+  	}
+
+  	$taikhoan = new TaiKhoan();
+  	$data = [
+			'ma_tai_khoan'  =>  $this->taoMaTaiKhoan(),
+			'ten_tai_khoan' => $req->username,
+			'email'         => $req->email,
+			'mat_khau'      => bcrypt($req->password),
+			'quyen'         => 'Q0003',
+			'thoi_gian_tao' => Carbon::now()->toDateTimeString(),
+			'thoi_gian_sua' => Carbon::now()->toDateTimeString(),
+			'nguoi_sua'     => Auth::user()->ma_tai_khoan,
+			'trang_thai'    => 2 // Đang hoạt động (tạm thời là 2)
+  	];
+
+  	$this->capNhatDoiTuong($data, $taikhoan);
+
+  	$nguoidung = new NguoiDung([
+  		'ho_ten_lot' => $req->familyname,
+  		'ten' => $req->firstname,
+  		'anh_dai_dien' => 'default-avatar.jpg',
+  		'anh_bia' => 'default-banner.png'
+  	]);
+
+  	$taikhoan = TaiKhoan::find($data['ma_tai_khoan']);
+
+  	$taikhoan->hasNguoiDung()->save($nguoidung);
+
+  	return redirect()->back()->with('slidemessage', 'Tao tai khoan thanh cong')->withInput();
+
+  }
+
 }

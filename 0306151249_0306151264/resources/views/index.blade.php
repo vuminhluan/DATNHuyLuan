@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Login</title>
+	<title>Đăng nhập</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/luan/login.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('css/font-awesome.min.css')}}">
 </head>

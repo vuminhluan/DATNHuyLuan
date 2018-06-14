@@ -11,29 +11,30 @@
     </ol>
     <div class="col-xs-12">
       <form id="admin-add-account-form" class="form-horizontal col-xl-8 col-lg-9 col-md-10" method="post" action="" role="form">
-        <input name="id" type="hidden" value="0">
+        @csrf
+        {{-- <input name="id" type="hidden" value="0"> --}}
         <div class="form-group">
           <label for="familyname" class="col-sm-3 control-label required">Họ tên lót</label>
           <div class="col-sm-9">
-            <input name="familyname" type="text" value="" class="form-control" id="familyname" placeholder="Họ tên lót">
+            <input name="familyname" type="text" value="{{old('familyname')}}" class="form-control" id="familyname" placeholder="Họ tên lót">
           </div>
         </div>
         <div class="form-group">
           <label for="firstname" class="col-sm-3 control-label required">Tên</label>
           <div class="col-sm-9">
-            <input name="firstname" type="text" value="" class="form-control" id="firstname" placeholder="Tên">
+            <input name="firstname" type="text" value="{{old('firstname')}}" class="form-control" id="firstname" placeholder="Tên">
           </div>
         </div>
         <div class="form-group">
           <label for="username" class="col-sm-3 control-label required">Tên tài khoản</label>
           <div class="col-sm-9">
-            <input name="username" type="text" value="" class="form-control" id="username" placeholder="Tên tài khoản">
+            <input name="username" type="text" value="{{old('username')}}" class="form-control" id="username" placeholder="Tên tài khoản">
           </div>
         </div>
         <div class="form-group">
           <label for="email" class="col-sm-3 control-label required">Email</label>
           <div class="col-sm-9">
-            <input name="email" type="email" value="" class="form-control" id="email" placeholder="Email" >
+            <input name="email" type="email" value="{{old('email')}}" class="form-control" id="email" placeholder="Email" >
           </div>
         </div>
         <div class="form-group">

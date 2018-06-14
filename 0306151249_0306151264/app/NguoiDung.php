@@ -11,4 +11,6 @@ class NguoiDung extends Model
   public $incrementing = false;
   const CREATED_AT = null;
   const UPDATED_AT = 'thoi_gian_sua';
+
+  protected $fillable = ['ho_ten_lot', 'ten', 'ten_an_danh', 'ngay_sinh', 'ma_gioi_tinh', 'anh_dai_dien', 'anh_bia', 'thoi_gian_sua', 'nguoi_sua'];
 }
