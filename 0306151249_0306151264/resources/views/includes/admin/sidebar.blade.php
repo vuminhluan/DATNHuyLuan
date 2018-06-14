@@ -43,6 +43,13 @@
           <i class="fa fa-user"></i> <span>Tài khoản</span>
         </a>
       </li>
+      {{-- @if (Auth::user()->quyen == "Q0001")
+        <li class="list-group-item">
+          <a href="{{route('admin.taikhoan')}}">
+            <i class="fa fa-user"></i> <span>Quản trị viên</span>
+          </a>
+        </li>
+      @endif --}}
       <li class="list-group-item">
         <a href="{{route('admin.gioitinh')}}">
           <i class="fa fa-transgender"></i> <span>Giới tính</span>

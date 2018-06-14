@@ -159,11 +159,21 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 
 	// Tài khoản
 	Route::prefix('taikhoan')->group(function() {
-		Route::get('/', 'Admin\TaiKhoanController@getTrangQuanLyTaiKhoan')->name('admin.taikhoan');
-
+		
 		Route::get('/them', function() {
 			return view('admin.taikhoan.them-taikhoan');
 		})->name('admin.taikhoan.them');
+
+
+		Route::get('/{quyen?}', 'Admin\TaiKhoanController@getTrangQuanLyTaiKhoan')->name('admin.taikhoan');
+
+
+		
+		Route::post('/capnhat', 'Admin\TaiKhoanController@postCapNhat')->name('admin.taikhoan.capnhat');
+		Route::post('/xemchitiet', 'Admin\TaiKhoanController@postXemChiTietTaiKhoan')->name('admin.taikhoan.xem');
+
+		Route::get('/timkiem/{loc}/{tukhoa}', 'Admin\TaiKhoanController@getTimKiemTheoTenTaiKhoan')->name('admin.taikhoan.timkiem');
+
 	});
 
 	// Giới tính route group
@@ -182,7 +192,6 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 	Route::prefix('phanhoi')->group(function() {
 		Route::get('/', 'Admin\PhanHoiController@getTrangQuanLyPhanHoi')->name('admin.phanhoi');
 		Route::post('/xemchitiet', 'Admin\PhanHoiController@postXemPhanHoi')->name('admin.phanhoi.xem');
-		// Route::post('/xoa', 'Admin\PhanHoiController@postXoaPhanHoi')->name('admin.phanhoi.xoa');
 		Route::post('/capnhat', 'Admin\PhanHoiController@postCapNhat')->name('admin.phanhoi.capnhat');
 		Route::get('/timkiem/{tukhoa}', 'Admin\PhanHoiController@getTimKiemTheoTenNguoiGui')->name('admin.phanhoi.timkiem');
 

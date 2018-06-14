@@ -42,7 +42,7 @@ class PhanHoiController extends Controller
     } else if($req->task == "mark_as_seen") {
       TinNhanLienHe::whereIn('ma', $req->id)->update(['da_xem'=> 1]);
       $message = "Đánh dấu đã đọc";
-    } else {
+    } else if($req->task == "mark_as_unread") {
       TinNhanLienHe::whereIn('ma', $req->id)->update(['da_xem'=> 0]);
       $message = "Đánh dấu chưa đọc";
     }
