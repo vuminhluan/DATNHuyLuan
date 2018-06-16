@@ -23,7 +23,10 @@
                 <option value="account-live">Đang hoạt động</option>
                 <option value="account-ban">Đánh dấu vi phạm</option>
                 <option value="account-lock">Khóa</option>
-                <option value="account-deactivate">Hủy kích hoạt</option>
+                @if (Auth::user()->quyen == "Q0001")
+                  <option value="account-deactivate">Hủy kích hoạt</option>
+                @endif
+                
                 {{-- <option value="deactivate">Hủy kích hoạt</option> --}}
               </select>
             </div>
@@ -62,7 +65,6 @@
                 <td>
                   <input name="id[]" type="checkbox" value="{{$taikhoan->ma_tai_khoan}}">
                 </td>
-                {{-- <td class="hidden-xs">1</td> --}}
                 <td style="text-align: left;">
                   <a href="javascript:void(0)" class="detail-account" id="{{$taikhoan->ma_tai_khoan}}" data-toggle="modal" data-target=".show-detail-account-modal">
                     {{'@'.$taikhoan->ten_tai_khoan}}
@@ -185,7 +187,7 @@
       </div>
       <div class="modal-footer">
         <a type="button" href="https://facebook.com" class="btn btn-default">Xem bài viết</a>
-        <a type="button" class="btn btn-default">Xem tệp</a>
+        <a href="#/" id="url-to-files" type="button" class="btn btn-default">Xem tệp</a>
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
       </div>
     </div>

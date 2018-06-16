@@ -33,6 +33,11 @@
           <i class="fa fa-envelope-o"></i> <span>Phản hồi</span>
         </a>
       </li>
+      <li class="list-group-item">
+        <a href="{{route('admin.phanhoi')}}">
+          <i class="fa fa-bug"></i> <span>Báo cáo</span>
+        </a>
+      </li>
       {{-- <li class="list-group-item">
         <a href="slider.html">
           <i class="fa fa-picture-o"></i> <span>Slider</span>
@@ -53,6 +58,11 @@
       <li class="list-group-item">
         <a href="{{route('admin.gioitinh')}}">
           <i class="fa fa-transgender"></i> <span>Giới tính</span>
+        </a>
+      </li>
+      <li class="list-group-item">
+        <a href="{{route('admin.cauhinh')}}">
+          <i class="fa fa-book"></i> <span>Bài viết</span>
         </a>
       </li>
       <li class="list-group-item">
