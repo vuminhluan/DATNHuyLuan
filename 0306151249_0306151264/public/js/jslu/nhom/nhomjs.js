@@ -21,6 +21,7 @@ function huybothayanhbianhom(manhom){
     $("#luuthayanhbianhom").css("display","none");
     $("#huythaydoianhbianhom").css("display","none");
     $("#chonanhthayanhbianhom").css("display","block");
+    location.reload();
 }
 
 
@@ -49,7 +50,36 @@ $("#ipanhbianhom").change(function() {
 
 
 
+$( document ).ready(function() {
 
+  $('#formdanganhbia').submit(function(event) {
+    //event.preventDefault();
+alert("hi");
+
+    // var danganhcheck=true;
+    // var formData = new FormData($(this)[0]);
+    //     formData.append('nguoi_dang',$('#session-ma-tk').val());
+    //     formData.append('chu_cua_bai_dang',$('#div-hi-chu-bai-viet-ma-nhom').val());
+    //     formData.append('trang_thai','1');
+    //     if(danganhcheck){ danganhcheck=!danganhcheck;
+    // $.ajax({
+    //     url:  link_host+'/uploadanh',
+    //     type: 'POST',  
+    //     processData: false,
+    //     contentType: false,              
+    //     data: formData
+    // }).done(function(data){
+    //   submitdangbaiviet();
+      
+    //   document.getElementById("imgInp").value="";
+    //   $('#divanhxemtruocduocthemvao').css("display","none");
+    // });
+    // }
+    
+});
+
+
+});
 
 
 

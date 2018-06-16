@@ -16,16 +16,23 @@
   </div>
   {{-- onclick="chonthayanhbianhom()" --}}
   <div class="divomtuychonanhbia" >
-    <div id="chonanhthayanhbianhom" class="btntuychonanhbia" >
-      <input id="ipanhbianhom" name="ipanhbianhom" type="file"/>
-          <label for="ipanhbianhom">
-          <span style="cursor: pointer;"><i class="fa fa-camera" aria-hidden="true"></i>&nbsp;&nbsp;Cập nhật ảnh bìa</span></label>
-    </div>
+    <form id="formdanganhbia" action="#khongthayduoc" method="get" accept-charset="utf-8">
+      <div id="chonanhthayanhbianhom" class=" btntuychonanhbia" >
+        <input id="ipanhbianhom" name="ipanhbianhom" type="file"/>
+            <label for="ipanhbianhom">
+            <span style="cursor: pointer;"><i class="fa fa-camera" aria-hidden="true"></i>&nbsp;&nbsp;Cập nhật ảnh bìa</span></label>
+      </div>
+    
+   
     <div id="luuthayanhbianhom" class="btntuychonanhbia" onclick="luuthayanhbianhom('{{$t}}')" style="display: none;">
-          <span><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Lưu</i></span>
+       <i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;
+       <input  type="submit" id="btnluuanhbinh" class="inputluuanhdaidien" name="btnluuanhbia" value="Lưu">
+          {{-- <label for="btnluuanhbinh">
+          <span >Lưu</i></span></label> --}}
     </div>
+    </form>
     <div id="huythaydoianhbianhom" class="btntuychonanhbia" onclick="huybothayanhbianhom('{{$t}}')" style="display: none;">
-          <span><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Hủy</span>
+          <span><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;&nbsp;Hủy</span>
     </div>
   </div>
 </div>
