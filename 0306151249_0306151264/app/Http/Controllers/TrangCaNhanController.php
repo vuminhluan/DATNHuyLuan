@@ -35,7 +35,7 @@ class TrangCaNhanController extends Controller
 
 			// return $taikhoan_nguoidung;
 
-		$taikhoan = TaiKhoan::where('ten_tai_khoan', $username)->first();
+		$taikhoan = TaiKhoan::where('ten_tai_khoan', $username)->where('trang_thai', '!=', 4)->first();
 		// return $taikhoan->hasNguoiDung->ten;
 
 		if(!$taikhoan || $taikhoan->trang_thai != 2) {

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 // use Validator;
+use Storage;
 use App\TaiKhoan;
 use App\Tep;
 use App\Traits\TaoMaTepTrait;
@@ -21,9 +22,35 @@ class TepController extends Controller
 
   public function getIndexTepCuaTaiKhoan($username, $kind)
   {
+  	if($kind == "server") {
+	  	$tatca_tep = TaiKhoan::where('ten_tai_khoan', $username)->where('trang_thai', '!=', 4)->first()->hasManyTep()->orderBy('thoi_gian_tao', 'DESC')->paginate(8);
+	  	return view('admin.tep.index', ['tatca_tep' => $tatca_tep, 'ten_tai_khoan' => $username]);
+  	} else if ($kind == "googledrive") {
 
-  	$tatca_tep = TaiKhoan::where('ten_tai_khoan', $username)->where('trang_thai', '!=', 4)->first()->hasManyTep()->orderBy('thoi_gian_tao', 'DESC')->paginate(8);
-  	return view('admin.tep.index', ['tatca_tep' => $tatca_tep, 'ten_tai_khoan' => $username]);
+
+
+	  	// Lấy folder id của người dùng.
+			$myfolder = TaiKhoan::where('ten_tai_khoan', $username)->where('trang_thai', '!=', 4)->first()->hasThuMuc;
+			if($myfolder) {
+				$myfolder = $myfolder->ma_thumuc;
+			} else return "Tài khoản này chưa đăng kí sử dụng dịch vụ Google Drive";
+
+			
+			$dir = '/'.$myfolder.'/';
+		  $recursive = false; // Get subdirectories also?
+		  $contents = collect(Storage::cloud()->listContents($dir, $recursive));
+
+		  // $files = $contents->where('type', '=', 'file'); // files
+		  $folders = $contents->where('type', '=', 'dir'); // directory
+
+			// return view('trang_ca_nhan.tep.googledrive')->with(['files'=>$files, 'folders'=>$folders, 'username'=>Auth::user()->ten_tai_khoan]);
+			// return $files;
+
+			return view('admin.tep.googledrive')->with(['folders'=>$folders]);
+
+
+  	}
+  	abort(404);
   }
 
   public function postCapNhatTepCuaMotTaiKhoan($username, Request $req)

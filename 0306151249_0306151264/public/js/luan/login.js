@@ -244,7 +244,7 @@ function changeTab(n) {
 
 // end ajax signup
 
-  // Ajax login
+  // Ajax Sign in
   $('#sign-in-form-button').click(function(event) {
     event.preventDefault();
     if($('#sign-in-form').valid()) {

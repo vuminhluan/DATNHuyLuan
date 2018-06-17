@@ -60,19 +60,20 @@
 						<span>Thích</span><span>0</span>
 					</a>
 				</li>
-				<li>
+				{{-- <li>
 					<a class="luan_link" href="#">
 						<span>Lưu</span><span>0</span>
 					</a>
-				</li>
+				</li> --}}
 				<li>
 					<a class="luan_link" href="{{route('trangcanhan.nhom', ['username'=>$taikhoan->ten_tai_khoan])}}">
-						<span>Nhóm</span><span>2</span>
+						<span>Nhóm</span><span>1</span>
 					</a>
 				</li>
 				<li>
 					<a class="luan_link" href="{{route('nguoidung.tep.index',[$taikhoan->ten_tai_khoan])}}">
-						<span>Tệp</span><span>2</span>
+						<span>Tệp</span>
+						{{-- <span>2</span> --}}
 					</a>
 				</li>
 			</ul>
@@ -114,7 +115,7 @@
 					</p>
 					@endif
 				</div>
-				<div class="profile-some-images">
+				{{-- <div class="profile-some-images">
 					<i class="fa fa-image"></i>
 					&nbsp;
 					<a class="luan_link" href="#/">Hình ảnh</a>
@@ -124,7 +125,7 @@
 						<li><a class="luan_link" href="{{asset('pictures/anh_bia/default-banner.png')}}"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a></li>
 						<li><a class="luan_link" href="{{asset('pictures/anh_bia/default-banner.png')}}"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a></li>
 					</ul>
-				</div>
+				</div> --}}
 				@if (Auth::user()->ten_tai_khoan == $taikhoan->ten_tai_khoan)
 					<div id="edit-profile-button">
 						<p class="edit-profile edit-name">

@@ -26,11 +26,13 @@
             </select>
           </div>
 
+          <a id="url-to-files-googledrive" href="{{ route('admin.taikhoan.tep', [$ten_tai_khoan, 'googledrive']) }}" class="btn btn-submit"><img style="vertical-align: middle;" width="23px" height="23px" src="{{ asset('myicons/tep/google-drive.svg') }}" alt=""> Google Drive</a>
+
+
           <div class="btn-group pull-right hidden-xs" id="div-search">
             <input id="search" name="search" type="text" value="" class="form-control" placeholder="Tên tệp">
             <span class="fa fa-search"></span>
           </div>
-
         </div>
         
         <div style="display: none;" id="change-filename-box">
@@ -83,47 +85,50 @@
               </td>
             </tr>
             @endforeach
-            </tbody>
-          </table>
-          {{-- paginate --}}
-          <div>
+          </tbody>
+        </table>
 
-            <div class="pagination" style="font-size: 17px;">
-              @if ($tatca_tep->currentPage() != 1)
-                <a href="{{$tatca_tep->previousPageUrl()}}" class="page-link"><i class="fa fa-caret-left"></i></a>
+        {{-- paginate --}}
+        <div>
+
+          <div class="pagination" style="font-size: 17px;">
+            @if ($tatca_tep->currentPage() != 1)
+              <a href="{{$tatca_tep->previousPageUrl()}}" class="page-link"><i class="fa fa-caret-left"></i></a>
+            @endif
+
+            {{-- <span class="page-number"> <input id="current-page" type="text" value="{{$tatca_tep->currentPage()}}"> / <span id="total-page">{{$tatca_tep->total()}}</span></span> --}}
+
+            <span class="page-number">
+              <select name="page_list" id="page-list" style="" >
+                @for ($i = 1; $i <= ceil($tatca_tep->total()/$tatca_tep->perPage()); $i++)
+                  <option {{$tatca_tep->currentPage() == $i ? "selected" : ""}} value="{{$tatca_tep->url($i)}}">{{$i}}</option>
+                @endfor
+              </select>
+              
+              @if ($tatca_tep->total() > 0)
+                / <span id="total-page">{{$tatca_tep->lastPage()}}</span>
+              @else
+                <small><i>Không có kết quả</i></small>
               @endif
 
-              {{-- <span class="page-number"> <input id="current-page" type="text" value="{{$tatca_tep->currentPage()}}"> / <span id="total-page">{{$tatca_tep->total()}}</span></span> --}}
+            </span>
 
-              <span class="page-number">
-                <select name="page_list" id="page-list" style="" >
-                  @for ($i = 1; $i <= ceil($tatca_tep->total()/$tatca_tep->perPage()); $i++)
-                    <option {{$tatca_tep->currentPage() == $i ? "selected" : ""}} value="{{$tatca_tep->url($i)}}">{{$i}}</option>
-                  @endfor
-                </select>
-                
-                @if ($tatca_tep->total() > 0)
-                  / <span id="total-page">{{$tatca_tep->lastPage()}}</span>
-                @else
-                  <small><i>Không có kết quả</i></small>
-                @endif
-
-              </span>
-
-              @if ($tatca_tep->currentPage() != $tatca_tep->lastPage())
-                <a href="{{$tatca_tep->nextPageUrl()}}"><i class="fa fa-caret-right"></i></a>
-              @endif
+            @if ($tatca_tep->currentPage() != $tatca_tep->lastPage())
+              <a href="{{$tatca_tep->nextPageUrl()}}"><i class="fa fa-caret-right"></i></a>
+            @endif
 
 
-            </div>
           </div>
-          {{-- paginate --}}
-          <p><strong><i class="fa fa-bookmark"></i>Ghi chú: </strong></p>
-          <p class="note-items"><i class="fa fa-check text-success"></i> Tệp đang sử dụng</p>
-          <p class="note-items"><i class="fa fa-times text-danger"></i> Tệp bị xóa</p>
-          <p class="note-items"><i class="fa fa-lock text-warning"></i> Tệp riêng tư</p>
+
         </div>
-      </form>
+        {{-- paginate --}}
+        <p><strong><i class="fa fa-bookmark"></i>Ghi chú: </strong></p>
+        <p class="note-items"><i class="fa fa-check text-success"></i> Tệp đang sử dụng</p>
+        <p class="note-items"><i class="fa fa-times text-danger"></i> Tệp bị xóa</p>
+        <p class="note-items"><i class="fa fa-lock text-warning"></i> Tệp riêng tư</p>
+
+      </div>
+    </form>
 
 
 
@@ -137,10 +142,5 @@
 
 
   @section('javascript')
-    {{-- <script src="{{ asset('js/admin/admin-account.js') }}"></script> --}}
-    <script>
-      function function_name(argument) {
-        // body...
-      }
-    </script>
+    
   @endsection
