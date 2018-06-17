@@ -14,7 +14,7 @@
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->ho_ten_lot}} {{Auth::user()->ten}}<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#"><i class="fa fa-user"></i> Chỉnh sửa tài khoản</a></li>
+          <li><a href="{{ route('admin.taikhoan.chinhsua', [Auth::user()->ten_tai_khoan]) }}"><i class="fa fa-user"></i> Chỉnh sửa tài khoản</a></li>
           <li><a href="{{route('dangxuat')}}"><i class="fa fa-power-off"></i> Đăng xuất</a></li>
         </ul>
       </li>

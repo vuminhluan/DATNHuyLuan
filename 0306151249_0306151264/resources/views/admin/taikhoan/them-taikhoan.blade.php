@@ -63,6 +63,6 @@
 @endsection
 
 @section('javascript')
-  <script src="{{asset('js/jquery/jquery-validate.min.js')}}" charset="utf-8"></script>
+  {{-- <script src="{{asset('js/jquery/jquery-validate.min.js')}}" charset="utf-8"></script> --}}
   <script src="{{ asset('js/admin/admin-account.js') }}"></script>
 @endsection

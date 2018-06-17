@@ -1,7 +1,9 @@
 
 
 $(document).ready(function() {
-
+  $('#task option:first-child').prop('selected', true);
+  $('#change-filename-box').hide();
+  $('#change-filename-box input').val('untitled');
   // Ẩn loader khi load xong trang web
   $('.myloader').hide();
 
@@ -17,19 +19,9 @@ $(document).ready(function() {
   $('#check_all').change(function(){
     $('.table input:checkbox').prop('checked', this.checked);
   });
-  // $('#task').change(function(){
-  //   var check = true;
-  //   if ($(this).val()=="delete") {
-  //     check = confirm('Có chắc bạn muốn xóa?');
-  //   }
-  //   if (check) {
-  //     $('#post_form').submit();
-  //   } else {
-  //     $('#task option:first-child').prop('selected', true);
-  //   }
   // });
 
-  $('#task').change(function(){
+  $('#task').change(function(e){
 
     if($('input:checkbox:checked').length <= 0) { 
       $('#task option:first-child').prop('selected', true);
@@ -55,6 +47,11 @@ $(document).ready(function() {
       check = confirm('Bạn muốn khóa những tài khoản được chọn ?');
     } else if (kindOfUpdate=="account-deactivate") {
       check = confirm('Bạn muốn hủy kích hoạt - xóa - những tài khoản được chọn ?');
+    } else if(kindOfUpdate=="server-files-change-name") {
+      
+      $('#change-filename-box').show();
+      
+      return;
     }
 
 

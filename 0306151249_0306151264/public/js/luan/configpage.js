@@ -98,7 +98,7 @@ $(document).ready(function() {
       username: {
         required: true,
         // regex: "^[\\w]{6,}$"
-        regex : myregex['taikhoan']
+        regex   : myregex['ten_taikhoan']
       },
       email: {
         required: true,
@@ -118,11 +118,12 @@ $(document).ready(function() {
     },
     messages: {
       username: {
-        required : "Tên tài khoản không thể để trống",
-        regex: "Tên tài khoản tối thiểu 6 kí tự, gồm chữ cái không dấu, chữ số là dấu gạch dưới \" _ \" "
+        required: "Tên tài khoản không thể để trống",
+        regex   : "Tên tài khoản tối thiểu 6 kí tự, gồm chữ cái không dấu, chữ số là dấu gạch dưới \" _ \" "
       },
       email: {
-        required: "Email không thể để trống"
+        required: "Email không thể để trống",
+        email   : "Email không hợp lệ"
       }
     }
   });

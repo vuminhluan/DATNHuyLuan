@@ -159,7 +159,21 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 
 	// Tài khoản
 	Route::prefix('taikhoan')->group(function() {
-		
+
+		// Tệp của tài khoản
+		Route::get('/{ten_tai_khoan}/tep/{noi_chua_tep}', 'Admin\TepController@getIndexTepCuaTaiKhoan')->name('admin.taikhoan.tep');
+
+		Route::post('/{ten_tai_khoan}/tep/capnhat', 'Admin\TepController@postCapNhatTepCuaMotTaiKhoan')->name('admin.taikhoan.tep.capnhat');
+
+		Route::get('/{ten_tai_khoan}/tep/tim/{tu_khoa}', 'Admin\TepController@getTimKiemTheoTenTep')->name('admin.taikhoan.tep.timkiem');
+
+
+		// End Tệp của tài khoản
+
+
+
+
+		// Tài khoản
 		Route::get('/them', function() {
 			if(Auth::user()->quyen != 'Q0001') {
 	  		abort(404);
@@ -178,6 +192,9 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 		Route::post('/xemchitiet', 'Admin\TaiKhoanController@postXemChiTietTaiKhoan')->name('admin.taikhoan.xem');
 
 		Route::get('/timkiem/{loc}/{tukhoa}', 'Admin\TaiKhoanController@getTimKiemTheoTenTaiKhoan')->name('admin.taikhoan.timkiem');
+
+		Route::get('/chinhsua/{ten_tai_khoan}', 'Admin\TaiKhoanController@getChinhSuaTaiKhoan')->name('admin.taikhoan.chinhsua');
+		Route::post('/capnhat/{loai_cap_nhat}', 'Admin\TaiKhoanController@postCapNhatThongTin')->name('admin.taikhoan.capnhat.post');
 
 	});
 

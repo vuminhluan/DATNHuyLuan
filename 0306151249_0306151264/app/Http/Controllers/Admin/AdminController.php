@@ -11,7 +11,6 @@ class AdminController extends Controller
 {
   public function getIndex()
   {
-  	$tatca_phanhoi = TinNhanLienHe::orderBy('thoi_gian_tao', 'desc')->get();
-  	return view('admin.index', ['tatca_phanhoi' => $tatca_phanhoi]);
+  	return view('admin.index');
   }
 }
