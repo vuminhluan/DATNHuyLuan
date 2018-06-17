@@ -59,7 +59,7 @@ class Nhom extends Controller
 
 // 
         //$soluongbaiviet =10; //,"s"=>$soluongbaiviet
-        return view("nhom.indexnhom",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thontinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom]);
+        return view("nhom.indexnhom",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thongtinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom]);
     }
 
 
@@ -68,7 +68,29 @@ class Nhom extends Controller
                  return DB::table('tep_duoc_nop')->select(DB::raw('count(*) as soluong'))->where([["ma_nguoi_nop",$rql->ma_nguoi_nop],["ma_bai_viet",$rql->ma_bai_viet]])->get();
     }
 
+    public function Postanhbianhom(Request $rql){
+                
+        if ($rql->hasFile('ipanhbianhom')) {
+           // return $this->Getmaanh()+1;
+            // return "hihi";
+            // $mabaiviet = $this->Getmabaiviet()+1;
+            // $mahinhanh = $this->Getmaanh()+1;
+            //$date=new DateTime(); //this returns the current date time
+            $daynow = date("-Y-m-d-h-i-sa");
 
+            $duongdananh= 'img_group/'.$rql->ma_nhom.$rql->nguoi_dang;
+            $tenanh = $rql->ma_nhom.$rql->nguoi_dang.$daynow.'.png';
+           $rql->file('ipanhbianhom')->move($duongdananh,$tenanh);
+
+           DB::table('nhom')->where('ma_nhom',$rql->ma_nhom)->update(["anh"=>$duongdananh.'/'.$tenanh]);
+
+            // $anhbaiviet->duong_dan_anh= $duongdananh.'/'.$tenanh;
+
+           return "Cập nhật ảnh bìa thành công";
+           }else{
+            return "Cập nhật ảnh bìa thất bại";
+            }
+    }
 
     public function getmanhom()
     {

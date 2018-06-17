@@ -10,7 +10,7 @@ function chonthayanhbianhom(){
     $("#chonanhthayanhbianhom").css("display","none");
 }
 
-function luuthayanhbianhom(manhom){
+function luuthayanhbianhom(){
     $("#luuthayanhbianhom").css("display","none");
     $("#huythaydoianhbianhom").css("display","none");
     $("#chonanhthayanhbianhom").css("display","block");
@@ -42,6 +42,12 @@ $( document ).ready(function() {
 }
 
 $("#ipanhbianhom").change(function() {
+
+var fileType = this.files[0].type;
+var ValidImageTypes = ["image/jpeg", "image/png"];
+if ($.inArray(fileType, ValidImageTypes) < 0) {
+     thongbaopopupy("Cập nhật ảnh bìa","Hãy chọn tệp tin hình ảnh"); return;
+}
   readURL(this);
   chonthayanhbianhom();
 });
@@ -53,28 +59,26 @@ $("#ipanhbianhom").change(function() {
 $( document ).ready(function() {
 
   $('#formdanganhbia').submit(function(event) {
-    //event.preventDefault();
-alert("hi");
+    event.preventDefault();
+// alert("hi");
 
-    // var danganhcheck=true;
-    // var formData = new FormData($(this)[0]);
-    //     formData.append('nguoi_dang',$('#session-ma-tk').val());
-    //     formData.append('chu_cua_bai_dang',$('#div-hi-chu-bai-viet-ma-nhom').val());
-    //     formData.append('trang_thai','1');
-    //     if(danganhcheck){ danganhcheck=!danganhcheck;
-    // $.ajax({
-    //     url:  link_host+'/uploadanh',
-    //     type: 'POST',  
-    //     processData: false,
-    //     contentType: false,              
-    //     data: formData
-    // }).done(function(data){
-    //   submitdangbaiviet();
-      
-    //   document.getElementById("imgInp").value="";
-    //   $('#divanhxemtruocduocthemvao').css("display","none");
-    // });
-    // }
+    var danganhcheck=true;
+    var formData = new FormData($(this)[0]);
+        formData.append('nguoi_dang',$('#session-ma-tk').val());
+        formData.append('ma_nhom',$('#div-hi-chu-bai-viet-ma-nhom').val());
+        // formData.append('trang_thai','1');
+        if(danganhcheck){ danganhcheck=!danganhcheck;
+    $.ajax({
+        url:  link_host+'/postanhbianhomne',
+        type: 'POST',  
+        processData: false,
+        contentType: false,              
+        data: formData
+    }).done(function(data){
+      thongbaopopupy("Cập nhật ảnh bìa nhóm",data);
+      luuthayanhbianhom();
+    });
+    }
     
 });
 
@@ -314,7 +318,7 @@ function showlistthanhvienchopheduyet(manhom){
                                     // e.parentNode.removeChild(e);
                                    var e = document.getElementById("popuppheduyetthanhvien");
                                     e.parentNode.removeChild(e);
-                                    soluongbaivietkiemduyetdalay=0;
+                                   // soluongbaivietkiemduyetdalay=0;
                                 })
                         divtop.appendChild(spanx);
 
@@ -559,4 +563,69 @@ function clickpheduyettatcagiathanhviennhapnhom(prmanhom){
 
         }
     })
+}
+
+
+
+
+
+function showlistbaocaovipham(manhom){
+        var divtobig = document.createElement("div");
+            divtobig.className="modal";
+            divtobig.style.display="block";
+            divtobig.id="popuppheduyetbaiviet";
+                var divto = document.createElement("div");
+                    divto.className="divmainnoidungpopuppd";
+                    var divtop = document.createElement("div");
+                        divtop.className="toppopuptocaopd";
+                        divtop.textContent="Báo cáo nội dung vi phạm";
+                        divtop.id="divtoppheduyetbaiviet";
+                            var spanx= document.createElement("SPAN");
+                                spanx.className="fa fa-times";
+                                spanx.style.marginLeft="565px";
+                                // spanx.style.float="right";
+                                spanx.style.cursor="pointer";
+                                spanx.style.position="absolute";
+                                spanx.addEventListener("click",function(){
+                                    // var e = document.getElementById("popupbaocao");
+                                    // e.parentNode.removeChild(e);
+                                   var e = document.getElementById("popuppheduyetbaiviet");
+                                    e.parentNode.removeChild(e);
+                                    // soluongbaivietkiemduyetdalay=0;
+                                })
+                        divtop.appendChild(spanx);
+
+                    var divbody = document.createElement("div");
+                        divbody.className="divbodynoidungpopuppd";
+                        divbody.id="contentpheduyetbody";
+                        // divbody.textContent="";
+                            var divtopbody = document.createElement("div");
+                                divtopbody.className="divtopbodypheduyetbaiviet";
+
+                            var divbodybody = document.createElement("div");
+                                divbodybody.className="divbodybodypheduyetbaiviet";
+                                divbodybody.id="divbodybodykiemduyetbaiviet";
+
+                            var divbotbody = document.createElement("div");
+                                divbotbody.className="divbotbodypheduyetbaiviet";
+                                divbotbody.textContent="Xem thêm";
+                                divbotbody.id="botbodyxemthempheduyetbaiviet";
+                                divbotbody.addEventListener("click",function(){
+
+                                    $("#divbodybodykiemduyetbaiviet").scrollTop( document.getElementById("divbodybodykiemduyetbaiviet").scrollHeight);
+                                    // loadthemduyetbaiviet();
+                                })
+                        // divbody.appendChild(divscroll);
+                        divbody.appendChild(divtopbody);
+                        divbody.appendChild(divbodybody);
+                        divbody.appendChild(divbotbody);
+                    var divbot = document.createElement("div");
+                        divbot.className="divbotpopuptocaopd";
+                     divto.appendChild(divtop);
+                     divto.appendChild(divbody);
+                     divto.appendChild(divbot);
+            divtobig.appendChild(divto);
+
+      document.getElementById("bodymaster").appendChild(divtobig);
+// loadthemduyetbaiviet();
 }

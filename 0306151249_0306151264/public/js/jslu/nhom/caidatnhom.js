@@ -105,7 +105,15 @@ function luucauhoigianhapnhommoi(prl){
    var nguoitaocauhoi   = prl.currentTarget.myParamNguoiTaoCauHoi;
    var nguoisuacauhoi   = prl.currentTarget.myParamNguoiSua;
 
-alert(manhom+noidungcauhoi+nguoitaocauhoi+nguoisuacauhoi);
+      thucthifuncysno4p(manhom,noidungcauhoi,nguoitaocauhoi,nguoisuacauhoi,'ajaxluucauhoigianhap','Lưu câu hỏi gia nhập nhóm','Bạn chắn chắc muốn lưu câu hỏi này?');
+
+//alert(manhom+noidungcauhoi+nguoitaocauhoi+nguoisuacauhoi);
+
+
+}
+
+
+function ajaxluucauhoigianhap(manhom,noidungcauhoi,nguoitaocauhoi,nguoisuacauhoi){
           $.ajax({
                             url: link_host+'/ajax/postcauhoigianhapnhomne',
                             type:'POST',
@@ -125,9 +133,7 @@ alert(manhom+noidungcauhoi+nguoitaocauhoi+nguoisuacauhoi);
                                 cauhoigianhapnhomdocratudatabase(manhom);
                                 //$(prl.currentTarget.myParamIdcuadivcaunay).css("display","none");
                             })
-
 }
-
 
 
 

@@ -46,23 +46,20 @@
 					{{-- id="divcacluachondinhkem" --}}
 					{{--  id="divthemanhbaidang" --}}
 						<div style="float: left;">
-							
 							<div style="float: left;">
 							<label for="imgInp" class="custom-file-upload">
 								<i class="fa fa-picture-o" aria-hidden="true"></i>
 							</label>
 						{{-- <form action="{{ route('postanh') }}" id="uploadanh" method="get" enctype="multipart/form-data"> --}}
 								<input id="imgInp" name="imgInp" type="file"/>
-							
-							
 							</div>
 						</div>
-						<div style="float: left;" id="divthemteptinbaidang">
+{{-- 						<div style="float: left;" id="divthemteptinbaidang">
 							<label for="file-upload-file" class="custom-file-upload">
 								<i class="fa fa-paperclip" aria-hidden="true"></i>
 							</label>
 							<input id="file-upload-file" type="file"/>
-						</div>
+						</div> --}}
 						<div style="clear: both;"></div>
 				</div>
 				<div id="divbigchuacackhaosat" class="divchuaykienkhaosat">

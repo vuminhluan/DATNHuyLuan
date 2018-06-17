@@ -57,7 +57,7 @@ width: 28px;height: 20px;background-color: transparent;border: none;color: white
     font-weight: bold;
 }
 .btntuychonanhbia{
-  cursor: pointer;
+  /*cursor: pointer;*/
   border:solid 1px white;
   background-color: #00000033;
   padding: 5px;
@@ -100,6 +100,7 @@ margin-top: 5px;margin-right: 5px;
   float: left;width: 81%;padding-top: 11px;
 }
 .divbtnshowtuychontvn{
+  cursor: pointer;
   float: right;width: 19%;padding: 7px;padding-left: 10px;border-left: solid 1px #eadcf2;
 }
 #tuychonnhom{

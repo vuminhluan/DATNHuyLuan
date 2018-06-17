@@ -12,29 +12,38 @@
 <!-- ảnh bìa -->
 <div id="anhbia" class="anhbianhomx" style=" margin-top: 30px;    width: 1184px; " >
   <div style="height: 325px;" >
-        <img id="imganhbianhom" style="width: 1184px;height: auto;" src="{{ asset('pictures/anh_bia/anhbiamaucntt1.jpg') }}" alt="">
+    @if ($thongtinnhom[0]->anh=="no")
+      <img id="imganhbianhom" style="width: 1184px;height: auto;" src="{{ asset('') }}" alt="">
+    @endif
+    @if ($thongtinnhom[0]->anh!="no")
+      <img id="imganhbianhom" style="width: 1184px;height: auto;" src="{{ asset($thongtinnhom[0]->anh) }}" alt="">
+    @endif
   </div>
   {{-- onclick="chonthayanhbianhom()" --}}
-  <div class="divomtuychonanhbia" >
-    <form id="formdanganhbia" action="#khongthayduoc" method="get" accept-charset="utf-8">
-      <div id="chonanhthayanhbianhom" class=" btntuychonanhbia" >
-        <input id="ipanhbianhom" name="ipanhbianhom" type="file"/>
-            <label for="ipanhbianhom">
-            <span style="cursor: pointer;"><i class="fa fa-camera" aria-hidden="true"></i>&nbsp;&nbsp;Cập nhật ảnh bìa</span></label>
-      </div>
-    
-   
-    <div id="luuthayanhbianhom" class="btntuychonanhbia" onclick="luuthayanhbianhom('{{$t}}')" style="display: none;">
-       <i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;
-       <input  type="submit" id="btnluuanhbinh" class="inputluuanhdaidien" name="btnluuanhbia" value="Lưu">
-          {{-- <label for="btnluuanhbinh">
-          <span >Lưu</i></span></label> --}}
-    </div>
-    </form>
-    <div id="huythaydoianhbianhom" class="btntuychonanhbia" onclick="huybothayanhbianhom('{{$t}}')" style="display: none;">
-          <span><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;&nbsp;Hủy</span>
-    </div>
-  </div>
+  @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
+               @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV01"||$quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV02")
+                    <div class="divomtuychonanhbia" >
+                      <form id="formdanganhbia" action="#khongthayduoc" method="get" accept-charset="utf-8">
+                        <div id="chonanhthayanhbianhom" class=" btntuychonanhbia" >
+                          <input id="ipanhbianhom" name="ipanhbianhom" type="file"/>
+                              <label for="ipanhbianhom">
+                              <span style="cursor: pointer;"><i class="fa fa-camera" aria-hidden="true"></i>&nbsp;&nbsp;Cập nhật ảnh bìa</span></label>
+                        </div>
+                        @csrf
+                     {{-- onclick="luuthayanhbianhom('{{$t}}')" --}}
+                      <div id="luuthayanhbianhom" class="btntuychonanhbia"  style="display: none;">
+                         <i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;
+                         <input  type="submit" id="btnluuanhbinh" class="inputluuanhdaidien" name="btnluuanhbia" value="Lưu">
+                      </div>
+                      </form>
+                      <div id="huythaydoianhbianhom" class="btntuychonanhbia" onclick="huybothayanhbianhom('{{$t}}')" style="display: none;">
+                            <span><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;&nbsp;Hủy</span>
+                      </div>
+                    </div>
+               @break
+               @endif
+            @endfor
+
 </div>
 <!-- end ảnh bìa -->
        <div class="leftnav" >
@@ -61,7 +70,7 @@
            <div class="divchuaallttnhom">
                 <div class="divchuaittnhom" ><i class="fa fa-flag-o fa-2x" aria-hidden="true"></i></div>
                 <div class="divttinhom">
-                  <H3 class="h3ttnhom" ><center> {{$thontinnhom[0]->ten_nhom}}</center></H3>
+                  <H3 class="h3ttnhom" ><center> {{$thongtinnhom[0]->ten_nhom}}</center></H3>
                 </div>
            </div>
          </div>
@@ -109,7 +118,7 @@
            @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
                @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV03")
                   <div id="divpheduyetbaivietnhom" onclick="showlistthanhvienchopheduyet('{{$t}}')" class="divtoprightnav" style="padding: 12px;cursor: pointer;">
-                   <center><ion-icon name="contacts"></ion-icon>&nbsp;<span>Phê duyệt thành viên</span>&nbsp;&nbsp;</center>
+                   <center><ion-icon  style="color: #9695d8" name="contacts"></ion-icon>&nbsp;<span>Phê duyệt thành viên</span>&nbsp;&nbsp;</center>
                   </div>
                   @break
                @endif
@@ -119,7 +128,16 @@
            @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
                @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV04")
                   <div id="pheduyetthanhviengianhapnhom" class="divtoprightnav" onclick="showlistbaivietchopheduyet('{{$t}}')" style="padding: 12px;cursor: pointer;">
-                  <center><ion-icon name="clipboard"></ion-icon>  <span>Phê duyệt bài viết</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+                  <center><ion-icon  style="color: #9695d8" name="clipboard"></ion-icon>  <span>Phê duyệt bài viết</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+                  </div>
+                  @break
+               @endif
+            @endfor
+
+            @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
+               @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV02")
+                  <div id="pheduyetthanhviengianhapnhom" class="divtoprightnav" onclick="showlistbaocaovipham('{{$t}}')" style="padding: 12px;cursor: pointer;">
+                  <center><ion-icon style="color: #9695d8" name="flag"></ion-icon>  <span>Báo cáo vi phạm</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
                   </div>
                   @break
                @endif

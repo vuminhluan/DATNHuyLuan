@@ -150,6 +150,8 @@ Route::post('/ajax/posttepduocnopne',"BaiVietController\BaiViet@posttepduocnop")
 Route::post('/uploadanh',"BaiVietController\BaiViet@Postanh")
 ->name('postanh');
 
+Route::post('/postanhbianhomne',"NhomController\Nhom@Postanhbianhom")
+->name("postanhbianhom");
 
 Route::get("taofolderchuatepthubaine","BaiVietController\BaiViet@taofolderchuatepthubai")
 ->name("taofolderchuatepthubai");

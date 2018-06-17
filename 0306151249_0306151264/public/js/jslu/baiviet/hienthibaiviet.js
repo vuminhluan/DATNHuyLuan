@@ -382,6 +382,24 @@ var x = setInterval(function() {
 }
 
 
+function demnguoithoigiannopbai(rql,tag){
+	var countDownDate = new Date(rql).getTime();
+var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById(tag).innerHTML = '<i class="fa fa-clock-o" aria-hidden="true"></i>'+ " Thời hạn nộp bài còn: " +'<p style="color:#9596d8;display:inline-block;">' + days + "ngày " + hours + "giờ "
+    + minutes + "phút " + seconds + "giây "+'</p>';
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById(tag).innerHTML = "Hết hạn nộp tệp tin";
+    }
+}, 1000);
+}
+
 // $( document ).ready(function() {
 
 

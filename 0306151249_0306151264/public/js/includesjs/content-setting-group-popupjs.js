@@ -649,7 +649,7 @@ function clickpheduyetgianhapnhom(prl){
 				                    $("#btnpheduyetgianhapnhom"+prmataikhoan).css("display","none");
 				                     $("#btntuchoiduyetgianhapnhom"+prmataikhoan).css("display","none");
                                      ////
-                                    opentab_pheduyetthanhvien(nhomhientaidangduocchon);// cái này là gọi lại hàm cập nhật người tham gia
+                                    // opentab_pheduyetthanhvien(nhomhientaidangduocchon);// cái này là gọi lại hàm cập nhật người tham gia
 				            })
                     //
             })

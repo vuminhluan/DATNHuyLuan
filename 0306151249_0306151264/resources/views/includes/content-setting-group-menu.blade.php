@@ -48,15 +48,16 @@
              <center><span>Cài đặt nhóm</span></center>
              </div>
           </div>
-          <div onclick="chonchucnangtrongnhom('CV08')" class="div-big-item-choose-menu-group">
-            {{-- CV08 là xem báo cáo --}}
+          {{-- CV08 là xem báo cáo --}}
+{{--           <div onclick="chonchucnangtrongnhom('CV08')" class="div-big-item-choose-menu-group">
+            
             <div  class="div-item-choose-menu-group" >
               <center><span class="fa fa-flag fa-5x" ></span></center>
             </div>
              <div style="padding: 7px;">
              <center><span>Xem tố cáo</span></center>
              </div>
-          </div>
+          </div> --}}
           <div onclick="chonchucnangtrongnhom('CV09')" class="div-big-item-choose-menu-group">
             {{-- CV09 là quản lý danh thành viên --}}
             <div  class="div-item-choose-menu-group" >
@@ -84,7 +85,7 @@
                   <button class="tablinks active" id="tablinkdivthanhvien" onclick="openCity(event, 'divthanhvien'),opentab_lstthanhvien('{{$t}}')"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Thành viên</button>
 {{--                   <button class="tablinks" id="tablinkdivpheduyetthanhvien" onclick="openCity(event, 'divpheduyetthanhvien'),opentab_pheduyetthanhvien('{{$t}}','')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Phê duyệt thành viên</button>
                   <button class="tablinks" id="tablinkdivpheduyetbaiviet" onclick="openCity(event, 'divpheduyetbaiviet')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Phê duyệt bài viết</button> --}}
-                  <button class="tablinks" id="tablinkdivbaocao" onclick="openCity(event, 'divbaocao')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Báo cáo</button>
+{{--                   <button class="tablinks" id="tablinkdivbaocao" onclick="openCity(event, 'divbaocao')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Báo cáo</button> --}}
                   <button class="tablinks" id="tablinkdivcaidatnhom" onclick="openCity(event, 'divcaidatnhom'),chonchucnangtrongnhom('CV01')"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;Cài đặt</button>
                   {{-- <div style="width: 192px;height: 44px;border-bottom: solid 1px #9695d8;margin-left: 255px;margin-right: 10px;"></div> --}}
                   </div>
@@ -107,9 +108,9 @@
                 <div id="divpheduyetbaiviet" class="tabcontent">
                   <h3>Phê duyệt bài viết</h3>  
                 </div>
-                <div id="divbaocao" class="tabcontent">
+{{--                 <div id="divbaocao" class="tabcontent">
                   <h3>Báo cáo vi phạm</h3>  
-                </div>
+                </div> --}}
                 <div id="divcaidatnhom" class="tabcontent" style="display: none;">
                   
                 </div>
