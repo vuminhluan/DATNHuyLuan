@@ -9,8 +9,9 @@ use App\TinNhanLienHe;
 
 class AdminController extends Controller
 {
-  public function getIndex()
+  public function getIndex(Request $req)
   {
-  	return view('admin.index');
+  	$list_chat = $req->session()->get('admin-chat');
+  	return view('admin.index', ['list_chat' => $list_chat]);
   }
 }

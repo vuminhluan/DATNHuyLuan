@@ -43,5 +43,22 @@ io.on('connection', function (socket) {
     // console.log(data);
   });
 
+
+
+
+
+
+  // admin CHAT
+
+
+
+  socket.on( 'adminChatMessage', function(data) {
+    socket.broadcast.emit( 'adminChatMessage', data);
+  });
+
+
+
+  // End admin CHAT
+
   
 });
