@@ -11,9 +11,10 @@
             <div  style="width: 100%;height: 100%;margin-top: 17px; padding-left: 20px;padding-right: 20px;" >
                   <div class="tab">
                   <button class="tablinks active" onclick="openCity(event, 'divnhom'),opencontent_nhom(event,'div-content-gr-thamgia-quanly')"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Nhóm</button>
-                  <button class="tablinks" onclick="openCity(event, 'divbanbe')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;xxxxx</button>
-                  <button class="tablinks" onclick="openCity(event, 'divkhac')">xxxxxx&nbsp;<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></button>
-                  <div style="width: 192px;height: 44px;border-bottom: solid 1px #9695d8;margin-left: 255px;margin-right: 10px;"></div>
+{{--                   <button class="tablinks" onclick="openCity(event, 'divbanbe')"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;xxxxx</button>
+                  <button class="tablinks" onclick="openCity(event, 'divkhac')">xxxxxx&nbsp;<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></button> --}}
+                  {{-- margin-left: 255px; --}}
+                  <div style="width: 100%;height: 44px;border-bottom: solid 1px #9695d8;margin-right: 10px;"></div>
                   </div>
 
                 <div id="divnhom" style="display: block;" class="tabcontent ">
@@ -42,8 +43,13 @@
                           @for ($i = 0; $i < count($lstnhomcuataikhoan); $i++)
                           <div style="height: 130px;width: 90px; margin: 7px;" onclick='gotogroup("{{$lstnhomcuataikhoan[$i]->ma_nhom}}")' >
 
-                            <div  class="div-item-nhom-popup">
+                            
+                            <div  class="div-item-nhom-popup" style="background-image: url('{{ asset($lstnhomcuataikhoan[$i]->anh) }}');background-repeat: no-repeat, repeat; background-size:77px auto; background-position: center; ">
+{{--                             @if ($lstnhomcuataikhoan[$i]->anh!="no")
+                              <img src="{{ asset($lstnhomcuataikhoan[$i]->anh) }}" style="width: 100px;height: 100px; overflow: hidden;position: absolute;cursor: pointer;" alt="{{$lstnhomcuataikhoan[$i]->ten_nhom}}">
+                            @endif --}}
                                 <div class="div-name-nhom"  style="height: 20px; width: 92px;text-align: center;margin-left: -23px;margin-top: 53px;">{{$lstnhomcuataikhoan[$i]->ten_nhom}}</div>
+
                             </div>
                           
                           </div>
@@ -65,7 +71,7 @@
                             <div style="height: 130px;width: 90px; margin: 7px;" onclick='gotogroup("{{$lstNhomQuanLyCuaTaiKhoan[$i]->ma_nhom}}")' >
                               {{-- background-image: url('pictures/group-icon.png'); --}}
                              {{--  <img src="{{ asset('papictures/group-icon.pngth') }}" style="width: 90px;height: 130px;" alt=""> --}}
-                              <div  class="div-item-nhom-popup">
+                              <div  class="div-item-nhom-popup" style="background-image: url('{{ asset($lstNhomQuanLyCuaTaiKhoan[$i]->anh) }}');background-repeat: no-repeat, repeat; background-size:77px auto; background-position: center; " >
                                   <div class="div-name-nhom"  style="height: 20px; width: 92px;text-align: center;margin-left: -23px;margin-top: 53px;">{{$lstNhomQuanLyCuaTaiKhoan[$i]->ten_nhom}}</div>
                               </div>
                             
