@@ -18,7 +18,7 @@
                                     <h3  ><i  class="fa fa-star-o" aria-hidden="true"><strong class="like-cmt" >&ensp;Hay</strong></i></h3>
                                 </div>
                              
-                                <div  class="divbtncmt" onclick="clickbinhluan('{{ $lstbaiviet[$i]->ma_bai_viet }}')" >
+                                <div  class="divbtncmt" onclick="clickbinhluan('{{ $lstbaiviet[$i]->ma_bai_viet }}','{{$lstbaiviet[$i]->ma_loai_bai_viet}}')" >
                                     <h3 ><i class="fa fa-comment-o" aria-hidden="true" ><strong class="like-cmt">&ensp;Bình luận</strong></i></h3>
                                 </div>
                         </div>
@@ -41,11 +41,11 @@
                                     <img class="imgaccountcmt"  src=" {{asset('pictures/anh_dai_dien/'.Auth::user()->anh_dai_dien)}}" alt="AVTCMT" >
                                 </div>
                                 <div class="divtextcmt" >
-                                    <input class="iptextcmt" id="input-binhluan-{{ $lstbaiviet[$i]->ma_bai_viet }}" onKeyPress='submitme(event,"{{ $lstbaiviet[$i]->ma_bai_viet }}")' 
+                                    <input class="iptextcmt" id="input-binhluan-{{ $lstbaiviet[$i]->ma_bai_viet }}" onKeyPress='submitme(event,"{{ $lstbaiviet[$i]->ma_bai_viet }}","{{$lstbaiviet[$i]->ma_loai_bai_viet}}")' 
                                     placeholder="Viết bình luận..." type="text" >
                                 </div>
                                 <div class="btnsendcmt" >
-                                    <i onclick="sendbinhluan('{{ $lstbaiviet[$i]->ma_bai_viet }}')" class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                    <i onclick="sendbinhluan('{{ $lstbaiviet[$i]->ma_bai_viet }}','{{$lstbaiviet[$i]->ma_loai_bai_viet}}')" class="fa fa-paper-plane-o" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>

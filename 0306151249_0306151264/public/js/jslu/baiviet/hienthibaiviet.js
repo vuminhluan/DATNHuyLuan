@@ -346,7 +346,7 @@ function submitnopbaine(prl,prl_mathumuc,prl_mabaiviet){
 			 	trang_thai:"1"
 			 }
     		}).done(function(data){
-    			alert(data);
+    		  thongbaopopupy("Nộp tệp tin",data);	// alert(data);
     		});
     		//alert(prl_mabaiviet+$("#session-ma-tk").val()+tenfile);
 

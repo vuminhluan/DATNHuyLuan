@@ -128,14 +128,37 @@ class BaiViet extends Controller
     }
     public function Getbaiviettheonguoivietvanguoisohuu(Request $rql )
     {
-        $listbaiviet = DB::table('bai_viet')
+        // $listbaiviet = DB::table('bai_viet')
+        // ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
+        // ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','LIKE','hinh_anh_bai_viet.ma_bai_viet')
+        // ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*')
+        // ->where([["bai_viet.ma_nguoi_viet",$rql->ma_nguoi_viet],["bai_viet.ma_chu_bai_viet",$rql->ma_chu_bai_viet]])
+        // ->orderBy('bai_viet.ma_bai_viet','desc')
+        // ->get();
+
+// 
+        $listbaiviet      = DB::table('bai_viet')
         ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
-        ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','LIKE','hinh_anh_bai_viet.ma_bai_viet')
-        ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*')
-        ->where([["bai_viet.ma_nguoi_viet",$rql->ma_nguoi_viet],["bai_viet.ma_chu_bai_viet",$rql->ma_chu_bai_viet]])
+        ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
+        ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
+        ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet')//
+        ->where([["bai_viet.ma_chu_bai_viet",$rql->ma_chu_bai_viet],['bai_viet.ma_nguoi_viet',$rql->ma_nguoi_viet],["bai_viet.trang_thai","1"]])
         ->orderBy('bai_viet.ma_bai_viet','desc')
-        ->get();
-        return view("baiviet.hienthibaivietmoi",["lstbaiviett"=>$listbaiviet]);
+        ->take(1)->get();
+// 
+
+
+
+
+
+
+
+
+
+
+
+
+        return view("baiviet.hienthibaivietmoi",["lstbaiviet"=>$listbaiviet]);
     }
 
     public function Postanh(Request $rql){
@@ -185,7 +208,7 @@ class BaiViet extends Controller
         $tepduocnop->ten_tep         = $rql->ten_tep;
         $tepduocnop->trang_thai     = $rql->trang_thai;
         $tepduocnop->save();
-        return "haha"; //$rql->ma_bai_viet.$rql->ma_nguoi_nop.$rql->ma_tep.$rql->trang_thai;
+        return "Nộp tệp tin thành công"; //$rql->ma_bai_viet.$rql->ma_nguoi_nop.$rql->ma_tep.$rql->trang_thai;
 
     }
 
