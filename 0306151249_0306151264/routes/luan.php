@@ -221,4 +221,13 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 
 
 
+	// Admin chat
+	Route::prefix('chat')->group(function() {
+		Route::post('/luuchat', 'Admin\ChatController@luuChatVaoSession')->name('admin.chat.luu');
+		Route::get('/xoa_khung_chat', 'Admin\ChatController@xoaKhungChat')->name('admin.chat.xoa_tatca');
+
+	});
+
+
+
 });

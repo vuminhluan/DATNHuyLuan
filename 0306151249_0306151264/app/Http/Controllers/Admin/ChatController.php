@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
+class ChatController extends Controller
+{
+  public function luuChatVaoSession(Request $req)
+  {	
+  	
+  	if (!$req->session()->has('admin-chat')) {
+	    session(['admin-chat'=> [
+
+	    	[
+	    		'name' => $req->sender_name,
+	    		'message' => $req->message
+	    	]
+
+	    ]
+
+	  ]);
+		} else {
+			// session(['admin-chatt'=> [$data]]);
+			$req->session()->push('admin-chat', ['name' => $req->sender_name,
+	    		'message' => $req->message]);
+		}
+  
+  	$list_chat = $req->session()->get('admin-chat');
+  	return $list_chat;
+
+  }
+
+  public function xoaKhungChat(Request $req)
+  {	
+  	// $req->session()->flush();
+  	$req->session()->forget('admin-chat');
+  	// return $req->session()->all();
+  }
+
+}
