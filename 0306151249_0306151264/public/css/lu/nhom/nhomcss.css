@@ -173,6 +173,21 @@ margin-top: 5px;margin-right: 5px;
   background-color: white;
 
 }
+
+
+.divmainnoidungpopuptocaopd{
+  margin-top: -94px;
+  border-radius: 3px;
+  /*border:solid 1px #9695d8;*/
+  position: fixed;
+  margin-left:  0%;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+
+}
+
+
 .toppopuptocaopd{
       font-family:  'myFont', Arial, Helvetica, sans-serif;
   font-size: 18px;

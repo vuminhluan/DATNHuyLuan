@@ -575,7 +575,7 @@ function showlistbaocaovipham(manhom){
             divtobig.style.display="block";
             divtobig.id="popuppheduyetbaiviet";
                 var divto = document.createElement("div");
-                    divto.className="divmainnoidungpopuppd";
+                    divto.className="divmainnoidungpopuptocaopd";
                     var divtop = document.createElement("div");
                         divtop.className="toppopuptocaopd";
                         divtop.textContent="Báo cáo nội dung vi phạm";
