@@ -72,7 +72,6 @@ function clickxinvaonhom(pr){
                         divdongy.addEventListener("click",function(){
                                   //  var manhom = "NH00000004";
                                 //  alert(manhom);
-
                         $.ajax({
                             url: link_host+'/ajax/getcauhoigianhapne',
                             type:'GET',
@@ -307,6 +306,9 @@ function  getlstnhomnguoidungdangxingianhap()
 }
 
 
+// $(document).ready(function(){
+
+
 
 function search_group(){
 
@@ -330,6 +332,7 @@ function search_group(){
         }
 
         for (var i = 0; i < data.length; i++) {
+            var flagkiemtracaidatnhom = true;
             var divkq = document.createElement("div");
         divkq.style.height= "70px";
         divkq.style.with="100%";
@@ -338,43 +341,64 @@ function search_group(){
         divkq.style.borderBottom ="solid 1px #9695d8";
         divkq.innerHTML = data[i].ten_nhom;
 
+         var btnxingianhapnhomnhanh = document.createElement("div");
+             btnxingianhapnhomnhanh.className="btnxingianhapnhomnhanh";
+             btnxingianhapnhomnhanh.innerHTML = '<i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp; Gia nhập nhanh';
+             btnxingianhapnhomnhanh.addEventListener("click",clickxinvaonhomnhanh);
+             btnxingianhapnhomnhanh.myParamManhom=data[i].ma_nhom;
+             var flaggianhapnhanh = false; // kiểm tra xem nhóm này có gia nhập nhóm nhanh không
+             if(flagkiemtracaidatnhom)
+             {flagkiemtracaidatnhom=!flagkiemtracaidatnhom;
+            $.ajax({
+                                url: link_host+'/ajax/getcaidatnhomne',
+                                type:'GET',
+                                data:{
+                                        ma_nhom:data[i].ma_nhom
+                                }}).done(function(data){
+                                    if (data[0].trang_thai_ma_gia_nhap_nhom=="1") {
+                                        flaggianhapnhanh=true;
+                                    }
 
         var btnxingianhapnhom = document.createElement("div");
-        btnxingianhapnhom.style.cursor="pointer";
-        btnxingianhapnhom.style.marginTop="0px";
-        btnxingianhapnhom.style.marginLeft="315px";
-        btnxingianhapnhom.style.borderRadius="3px";
-        btnxingianhapnhom.style.paddingLeft="10px";
-        btnxingianhapnhom.style.paddingTop="3px";
-        btnxingianhapnhom.style.height ="29px";
-        btnxingianhapnhom.style.with="30px";
-        btnxingianhapnhom.style.background="white";
-        btnxingianhapnhom.style.color="black";
-        btnxingianhapnhom.style.border="solid 1px #9695d8";
-        btnxingianhapnhom.innerHTML = '<i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp; Gia nhập';
-        btnxingianhapnhom.addEventListener("click",clickxinvaonhom);
-        btnxingianhapnhom.myParamManhom=data[i].ma_nhom;
-        btnxingianhapnhom.id="btnxingianhapnhom"+data[i].ma_nhom;
+            btnxingianhapnhom.className="btnxingianhapnhom";
+            btnxingianhapnhom.innerHTML = '<i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp; Gia nhập';
+            btnxingianhapnhom.addEventListener("click",clickxinvaonhom);
+            btnxingianhapnhom.myParamManhom=data[i].ma_nhom;
+            btnxingianhapnhom.id="btnxingianhapnhom"+data[i].ma_nhom;
 
         for (var j = 0; j < lstNhomCuaTaiKhoanThamGia.length; j++) {
             if(data[i].ma_nhom==lstNhomCuaTaiKhoanThamGia[j].ma_nhom)
             {
                 btnxingianhapnhom.innerHTML='<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Đã tham gia';
                 btnxingianhapnhom.removeEventListener("click",clickxinvaonhom);
+
+
+                flaggianhapnhanh=false;
             }
         }
        for (var k = 0; k < lstNhomNguoiDungDangXinGiaNhap.length; k++) {
         if(data[i].ma_nhom==lstNhomNguoiDungDangXinGiaNhap[k].ma_nhom){
                 btnxingianhapnhom.innerHTML='<i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;Chờ phê duyệt';
                 btnxingianhapnhom.removeEventListener("click",clickxinvaonhom);
-                  btnxingianhapnhom.style.marginLeft="290px";
+                // btnxingianhapnhom.style.marginLeft="310px";
+                // btnxingianhapnhom.style.width="140px;"
+
+                flaggianhapnhanh=false;
+
+
             }
         }
         
        
         divkq.appendChild(btnxingianhapnhom);
+        if(flaggianhapnhanh)
+        divkq.appendChild(btnxingianhapnhomnhanh);
 
         document.getElementById("div-ket-qua-tim-kiem").appendChild(divkq);
+                                })
+                                }
+        
+
         }
         
 
@@ -385,3 +409,97 @@ function search_group(){
     })
 }
 
+
+function clickxinvaonhomnhanh(prl){
+    var manhom= prl.currentTarget.myParamManhom;
+    // alert(manhom);
+    // 
+        var divtobig = document.createElement("div");
+            divtobig.className="modal";
+            divtobig.style.display="block";
+            divtobig.id="popupbaocao";
+                var divto = document.createElement("div");
+                    divto.className="divmainnoidungpopupysgianhapnhomnhanh";
+                    var divtop = document.createElement("div");
+                        divtop.className="toppopuptocaoys";
+                        divtop.textContent="Gia nhập nhóm nhanh";
+
+                    var divbody = document.createElement("div");
+                        divbody.className="divbodynoidungpopupysgianhapnhomnhanh";
+                        divbody.innerHTML='<i class="fa fa-asterisk" aria-hidden="true"></i> Nhập vào mã gia nhập nhóm nhanh';
+                            var inputpass = document.createElement("INPUT");
+                                inputpass.className="inputpassgianhapnhomnhanh";
+                                inputpass.id="inputgianhapnhomid";
+                                inputpass.addEventListener("input",function(){
+                                    $("#notipassgianhapnhomid").val("");
+                                })
+                            var inputnotipass= document.createElement("INPUT");
+                                inputnotipass.className="inputpassgianhapnhomnhanhnoti";
+                                inputnotipass.id="notipassgianhapnhomid";
+                                inputnotipass.style.color="red";
+                                inputnotipass.value="";
+                                inputnotipass.disabled=true;
+                        divbody.appendChild(inputpass);
+                        divbody.appendChild(inputnotipass);
+                    var divbot = document.createElement("div");
+                        divbot.className="divbotpopuptocaoys";
+                        var btndongy = document.createElement("div");
+                            btndongy.textContent="Đồng ý"
+                            btndongy.className="btndongypopupys";
+                            btndongy.addEventListener("click",function(){
+
+                                // 
+                        // '/ajax/getcaidatnhomne'
+                         $.ajax({
+                                url: link_host+'/ajax/getcaidatnhomne',
+                                type:'GET',
+                                data:{
+                                        ma_nhom:manhom
+                                }}).done(function(data){
+                                    if (data[0].ma_gia_nhap_nhom!=$("#inputgianhapnhomid").val()) {
+                                           $("#notipassgianhapnhomid").val("Mật khẩu không đúng");
+                                    }else{ 
+
+                                 $.ajax({
+                                        url: link_host+'/ajax/postthemthanhvienvaonhomne',
+                                        type:'POST',
+                                        data:{
+                                                _token: $('input[name=_token]').val(),
+                                                ma_nhom:manhom,
+                                                ma_tai_khoan:$("#session-ma-tk").val(),
+                                                ma_chuc_vu:"CV07",
+                                                trang_thai:"1"        
+                                        }}).done(function(data){
+                                            $.ajax({
+                                                url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
+                                                type:'POST',
+                                                data:{
+                                                        _token: $('input[name=_token]').val(),
+                                                        ma_nhom:manhom,
+                                                        ma_tai_khoan:$("#session-ma-tk").val(),
+                                                        ma_chuc_vu:"CV07",
+                                                        trang_thai:"1"        
+                                                }}).done(function(data){
+                                                    gotogroup(manhom);
+                                                })})}
+                                })
+                                // 
+
+                            })
+                        var btnhuybo = document.createElement("div");
+                            btnhuybo.className="btnhuypopupys";
+                            btnhuybo.textContent="Hủy bỏ";
+                            btnhuybo.addEventListener("click",function(){
+                               var e = document.getElementById("popupbaocao");
+                                e.parentNode.removeChild(e);
+                            })
+                        divbot.appendChild(btndongy);
+                        divbot.appendChild(btnhuybo);
+                     divto.appendChild(divtop);
+                     divto.appendChild(divbody);
+                     divto.appendChild(divbot);
+            divtobig.appendChild(divto);
+      document.getElementById("bodymaster").appendChild(divtobig);
+
+    // 
+}

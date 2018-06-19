@@ -50,19 +50,20 @@ class Nhom extends Controller
                                 ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet')//
                                 ->where([["bai_viet.ma_chu_bai_viet",$idnhom],["bai_viet.trang_thai","1"]])
                                 ->orderBy('bai_viet.ma_bai_viet','desc')
-
                                 // ->paginate(5)
                                 // ->setPath("baiviet/trang");
                                ->take(10)->get();
-
 // "lstykienbinhchon"=>$lstbinhchonykien
-
 // 
         //$soluongbaiviet =10; //,"s"=>$soluongbaiviet
         return view("nhom.indexnhom",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thongtinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom]);
     }
 
-
+    // public function getcaidatnhom(Request $rql){
+    //   return    DB::table('cai_dat_nhom')
+    //                             ->where("ma_nhom",$rql->ma_nhom)
+    //                             ->get();
+    // }
 
     public function getlsttepduocnoptheomabaiviet(Request $rql){
                  return DB::table('tep_duoc_nop')->select(DB::raw('count(*) as soluong'))->where([["ma_nguoi_nop",$rql->ma_nguoi_nop],["ma_bai_viet",$rql->ma_bai_viet]])->get();
@@ -97,15 +98,22 @@ class Nhom extends Controller
     	$manhom = DB::table('nhom')->select('ma_nhom')->orderBy('ma_nhom','desc')->get()->first();
     	return $manhom->ma_nhom;
     }
-
+    
     public function gettimkiemnhom(Request $rql)
     {
         $lstnhomtimkiem;
         if ($rql->ten_nhom!="") {
-           $lstnhomtimkiem = DB::table('nhom')->where("ten_nhom","LIKE","%$rql->ten_nhom%")->take(5)->get();
+           $lstnhomtimkiem = DB::table('nhom')
+                           ->where("ten_nhom","LIKE","%$rql->ten_nhom%")
+                           ->orWhere("ma_nhom",$rql->ten_nhom)
+                           ->take(5)->get();
         }
         else{
-         $lstnhomtimkiem = DB::table('nhom')->where("ten_nhom","LIKE","%$rql->ten_nhom%")->take(0)->get();
+         $lstnhomtimkiem = DB::table('nhom')
+                             ->where("ten_nhom","LIKE","%$rql->ten_nhom%")
+                             ->orWhere("ma_nhom",$rql->ten_nhom)
+                             ->take(0)
+                             ->get();
         }
         return $lstnhomtimkiem;
     }

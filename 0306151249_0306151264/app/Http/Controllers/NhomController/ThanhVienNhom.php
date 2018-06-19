@@ -117,12 +117,9 @@ class ThanhVienNhom extends Controller
         $thanhviennhom->ma_nhom                         = $rql->ma_nhom;
         $thanhviennhom->ma_tai_khoan                    = $rql->ma_tai_khoan;
         $thanhviennhom->ma_chuc_vu                      = $rql->ma_chuc_vu;
-        // $thanhviennhom->thoi_gian_vao_nhom              = $rql->thoi_gian_vao_nhom;
-        // $thanhviennhom->thoi_gian_thoat_nhom            = $rql->thoi_gian_thoat_nhom;
         $thanhviennhom->trang_thai                      = $rql->trang_thai;
         $thanhviennhom->save();
           return "Đã thêm thành công thành viên vào nhóm";
-        // return "Đã thêm thành công thành viên vào nhóm".$rql->ma_nhom.$rql->ma_tai_khoan.$rql->ma_chuc_vu.$rql->thoi_gian_vao_nhom.$rql->thoi_gian_thoat_nhom.$rql->trang_thai;
     }
     public function PostChucVuCuaThanhVienVaoNhom(Request $rql){
         $thanhviennhom = new chuc_vu_cua_thanh_vien_trong_nhom();
@@ -139,7 +136,7 @@ class ThanhVienNhom extends Controller
     }
     public function GetLstNhomMaThanhVienGiaNhap(Request $rql)
     {
-            $lstNhomTVdagianhap = DB::table("thanh_vien_nhom")->where("ma_tai_khoan",$rql->ma_tai_khoan)->get();
+            $lstNhomTVdagianhap = DB::table("thanh_vien_nhom")->where([["ma_tai_khoan",$rql->ma_tai_khoan],["trang_thai","1"]])->get();
             return $lstNhomTVdagianhap;
     }
     public function PostThanhVienXinGiaNhapNhom(Request $rql)

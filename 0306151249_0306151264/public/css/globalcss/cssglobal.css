@@ -118,6 +118,11 @@
    /*border-top: solid 1px #eadcf2; */
   height: 55px;
 }
+
+
+
+
+
 .divbotpopuptocaoys{
   width: 96%;
   margin-left: 2%;
@@ -170,3 +175,20 @@
   box-shadow: 1px 1px 1px #9695d8;
 }
 
+
+.divmainnoidungpopupysgianhapnhomnhanh{
+  border-radius: 3px;
+  /*border:solid 1px #9695d8;*/
+  position: fixed;
+  margin-left:  37%;
+  width: 400px;
+  height: 175px;
+  background-color: white;
+
+}
+.divbodynoidungpopupysgianhapnhomnhanh{
+  padding: 10px;
+  padding-left: 20px;
+   /*border-top: solid 1px #eadcf2; */
+  height: 85px;
+}
