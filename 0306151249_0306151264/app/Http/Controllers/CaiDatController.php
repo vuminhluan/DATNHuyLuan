@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\TaiKhoan;
+use App\TaiKhoanBiChan;
 use Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -242,6 +243,7 @@ class CaiDatController extends Controller
       ->join('tai_khoan_bi_chan AS danhsach', 'danhsach.ma_tai_khoan_bi_chan', '=', 'tk_bichan.ma_tai_khoan')
       ->join('nguoi_dung AS nd_bichan', 'nd_bichan.ma_tai_khoan', '=', 'tk_bichan.ma_tai_khoan')
       ->where('danhsach.ma_tai_khoan_chan', '=', Auth::user()->ma_tai_khoan)
+      ->where('danhsach.trang_thai', '=', 1)
       ->orderBy('thoi_gian_chan', 'desc')
       ->select(
         'tk_bichan.ma_tai_khoan',
@@ -265,45 +267,28 @@ class CaiDatController extends Controller
     // date_default_timezone_set("Asia/Ho_Chi_Minh");
     $date = date('Y-m-d h:i:s');
 
-    $taikhoan_bichan = DB::table('tai_khoan_bi_chan')
-      ->where([
-              ['ma_tai_khoan_bi_chan', '=', $user_id],
-              ['ma_tai_khoan_chan', '=', Auth::user()->ma_tai_khoan]
-        ])->get();
+    $taikhoan_bichan = TaiKhoanBiChan::where('ma_tai_khoan_bi_chan', $user_id)->where('ma_tai_khoan_chan', '=', Auth::user()->ma_tai_khoan)->first();
 
     // Nếu tồn tại trong bảng bị chặn => bỏ chặn
-    if(count($taikhoan_bichan) > 0) {
-      // return "ok";
-      return $this->getBoChanMotTaiKhoan($user_id, $username);
-
+    if($taikhoan_bichan && $taikhoan_bichan->trang_thai == 1) {
+      $this->getBoChanMotTaiKhoan($taikhoan_bichan);
+      return "Bạn đã bỏ chặn tài khoản @".$username;
     }
 
     // Chặn tài khoản (insert)
-    DB::table('tai_khoan_bi_chan')->insert(
-      [
-        'ma_tai_khoan_bi_chan' => $user_id,
-        'ma_tai_khoan_chan'    => Auth::user()->ma_tai_khoan,
-        'thoi_gian_chan'       => $date
-      ]
-    );
+    $taikhoan_bichan->trang_thai = 1;
+    $taikhoan_bichan->save();
 
     return "Bạn đã chặn tài khoản @".$username;
 
   }
 
-  public function getBoChanMotTaiKhoan($user_id, $username)
+  public function getBoChanMotTaiKhoan($taikhoan_bichan)
   {
-    // return "Tai khoan nay ko bi chan";
-    // Chặn tài khoản (delete)
-    // $taikhoan_bichan->delete();
     
-    DB::table('tai_khoan_bi_chan')
-      ->where([
-          ['ma_tai_khoan_bi_chan', '=', $user_id],
-          ['ma_tai_khoan_chan', '=', Auth::user()->ma_tai_khoan]
-        ])->delete();
-
-    return "Bạn đã bỏ chặn tài khoản @".$username;
+    // Thay đổi trạng thái
+    $taikhoan_bichan->trang_thai = 0;
+    $taikhoan_bichan->save();
 
   }
 

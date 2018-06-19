@@ -49,22 +49,20 @@
 	<!-- Profile navbar -->
 	<div class="profile-navbar">
 		<div class="main">
-			<ul>
+			<ul class="">
 				<li>
 					<a class="luan_link" href="#">
 						<span>Bài viết</span><span>12</span>
 					</a>
 				</li>
-				<li>
-					<a class="luan_link" href="#">
-						<span>Thích</span><span>0</span>
-					</a>
-				</li>
-				{{-- <li>
-					<a class="luan_link" href="#">
-						<span>Lưu</span><span>0</span>
-					</a>
-				</li> --}}
+				@if (Auth::user()->ma_tai_khoan == $taikhoan->ma_tai_khoan)
+					<li>
+						<a class="luan_link" href="#">
+							<span>Thích</span><span>0</span>
+						</a>
+					</li>
+				@endif
+				
 				<li>
 					<a class="luan_link" href="{{route('trangcanhan.nhom', ['username'=>$taikhoan->ten_tai_khoan])}}">
 						<span>Nhóm</span><span>1</span>
@@ -76,6 +74,21 @@
 						{{-- <span>2</span> --}}
 					</a>
 				</li>
+				@if (Auth::user()->ma_tai_khoan != $taikhoan->ma_tai_khoan)
+				<li style="float: right">
+					<a class="luan_link" href="{{route('nguoidung.tep.index',[$taikhoan->ten_tai_khoan])}}">
+						<span>Chặn</span>
+						{{-- <span>2</span> --}}
+					</a>
+				</li>
+				<li style="float: right">
+					<a class="luan_link" href="{{route('nguoidung.tep.index',[$taikhoan->ten_tai_khoan])}}">
+						<span>Nhắn tin</span>
+						{{-- <span>2</span> --}}
+					</a>
+				</li>
+				@endif
+				
 			</ul>
 		</div>
 	</div>
@@ -101,11 +114,18 @@
 						<span>Hồ Chí Minh</span>
 					</p> --}}
 					<p>
+						<i class="fa fa-user-secret"></i>
+						&nbsp;
+						<span>Tên ẩn danh:
+							{{$taikhoan->hasNguoiDung->ten_an_danh}}
+						</span>
+					</p>
+					<p>
 						<i class="fa fa-clock-o"></i>
 						&nbsp;
 						<span>Tham gia ngày: {{date_format($taikhoan->thoi_gian_tao, "d/m/Y")}}</span>
 					</p>
-					@if (Auth::user()->nguoi_dung->ngay_sinh != null)
+					@if ($taikhoan->hasNguoiDung->ngay_sinh != null)
 					<p>
 						<i class="fa fa-calendar"></i>
 						&nbsp;

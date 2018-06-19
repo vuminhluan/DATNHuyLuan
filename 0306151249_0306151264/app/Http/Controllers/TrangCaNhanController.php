@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\TaiKhoan;
+use App\TaiKhoanBiChan;
 use App\Tep;
 use App\Traits\TaoMaTepTrait;
 use App\Traits\CapNhatDoiTuongTrait;
@@ -37,8 +38,9 @@ class TrangCaNhanController extends Controller
 
 		$taikhoan = TaiKhoan::where('ten_tai_khoan', $username)->where('trang_thai', '!=', 4)->first();
 		// return $taikhoan->hasNguoiDung->ten;
+		$taikhoan_bichan = TaiKhoanBiChan::where('ma_tai_khoan_bi_chan', $taikhoan->ma_tai_khoan)->where('ma_tai_khoan_chan', Auth::user()->ma_tai_khoan)->first();
 
-		if(!$taikhoan || $taikhoan->trang_thai != 2) {
+		if(!$taikhoan || $taikhoan->trang_thai != 2 || $taikhoan_bichan) {
 			abort(404);
 		}
 
@@ -54,24 +56,19 @@ class TrangCaNhanController extends Controller
 
 	public function capNhatNguoiDung(Request $req)
 	{
-		$ho_ten_lot = $req->profile_family_middle_name;
-		$ten = $req->profile_first_name;
-		$gioi_thieu = preg_replace( "/(\r\n)/", " ", $req->profile_bio);
-		$gioi_tinh = $req->profile_gender;
-		$ngay_sinh = $req->profile_birthday;
-		$nguoi_sua = Auth::user()->ma_tai_khoan;
 
-		// return Auth::user()->ma_tai_khoan;
-		$nguoi_dung = NguoiDung::where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->first();
-		// return $nguoi_dung;
-
-		$nguoi_dung->ho_ten_lot = $ho_ten_lot;
-		$nguoi_dung->ten = $ten;
-		$nguoi_dung->ngay_sinh = $ngay_sinh;
-		$nguoi_dung->ma_gioi_tinh = $gioi_tinh;
-		$nguoi_dung->gioi_thieu = $gioi_thieu;
-		$nguoi_dung->nguoi_sua = $nguoi_sua;
-		$nguoi_dung->save();
+		$data = [
+			'ho_ten_lot' => $req->profile_family_middle_name,
+			'ten' => $req->profile_first_name,
+			'ten_an_danh' => $req->profile_secret_name,
+			'ngay_sinh' => $req->profile_birthday,
+			'ma_gioi_tinh' => $req->profile_gender,
+			'nguoi_sua' => Auth::user()->ma_tai_khoan,
+			'gioi_thieu' => preg_replace( "/(\r\n)/", " ", $req->profile_bio)
+		];
+		
+		// $nguoi_dung = NguoiDung::where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->first();
+		NguoiDung::where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->update($data);
 
 		return redirect()->back()->with('my_message', 'Cập nhật thông tin thành công');
 	}

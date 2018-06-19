@@ -12,29 +12,10 @@ server.listen(port, function () {
 
 io.on('connection', function (socket) {
 
-  // socket.on( 'new_count_message', function( data ) {
-  //   io.sockets.emit( 'new_count_message', { 
-  //   	new_count_message: data.new_count_message
-  //   });
-  // });
 
+  // console.log(socket.id);
 
-
-  // socket.on( 'update_count_message', function( data ) {
-  //   io.sockets.emit( 'update_count_message', {
-  //   	update_count_message: data.update_count_message 
-  //   });
-  // });
-
-  // socket.on( 'new_message', function( data ) {
-  //   io.sockets.emit( 'new_message', {
-  //   	name: data.name,
-  //   	email: data.email,
-  //   	subject: data.subject,
-  //   	created_at: data.created_at,
-  //   	id: data.id
-  //   });
-  // });
+  
 
 
   // Test
@@ -51,9 +32,17 @@ io.on('connection', function (socket) {
   // admin CHAT
 
 
+  // Join admin room
+  socket.join('RoomAdmin');
+  // console.log(socket.adapter.rooms);
+
+  // socket.on( 'adminChatMessage', function(data) {
+  //   socket.broadcast.emit( 'adminChatMessage', data);
+  // });
 
   socket.on( 'adminChatMessage', function(data) {
-    socket.broadcast.emit( 'adminChatMessage', data);
+    // io.sockets.to('RoomAdmin').emit('adminChatMessage', data);
+    socket.broadcast.to('RoomAdmin').emit('adminChatMessage', data);
   });
 
 

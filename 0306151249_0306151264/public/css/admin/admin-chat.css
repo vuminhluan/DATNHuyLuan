@@ -3,10 +3,11 @@
 * {box-sizing: border-box;}
 .admin-chat-sidebar {
 	position: fixed;top: 0;left:0;
-	height: 100%;width: 400px;background-color: #c8c5ff;z-index: 1;
+	height: 100%;width: 0px;background-color: #c8c5ff;z-index: 1;
+	/*transform: translateX(-100%);*/margin-left: -100%;
 	transition: 0.5s;
-
 }
+
 .admin-chat-sidebar > div {
 }
 .admin-chat-sidebar .content {
@@ -73,4 +74,9 @@
 @keyframes show_message {
 	from { opacity: 0; }
 	to { opacity: 1;}
+}
+
+
+#close-chat-button {
+	margin-right: 10px;cursor: pointer;
 }

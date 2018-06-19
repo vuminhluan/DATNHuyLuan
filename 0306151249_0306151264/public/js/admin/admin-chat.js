@@ -10,25 +10,19 @@ $(document).ready(function() {
 	var socket = io.connect( 'http://'+window.location.hostname+':3000' );
 
 
+	$('#open-chat-button').click(function(event) {
+		$('#admin-chat-sidebar').css({
+			'width': '400px',
+			'margin-left': '0'
+		});
+	});
 
-	// $('#send-chat-button').click(function() {
-	// 	var message = $('#chat-box').val();
-
-	// 	socket.emit('testMessage', message);
-
-	// 	var message = "<div class='pull-right item item-right'><label>A</label><p>"+message+"</p></div>";
- //    $('#chat-list').prepend(message);
-
-		
-	// });
-
-	// // broadcast from server
-	// socket.on('testMessage', function(data) {
-    
- //    var message = "<div class='pull-left item item-left'><label>A</label><p>"+data+"</p></div>";
- //    $('#chat-list').prepend(message);
- //  });
-
+	$('#close-chat-button').click(function(event) {
+		$('#admin-chat-sidebar').css({
+			'width': '0px',
+			'margin-left': '-100%'
+		});
+	});
 
  	// Lưu chat vào session  - Gửi lên nodejs server - Hiện chat của người gửi ra khung chat (pull-right)
  	// Có 1 nút -> Lưu tin nhắn vào database (nếu cần) -> Chưa có chức năng này :((
@@ -39,16 +33,14 @@ $(document).ready(function() {
 		var dataString = {
 			message: message,
 			sender_name: senderName,
+			time: moment().calendar(),
 			_token : $('[name=_token]').val()
 		};
 
-		var myMessage = "<div class='pull-right item own' title='Thời gian'><div class='pull-right item-right'><label for=''>"+senderName+"</label><p>"+message+"</p></div></div>";
+		var myMessage = "<div class='pull-right item own' title='"+dataString.time+"'><div class='pull-right item-right'><label for=''>"+senderName+"</label><p>"+message+"</p></div></div>";
 		
     $('#chat-list').prepend(myMessage);
     $('#chat-box').val('');
-
-    
-
 
 		$.ajax({
 			url: link_host+'/admin/chat/luuchat',
@@ -66,7 +58,7 @@ $(document).ready(function() {
 
 	// broadcast from server
 	socket.on('adminChatMessage', function(dataString) {
-    var message = "<div class='pull-left item' title='Thời gian'><div class='pull-left item-left'><label for=''>"+dataString.sender_name+"</label><p>"+dataString.message+"</p></div></div>";
+    var message = "<div class='pull-left item' title='"+dataString.time+"'><div class='pull-left item-left'><label for=''>"+dataString.sender_name+"</label><p>"+dataString.message+"</p></div></div>";
     $('#chat-list').prepend(message);
 
     console.log(dataString);
@@ -74,6 +66,7 @@ $(document).ready(function() {
     var dataString = {
 			message: dataString.message,
 			sender_name: dataString.sender_name,
+			time: moment().calendar(),
 			_token : $('[name=_token]').val()
 		};
 

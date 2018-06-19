@@ -39,8 +39,8 @@
           <li><a href="{{route('caidat.index')}}" class="setting-active-link">Tài khoản <span><i class="fa fa-angle-right"></i></span></a></li>
           <li><a href="#/">Bảo mật và riêng tư <span><i class="fa fa-angle-right"></i></span></a></li>
           <li><a href="{{route('caidat.thaydoi_matkhau')}}">Mật khẩu <span><i class="fa fa-angle-right"></i></span></a></li>
-          <li><a href="{{route('caidat.chan_taikhoan')}}">Người dùng bị chặn <span><i class="fa fa-angle-right"></i></span></a>
-          <li><a href="setting-blocked-groups.html">Nhóm bị chặn <span><i class="fa fa-angle-right"></i></span></a></li>
+          <li><a href="{{route('caidat.chan_taikhoan')}}">Danh sách tài khoản đã chặn <span><i class="fa fa-angle-right"></i></span></a>
+          <li><a href="setting-blocked-groups.html">Danh sách nhóm đã chặn <span><i class="fa fa-angle-right"></i></span></a></li>
           <li><a href="setting-blocked-groups.html">Cài đặt bảng tin <span><i class="fa fa-angle-right"></i></span></a></li>
         </ul>
       </div>

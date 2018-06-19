@@ -12,6 +12,7 @@
 */
 // use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 Route::get('/', 'DangNhapController@getIndex')->name('index');
 
@@ -22,8 +23,9 @@ Route::get('/dangnhap/google/callback', 'DangNhapController@callBackDangNhapGoog
 // Route::get('/dangki', 'DangKiController@getDangKi')->name('get_dangki');
 Route::post('/dangki', 'DangKiController@postDangKi')->name('post_dangki');
 
-Route::get('/dangxuat', function() {
+Route::get('/dangxuat', function(Request $req) {
   Auth::logout();
+  $req->session()->flush();
   return redirect()->route('index');
 })->name('dangxuat');
 

@@ -15,8 +15,9 @@ class ChatController extends Controller
 	    session(['admin-chat'=> [
 
 	    	[
-	    		'name' => $req->sender_name,
-	    		'message' => $req->message
+					'name'    => $req->sender_name,
+					'message' => $req->message,
+					'time'    => $req->time
 	    	]
 
 	    ]
@@ -25,7 +26,7 @@ class ChatController extends Controller
 		} else {
 			// session(['admin-chatt'=> [$data]]);
 			$req->session()->push('admin-chat', ['name' => $req->sender_name,
-	    		'message' => $req->message]);
+	    		'message' => $req->message, 'time' => $req->time]);
 		}
   
   	$list_chat = $req->session()->get('admin-chat');

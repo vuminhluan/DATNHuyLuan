@@ -11,7 +11,7 @@ class AdminController extends Controller
 {
   public function getIndex(Request $req)
   {
-  	$list_chat = $req->session()->get('admin-chat');
-  	return view('admin.index', ['list_chat' => $list_chat]);
+  	// $list_chat = $req->session()->get('admin-chat');
+  	return view('admin.index');
   }
 }

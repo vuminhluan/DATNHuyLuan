@@ -12,10 +12,12 @@
 		</div>
 	</form>
 
-
-	<div >
-		<button class="open-upload-modal">Thêm tệp mới</button>
-	</div>
+	@if (Auth::user()->ten_tai_khoan == $username)
+		<div >
+			<button class="open-upload-modal">Thêm tệp mới</button>
+		</div>
+	@endif
+	
 </div>
 <ul class="file-list">
 

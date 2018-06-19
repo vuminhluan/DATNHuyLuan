@@ -30,7 +30,7 @@
   {{-- Admin chat sidebar --}}
   
   <div class="admin-chat-sidebar" id="admin-chat-sidebar">
-    <h2 class="text-center" style="border-bottom: 1px solid #eee">CHAT</h2>
+    <h2 class="text-center" style="border-bottom: 1px solid #eee">CHAT <span id="close-chat-button" class="pull-right"><i class="fa fa-caret-left"></i></span></h2>
     <div class="content">
       <div class="chat-list" id="chat-list">
 
@@ -47,16 +47,19 @@
           </div>
         </div> --}}
         @if (session('admin-chat'))
+          @php
+            $list_chat = session('admin-chat');
+          @endphp
           @for ($i = count($list_chat)-1; $i >= 0 ; $i--)
             @if ($list_chat[$i]['name'] == Auth::user()->ho_ten_lot." ".Auth::user()->ten)
-              <div class="pull-right item own" title="Thời gian">
+              <div class="pull-right item own" title="">
                 <div class="pull-right item-right">
                   <label for="">{{$list_chat[$i]['name']}}</label>
                   <p>{{$list_chat[$i]['message']}}</p>
                 </div>
               </div>
             @else
-              <div class="pull-left item" title="Thời gian">
+              <div class="pull-left item" title="{{$list_chat[$i]['time']}}">
                 <div class="pull-left item-left">
                   <label for="">{{$list_chat[$i]['name']}}</label>
                   <p>{{$list_chat[$i]['message']}}</p>
@@ -116,7 +119,11 @@
   <script src="{{ asset('node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js') }}"></script>
   <script type="text/javascript" src="{{asset('js/admin/admin-chat.js')}}"></script>
 
-  <script></script>
+  <script type="text/javascript" src="{{asset('js/libs/moment.min.js')}}"></script>
+
+  <script>
+    // alert(moment().calendar());
+  </script>
 
 
 

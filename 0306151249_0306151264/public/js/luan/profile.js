@@ -82,8 +82,10 @@ $(document).ready(function() {
         regex: myregex['tiengviet'],
         maxlength: 20
       },
+      profile_secret_name: {
+        regex: myregex['tiengviet']
+      },
       profile_bio: {
-
       	required: false,
 	      xor: [{
 	        regex: myregex['tiengviet'],
@@ -98,8 +100,6 @@ $(document).ready(function() {
       profile_birthday: {
       	required: true
       }
-
-
     },
     messages: {
     	profile_family_middle_name: {
@@ -112,6 +112,9 @@ $(document).ready(function() {
     		regex: 'Tên phải là tiếng việt có dấu',
     		maxlength: 'Tên dài tối đa {0} kí tự'
     	},
+      profile_secret_name: {
+        regex: 'Tên phải là tiếng việt (có dấu)',
+      },
     	profile_bio: {
     		regex: 'Lời giới thiệu phải là tiếng việt có dấu',
     		maxlength: 'Lời giới thiệu dài tối đa {0}'

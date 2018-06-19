@@ -32,43 +32,54 @@
 				<div class="">
 					<h3 class="--title" data-username = "{{Auth::user()->ten_tai_khoan}}"><img class="--item-icon" src="{{ asset('myicons/tep/archive.svg') }}" alt="">Tệp của tôi</h3>
 					<ul class="--files-menu">
-						<li><a  class="link-hover1 prevent-reload active" href="{{ route('nguoidung.tep.index', [Auth::user()->ten_tai_khoan]) }}"><img class="--item-icon" src="{{asset('myicons/tep/all-files.svg')}}" alt="">Tất cả tệp</a></li>
+
+						@if (Auth::user()->ten_tai_khoan == $username)
+							<li><a  class="link-hover1 prevent-reload active" href="{{ route('nguoidung.tep.index', [Auth::user()->ten_tai_khoan]) }}"><img class="--item-icon" src="{{asset('myicons/tep/all-files.svg')}}" alt="">Tất cả tệp</a></li>
+							<li><a  class="link-hover1 prevent-reload" href="{{ route('nguoidung.tep.index', [Auth::user()->ten_tai_khoan, 'riengtu']) }}"><img class="--item-icon" src="{{ asset('myicons/tep/private-files.svg') }}" alt="">Tệp cá nhân</a></li>
+
+								
+						@endif
+						
 						<li><a  class="link-hover1 prevent-reload" href="{{ route('nguoidung.tep.index', [$username, 'congkhai']) }}"><img class="--item-icon" src="{{ asset('myicons/tep/share.svg') }}" alt="">Tệp công khai</a></li>
-						<li><a  class="link-hover1 prevent-reload" href="{{ route('nguoidung.tep.index', [Auth::user()->ten_tai_khoan, 'riengtu']) }}"><img class="--item-icon" src="{{ asset('myicons/tep/private-files.svg') }}" alt="">Tệp cá nhân</a></li>
+
+						
 						
 					</ul>
 				</div>
 				{{-- Google drive --}}
 				
-				<div class="googledrive">
-					<h3 class="--title" data-username = "{{Auth::user()->ten_tai_khoan}}"><img class="--item-icon" src="{{ asset('myicons/tep/google-drive.svg') }}" alt=""> Google Drive</h3>
-					@if (!Auth::user()->thu_muc_google_drive)
-						<div class="register-box">
-							<a class="--button" href="">Đăng kí dịch vụ</a>
-							{{-- {{ route('googledrive.dangkidichvu') }} --}}
-						</div>
-					@else
-						<div>
-							<a href="{{ route('googledrive.tep.index') }}"><img class="--item-icon" src="{{ asset('myicons/tep/folder.svg') }}" alt=""> Thư mục gốc</a>
-						</div>
-						
-						<div class="quickadd-box">
-							<h4>Thêm tệp nhanh</h4>
-							<form action="{{ route('googledrive.tep.them') }}" method="POST" enctype="multipart/form-data">
-								@csrf
-								<div>
-									Chọn tệp từ máy tính
-									<input class="--file" type="file" name="file" required>
-								</div>
-								<button class="--button">Thêm</button>
-							</form>
-						</div>
+				@if (Auth::user()->ten_tai_khoan == $username)
+					<div class="googledrive">
+						<h3 class="--title" data-username = "{{Auth::user()->ten_tai_khoan}}"><img class="--item-icon" src="{{ asset('myicons/tep/google-drive.svg') }}" alt=""> Google Drive</h3>
+						@if (!Auth::user()->thu_muc_google_drive)
+							<div class="register-box">
+								<a class="--button" href="">Đăng kí dịch vụ</a>
+								{{-- {{ route('googledrive.dangkidichvu') }} --}}
+							</div>
+						@else
+							<div>
+								<a href="{{ route('googledrive.tep.index') }}"><img class="--item-icon" src="{{ asset('myicons/tep/folder.svg') }}" alt=""> Thư mục gốc</a>
+							</div>
+							
+							<div class="quickadd-box">
+								<h4>Thêm tệp nhanh</h4>
+								<form action="{{ route('googledrive.tep.them') }}" method="POST" enctype="multipart/form-data">
+									@csrf
+									<div>
+										Chọn tệp từ máy tính
+										<input class="--file" type="file" name="file" required>
+									</div>
+									<button class="--button">Thêm</button>
+								</form>
+							</div>
 
-						<div class="delete-box">
-							<a class="--button" href="{{ route('googledrive.huydichvu') }}">Hủy dịch vụ</a>
-						</div>
-					@endif
-				</div>
+							<div class="delete-box">
+								<a class="--button" href="{{ route('googledrive.huydichvu') }}">Hủy dịch vụ</a>
+							</div>
+						@endif
+					</div>
+				@endif
+				
 				
 				{{-- End google drive --}}
 			</div>

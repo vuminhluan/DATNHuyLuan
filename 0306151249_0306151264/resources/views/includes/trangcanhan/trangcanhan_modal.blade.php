@@ -20,6 +20,11 @@
 					{{-- <span class="character-counter" id="profile-first-name-counter" data-limit='15'>15</span> --}}
 				</div>
 				<div>
+					<label for="profile-secret-name">Tên ẩn danh</label>
+					<input type="text" class="profile-secret-name" id="profile-secret-name" name="profile_secret_name" value="{{$taikhoan->hasNguoiDung->ten_an_danh}}" autocomplete='off'>
+					{{-- <span class="character-counter" id="profile-first-name-counter" data-limit='15'>15</span> --}}
+				</div>
+				<div>
 					<label for="profile-bio">Giới thiệu</label>
 					<textarea class="js-autoexpand" name="profile_bio" id="profile-bio" rows="2" autocomplete='off'>{{$taikhoan->hasNguoiDung->gioi_thieu}}</textarea>
 					{{-- <span class="character-counter" id="profile-bio-counter" data-limit='10'>10</span> --}}

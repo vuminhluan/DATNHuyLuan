@@ -49,10 +49,10 @@ class TaiKhoan extends Model implements \Illuminate\Contracts\Auth\Authenticatab
     return $this->hasOne('App\ThuMucGoogleDrive', 'ma_tai_khoan', 'ma_tai_khoan');
   }
 
-  // public function hasTaiKhoanGoogle()
-  // {
-  //   return $this->hasOne('App\TaiKhoanGoogle', 'ma_taikhoan_google', 'ma_tai_khoan');
-  // }
+  public function hasManyTaiKhoanBiChan()
+  {
+    return $this->hasMany('App\TaiKhoanBiChan', 'ma', 'ma_tai_khoan');
+  }
 
   // Lấy dữ liệu từ bảng nguoi_dung thông qua Relationship hasOne ở trên
   // cấu trúc: get + CaiGiDo + Attribute
