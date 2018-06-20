@@ -409,6 +409,13 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
                                                 trang_thai:trangthaibaiviet
                                             }
                                             }).done(function(data) {
+
+
+                                              
+
+
+
+
                                               var batdongbo2 = true;
                                               if(batdongbo2){batdongbo2!=batdongbo2;
 
@@ -423,7 +430,10 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
                                                 soluongluachon=2; // reset số lượng lựa chọn về 2
 
                                                 if(trangthaibaiviet=="2"){
-                                                  thongbaopopupy("Đăng bài viết","Bài viết của bạn sẽ được kiểm duyệt trước khi xuất hiện");return;
+                                                  thongbaopopupy("Đăng bài viết","Bài viết của bạn sẽ được kiểm duyệt trước khi xuất hiện");
+                                                  postthongbaobaivietmoi("LTBN02","Bài viết mới","2");return;
+                                                }else{
+                                                  postthongbaobaivietmoi("LTBN02","Bài viết mới","1");
                                                 }
 
                                                       $.ajax({
@@ -456,6 +466,25 @@ function creatediv() {
     element.setAttribute("id", "sss");
     document.getElementById('divcontent').appendChild(element);
 }
+
+
+function postthongbaobaivietmoi(loaithongbao,noidungthongbao,trangthai){
+   $.ajax(
+                                            {
+                                                url: link_host+'/ajax/postthongbaonhomne',
+                                                type: 'POST',
+                                                data:{
+                                                _token: $('input[name=_token]').val(),
+                                                ma_nhom: $('#div-hi-chu-bai-viet-ma-nhom').val(), // hiện tại đăng trong nhóm nên sẽ là của nhóm
+                                                ma_loai_thong_bao_nhom:loaithongbao,
+                                                noi_dung_thong_bao:noidungthongbao,
+                                                nguoi_tao_thong_bao: $('#session-ma-tk').val(),
+                                                trang_thai: trangthai
+                                            }
+                                            }).done(function(data) {})
+
+}
+
 
  function getdatetime(){
  var today = new Date();

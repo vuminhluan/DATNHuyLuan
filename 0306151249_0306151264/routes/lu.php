@@ -160,3 +160,7 @@ Route::get("taofolderchuatepthubaine","BaiVietController\BaiViet@taofolderchuate
 
 Route::post("/postfilenopbaithanhvienne","BaiVietController\BaiViet@postfilenopbaithanhvien")
 ->name("postfilenopbaithanhvien");
+
+
+Route::post("/ajax/postthongbaonhomne","ThongBaoController\ThongBaoNhom@postthongbaonhom")
+->name("postthongbaonhom");
