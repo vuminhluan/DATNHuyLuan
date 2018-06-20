@@ -76,15 +76,13 @@
 				</li>
 				@if (Auth::user()->ma_tai_khoan != $taikhoan->ma_tai_khoan)
 				<li style="float: right">
-					<a class="luan_link" href="{{route('nguoidung.tep.index',[$taikhoan->ten_tai_khoan])}}">
+					<a id="block-this-account-button" class="luan_link" href="#/">
 						<span>Chặn</span>
-						{{-- <span>2</span> --}}
 					</a>
 				</li>
 				<li style="float: right">
 					<a class="luan_link" href="{{route('nguoidung.tep.index',[$taikhoan->ten_tai_khoan])}}">
 						<span>Nhắn tin</span>
-						{{-- <span>2</span> --}}
 					</a>
 				</li>
 				@endif
@@ -101,7 +99,7 @@
 			<div>
 				<div class="profile-name">
 					<h2>{{$taikhoan->hasNguoiDung->ho_ten_lot.' '.$taikhoan->hasNguoiDung->ten}}</h2>
-					<p><a class="luan_link" href="{{route('trangcanhan.index', ['username'=>$taikhoan->ten_tai_khoan])}}">{{'@'.$taikhoan->ten_tai_khoan}}</a></p>
+					<p><a id="username-userid" data-userid = "{{$taikhoan->ma_tai_khoan}}" data-username = "{{$taikhoan->ten_tai_khoan}}" class="luan_link" href="{{route('trangcanhan.index', ['username'=>$taikhoan->ten_tai_khoan])}}">{{'@'.$taikhoan->ten_tai_khoan}}</a></p>
 
 				</div>
 				<div class="profile-bio">
@@ -113,13 +111,15 @@
 						&nbsp;
 						<span>Hồ Chí Minh</span>
 					</p> --}}
-					<p>
-						<i class="fa fa-user-secret"></i>
-						&nbsp;
-						<span>Tên ẩn danh:
-							{{$taikhoan->hasNguoiDung->ten_an_danh}}
-						</span>
-					</p>
+					@if (Auth::user()->ma_tai_khoan == $taikhoan->ma_tai_khoan)
+						<p>
+							<i class="fa fa-user-secret"></i>
+							&nbsp;
+							<span>Tên ẩn danh:
+								{{$taikhoan->hasNguoiDung->ten_an_danh}}
+							</span>
+						</p>
+					@endif
 					<p>
 						<i class="fa fa-clock-o"></i>
 						&nbsp;

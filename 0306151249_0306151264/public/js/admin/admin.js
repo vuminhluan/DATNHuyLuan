@@ -16,9 +16,13 @@ $(document).ready(function() {
     $(this).next('ul').slideToggle("slow");
     return false;
   });
+
+
   $('#check_all').change(function(){
     $('.table input:checkbox').prop('checked', this.checked);
   });
+
+  
   // });
 
   $('#task').change(function(e){

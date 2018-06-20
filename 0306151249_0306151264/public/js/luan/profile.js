@@ -73,17 +73,19 @@ $(document).ready(function() {
 	$('#update-profile-form').validate({
     rules: {
       profile_family_middle_name: {
-        required: true,
-        regex: myregex['tiengviet'],
+        required : true,
+        regex    : myregex['tiengviet'],
         maxlength: 30
       },
       profile_first_name: {
-      	required: true,
-        regex: myregex['tiengviet'],
+        required : true,
+        regex    : myregex['tiengviet'],
         maxlength: 20
       },
       profile_secret_name: {
-        regex: myregex['tiengviet']
+        // required : true,
+        minlength: 3,
+        regex    : myregex['ten_andanh']
       },
       profile_bio: {
       	required: false,
@@ -98,31 +100,48 @@ $(document).ready(function() {
       },
 
       profile_birthday: {
-      	required: true
+      	required: false,
+        xor: [{
+          date: true
+        }, {
+          date: true
+        }]
       }
+
     },
     messages: {
     	profile_family_middle_name: {
-    		required: 'Họ và tên lót không được để trống',
-    		regex: 'Họ tên lót phải là tiếng việt có dấu',
-    		maxlength: 'Họ tên lót dài tối đa {0} kí tự'
+        required : 'Họ và tên lót không được để trống',
+        regex    : 'Họ tên lót phải là tiếng việt có dấu',
+        maxlength: 'Họ tên lót dài tối đa {0} kí tự'
     	},
     	profile_first_name: {
-    		required: 'Tên không được để trống',
-    		regex: 'Tên phải là tiếng việt có dấu',
-    		maxlength: 'Tên dài tối đa {0} kí tự'
+        required : 'Tên không được để trống',
+        regex    : 'Tên phải là tiếng việt có dấu',
+        maxlength: 'Tên dài tối đa {0} kí tự'
     	},
       profile_secret_name: {
-        regex: 'Tên phải là tiếng việt (có dấu)',
+        required : 'Bạn cần có tên ẩn danh',
+        regex    : 'Tên ẩn danh chỉ bao gồm các chữ cái (có dấu) và các chữ số',
+        minlength: 'Tên ẩn danh phải tối thiểu {0} kí tự'
       },
     	profile_bio: {
-    		regex: 'Lời giới thiệu phải là tiếng việt có dấu',
-    		maxlength: 'Lời giới thiệu dài tối đa {0}'
-    	},
-
-    	profile_birthday: {
-    		required: 'Ngày sinh không được để trống'
+        regex    : 'Lời giới thiệu phải là tiếng việt có dấu',
+        maxlength: 'Lời giới thiệu dài tối đa {0}'
     	}
+    }
+  });
+
+
+  // Block account button
+  $('#block-this-account-button').click(function(event) {
+    event.preventDefault();
+    var userid = $('#username-userid').attr('data-userid');
+    var username = $('#username-userid').attr('data-username');
+    // alert(username); return;
+    // alert(userid);
+    if(confirm('Bạn muốn chặn tài khoản này ?')) {
+      window.location.href = link_host+"/taikhoan/chan/"+userid+"/"+username;
     }
   });
 

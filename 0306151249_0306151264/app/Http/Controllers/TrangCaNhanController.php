@@ -12,6 +12,7 @@ use App\TaiKhoanBiChan;
 use App\Tep;
 use App\Traits\TaoMaTepTrait;
 use App\Traits\CapNhatDoiTuongTrait;
+use App\Traits\ChanHoacBoChanMotTaiKhoanTrait;
 
 use App\NguoiDung;
 
@@ -20,6 +21,7 @@ class TrangCaNhanController extends Controller
 
 	use TaoMaTepTrait;
 	use CapNhatDoiTuongTrait;
+	use ChanHoacBoChanMotTaiKhoanTrait;
 
 	public function getTrangCaNhan($username)
 	{
@@ -120,42 +122,16 @@ class TrangCaNhanController extends Controller
 	}
 
 
-	// public function postTaiTepLen(Request $req)
-	// {
-		
-	// 	if(!$req->hasFile('uploads')) {
-	// 		return redirect()->back();
-	// 	}
+	public function chanMotTaiKhoan($userid, $username)
+	{
+		// return $userid."--".$username;
+		if($this->chanHoacBoChanMotTaiKhoan($userid)) {
+			$message = "Đã chặn tai khoản @".$username;
+		} else {
+			$message = "Đã bỏ chặn tai khoản @".$username;
+		}
+		return redirect()->route('caidat.chan_taikhoan')->with('slidemessage', $message);
+	}
 
-	// 	foreach ($req->uploads as $key => $file) {
-	// 		// echo "<pre>";
-	// 		if($file->getClientSize() < 25000) {
-	// 			$file_name = md5(time()+$key).'.'.$file->extension();
-	// 			$dir = "uploads/".Auth::user()->ma_tai_khoan."/";
-	// 			// print_r($dir."---".$file_name);
-	// 			// print_r($file->getClientSize());
-	// 			// print_r($this->taoMaTepTrait());
-	// 			$data = [
-	// 				"ma_tep" => $this->taoMaTepTrait(),
-	// 				"ten_tep" => $file->getClientOriginalName(),
-	// 				"duong_dan_tep" => $file_name,
-	// 				"cong_khai" => 0,
-	// 				"nguoi_tao" => Auth::user()->ma_tai_khoan,
-	// 				"trang_thai" => 1
-	// 			];
-
-	// 			$file->move($dir, $file_name);
-
-	// 			$tep = new Tep();
-	// 			$this->capNhatDoiTuong($data, $tep);
-
-	// 		}
-	// 	}
-
-	// 	return redirect()->back()->with('message', 'Thêm tệp thành công'); 
-
-
-
-	// }
 
 }
