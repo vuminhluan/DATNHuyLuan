@@ -20,6 +20,13 @@ Route::group(['middleware' => ['MyUserAuth']], function () {
 		'TrangCaNhanController@getNhom'
 	)->name('trangcanhan.nhom');
 
+	// Chặn một tài khoản nào đó
+	Route::get(
+		'/taikhoan/chan/{userid}/{username}',
+		'TrangCaNhanController@chanMotTaiKhoan'
+	)->name('trangcanhan.taikhoan.chan');
+	// End
+
 
 	Route::post(
 		'/taikhoan/{username}/tep/tailen',
@@ -41,17 +48,12 @@ Route::group(['middleware' => ['MyUserAuth']], function () {
 		'/taikhoan/{username}/tep/{file_id}/capnhat/{kind}',
 		'TepController@getCapNhat'
 	)->name('nguoidung.tep.capnhat');
+
+	
 	
 	
 });
 
-
-// Route::post('/route/ajax', function (Request $req)
-// {
-// 	// return "test ajax route";
-// 	// return "luan";
-// 	return $req;
-// });
 
 
 Route::get('/lienhe', function () {
@@ -115,6 +117,7 @@ Route::prefix('caidat')->group(function () {
 });
 
 
+
 // Route google drive:
 
 Route::group(['middleware' => ['MyUserAuth']], function () {
@@ -133,9 +136,6 @@ Route::group(['middleware' => ['MyUserAuth']], function () {
 	Route::get('googledrive/tep/xoa/{id}', 'GoogleDriveController@getXoaTep')->name('googledrive.tep.xoa');
 
 });
-
-
-
 
 // END Route google drive
 

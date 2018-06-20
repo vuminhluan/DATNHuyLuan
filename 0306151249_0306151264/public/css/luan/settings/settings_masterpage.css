@@ -182,3 +182,33 @@ ul.blocked-account-list > li {
 }
 
 /*End Blocked account page*/
+
+/*body {display: none}*/
+
+/*Slidedown alert*/
+.slidedown-alert {
+  width: 500px;background-color: #fff;min-height: 70px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);top:0;
+  position: fixed; margin: auto;left:0;right:0;z-index: 11;
+  transform: translateY(-120%);
+}
+.slidedown-alert .--content {
+  padding: 20px;
+}
+.slidedown-alert .--content > p {font-size: 19px;}
+
+.slidedown-alert-animation {
+  animation: slidedown-animation 5s linear;
+}
+.slidedown-alert-animation:hover {
+  animation-play-state: paused;
+}
+
+@keyframes slidedown-animation {
+  0% {transform: translateY(-150px)}
+  10% {transform: translateY(0px)}
+  90% {transform: translateY(0px)}
+  100% {transform: translateY(-150px)}
+}
+
+/*END Slidedown alert*/

@@ -145,7 +145,7 @@ function changeTab(n) {
 
       $('[name="sign-up-username"]').rules('add', {
         // regex: "^[\\w]{6,}$"
-        regex : myregex['taikhoan']
+        regex : myregex['ten_taikhoan']
       });
 
       $('[name="sign-up-email"]').rules("add", {

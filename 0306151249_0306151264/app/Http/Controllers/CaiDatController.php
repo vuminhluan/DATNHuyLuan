@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailThayDoiEmail;
 use App\Mail\MailDatLaiMatKhau;
+use App\Traits\ChanHoacBoChanMotTaiKhoanTrait;
 
 use App\Traits\XacNhanMatKhauTrait;
 use App\Traits\CapNhatDoiTuongTrait;
@@ -19,6 +20,7 @@ class CaiDatController extends Controller
 {
   use XacNhanMatKhauTrait;
   use CapNhatDoiTuongTrait;
+  use ChanHoacBoChanMotTaiKhoanTrait;
 
   public function getIndex()
   {
@@ -265,22 +267,28 @@ class CaiDatController extends Controller
   {
     // return $user_id. " ".$username;
     // date_default_timezone_set("Asia/Ho_Chi_Minh");
-    $date = date('Y-m-d h:i:s');
+    // $date = date('Y-m-d h:i:s');
 
-    $taikhoan_bichan = TaiKhoanBiChan::where('ma_tai_khoan_bi_chan', $user_id)->where('ma_tai_khoan_chan', '=', Auth::user()->ma_tai_khoan)->first();
-
-    // Nếu tồn tại trong bảng bị chặn => bỏ chặn
-    if($taikhoan_bichan && $taikhoan_bichan->trang_thai == 1) {
-      $this->getBoChanMotTaiKhoan($taikhoan_bichan);
-      return "Bạn đã bỏ chặn tài khoản @".$username;
+    if($this->chanHoacBoChanMotTaiKhoan($user_id)) {
+      $message = "Đã chặn tài khoản @".$username;
+    } else {
+      $message = "Đã bỏ chặn tài khoản @".$username;
     }
+    return $message;
 
-    // Chặn tài khoản (insert)
-    $taikhoan_bichan->trang_thai = 1;
-    $taikhoan_bichan->save();
+    // $taikhoan_bichan = TaiKhoanBiChan::where('ma_tai_khoan_bi_chan', $user_id)->where('ma_tai_khoan_chan', '=', Auth::user()->ma_tai_khoan)->first();
 
-    return "Bạn đã chặn tài khoản @".$username;
+    // // Nếu tồn tại trong bảng bị chặn => bỏ chặn
+    // if($taikhoan_bichan && $taikhoan_bichan->trang_thai == 1) {
+    //   $this->getBoChanMotTaiKhoan($taikhoan_bichan);
+    //   return "Bạn đã bỏ chặn tài khoản @".$username;
+    // }
 
+    // // Chặn tài khoản (insert)
+    // $taikhoan_bichan->trang_thai = 1;
+    // $taikhoan_bichan->save();
+
+    // return "Bạn đã chặn tài khoản @".$username;
   }
 
   public function getBoChanMotTaiKhoan($taikhoan_bichan)

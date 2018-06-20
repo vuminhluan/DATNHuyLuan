@@ -62,7 +62,7 @@ class DangKiController extends Controller
     $this->taoTaiKhoan($ma_tai_khoan, $req->username, $req->email, $req->password, $now);
 
     // Lưu thông tin người dùng (Họ tên, ảnh đại diện mặc định, ảnh bìa mặc định,...)
-    $this->themThongTinNguoiDung($ma_tai_khoan, $req->lastname, $req->firstname, $now);
+    $this->themThongTinNguoiDung($req->username, $ma_tai_khoan, $req->lastname, $req->firstname, $now);
 
     Auth::attempt(['ten_tai_khoan' => $req->username, 'password' => $req->password]);
 
@@ -92,7 +92,7 @@ class DangKiController extends Controller
     DB::table('tai_khoan')->insert($data);
   }
 
-  public function themThongTinNguoiDung($ma_tai_khoan, $ho_ten_lot, $ten, $thoigian_hientai)
+  public function themThongTinNguoiDung($ten_tai_khoan, $ma_tai_khoan, $ho_ten_lot, $ten, $thoigian_hientai)
   {
     $anh_daidien = "default-avatar.jpg";
     $anh_bia = "default-banner.png";
@@ -103,6 +103,7 @@ class DangKiController extends Controller
       'ten'           => $ten,
       'anh_dai_dien'  => $anh_daidien,
       'anh_bia'       => $anh_bia,
+      'ten_an_danh'   => $ten_tai_khoan,
       'thoi_gian_sua' => $thoigian_hientai->toDateTimeString(),
       'nguoi_sua'     => $ma_tai_khoan
     ];

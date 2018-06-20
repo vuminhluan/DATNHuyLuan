@@ -1,6 +1,13 @@
 @extends('master.luan.caidat_masterpage')
 
 @section('noidung_trangcaidat')
+	
+	<div class="slidedown-alert {{session('slidemessage') ? 'slidedown-alert-animation' : '' }}">
+    <div class="--content">
+      <p class="baomoi">Thông báo: {{session('slidemessage')}}</p>
+    </div>
+  </div>
+
 	<div class="setting-title">
 		<h2>Danh sách tài khoản bị chặn</h2>
 		<p>Dưới đây là danh sách các tài khoản đang bị chặn. Họ sẽ không thể nhìn thấy bài đăng của bạn, không thể vào <a href="profile.html">trang cá nhân của bạn</a>. Nhưng có thể nhìn thấy tên của bạn xuất hiện ở đâu đó. Bạn cũng không thể thấy bài đăng của họ, truy cập trang cá nhân của họ nhưng bạn có thể nhìn thấy tên của họ ở đâu đó.</p>
