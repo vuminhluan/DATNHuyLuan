@@ -10,6 +10,7 @@ use Validator;
 use App\TaiKhoan;
 use App\TaiKhoanBiChan;
 use App\Tep;
+use App\bai_viet as BaiViet;
 use App\Traits\TaoMaTepTrait;
 use App\Traits\CapNhatDoiTuongTrait;
 use App\Traits\ChanHoacBoChanMotTaiKhoanTrait;
@@ -26,6 +27,9 @@ class TrangCaNhanController extends Controller
 	public function getTrangCaNhan($username)
 	{
 		$tatca_gioitinh = DB::table('gioi_tinh')->get();
+
+		
+		// return $tatca_baiviet;
 		// return $tatca_gioitinh;
 
 		// $taikhoan_nguoidung = DB::table('tai_khoan AS tk')
@@ -46,7 +50,21 @@ class TrangCaNhanController extends Controller
 			abort(404);
 		}
 
-		return view('trang_ca_nhan.index')->with(['taikhoan'=>$taikhoan, 'tatca_gioitinh'=>$tatca_gioitinh]);
+		// $tatca_baiviet = BaiViet::where('ma_nguoi_viet', 1)->first();
+		$account_posts = DB::table('bai_viet')
+			->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
+			->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
+			->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
+			->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
+      ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet', 'nhom.ma_nhom', 'nhom.ten_nhom')//
+      ->where([['bai_viet.ma_nguoi_viet',$taikhoan->ma_tai_khoan],["bai_viet.trang_thai","1"]])
+      ->orderBy('bai_viet.ma_bai_viet','desc')
+      ->take(100)->get();
+
+
+     // return $account_posts;
+
+		return view('trang_ca_nhan.index')->with(['taikhoan'=>$taikhoan, 'tatca_gioitinh'=>$tatca_gioitinh, 'lstbaiviet'=>$account_posts]);
 	}
 
 	public function getNhom($username)
@@ -58,7 +76,6 @@ class TrangCaNhanController extends Controller
 
 	public function capNhatNguoiDung(Request $req)
 	{
-
 		$data = [
 			'ho_ten_lot' => $req->profile_family_middle_name,
 			'ten' => $req->profile_first_name,

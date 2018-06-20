@@ -83,7 +83,7 @@ $(document).ready(function() {
         maxlength: 20
       },
       profile_secret_name: {
-        // required : true,
+        required : true,
         minlength: 3,
         regex    : myregex['ten_andanh']
       },

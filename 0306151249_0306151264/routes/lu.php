@@ -8,7 +8,7 @@ Route::get("mid",function(){
 return view("includes.navtop");
 
 });
-Route::get("gr/{id}","NhomController\Nhom@loadnhom");
+Route::get("gr/{id}","NhomController\Nhom@loadnhom")->name('nhom.index');
 Route::get("baiviet", function(){
 	return view("baiviet.hienthibaiviet");
 });
@@ -160,7 +160,3 @@ Route::get("taofolderchuatepthubaine","BaiVietController\BaiViet@taofolderchuate
 
 Route::post("/postfilenopbaithanhvienne","BaiVietController\BaiViet@postfilenopbaithanhvien")
 ->name("postfilenopbaithanhvien");
-
-
-Route::post("/ajax/postthongbaonhomne","ThongBaoController\ThongBaoNhom@postthongbaonhom")
-->name("postthongbaonhom");

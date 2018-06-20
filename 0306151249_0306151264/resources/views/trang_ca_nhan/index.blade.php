@@ -4,9 +4,20 @@
 	<title>Trang cá nhân {{'@'.$taikhoan->ten_tai_khoan}}</title>
 @endsection
 
+@section('profile_css')
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/lu/baiviet/noidungbaiviet.css') }}">
+@endsection
+
 @section('noidung_trangcanhan')
 <div class="content">
-	Bài viết ở đây (Theo tứ tự mới nhất -> cũ)
+	@for ($i = 0; $i < count($lstbaiviet) ; $i++)
+	{{-- css file noidungbaiviet.css --}}
+
+	@include('includes.trangcanhan.post')
+
+
+
+	@endfor
 </div>
 
 
@@ -15,8 +26,11 @@
 @endsection
 
 @section('trang_canhan_javascript')
-	<script>
 
+	<script src="{{ asset('js/jslu/baiviet/hienthibaiviet.js') }}" type="text/javascript" charset="utf-8" async defer></script>
+
+	<script>
+		
 		$(document).ready(function() {
 
 			if($('#upload-pho-to-message').html() != "") {
@@ -37,4 +51,11 @@
 		});
 
 	</script>
+
 @endsection
+
+
+{{-- @section('trang_canhan_javascript')
+	
+
+@endsection --}}

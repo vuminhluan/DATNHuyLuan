@@ -51,7 +51,7 @@
 		<div class="main">
 			<ul class="">
 				<li>
-					<a class="luan_link" href="#">
+					<a class="luan_link" href="{{ route('trangcanhan.index', [$taikhoan->ten_tai_khoan]) }}">
 						<span>Bài viết</span><span>12</span>
 					</a>
 				</li>
