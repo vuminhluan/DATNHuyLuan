@@ -19,8 +19,8 @@
       
       {{-- Menu trái --}}
       <ul class="navtop-left">
-        <li class="itemnavtopleft">
-          <a class="active" href="{{ route('trangchu') }}"><ion-icon style="float: left;margin-top: 3px;color: #9695d8;" name="home" size="large"></ion-icon>&nbsp;Nhà tôi</a>
+        <li class="itemnavtopleft" style="margin-right: 20px;">
+          <a class="active" href="{{ route('trangchu') }}"><ion-icon style="float: left;margin-top: 3px;color: #9695d8;" name="home" size="large"></ion-icon>&nbsp;</a>
         </li>
         <li  class="itemnavtopleft" id="li-nav-nhom">
           <span> 

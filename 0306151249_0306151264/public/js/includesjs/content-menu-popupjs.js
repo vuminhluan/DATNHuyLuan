@@ -332,6 +332,7 @@ function search_group(){
         }
 
         for (var i = 0; i < data.length; i++) {
+            var manhomm=data[i].ma_nhom;
             var flagkiemtracaidatnhom = true;
             var divkq = document.createElement("div");
         divkq.style.height= "70px";
@@ -363,11 +364,11 @@ function search_group(){
             btnxingianhapnhom.className="btnxingianhapnhom";
             btnxingianhapnhom.innerHTML = '<i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp; Gia nhập';
             btnxingianhapnhom.addEventListener("click",clickxinvaonhom);
-            btnxingianhapnhom.myParamManhom=data[i].ma_nhom;
-            btnxingianhapnhom.id="btnxingianhapnhom"+data[i].ma_nhom;
+            btnxingianhapnhom.myParamManhom=manhomm;
+            btnxingianhapnhom.id="btnxingianhapnhom"+manhomm;
 
         for (var j = 0; j < lstNhomCuaTaiKhoanThamGia.length; j++) {
-            if(data[i].ma_nhom==lstNhomCuaTaiKhoanThamGia[j].ma_nhom)
+            if(manhomm==lstNhomCuaTaiKhoanThamGia[j].ma_nhom)
             {
                 btnxingianhapnhom.innerHTML='<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Đã tham gia';
                 btnxingianhapnhom.removeEventListener("click",clickxinvaonhom);
