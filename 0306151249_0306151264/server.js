@@ -15,9 +15,6 @@ io.on('connection', function (socket) {
 
   // console.log(socket.id);
 
-  
-
-
   // Test
   socket.on( 'sendMessage', function(data) {
     io.sockets.emit( 'sendMessage', data);
@@ -26,12 +23,7 @@ io.on('connection', function (socket) {
 
 
 
-
-
-
   // admin CHAT
-
-
   // Join admin room
   socket.join('RoomAdmin');
   // console.log(socket.adapter.rooms);
@@ -44,9 +36,6 @@ io.on('connection', function (socket) {
     // io.sockets.to('RoomAdmin').emit('adminChatMessage', data);
     socket.broadcast.to('RoomAdmin').emit('adminChatMessage', data);
   });
-
-
-
   // End admin CHAT
 
   
