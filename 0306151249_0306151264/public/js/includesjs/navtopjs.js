@@ -321,3 +321,69 @@ $(document).ready(function() {
 	});
 });
 // ------------------
+
+
+
+
+
+function openpopupthongbao(prl_mataikhoan){
+        var divtobig = document.createElement("div");
+            divtobig.className="modal";
+            divtobig.style.display="block";
+            divtobig.id="popupthongbao";
+                var divto = document.createElement("div");
+                    divto.className="divmainnoidungpopupthongbao";
+                    var divtop = document.createElement("div");
+                        divtop.className="toppopuptocaothongbao";
+                        divtop.textContent="Thông báo";
+                        divtop.id="divtoppheduyetbaiviet";
+                            var spanx= document.createElement("SPAN");
+                                spanx.className="fa fa-times";
+                                spanx.style.left="96%";
+                                spanx.style.cursor="pointer";
+                                spanx.style.position="absolute";
+                                spanx.addEventListener("click",function(){
+                                    // var e = document.getElementById("popupbaocao");
+                                    // e.parentNode.removeChild(e);
+                                   var e = document.getElementById("popupthongbao");
+                                    e.parentNode.removeChild(e);
+                                    soluongbaivietkiemduyetdalay=0;
+                                })
+                        divtop.appendChild(spanx);
+
+                    var divbody = document.createElement("div");
+                        divbody.className="divbodynoidungpopupthongbao";
+                        divbody.id="contentpheduyetbody";
+                        // divbody.textContent="";
+                            var divtopbody = document.createElement("div");
+                                divtopbody.className="divtopbodythongbao";
+
+                            var divbodybody = document.createElement("div");
+                                divbodybody.className="divbodybodythongbao";
+                                divbodybody.id="divbodybodykiemduyetbaiviet";
+
+                            // var divbotbody = document.createElement("div");
+                            //     divbotbody.className="divbotbodypheduyetbaiviet";
+                            //     divbotbody.textContent="Xem thêm";
+                            //     divbotbody.id="botbodyxemthempheduyetbaiviet";
+                            //     divbotbody.addEventListener("click",function(){
+                            //        // alert();
+                            //        // alert($('#divbodybodykiemduyetbaiviet')[0].scrollHeight)
+                            //        // alert($("#divbodybodykiemduyetbaiviet").scrollTop());
+                            //         // $("#divbodybodykiemduyetbaiviet").scrollTop( document.getElementById("divbodybodykiemduyetbaiviet").scrollHeight);
+                            //         // loadthemduyetbaiviet();
+                            //     })
+                        // divbody.appendChild(divscroll);
+                        divbody.appendChild(divtopbody);
+                        divbody.appendChild(divbodybody);
+                        // divbody.appendChild(divbotbody);
+                    var divbot = document.createElement("div");
+                        divbot.className="divbotpopupthongbao";
+                     divto.appendChild(divtop);
+                     divto.appendChild(divbody);
+                     divto.appendChild(divbot);
+            divtobig.appendChild(divto);
+
+      document.getElementById("bodymaster").appendChild(divtobig);
+
+}

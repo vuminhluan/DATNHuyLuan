@@ -206,7 +206,7 @@ function showlistbaivietchopheduyet(manhom){
                         divtop.id="divtoppheduyetbaiviet";
                             var spanx= document.createElement("SPAN");
                                 spanx.className="fa fa-times";
-                                spanx.style.marginLeft="636px";
+                                spanx.style.left="96%";
                                 // spanx.style.float="right";
                                 spanx.style.cursor="pointer";
                                 spanx.style.position="absolute";
@@ -310,7 +310,7 @@ function showlistthanhvienchopheduyet(manhom){
                         divtop.id="divtoppheduyetbaiviet";
                             var spanx= document.createElement("SPAN");
                                 spanx.className="fa fa-times";
-                                spanx.style.marginLeft="610px";
+                                spanx.style.left="96%";
                                 spanx.style.cursor="pointer";
                                 spanx.style.position="absolute";
                                 spanx.addEventListener("click",function(){
@@ -582,7 +582,7 @@ function showlistbaocaovipham(manhom){
                         divtop.id="divtoppheduyetbaiviet";
                             var spanx= document.createElement("SPAN");
                                 spanx.className="fa fa-times";
-                                spanx.style.marginLeft="565px";
+                                spanx.style.left="96%";
                                 // spanx.style.float="right";
                                 spanx.style.cursor="pointer";
                                 spanx.style.position="absolute";

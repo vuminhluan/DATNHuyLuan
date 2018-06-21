@@ -341,15 +341,17 @@ ul.navtop-right {float: right;display: inline-block;}
 
 
 .topnavroot{
+  padding-top:  3px;
+  padding-bottom:   3px;
  background-color: white;
  position: sticky;
  top: 0;
- border-bottom-color: #eadcf2;
- border-style: solid;
+/* border-bottom-color: #eadcf2;*/
+/* border-style: solid;*/
  border-width: 0px;
- border-bottom-width: 1px;
+ /*border-bottom-width: 1px;*/
  z-index: 10;
- box-shadow: 1px 1px 2px #9695d8;
+ /*box-shadow: 1px 1px 1px #eadcf2;*/
 
 
 }
@@ -378,7 +380,11 @@ ul.navtop-right {float: right;display: inline-block;}
    
 }
 
-
+.itemnavtopleft{
+  color: #777777;
+  font-weight: bold;
+  padding-left: 10px;padding-right: 10px;
+}
 .taikhoan-dropdown-menu {
   position: absolute;top:110%;right: 0%;
   width: 200px;display: none;
@@ -386,6 +392,15 @@ ul.navtop-right {float: right;display: inline-block;}
   background-color: #fff;
   line-height: 20px !important;
 }
+
+.thongbao-dropdown-menu {
+  position: absolute;top:110%;right: 0%;
+  width: 200px;display: none;
+  border-radius: 3px;box-shadow: 1px 1px 5px #999;
+  background-color: #fff;
+  line-height: 20px !important;
+}
+
 
 .taikhoan-dropdown-menu::after {
   content: '';
@@ -434,4 +449,68 @@ ul.navtop-right {float: right;display: inline-block;}
 
 
 
+/*popupthongbao*/
+.divmainnoidungpopupthongbao{
+  
+  border-radius: 3px;
+  /*border:solid 1px #9695d8;*/
+  /*position: fixed;*/
+/*  margin-left:  26%;
+  margin-right:   26%;*/
+  /*margin: 0 auto;*/
+  overflow: hidden;
+    margin: auto;
+    position: relative;
+  width: 550px;
+  height: 550px;
+  margin-top: -50px;
+  background-color: white;
 
+}
+
+.toppopuptocaothongbao{
+      font-family:  'myFont', Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  background-color: #e4e6e83d;
+  float: left;
+  font-weight: bold;
+  border-top-left-radius:  5px;
+  border-top-right-radius:  5px;
+  padding: 5px;
+  padding-top: 9px;
+  width: 100%;
+  height: 40px;
+  text-align: left;
+  padding-left: 13px;
+   border-bottom: solid 1px #eadcf238;
+
+}
+
+
+.divbodynoidungpopupthongbao{
+  padding: 10px;
+  padding-right: 2px;
+  padding-left: 10px;
+   /*border-top: solid 1px #eadcf2; */
+  height: 650px;
+}
+
+
+.divtopbodythongbao{
+  /*margin-top: 40px;*/
+height: 40px;
+}
+
+
+.divbodybodythongbao{
+height: 560px;
+overflow: auto;
+}
+.divbotpopupthongbao{
+  width: 96%;
+  margin-left: 2%;
+  margin-right: 2%;
+  height: 30px;
+  padding: 6px;
+  /*border-top: solid 1px #eadcf238; */
+}

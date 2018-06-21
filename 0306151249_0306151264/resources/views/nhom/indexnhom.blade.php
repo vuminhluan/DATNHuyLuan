@@ -53,7 +53,7 @@
                    <div id="thongtincuanhom">
                       <div class="divomshowcaidatnhomhi" >
                        <div id="div-btn-show-menu-setting-nhom" onclick="($('#div-setting-nhom-menu').css('display')=='none')?$('#div-setting-nhom-menu').css('display','block'):$('#div-setting-nhom-menu').css('display','none')" class="dvbtnshowcaidatnhom">
-                            <h3><i class="fa fa-cog" aria-hidden="true"> &nbsp; Quản lý nhóm</i></h3>
+                            <h3><i class="fa fa-cog" aria-hidden="true"> &nbsp; Cài đặt nhóm</i></h3>
                        </div>
                      </div>
                    </div>

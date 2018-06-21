@@ -19,12 +19,22 @@
       
       {{-- Menu trái --}}
       <ul class="navtop-left">
-        <li style="width: 150px;height: 48px;margin-left: 30px;">
-          <a class="active" href="{{ route('trangchu') }}">Trang chủ</a>
+        <li class="itemnavtopleft">
+          <a class="active" href="{{ route('trangchu') }}"><ion-icon style="float: left;margin-top: 3px;color: #9695d8;" name="home" size="large"></ion-icon>&nbsp;Nhà tôi</a>
         </li>
-        <li><a id="li-nav-nhom">Nhóm</a></li>
-       {{--  <li><a id="li-nav-taonhom">xxxxx</a></li> --}}
+        <li  class="itemnavtopleft" id="li-nav-nhom">
+          <span> 
+            Nhóm&nbsp;<i style="color: #8a89de80;" class="fa fa-users" aria-hidden="true"></i>
+          </span>
+        </li>
+
+        <li id="liThongbaonavtop" class="itemnavtopleft"  onclick="openpopupthongbao('{{Auth::user()->ma_tai_khoan}}')">
+          <span>
+            Thông báo&nbsp;<i class="fa fa-bell-o " style="color: #9695d8;" aria-hidden="true"></i>
+          </span>
+        </li>
       </ul>
+              {{-- <li><a id="li-nav-taonhom">Thông báo</a></li> --}}
       {{-- End Menu trái --}}
 
       {{-- Menu phải --}}
