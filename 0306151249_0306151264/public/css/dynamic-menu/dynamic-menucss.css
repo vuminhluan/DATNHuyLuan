@@ -52,7 +52,7 @@
 
 .btnxingianhapnhom{
       cursor:pointer;
-      margin-left: 290px;
+      margin-left: 270px;
       border-radius: 3px;
       padding-left: 10px;
       padding-top: 3px;
@@ -73,7 +73,7 @@
   position: absolute;
   width: 150px;
         cursor:pointer;
-      margin-left: 135px;
+      margin-left: 115px;
       border-radius: 3px;
       padding-left: 10px;
       padding-top: 3px;
@@ -251,4 +251,17 @@ div.div-item-nhom div{
     /*text-align: center;*/
     padding: 14px;
 
+}
+
+.divkqtimkiemnhompopup{
+  font-weight: bold;
+  text-shadow: 1px 1px 2px white;
+  margin-top: 2px;
+            height:77px;
+            padding-left: 10px;
+            /*margin-right: 10px;*/
+            /*"100%";*/
+            color:black;
+            border-bottom: solid 1px #9695d8;
+            background-repeat: no-repeat, repeat; background-size:434px auto; background-position: center; 
 }

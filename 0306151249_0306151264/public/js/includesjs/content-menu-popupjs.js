@@ -340,12 +340,14 @@ function search_group(){
             var manhomm=data[i].ma_nhom;
             var flagkiemtracaidatnhom = true;
             var divkq = document.createElement("div");
-        divkq.style.height= "70px";
-        divkq.style.with="100%";
-        divkq.style.background ="white";
-        divkq.style.color="black";
-        divkq.style.borderBottom ="solid 1px #9695d8";
-        divkq.innerHTML = data[i].ten_nhom;
+                divkq.className="divkqtimkiemnhompopup";
+
+             // divkq.style.background ="white";
+            divkq.style.backgroundImage  = "url('"+link_host+"/"+data[i].anh+"')";//"url('"+data[i].anh+"');";
+
+           //http://localhost/DATNHuyLuan/0306151249_0306151264/public/img_group/NH00000002TK00000006/NH00000002TK00000006-2018-06-20-03-57-36am.png
+
+            divkq.innerHTML = data[i].ten_nhom+'<br>'+'<span style="color:#777777;">'+"@"+ data[i].ma_nhom+'</span>';
 
          var btnxingianhapnhomnhanh = document.createElement("div");
              btnxingianhapnhomnhanh.className="btnxingianhapnhomnhanh";
