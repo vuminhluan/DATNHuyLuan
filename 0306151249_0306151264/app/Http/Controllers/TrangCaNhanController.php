@@ -51,6 +51,15 @@ class TrangCaNhanController extends Controller
 		}
 
 		// $tatca_baiviet = BaiViet::where('ma_nguoi_viet', 1)->first();
+		// $total_posts = BaiViet::where([
+		// 	['bai_viet.ma_nguoi_viet',$taikhoan->ma_tai_khoan],
+		// 	["bai_viet.trang_thai","1"]
+		// ])->count();
+
+		// $posts_per_page = 3;
+		// $total_pages = ceil($total_posts/$posts_per_page);
+		// return $total_pages;
+
 		$account_posts = DB::table('bai_viet')
 			->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
 			->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')

@@ -9,15 +9,16 @@
 @endsection
 
 @section('noidung_trangcanhan')
-<div class="content">
+<div class="content" style="background-color: transparent;">
 	@for ($i = 0; $i < count($lstbaiviet) ; $i++)
 	{{-- css file noidungbaiviet.css --}}
 
 	@include('includes.trangcanhan.post')
 
-
-
 	@endfor
+
+
+	{{-- <div>Xem thêm</div> --}}
 </div>
 
 
