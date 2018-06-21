@@ -63,7 +63,10 @@ Route::post('/ajax/updatebinhluancap2n2',"BinhLuanController\BinhLuan@updatebinh
 Route::post('/ajax/postbaocaoviphamne',"BaoCaoController\BaoCao@postbaocaovipham")
 ->name("postbaocaovipham");
 
-
+Route::post("/ajax/postthongbaonhomne","ThongBaoController\ThongBaoNhom@postthongbaonhom")
+->name("postthongbaonhom");
+Route::get("/ajax/getthongbaonhomne","ThongBaoController\ThongBaoNhom@getthongbaonhom")
+->name("getthongbaonhom");
 
 
 Route::get("/ajax/getlsttimkiemnhomne","NhomController\Nhom@gettimkiemnhom")
