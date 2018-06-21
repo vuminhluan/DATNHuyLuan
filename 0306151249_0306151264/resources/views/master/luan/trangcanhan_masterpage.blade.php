@@ -5,8 +5,11 @@
 @section('css')
 	<link rel="stylesheet" href="{{asset('css/luan/profile/profile_masterpage.css')}}">
 	<link rel="stylesheet" href="{{asset('css/luan/confirm-modal.css')}}">
+	<link rel="stylesheet" href="{{asset('css/luan/loader_slidemessage.css')}}">
 	@yield('profile_css')
 @endsection
+
+@include('includes/loader_and_slidemessage')
 
 @section('main')
 	<div class="profile-image">
@@ -192,12 +195,19 @@
 
 
 @section('javascript')
+
+	<script>
+		var loaderPath = "{{ asset('pictures/luan/ajax-loader2.gif') }}";
+    $('.myloader img').attr('src', loaderPath);
+	</script>
+
+
 	<script src="{{asset('js/luan/utilities/auto_expand_textarea.js')}}"></script>
 	<script src="{{asset('js/luan/utilities/drag_to_scroll.js')}}"></script>
 	<script src="{{asset('js/luan/utilities/open_close_modal.js')}}"></script>
 	<script src="{{asset('js/jquery/jquery-validate.min.js')}}"></script>
 	<script src="{{ asset('js/globaljs/varglobal.js') }}" charset="utf-8"></script>
 	<script src="{{asset('js/luan/profile.js')}}"></script>
-
+	
 	@yield('trang_canhan_javascript')
 @endsection

@@ -9,6 +9,9 @@ $(document).ready(function() {
 	// $('.modal-cancel-button').click(function() {
 	// 	closeModal($(this).attr('data-modalid'));
 	// });
+  $('.myloader').hide();
+
+  
 	$.validator.addMethod( "regex", function(value, element, regexp) {
     var re = new RegExp(regexp);
     return re.test(value);

@@ -9,21 +9,25 @@
 @endsection
 
 @section('noidung_trangcanhan')
-<div class="content" style="background-color: transparent;">
-	@for ($i = 0; $i < count($lstbaiviet) ; $i++)
-	{{-- css file noidungbaiviet.css --}}
 
-	@include('includes.trangcanhan.post')
+	<div class="content" style="background-color: transparent;">
+		@for ($i = 0; $i < count($lstbaiviet) ; $i++)
+		{{-- css file noidungbaiviet.css --}}
 
-	@endfor
+			@include('includes.trangcanhan.post')
+			@php
+				// sleep(1);
+			@endphp
+
+		@endfor
 
 
-	{{-- <div>Xem thêm</div> --}}
-</div>
+		{{-- <div>Xem thêm</div> --}}
+	</div>
 
 
-{{-- @include('includes/trangcanhan/trangcanhan_modal') --}}
-{{-- <div style="display:none"  id="my_message">{{session('my_message')}}</div> --}}
+	{{-- @include('includes/trangcanhan/trangcanhan_modal') --}}
+	{{-- <div style="display:none"  id="my_message">{{session('my_message')}}</div> --}}
 @endsection
 
 @section('trang_canhan_javascript')
