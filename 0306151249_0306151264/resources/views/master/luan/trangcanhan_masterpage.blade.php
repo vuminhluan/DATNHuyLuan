@@ -9,9 +9,12 @@
 	@yield('profile_css')
 @endsection
 
-@include('includes/loader_and_slidemessage')
+
 
 @section('main')
+
+	@include('includes/loader_and_slidemessage')
+
 	<div class="profile-image">
 		<div class="profile-banner">
 			<img src="{{asset('pictures/anh_bia/'.$taikhoan->hasNguoiDung->anh_bia)}}" alt="">
