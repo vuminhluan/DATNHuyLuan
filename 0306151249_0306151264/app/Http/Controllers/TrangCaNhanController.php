@@ -14,6 +14,7 @@ use App\bai_viet as BaiViet;
 use App\Traits\TaoMaTepTrait;
 use App\Traits\CapNhatDoiTuongTrait;
 use App\Traits\ChanHoacBoChanMotTaiKhoanTrait;
+use App\bao_cao_vi_pham as BaoCao;
 
 use App\NguoiDung;
 
@@ -42,13 +43,21 @@ class TrangCaNhanController extends Controller
 
 			// return $taikhoan_nguoidung;
 
-		$taikhoan = TaiKhoan::where('ten_tai_khoan', $username)->where('trang_thai', '!=', 4)->first();
-		// return $taikhoan->hasNguoiDung->ten;
-		$taikhoan_bichan = TaiKhoanBiChan::where('ma_tai_khoan_bi_chan', $taikhoan->ma_tai_khoan)->where('ma_tai_khoan_chan', Auth::user()->ma_tai_khoan)->first();
 
-		if(!$taikhoan || $taikhoan->trang_thai != 2 || $taikhoan_bichan) {
+
+		$taikhoan = TaiKhoan::where('ten_tai_khoan', $username)->where('trang_thai', '!=', 4)->first();
+
+		if(!$taikhoan || $taikhoan->trang_thai != 2) {
 			abort(404);
 		}
+		// return $taikhoan->hasNguoiDung->ten;
+		$taikhoan_bichan = TaiKhoanBiChan::where('ma_tai_khoan_bi_chan', $taikhoan->ma_tai_khoan)->where('ma_tai_khoan_chan', Auth::user()->ma_tai_khoan)->where('trang_thai', 1)->first();
+
+		if($taikhoan_bichan) {
+			abort(404);
+		}
+
+		
 
 		// $tatca_baiviet = BaiViet::where('ma_nguoi_viet', 1)->first();
 		// $total_posts = BaiViet::where([
@@ -157,6 +166,45 @@ class TrangCaNhanController extends Controller
 			$message = "Đã bỏ chặn tai khoản @".$username;
 		}
 		return redirect()->route('caidat.chan_taikhoan')->with('slidemessage', $message);
+	}
+
+
+	public function postBaoCaoTaiKhoan(Request $req)
+	{
+		// return "Đã báo cáo tài khoản thành công";
+
+		if($this->getKiemTraBaoCaoTonTaiHayChua($req->user_id)['reported']) {
+			$baocao = TaiKhoan::where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->first()->hasManyBaoCao()->where('trang_thai', 1)->where('ma_doi_tuong_bi_bao_cao', 'NH00000003')->first();
+			$baocao->noi_dung_bao_cao = $req->report_input;
+			$baocao->save();
+		} else {
+			$baocao = new BaoCao();
+			$baocao->ma_loai_bao_cao = "LBC01";
+			$baocao->ma_noi_nhan_bao_cao = "NNBC1";
+			$baocao->nguoi_gui_bao_cao = Auth::user()->ma_tai_khoan;
+			$baocao->noi_dung_bao_cao = $req->report_input;
+			$baocao->ma_doi_tuong_bi_bao_cao = $req->user_id;
+			$baocao->save();
+		}
+
+		return redirect()->back()->with('slidemessage', 'Báo cáo thành công');
+	}
+
+	// Ajax
+	public function getKiemTraBaoCaoTonTaiHayChua($userid)
+	{
+		$baocao = TaiKhoan::where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->first()->hasManyBaoCao()->where('trang_thai', 1)->where('ma_doi_tuong_bi_bao_cao', $userid)->first();
+		$data = [
+			'reported' => false // Đối tượng này chưa bị báo cáo hoặc báo cáo đã được xử lý hay đã xóa
+		];
+		if($baocao) {
+			$reported_at = date_format($baocao->thoi_gian_gui_bao_cao,'d/m/Y h:i:s');
+			$data['reported'] = true;
+			$data['message'] = "Bạn đã báo cáo người này vào lúc ".$reported_at." và báo cáo của bạn đang đợi để xử lý. Nếu báo cáo lại, nội dung báo cáo sẽ thay đổi.";
+			$data['content'] = $baocao->noi_dung_bao_cao;
+		}
+
+		return $data;
 	}
 
 

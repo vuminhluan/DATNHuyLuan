@@ -20,6 +20,16 @@ Route::group(['middleware' => ['MyUserAuth']], function () {
 		'TrangCaNhanController@getNhom'
 	)->name('trangcanhan.nhom');
 
+	Route::get(
+		'/taikhoan/{userid}/kiemtra/baocao',
+		'TrangCaNhanController@getKiemTraBaoCaoTonTaiHayChua'
+	)->name('trangcanhan.taikhoan.kiemtra.baocao');
+
+	Route::post(
+		'/taikhoan/{username}/baocao',
+		'TrangCaNhanController@postBaoCaoTaiKhoan'
+	)->name('trangcanhan.taikhoan.baocao');
+
 	// Chặn một tài khoản nào đó
 	Route::get(
 		'/taikhoan/chan/{userid}/{username}',

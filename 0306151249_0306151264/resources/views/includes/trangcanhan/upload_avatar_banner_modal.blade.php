@@ -26,10 +26,10 @@
     position: relative;max-height: 50px;
     text-align: center;font-size: 30px;
   }
-  .--header .close-icon {
+  .update-photo-message .--header .close-icon {
     color: #6667a6;position: absolute;top: 0;right: 10px;cursor: pointer;
   }
-  .--header .close-icon:hover {color: #6667a6; text-shadow: 1px 1px 1px #6667a6}
+  .update-photo-message .--header .close-icon:hover {color: #6667a6; text-shadow: 1px 1px 1px #6667a6}
   .update-photo-message .--body {
     display: flex;justify-content: center;align-items: center;font-size: 25px;width: 100%;min-height: 150px;
     padding: 0 50px;

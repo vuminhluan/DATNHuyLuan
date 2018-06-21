@@ -55,13 +55,13 @@
 						<span>Bài viết</span><span>12</span>
 					</a>
 				</li>
-				@if (Auth::user()->ma_tai_khoan == $taikhoan->ma_tai_khoan)
+				{{-- @if (Auth::user()->ma_tai_khoan == $taikhoan->ma_tai_khoan)
 					<li>
 						<a class="luan_link" href="#">
 							<span>Thích</span><span>0</span>
 						</a>
 					</li>
-				@endif
+				@endif --}}
 				
 				<li>
 					<a class="luan_link" href="{{route('trangcanhan.nhom', ['username'=>$taikhoan->ten_tai_khoan])}}">
@@ -75,6 +75,11 @@
 					</a>
 				</li>
 				@if (Auth::user()->ma_tai_khoan != $taikhoan->ma_tai_khoan)
+				<li style="float: right">
+					<a id="report-this-account-button" class="luan_link" href="#/">
+						<span>Báo cáo</span>
+					</a>
+				</li>
 				<li style="float: right">
 					<a id="block-this-account-button" class="luan_link" href="#/">
 						<span>Chặn</span>
@@ -178,7 +183,13 @@
 	@include('includes/trangcanhan/trangcanhan_modal')
 	@include('includes/trangcanhan/upload_avatar_banner_modal')
 
+	{{-- report modal --}}
+	@include('includes/trangcanhan/report_modal')
+	{{-- End report modal --}}
+
 @endsection
+
+
 
 @section('javascript')
 	<script src="{{asset('js/luan/utilities/auto_expand_textarea.js')}}"></script>

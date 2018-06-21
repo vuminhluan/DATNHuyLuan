@@ -146,4 +146,61 @@ $(document).ready(function() {
   });
 
 
+  // Report account
+
+  $('#report-input').val('');
+
+  $('#report-this-account-button').click(function(event) {
+    event.preventDefault();
+    var id = $('#username-userid').attr('data-userid');
+    
+    $.ajax({
+      url: link_host+'/taikhoan/'+id+'/kiemtra/baocao',
+      type: 'GET',
+    })
+    .done(function(response) {
+      // console.log(response);return;
+
+      // Nếu đối tượng này đã được báo cáo và chưa được xử lý => Hiển thị nội dung cũ
+      if(response.reported) {
+        $('#report-input').val(response.content);
+        $('#report-message').html(response.message);
+      }
+      $('.report-modal').fadeIn('fast');
+    })
+    .fail(function() {
+      console.log("error");
+    });
+    
+  });
+
+  $('#close-report-modal').click(function(event) {
+    $(this).parents('.report-modal').fadeOut('fast');
+  });
+
+
+  //---->Report form validation
+  $('#report-account-form').validate({
+    rules: {
+      report_input: {
+        required: true,
+        minlength: 20,
+        maxlength: 200
+      }
+    },
+
+    messages: {
+      report_input: {
+        required: "Chưa có nội dung báo cáo",
+        minlength: "Nội dung báo cáo dài tối thiểu {0} kí tự",
+        maxlength: "Nội dung báo cáo dài tối đa {0} kí tự"
+      }
+    },
+
+  });
+
+
+  // End report account
+
+
 });

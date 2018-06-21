@@ -246,3 +246,64 @@ input.profile-name {
 }
 
 /* End Rightnav profile masterpage  */
+
+
+/*Report modal*/
+
+.report-modal {
+  width: 100%; height: 100%;position: fixed;left: 0;top: 0;z-index: 10;background-color: rgba(0,0,0,0.5);
+  display: none;
+}
+
+.report-modal .-content {
+  background-color: #fff;
+  width: 400px;margin: auto;position: absolute;top: 35%;left: 0%;right:0%;
+  box-shadow: 2px 2px 3px rgba(255,255,255,0.3);border-radius: 3px;
+}
+
+.report-modal .-content > .-header .-username {
+  font-weight: normal;
+}
+.report-modal .-content > div {
+  border-bottom: 1px solid #eee;padding: 8px;
+}
+
+.report-modal .-content > div:last-child {
+  border-bottom: none;text-align: right;
+}
+.report-modal .-content > .-body {padding-top: 20px;padding-bottom: 20px;}
+.report-modal .-content > .-body label {
+  display: block;font-weight: bold;
+}
+
+#report-input {
+  padding:6px 8px;font-size: 15px;width: 100%;display: block;
+}
+
+.report-modal .-content > .-footer > button {
+  display: inline-block; padding: 6px; min-width: 70px;cursor:pointer;background-color: #fff;
+  border-radius: 3px;
+}
+
+.report-modal .-content > .-footer #submit-report-button {
+ border: 1px solid #6667a6; color:#6667a6;font-weight: bold;
+}
+.report-modal .-content > .-footer #submit-report-button:hover {
+ background-color: #6667a6;color:#fff;
+}
+
+.report-modal .-content > .-footer #close-report-modal {
+ border: 1px solid #dc3545;color:#dc3545;font-weight: bold;
+}
+.report-modal .-content > .-footer #close-report-modal:hover {
+ background-color: #dc3545;color:#fff;
+}
+
+#report-account-form label.error {
+  color: red;font-weight: normal; margin: 0 5px !important;
+}
+
+#report-message {
+  font-style: italic; color: #aaa;
+}
+/*End report modal*/
