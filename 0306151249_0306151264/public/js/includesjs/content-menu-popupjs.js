@@ -321,15 +321,20 @@ function search_group(){
             ten_nhom: $('#input-search-gr').val()
         }
     }).done(function(data){
+        console.log(data);
         //alert(data[0].ma_nhom);
         var listsearchdiv = document.getElementById('div-ket-qua-tim-kiem');
        // alert(listsearchdiv.childNodes.length);
         // for (var i = 0; i < listsearchdiv.childNodes.length; i++) {
         //     listsearchdiv.removeChild(listsearchdiv.childNodes[i]);
         // }
-        while(listsearchdiv.firstChild){
-            listsearchdiv.removeChild(listsearchdiv.firstChild);
-        }
+        $("#div-ket-qua-tim-kiem").empty();
+        // while(listsearchdiv.firstChild){
+        //     listsearchdiv.removeChild(listsearchdiv.firstChild);
+        // }
+        var flagbatdongbofor = true;
+        if (flagbatdongbofor) {
+            flagbatdongbofor=!flagbatdongbofor;
 
         for (var i = 0; i < data.length; i++) {
             var manhomm=data[i].ma_nhom;
@@ -350,13 +355,7 @@ function search_group(){
              var flaggianhapnhanh = false; // kiểm tra xem nhóm này có gia nhập nhóm nhanh không
              if(flagkiemtracaidatnhom)
              {flagkiemtracaidatnhom=!flagkiemtracaidatnhom;
-            $.ajax({
-                                url: link_host+'/ajax/getcaidatnhomne',
-                                type:'GET',
-                                data:{
-                                        ma_nhom:data[i].ma_nhom
-                                }}).done(function(data){
-                                    if (data[0].trang_thai_ma_gia_nhap_nhom=="1") {
+                                    if (data[i].trang_thai_ma_gia_nhap_nhom=="1") {
                                         flaggianhapnhanh=true;
                                     }
 
@@ -396,10 +395,10 @@ function search_group(){
         divkq.appendChild(btnxingianhapnhomnhanh);
 
         document.getElementById("div-ket-qua-tim-kiem").appendChild(divkq);
-                                })
                                 }
         
 
+        }
         }
         
 

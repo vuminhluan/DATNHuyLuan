@@ -100,17 +100,28 @@ class Nhom extends Controller
     
     public function gettimkiemnhom(Request $rql)
     {
+
+// DB::table('cai_dat_nhom')
+//                                 ->where("ma_nhom",$idnhom)
+//                                 ->get();
+
+
         $lstnhomtimkiem;
         if ($rql->ten_nhom!="") {
            $lstnhomtimkiem = DB::table('nhom')
-                           ->where("ten_nhom","LIKE","%$rql->ten_nhom%")
-                           ->orWhere("ma_nhom",$rql->ten_nhom)
+                           ->leftJoin('cai_dat_nhom','nhom.ma_nhom','=','cai_dat_nhom.ma_nhom')
+                           ->select("nhom.*","cai_dat_nhom.*")
+                           ->where("nhom.ten_nhom","LIKE","%$rql->ten_nhom%")
+                           ->orWhere("nhom.ma_nhom",$rql->ten_nhom)
+                           ->groupBy('nhom.ma_nhom')
                            ->take(5)->get();
         }
         else{
          $lstnhomtimkiem = DB::table('nhom')
-                             ->where("ten_nhom","LIKE","%$rql->ten_nhom%")
-                             ->orWhere("ma_nhom",$rql->ten_nhom)
+                             ->leftJoin('cai_dat_nhom','nhom.ma_nhom','=','cai_dat_nhom.ma_nhom')
+                             ->select("nhom.*","cai_dat_nhom.*")         
+                             ->where("nhom.ten_nhom","LIKE","%$rql->ten_nhom%")
+                             ->orWhere("nhom.ma_nhom",$rql->ten_nhom)
                              ->take(0)
                              ->get();
         }
