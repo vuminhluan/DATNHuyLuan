@@ -443,7 +443,11 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
 
                                                 if(trangthaibaiviet=="2"){
                                                   thongbaopopupy("Đăng bài viết","Bài viết của bạn sẽ được kiểm duyệt trước khi xuất hiện");
-                                                  postthongbaobaivietmoi("LTBN02","Bài viết mới","2",mabaivietmoine);return;
+                                                  postthongbaobaivietmoi("LTBN02","Bài viết mới","2",mabaivietmoine);
+                                                        $("#btndangbaiviet").css("display","block");
+                                                        document.getElementById("formdangbaiviet").reset();
+                                                        $('#iptextdangbaiviet').val("");
+                                                  return;
                                                 }else{
                                                   postthongbaobaivietmoi("LTBN02","Bài viết mới","1",mabaivietmoine);
                                                 }
@@ -484,13 +488,13 @@ function postthongbaobaivietmoi(loaithongbao,noidungthongbao,trangthai,ma_noi_du
 
    $.ajax(
                                             {
-                                                url: link_host+'/ajax/postthongbaonhomne',
+                                                url: link_host+'/ajax/postthongbaone',
                                                 type: 'POST',
                                                 data:{
                                                 _token: $('input[name=_token]').val(),
-                                                ma_nhom: $('#div-hi-chu-bai-viet-ma-nhom').val(), // hiện tại đăng trong nhóm nên sẽ là của nhóm
-                                                ma_loai_thong_bao_nhom:loaithongbao,
-                                                ma_noi_dung_duoc_thong_bao:ma_noi_dung_duoc_thong_bao,
+                                                noi_nhan_tac_dong: $('#div-hi-chu-bai-viet-ma-nhom').val(), // hiện tại đăng trong nhóm nên sẽ là của nhóm
+                                                ma_loai_thong_bao:loaithongbao,
+                                                noi_dung_tac_dong:ma_noi_dung_duoc_thong_bao,
                                                 noi_dung_thong_bao:noidungthongbao,
                                                 nguoi_tao_thong_bao: $('#session-ma-tk').val(),
                                                 trang_thai: trangthai

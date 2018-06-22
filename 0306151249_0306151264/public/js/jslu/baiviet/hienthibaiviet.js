@@ -30,15 +30,15 @@ function pheduyetbaivietnay(prl_mabaiviet){
 			trang_thai:"1" // được phê duyệt / 2 là chờ
 		}
 	}).done(function(data){
-		 $("#divbignoidungmotbaiviet-"+prl_mabaiviet).css("display","none");
+		 $("#divbigbignoidungmotbaiviet-"+prl_mabaiviet).css("display","none");
 			$.ajax({
-				url:link_host+'/ajax/updatethongbaonhomne',
+				url:link_host+'/ajax/updatethongbaone',
 				type:'POST',
 				data:{
 					_token:$('input[name=_token]').val(),
-					ma_nhom:$('#div-hi-chu-bai-viet-ma-nhom').val(),
-					ma_loai_thong_bao_nhom:"LTBN02",
-					ma_noi_dung_duoc_thong_bao:prl_mabaiviet,
+					noi_nhan_tac_dong:$('#div-hi-chu-bai-viet-ma-nhom').val(),
+					ma_loai_thong_bao:"LTBN02",
+					noi_dung_tac_dong:prl_mabaiviet,
 					trang_thai:"1" // được phê duyệt 
 				}
 			}).done(function(data){

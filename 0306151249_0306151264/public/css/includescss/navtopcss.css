@@ -381,9 +381,14 @@ ul.navtop-right {float: right;display: inline-block;}
 }
 
 .itemnavtopleft{
+  cursor: pointer;
   color: #777777;
   font-weight: bold;
   padding-left: 10px;padding-right: 10px;
+}
+.itemnavtopleft:hover{
+  background-color: #eadcf224;
+  color: black;
 }
 .taikhoan-dropdown-menu {
   position: absolute;top:110%;right: 0%;
@@ -503,7 +508,7 @@ height: 40px;
 
 
 .divbodybodythongbao{
-height: 560px;
+height: 470px;
 overflow: auto;
 }
 .divbotpopupthongbao{
@@ -513,4 +518,23 @@ overflow: auto;
   height: 30px;
   padding: 6px;
   /*border-top: solid 1px #eadcf238; */
+}
+
+
+#botbodyxemthempheduyetbaiviet::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+  background-color: #e4e6e82b;
+}
+
+#botbodyxemthempheduyetbaiviet::-webkit-scrollbar
+{
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+#botbodyxemthempheduyetbaiviet::-webkit-scrollbar-thumb
+{
+  background-color: #18222c47;
+/*  border: 1px solid #18222c47;*/
 }

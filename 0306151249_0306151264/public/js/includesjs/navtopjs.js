@@ -355,7 +355,7 @@ function openpopupthongbao(prl_mataikhoan){
                                     // e.parentNode.removeChild(e);
                                    var e = document.getElementById("popupthongbao");
                                     e.parentNode.removeChild(e);
-                                    soluongbaivietkiemduyetdalay=0;
+                                    soluongthongbaodalay=0;
                                 })
                         divtop.appendChild(spanx);
 
@@ -369,18 +369,19 @@ function openpopupthongbao(prl_mataikhoan){
                             var divbodybody = document.createElement("div");
                                 divbodybody.className="divbodybodythongbao";
                                 divbodybody.id="divbodybodythongbaonhom";
+                                divbodybody.addEventListener("scroll",function(){
+                                     // console.log($(this).scrollTop());
+                                     console.log($(this).height());
+                                      console.log(this.scrollHeight-parseFloat($(this).scrollTop()));
+                                     // console.log(this.scrollHeight);
+ console.log(parseFloat($(this).height())/(parseFloat($(this).scrollTop())-this.scrollHeight));
+                                    if(parseFloat($(this).height())/(parseFloat($(this).scrollTop())-this.scrollHeight)==-1){
+                                     //   alert("hhihi");
 
-                            // var divbotbody = document.createElement("div");
-                            //     divbotbody.className="divbotbodypheduyetbaiviet";
-                            //     divbotbody.textContent="Xem thêm";
-                            //     divbotbody.id="botbodyxemthempheduyetbaiviet";
-                            //     divbotbody.addEventListener("click",function(){
-                            //        // alert();
-                            //        // alert($('#divbodybodykiemduyetbaiviet')[0].scrollHeight)
-                            //        // alert($("#divbodybodykiemduyetbaiviet").scrollTop());
-                            //         // $("#divbodybodykiemduyetbaiviet").scrollTop( document.getElementById("divbodybodykiemduyetbaiviet").scrollHeight);
-                            //         // loadthemduyetbaiviet();
-                            //     })
+                                        loadtinthongbao();
+                                    }
+                                })
+
                         // divbody.appendChild(divscroll);
                         divbody.appendChild(divtopbody);
                         divbody.appendChild(divbodybody);
@@ -396,10 +397,13 @@ function openpopupthongbao(prl_mataikhoan){
 loadtinthongbao();
 }
        var  soluongthongbaodalay = 0;
-       var  soluongthongbaocanlay =100;
+       var  soluongthongbaocanlay =7;
 function loadtinthongbao(){
+    var blockdongbo = true;
+     if (blockdongbo) {
+         blockdongbo=!blockdongbo;
     $.ajax({
-        url: link_host+'/ajax/getthongbaonhomne', 
+        url: link_host+'/ajax/getthongbaone', 
         type: 'GET',
         data:{
             ma_tai_khoan :$("#session-ma-tk").val(),
@@ -407,8 +411,15 @@ function loadtinthongbao(){
             soluongthongbaocanlay:soluongthongbaocanlay
         }
     }).done(function(data){
-     //   alert("hihi thanh cong send ajax");
-         $('#divbodybodythongbaonhom').html(data);
+         soluongthongbaodalay+=7;
+      var divpost = document.createElement("div");
+             divpost.innerHTML=data;
+        document.getElementById('divbodybodythongbaonhom').appendChild(divpost);
+         // $('#divbodybodythongbaonhom').appendChild(divpost);
         // console.log(data);
     })
+    }
 }
+
+
+

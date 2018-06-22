@@ -71,6 +71,17 @@ Route::get("/ajax/getthongbaonhomne","ThongBaoController\ThongBaoNhom@getthongba
 Route::post("/ajax/updatethongbaonhomne","ThongBaoController\ThongBaoNhom@updatethongbaonhom")
 ->name("updatethongbaonhom");
 
+Route::post("/ajax/postthongbaone","ThongBaoController\ThongBao@postthongbao")
+->name("postthongbao");
+Route::get("/ajax/getthongbaone","ThongBaoController\ThongBao@getthongbao")
+->name("getthongbao");
+Route::post("/ajax/updatethongbaone","ThongBaoController\ThongBao@updatethongbao")
+->name("updatethongbao");
+
+
+
+
+
 Route::get("/ajax/getlsttimkiemnhomne","NhomController\Nhom@gettimkiemnhom")
 ->name('getlsttimkiemnhom');
 Route::post("/ajax/postthanhvienxingianhapnhomne","NhomController\ThanhVienNhom@PostThanhVienXinGiaNhapNhom")

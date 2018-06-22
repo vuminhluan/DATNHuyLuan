@@ -96,12 +96,7 @@ class Nhom extends Controller
                                 ->where([["bai_viet.ma_bai_viet",$mabaiviet],["bai_viet.trang_thai","1"]])
                                 ->orderBy('bai_viet.ma_bai_viet','desc')
                                ->take(1)->get();
-// "lstykienbinhchon"=>$lstbinhchonykien
-//                                 // ->leftJoin('thumuc_googledrive','bai_viet.ma_nguoi_viet','=','thumuc_googledrive.ma_tai_khoan')
-                                // 'thumuc_googledrive.*',
-                                                               // ->paginate(5)
-                                // ->setPath("baiviet/trang");
-        //$soluongbaiviet =10; //,"s"=>$soluongbaiviet
+
         return view("nhom.indexnhomhienthibaiviet",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thongtinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom]);
     }
 

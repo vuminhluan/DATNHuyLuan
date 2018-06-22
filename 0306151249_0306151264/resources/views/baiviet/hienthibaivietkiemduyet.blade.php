@@ -7,7 +7,7 @@
 @for ($i = 0; $i < count($lstbaiviet) ; $i++)
                 {{-- css file noidungbaiviet.css --}}
                 @if ($lstbaiviet[$i]->ma_loai_bai_viet=="LBV001")
-                    <div style="width: 800px;height: auto;" >
+                    <div style="width: 800px;height: auto;" id="divbigbignoidungmotbaiviet-{{$lstbaiviet[$i]->ma_bai_viet}}" >
                       <div class="subcontentpheduyet" style="float: left;" id="divbignoidungmotbaiviet-{{$lstbaiviet[$i]->ma_bai_viet}}">
                       <div class="headtus" style=" height: 60px;  " >
 

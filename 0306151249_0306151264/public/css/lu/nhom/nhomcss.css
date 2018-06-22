@@ -390,19 +390,19 @@ overflow: auto;
 
 
 
-#divbodybodykiemduyetthanhvien::-webkit-scrollbar-track
+#divbodybodythongbaonhom::-webkit-scrollbar-track
 {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
   background-color: #e4e6e82b;
 }
 
-#divbodybodykiemduyetthanhvien::-webkit-scrollbar
+#divbodybodythongbaonhom::-webkit-scrollbar
 {
   width: 10px;
   background-color: #F5F5F5;
 }
 
-#divbodybodykiemduyetthanhvien::-webkit-scrollbar-thumb
+#divbodybodythongbaonhom::-webkit-scrollbar-thumb
 {
   background-color: #18222c47;
 /*  border: 1px solid #18222c47;*/

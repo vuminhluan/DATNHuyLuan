@@ -124,7 +124,7 @@ $(document).scroll(function() {
                                     }
                                 }).done(function(data){
                                     
-                                    console.log(data);
+                                   // console.log(data);
                                     var divpost = document.createElement("div");
                                         divpost.innerHTML=data;
                                     document.getElementById('divnoidungcon').appendChild(divpost); 
@@ -629,3 +629,4 @@ function showlistbaocaovipham(manhom){
       document.getElementById("bodymaster").appendChild(divtobig);
 // loadthemduyetbaiviet();
 }
+
