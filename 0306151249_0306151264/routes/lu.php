@@ -68,7 +68,8 @@ Route::post("/ajax/postthongbaonhomne","ThongBaoController\ThongBaoNhom@postthon
 ->name("postthongbaonhom");
 Route::get("/ajax/getthongbaonhomne","ThongBaoController\ThongBaoNhom@getthongbaonhom")
 ->name("getthongbaonhom");
-
+Route::post("/ajax/updatethongbaonhomne","ThongBaoController\ThongBaoNhom@updatethongbaonhom")
+->name("updatethongbaonhom");
 
 Route::get("/ajax/getlsttimkiemnhomne","NhomController\Nhom@gettimkiemnhom")
 ->name('getlsttimkiemnhom');

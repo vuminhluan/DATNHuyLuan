@@ -31,6 +31,20 @@ function pheduyetbaivietnay(prl_mabaiviet){
 		}
 	}).done(function(data){
 		 $("#divbignoidungmotbaiviet-"+prl_mabaiviet).css("display","none");
+			$.ajax({
+				url:link_host+'/ajax/updatethongbaonhomne',
+				type:'POST',
+				data:{
+					_token:$('input[name=_token]').val(),
+					ma_nhom:$('#div-hi-chu-bai-viet-ma-nhom').val(),
+					ma_loai_thong_bao_nhom:"LTBN02",
+					ma_noi_dung_duoc_thong_bao:prl_mabaiviet,
+					trang_thai:"1" // được phê duyệt 
+				}
+			}).done(function(data){
+				 
+				 
+			})
 	})
 }
 function khongpheduyetbaivietnay(prl_mabaiviet){

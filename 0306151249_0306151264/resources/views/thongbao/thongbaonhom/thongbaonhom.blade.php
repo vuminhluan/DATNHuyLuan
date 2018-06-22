@@ -3,7 +3,8 @@
 
 <div style="height: 77px; border:solid 1px #e4e6e8;margin-right: 17px;padding: 3px;margin-bottom: 1px" onclick="openbaivietduocthongbao('{{$listthongbao[$i]->ma_nhom}}','{{$listthongbao[$i]->ma_noi_dung_duoc_thong_bao}}')" >
 	<div style="width: 20%;float: left;padding-left: 15px;">
-		<img style="width: 69px;height: 69px;border-radius: 50%;overflow: hidden;" src="{{ asset('\pictures\avt1.jpg') }}" alt="AVT">
+		<img style="width: 69px;height: 69px;border-radius: 50%;overflow: hidden;" 
+		src="{{ asset('pictures/anh_dai_dien/'.$listthongbao[$i]->anh_dai_dien)}} " alt="AVT">
 	</div>
 	{{-- <div style=""></div> --}}
 	<div style="width: 80%;height: 77px;margin-left: 20%;padding-right: 25px;">

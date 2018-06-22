@@ -42,6 +42,8 @@ class ThongBaoNhom extends Controller
     }
     public function updatethongbaonhom(Request $rql)
     {
-        DB::table('thong_bao_nhom')->where('',$rql->ma_nhom)->update(["anh"=>$duongdananh.'/'.$tenanh]);
+        DB::table('thong_bao_nhom')
+        ->where([['ma_nhom',$rql->ma_nhom],['ma_loai_thong_bao_nhom',$rql->ma_loai_thong_bao_nhom],['ma_noi_dung_duoc_thong_bao',$rql->ma_noi_dung_duoc_thong_bao]])
+        ->update(["trang_thai"=>$rql->trang_thai]);
     }
 }
