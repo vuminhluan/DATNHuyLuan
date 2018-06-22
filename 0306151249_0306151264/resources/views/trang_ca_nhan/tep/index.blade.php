@@ -62,7 +62,7 @@
 					<ul class="list-actions" data-id="{{$tep->ma_tep}}">
 
 						<li class="change-name">Đổi tên</li>
-						<li class="post-with-it">Đăng bài viết với tệp này</li>
+						{{-- <li class="post-with-it">Đăng bài viết với tệp này</li> --}}
 						<li class="download">Tải</li>
 						<li class="delete">Xóa</li>
 						<li class="public-or-private">

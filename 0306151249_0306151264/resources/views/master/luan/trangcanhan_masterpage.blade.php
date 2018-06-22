@@ -58,7 +58,7 @@
 			<ul class="">
 				<li>
 					<a class="luan_link" href="{{ route('trangcanhan.index', [$taikhoan->ten_tai_khoan]) }}">
-						<span>Bài viết</span><span>12</span>
+						<span>Bài viết</span><span></span>
 					</a>
 				</li>
 				{{-- @if (Auth::user()->ma_tai_khoan == $taikhoan->ma_tai_khoan)
@@ -71,7 +71,7 @@
 				
 				<li>
 					<a class="luan_link" href="{{route('trangcanhan.nhom', ['username'=>$taikhoan->ten_tai_khoan])}}">
-						<span>Nhóm</span><span>1</span>
+						<span>Nhóm</span><span></span>
 					</a>
 				</li>
 				<li>

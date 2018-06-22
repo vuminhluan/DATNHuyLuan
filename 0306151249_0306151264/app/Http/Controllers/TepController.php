@@ -23,15 +23,16 @@ class TepController extends Controller
 
   public function getTrangTep($username, $kind = "tatca", Request $req)
   {
-    // return TaiKhoan::where('ten_tai_khoan', $username)->first()->hasManyTep()->where('cong_khai', 1)->orderBy('ma_tep', 'desc')->get();
-    // $tatca_tep = null;
+
     $tatca_tep = TaiKhoan::where('ten_tai_khoan', $username)->first()->hasManyTep()->where('trang_thai', 1);
-    // $kind = "congkhai";
+   
     if($req->mode) {
       $kind = $req->mode;
     }
+
     if($req->filename_keyword) {
-      $tatca_tep = $tatca_tep->where('ten_tep', 'LIKE', '%'.$req->filename_keyword.'%');
+      $tatca_tep = $tatca_tep->where('ten_tep', 'LIKE', '%'.$req->filename_keyword.'%')->get();
+      return view('trang_ca_nhan.tep.index', ['tatca_tep' => $tatca_tep, 'username' => $username]);
     }
 
     if($kind == "tatca" || $kind=="tep") {
@@ -41,27 +42,11 @@ class TepController extends Controller
     } else if($kind == "riengtu") {
       $tatca_tep = $tatca_tep->where('cong_khai', 0)->orderBy('ma_tep', 'desc')->get();
     }
-    // return $kind;
-    // return $tatca_tep;
+
     return view('trang_ca_nhan.tep.index', ['tatca_tep' => $tatca_tep, 'username' => $username]);
-    // return "haha";
-    
+   
   }
-
-	// public function getTepIndex($username)
-	// {
-	// 	// return $ma_tk;
-	// 	$abc = TaiKhoan::where('ten_tai_khoan', $username)->first()->hasManyTep();
- //    $tatca_tep = $abc->orderBy('ma_tep', 'desc')->get();
-	// 	// return $tatca_tep;
-	// 	return view('trang_ca_nhan.tep.index', ['tatca_tep' => $tatca_tep, 'username' => $username]);
-	// }
-
-  // public function getTepCongKhai($username)
-  // {
-  // 	return view('trang_ca_nhan.tep.congkhai', ['username' => $username]);
-  // }
-
+  
   public function postTaiTepLen(Request $req)
   {
   	

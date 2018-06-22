@@ -15,6 +15,8 @@ use App\Traits\TaoMaTepTrait;
 use App\Traits\CapNhatDoiTuongTrait;
 use App\Traits\ChanHoacBoChanMotTaiKhoanTrait;
 use App\bao_cao_vi_pham as BaoCao;
+use App\nhom_m as Nhom;
+
 
 use App\NguoiDung;
 
@@ -89,7 +91,16 @@ class TrangCaNhanController extends Controller
 	{	
 		$taikhoan = TaiKhoan::where('ten_tai_khoan', $username)->first();
 		$tatca_gioitinh = DB::table('gioi_tinh')->get();
-		return view('trang_ca_nhan.danhsach_nhom')->with(['taikhoan'=>$taikhoan, 'tatca_gioitinh'=>$tatca_gioitinh]);
+
+		$tatca_nhom = $taikhoan->hasManyNhom()->where('trang_thai', 1)->get();
+		return $tatca_nhom;
+
+
+		return 	view('trang_ca_nhan.danhsach_nhom')->with([
+							'taikhoan'=>$taikhoan,
+							'tatca_gioitinh'=>$tatca_gioitinh,
+							'tatca_nhom'=>$tatca_nhom
+						]);
 	}
 
 	public function capNhatNguoiDung(Request $req)
