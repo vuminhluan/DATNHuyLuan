@@ -28,7 +28,7 @@ function taonhommoi(l)
 
 function submittaonhom()
 {
-    var manhom="hi";
+    var manhom="1";
     var tennhom = $('#input-tennhom').val();
     var loainhom = $("input:checked").val();
    // alert(loainhom);
@@ -37,24 +37,12 @@ function submittaonhom()
 
  //  alert(link_host);
 
- $.ajax({
-    url: link_host+'/ajax/getmanhomne',
-    type:'GET',
-    data:{
 
-    }
- }).done(function(data){
-//alert(manhom);
-    manhom =  data.substring(2,10);
-   // alert(manhom);
-         var manhomint = parseInt(manhom)+1;
-       //  alert(manhomint);
-         manhom = manhomint.toString();
-          while(manhom.length<8)
-          {
-            manhom ="0"+manhom;
-          }
-          manhom ="NH"+ manhom;
+          // while(manhom.length<8)
+          // {
+          //   manhom ="0"+manhom;
+          // }
+          // manhom ="NH"+ manhom;
 
 
 //alert(manhom);
@@ -64,22 +52,39 @@ function submittaonhom()
         type:'POST',
         data:{
             _token: $('input[name=_token]').val(),
-            ma_nhom:   manhom,           
+           // ma_nhom:   manhom,           
             ma_gia_nhap: "0000"   ,           
             ten_nhom:   tennhom   ,               
             anh:        "no"   ,              
             ma_tai_khoan:  $('#session-ma-tk').val() ,           
             ma_loai_nhom:  loainhom   ,          
             gioi_thieu_nhom:  "Describe something"  ,         
-            thoi_gian_tham_gia: "2001/01/01",        
-            thoi_gian_het_han_tham_gia: "2001/01/01"  ,
-            thoi_gian_sua: "2001/01/01",
-            thoi_gian_tao: "2001/01/01" ,
-            nguoi_sua:   "N000001"  ,              
+            // thoi_gian_tham_gia: "2001/01/01",        
+            // thoi_gian_het_han_tham_gia: "2001/01/01"  ,
+            // thoi_gian_sua: "2001/01/01",
+            // thoi_gian_tao: "2001/01/01" ,
+            nguoi_sua:   $('#session-ma-tk').val()  ,              
             trang_thai:   "1"               
         }
 
     }).done(function(data){
+
+
+         $.ajax({
+            url: link_host+'/ajax/getmanhomne',
+            type:'GET',
+            data:{
+
+            }
+         }).done(function(data){
+            console.log(data);
+        //alert(manhom);
+            //manhom =  data.substring(2,10);
+           // alert(manhom);
+                 var manhomint = parseInt(data);
+               //  alert(manhomint);
+                 manhom = manhomint.toString();       
+                  
             var vCV01=cCV02=cCV03=cCV04=cCaiDat=true;
             //Thêm chính người tạo nhóm này là thành viên của nhóm
             $.ajax({
@@ -184,7 +189,6 @@ function submittaonhom()
                                 })     
                                 }      
                     
-                
                               $('#input-tennhom').val('');
             gotogroup(manhom);   
             })

@@ -137,17 +137,17 @@ class Nhom extends Controller
     {
         
     	 $nhom = new nhom_m();
-    	 $nhom->ma_nhom						= $rql->ma_nhom;
+    	 // $nhom->ma_nhom						= $rql->ma_nhom;
     	 $nhom->ma_gia_nhap					= $rql->ma_gia_nhap;
     	 $nhom->ten_nhom					= $rql->ten_nhom;
     	 $nhom->anh							= $rql->anh;
     	 $nhom->ma_tai_khoan				= $rql->ma_tai_khoan;
     	 $nhom->ma_loai_nhom				= $rql->ma_loai_nhom;
     	 $nhom->gioi_thieu_nhom				= $rql->gioi_thieu_nhom;
-    	 $nhom->thoi_gian_tham_gia			= $rql->thoi_gian_tham_gia;
-    	 $nhom->thoi_gian_het_han_tham_gia	= $rql->thoi_gian_het_han_tham_gia;
-    	 $nhom->thoi_gian_tao				= $rql->thoi_gian_tao;
-    	 $nhom->thoi_gian_sua				= $rql->thoi_gian_sua;
+    	 // $nhom->thoi_gian_tham_gia			= $rql->thoi_gian_tham_gia;
+    	 // $nhom->thoi_gian_het_han_tham_gia	= $rql->thoi_gian_het_han_tham_gia;
+    	 // $nhom->thoi_gian_tao				= $rql->thoi_gian_tao;
+    	 // $nhom->thoi_gian_sua				= $rql->thoi_gian_sua;
     	 $nhom->nguoi_sua					= $rql->nguoi_sua;
     	 $nhom->trang_thai  				= $rql->trang_thai;
     	 $nhom->save();
