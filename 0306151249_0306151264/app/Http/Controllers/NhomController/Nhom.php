@@ -92,9 +92,9 @@ class Nhom extends Controller
             }
     }
 
-    public function getmanhom()
+    public function getmanhom(Request $rql)
     {
-    	$manhom = DB::table('nhom')->select('ma_nhom')->orderBy('ma_nhom','desc')->get()->first();
+    	$manhom = DB::table('nhom')->select('ma_nhom')->where('ma_tai_khoan',$rql->ma_tai_khoan)->orderBy('ma_nhom','desc')->get()->first();
     	return $manhom->ma_nhom;
     }
     

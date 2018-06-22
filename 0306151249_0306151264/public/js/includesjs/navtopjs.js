@@ -74,7 +74,7 @@ function submittaonhom()
             url: link_host+'/ajax/getmanhomne',
             type:'GET',
             data:{
-
+                 ma_tai_khoan:  $('#session-ma-tk').val() 
             }
          }).done(function(data){
             console.log(data);
