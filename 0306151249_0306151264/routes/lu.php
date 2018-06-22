@@ -9,6 +9,7 @@ return view("includes.navtop");
 
 });
 Route::get("gr/{id}","NhomController\Nhom@loadnhom")->name('nhom.index');
+Route::get("gr/{id}/baiviet/{idbv}","NhomController\Nhom@loadnhomvoimotbaiviettheoma")->name('nhomhienthibaiviet.index');
 Route::get("baiviet", function(){
 	return view("baiviet.hienthibaiviet");
 });

@@ -327,6 +327,10 @@ $(document).ready(function() {
 // ------------------
 
 
+function openbaivietduocthongbao(prl_manhom,prl_mabaiviet){
+    //alert(prl_manhom+prl_mabaiviet);
+     window.location.href = "http://localhost/DATNHuyLuan/0306151249_0306151264/public/gr/"+prl_manhom+"/baiviet/"+prl_mabaiviet;
+}
 
 
 
