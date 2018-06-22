@@ -33,7 +33,10 @@ class TaiKhoan extends Model implements \Illuminate\Contracts\Auth\Authenticatab
     // link: https://stackoverflow.com/questions/32806287/how-to-call-a-model-function-inside-the-controller-in-laravel-5
     return "TK00000001";
   }
-
+  public function hasManyNhom()
+  {
+    return $this->hasMany('App\nhom_m', 'ma_tai_khoan', 'ma_tai_khoan');
+  }
   public function hasManyBaoCao()
   {
     return $this->hasMany('App\bao_cao_vi_pham', 'nguoi_gui_bao_cao', 'ma_tai_khoan');
