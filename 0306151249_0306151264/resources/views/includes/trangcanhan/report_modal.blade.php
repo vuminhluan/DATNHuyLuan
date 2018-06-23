@@ -16,7 +16,7 @@
 			</form>
 		</div>
 		<div class="-footer">
-			<button id="submit-report-button" form="report-account-form">Gửi</button>
+			<button id="submit-report-button" form="report-account-form">Gửi báo cáo</button>
 			<button id="close-report-modal">Hủy</button>
 		</div>
 	</div>

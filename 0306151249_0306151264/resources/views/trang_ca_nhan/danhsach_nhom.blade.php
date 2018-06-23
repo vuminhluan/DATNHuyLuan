@@ -14,158 +14,68 @@
 	<div class="content profile-all-group-content">
 
 		<div id="profile-all-group-list">
+			
+			@php
+				$total = count($tatca_nhom);
+				// echo "<pre>";
+				// print_r($tatca_nhom);
+			@endphp
 
-			<!-- pinned group -->
-			<div id="">
-				<div>
-					<h3 class="-kind-name">Nhóm được ghim <!-- <button class="-kind-list-action-button"></button> --></h3>
-				</div>
-				<div>
-					<ul class="group-list" >
-						<li>
-							<div class="profile-group-card">
-								<a href="#/"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a>
-								<div class="group-name-and-unread-post-counter">
-									<a href="" class="luan_link">
-										<h3>Tên group Tên group Tên group Tên group Tên group Tên group Tên group</h3>
-										<span>11.999 thành viên</span>
-										<span>9 bài đăng mới chưa đọc</span>
-									</a>
-								</div>
+			@foreach ($tatca_nhom as $nhom_theo_chucvu)
+				@if (count($nhom_theo_chucvu) > 0)
 
-								<div class="group-description">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore laborum sit, laboriosam ducimus molestias beatae unde sint perferendis officiis iusto.
-								</div>
-								<button class="group-action-button"></button>
-								<div class="group-list-context-menu">
-									<span class="caret caret-outer"></span>
-									<span class="caret caret-inner"></span>
-									<ul>
-										<li>Bỏ ghim</li>
-										<li>Rời khỏi nhóm</li>
-										<li>Chặn nhóm</li>
-									</ul>
-								</div>
+					<div>
+						<div>
+							<h3>Nhóm bạn làm {{$nhom_theo_chucvu[0]->ten_chuc_vu}}</h3>
+						</div>
+						<div>
+							<ul class="group-list">
+								@for ($i = 0; $i < count($nhom_theo_chucvu); $i++)
+									<li>
+										<div class="profile-group-card">
+											@if ($nhom_theo_chucvu[$i]->anh != null && $nhom_theo_chucvu[$i]->anh != "no")
+												<a href="{{ route('nhom.index', [$nhom_theo_chucvu[$i]->ma_nhom]) }}"><img src="{{asset($nhom_theo_chucvu[$i]->anh)}}" alt=""></a>
+											@else
+												<a href="#/"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a>
+											@endif
+											
+											<div class="group-name-and-unread-post-counter">
+												<a href="" class="luan_link">
+													<h3>{{$nhom_theo_chucvu[$i]->ten_nhom}}</h3>
+													<span>{{$nhom_theo_chucvu[$i]->soluong_thanhvien}} thành viên</span>
+													{{-- <span>9 bài đăng mới chưa đọc</span> --}}
+												</a>
+											</div>
+											<div class="group-description">
+												{{$nhom_theo_chucvu[$i]->gioi_thieu_nhom}}
+											</div>
+											<button class="group-action-button"></button>
+											<div class="group-list-context-menu">
+												<span class="caret caret-outer"></span>
+												<span class="caret caret-inner"></span>
+												<ul>
+													{{-- <li>Bỏ ghim</li> --}}
+													<li>Rời khỏi nhóm</li>
+													{{-- <li>Chặn nhóm</li> --}}
+												</ul>
+											</div>
 
-							</div>
-						</li>
+										</div>
+									</li>
+								@endfor
+							</ul>
+						</div>
+					</div>
 
-						<li>
-							<div class="profile-group-card">
-								<a href="#/"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a>
-								<div class="group-name-and-unread-post-counter">
-									<a href="" class="luan_link">
-										<h3>Tên group Tên group Tên group Tên group Tên group Tên group Tên group</h3>
-										<span>11.999 thành viên</span>
-										<span>9 bài đăng mới chưa đọc</span>
-									</a>
-								</div>
-								<div class="group-description">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore laborum sit, laboriosam ducimus molestias beatae unde sint perferendis officiis iusto.
-								</div>
-								<button class="group-action-button"></button>
-								<div class="group-list-context-menu">
-									<span class="caret caret-outer"></span>
-									<span class="caret caret-inner"></span>
-									<ul>
-										<li>Bỏ ghim</li>
-										<li>Rời khỏi nhóm</li>
-										<li>Chặn nhóm</li>
-									</ul>
-								</div>
 
-							</div>
-						</li>
-
-						<li>
-							<div class="profile-group-card">
-								<a href="#/"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a>
-								<div class="group-name-and-unread-post-counter">
-									<a href="" class="luan_link">
-										<h3>Tên group Tên group Tên group Tên group Tên group Tên group Tên group</h3>
-										<span>11.999 thành viên</span>
-										<span>9 bài đăng mới chưa đọc</span>
-									</a>
-								</div>
-								<div class="group-description">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore laborum sit, laboriosam ducimus molestias beatae unde sint perferendis officiis iusto.
-								</div>
-								<button class="group-action-button"></button>
-								<div class="group-list-context-menu">
-									<span class="caret caret-outer"></span>
-									<span class="caret caret-inner"></span>
-									<ul>
-										<li>Bỏ ghim</li>
-										<li>Rời khỏi nhóm</li>
-										<li>Chặn nhóm</li>
-									</ul>
-								</div>
-
-							</div>
-						</li>
-
-						<li>
-							<div class="profile-group-card">
-								<a href="#/"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a>
-								<div class="group-name-and-unread-post-counter">
-									<a href="" class="luan_link">
-										<h3>Tên group Tên group Tên group Tên group Tên group Tên group Tên group</h3>
-										<span>11.999 thành viên</span>
-										<span>9 bài đăng mới chưa đọc</span>
-									</a>
-								</div>
-								<div class="group-description">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore laborum sit, laboriosam ducimus molestias beatae unde sint perferendis officiis iusto.
-								</div>
-								<button class="group-action-button"></button>
-								<div class="group-list-context-menu">
-									<span class="caret caret-outer"></span>
-									<span class="caret caret-inner"></span>
-									<ul>
-										<li>Bỏ ghim</li>
-										<li>Rời khỏi nhóm</li>
-										<li>Chặn nhóm</li>
-									</ul>
-								</div>
-
-							</div>
-						</li>
-
-						<li>
-							<div class="profile-group-card">
-								<a href="#/"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a>
-								<div class="group-name-and-unread-post-counter">
-									<a href="" class="luan_link">
-										<h3>Tên group Tên group Tên group Tên group Tên group Tên group Tên group</h3>
-										<span>11.999 thành viên</span>
-										<span>9 bài đăng mới chưa đọc</span>
-									</a>
-								</div>
-								<div class="group-description">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore laborum sit, laboriosam ducimus molestias beatae unde sint perferendis officiis iusto.
-								</div>
-								<button class="group-action-button"></button>
-								<div class="group-list-context-menu">
-									<span class="caret caret-outer"></span>
-									<span class="caret caret-inner"></span>
-									<ul>
-										<li>Bỏ ghim</li>
-										<li>Rời khỏi nhóm</li>
-										<li>Chặn nhóm</li>
-									</ul>
-								</div>
-
-							</div>
-						</li>
-
-					</ul>
-				</div>
-
-			</div>
-			<!-- End pinned group -->
-
+					{{-- @for ($i = 0; $i < count($nhom_theo_chucvu); $i++)
+						{{$nhom_theo_chucvu[$i]->ten_nhom}}
+					@endfor
+					<br> --}}
+				@endif
+			@endforeach
 			<!-- admin group -->
-			<div id="">
+			{{-- <div id="">
 				<div>
 					<h3>Nhóm bạn làm quản trị</h3>
 				</div>
@@ -202,12 +112,12 @@
 					</ul>
 				</div>
 
-			</div>
+			</div> --}}
 			<!-- End admin group -->
 
 
 			<!-- joined group -->
-			<div id="">
+			{{-- <div id="">
 				<div>
 					<h3>Nhóm bạn tham gia</h3>
 				</div>
@@ -244,7 +154,7 @@
 					</ul>
 				</div>
 
-			</div>
+			</div> --}}
 			<!-- End joined group -->
 
 		</div>
@@ -255,7 +165,7 @@
 
 	@section('righnav-profile-masterpage')
 		<!-- Create group -->
-		<div class="profile-create-groups">
+		{{-- <div class="profile-create-groups">
 			<div>
 				<h3>Tạo nhóm mới</h3>
 			</div>
@@ -266,11 +176,11 @@
 			<div>
 				<a href="#/" class="create-group-button">Tạo nhóm</a>
 			</div>
-		</div>
+		</div> --}}
 		<!-- End Create group -->
 
 		<!-- offered group -->
-		<div class="profile-offered-groups">
+		{{-- <div class="profile-offered-groups">
 			<div>
 				<h3>Nhóm đề xuất</h3>
 			</div>
@@ -298,7 +208,7 @@
 					</li>
 				</ul>
 			</div>
-		</div>
+		</div> --}}
 		<!-- offered group -->
 
 

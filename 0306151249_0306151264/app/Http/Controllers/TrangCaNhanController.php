@@ -59,27 +59,26 @@ class TrangCaNhanController extends Controller
 			abort(404);
 		}
 
-		
-
-		// $tatca_baiviet = BaiViet::where('ma_nguoi_viet', 1)->first();
-		// $total_posts = BaiViet::where([
-		// 	['bai_viet.ma_nguoi_viet',$taikhoan->ma_tai_khoan],
-		// 	["bai_viet.trang_thai","1"]
-		// ])->count();
-
-		// $posts_per_page = 3;
-		// $total_pages = ceil($total_posts/$posts_per_page);
-		// return $total_pages;
-
 		$account_posts = DB::table('bai_viet')
 			->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
 			->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
 			->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
 			->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
       ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet', 'nhom.ma_nhom', 'nhom.ten_nhom')//
-      ->where([['bai_viet.ma_nguoi_viet',$taikhoan->ma_tai_khoan],["bai_viet.trang_thai","1"]])
-      ->orderBy('bai_viet.ma_bai_viet','desc')
-      ->take(100)->get();
+      ->where([['bai_viet.ma_nguoi_viet',$taikhoan->ma_tai_khoan],["bai_viet.trang_thai","1"]]);
+      // ->orderBy('bai_viet.ma_bai_viet','desc')
+      // ->take(100)->get()
+
+    if(Auth::user()->ma_tai_khoan != $taikhoan->ma_tai_khoan) {
+    	$account_posts = $account_posts->where([
+    		['bai_viet.ma_loai_bai_viet', '!=', 'LBV002'],
+    		['bai_viet.ma_loai_bai_viet', '!=', 'LBV004']
+    	]);
+    }
+
+    $account_posts = $account_posts->orderBy('bai_viet.ma_bai_viet','desc')->take(100)->get();
+
+      // return $account_posts;
 
 
      // return $account_posts;
@@ -89,17 +88,50 @@ class TrangCaNhanController extends Controller
 
 	public function getNhom($username)
 	{	
-		$taikhoan = TaiKhoan::where('ten_tai_khoan', $username)->first();
+		$taikhoan = TaiKhoan::where('ten_tai_khoan', $username)->where('trang_thai', '!=', '4')->first();
 		$tatca_gioitinh = DB::table('gioi_tinh')->get();
 
-		$tatca_nhom = $taikhoan->hasManyNhom()->where('trang_thai', 1)->get();
-		return $tatca_nhom;
+		// return $taikhoan;
+
+		// $tatca_nhom = $taikhoan->hasManyNhom()->where('trang_thai', 1)->get();
+		// // return $tatca_nhom;
+		$tatca_nhom_theo_taikhoan = DB::table('nhom')
+		->join('chuc_vu_cua_thanh_vien_trong_nhom AS TV_CV', 'TV_CV.ma_nhom', '=', 'nhom.ma_nhom')
+		->join('chuc_vu_trong_nhom AS CV', 'CV.ma_chuc_vu', '=', 'TV_CV.ma_chuc_vu')
+		->select('nhom.*', 'TV_CV.ma_chuc_vu', 'TV_CV.ma_tai_khoan AS thanhvien', 'CV.ten_chuc_vu')
+		->where([
+			['TV_CV.ma_tai_khoan', 'TK00000009'],
+			['nhom.trang_thai', '!=', 0]
+		])
+		->where(function ($query) {
+			$query->whereIn('TV_CV.ma_chuc_vu', ['CV02', 'CV07']);
+		})
+		->orderBy('TV_CV.ma_chuc_vu', 'DESC')->orderBy('TV_CV.ma_nhom', 'ASC')
+		->get();
+
+		// return $tatca_nhom_theo_taikhoan;
+
+		$nhom_theo_chucvu = [
+			'CV02' => [],
+			'CV07' => []
+		];
+
+		foreach ($tatca_nhom_theo_taikhoan as $nhom) {
+			$nhom->soluong_thanhvien = DB::table('thanh_vien_nhom')->where('ma_nhom', $nhom->ma_nhom)->count();
+			if($nhom->ma_chuc_vu == "CV07") {
+				$nhom_theo_chucvu['CV07'][] = $nhom;
+			} else {
+				$nhom_theo_chucvu['CV02'][] = $nhom;
+			}
+		}
+
+		// return $nhom_theo_chucvu;
 
 
 		return 	view('trang_ca_nhan.danhsach_nhom')->with([
 							'taikhoan'=>$taikhoan,
 							'tatca_gioitinh'=>$tatca_gioitinh,
-							'tatca_nhom'=>$tatca_nhom
+							'tatca_nhom'=>$nhom_theo_chucvu
 						]);
 	}
 
