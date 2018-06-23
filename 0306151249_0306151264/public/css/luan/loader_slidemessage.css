@@ -5,7 +5,8 @@
   background-color: rgba(0,0,0,0.3);
 }
 .myloader img {
-  position: absolute;top: 50%;left: 0%;right: 0%;margin:auto;bottom: 50%;
+  /*position: absolute;top: 50%;left: 0%;right: 0%;margin:auto;bottom: 50%;*/
+  position: fixed;top: 50%;left: 0%;right: 0%;margin:auto;bottom: 50%;
 }
 /*END loader*/
 

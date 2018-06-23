@@ -3,14 +3,12 @@
 .profile-all-group-content {background-color: inherit !important;}
 
 #profile-all-group-list > div {
-	background-color: #fff;
-	margin-bottom: 8px;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
+	background-color: #fff; margin-bottom: 8px; border-radius: 3px;
+	border:1px solid #ddd;box-shadow: 2px 2px 3px #aaa;
 
 }
 
-#profile-all-group-list > div > div {padding: 10px;}
+#profile-all-group-list > div > div {padding: 8px;}
 
 #profile-all-group-list > div > div:first-child {
 	border-bottom: 1px solid #e6ecf0;
@@ -19,17 +17,6 @@
 #profile-all-group-list .-kind-name {
 	position: relative;
 }
-
-/*#profile-all-group-list .-kind-list-action-button {
-width: 30px; height:30px;
-position: absolute;right: 0%;top: 0;bottom: 0;margin: auto;
-background-image: url(../pictures/page-action.svg);
-background-repeat: no-repeat;
-background-position: center;
-transform: rotate(90deg);
-border:0; padding: 10px;cursor: pointer;
-background-color: transparent;
-}*/
 
 .group-list {width: 100%;}
 .group-list > li {
@@ -44,10 +31,9 @@ background-color: transparent;
 }
 
 .profile-group-card {
-	padding-bottom: 10px;
-	position: relative; border-radius: 3px;
-	box-shadow: 0 1px 3px 0 rgba(12, 12, 13, 0.1);
-	transition: all 150ms;
+	padding-bottom: 10px; position: relative; border-radius: 3px;
+	box-shadow: 1px 1px 3px 1px rgba(12, 12, 13, 0.3); transition: all 150ms;
+	/*border: 1px solid #D7D7DB;*/
 }
 
 .profile-group-card img {
@@ -78,17 +64,13 @@ background-color: transparent;
 
 
 .group-action-button {
-	background-image: url(../../../pictures/luan/page-action.svg);
-	background-repeat: no-repeat;
-	background-position: center;
+	outline: none;
+	background-image: url(../../../pictures/luan/page-action.svg); background-repeat: no-repeat; background-position: center;
 	width: 30px; height: 30px;background-color: #fff;
-	border: 2px solid #D7D7DB;
-	border-radius: 50%; padding: 10px;cursor: pointer;
+	border: 2px solid #D7D7DB; border-radius: 50%; padding: 10px;cursor: pointer;
 	position: absolute;top: -14px;right: -17px;
-	box-shadow: 0 2px rgba(12, 12, 13, 0.1);
-	opacity: 0;
-	transform: scale(0);
-	transition: all 250ms;
+	box-shadow: 0 2px rgba(12, 12, 13, 0.1); opacity: 0;
+	transform: scale(0); transition: all 250ms;
 }
 
 .profile-group-card:hover {
@@ -110,9 +92,7 @@ background-color: transparent;
 	display: none;
 	width: 200px; height: auto;background-color: #fff;color: #000;
 	border-radius: 3px;border: 1px solid #e4e4e4;
-	z-index: 1;
-	position: absolute;top: 25px;right: -30px;
-	box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+	z-index: 1; position: absolute;top: 25px;right: -30px; box-shadow: 0 1px 4px rgba(0,0,0,0.25);
 }
 
 .group-list-context-menu .caret {
@@ -123,16 +103,14 @@ background-color: transparent;
 	border-bottom: 10px solid #e4e4e4;
 	border-left: 10px solid transparent;
 	border-right: 10px solid transparent;
-	position: absolute;bottom: 100%;right: 18px;
-	text-align: center;
+	position: absolute;bottom: 100%;right: 18px; text-align: center;
 }
 
 .group-list-context-menu .caret-inner {
 	border-bottom: 9px solid #fff;
 	border-left: 9px solid transparent;
 	border-right: 9px solid transparent;
-	position: absolute;bottom: 100%;right: 18px;
-	text-align: center;
+	position: absolute;bottom: 100%;right: 18px; text-align: center;
 }
 
 

@@ -13,10 +13,21 @@
 	<div class="content" style="background-color: transparent;">
 		@for ($i = 0; $i < count($lstbaiviet) ; $i++)
 		{{-- css file noidungbaiviet.css --}}
+			{{-- @if (Auth::user()->ma_tai_khoan == $taikhoan->ma_tai_khoan)
+				@include('includes.trangcanhan.post')
+			@elseif ($lstbaiviet[$i]->ma_loai_bai_viet != "LBV002" && $lstbaiviet[$i]->ma_loai_bai_viet != "LBV004")
+				@include('includes.trangcanhan.post')
+			@endif --}}
+
 
 			@include('includes.trangcanhan.post')
+
+
+
+
+			
 			@php
-				// sleep(1);
+				// sleep(1);LBV002
 			@endphp
 
 		@endfor
