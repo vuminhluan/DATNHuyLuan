@@ -438,8 +438,20 @@ function sendrepbinhluan(prl,maloaibaiviet){
             trang_thai:"1"
           }
         }).done(function(data){
-          $('#input-binhluan-'+prl).val(""); //gán lại không có giá trị
+          $('#input-binhluan-'+prl).val(""); //gán lại không có giá trị///ajax/getmabinhluancap2ne
+          $.ajax({
+             url: link_host+'/ajax/getmabinhluancap2ne',
+             type:'GET',
+             data:{
+              ma_nguoi_binh_luan:$('#session-ma-tk').val(),
+              ma_binh_luan:prl
+             }
+            }).done(function(data){
+                       postthongbaobinhluanmoi("LTBN04","Trà lời bình luận","1",data,prl); 
+            })
+           
           reloadlstcmtrep(prl,maloaibaiviet);
+
         })
 }
 
@@ -490,12 +502,44 @@ function submitme(event,mabaivietl,maloaibaiviet)
      	  }).done(function(data) {
 
           reloadbinhluan(mabaivietl,maloaibaiviet);
+          $.ajax({
+             url: link_host+'/ajax/getmabinhluanne',
+             type:'GET',
+             data:{
+              ma_nguoi_binh_luan:$('#session-ma-tk').val(),
+              ma_bai_viet:mabaivietl
+             }
+            }).done(function(data){
+                      postthongbaobinhluanmoi("LTBN03","Bình luận bài viết","1",data,mabaivietl);  
+            })
 
      	  	 $('#input-binhluan-'+mabaivietl).val(''); // gán lại rỗng cho cmt
 
      	  })
  // })
 }}
+
+
+
+function postthongbaobinhluanmoi(loaithongbao,noidungthongbao,trangthai,ma_noi_dung_duoc_thong_bao,noi_nhan_tac_dong){
+
+   $.ajax(
+                                            {
+                                                url: link_host+'/ajax/postthongbaone',
+                                                type: 'POST',
+                                                data:{
+                                                _token: $('input[name=_token]').val(),
+                                                noi_nhan_tac_dong: noi_nhan_tac_dong, // hiện tại đăng trong nhóm nên sẽ là của nhóm
+                                                ma_loai_thong_bao:loaithongbao,
+                                                noi_dung_tac_dong:ma_noi_dung_duoc_thong_bao,
+                                                noi_dung_thong_bao:noidungthongbao,
+                                                nguoi_tao_thong_bao: $('#session-ma-tk').val(),
+                                                trang_thai: trangthai
+                                            }
+                                            }).done(function(data) {})
+
+}
+
 
       //   alert("ban vua enter");
 

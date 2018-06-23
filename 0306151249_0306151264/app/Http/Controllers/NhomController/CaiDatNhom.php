@@ -34,6 +34,8 @@ class CaiDatNhom extends Controller
    		$caidatmotnhom->ma_nguoi_them						=  $rql->ma_nguoi_them;
    		$caidatmotnhom->trang_thai 							=  $rql->trang_thai;
    		$caidatmotnhom->save();
+
+      
    	//	return "Post cài đặt nhóm thành công";
    	}
     public function PostUpdateCaiDatNhom(Request $rql){

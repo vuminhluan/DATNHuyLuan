@@ -28,6 +28,8 @@ function taonhommoi(l)
 
 function submittaonhom()
 {
+    $("#btn-xac-nhan-tao-nhom-in-model").css("display","none");
+    $("#btn-huy-tao-nhom-in-model").css("display","none");
     var manhom="1";
     var tennhom = $('#input-tennhom').val();
     var loainhom = $("input:checked").val();

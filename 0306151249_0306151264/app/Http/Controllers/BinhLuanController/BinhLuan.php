@@ -10,11 +10,26 @@ use App\binh_luan_cap_2;
 use App\bai_viet;
 class BinhLuan extends Controller
 {
-	public function GetMaBinhLuan()
+	public function GetMaBinhLuan(Request $rql)
 	{
-		$mabl= DB::table('binh_luan_bai_viet')->select('ma_binh_luan')->orderBy('ma_binh_luan','desc')->get()->first();
+		$mabl= DB::table('binh_luan_bai_viet')
+        ->select('ma_binh_luan')
+        ->where([['ma_nguoi_binh_luan',$rql->ma_nguoi_binh_luan],['ma_bai_viet',$rql->ma_bai_viet]])
+        ->orderBy('ma_binh_luan','desc')
+        ->get()
+        ->first();
 		return $mabl->ma_binh_luan;
 	}
+    public function GetMaBinhLuanCap2(Request $rql)
+    {
+        $mabl= DB::table('binh_luan_cap_2')
+        ->select('ma_binh_luan_cap_2')
+        ->where([['ma_nguoi_binh_luan',$rql->ma_nguoi_binh_luan],['ma_binh_luan',$rql->ma_binh_luan]])
+        ->orderBy('ma_binh_luan_cap_2','desc')
+        ->get()
+        ->first();
+        return $mabl->ma_binh_luan_cap_2;
+    }
 	public function GetBinhLuanMoi(Request $rq)
 	{
 		 $noidung = $rq->noidung;

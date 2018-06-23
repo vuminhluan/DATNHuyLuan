@@ -37,6 +37,8 @@ Route::get("/ajax/getbinhluancap2ne","BinhLuanController\BinhLuan@GetBinhLuanCap
 ->name('getbinhluancap2');
 Route::get("/ajax/getmabinhluanne","BinhLuanController\BinhLuan@GetMaBinhLuan")
 ->name('getmabinhluan');
+Route::get("/ajax/getmabinhluancap2ne","BinhLuanController\BinhLuan@GetMaBinhLuanCap2")
+->name('getmabinhluancap2');
 
 Route::get("/ajax/getbinhluanmoine","BinhLuanController\BinhLuan@GetBinhLuanMoi")
 ->name('getbinhluanmoi');
