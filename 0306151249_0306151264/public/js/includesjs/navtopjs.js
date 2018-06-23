@@ -376,7 +376,7 @@ function openpopupthongbao(prl_mataikhoan){
                                      console.log($(this).height());
                                       console.log(this.scrollHeight-parseFloat($(this).scrollTop()));
                                      // console.log(this.scrollHeight);
- console.log(parseFloat($(this).height())/(parseFloat($(this).scrollTop())-this.scrollHeight));
+                                    console.log(parseFloat($(this).height())/(parseFloat($(this).scrollTop())-this.scrollHeight));
                                     if(parseFloat($(this).height())/(parseFloat($(this).scrollTop())-this.scrollHeight)==-1){
                                      //   alert("hhihi");
 
