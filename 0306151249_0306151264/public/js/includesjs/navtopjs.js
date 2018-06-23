@@ -101,7 +101,7 @@ function submittaonhom()
 
             }}).done(function(data){
                 
-                if(vCV01){
+        if(vCV01){
                     vCV01=!vCV01;
                      $.ajax({
                                 url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
@@ -115,8 +115,7 @@ function submittaonhom()
 
                                 }}).done(function(data){
                                       //  alert(data);
-                                })
-                         }
+
                 if(cCV02){
                     cCV02=!cCV02;
                      $.ajax({
@@ -130,9 +129,6 @@ function submittaonhom()
                                         trang_thai:"1"        
 
                                 }}).done(function(data){
-                                     //   alert(data);
-                                })
-                            }
                 if(cCV03){
                     cCV03=!cCV03;
                     $.ajax({
@@ -146,51 +142,55 @@ function submittaonhom()
                                         trang_thai:"1"        
 
                                 }}).done(function(data){
-                                     //   alert(data);
+                                        if(cCV04){
+                                            cCV04=!cCV04;
+                                            $.ajax({
+                                                        url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
+                                                        type:'POST',
+                                                        data:{
+                                                                _token: $('input[name=_token]').val(),
+                                                                ma_nhom:manhom,
+                                                                ma_tai_khoan:$("#session-ma-tk").val(),
+                                                                ma_chuc_vu:"CV04",
+                                                                trang_thai:"1"        
+
+                                                        }}).done(function(data){
+                                                            if(cCaiDat){
+                                                                cCaiDat=!cCaiDat;
+                                                                         //   alert(manhom+loainhom);
+                                                                 $.ajax({
+                                                                            url: link_host+'/ajax/postcaidatnhomne',
+                                                                            type:'POST',
+                                                                            data:{
+                                                                                    _token: $('input[name=_token]').val(),
+                                                                                    ma_nhom:manhom,
+                                                                                    ma_loai_nhom:loainhom,
+                                                                                    gioi_thieu_nhom:"Chưa có",
+                                                                                    phe_duyet_bai_viet_an_danh:"0",
+                                                                                    phe_duyet_bai_viet_binh_thuong:"0",
+                                                                                    trang_thai_ma_gia_nhap_nhom:"0",
+                                                                                    ma_gia_nhap_nhom:"0000",
+                                                                                    trang_thai_cau_hoi_gia_nhap_nhom:"0",
+                                                                                    ma_nguoi_them:$("#session-ma-tk").val(),
+                                                                                    trang_thai:"1"        
+
+                                                                            }}).done(function(data){
+                                                                                gotogroup(manhom);  
+                                                                            })     
+                                                                            } 
+                                                        }) 
+                                                }
                                 })
                             }
-                if(cCV04){
-                    cCV04=!cCV04;
-                    $.ajax({
-                                url: link_host+'/ajax/postchucvucuathanhvienvaonhomne',
-                                type:'POST',
-                                data:{
-                                        _token: $('input[name=_token]').val(),
-                                        ma_nhom:manhom,
-                                        ma_tai_khoan:$("#session-ma-tk").val(),
-                                        ma_chuc_vu:"CV04",
-                                        trang_thai:"1"        
-
-                                }}).done(function(data){
-                                     //   alert(data);
-                                }) 
-}
-                if(cCaiDat){
-                    cCaiDat=!cCaiDat;
-                             //   alert(manhom+loainhom);
-                     $.ajax({
-                                url: link_host+'/ajax/postcaidatnhomne',
-                                type:'POST',
-                                data:{
-                                        _token: $('input[name=_token]').val(),
-                                        ma_nhom:manhom,
-                                        ma_loai_nhom:loainhom,
-                                        gioi_thieu_nhom:"Chưa có",
-                                        phe_duyet_bai_viet_an_danh:"0",
-                                        phe_duyet_bai_viet_binh_thuong:"0",
-                                        trang_thai_ma_gia_nhap_nhom:"0",
-                                        ma_gia_nhap_nhom:"0000",
-                                        trang_thai_cau_hoi_gia_nhap_nhom:"0",
-                                        ma_nguoi_them:$("#session-ma-tk").val(),
-                                        trang_thai:"1"        
-
-                                }}).done(function(data){
-                                     //   alert(data);
-                                })     
-                                }      
+                                })
+                            }
+                
+                                })
+                         }
+     
                     
                               $('#input-tennhom').val('');
-            gotogroup(manhom);   
+             
             })
          //   alert(tennhom+"tao thanh cong");
           //  alert(data);
