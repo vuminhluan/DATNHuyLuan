@@ -13,4 +13,10 @@ class bai_viet extends Model
 
     const CREATED_AT = 'thoi_gian_dang';
     const UPDATED_AT = 'thoi_gian_sua';
+
+
+    public function belongsToTaiKhoan()
+    {
+    	return $this->belongsTo('App\TaiKhoan', 'ma_nguoi_viet', 'ma_tai_khoan');
+    }
 }
