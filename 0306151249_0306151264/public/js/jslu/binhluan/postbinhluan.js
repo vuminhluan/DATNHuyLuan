@@ -19,6 +19,55 @@ function clickbinhluan(mabaiviet,maloaibaiviet)
 
 }
 
+function onloadbinhluanmoicuabaiviet(mabaiviet,maloaibaiviet,mabinhluan)
+{
+
+ if($('#dv-div-big-'+mabaiviet).css("display")=="none"&& $('#div-content-all-cmt-'+mabaiviet).css("display")=="none"&& $('#div-input-binhluan-'+mabaiviet).css("display")=="none"){
+        $('#dv-div-big-'+mabaiviet).css("display","block");
+        $('#div-content-all-cmt-'+mabaiviet).css("display","block");
+        $('#div-input-binhluan-'+mabaiviet).css("display","block");
+         reloadbinhluancantim(mabaiviet,maloaibaiviet,mabinhluan);
+ }
+ else{
+        $('#dv-div-big-'+mabaiviet).css("display","none");
+        $('#div-content-all-cmt-'+mabaiviet).css("display","none");
+        $('#div-input-binhluan-'+mabaiviet).css("display","none");
+ }
+}
+
+function reloadbinhluancantim(mabaiviet,maloaibaiviet,mabinhluan){
+              $.ajax(
+            {
+              url: link_host+'/ajax/getbinhluantheomabinhluanne',
+              type:'GET',
+              data:{
+                // ma_bai_viet:mabaivietxx
+                ma_binh_luan:mabinhluan
+              }
+
+            }).done(function(data){
+          // $('#div-content-all-cmt-'+mabaiviet).html(data);
+            $("#div-content-all-cmt-"+mabaiviet).empty();
+              for (var i = 0; i < data.length; i++) {
+                var noidungbinhluan = data[i].ho_ten_lot+' '+data[i].ten+': '+data[i].noi_dung_binh_luan;
+                if (maloaibaiviet=="LBV004"||maloaibaiviet=="LBV003") {
+                  if(data[i].ten_an_danh!=null){
+                    noidungbinhluan = data[i].ten_an_danh+': '+data[i].noi_dung_binh_luan;}
+                  else{
+                    noidungbinhluan = 'Người nào đó'+': '+data[i].noi_dung_binh_luan;}
+                }
+                  taoramotcmt(noidungbinhluan,
+                              data[i].ma_binh_luan,
+                              data[i].anh_dai_dien,
+                              mabaiviet,
+                              data[i].ma_tai_khoan,
+                              maloaibaiviet
+                              );
+              }
+
+            })
+}
+
 
 function reloadbinhluan(mabaiviet,maloaibaiviet){
               $.ajax(

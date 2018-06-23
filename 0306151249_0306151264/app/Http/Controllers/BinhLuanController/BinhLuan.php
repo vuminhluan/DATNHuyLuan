@@ -59,6 +59,17 @@ class BinhLuan extends Controller
          return $lstbinhluan;
 	 //	return View('binhluan.motbinhluan',["lstbinhluan"=>$lstbinhluan,"mabaivietl"=>$rq->ma_bai_viet]);
 	}
+    public function getbinhluantheomabinhluan(Request $rq)
+    {
+         $lstbinhluan = DB::table('binh_luan_bai_viet')
+                        ->join('bai_viet','binh_luan_bai_viet.ma_bai_viet','=','bai_viet.ma_bai_viet')
+                        ->join('nguoi_dung','binh_luan_bai_viet.ma_nguoi_binh_luan','=','nguoi_dung.ma_tai_khoan')
+                        ->select('bai_viet.*','binh_luan_bai_viet.*','nguoi_dung.*')
+                        ->where([['binh_luan_bai_viet.ma_binh_luan',$rq->ma_binh_luan],['binh_luan_bai_viet.trang_thai',"1"]])->take(1)->get();
+         
+         return $lstbinhluan;
+     // return View('binhluan.motbinhluan',["lstbinhluan"=>$lstbinhluan,"mabaivietl"=>$rq->ma_bai_viet]);
+    }
     public function GetBinhLuanCap2(Request $rq)
     {
          return DB::table('binh_luan_cap_2')

@@ -10,6 +10,7 @@ return view("includes.navtop");
 });
 Route::get("gr/{id}","NhomController\Nhom@loadnhom")->name('nhom.index');
 Route::get("gr/{id}/baiviet/{idbv}","NhomController\Nhom@loadnhomvoimotbaiviettheoma")->name('nhomhienthibaiviet.index');
+Route::get("bl/{id}","NhomController\Nhom@loadnhomvoimotbaiviettheomabinhluan")->name('loadnhomvoimotbaiviettheomabinhluan.index');
 Route::get("baiviet", function(){
 	return view("baiviet.hienthibaiviet");
 });
@@ -44,6 +45,8 @@ Route::get("/ajax/getbinhluanmoine","BinhLuanController\BinhLuan@GetBinhLuanMoi"
 ->name('getbinhluanmoi');
 Route::get("/ajax/getbinhluanne","BinhLuanController\BinhLuan@GetBinhLuan")
 ->name('getbinhluan');
+Route::get("/ajax/getbinhluantheomabinhluanne","BinhLuanController\BinhLuan@getbinhluantheomabinhluan")
+->name('getbinhluantheomabinhluan');
 
 Route::get("/ajax/getmabaivietne","BaiVietController\BaiViet@GetMaBaiViet")
 ->name('getmabaiviet');

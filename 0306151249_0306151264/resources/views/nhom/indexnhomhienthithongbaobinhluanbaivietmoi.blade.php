@@ -92,7 +92,7 @@
                    @include('baiviet.dangbaiviet')
              </div> --}}
              <div id="divnoidungcon">
-                   @include('baiviet.hienthibaivietthongbaobaivietmoi')
+                   @include('baiviet.hienthibaivietthongbaobinhluanmoi')
              </div>
 {{--              <div class="xemthembaiviet">
                     <span>Chưa hiện tại chưa có bài viết để hiển thị thêm</span>
