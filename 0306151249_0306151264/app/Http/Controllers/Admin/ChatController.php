@@ -9,14 +9,14 @@ use Illuminate\Support\Facades\Auth;
 class ChatController extends Controller
 {
   public function luuChatVaoSession(Request $req)
-  {	
-  	
+  {
+  	$msg = $req->message;
   	if (!$req->session()->has('admin-chat')) {
 	    session(['admin-chat'=> [
 
 	    	[
 					'name'    => $req->sender_name,
-					'message' => $req->message,
+					'message' => $msg,
 					'time'    => $req->time
 	    	]
 
@@ -26,7 +26,7 @@ class ChatController extends Controller
 		} else {
 			// session(['admin-chatt'=> [$data]]);
 			$req->session()->push('admin-chat', ['name' => $req->sender_name,
-	    		'message' => $req->message, 'time' => $req->time]);
+	    		'message' => $msg, 'time' => $req->time]);
 		}
   
   	$list_chat = $req->session()->get('admin-chat');

@@ -8,6 +8,7 @@ class bai_viet extends Model
 {
     //
     protected $table = "bai_viet";
+    protected $primaryKey = "ma_bai_viet";
     //public $timestamps = false;
 
     const CREATED_AT = 'thoi_gian_dang';

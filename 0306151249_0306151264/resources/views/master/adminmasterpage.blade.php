@@ -46,6 +46,7 @@
             <p>Tin nhắn mẫu 2.</p>
           </div>
         </div> --}}
+        
         @if (session('admin-chat'))
           @php
             $list_chat = session('admin-chat');
@@ -55,7 +56,7 @@
               <div class="pull-right item own" title="">
                 <div class="pull-right item-right">
                   <label for="">{{$list_chat[$i]['name']}}</label>
-                  <p>{{$list_chat[$i]['message']}}</p>
+                  <p>{!!$list_chat[$i]['message']!!}</p>
                 </div>
               </div>
             @else
@@ -66,7 +67,6 @@
                 </div>
               </div>
             @endif
-            
           @endfor
         @endif
         

@@ -1,10 +1,7 @@
 $(document).ready(function() {
 	
-
 	// Reset
 	$('#chat-box').val('');
-
-
 
 	// Socket
 	var socket = io.connect( 'http://'+window.location.hostname+':3000' );
@@ -27,7 +24,7 @@ $(document).ready(function() {
  	// Lưu chat vào session  - Gửi lên nodejs server - Hiện chat của người gửi ra khung chat (pull-right)
  	// Có 1 nút -> Lưu tin nhắn vào database (nếu cần) -> Chưa có chức năng này :((
  	$('#send-chat-button').click(function() {
-		var message = $('#chat-box').val();
+		var message = $('#chat-box').val().replace(/\r?\n/g,'<br/>');
 		if(message == "") return;
 		var senderName = $('#admin-fullname').html();
 		var dataString = {

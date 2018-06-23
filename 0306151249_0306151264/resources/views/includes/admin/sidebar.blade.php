@@ -61,7 +61,7 @@
         </a>
       </li>
       <li class="list-group-item">
-        <a href="{{route('admin.cauhinh')}}">
+        <a href="{{route('admin.baiviet')}}">
           <i class="fa fa-book"></i> <span>Bài viết</span>
         </a>
       </li>

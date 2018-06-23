@@ -23,8 +23,6 @@
 			@include('includes.trangcanhan.post')
 
 
-
-
 			
 			@php
 				// sleep(1);LBV002

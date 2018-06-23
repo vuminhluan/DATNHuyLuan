@@ -226,8 +226,8 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 		Route::post('/xemchitiet', 'Admin\PhanHoiController@postXemPhanHoi')->name('admin.phanhoi.xem');
 		Route::post('/capnhat', 'Admin\PhanHoiController@postCapNhat')->name('admin.phanhoi.capnhat');
 		Route::get('/timkiem/{tukhoa}', 'Admin\PhanHoiController@getTimKiemTheoTenNguoiGui')->name('admin.phanhoi.timkiem');
-
 	});
+
 
 
 
@@ -235,8 +235,24 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 	Route::prefix('chat')->group(function() {
 		Route::post('/luuchat', 'Admin\ChatController@luuChatVaoSession')->name('admin.chat.luu');
 		Route::get('/xoa_khung_chat', 'Admin\ChatController@xoaKhungChat')->name('admin.chat.xoa_tatca');
-
 	});
+
+
+	// Bài viết
+
+
+
+	// End bài viết
+
+	Route::prefix('baiviet')->group(function() {
+		Route::get('/', 'Admin\BaiVietController@getTrangBaiViet')->name('admin.baiviet');
+		// Route::post('/xemchitiet', 'Admin\PhanHoiController@postXemPhanHoi')->name('admin.phanhoi.xem');
+		// Route::post('/capnhat', 'Admin\PhanHoiController@postCapNhat')->name('admin.phanhoi.capnhat');
+		// Route::get('/timkiem/{tukhoa}', 'Admin\PhanHoiController@getTimKiemTheoTenNguoiGui')->name('admin.phanhoi.timkiem');
+	});
+
+
+
 
 
 
