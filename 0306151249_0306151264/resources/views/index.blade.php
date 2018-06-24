@@ -15,13 +15,16 @@
 	{{-- End alert notification  --}}
 
 	<div class="container">
-
+		<header class="index-header">
+			<p>Đồ Án Tốt Nghiệp</p>
+		</header>
 		<div class="main">
+			
 			<div class="sign-up">
 				<div class="section">
 					<form action="{{route('post_dangki')}}" id="sign-up-form" method="POST">
 						@csrf
-						<div>
+						<div class="section-title">
 							<h1 style="text-align: center;">Đăng ký</h1>
 						</div>
 
@@ -119,9 +122,9 @@
 					<form action="#/" id="sign-in-form" method="POST">
 						{{-- {{route('post_dangnhap')}} --}}
 						{{ csrf_field() }}
-						<div>
+						<div class="section-title">
 							<h1 style="text-align: center;">
-								DATN
+								Đăng nhập
 							</h1>
 						</div>
 						<div>
@@ -179,14 +182,15 @@
 
 
 	<div style="clear: both;"></div>
-	<footer class="login-footer">
+	<footer class="index-footer">
 		<ul>
-			<li><h2><a href="{{ route('huongdan') }}">Hướng dẫn</a></h2></li>
+			{{-- <li><h2><a href="{{ route('huongdan') }}">Hướng dẫn</a></h2></li>
 			
 			<li>lorem</li>
 			<li>lorem</li>
-			<li>lorem</li>
+			<li>lorem</li> --}}
 			<li>&copy; 2018 ĐATN Lu - Luân</li>
+			<li style="margin: 0 0 0 50px"><a href="{{ route('lienhe') }}">Liên hệ</a></li>
 		</ul>
 	</footer>
 

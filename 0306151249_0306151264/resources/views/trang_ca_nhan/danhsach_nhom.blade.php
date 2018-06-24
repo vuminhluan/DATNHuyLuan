@@ -24,11 +24,11 @@
 			@foreach ($tatca_nhom as $nhom_theo_chucvu)
 				@if (count($nhom_theo_chucvu) > 0)
 
-					<div>
-						<div>
-							<h3>Nhóm bạn làm {{$nhom_theo_chucvu[0]->ten_chuc_vu}}</h3>
+					<div class="groups-by-member-role">
+						<div class="role-title">
+							<h3>Nhóm bạn làm {{$nhom_theo_chucvu[0]->ten_chuc_vu}} <span class="collapse-groups-box-button"><i class="fa fa-bars"></i></span></h3>
 						</div>
-						<div>
+						<div class="groups-box">
 							<ul class="group-list">
 								@for ($i = 0; $i < count($nhom_theo_chucvu); $i++)
 									<li>
@@ -214,4 +214,15 @@
 
 	@endsection
 
+@endsection
+
+@section('trang_canhan_javascript')
+	<script>
+		$(document).ready(function() {
+			$('.role-title').click(function() {
+				var collapsedDiv = $(this).parents('.groups-by-member-role').find('.groups-box');
+				$(collapsedDiv).slideToggle('fast');
+			});
+		});
+	</script>
 @endsection

@@ -2,7 +2,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/lu/binhluan/binhluanbv.css') }}">
 <script src="{{ asset('js/jslu/binhluan/docbinhluan.js') }}" type="text/javascript" charset="utf-8"></script>
 <script src="{{ asset('js/jslu/binhluan/postbinhluan.js') }}" type="text/javascript" charset="utf-8"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
 
 </head>
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

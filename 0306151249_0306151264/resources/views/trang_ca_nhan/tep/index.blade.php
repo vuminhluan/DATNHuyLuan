@@ -37,6 +37,33 @@
 		</div>
 	</li>
 
+	<li>
+		@if ($tatca_tep->currentPage() != 1)
+      <a href="{{$tatca_tep->previousPageUrl()}}" class="page-link"><i class="fa fa-caret-left"></i></a>
+    @endif
+
+    {{-- <span class="page-number"> <input id="current-page" type="text" value="{{$tatca_tep->currentPage()}}"> / <span id="total-page">{{$tatca_tep->total()}}</span></span> --}}
+
+    <span class="page-number">
+      <select name="page_list" id="page-list" style="" >
+        @for ($i = 1; $i <= ceil($tatca_tep->total()/$tatca_tep->perPage()); $i++)
+          <option {{$tatca_tep->currentPage() == $i ? "selected" : ""}} value="{{$tatca_tep->url($i)}}">{{$i}}</option>
+        @endfor
+      </select>
+      
+      @if ($tatca_tep->total() > 0)
+        / <span id="total-page">{{$tatca_tep->lastPage()}}</span>
+      @else
+        <small><i>Không có kết quả</i></small>
+      @endif
+
+    </span>
+
+    @if ($tatca_tep->currentPage() != $tatca_tep->lastPage())
+      <a href="{{$tatca_tep->nextPageUrl()}}"><i class="fa fa-caret-right"></i></a>
+    @endif
+	</li>
+
 	@foreach ($tatca_tep as $tep)
 	{{-- expr --}}
 

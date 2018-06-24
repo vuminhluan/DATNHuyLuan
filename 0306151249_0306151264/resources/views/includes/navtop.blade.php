@@ -21,7 +21,7 @@
       <ul class="navtop-left">
         <li class="itemnavtopleft" style="margin-right: 20px;">
           {{-- <a class="{{Request::is('taikhoan/'.Auth::user()->ten_tai_khoan) ? 'homepage-active' : ''}}" href="{{ route('trangchu') }}"><ion-icon style="float: left;margin-top: 3px;color: #9695d8;" name="home" size="large"></ion-icon>&nbsp;</a> --}}
-          <a class="{{Request::is('taikhoan/'.Auth::user()->ten_tai_khoan) ? 'homepage-active' : ''}}" href="{{ route('trangchu') }}"><i class="fa fa-home fa-2x" style="vertical-align: middle;color: #9695d8;"></i></a>
+          <a class="navtop-home-button {{Request::is('taikhoan/'.Auth::user()->ten_tai_khoan) ? 'homepage-active' : ''}}" href="{{ route('trangchu') }}"><i class="fa fa-home fa-2x"></i></a>
         </li>
         <li  class="itemnavtopleft" id="li-nav-nhom">
           <span> 
@@ -54,7 +54,7 @@
 
         @if (Auth::check())
         <li class="taikhoan-dropdown-content">
-          <a  href="#about"  title="{{Auth::user()->ho_ten_lot." ".Auth::user()->ten}}">
+          <a  href="javascript:void(0)"  title="{{Auth::user()->ho_ten_lot." ".Auth::user()->ten}}">
             <img src="{{asset('pictures/anh_dai_dien/'.Auth::user()->anh_dai_dien)}}" alt="">
           </a>
           <ul class="taikhoan-dropdown-menu">
