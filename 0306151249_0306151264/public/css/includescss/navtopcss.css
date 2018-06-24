@@ -351,7 +351,7 @@ ul.navtop-right {float: right;display: inline-block;}
  border-width: 0px;
  /*border-bottom-width: 1px;*/
  z-index: 10;
- /*box-shadow: 1px 1px 1px #eadcf2;*/
+ box-shadow: 1px 1px 1px #a78ca836;
 
 
 }
@@ -573,4 +573,36 @@ overflow: auto;
 
 .homepage-active::before {
   left: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*thong bao*/
+
+
+
+
+
+
+
+
+.thongbaodiv{
+  height: 77px; border:solid 1px #e4e6e8;margin-right: 7px;padding: 3px;margin-bottom: 1px;cursor: pointer;background-color: #dbdff285;
+
+}
+.thongbaodadocdiv{
+   height: 77px; border:solid 1px #e4e6e8;margin-right: 7px;padding: 3px;margin-bottom: 1px;cursor: pointer;background-color: white;
 }

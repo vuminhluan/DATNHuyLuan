@@ -412,11 +412,12 @@ function pheduyetthanhvienvaonhomcreateelement(pr){
         divkq.style.borderBottom ="solid 1px #e4e6e8";
         // divkq.innerHTML =
         var divomanhdaidienvacautraloigianhapnhom = document.createElement("DIV");
+            divomanhdaidienvacautraloigianhapnhom.style.height= "77px";
 
 
               var divomanhdaidienvaten = document.createElement("DIV");
                   divomanhdaidienvaten.style.width="77px";
-                  divomanhdaidienvaten.style.height="100%";
+                  divomanhdaidienvaten.style.height="77px";
                   divomanhdaidienvaten.style.float="left";
 
               var divanhdiendien = document.createElement("DIV");

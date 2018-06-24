@@ -70,20 +70,25 @@ Route::post('/ajax/updatebinhluancap2n2',"BinhLuanController\BinhLuan@updatebinh
 Route::post('/ajax/postbaocaoviphamne',"BaoCaoController\BaoCao@postbaocaovipham")
 ->name("postbaocaovipham");
 
-Route::post("/ajax/postthongbaonhomne","ThongBaoController\ThongBaoNhom@postthongbaonhom")
-->name("postthongbaonhom");
-Route::get("/ajax/getthongbaonhomne","ThongBaoController\ThongBaoNhom@getthongbaonhom")
-->name("getthongbaonhom");
-Route::post("/ajax/updatethongbaonhomne","ThongBaoController\ThongBaoNhom@updatethongbaonhom")
-->name("updatethongbaonhom");
-
+// Route::post("/ajax/postthongbaonhomne","ThongBaoController\ThongBaoNhom@postthongbaonhom")
+// ->name("postthongbaonhom");
+// Route::get("/ajax/getthongbaonhomne","ThongBaoController\ThongBaoNhom@getthongbaonhom")
+// ->name("getthongbaonhom");
+// Route::post("/ajax/updatethongbaonhomne","ThongBaoController\ThongBaoNhom@updatethongbaonhom")
+// ->name("updatethongbaonhom");
+//soluonggetthongbao
 Route::post("/ajax/postthongbaone","ThongBaoController\ThongBao@postthongbao")
 ->name("postthongbao");
 Route::get("/ajax/getthongbaone","ThongBaoController\ThongBao@getthongbao")
 ->name("getthongbao");
+Route::get("/ajax/soluonggetthongbaone","ThongBaoController\ThongBao@soluonggetthongbao")
+->name("soluonggetthongbao");
 Route::post("/ajax/updatethongbaone","ThongBaoController\ThongBao@updatethongbao")
 ->name("updatethongbao");
-
+Route::get("/ajax/getnguoidocthongbaone","ThongBaoController\ThongBao@getnguoidocthongbao")
+->name("getnguoidocthongbao");
+Route::post("/ajax/postnguoidocthongbaone","ThongBaoController\ThongBao@postnguoidocthongbao")
+->name("postnguoidocthongbao");
 
 
 

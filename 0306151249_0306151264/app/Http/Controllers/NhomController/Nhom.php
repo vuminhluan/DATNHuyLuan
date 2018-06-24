@@ -248,7 +248,7 @@ class Nhom extends Controller
                            ->where("nhom.ten_nhom","LIKE","%$rql->ten_nhom%")
                            ->orWhere("nhom.ma_nhom",$rql->ten_nhom)
                            ->groupBy('nhom.ma_nhom')
-                           ->take(5)->get();
+                           ->take(3)->get();
         }
         else{
          $lstnhomtimkiem = DB::table('nhom')

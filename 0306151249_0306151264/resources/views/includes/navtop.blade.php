@@ -33,6 +33,8 @@
           <span>
             Thông báo&nbsp;<i class="fa fa-bell-o " style="color: #9695d8;" aria-hidden="true"></i>
           </span>
+          <div id="divnotisoluongthongbao" style="width: 17px;display: none;height: 17px;background-color: red;color: white;border-radius: 50%;position: absolute; bottom: 50%;    margin-left: 90px;font-size: 11px;text-align: inline-block"><span id="soluongthongbao" style="position: relative;float: left; height: 21px;width: 16px;text-align: center;bottom: 87%;"></span>
+          </div>
         </li>
       </ul>
               {{-- <li><a id="li-nav-taonhom">Thông báo</a></li> --}}

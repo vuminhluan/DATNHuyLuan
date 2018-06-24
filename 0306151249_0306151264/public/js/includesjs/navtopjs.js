@@ -328,20 +328,85 @@ $(document).ready(function() {
 });
 // ------------------
 
+// 
 
-function openbaivietduocthongbao(prl_manhom,prl_mabaiviet){
+
+//    /ajax/postnguoidocthongbaone   /ajax/getnguoidocthongbaone
+
+$(document).ready(function() {
+    ///ajax/soluonggetthongbaone
+         $.ajax({
+        url: link_host+'/ajax/soluonggetthongbaone', 
+        type: 'GET',
+        data:{ 
+            ma_tai_khoan:$("#session-ma-tk").val(),
+        }
+    }).done(function(soluongthongbao){
+      // alert(soluongthongbao.length);
+         $.ajax({
+            url: link_host+'/ajax/getnguoidocthongbaone', 
+            type: 'GET',
+            data:{ 
+                ma_nguoi_doc:$("#session-ma-tk").val(),
+            }
+        }).done(function(soluongthongbaodadoc){
+            // alert()
+            if ((soluongthongbao.length-soluongthongbaodadoc.length)!=0) {
+                $("#divnotisoluongthongbao").css("display","block");
+                if (soluongthongbao.length-soluongthongbaodadoc.length>19) {
+                    $("#soluongthongbao").text("19+");
+                }else{
+                 $("#soluongthongbao").text((soluongthongbao.length-soluongthongbaodadoc.length));
+                }
+            }
+            
+            // alert(soluongthongbao.length+'-'+soluongthongbaodadoc.length);
+        })
+    })
+
+
+});
+
+
+function openbaivietduocthongbao(prl_manhom,prl_mabaiviet,ma_thong_bao){
     //alert(prl_manhom+prl_mabaiviet);
-     window.location.href = "http://localhost/DATNHuyLuan/0306151249_0306151264/public/gr/"+prl_manhom+"/baiviet/"+prl_mabaiviet;
+   $.when(postnguoidocthongbao(ma_thong_bao))
+   .then(gotobvmoi(prl_manhom,prl_mabaiviet)); 
+    
 }
-function openbinhluanbaivietduocthongbao(prl_mabinhluanrepbaiviet) {
-     window.location.href = "http://localhost/DATNHuyLuan/0306151249_0306151264/public/bl/"+prl_mabinhluanrepbaiviet;
+function openbinhluanbaivietduocthongbao(prl_mabinhluanrepbaiviet,ma_thong_bao) {
+    $.when(postnguoidocthongbao(ma_thong_bao))
+    .then(gotobl(prl_mabinhluanrepbaiviet));
 }
-function openrepbinhluanbaivietduocthongbao(prl_mabinhluanrepbaiviet) {
+function openrepbinhluanbaivietduocthongbao(prl_mabinhluanrepbaiviet,ma_thong_bao) {
+     $.when(postnguoidocthongbao(ma_thong_bao))
+     .then(gotorepbl(prl_mabinhluanrepbaiviet));
+}
+
+function postnguoidocthongbao(prl) {
+     $.ajax({
+        url: link_host+'/ajax/postnguoidocthongbaone', 
+        type: 'POST',
+        data:{
+            _token: $('input[name=_token]').val(),
+            ma_thong_bao:prl,   
+            ma_nguoi_doc:$("#session-ma-tk").val(),
+            trang_thai:'1',
+        }
+    }).done(function(data){
+         // alert(data);
+    })
+}
+
+function gotobvmoi(prl_manhom,prl_mabaiviet) {
+    window.location.href = "http://localhost/DATNHuyLuan/0306151249_0306151264/public/gr/"+prl_manhom+"/baiviet/"+prl_mabaiviet;
+}
+function gotobl(prl_mabinhluanrepbaiviet) {
+    window.location.href = "http://localhost/DATNHuyLuan/0306151249_0306151264/public/bl/"+prl_mabinhluanrepbaiviet;
+}
+function gotorepbl(prl_mabinhluanrepbaiviet) {
     window.location.href = "http://localhost/DATNHuyLuan/0306151249_0306151264/public/blr/"+prl_mabinhluanrepbaiviet;
 }
-
-
-
 function openpopupthongbao(prl_mataikhoan){
         var divtobig = document.createElement("div");
             divtobig.className="modal";
@@ -379,10 +444,10 @@ function openpopupthongbao(prl_mataikhoan){
                                 divbodybody.id="divbodybodythongbaonhom";
                                 divbodybody.addEventListener("scroll",function(){
                                      // console.log($(this).scrollTop());
-                                     console.log($(this).height());
-                                      console.log(this.scrollHeight-parseFloat($(this).scrollTop()));
-                                     // console.log(this.scrollHeight);
-                                    console.log(parseFloat($(this).height())/(parseFloat($(this).scrollTop())-this.scrollHeight));
+                                    //  console.log($(this).height());
+                                    //   console.log(this.scrollHeight-parseFloat($(this).scrollTop()));
+                                    //  // console.log(this.scrollHeight);
+                                    // console.log(parseFloat($(this).height())/(parseFloat($(this).scrollTop())-this.scrollHeight));
                                     if(parseFloat($(this).height())/(parseFloat($(this).scrollTop())-this.scrollHeight)==-1){
                                      //   alert("hhihi");
 
@@ -422,9 +487,41 @@ function loadtinthongbao(){
          soluongthongbaodalay+=7;
       var divpost = document.createElement("div");
              divpost.innerHTML=data;
-        document.getElementById('divbodybodythongbaonhom').appendChild(divpost);
-         // $('#divbodybodythongbaonhom').appendChild(divpost);
-        // console.log(data);
+
+
+
+    ///////////////////////////////////////////////////////////////
+         $.ajax({
+        url: link_host+'/ajax/soluonggetthongbaone', 
+        type: 'GET',
+        data:{ 
+            ma_tai_khoan:$("#session-ma-tk").val(),
+        }
+    }).done(function(soluongthongbao){
+      // alert(soluongthongbao.length);
+         $.ajax({
+            url: link_host+'/ajax/getnguoidocthongbaone', 
+            type: 'GET',
+            data:{ 
+                ma_nguoi_doc:$("#session-ma-tk").val(),
+            }
+        }).done(function(soluongthongbaodadoc){
+            // alert()
+
+
+            for (var i = 0; i < soluongthongbao.length; i++) {
+                for (var j = 0; j < soluongthongbaodadoc.length; j++) {
+                    if(soluongthongbao[i].ma_thong_bao==soluongthongbaodadoc[j].ma_thong_bao&&soluongthongbaodadoc[j].ma_nguoi_doc==$("#session-ma-tk").val()){
+                            $("#divtb-"+soluongthongbao[i].ma_thong_bao).attr('class', 'thongbaodadocdiv');
+                    }
+                }
+            }            
+            // alert(soluongthongbao.length+'-'+soluongthongbaodadoc.length);
+        })
+    })
+
+    ///////////////////////////////////////////////////////////////
+            document.getElementById('divbodybodythongbaonhom').appendChild(divpost);
     })
     }
 }
