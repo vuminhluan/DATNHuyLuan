@@ -557,3 +557,20 @@ overflow: auto;
   background-color: #18222c47;
 /*  border: 1px solid #18222c47;*/
 }
+
+
+.homepage-active {position: relative;}
+.homepage-active::after, .homepage-active::before {
+  width: 50% !important; height: 3px !important;
+  content: ""; height: 0px; background-color: #666;
+  position: absolute; bottom: 0; width: 0%; transition: all 0.3s;
+}
+
+
+.homepage-active::after {
+  right: 50%;
+}
+
+.homepage-active::before {
+  left: 50%;
+}

@@ -56,7 +56,8 @@
 	<div class="profile-navbar">
 		<div class="main">
 			<ul class="">
-				<li>
+				{{-- profile-link-active --}}
+				<li class="{{Request::is('taikhoan/'.$taikhoan->ten_tai_khoan) ? 'profile-link-active' : ''}}">
 					<a class="luan_link" href="{{ route('trangcanhan.index', [$taikhoan->ten_tai_khoan]) }}">
 						<span>Bài viết</span><span></span>
 					</a>
@@ -69,7 +70,7 @@
 					</li>
 				@endif --}}
 				
-				<li>
+				<li class="{{Request::is('taikhoan/'.$taikhoan->ten_tai_khoan.'/nhom*') ? 'profile-link-active' : ''}}">
 					<a class="luan_link" href="{{route('trangcanhan.nhom', ['username'=>$taikhoan->ten_tai_khoan])}}">
 						<span>Nhóm</span><span></span>
 					</a>

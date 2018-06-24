@@ -7,10 +7,10 @@
   <div id="main">
     <ol class="breadcrumb">
       <li><a href="index.html"><i class="fa fa-home"></i> Trang quản trị</a></li>
-      <li class="active"><a href="user.html">Bài viết</a> <span class="badge">100</span>  </li>
+      <li class="active"><a href="user.html">Tài khoản</a> <span class="badge">{{$tatca_baiviet->total()}}</span>  </li>
     </ol>
     <div class="col-xs-12">
-      <form id="post_form" method="post" action="{{ route('admin.taikhoan.capnhat') }}">
+      <form id="post_form" method="post" action="{{ route('admin.baiviet.capnhat.post') }}" role="form">
         @csrf
         <div class="col-xs-12">
           <div class="form-group">
@@ -18,26 +18,20 @@
             <div class="btn-group">
               <select id="task" name="task" class="form-control">
                 <option>Tác vụ</option>
-                {{-- <option value="delete">Xóa tài khoản</option> --}}
-                <option value="account-inactivate">Chưa kích hoạt</option>
-                <option value="account-live">Đang hoạt động</option>
-                <option value="account-ban">Đánh dấu vi phạm</option>
-                <option value="account-lock">Khóa</option>
-                @if (Auth::user()->quyen == "Q0001")
-                  <option value="account-deactivate">Hủy kích hoạt</option>
-                @endif
+                <option value="post-live">Đánh dấu đang hiển thị</option>
+                <option value="post-delete">Xóa</option>
+                <option value="post-ban">Đánh dấu vi phạm</option>
               </select>
             </div>
-            @if (Auth::user()->quyen == "Q0001")
+            {{-- @if (Auth::user()->quyen == "Q0001")
               <div class="btn-group">
                 <select id="filter" name="filter_role" class="form-control">
                   <option value="{{false}}">Lọc</option>
-                  {{-- <option value="delete">Xóa tài khoản</option> --}}
                   <option value="Q0002">Người dùng</option>
                   <option value="Q0003">Mod</option>
                 </select>
               </div>
-            @endif
+            @endif --}}
             <div class="btn-group pull-right hidden-xs" id="div-search">
               <input id="search" name="search" type="text" value="" class="form-control" placeholder="Tên tài khoản">
               <span class="fa fa-search"></span>
@@ -48,76 +42,80 @@
               <tr>
                 <th><input id="check_all" type="checkbox"></th>
                 {{-- <th class="hidden-xs">ID</th> --}}
-                <th>Bài viết</th>
-                <th class="hidden-xs">Người đăng</th>
-                <th class="hidden-sm hidden-xs">Ngày tạo</th>
+                <th style="text-align: left;">Bài viết</th>
+                <th class="hidden-xs">Người viết</th>
+                <th class="hidden-xs">Nội dung</th>
+                <th class="hidden-sm hidden-xs">Ngày đăng</th>
                 {{-- <th>Sửa</th> --}}
                 <th>Tình trạng</th>
               </tr>
             </thead>
             <tbody>
-              {{-- @foreach ($tatca_taikhoan as $taikhoan) --}}
+              @foreach ($tatca_baiviet as $baiviet)
               <tr>
                 <td>
-                  <input name="id[]" type="checkbox" value="idbaiviet">
+                  <input name="id[]" type="checkbox" value="{{$baiviet->ma_bai_viet}}">
                 </td>
                 <td style="text-align: left;">
-                  <a href="javascript:void(0)" class="detail-account" id="mabaiviet" data-toggle="modal" data-target=".show-detail-account-modal">
-                    
+                  <a href="javascript:void(0)" class="show-post-detail-button" id="{{$baiviet->ma_bai_viet}}">
+                    #{{$baiviet->ma_bai_viet}}
                   </a>
                 </td>
-                <td class="hidden-xs">abc</td>
-                {{-- {{date_format($taikhoan->thoi_gian_tao, 'd/m/Y H:i:s')}} --}}
-                <td class="hidden-sm hidden-xs">asd</td>
+                <td class="hidden-xs"><a href="javascript:void(0)" data-account-id="{{$baiviet->belongsToTaiKhoan->ma_tai_khoan}}">{{$baiviet->belongsToTaiKhoan->hasNguoiDung->ho_ten_lot." ".$baiviet->belongsToTaiKhoan->hasNguoiDung->ten}}</a></td>
+                <td class="hidden-xs">{!!str_limit($baiviet->noi_dung_bai_viet, 22)!!}</td>
+                <td class="hidden-sm hidden-xs">{{date_format($baiviet->thoi_gian_dang, 'd/m/Y H:i:s')}}</td>
+               
                 <td>
-                  asd
+                  @if ($baiviet->trang_thai == 1)
+                    <i class="fa fa-check text-success"></i>
+                  @elseif($baiviet->trang_thai == 2)
+                    <i class="fa fa-ban text-danger"></i>
+                  @else
+                    <i class="fa fa-times text-danger"></i>
+                  @endif
                 </td>
               </tr>
-              {{-- @endforeach --}}
+              @endforeach
             </tbody>
           </table>
-
           {{-- paginate --}}
+          {{-- <span>( {{$tatca_baiviet->total()}} )</span> --}}
           <div>
 
             <div class="pagination" style="font-size: 17px;">
-              {{-- @if ($tatca_taikhoan->currentPage() != 1)
-                <a href="{{$tatca_taikhoan->previousPageUrl()}}" class="page-link"><i class="fa fa-caret-left"></i></a>
-              @endif --}}
-              pagination
+              @if ($tatca_baiviet->currentPage() != 1)
+                <a href="{{$tatca_baiviet->previousPageUrl()}}" class="page-link"><i class="fa fa-caret-left"></i></a>
+              @endif
 
-              {{-- <span class="page-number"> <input id="current-page" type="text" value="{{$tatca_taikhoan->currentPage()}}"> / <span id="total-page">{{$tatca_taikhoan->total()}}</span></span> --}}
+              {{-- <span class="page-number"> <input id="current-page" type="text" value="{{$tatca_baiviet->currentPage()}}"> / <span id="total-page">{{$tatca_baiviet->total()}}</span></span> --}}
 
-              {{-- <span class="page-number">
+              <span class="page-number">
                 <select name="page_list" id="page-list" style="" >
-                  @for ($i = 1; $i <= ceil($tatca_taikhoan->total()/$tatca_taikhoan->perPage()); $i++)
-                    <option {{$tatca_taikhoan->currentPage() == $i ? "selected" : ""}} value="{{$tatca_taikhoan->url($i)}}">{{$i}}</option>
+                  @for ($i = 1; $i <= ceil($tatca_baiviet->total()/$tatca_baiviet->perPage()); $i++)
+                    <option {{$tatca_baiviet->currentPage() == $i ? "selected" : ""}} value="{{$tatca_baiviet->url($i)}}">{{$i}}</option>
                   @endfor
                 </select>
                 
-                @if ($tatca_taikhoan->total() > 0)
-                  / <span id="total-page">{{$tatca_taikhoan->lastPage()}}</span>
+                @if ($tatca_baiviet->total() > 0)
+                  / <span id="total-page">{{$tatca_baiviet->lastPage()}}</span>
                 @else
                   <small><i>Không có kết quả</i></small>
                 @endif
 
               </span>
 
-              @if ($tatca_taikhoan->currentPage() != $tatca_taikhoan->lastPage())
-                <a href="{{$tatca_taikhoan->nextPageUrl()}}"><i class="fa fa-caret-right"></i></a>
-              @endif --}}
+              @if ($tatca_baiviet->currentPage() != $tatca_baiviet->lastPage())
+                <a href="{{$tatca_baiviet->nextPageUrl()}}"><i class="fa fa-caret-right"></i></a>
+              @endif
 
 
             </div>
           </div>
           {{-- paginate --}}
           <p><strong><i class="fa fa-bookmark"></i>Ghi chú: </strong></p>
-
-          <p class="note-items"><i class="fa fa-bolt text" style="color: #d0d32c"></i> Tài khoản chưa kích hoạt.</p>
-          <p class="note-items"><i class="fa fa-check text-success"></i> Tài khoản đang hoạt động.</p>
-          <p class="note-items"><i class="fa fa-lock text-danger"></i> Tài khoản bị khóa.</p>
-          <p class="note-items"><i class="fa fa-ban text-danger"></i> Tài khoản bị khóa do vi phạm.</p>
-          <p class="note-items"><i class="fa fa-times text-danger"></i> Tài khoản đã vô hiệu hóa (xóa).</p>
+          <p class="note-items"><i class="fa fa-check text-success"></i> Bài viết đang hiển thị.</p>
+          <p class="note-items"><i class="fa fa-times text-danger"></i> Bài viết đã xóa.</p>
+          <p class="note-items"><i class="fa fa-ban text-danger"></i> Bài viết bị khóa do vi phạm.</p>
         </div>
       </form>
     </div>
@@ -126,58 +124,19 @@
   <!--END #main-->
 @endsection
 
-<!-- Modal -->
-<div class="modal fade show-detail-account-modal" id="show-detail-account-modal" role="dialog">
-  <div class="modal-dialog">
-  
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">TÀI KHOẢN @<span id="username">taikhoan</span></h4>
-      </div>
-      <div class="modal-body">
-        <div>
-          <label for="">Ngày tham gia: </label>
-          <span id="created_at">Ngày tham gia</span>
-        </div>
-        <div>
-          <label for="">Họ và tên: </label>
-          <span id="fullname">Họ và tên</span> <i id="nickname"></i>
-        </div>
-        <div>
-          <label for="">Email: </label>
-          <span id="email">Email</span>
-        </div>
-        <div>
-          <label for="">Số điện thoại: </label>
-          <span id="phone">Số điện thoại</span>
-        </div>
-        <div>
-          <label for="">Giới tính: </label>
-          <span id="gender">Ngày tham gia</span>
-        </div>
-        <div>
-          <label for="">Ngày sinh: </label>
-          <span id="birthday"></span>
-        </div>
-        <div>
-          <label for="">Giới thiệu: </label>
-          <p id="about">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure deleniti laboriosam tempora aspernatur.</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <a type="button" href="https://facebook.com" class="btn btn-default">Xem bài viết</a>
-        <a href="#/" id="url-to-files" type="button" class="btn btn-default">Xem tệp</a>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-    
-  </div>
-</div>
-{{-- Modal --}}
-
 
 @section('javascript')
   {{-- <script src="{{ asset('js/admin/admin-account.js') }}"></script> --}}
+
+  <script>
+    $(document).ready(function() {
+      $('.show-post-detail-button').click(function(event) {
+        
+        var postId = $(this).attr('id');
+        window.location.href= link_host+"/admin/baiviet/xemchitiet/"+postId;
+
+
+      });
+    });
+  </script>
 @endsection

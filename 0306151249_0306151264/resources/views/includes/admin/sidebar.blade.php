@@ -65,16 +65,16 @@
           <i class="fa fa-book"></i> <span>Bài viết</span>
         </a>
       </li>
-      <li class="list-group-item">
+      {{-- <li class="list-group-item">
         <a href="{{route('admin.cauhinh')}}">
           <i class="fa fa-file"></i> <span>Tệp</span>
         </a>
-      </li>
-      <li class="list-group-item">
+      </li> --}}
+      {{-- <li class="list-group-item">
         <a href="{{route('admin.cauhinh')}}">
           <i class="fa fa-wrench"></i> <span>Cấu hình</span>
         </a>
-      </li>
+      </li> --}}
       
     </ul>
   </div>

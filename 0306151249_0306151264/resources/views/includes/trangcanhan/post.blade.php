@@ -43,7 +43,7 @@
 			@if ($lstbaiviet[$i]->ma_loai_bai_viet=="LBV001" || $lstbaiviet[$i]->ma_loai_bai_viet=="LBV003")
 				<span> <h3 class="spantennguoidang">  {{ $lstbaiviet[$i]->ho_ten_lot }} {{ $lstbaiviet[$i]->ten }} <small class="group_name"> với nhóm <a href="{{ route('nhom.index', [$lstbaiviet[$i]->ma_nhom]) }}">{{$lstbaiviet[$i]->ten_nhom}}</a></small></h3> </span>
 			@else
-				<span> <h3 class="spantennguoidang">  {{ $lstbaiviet[$i]->ten_an_danh }} <small class="group_name"> với nhóm <a href="#/">{{$lstbaiviet[$i]->ten_nhom}}</a></small></h3> </span>
+				<span> <h3 class="spantennguoidang">  {{ $lstbaiviet[$i]->ten_an_danh }} <small class="group_name"> với nhóm <a href="{{ route('nhom.index', [$lstbaiviet[$i]->ma_nhom]) }}">{{$lstbaiviet[$i]->ten_nhom}}</a></small></h3> </span>
 			@endif
 			<br>
 			<span> <h5 class="spanthoigiandang"> {{ $lstbaiviet[$i]->thoi_gian_dang}} </h5> <span>
@@ -53,7 +53,7 @@
 	{{-- Body --}}
 	<div class="bodytus" >
 		<div class="texttus" >
-			<span>{{$lstbaiviet[$i]->noi_dung_bai_viet}}</span>
+			<span>{!!$lstbaiviet[$i]->noi_dung_bai_viet!!}</span>
 		</div>
 
 		@if ($lstbaiviet[$i]->ma_hinh_anh!="")

@@ -20,7 +20,8 @@
       {{-- Menu trái --}}
       <ul class="navtop-left">
         <li class="itemnavtopleft" style="margin-right: 20px;">
-          <a class="active" href="{{ route('trangchu') }}"><ion-icon style="float: left;margin-top: 3px;color: #9695d8;" name="home" size="large"></ion-icon>&nbsp;</a>
+          {{-- <a class="{{Request::is('taikhoan/'.Auth::user()->ten_tai_khoan) ? 'homepage-active' : ''}}" href="{{ route('trangchu') }}"><ion-icon style="float: left;margin-top: 3px;color: #9695d8;" name="home" size="large"></ion-icon>&nbsp;</a> --}}
+          <a class="{{Request::is('taikhoan/'.Auth::user()->ten_tai_khoan) ? 'homepage-active' : ''}}" href="{{ route('trangchu') }}"><i class="fa fa-home fa-2x" style="vertical-align: middle;color: #9695d8;"></i></a>
         </li>
         <li  class="itemnavtopleft" id="li-nav-nhom">
           <span> 

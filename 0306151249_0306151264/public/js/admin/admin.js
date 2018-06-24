@@ -52,13 +52,15 @@ $(document).ready(function() {
     } else if (kindOfUpdate=="account-deactivate") {
       check = confirm('Bạn muốn hủy kích hoạt - xóa - những tài khoản được chọn ?');
     } else if(kindOfUpdate=="server-files-change-name") {
-      
       $('#change-filename-box').show();
-      
       return;
+    } else if(kindOfUpdate=="post-live") {
+      check = confirm('Bạn muốn hiển thị những bài viết được chọn ?');
+    } else if(kindOfUpdate=="post-delete") {
+      check = confirm('Bạn muốn xóa những bài viết được chọn ?');
+    } else if(kindOfUpdate=="post-ban") {
+      check = confirm('Bạn muốn đánh dấu vi phạm những bài viết được chọn ?');
     }
-
-
 
     if (check) {
       $('.myloader').show();

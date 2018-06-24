@@ -246,8 +246,8 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 
 	Route::prefix('baiviet')->group(function() {
 		Route::get('/', 'Admin\BaiVietController@getTrangBaiViet')->name('admin.baiviet');
-		// Route::post('/xemchitiet', 'Admin\PhanHoiController@postXemPhanHoi')->name('admin.phanhoi.xem');
-		// Route::post('/capnhat', 'Admin\PhanHoiController@postCapNhat')->name('admin.phanhoi.capnhat');
+		Route::get('/xemchitiet/{post_id}', 'Admin\BaiVietController@getXemChiTietBaiViet')->name('admin.baiviet.xem');
+		Route::post('/capnhat', 'Admin\BaiVietController@postCapNhat')->name('admin.baiviet.capnhat.post');
 		// Route::get('/timkiem/{tukhoa}', 'Admin\PhanHoiController@getTimKiemTheoTenNguoiGui')->name('admin.phanhoi.timkiem');
 	});
 
