@@ -35,6 +35,25 @@ function onloadbinhluanmoicuabaiviet(mabaiviet,maloaibaiviet,mabinhluan)
  }
 }
 
+
+function onloadrepbinhluanmoicuabaiviet(mabaiviet,maloaibaiviet,mabinhluan)
+{
+
+ if($('#dv-div-big-'+mabaiviet).css("display")=="none"&& $('#div-content-all-cmt-'+mabaiviet).css("display")=="none"&& $('#div-input-binhluan-'+mabaiviet).css("display")=="none"){
+        $('#dv-div-big-'+mabaiviet).css("display","block");
+        $('#div-content-all-cmt-'+mabaiviet).css("display","block");
+        $('#div-input-binhluan-'+mabaiviet).css("display","block");
+         reloadbinhluancantimvarepbinhluan(mabaiviet,maloaibaiviet,mabinhluan);
+ }
+ else{
+        $('#dv-div-big-'+mabaiviet).css("display","none");
+        $('#div-content-all-cmt-'+mabaiviet).css("display","none");
+        $('#div-input-binhluan-'+mabaiviet).css("display","none");
+ }
+}
+
+
+
 function reloadbinhluancantim(mabaiviet,maloaibaiviet,mabinhluan){
               $.ajax(
             {
@@ -61,13 +80,46 @@ function reloadbinhluancantim(mabaiviet,maloaibaiviet,mabinhluan){
                               data[i].anh_dai_dien,
                               mabaiviet,
                               data[i].ma_tai_khoan,
-                              maloaibaiviet
+                              maloaibaiviet,"0"
                               );
               }
 
             })
 }
 
+
+function reloadbinhluancantimvarepbinhluan(mabaiviet,maloaibaiviet,mabinhluan){
+              $.ajax(
+            {
+              url: link_host+'/ajax/getbinhluantheomabinhluanne',
+              type:'GET',
+              data:{
+                // ma_bai_viet:mabaivietxx
+                ma_binh_luan:mabinhluan
+              }
+
+            }).done(function(data){
+          // $('#div-content-all-cmt-'+mabaiviet).html(data);
+            $("#div-content-all-cmt-"+mabaiviet).empty();
+              for (var i = 0; i < data.length; i++) {
+                var noidungbinhluan = data[i].ho_ten_lot+' '+data[i].ten+': '+data[i].noi_dung_binh_luan;
+                if (maloaibaiviet=="LBV004"||maloaibaiviet=="LBV003") {
+                  if(data[i].ten_an_danh!=null){
+                    noidungbinhluan = data[i].ten_an_danh+': '+data[i].noi_dung_binh_luan;}
+                  else{
+                    noidungbinhluan = 'Người nào đó'+': '+data[i].noi_dung_binh_luan;}
+                }
+                  taoramotcmt(noidungbinhluan,
+                              data[i].ma_binh_luan,
+                              data[i].anh_dai_dien,
+                              mabaiviet,
+                              data[i].ma_tai_khoan,
+                              maloaibaiviet,"1"
+                              );
+              }
+
+            })
+}
 
 function reloadbinhluan(mabaiviet,maloaibaiviet){
               $.ajax(
@@ -94,7 +146,7 @@ function reloadbinhluan(mabaiviet,maloaibaiviet){
                               data[i].anh_dai_dien,
                               mabaiviet,
                               data[i].ma_tai_khoan,
-                              maloaibaiviet
+                              maloaibaiviet,"0"
                               );
               }
 
@@ -132,7 +184,7 @@ function reloadlstcmtrep(prl,maloaibaiviet){
 }
 
 
-function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt,maloaibaiviet){
+function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt,maloaibaiviet,loadrepbinhluan){
 
     var divtonhat   = document.createElement("div");
         divtonhat.id="divtonhatbinhluancap1"+mabinhluancap1;
@@ -173,7 +225,8 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt,
                       divcon123.addEventListener("click",function(){repbinhluan(mabinhluancap1,maloaibaiviet);});
                       var i123  = document.createElement("i");
                          i123.className="fa fa-comments-o";
-////////
+                      //    repbinhluan(mabinhluancap1,maloaibaiviet);
+////////            
               var divcon13 = document.createElement("div");
                   divcon13.id="themluachonbinhluan"+mabinhluancap1;
                   divcon13.className="morethongtinbinhluancap1";
@@ -256,6 +309,7 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt,
               divcon2.className="cl-divrepcmt";
               divcon2.id="divrepcmt"+mabinhluancap1;
 
+ repbinhluan(mabinhluancap1,maloaibaiviet);
 
           var divcon3 = document.createElement("div");
               divcon3.className="iprepcmtcmt";
@@ -292,16 +346,21 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt,
               divcon3.appendChild(divcon31);
 // 
 
-
+ // repbinhluan(mabinhluancap1,maloaibaiviet);
 // 
         
         divtonhat.appendChild(divcon1);
         divtonhat.appendChild(divcon2);
         divtonhat.appendChild(divcon3);
         
-
-
+// if (loadrepbinhluan=="1") {
+//   repbinhluan(mabinhluancap1,maloaibaiviet);
+// }
+//   repbinhluan(mabinhluancap1,maloaibaiviet);
     document.getElementById("div-content-all-cmt-"+mabaiviet).appendChild(divtonhat);
+    if (loadrepbinhluan=="1") {
+      repbinhluan(mabinhluancap1,maloaibaiviet);
+    }
 }
 
 

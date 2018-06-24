@@ -42,7 +42,7 @@
 	</div>
 @endif
 @if ($listthongbao[$i]->ma_loai_thong_bao=="LTBN04")
-	<div style="height: 77px; border:solid 1px #e4e6e8;margin-right: 7px;padding: 3px;margin-bottom: 1px;cursor: pointer;" onclick="openrepbinhluanbaivietduocthongbao('{{$listthongbao[$i]->noi_nhan_tac_dong}}','{{$listthongbao[$i]->noi_dung_tac_dong}}')" >
+	<div style="height: 77px; border:solid 1px #e4e6e8;margin-right: 7px;padding: 3px;margin-bottom: 1px;cursor: pointer;" onclick="openrepbinhluanbaivietduocthongbao('{{$listthongbao[$i]->noi_nhan_tac_dong}}')" >
 		<div style="width: 20%;float: left;padding-left: 15px;">
 			<img style="width: 69px;height: 69px;border-radius: 50%;overflow: hidden;" 
 			src="{{ asset('pictures/anh_dai_dien/'.$listthongbao[$i]->anhdaidiennguoitaothongbao)}} " alt="AVT">

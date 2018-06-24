@@ -334,10 +334,10 @@ function openbaivietduocthongbao(prl_manhom,prl_mabaiviet){
      window.location.href = "http://localhost/DATNHuyLuan/0306151249_0306151264/public/gr/"+prl_manhom+"/baiviet/"+prl_mabaiviet;
 }
 function openbinhluanbaivietduocthongbao(prl_mabinhluanrepbaiviet) {
-    window.location.href = "http://localhost/DATNHuyLuan/0306151249_0306151264/public/bl/"+prl_mabinhluanrepbaiviet;
+     window.location.href = "http://localhost/DATNHuyLuan/0306151249_0306151264/public/bl/"+prl_mabinhluanrepbaiviet;
 }
-function openrepbinhluanbaivietduocthongbao(prl_mabinhluan,prl_marepbinhluan) {
-    // body...
+function openrepbinhluanbaivietduocthongbao(prl_mabinhluanrepbaiviet) {
+    window.location.href = "http://localhost/DATNHuyLuan/0306151249_0306151264/public/blr/"+prl_mabinhluanrepbaiviet;
 }
 
 

@@ -147,6 +147,50 @@ class Nhom extends Controller
     }
 
 
+    public function loadnhomvoimotbaiviettheomabinhluanvarepcmt ($mabinhluan)
+    {
+         $matk =  Auth::user()->ma_tai_khoan;
+       // $machucvu = DB::table('thanh_vien_nhom')->select("ma_chuc_vu")->where([["ma_nhom",$idnhom],["ma_tai_khoan",$matk],["trang_thai","1"]
+       //                                                                          ])->get();
+        $manhomvamabaiviet = DB::table('binh_luan_bai_viet')
+                                ->join('bai_viet','bai_viet.ma_bai_viet','=','binh_luan_bai_viet.ma_bai_viet')
+                                ->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
+                                ->select('nhom.ma_nhom','bai_viet.ma_bai_viet')
+                                ->where('binh_luan_bai_viet.ma_binh_luan',$mabinhluan)
+                                ->get()[0];
+
+
+        $caidatnhom       = DB::table('cai_dat_nhom')
+                                ->where("ma_nhom",$manhomvamabaiviet->ma_nhom)
+                                ->get();
+        $machucvu         = DB::table('chuc_vu_cua_thanh_vien_trong_nhom')
+                                ->join('chuc_vu_trong_nhom','chuc_vu_cua_thanh_vien_trong_nhom.ma_chuc_vu','=','chuc_vu_trong_nhom.ma_chuc_vu')
+                                ->select('chuc_vu_cua_thanh_vien_trong_nhom.*','chuc_vu_trong_nhom.*')
+                                ->where([['ma_tai_khoan',$matk],['ma_nhom',$manhomvamabaiviet->ma_nhom],['chuc_vu_cua_thanh_vien_trong_nhom.trang_thai',"1"]])
+                                ->get();
+        $nhom             = DB::table('nhom')
+                                ->where("ma_nhom",$manhomvamabaiviet->ma_nhom)
+                                ->get();
+        $lstthanhviennhom = DB::table('thanh_vien_nhom')
+                                ->join('nguoi_dung','thanh_vien_nhom.ma_tai_khoan','=','nguoi_dung.ma_tai_khoan')
+                                ->select('thanh_vien_nhom.*','nguoi_dung.*')
+                                ->where([['ma_nhom',$manhomvamabaiviet->ma_nhom],['thanh_vien_nhom.trang_thai',"1"]])
+                                ->get();
+        $totalbaiviet =     DB::table('bai_viet')->select(DB::raw('count(*) as soluongbaivietcuanhom'))
+                                ->where([["ma_chu_bai_viet",$manhomvamabaiviet->ma_nhom],["trang_thai","1"]])
+                                ->get()[0]->soluongbaivietcuanhom;
+        $listbaiviet      = DB::table('bai_viet')
+                                ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
+                                ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
+                                ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
+                                ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet')//
+                                ->where([["bai_viet.ma_bai_viet",$manhomvamabaiviet->ma_bai_viet],["bai_viet.trang_thai","1"]])
+                                ->orderBy('bai_viet.ma_bai_viet','desc')
+                               ->take(1)->get();
+
+        return view("nhom.indexnhomhienthithongbaorepbinhluanbaivietmoi",["t"=>$manhomvamabaiviet->ma_nhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thongtinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom,"mabinhluan"=>$mabinhluan]);
+    }
+
 
 
 
