@@ -5,7 +5,6 @@
 	<title>Đăng nhập</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/luan/login.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('css/font-awesome.min.css')}}">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
 </head>
 <body>
 
