@@ -16,8 +16,12 @@ $(document).ready(function() {
 			window.location.href = $(this).attr('href');
 		}
 	});
+
+	$('#page-list').change(function(event) {
+    window.location.href = $(this).val();
+  });
 	
-	$('select').prop('selectedIndex', '0');
+	$('select[name=sort]').prop('selectedIndex', '0');
 	$('.quickadd-box .--file').val('');
 
 	$('.item-action span i.fa').click(function() {

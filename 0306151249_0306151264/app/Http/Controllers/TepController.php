@@ -36,13 +36,13 @@ class TepController extends Controller
     }
 
     if($kind == "tatca" || $kind=="tep") {
-      $tatca_tep = $tatca_tep->orderBy('ma_tep', 'desc')->get();
+      $tatca_tep = $tatca_tep->orderBy('ma_tep', 'desc');
     } else if ($kind == "congkhai") {
-      $tatca_tep = $tatca_tep->where('cong_khai', 1)->orderBy('ma_tep', 'desc')->get();
+      $tatca_tep = $tatca_tep->where('cong_khai', 1)->orderBy('ma_tep', 'desc');
     } else if($kind == "riengtu") {
-      $tatca_tep = $tatca_tep->where('cong_khai', 0)->orderBy('ma_tep', 'desc')->get();
+      $tatca_tep = $tatca_tep->where('cong_khai', 0)->orderBy('ma_tep', 'desc');
     }
-
+    $tatca_tep = $tatca_tep->paginate(8);
     return view('trang_ca_nhan.tep.index', ['tatca_tep' => $tatca_tep, 'username' => $username]);
    
   }

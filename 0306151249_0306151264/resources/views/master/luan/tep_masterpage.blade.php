@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>{{'@'.$username}} - Tệp</title>
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/includescss/navtopcss.css') }}">
 	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{ asset('css/luan/profile/file.css') }}">
