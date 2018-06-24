@@ -60,6 +60,12 @@ $(document).ready(function() {
       check = confirm('Bạn muốn xóa những bài viết được chọn ?');
     } else if(kindOfUpdate=="post-ban") {
       check = confirm('Bạn muốn đánh dấu vi phạm những bài viết được chọn ?');
+    } else if(kindOfUpdate=="group-ban") {
+      check = confirm('Bạn muốn đánh dấu vi phạm những nhóm được chọn ?');
+    } else if(kindOfUpdate=="group-delete") {
+      check = confirm('Bạn muốn xóa những nhóm được chọn ?');
+    } else if(kindOfUpdate=="group-live") {
+      check = confirm('Bạn muốn cho phép hoạt động những nhóm được chọn ?');
     }
 
     if (check) {

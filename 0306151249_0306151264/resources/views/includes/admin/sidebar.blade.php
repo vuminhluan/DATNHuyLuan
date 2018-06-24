@@ -34,7 +34,7 @@
         </a>
       </li>
       <li class="list-group-item">
-        <a href="{{route('admin.phanhoi')}}">
+        <a href="{{route('admin.baocao')}}">
           <i class="fa fa-bug"></i> <span>Báo cáo</span>
         </a>
       </li>
@@ -55,14 +55,19 @@
           </a>
         </li>
       @endif --}}
-      <li class="list-group-item">
+      {{-- <li class="list-group-item">
         <a href="{{route('admin.gioitinh')}}">
           <i class="fa fa-transgender"></i> <span>Giới tính</span>
         </a>
-      </li>
+      </li> --}}
       <li class="list-group-item">
         <a href="{{route('admin.baiviet')}}">
           <i class="fa fa-book"></i> <span>Bài viết</span>
+        </a>
+      </li>
+      <li class="list-group-item">
+        <a href="{{route('admin.nhom')}}">
+          <i class="fa fa-group"></i> <span>Nhóm</span>
         </a>
       </li>
       {{-- <li class="list-group-item">

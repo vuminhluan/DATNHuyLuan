@@ -26,14 +26,17 @@
         <a href="{{ route('admin.phanhoi') }}" class="col-md-2 col-sm-5 col-xs-5">
           <i class="fa fa-envelope-o"></i><br> <span>Phản hồi</span>
         </a>
-        {{-- <a href="slider.html" class="col-md-2 col-sm-5 col-xs-5">
-          <i class="fa fa-picture-o"></i><br> <span>Slider</span>
-        </a> --}}
+        <a href="slider.html" class="col-md-2 col-sm-5 col-xs-5">
+          <i class="fa fa-bug"></i><br> <span>Báo cáo</span>
+        </a>
         <a href="{{route('admin.taikhoan')}}" class="col-md-2 col-sm-5 col-xs-5">
           <i class="fa fa-user"></i><br> <span>Tài khoản</span>
         </a>
-        <a href="setting.html" class="col-md-2 col-sm-5 col-xs-5">
-          <i class="fa fa-wrench"></i><br> <span>Cấu hình</span>
+        <a href="{{ route('admin.baiviet') }}" class="col-md-2 col-sm-5 col-xs-5">
+          <i class="fa fa-book"></i><br> <span>Bài viết</span>
+        </a>
+        <a href="{{ route('admin.nhom') }}" class="col-md-2 col-sm-5 col-xs-5">
+          <i class="fa fa-group"></i><br> <span>Nhóm</span>
         </a>
       </div>
     </div>

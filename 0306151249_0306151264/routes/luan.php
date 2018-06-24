@@ -227,6 +227,16 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 		Route::post('/capnhat', 'Admin\PhanHoiController@postCapNhat')->name('admin.phanhoi.capnhat');
 		Route::get('/timkiem/{tukhoa}', 'Admin\PhanHoiController@getTimKiemTheoTenNguoiGui')->name('admin.phanhoi.timkiem');
 	});
+	// End phản hồi
+
+	//  Báo cáo
+	Route::prefix('baocao')->group(function() {
+		Route::get('/', 'Admin\BaoCaoController@getTrangQuanLyBaoCao')->name('admin.baocao');
+		// Route::post('/xemchitiet', 'Admin\BaoCaoController@postXemBaoCao')->name('admin.baocao.xem');
+		Route::post('/capnhat', 'Admin\BaoCaoController@postCapNhat')->name('admin.baocao.capnhat');
+		// Route::get('/timkiem/{tukhoa}', 'Admin\BaoCaoController@getTimKiemTheoTenNguoiGui')->name('admin.baocao.timkiem');
+	});
+	// End báo cáo
 
 
 
@@ -240,16 +250,24 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 
 	// Bài viết
 
-
-
-	// End bài viết
-
 	Route::prefix('baiviet')->group(function() {
 		Route::get('/', 'Admin\BaiVietController@getTrangBaiViet')->name('admin.baiviet');
 		Route::get('/xemchitiet/{post_id}', 'Admin\BaiVietController@getXemChiTietBaiViet')->name('admin.baiviet.xem');
 		Route::post('/capnhat', 'Admin\BaiVietController@postCapNhat')->name('admin.baiviet.capnhat.post');
 		// Route::get('/timkiem/{tukhoa}', 'Admin\PhanHoiController@getTimKiemTheoTenNguoiGui')->name('admin.phanhoi.timkiem');
 	});
+	// End bài viết
+
+
+	// Nhóm
+	Route::prefix('nhom')->group(function() {
+		Route::get('/', 'Admin\NhomController@getIndex')->name('admin.nhom');
+		// Route::get('/xemchitiet/{post_id}', 'Admin\NhomController@getXemChiTietBaiViet')->name('admin.baiviet.xem');
+		Route::post('/capnhat', 'Admin\NhomController@postCapNhat')->name('admin.nhom.capnhat.post');
+		Route::get('/timkiem/{tukhoa}', 'Admin\NhomController@getTimKiemTheoTenNhom')->name('admin.nhom.timkiem');
+	});
+
+	// End Nhóm
 
 
 
