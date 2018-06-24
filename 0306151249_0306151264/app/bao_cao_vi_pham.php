@@ -12,4 +12,10 @@ class bao_cao_vi_pham extends Model
 	  // public $incrementing = false;
 	  const CREATED_AT = 'thoi_gian_gui_bao_cao';
 	  const UPDATED_AT = 'thoi_gian_xu_ly_bao_cao_update';
+
+
+	  public function belongsToTaiKhoan()
+	  {
+	  	return $this->belongsTo('App\TaiKhoan', 'nguoi_gui_bao_cao', 'ma_tai_khoan');
+	  }
 }
