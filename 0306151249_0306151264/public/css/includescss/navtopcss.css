@@ -293,8 +293,14 @@ ul.navtop-right {float: right;display: inline-block;}
   position: relative;
 }
 
-.navtop-menu > ul > li > a:hover:not(.active) {
+/*.navtop-menu > ul > li > a:hover:not(.active) {
   background-color: rgba(17, 17, 17, 0.4);
+}*/
+.navtop-home-button {
+  color: #9695d8 !important;
+}
+.navtop-home-button i {
+  vertical-align: middle;
 }
 
 .active {
@@ -563,7 +569,7 @@ overflow: auto;
 .homepage-active::after, .homepage-active::before {
   width: 50% !important; height: 3px !important;
   content: ""; height: 0px; background-color: #666;
-  position: absolute; bottom: 0; width: 0%; transition: all 0.3s;
+  position: absolute; top: 100%; width: 0%; transition: all 0.3s;
 }
 
 
