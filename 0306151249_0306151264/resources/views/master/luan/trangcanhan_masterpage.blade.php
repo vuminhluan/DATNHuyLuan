@@ -92,11 +92,11 @@
 						<span>Chặn</span>
 					</a>
 				</li>
-				<li style="float: right">
+				{{-- <li style="float: right">
 					<a class="luan_link" href="{{route('nguoidung.tep.index',[$taikhoan->ten_tai_khoan])}}">
 						<span>Nhắn tin</span>
 					</a>
-				</li>
+				</li> --}}
 				@endif
 				
 			</ul>

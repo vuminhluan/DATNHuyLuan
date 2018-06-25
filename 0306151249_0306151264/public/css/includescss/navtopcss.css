@@ -565,8 +565,8 @@ overflow: auto;
 }
 
 
-.homepage-active {position: relative;}
-.homepage-active::after, .homepage-active::before {
+.homepage-active {position: relative;border-bottom: 3px solid #666}
+/*.homepage-active::after, .homepage-active::before {
   width: 50% !important; height: 3px !important;
   content: ""; height: 0px; background-color: #666;
   position: absolute; top: 100%; width: 0%; transition: all 0.3s;
@@ -579,7 +579,7 @@ overflow: auto;
 
 .homepage-active::before {
   left: 50%;
-}
+}*/
 
 
 
