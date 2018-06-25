@@ -100,34 +100,10 @@
           {{-- <span>( {{$tatca_taikhoan->total()}} )</span> --}}
           <div>
 
-            <div class="pagination" style="font-size: 17px;">
-              @if ($tatca_taikhoan->currentPage() != 1)
-                <a href="{{$tatca_taikhoan->previousPageUrl()}}" class="page-link"><i class="fa fa-caret-left"></i></a>
-              @endif
-
-              {{-- <span class="page-number"> <input id="current-page" type="text" value="{{$tatca_taikhoan->currentPage()}}"> / <span id="total-page">{{$tatca_taikhoan->total()}}</span></span> --}}
-
-              <span class="page-number">
-                <select name="page_list" id="page-list" style="" >
-                  @for ($i = 1; $i <= ceil($tatca_taikhoan->total()/$tatca_taikhoan->perPage()); $i++)
-                    <option {{$tatca_taikhoan->currentPage() == $i ? "selected" : ""}} value="{{$tatca_taikhoan->url($i)}}">{{$i}}</option>
-                  @endfor
-                </select>
-                
-                @if ($tatca_taikhoan->total() > 0)
-                  / <span id="total-page">{{$tatca_taikhoan->lastPage()}}</span>
-                @else
-                  <small><i>Không có kết quả</i></small>
-                @endif
-
-              </span>
-
-              @if ($tatca_taikhoan->currentPage() != $tatca_taikhoan->lastPage())
-                <a href="{{$tatca_taikhoan->nextPageUrl()}}"><i class="fa fa-caret-right"></i></a>
-              @endif
-
-
-            </div>
+            @php
+              $objects = $tatca_taikhoan;
+            @endphp
+            @include('includes.pagination01')
           </div>
           {{-- paginate --}}
           <p><strong><i class="fa fa-bookmark"></i>Ghi chú: </strong></p>

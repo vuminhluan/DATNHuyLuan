@@ -26,7 +26,7 @@
         <a href="{{ route('admin.phanhoi') }}" class="col-md-2 col-sm-5 col-xs-5">
           <i class="fa fa-envelope-o"></i><br> <span>Phản hồi</span>
         </a>
-        <a href="slider.html" class="col-md-2 col-sm-5 col-xs-5">
+        <a href="{{ route('admin.baocao') }}" class="col-md-2 col-sm-5 col-xs-5">
           <i class="fa fa-bug"></i><br> <span>Báo cáo</span>
         </a>
         <a href="{{route('admin.taikhoan')}}" class="col-md-2 col-sm-5 col-xs-5">

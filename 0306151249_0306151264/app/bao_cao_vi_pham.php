@@ -18,4 +18,9 @@ class bao_cao_vi_pham extends Model
 	  {
 	  	return $this->belongsTo('App\TaiKhoan', 'nguoi_gui_bao_cao', 'ma_tai_khoan');
 	  }
+
+	  public function belongsToLoaiBaoCao()
+	  {
+	  	return $this->belongsTo('App\LoaiBaoCao', 'ma_loai_bao_cao', 'ma_loai_bao_cao');
+	  }
 }

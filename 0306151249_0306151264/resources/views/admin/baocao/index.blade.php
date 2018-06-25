@@ -62,7 +62,7 @@
                   <td>
                     <a href="view-contact.html" class="detail-message" data-toggle="modal" data-target=".show-message-modal" id="id">#{{$baocao->ma_bao_cao}}</a>
                   </td>
-                  <td class="hidden-sm hidden-xs">{{$baocao->ma_loai_bao_cao}}</td>
+                  <td class="hidden-sm hidden-xs">Báo cáo {{$baocao->belongsToLoaiBaoCao->ten_loai_bao_cao}}</td>
                   <td class="hidden-xs">{{$baocao->nguoi_gui_bao_cao}}</td>
                   
                   <td class="hidden-sm hidden-xs">{{date_format($baocao->thoi_gian_gui_bao_cao, "d/m/Y H:i:s")}}</td>
@@ -85,23 +85,11 @@
           </table>
           {{-- paginate --}}
           <div>
-            {{-- <div class="pagination" style="font-size: 17px;">
-              @if ($tatca_baocao->currentPage() != 1)
-                <a href="{{$tatca_baocao->previousPageUrl()}}" class="page-link"><i class="fa fa-caret-left"></i></a>
-              @endif
-              <span class="page-number">
-                <select name="page_list" id="page-list" style="" >
-                  @for ($i = 1; $i <= ceil($tatca_baocao->total()/$tatca_baocao->perPage()); $i++)
-                    <option {{$tatca_baocao->currentPage() == $i ? "selected" : ""}} value="{{$tatca_baocao->url($i)}}">{{$i}}</option>
-                  @endfor
-                </select>
-                / <span id="total-page">{{$tatca_baocao->lastPage()}}</span>
-              </span>
-
-              @if ($tatca_baocao->currentPage() != $tatca_baocao->lastPage())
-                <a href="{{$tatca_baocao->nextPageUrl()}}"><i class="fa fa-caret-right"></i></a>
-              @endif
-            </div> --}}
+            
+            @php
+              $objects = $tatca_baocao;
+            @endphp
+            @include('includes.pagination01')
           </div>
           {{-- paginate --}}
 

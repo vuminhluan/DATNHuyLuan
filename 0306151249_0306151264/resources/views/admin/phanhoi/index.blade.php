@@ -87,26 +87,10 @@
           </table>
           {{-- paginate --}}
           <div>
-            <div class="pagination" style="font-size: 17px;">
-              @if ($tatca_phanhoi->currentPage() != 1)
-                <a href="{{$tatca_phanhoi->previousPageUrl()}}" class="page-link"><i class="fa fa-caret-left"></i></a>
-              @endif
-
-              {{-- <span class="page-number"> <input id="current-page" type="text" value="{{$tatca_phanhoi->currentPage()}}"> / <span id="total-page">{{$tatca_phanhoi->total()}}</span></span> --}}
-
-              <span class="page-number">
-                <select name="page_list" id="page-list" style="" >
-                  @for ($i = 1; $i <= ceil($tatca_phanhoi->total()/$tatca_phanhoi->perPage()); $i++)
-                    <option {{$tatca_phanhoi->currentPage() == $i ? "selected" : ""}} value="{{$tatca_phanhoi->url($i)}}">{{$i}}</option>
-                  @endfor
-                </select>
-                / <span id="total-page">{{$tatca_phanhoi->lastPage()}}</span>
-              </span>
-
-              @if ($tatca_phanhoi->currentPage() != $tatca_phanhoi->lastPage())
-                <a href="{{$tatca_phanhoi->nextPageUrl()}}"><i class="fa fa-caret-right"></i></a>
-              @endif
-            </div>
+            @php
+              $objects = $tatca_phanhoi;
+            @endphp
+            @include('includes.pagination01')
           </div>
           {{-- paginate --}}
 

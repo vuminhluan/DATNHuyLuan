@@ -75,32 +75,10 @@
           {{-- paginate --}}
           {{-- <span>( {{$tatca_baiviet->total()}} )</span> --}}
           <div>
-            <div class="pagination" style="font-size: 17px;">
-              @if ($tatca_nhom->currentPage() != 1)
-                <a href="{{$tatca_nhom->previousPageUrl()}}" class="page-link"><i class="fa fa-caret-left"></i></a>
-              @endif
-
-              <span class="page-number">
-                <select name="page_list" id="page-list" style="" >
-                  @for ($i = 1; $i <= ceil($tatca_nhom->total()/$tatca_nhom->perPage()); $i++)
-                    <option {{$tatca_nhom->currentPage() == $i ? "selected" : ""}} value="{{$tatca_nhom->url($i)}}">{{$i}}</option>
-                  @endfor
-                </select>
-                
-                @if ($tatca_nhom->total() > 0)
-                  / <span id="total-page">{{$tatca_nhom->lastPage()}}</span>
-                @else
-                  <small><i>Không có kết quả</i></small>
-                @endif
-
-              </span>
-
-              @if ($tatca_nhom->currentPage() != $tatca_nhom->lastPage())
-                <a href="{{$tatca_nhom->nextPageUrl()}}"><i class="fa fa-caret-right"></i></a>
-              @endif
-
-
-            </div>
+            @php
+              $objects = $tatca_nhom;
+            @endphp
+            @include('includes.pagination01')
           </div>
           {{-- paginate --}}
           <p><strong><i class="fa fa-bookmark"></i>Ghi chú: </strong></p>
