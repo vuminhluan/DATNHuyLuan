@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	{{-- <meta http-equiv="cache-control" content="no-cache, no-store, max-age=0, must-revalidate">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="expires" content="Sun, 02 Jan 1990 00:00:00 GMT"> --}}
 	<title>Đăng nhập</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/luan/login.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('css/font-awesome.min.css')}}">

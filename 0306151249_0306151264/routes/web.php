@@ -14,7 +14,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-Route::get('/', 'DangNhapController@getIndex')->name('index');
+Route::get('/', 'DangNhapController@getIndex')->middleware('PreventBackHistory')->name('index');
 
 Route::post('/dangnhap', 'DangNhapController@postDangNhap')->name('post_dangnhap');
 Route::get('/dangnhap/google', 'DangNhapController@postDangNhapGoogle')->name('dangnhap.google');

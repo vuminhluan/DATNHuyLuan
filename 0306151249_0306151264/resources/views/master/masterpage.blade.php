@@ -8,7 +8,7 @@
 
 	@yield('title')
 	{{-- Biểu tượng icon cho trang web --}}
-	<link rel='icon' href='favicon.ico' type='image/x-icon'/ >
+	{{-- <link rel='icon' href='favicon.ico' type='image/x-icon'/ > --}}
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/includescss/navtopcss.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/lu/baiviet/baiviet.css') }}">
@@ -35,6 +35,13 @@
 	{{-- Chưa có footer :D --}}
 
 {{-- 	<script src="{{asset('js/jquery/jquery3.3.1.js')}}" charset="utf-8"></script> --}}
+	<script>
+		// alert('asd');
+		// history.pushState(null, null, document.URL);
+		// window.addEventListener('popstate', function () {
+		//     history.pushState(null, null, document.URL);
+		// });
+	</script>
 	@yield('javascript')
 
   <!-- Modal content -->
