@@ -705,7 +705,7 @@ function chonchucnangtrongnhom(prl){
 
   //  alert(prl);
     $('#div-lua-chon-chuc-nang-nhom-first').css('display','none');
-    
+    var event = "";
     if (prl=='CV01')
     {
         openCity(event, 'divcaidatnhom');

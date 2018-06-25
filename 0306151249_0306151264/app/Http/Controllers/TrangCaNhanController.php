@@ -58,14 +58,21 @@ class TrangCaNhanController extends Controller
 		if($taikhoan_bichan) {
 			abort(404);
 		}
-
 		$account_posts = DB::table('bai_viet')
-			->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
-			->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
-			->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
-			->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
-      ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet', 'nhom.ma_nhom', 'nhom.ten_nhom')//
+		->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
+		->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
+		->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
+		// ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
+		->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','bai_viet.ma_bai_viet', 'nhom.ma_nhom', 'nhom.ten_nhom')//
       ->where([['bai_viet.ma_nguoi_viet',$taikhoan->ma_tai_khoan],["bai_viet.trang_thai","1"]]);
+
+		// $account_posts = DB::table('bai_viet')
+		// 	->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
+		// 	->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
+		// 	->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
+		// 	->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
+  //     ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet', 'nhom.ma_nhom', 'nhom.ten_nhom')//
+  //     ->where([['bai_viet.ma_nguoi_viet',$taikhoan->ma_tai_khoan],["bai_viet.trang_thai","1"], ['bai_viet.ma_bai_viet', 14]]);
       // ->orderBy('bai_viet.ma_bai_viet','desc')
       // ->take(100)->get()
 
@@ -100,7 +107,7 @@ class TrangCaNhanController extends Controller
 		->join('chuc_vu_trong_nhom AS CV', 'CV.ma_chuc_vu', '=', 'TV_CV.ma_chuc_vu')
 		->select('nhom.*', 'TV_CV.ma_chuc_vu', 'TV_CV.ma_tai_khoan AS thanhvien', 'CV.ten_chuc_vu')
 		->where([
-			['TV_CV.ma_tai_khoan', 'TK00000009'],
+			['TV_CV.ma_tai_khoan', $taikhoan->ma_tai_khoan],
 			['nhom.trang_thai', '!=', 0]
 		])
 		->where(function ($query) {
@@ -249,6 +256,28 @@ class TrangCaNhanController extends Controller
 
 		return $data;
 	}
+
+
+	// public function GetBaiVietPhanTrang(Request $rql){
+ //          // $path = "?manho"
+	// 	$soluongbaivietdalay = $rql->soluongbaivietdalay;
+	// 	$soluongbaivietcanlay = $rql->soluongbaivietcanlay;
+	// 	$listbaiviet      = DB::table('bai_viet')
+	// 	->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
+	// 	->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
+	// 	->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
+ //    // ->leftJoin('thumuc_googledrive','bai_viet.ma_nguoi_viet','=','thumuc_googledrive.ma_tai_khoan')
+ //    // 'thumuc_googledrive.*',
+ //    ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet')//
+ //    ->where([["bai_viet.ma_chu_bai_viet",$rql->ma_nhom],["bai_viet.trang_thai","1"]])
+ //    ->orderBy('bai_viet.ma_bai_viet','desc')
+ //    // ->paginate(5)
+ //    ->offset($soluongbaivietdalay)
+ //    ->limit($soluongbaivietcanlay)   
+ //    ->get();
+ //    // ->setPath("?ma_nhom=".$rql->ma_nhom);
+ //    return  view("baiviet.hienthibaiviet",["lstbaiviet"=>$listbaiviet]);
+ //  }
 
 
 }

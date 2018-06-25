@@ -25,19 +25,19 @@
             <div class="btn-group" id="step3">
               <select id="task" name="task" class="form-control">
                 <option>Tác vụ</option>
-                <option value="delete">Xóa báo cáo</option>
-                <option value="mark_as_seen">Đánh dấu đã đọc</option>
-                <option value="mark_as_unread">Đánh dấu chưa đọc</option>
+                <option value="report-delete">Xóa báo cáo</option>
+                <option value="report-mark-as-seen">Đánh dấu đã đọc</option>
+                <option value="report-mark-as-unread">Đánh dấu chưa đọc</option>
               </select>
             </div>
             
-            <div class="btn-group pull-right hidden-xs" id="div-search">
+            {{-- <div class="btn-group pull-right hidden-xs" id="div-search">
               <input id="search" name="search" type="text" value="" class="form-control" placeholder="Tên người gửi">
               <span class="fa fa-search"></span>
-            </div>
+            </div> --}}
           </div>
-          @if (!$tatca_baocao)
-            <p>Chưa có phản hồi nào</p>
+          @if (count($tatca_baocao) <= 0)
+            <p>Chưa có báo cáo nào</p>
           @endif
           <table class="table table-bordered table-hover" id="message-table">
             <thead>
@@ -63,20 +63,19 @@
                     <a href="view-contact.html" class="detail-message" data-toggle="modal" data-target=".show-message-modal" id="id">#{{$baocao->ma_bao_cao}}</a>
                   </td>
                   <td class="hidden-sm hidden-xs">Báo cáo {{$baocao->belongsToLoaiBaoCao->ten_loai_bao_cao}}</td>
-                  <td class="hidden-xs">{{$baocao->nguoi_gui_bao_cao}}</td>
+                  <td class="hidden-xs">{{$baocao->belongsToTaiKhoan->hasNguoiDung->ho_ten_lot." ".$baocao->belongsToTaiKhoan->hasNguoiDung->ten}}</td>
                   
                   <td class="hidden-sm hidden-xs">{{date_format($baocao->thoi_gian_gui_bao_cao, "d/m/Y H:i:s")}}</td>
                   <td>
-                    <i class="fa fa-check text-success"></i>
-                    {{-- @if ($baocao->da_xem)
+                    @if ($baocao->da_xem)
                       <i class="fa fa-check text-success" data-seen="1" id="seen{{$baocao->ma}}" data-toggle="tooltip" data-placement="top" title="Phản hồi đã đọc"></i>
                     @else
                       <i class="fa fa-envelope-o" data-seen="0" id="seen{{$baocao->ma}}" data-toggle="tooltip" data-placement="top" title="Phản hồi chưa đọc"></i>
                     @endif
 
                     @if (!$baocao->trang_thai)
-                      <i class="fa fa-times text-danger" data-toggle="tooltip" data-placement="top" title="Phản hồi đã xóa"></i>
-                    @endif --}}
+                      <i class="fa fa-times text-danger" data-toggle="tooltip" data-placement="top" title="Báo cáo đã xóa"></i>
+                    @endif
                   </td>
                 </tr>
                 @endforeach
@@ -95,8 +94,8 @@
 
           <div id="step6">
             <p><strong><i class="fa fa-bookmark"></i>Ghi chú: </strong></p>
-            <p class="note-items"><i class="fa fa-envelope-o"></i> Báo cáo chưa đọc.</p>
             <p class="note-items"><i class="fa fa-check text-success"></i> Báo cáo đã đọc.</p>
+            <p class="note-items"><i class="fa fa-envelope-o"></i> Báo cáo chưa đọc.</p>
             {{-- <p class="note-items"><i class="fa fa-times text-danger"></i> Phản hồi đã xóa.</p> --}}
           </div>
 

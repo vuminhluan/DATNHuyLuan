@@ -1,7 +1,7 @@
 @extends('master.luan.trangcanhan_masterpage')
 
 @section('title')
-	<title>{{'@'.$taikhoan->ten_tai_khoan}} - Tất cả các nhóm tham gia</title>
+	<title>{{'@'.$taikhoan->ten_tai_khoan}} - Tất cả các Nhóm</title>
 @endsection
 
 @section('profile_css')
@@ -26,7 +26,11 @@
 
 					<div class="groups-by-member-role">
 						<div class="role-title">
-							<h3>Nhóm bạn làm {{$nhom_theo_chucvu[0]->ten_chuc_vu}} <span class="collapse-groups-box-button"><i class="fa fa-bars"></i></span></h3>
+							@if ($taikhoan->ma_tai_khoan != Auth::user()->ma_tai_khoan)
+								<h3>Nhóm {{$taikhoan->hasNguoiDung->ten}} làm {{$nhom_theo_chucvu[0]->ten_chuc_vu}} <span class="collapse-groups-box-button"><i class="fa fa-bars"></i></span></h3>
+							@else
+								<h3>Nhóm tôi làm {{$nhom_theo_chucvu[0]->ten_chuc_vu}} <span class="collapse-groups-box-button"><i class="fa fa-bars"></i></span></h3>
+							@endif
 						</div>
 						<div class="groups-box">
 							<ul class="group-list">
@@ -40,7 +44,7 @@
 											@endif
 											
 											<div class="group-name-and-unread-post-counter">
-												<a href="" class="luan_link">
+												<a href="{{ route('nhom.index', [$nhom_theo_chucvu[$i]->ma_nhom]) }}" class="luan_link">
 													<h3>{{$nhom_theo_chucvu[$i]->ten_nhom}}</h3>
 													<span>{{$nhom_theo_chucvu[$i]->soluong_thanhvien}} thành viên</span>
 													{{-- <span>9 bài đăng mới chưa đọc</span> --}}
