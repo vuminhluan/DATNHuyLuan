@@ -24,7 +24,7 @@ class TepController extends Controller
   public function getTrangTep($username, $kind = "tatca", Request $req)
   {
 
-    $tatca_tep = TaiKhoan::where('ten_tai_khoan', $username)->first()->hasManyTep()->where('trang_thai', 1);
+    $tatca_tep = TaiKhoan::where('ten_tai_khoan', $username)->where('trang_thai', '!=', 4)->first()->hasManyTep()->where('trang_thai', 1);
    
     if($req->mode) {
       $kind = $req->mode;

@@ -46,7 +46,7 @@ $(document).ready(function() {
 			$('#about').html(response.nguoidung.gioi_thieu);
 
 
-			$('#url-to-files').attr('href', link_host+'/admin/taikhoan/'+response.taikhoan.ten_tai_khoan+'/tep/server');
+			$('#url-to-files').attr('href', link_host+'/admin/taikhoan/'+response.taikhoan.ma_tai_khoan+'/tep/server');
       $('#url-to-files-googledrive').attr('href', link_host+'/admin/taikhoan/'+response.taikhoan.ten_tai_khoan+'/tep/googledrive');
 
 

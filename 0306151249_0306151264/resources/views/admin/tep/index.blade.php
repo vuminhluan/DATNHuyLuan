@@ -12,7 +12,7 @@
   </ol>
   <div class="col-xs-12">
 
-    <form id="post_form" method="post" action="{{ route('admin.taikhoan.tep.capnhat', [$ten_tai_khoan]) }}" role="form">
+    <form id="post_form" method="post" action="{{ route('admin.taikhoan.tep.capnhat', [$ma_tai_khoan]) }}" role="form">
       @csrf
       <div class="col-xs-12">
         <div class="form-group">
@@ -26,7 +26,7 @@
             </select>
           </div>
 
-          <a id="url-to-files-googledrive" href="{{ route('admin.taikhoan.tep', [$ten_tai_khoan, 'googledrive']) }}" class="btn btn-submit"><img style="vertical-align: middle;" width="23px" height="23px" src="{{ asset('myicons/tep/google-drive.svg') }}" alt=""> Google Drive</a>
+          <a id="url-to-files-googledrive" href="{{ route('admin.taikhoan.tep', [$ma_tai_khoan, 'googledrive']) }}" class="btn btn-submit"><img style="vertical-align: middle;" width="23px" height="23px" src="{{ asset('myicons/tep/google-drive.svg') }}" alt=""> Google Drive</a>
 
 
           <div class="btn-group pull-right hidden-xs" id="div-search">

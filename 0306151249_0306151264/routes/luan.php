@@ -171,11 +171,11 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 	Route::prefix('taikhoan')->group(function() {
 
 		// Tệp của tài khoản
-		Route::get('/{ten_tai_khoan}/tep/{noi_chua_tep}', 'Admin\TepController@getIndexTepCuaTaiKhoan')->name('admin.taikhoan.tep');
+		Route::get('/{ma_tai_khoan}/tep/{noi_chua_tep}', 'Admin\TepController@getIndexTepCuaTaiKhoan')->name('admin.taikhoan.tep');
 
-		Route::post('/{ten_tai_khoan}/tep/capnhat', 'Admin\TepController@postCapNhatTepCuaMotTaiKhoan')->name('admin.taikhoan.tep.capnhat');
+		Route::post('/{ma_tai_khoan}/tep/capnhat', 'Admin\TepController@postCapNhatTepCuaMotTaiKhoan')->name('admin.taikhoan.tep.capnhat');
 
-		Route::get('/{ten_tai_khoan}/tep/tim/{tu_khoa}', 'Admin\TepController@getTimKiemTheoTenTep')->name('admin.taikhoan.tep.timkiem');
+		Route::get('/{ma_tai_khoan}/tep/tim/{tu_khoa}', 'Admin\TepController@getTimKiemTheoTenTep')->name('admin.taikhoan.tep.timkiem');
 
 
 		// End Tệp của tài khoản
