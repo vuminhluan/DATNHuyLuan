@@ -191,7 +191,7 @@ function roinhom11(prl){
 
 
 var soluongbaivietkiemduyetdalay=0;
-var soluongbaivietkiemduyetcanlay=3;
+var soluongbaivietkiemduyetcanlay=6;
 
 function showlistbaivietchopheduyet(manhom){
         var divtobig = document.createElement("div");
@@ -281,7 +281,7 @@ function loadthemduyetbaiviet(){
                                             divpost.innerHTML=data;
                                         document.getElementById('divbodybodykiemduyetbaiviet').appendChild(divpost); 
                                     }) 
-                                     soluongbaivietkiemduyetdalay+=2;
+                                     soluongbaivietkiemduyetdalay+=6;
                                 }
 
 }
