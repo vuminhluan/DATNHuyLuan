@@ -66,6 +66,12 @@ $(document).ready(function() {
       check = confirm('Bạn muốn xóa những nhóm được chọn ?');
     } else if(kindOfUpdate=="group-live") {
       check = confirm('Bạn muốn cho phép hoạt động những nhóm được chọn ?');
+    } else if(kindOfUpdate=="report-delete") {
+      check = confirm('Bạn muốn xóa những báo cáo được chọn ?');
+    } else if(kindOfUpdate=="report-mark-as-seen") {
+      check = confirm('Bạn muốn đánh dấu đã xem những báo cáo được chọn ?');
+    } else if(kindOfUpdate=="report-mark-as-unread") {
+      check = confirm('Bạn muốn đánh dấu chưa xem những báo cáo được chọn ?');
     }
 
     if (check) {
@@ -87,11 +93,16 @@ $(document).ready(function() {
 
 
 
-  $('#search').keyup(function(e){
-    if (e.which==13) {
-      $('#post_form').submit();
-    }
-  });
+  // $('#search').keyup(function(e){
+  //   return;
+  //   if (e.which==13) {
+  //     if($(this).val() != ""){
+  //       $('#post_form').submit();
+  //     } else {
+  //       return;
+  //     }
+  //   }
+  // });
 
   
   $('i').hover(function(){

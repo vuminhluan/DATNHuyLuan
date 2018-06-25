@@ -96,8 +96,8 @@
 
           <div id="step6">
             <p><strong><i class="fa fa-bookmark"></i>Ghi chú: </strong></p>
-            <p class="note-items"><i class="fa fa-envelope-o"></i> Phản hồi chưa đọc.</p>
             <p class="note-items"><i class="fa fa-check text-success"></i> Phản hồi đã đọc.</p>
+            <p class="note-items"><i class="fa fa-envelope-o"></i> Phản hồi chưa đọc.</p>
             {{-- <p class="note-items"><i class="fa fa-times text-danger"></i> Phản hồi đã xóa.</p> --}}
           </div>
 
