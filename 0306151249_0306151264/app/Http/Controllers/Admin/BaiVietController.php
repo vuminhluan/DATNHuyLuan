@@ -47,23 +47,23 @@ class BaiVietController extends Controller
   	// $baiviet = BaiViet::find($post_id);
   	// return $baiviet;
 
-  	// $account_posts = DB::table('bai_viet')
-			// ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
-			// ->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
-			// ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
-			// ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
-   //    ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet', 'nhom.ma_nhom', 'nhom.ten_nhom')//
-   //    ->where([['bai_viet.ma_bai_viet',$post_id]])
-   //    ->get();
-
-    $account_posts = DB::table('bai_viet')
-      ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
-      ->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
-      ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
-      // ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
-      ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','bai_viet.ma_bai_viet', 'nhom.ma_nhom', 'nhom.ten_nhom')//
+  	$account_posts = DB::table('bai_viet')
+			->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
+			->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
+			->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
+			->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
+      ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet', 'nhom.ma_nhom', 'nhom.ten_nhom')//
       ->where([['bai_viet.ma_bai_viet',$post_id]])
       ->get();
+
+    // $account_posts = DB::table('bai_viet')
+    //   ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
+    //   ->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
+    //   ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
+    //   // ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
+    //   ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','bai_viet.ma_bai_viet', 'nhom.ma_nhom', 'nhom.ten_nhom')//
+    //   ->where([['bai_viet.ma_bai_viet',$post_id]])
+    //   ->get();
 
      // return $account_posts;
 

@@ -58,21 +58,21 @@ class TrangCaNhanController extends Controller
 		if($taikhoan_bichan) {
 			abort(404);
 		}
-		$account_posts = DB::table('bai_viet')
-		->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
-		->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
-		->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
-		// ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
-		->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','bai_viet.ma_bai_viet', 'nhom.ma_nhom', 'nhom.ten_nhom')//
-      ->where([['bai_viet.ma_nguoi_viet',$taikhoan->ma_tai_khoan],["bai_viet.trang_thai","1"]]);
-
 		// $account_posts = DB::table('bai_viet')
-		// 	->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
-		// 	->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
-		// 	->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
-		// 	->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
-  //     ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet', 'nhom.ma_nhom', 'nhom.ten_nhom')//
-  //     ->where([['bai_viet.ma_nguoi_viet',$taikhoan->ma_tai_khoan],["bai_viet.trang_thai","1"], ['bai_viet.ma_bai_viet', 14]]);
+		// ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
+		// ->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
+		// ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
+		// // ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
+		// ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','bai_viet.ma_bai_viet', 'nhom.ma_nhom', 'nhom.ten_nhom')//
+  //     ->where([['bai_viet.ma_nguoi_viet',$taikhoan->ma_tai_khoan],["bai_viet.trang_thai","1"]]);
+
+		$account_posts = DB::table('bai_viet')
+			->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
+			->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
+			->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
+			->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
+      ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet', 'nhom.ma_nhom', 'nhom.ten_nhom')//
+      ->where([['bai_viet.ma_nguoi_viet',$taikhoan->ma_tai_khoan],["bai_viet.trang_thai","1"], ['bai_viet.ma_bai_viet', 14]]);
       // ->orderBy('bai_viet.ma_bai_viet','desc')
       // ->take(100)->get()
 

@@ -20,17 +20,15 @@ class TepController extends Controller
 	use TaoMaTepTrait;
 	use CapNhatDoiTuongTrait;
 
-  public function getIndexTepCuaTaiKhoan($username, $kind)
+  public function getIndexTepCuaTaiKhoan($userid, $kind)
   {
   	if($kind == "server") {
-	  	$tatca_tep = TaiKhoan::where('ten_tai_khoan', $username)->where('trang_thai', '!=', 4)->first()->hasManyTep()->orderBy('thoi_gian_tao', 'DESC')->paginate(8);
-	  	return view('admin.tep.index', ['tatca_tep' => $tatca_tep, 'ten_tai_khoan' => $username]);
+	  	$tatca_tep = TaiKhoan::where('ma_tai_khoan', $userid)->first()->hasManyTep()->orderBy('thoi_gian_tao', 'DESC')->paginate(8);
+	  	return view('admin.tep.index', ['tatca_tep' => $tatca_tep, 'ma_tai_khoan' => $userid]);
   	} else if ($kind == "googledrive") {
 
-
-
 	  	// Lấy folder id của người dùng.
-			$myfolder = TaiKhoan::where('ten_tai_khoan', $username)->where('trang_thai', '!=', 4)->first()->hasThuMuc;
+			$myfolder = TaiKhoan::where('ma_tai_khoan', $userid)->first()->hasThuMuc;
 			if($myfolder) {
 				$myfolder = $myfolder->ma_thumuc;
 			} else return "Tài khoản này chưa đăng kí sử dụng dịch vụ Google Drive";
@@ -43,7 +41,7 @@ class TepController extends Controller
 		  // $files = $contents->where('type', '=', 'file'); // files
 		  $folders = $contents->where('type', '=', 'dir'); // directory
 
-			// return view('trang_ca_nhan.tep.googledrive')->with(['files'=>$files, 'folders'=>$folders, 'username'=>Auth::user()->ten_tai_khoan]);
+			// return view('trang_ca_nhan.tep.googledrive')->with(['files'=>$files, 'folders'=>$folders, 'userid'=>Auth::user()->ten_tai_khoan]);
 			// return $files;
 
 			return view('admin.tep.googledrive')->with(['folders'=>$folders]);
@@ -53,11 +51,11 @@ class TepController extends Controller
   	abort(404);
   }
 
-  public function postCapNhatTepCuaMotTaiKhoan($username, Request $req)
+  public function postCapNhatTepCuaMotTaiKhoan($userid, Request $req)
   {
 
   	if($req->search) {
-      return redirect()->route('admin.taikhoan.tep.timkiem', [$username, $req->search]);
+      return redirect()->route('admin.taikhoan.tep.timkiem', [$userid, $req->search]);
     }
 
 
@@ -87,10 +85,10 @@ class TepController extends Controller
 
   }
 
-  public function getTimKiemTheoTenTep($username, $filename)
+  public function getTimKiemTheoTenTep($userid, $filename)
   {
-  	$tatca_tep = TaiKhoan::where('ten_tai_khoan', $username)->where('trang_thai', '!=', 4)->first()->hasManyTep()->where('ten_tep', 'LIKE', '%'.$filename.'%')->orderBy('thoi_gian_tao', 'DESC')->paginate(8);
-    return view('admin.tep.index', ['tatca_tep' => $tatca_tep, 'ten_tai_khoan' => $username]);
+  	$tatca_tep = TaiKhoan::where('ma_tai_khoan', $userid)->first()->hasManyTep()->where('ten_tep', 'LIKE', '%'.$filename.'%')->orderBy('thoi_gian_tao', 'DESC')->paginate(8);
+    return view('admin.tep.index', ['tatca_tep' => $tatca_tep, 'ma_tai_khoan' => $userid]);
   }
 
 }
