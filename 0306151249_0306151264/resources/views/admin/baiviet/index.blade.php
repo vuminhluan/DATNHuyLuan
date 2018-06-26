@@ -50,7 +50,7 @@
                 <th>Tình trạng</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="for-search">
               @foreach ($tatca_baiviet as $baiviet)
               <tr>
                 <td>
@@ -61,7 +61,7 @@
                     #{{$baiviet->ma_bai_viet}}
                   </a>
                 </td>
-                <td class="hidden-xs"><a href="javascript:void(0)" data-account-id="{{$baiviet->belongsToTaiKhoan->ma_tai_khoan}}">{{$baiviet->belongsToTaiKhoan->hasNguoiDung->ho_ten_lot." ".$baiviet->belongsToTaiKhoan->hasNguoiDung->ten}}</a></td>
+                <td class="hidden-xs td-search"><a href="javascript:void(0)" data-account-id="{{$baiviet->belongsToTaiKhoan->ma_tai_khoan}}">{{$baiviet->belongsToTaiKhoan->hasNguoiDung->ho_ten_lot." ".$baiviet->belongsToTaiKhoan->hasNguoiDung->ten}}</a></td>
                 <td class="hidden-xs">{!!str_limit($baiviet->noi_dung_bai_viet, 22)!!}</td>
                 <td class="hidden-sm hidden-xs">{{date_format($baiviet->thoi_gian_dang, 'd/m/Y H:i:s')}}</td>
                

@@ -56,4 +56,10 @@ class NhomController extends Controller
     return view('admin.nhom.index',['tatca_nhom' => $tatca_nhom]);
   }
 
+
+  public function getXemChiTietNhom($group_id)
+  {
+    return view('admin.nhom.chitiet');
+  }
+
 }

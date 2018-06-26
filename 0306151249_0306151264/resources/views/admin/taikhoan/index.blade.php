@@ -59,13 +59,13 @@
                 <th>Tình trạng</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="for-search">
               @foreach ($tatca_taikhoan as $taikhoan)
               <tr>
                 <td>
                   <input name="id[]" type="checkbox" value="{{$taikhoan->ma_tai_khoan}}">
                 </td>
-                <td style="text-align: left;">
+                <td style="text-align: left;" class="td-search">
                   <a href="javascript:void(0)" class="detail-account" id="{{$taikhoan->ma_tai_khoan}}" data-toggle="modal" data-target=".show-detail-account-modal">
                     {{'@'.$taikhoan->ten_tai_khoan}}
                     @if ($taikhoan->quyen == 'Q0003')
