@@ -705,32 +705,32 @@ function chonchucnangtrongnhom(prl){
 
   //  alert(prl);
     $('#div-lua-chon-chuc-nang-nhom-first').css('display','none');
-    var event = "";
+    // var event = "";
     if (prl=='CV01')
     {
         openCity(event, 'divcaidatnhom');
         $('#tablinkdivcaidatnhom').addClass("active");
         opentab_caidatnhom($('#div-hi-chu-bai-viet-ma-nhom').val());
     }
-    if(prl=='CV02')
-    {
+    // if(prl=='CV02')
+    // {
       
-    }
-    else
-    if(prl=='CV03'){
-         openCity(event, 'divpheduyetthanhvien');
-         $('#tablinkdivpheduyetthanhvien').addClass("active");
-        opentab_pheduyetthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());
-    }
-    if(prl=='CV04'){
-         openCity(event, 'divpheduyetbaiviet');
-         $('#tablinkdivpheduyetbaiviet').addClass("active");
-    //    opentab_pheduyetthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());
-    }
-    if(prl=='CV08'){
-        openCity(event, 'divbaocao');
-        $('#tablinkdivbaocao').addClass("active");
-    }
+    // }
+    // else
+    // if(prl=='CV03'){
+    //      openCity(event, 'divpheduyetthanhvien');
+    //      $('#tablinkdivpheduyetthanhvien').addClass("active");
+    //     opentab_pheduyetthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());
+    // }
+    // if(prl=='CV04'){
+    //      openCity(event, 'divpheduyetbaiviet');
+    //      $('#tablinkdivpheduyetbaiviet').addClass("active");
+    // //    opentab_pheduyetthanhvien($('#div-hi-chu-bai-viet-ma-nhom').val());
+    // }
+    // if(prl=='CV08'){
+    //     openCity(event, 'divbaocao');
+    //     $('#tablinkdivbaocao').addClass("active");
+    // }
     if(prl=='CV09'){
          openCity(event, 'divthanhvien');
        $('#tablinkdivthanhvien').addClass("active");
