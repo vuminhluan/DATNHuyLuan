@@ -212,7 +212,7 @@ label.error {color:red;margin: 0 3px;font-weight: normal!important;}
   background-color: #fff;text-align: center;
   height: 100px;line-height: 100px;border-top: 1px solid #eee;
   box-shadow: 0px -3px 3px rgba(102, 103, 166, 0.7);
-  position: fixed;bottom:0;left:0;
+  /*position: fixed;bottom:0;left:0;*/
 }
 
 .index-footer ul li {

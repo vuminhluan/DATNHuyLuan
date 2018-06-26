@@ -8,7 +8,7 @@
 
 	@yield('title')
 	{{-- Biểu tượng icon cho trang web --}}
-	{{-- <link rel='icon' href='favicon.ico' type='image/x-icon'/ > --}}
+	<link rel='icon' href='{{ asset('pictures/logo/favicon.png') }}' type='image/png'/ >
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/includescss/navtopcss.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/lu/baiviet/baiviet.css') }}">

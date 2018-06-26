@@ -6,6 +6,7 @@
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="expires" content="Sun, 02 Jan 1990 00:00:00 GMT"> --}}
 	<title>Đăng nhập</title>
+	<link rel='icon' href='{{ asset('pictures/logo/favicon.png') }}' type='image/png'/ >
 	<link rel="stylesheet" type="text/css" href="{{asset('css/luan/login.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('css/font-awesome.min.css')}}">
 </head>
@@ -19,7 +20,9 @@
 
 	<div class="container">
 		<header class="index-header">
-			<p>Đồ Án Tốt Nghiệp</p>
+			{{-- <p>Đồ Án Tốt Nghiệp</p> --}}
+			<br>
+			<img width="200px" height="140px" src="pictures/logo/logo2.png" alt="">
 		</header>
 		<div class="main">
 			
@@ -185,17 +188,12 @@
 
 
 	<div style="clear: both;"></div>
-	<footer class="index-footer">
+	{{-- <footer class="index-footer">
 		<ul>
-			{{-- <li><h2><a href="{{ route('huongdan') }}">Hướng dẫn</a></h2></li>
-			
-			<li>lorem</li>
-			<li>lorem</li>
-			<li>lorem</li> --}}
 			<li>&copy; 2018 ĐATN Lu - Luân</li>
 			<li style="margin: 0 0 0 50px"><a href="{{ route('lienhe') }}">Liên hệ</a></li>
 		</ul>
-	</footer>
+	</footer> --}}
 
 	<script src="{{asset('js/jquery/jquery3.3.1.js')}}" charset="utf-8"></script>
 	<script src="{{asset('js/jquery/jquery-validate.min.js')}}" charset="utf-8"></script>
