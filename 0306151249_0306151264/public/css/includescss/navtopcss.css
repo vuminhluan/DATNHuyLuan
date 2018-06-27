@@ -38,12 +38,12 @@ body {
 *{
   margin: 0; padding: 0;
   box-sizing: border-box;
-  -webkit-appearance: none;
+  /*-webkit-appearance: none;*/
 }
 
-button {
+/*button {
   -webkit-appearance: none;
-}
+}*/
 
 .buttonll{
   cursor: pointer;width: 80px;height: 30px;padding: 4px;border: solid 1px #9695d8;margin-top: 5px;border-radius: 5px;background-color: white;
@@ -55,7 +55,7 @@ button {
 
 
 ul {
-  list-style-type: none;
+  /*list-style-type: none;*/
   margin: 0; padding: 0;
 }
 .baomoi {font-family: "Baomoi"}

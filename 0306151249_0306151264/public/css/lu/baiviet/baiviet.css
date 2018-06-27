@@ -274,14 +274,14 @@ textarea:focus{
     user-select: none;
 }
 
-/* Hide the browser's default checkbox */
+
 .container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
 }
 
-/* Create a custom checkbox */
+
 .checkmark {
      position: absolute;
     top: 0;
@@ -291,29 +291,29 @@ textarea:focus{
     background-color: #eee;
 }
 
-/* On mouse-over, add a grey background color */
+
 .container:hover input ~ .checkmark {
     background-color: #ccc;
 }
 
-/* When the checkbox is checked, add a blue background */
+
 .container input:checked ~ .checkmark {
     background-color: rgb(150, 149, 216);
 }
 
-/* Create the checkmark/indicator (hidden when not checked) */
+
 .checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
 
-/* Show the checkmark when checked */
+
 .container input:checked ~ .checkmark:after {
     display: block;
 }
 
-/* Style the checkmark/indicator */
+
 .container .checkmark:after {
     left: 9px;
     top: 5px;
@@ -432,22 +432,22 @@ textarea:focus{
 
 /*custom datetime*/
 /* Removes the clear button from date inputs */
-input[type="date"]::-webkit-clear-button {
+ input.checkthuykien[type="date"]::-webkit-clear-button {
     display: none;
 }
 
 /* Removes the spin button */
-input[type="date"]::-webkit-inner-spin-button { 
+ input.checkthuykien[type="date"]::-webkit-inner-spin-button { 
     display: none;
 }
 
 /* Always display the drop down caret */
-input[type="date"]::-webkit-calendar-picker-indicator {
+ input.checkthuykien[type="date"]::-webkit-calendar-picker-indicator {
     color: #9695d8;
 }
 
 /* A few custom styles for date inputs */
-input[type="date"] {
+ input.checkthuykien[type="date"] {
     appearance: none;
     -webkit-appearance: none;
     color: #95a5a6;
@@ -460,7 +460,7 @@ input[type="date"] {
     visibility: visible !important;
 }
 
-input[type="date"], focus {
+ input.checkthuykien[type="date"], focus {
     color: #95a5a6;
     box-shadow: none;
     -webkit-box-shadow: none;
@@ -509,3 +509,109 @@ input[type="date"], focus {
 
 
 
+
+
+.dropdown {
+  position: absolute;
+  /*top:50%;*/
+  /*transform: translateY(-50%);*/
+}
+
+a {
+  color: #fff;
+}
+
+.dropdown dd,
+.dropdown dt {
+  margin: 0px;
+  padding: 0px;
+}
+
+.dropdown ul {
+  margin: -1px 0 0 0;
+}
+
+.dropdown dd {
+  position: relative;
+}
+
+.dropdown div,
+.dropdown div:visited {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  font-size: 12px;
+}
+/*#4F6877*/
+.dropdown dt div {
+  background-color: #e4e6e8;
+  font-size: 15px;
+  color: black;
+  display: inline-block;
+  padding: 8px 20px 5px 10px;
+  min-height: 38px;
+ /* line-height: 24px;*/
+  /*overflow: hidden;*/
+  border: 0;
+  width: 552px;
+  border-bottom: solid 1px  #e4e6e8;
+}
+
+.dropdown dt div span,
+.multiSel span {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 3px 2px 0;
+}
+
+.dropdown dd ul {
+  background-color: #4F6877;
+  border: 0;
+  color: #fff;
+  display: none;
+  left: 0px;
+  padding: 2px 15px 2px 5px;
+  position: absolute;
+  top: 2px;
+  width: 558px;
+  list-style: none;
+  height: 113px;
+  overflow: auto;
+  z-index: 1000;
+  border-bottom-left-radius:3px;
+  border-bottom-right-radius: 3px; 
+}
+
+.dropdown span.value {
+  display: none;
+}
+
+.dropdown dd ul li div {
+  padding: 5px;
+  display: block;
+}
+
+.dropdown dd ul li div:hover {
+  background-color: #fff;
+}
+
+
+
+
+.dropdown dd ul::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
+  background-color: #e4e6e82b;
+}
+
+.dropdown dd ul::-webkit-scrollbar
+{
+  width: 7px;
+  background-color: #F5F5F5;
+}
+
+.dropdown dd ul::-webkit-scrollbar-thumb
+{
+  background-color: #18222c47;
+/*  border: 1px solid #18222c47;*/
+}

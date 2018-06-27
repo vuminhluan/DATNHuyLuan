@@ -24,6 +24,7 @@ use App\thanh_vien_cho_phe_duyet;
 use App\chuc_vu_cua_thanh_vien_trong_nhom;
 use App\chuc_vu_trong_nhom;
 use App\cai_dat_nhom;
+use App\bai_viet_chia_se;
 //
 
 
@@ -38,8 +39,27 @@ class BaiViet extends Controller
 
     public function Postbaiviet(Request $request)
     {
-        return $this->PostbaivietT($request);	
+         $this->PostbaivietT($request);
+        for ($i=0; $i <count($request->lstmanhomsharebv) ; $i++) { 	
+            $this->Postbaivietchiase( $this->GetMaBaiVietT(),$request->ma_nguoi_viet,$request->lstmanhomsharebv[$i]);
+        }
+
     }
+    public function Postbaivietchiase($mabaiviet,$manguoichiase,$manhomchiase){
+        
+            $baivietchiase = new bai_viet_chia_se();
+            $baivietchiase->ma_nguoi_chia_se        = $manguoichiase;    
+            $baivietchiase->ma_bai_viet             = $mabaiviet;
+            $baivietchiase->ma_nhom_chia_se         = $manhomchiase; 
+            $baivietchiase->trang_thai              = "1";
+            $baivietchiase->save();
+        
+        
+    }
+
+
+
+
     public function postfilenopbaithanhvien(Request $rql){
        // return "ok route";
         // ma_bai_viet

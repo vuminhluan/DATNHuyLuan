@@ -193,7 +193,7 @@
                         <strong><i class="fa fa-arrows" aria-hidden="true"></i>&nbsp;Giới thiệu nhóm&nbsp;<i id="icon-div-content-gioi-thieu-nhom-caidat" class="fa fa-plus-square-o" aria-hidden="true"></i><i id="iconhidegioithieunhom" style="display: none;" class= "fa fa-minus-square-o" aria-hidden="true"></i></strong>
                         </div>
                         <div id="div-content-gioi-thieu-nhom-caidat" style="display: none;" class="divomnoidungsuacaidat">
-                          <div style="height: 36px; width: 100%;">
+                          <div style="height: 120px; width: 100%;">
                           <div style="width: 560px;height: auto;border: solid 1px #f9f9f9;">
                              <textarea id="txtaragioithieunhom" style="border: none;resize: none;" rows="4" cols="50">{{$caidatnhom[0]->gioi_thieu_nhom}}</textarea>
                            </div>
@@ -205,12 +205,30 @@
                         </div>
                         </div>
                     </div>
-  {{--                   <div>
-                        <div onclick="showhidediv('div-content-giai-tan-nhom-caidat','1'),showhidediv('icon-div-content-giai-tan-nhom-caidat','0'),showhidediv('iconhidegiaitannhom','0')" style="width: 100%;height: 30px;">
-                        <strong><i class="fa fa-arrows" aria-hidden="true"></i>&nbsp;Giải tán nhóm&nbsp;<i id="icon-div-content-giai-tan-nhom-caidat" class="fa fa-plus-square-o" aria-hidden="true"></i><i id="iconhidegiaitannhom" style="display: none;" class= "fa fa-minus-square-o" aria-hidden="true"></i></strong>
+{{--                     <div>
+                        <div onclick="showhidediv('div-content-nhomcha-caidat','1'),showhidediv('icon-div-content-nhomcha-caidat','0'),showhidediv('iconhidenhomcha','0')" style="width: 100%;height: 30px;">
+                        <strong><i class="fa fa-arrows" aria-hidden="true"></i>&nbsp;Nhóm cha&nbsp;<i id="icon-div-content-nhomcha-caidat" class="fa fa-plus-square-o" aria-hidden="true"></i><i id="iconhidenhomcha" style="display: none;" class= "fa fa-minus-square-o" aria-hidden="true"></i></strong>
                         </div>
 
-                        <div id="div-content-giai-tan-nhom-caidat" style="display: none;">
+                        <div id="div-content-nhomcha-caidat" style="display: none;">
+                          <div style="height: 36px; width: 100%;">
+                          <div style="width: 90%;float: left;height: 36px;border: solid 1px #f9f9f9;">
+                              <input style="border:none;width: 100%;height: 36px;" type="text" name="" value="" placeholder="">
+                           </div>
+                          <div style="width: 10%;float: left; height: 36px;">
+                            <div style="cursor: pointer;width: 100%;height: 36px;padding: 7px;">
+                               <center>Lưu</center>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div onclick="showhidediv('div-content-nhomcon-caidat','1'),showhidediv('icon-div-content-nhomcon-caidat','0'),showhidediv('iconhidenhomcon','0')" style="width: 100%;height: 30px;">
+                        <strong><i class="fa fa-arrows" aria-hidden="true"></i>&nbsp;Nhóm con&nbsp;<i id="icon-div-content-nhomcon-caidat" class="fa fa-plus-square-o" aria-hidden="true"></i><i id="iconhidenhomcon" style="display: none;" class= "fa fa-minus-square-o" aria-hidden="true"></i></strong>
+                        </div>
+
+                        <div id="div-content-nhomcon-caidat" style="display: none;">
                           <div style="height: 36px; width: 100%;">
                           <div style="width: 90%;float: left;height: 36px;border: solid 1px #f9f9f9;">
                               <input style="border:none;width: 100%;height: 36px;" type="text" name="" value="" placeholder="">

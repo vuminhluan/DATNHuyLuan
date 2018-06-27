@@ -7,8 +7,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/lu/baiviet/baiviet.css') }}">
 @endsection
 @section('javascript')
-{{-- <script src="{{ asset('js/jslu/baiviet/dangbaiviet.js') }}" type="text/javascript" charset="utf-8">
-</script> --}}
+
 @endsection
 
 
@@ -34,7 +33,76 @@
 					{{-- <div id="iptextdangbaiviet" contenteditable="true">	</div> --}}
 					{{-- <textarea id="iptextdangbaiviet" rows="5" cols="50"></textarea> --}}
 				</div>
+				<div style="height: 38px;background-color: transparent;width:100%;padding-left: 3px;padding-right: 3px;">
+					<dl class="dropdown"> 
+					  
+					    <dt>
+					    <div href="#">
+					      <span class="hida"><i class="fa fa-plus" aria-hidden="true"></i> Thêm người nhận</span>  
+					       {{-- <input id="lstnhomsharebv" type="hidden" name="" value="">   --}}
+					      <p class="multiSel"></p>  
+					    </div>
+					    </dt>
+					  
+					    <dd>
+					        <div class="mutliSelect">
+					            <ul>
+					            	@for ($i = 0; $i <count($listnhomtkquanly) ; $i++)
+					            	@if ($listnhomtkquanly[$i]->ma_nhom!=$t)
+										<li><input type="checkbox" value="{{$listnhomtkquanly[$i]->ten_nhom.','.$listnhomtkquanly[$i]->ma_nhom}}" />{{$listnhomtkquanly[$i]->ten_nhom}}</li>
+					            	@endif
+						                
+					            	@endfor
 
+					            </ul>
+					        </div>
+					    </dd>
+
+					</dl>
+				</div>
+					<script>
+						
+					$(".dropdown dt div").on('click', function() {
+					  $(".dropdown dd ul").slideToggle('fast');
+					});
+
+					$(".dropdown dd ul li div").on('click', function() {
+					  $(".dropdown dd ul").hide();
+					});
+
+					function getSelectedValue(id) {
+					  return $("#" + id).find("dt div span.value").html();
+					}
+
+					$(document).bind('click', function(e) {
+					  var $clicked = $(e.target);
+					  if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+					});
+					  var lstmanhomsharebv = [];
+					$('.mutliSelect input[type="checkbox"]').on('click', function() {
+
+					  var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+					    title = $(this).val()+ ",";//.substring(0,)+title.indexOf('x') 
+					    var nn = title.indexOf(",");
+					    var tennhom=title.substring(0,nn+1);
+					    
+					    var ma_nhom=title.substring(nn+1,title.length-1);
+					  if ($(this).is(':checked')) {
+					    var html = '<span title="' + title + '">' + tennhom + '</span>';
+					    	lstmanhomsharebv.push(ma_nhom);
+
+					    $('.multiSel').append(html);
+					    $(".hida").hide();
+					  } else {
+					  	var indexx = lstmanhomsharebv.indexOf(ma_nhom);
+						if (indexx !== -1) lstmanhomsharebv.splice(indexx, 1);
+					    $('span[title="' + title + '"]').remove();
+					    var ret = $(".hida");
+					    $('.dropdown dt div').append(ret);
+
+					  }
+					});
+					</script>
 				<div id="divanhxemtruocduocthemvao" style="width: 100%;height: auto;display: none;margin-top: 20px;">
 					<div style="width: 50%;height: auto;float: left;padding: 2px;padding-left: 13%;">
 							<img id="blah" src="#" alt="your image" style="width: 77px;height: 77px;border-radius: 3px;" />
@@ -89,7 +157,7 @@
 						</label>
 						<div class="optionlevel2" id="optionthongbao">
 							
-							Ngày ẩn:<br><input class="datetimepickker"  type="date" id="ipdtngayanbaiviet" name="" value="" placeholder="">
+							Ngày ẩn:<br><input class="datetimepickker checkthuykien"  type="date" id="ipdtngayanbaiviet" name="" value="" placeholder="">
 							<br>
 							{{-- clickoption("optionthongbao") --}}
 						</div>
@@ -102,7 +170,7 @@
 						<div class="optionlevel2" id="optionthubai">
 {{-- 							Từ ngày:<br><input class="datetimepickker"  id="ngaybatdauthubaiviet"  type="date" name="" value="" placeholder="">
 							<br> --}}
-							Đến ngày:<br><input class="datetimepickker" id="ngayhethanthubaiviet" type="date" name="" value="" placeholder="">
+							Đến ngày:<br><input class="datetimepickker checkthuykien" id="ngayhethanthubaiviet" type="date" name="" value="" placeholder="">
 						</div>
 					</div>
 					<div class="divoptionradio" >
@@ -117,7 +185,7 @@
 {{-- 							Từ ngày:
 							<input class="datetimepickker"  type="date" name="" value="" placeholder=""> --}}
 							Đến ngày:
-								<br><input class="datetimepickker" id="ngayhethankhaosat"  type="date" name="" value="" placeholder="">
+								<br><input class="datetimepickker checkthuykien" id="ngayhethankhaosat"  type="date" name="" value="" placeholder="">
 							<br>
 						</div>
 					</div>

@@ -418,11 +418,13 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
                                                 ma_loai_bai_viet: valueselectedoption,
                                                 thoi_gian_an_bai_viet: Thoigiananbaiviet,
                                                 nguoi_sua: $('#session-ma-tk').val(),
-                                                trang_thai:trangthaibaiviet
+                                                trang_thai:trangthaibaiviet,
+                                                lstmanhomsharebv:lstmanhomsharebv
+
                                             }
                                             }).done(function(data) {
 
-
+                                                console.log(lstmanhomsharebv);
                                               
 
 
@@ -526,6 +528,13 @@ function postthongbaobaivietmoi(loaithongbao,noidungthongbao,trangthai,ma_noi_du
  }
 
 
+
+
+/*
+  Dropdown with Multiple checkbox select with jQuery - May 27, 2013
+  (c) 2013 @ElmahdiMahmoud
+  license: https://www.opensource.org/licenses/mit-license.php
+*/
 
 
 

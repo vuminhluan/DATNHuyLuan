@@ -24,9 +24,14 @@ class Nhom extends Controller
          $matk =  Auth::user()->ma_tai_khoan;
        // $machucvu = DB::table('thanh_vien_nhom')->select("ma_chuc_vu")->where([["ma_nhom",$idnhom],["ma_tai_khoan",$matk],["trang_thai","1"]
        //                                                                          ])->get();
+
         $caidatnhom       = DB::table('cai_dat_nhom')
                                 ->where("ma_nhom",$idnhom)
                                 ->get();
+
+        $listnhomtkquanly = $this->getlistnhomtkquanly($matk);
+                                
+
         $machucvu         = DB::table('chuc_vu_cua_thanh_vien_trong_nhom')
                                 ->join('chuc_vu_trong_nhom','chuc_vu_cua_thanh_vien_trong_nhom.ma_chuc_vu','=','chuc_vu_trong_nhom.ma_chuc_vu')
                                 ->select('chuc_vu_cua_thanh_vien_trong_nhom.*','chuc_vu_trong_nhom.*')
@@ -44,6 +49,7 @@ class Nhom extends Controller
                                 ->where([["ma_chu_bai_viet",$idnhom],["trang_thai","1"]])
                                 ->get()[0]->soluongbaivietcuanhom;
         $listbaiviet      = DB::table('bai_viet')
+                                
                                 ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
                                 ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
                                 ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
@@ -57,7 +63,15 @@ class Nhom extends Controller
                                                                // ->paginate(5)
                                 // ->setPath("baiviet/trang");
         //$soluongbaiviet =10; //,"s"=>$soluongbaiviet
-        return view("nhom.indexnhom",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thongtinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom]);
+        return view("nhom.indexnhom",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thongtinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom,"listnhomtkquanly"=>$listnhomtkquanly]);
+    }
+    public function getlistnhomtkquanly($matk)
+    {
+        return DB::table('nhom')
+                                ->join('chuc_vu_cua_thanh_vien_trong_nhom','chuc_vu_cua_thanh_vien_trong_nhom.ma_nhom','=','nhom.ma_nhom')
+                                ->select('nhom.*')
+                                ->where([['chuc_vu_cua_thanh_vien_trong_nhom.ma_chuc_vu','CV02'],['chuc_vu_cua_thanh_vien_trong_nhom.ma_tai_khoan',$matk]])
+                                ->get();
     }
 
     // public function getcaidatnhom(Request $rql){
