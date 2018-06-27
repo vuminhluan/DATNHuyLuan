@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Quên mật khẩu</title>
+	<link rel='icon' href='{{ asset('pictures/logo/favicon.png') }}' type='image/png'/ >
 	<link rel="stylesheet" type="text/css" href="{{asset('css/luan/settings/forget-password.css')}}">
   <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
 </head>
@@ -11,7 +12,7 @@
   <div class="topnavroot">
     <div class="topnav" >
       <ul class="navtop-menu">
-        <li><a href="{{route('trangchu')}}">Logo here</a></li>
+        <li><a href="{{route('trangchu')}}"><img style="vertical-align: middle;" width="30px;" height="25px" src="{{ asset('pictures/logo/favicon.png') }}" alt="logo LL"></a></li>
         <li><a href="#/">Quên mật khẩu</a></li>
       </ul>
     </div>

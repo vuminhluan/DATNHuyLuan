@@ -67,31 +67,35 @@
 
 	<script>
 		// $(document).scroll(function() {
-  //   // alert("vao r");
-  //   if(parseFloat($(document).scrollTop())/parseFloat($(document).height())>0.4){
-  //   	if ($("#div-hi-soluongbaiviethientainhom").val()<soluongbaivietdalay+1) {return;}
-  //   	else{
-  //   		var blockdongbo = true;
-  //   		if (blockdongbo) {
-  //   			blockdongbo=!blockdongbo;
-  //   			soluongbaivietdalay+=4;
-  //   			$.ajax({
-  //   				url:link_host+'/ajax/getbaivietphantrangne',
-  //   				type:'GET',
-  //   				data:{
-  //   					ma_nhom:$("#div-hi-chu-bai-viet-ma-nhom").val(),
-  //   					soluongbaivietdalay:soluongbaivietdalay,
-  //   					soluongbaivietcanlay:soluongbaivietcanlay
-  //   				}
-  //   			}).done(function(data){
 
-  //          // console.log(data);
-  //          var divpost = document.createElement("div");
-  //          divpost.innerHTML=data;
-  //          document.getElementById('divnoidungcon').appendChild(divpost); 
-  //        })}}}
-  //   		})
+		// 	if(parseFloat($(document).scrollTop())/parseFloat($(document).height())>0.4) {
+		// 		if ($("#div-hi-soluongbaiviethientainhom").val()<soluongbaivietdalay+1) {
+		// 			return;
+		// 		}
+		// 		else {
+		// 			var blockdongbo = true;
+		// 			if (blockdongbo) {
+		// 				blockdongbo=!blockdongbo;
+		// 				soluongbaivietdalay+=4;
+		// 				$.ajax({
+		// 					url:link_host+'/ajax/getbaivietphantrangne',
+		// 					type:'GET',
+		// 					data:{
+		// 						ma_nhom:$("#div-hi-chu-bai-viet-ma-nhom").val(),
+		// 						soluongbaivietdalay:soluongbaivietdalay,
+		// 						soluongbaivietcanlay:soluongbaivietcanlay
+		// 					}
+		// 				}).done(function(data) {
+							
+		// 					var divpost = document.createElement("div");
+		// 					divpost.innerHTML=data;
+		// 					document.getElementById('divnoidungcon').appendChild(divpost); 
+		// 				});
+		// 			}
+		// 		}
+		// 	}
+		// })
 
-    	</script>	
+	</script>	
 
-    	@endsection
+	@endsection

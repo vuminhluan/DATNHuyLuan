@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Liên hệ chúng tôi</title>
+	<link rel='icon' href='{{ asset('pictures/logo/favicon.png') }}' type='image/png'/ >
   <link rel="stylesheet" href="{{asset('css/luan/contact.css')}}">
 	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
 </head>
@@ -19,12 +20,12 @@
 		</div>
 	</div>
 
-	<div class="background"></div>
+	{{-- <div class="background"></div> --}}
 
 	<div class="topnavroot">
     <div class="topnav wrapper-main">
       <ul class="navtop-menu">
-        <li><a href="{{ route('trangchu') }}">Logo here</a></li>
+        <li><a href="{{ route('trangchu') }}"><img style="vertical-align: middle;" width="30px;" height="25px" src="{{ asset('pictures/logo/favicon.png') }}" alt="logo LL"></a></li>
         <li><a href="{{ route('lienhe') }}">Liên hệ</a></li>
       </ul>
     </div>
@@ -54,20 +55,19 @@
 							<div class="info-icon"><i class="fa fa-envelope"></i></div>
 
 							<div>
-								<p>luan@support.com</p>
-								<p>huy@support.com</p>
+								<p>datn.ckc@gmail.com</p>
 							</div>
 						</li>
 					</ul>
 				</div>
-				<div class="social-button">
+				{{-- <div class="social-button">
 					<ul>
 						<li><a href="#/"><i class="fa fa-facebook"></i></a></li>
 						<li><a href="#/"><i class="fa fa-instagram"></i></a></li>
 						<li><a href="#/"><i class="fa fa-twitter"></i></a></li>
 						<li><a href="#/"><i class="fa fa-google-plus"></i></a></li>
 					</ul>
-				</div>
+				</div> --}}
 	    </div>
 
 		{{-- - - - - - - - - - - - - - - - - - - - - - - - - - --}}

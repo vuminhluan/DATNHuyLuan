@@ -4,7 +4,7 @@
             <tr>
                 <td class="content-cell" align="center">
                     {{-- {{ Illuminate\Mail\Markdown::parse($slot) }} --}}
-                    	&copy; 2018 DATN Lu Luân
+                    	&copy; 2018 LL
                 </td>
             </tr>
         </table>

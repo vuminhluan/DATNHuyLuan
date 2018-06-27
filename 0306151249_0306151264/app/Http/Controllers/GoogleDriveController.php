@@ -90,9 +90,9 @@ class GoogleDriveController extends Controller
 		$folder_id   = $root_id;
 
 		if($this->themTepGoogleDrive($client_file, $root_id, $folder_id)['success']) {
-			return redirect()->back()->with('slidemessage', 'Tai tep thanh cong');
+			return redirect()->back()->with('slidemessage', 'Tải tệp lên Google Drive thành công');
 		} else {
-			return redirect()->back()->with('slidemessage', 'Tai tep that bai, file > 50 MB');
+			return redirect()->back()->with('slidemessage', 'Tải tệp lên Google Drive thất bại, tệp có kích thước lớn hơn > 50 MB');
 		}
 
 	}

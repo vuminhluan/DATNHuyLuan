@@ -39,5 +39,5 @@ Lưu ý: Email chỉ có hiệu lực đến 23:59:59 ngày {{date("d-m-Y")}}
 
 Cảm ơn,<br>
 {{-- {{ config('app.name') }} --}}
-Lu-Luân
+LL
 @endcomponent

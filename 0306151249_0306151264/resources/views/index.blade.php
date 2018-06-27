@@ -84,7 +84,7 @@
 									<span class="help-mark">&#63;
 
 										<span class="help-mark-text">
-											Tên tài khoản hoặc email không được để trống, có độ dài từ 6 tới 20 kí tự gồm các chữ số và chữ cái in thường không dấu.
+											Email phải đúng định dạng và không thể để trống.
 										</span>
 
 									</span>
@@ -98,7 +98,7 @@
 									<span class="help-mark">&#63;
 
 										<span class="help-mark-text">
-											Tên tài khoản hoặc email không được để trống, có độ dài từ 6 tới 20 kí tự gồm các chữ số và chữ cái in thường không dấu.
+											Mật khẩu không thể để trống có độ dài từ 6 - 60 kí tự, chỉ bao gồm chữ cái in thường không dấu, chữ số và dấu gạch dưới
 										</span>
 
 									</span>
@@ -138,7 +138,7 @@
 								<span class="help-mark">&#63;
 
 									<span class="help-mark-text">
-										Tên tài khoản có độ dài tối thiểu 6 kí tự, chỉ chứa các chữ cái in thường không dấu, các chữ số và dấu gạch dưới " _ ". <br>
+										Tên tài khoản không thể để trống, có độ dài từ 6- 32 kí tự, chỉ chứa các chữ cái in thường không dấu, các chữ số và dấu gạch dưới. <br>
 										Email phải hợp lệ.
 									</span>
 
@@ -151,7 +151,7 @@
 							<label for="sign-in-password">Mật khẩu
 								<span class="help-mark">&#63;
 									<span class="help-mark-text">
-										Mật khẩu không được để trống, có độ dài từ 6 tới 30 kí tự gồm các chữ số các chữ cái in thường không dấu và dấu gạch dưới " _ ".
+										Mật khẩu không thể để trống, có độ dài từ 6 - 60 kí tự, chỉ bao gồm chữ cái in thường không dấu, chữ số và dấu gạch dưới.
 									</span>
 
 								</span>

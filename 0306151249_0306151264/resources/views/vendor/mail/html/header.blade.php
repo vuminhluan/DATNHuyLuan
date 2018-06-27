@@ -5,7 +5,7 @@
         </a> --}}
         <a href="javascript:void(0)">
             {{-- {{ $slot }} --}}
-            ĐATN Lu Luân
+            LL - Let's learn together
         </a>
     </td>
 </tr>

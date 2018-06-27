@@ -26,15 +26,14 @@ class DangKiController extends Controller
       'email.required'    => 'Email không thể để trống.'
     ];
 
-    $taikhoan_tentaikhoan = TaiKhoan::where('ten_tai_khoan', $req->username)->first();
-    if($taikhoan_tentaikhoan && $taikhoan_tentaikhoan->trang_thai != 4) {
+    $taikhoan_tentaikhoan = TaiKhoan::where('ten_tai_khoan', $req->username)->where('trang_thai', '!=', 4)->first();
+    if($taikhoan_tentaikhoan) {
       $username_rules.='|unique:tai_khoan,ten_tai_khoan';
       $messages['username.unique'] = 'Tên tài khoản đã có người sử dụng.';
-      // return $username_rules;
     }
 
-    $taikhoan_email = TaiKhoan::where('email', $req->email)->first();
-    if($taikhoan_email && $taikhoan_email->trang_thai != 4) {
+    $taikhoan_email = TaiKhoan::where('email', $req->email)->where('trang_thai', '!=', 4)->first();
+    if($taikhoan_email) {
       $email_rules.='|unique:tai_khoan,email';
       $messages ['email.unique'] = 'Email đã có người sử dụng.';
     }
@@ -64,7 +63,7 @@ class DangKiController extends Controller
     // Lưu thông tin người dùng (Họ tên, ảnh đại diện mặc định, ảnh bìa mặc định,...)
     $this->themThongTinNguoiDung($req->username, $ma_tai_khoan, $req->lastname, $req->firstname, $now);
 
-    Auth::attempt(['ten_tai_khoan' => $req->username, 'password' => $req->password]);
+    Auth::attempt(['ten_tai_khoan' => $req->username, 'password' => $req->password, 'hoat_dong' => 1]);
 
     //Gửi tin nhắn kích hoạt tới email
     Mail::send(new MailKichHoat());

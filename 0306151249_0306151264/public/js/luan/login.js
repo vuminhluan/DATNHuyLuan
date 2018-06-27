@@ -122,11 +122,27 @@ function changeTab(n) {
 
       $('[name="sign-up-lastname"]').rules('add', {
         // regex: "^([A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,10}((\\s[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,15})?)+$)"
-        regex: myregex['tiengviet']
+        regex: myregex['tiengviet'],
+        maxlength: 30,
+        minlength: 2,
+        required: true,
+        messages: {
+          minlength: "Họ và tên đệm dài tối thiểu {0} kí tự",
+          maxlength: "Họ và tên đệm dài tối đa {0} kí tự",
+          required: "Họ và tên đệm không thể để trống"
+        }
       });
       $('[name="sign-up-firstname"]').rules('add', {
         // regex: "^([A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,10}((\\s[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,15})?)+$)"
-        regex: myregex['tiengviet']
+        regex: myregex['tiengviet'],
+        maxlength: 20,
+        minlength: 2,
+        required: true,
+        messages: {
+          minlength: "Tên dài tối thiểu {0} kí tự",
+          maxlength: "Tên dài tối đa {0} kí tự",
+          required: "Tên không thể để trống"
+        }
       });
 
       // $('[name="sign-up-username"]').rules('remove');
@@ -145,21 +161,37 @@ function changeTab(n) {
 
       $('[name="sign-up-username"]').rules('add', {
         // regex: "^[\\w]{6,}$"
-        regex : myregex['ten_taikhoan']
+        regex : myregex['ten_taikhoan'],
+        required: true,
+        minlength: 6,
+        maxlength: 32,
+        messages: {
+          required: "Tên tài khoản không thể để trống",
+          minlength: "Tài khoản có độ dài tối thiểu {0} kí tự",
+          maxlength: "Tài khoản có độ dài tối đa {0} kí tự",
+        }
       });
 
       $('[name="sign-up-email"]').rules("add", {
         required: true,
         email: true,
         messages: {
-          required: 'Dữ liệu không hợp lệ',
+          required: 'Email không thể để trống',
           email: 'Dữ liệu không hợp lệ'
         }
       });
 
       $('[name="sign-up-password"]').rules('add', {
         // regex: "^[a-z0-9_]{6,30}$"
-        regex : myregex['matkhau']
+        regex : myregex['matkhau'],
+        required: true,
+        minlength: 6,
+        maxlength: 60,
+        messages: {
+          required: "Mật khẩu không thể để trống",
+          minlength: "Mật khẩu có độ dài tối thiểu {0} kí tự",
+          maxlength: "Mật khẩu có độ dài tối đa {0} kí tự",
+        }
       });
 
       // $('[name="sign-up-lastname"]').rules('remove');

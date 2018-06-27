@@ -37,5 +37,5 @@ Cập nhật email mới
 
 Cảm ơn,<br>
 {{-- {{ config('app.name') }} --}}
-Lu-Luân
+LL
 @endcomponent

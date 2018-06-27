@@ -15,13 +15,13 @@
 
 	<div class="three-col-layout">
 		<div class="sidebar-col">
-			<button class="btn btn-primary">A</button>	
+			@yield('sidebar-col-left')
 		</div>
 		<div class="middle-col">
-			middle
+			@yield('middle-col')
 		</div>
 		<div class="sidebar-col">
-			sidebar2
+			@yield('sidebar-col-right')
 		</div>
 	</div>
 

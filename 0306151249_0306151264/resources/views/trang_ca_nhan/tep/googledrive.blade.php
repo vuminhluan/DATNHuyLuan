@@ -29,6 +29,7 @@
 		</div>
 	@endif
 </div>
+<h2 style="text-align: center;">Google Drive</h2>
 <ul class="file-list">
 
 	<li>

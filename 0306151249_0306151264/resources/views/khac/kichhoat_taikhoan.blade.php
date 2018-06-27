@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Login</title>
+	<title>Kích hoạt tài khoản</title>
+	<link rel='icon' href='{{ asset('pictures/logo/favicon.png') }}' type='image/png'/ >
 	<link rel="stylesheet" type="text/css" href="{{asset('css/luan/settings/reset-password.css')}}">
   {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
 </head>
@@ -11,8 +12,8 @@
   <div class="topnavroot">
     <div class="topnav" >
       <ul class="navtop-menu">
-        <li><a href="#/">Logo here</a></li>
-        <li><a href="#/">Kích hoạt</a></li>
+        <li><a href="#/"><img style="vertical-align: middle;" width="30px;" height="25px" src="{{ asset('pictures/logo/favicon.png') }}" alt="logo LL"></a></li>
+        <li><a href="#/">Kích hoạt tài khoản</a></li>
       </ul>
     </div>
   </div>
