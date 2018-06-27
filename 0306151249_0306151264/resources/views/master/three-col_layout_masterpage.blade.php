@@ -26,7 +26,9 @@
 	</div>
 
 
-
+	<script type="text/javascript" src="{{asset('js/jquery/jquery3.3.1.js')}}"></script>
+  <script src="{{asset('js/jquery/jquery-validate.min.js')}}" charset="utf-8"></script>
+  <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
 	<script src="{{ asset('js/globaljs/varglobal.js') }}"></script>
 	@yield('js')
 </body>

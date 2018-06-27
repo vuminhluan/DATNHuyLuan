@@ -54,7 +54,7 @@
                 <th>Tình trạng</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="for-search">
               @csrf
               @if ($tatca_phanhoi)
                 @foreach ($tatca_phanhoi as $phanhoi)
@@ -66,7 +66,7 @@
                   <td>
                     <a href="view-contact.html" class="detail-message" data-toggle="modal" data-target=".show-message-modal" id="{{$phanhoi->ma}}">#{{$phanhoi->ma}}</a>
                   </td>
-                  <td class="hidden-xs">{{$phanhoi->ho_va_ten}}</td>
+                  <td class="hidden-xs td-search">{{$phanhoi->ho_va_ten}}</td>
                   <td class="hidden-sm hidden-xs">{{$phanhoi->email}}</td>
                   <td class="hidden-sm hidden-xs">{{date_format($phanhoi->thoi_gian_tao, "d/m/Y H:i:s")}}</td>
                   <td>

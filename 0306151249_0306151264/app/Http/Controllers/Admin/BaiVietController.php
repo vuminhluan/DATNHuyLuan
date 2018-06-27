@@ -69,11 +69,6 @@ class BaiVietController extends Controller
 
      return view('admin.baiviet.chitiet')->with(['lstbaiviet'=>$account_posts]);
 
-
-
-
-
-
   }
 
 }

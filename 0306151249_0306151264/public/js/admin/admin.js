@@ -1,6 +1,16 @@
 
 
 $(document).ready(function() {
+
+  // Filter - table - search
+  $("#search").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".for-search tr").filter(function() {
+      // $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      $(this).toggle($(this).find('td.td-search').text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+  // End Filter - table- search
   $('#task option:first-child').prop('selected', true);
   $('#change-filename-box').hide();
   $('#change-filename-box input').val('untitled');

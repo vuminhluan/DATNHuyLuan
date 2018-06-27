@@ -31,10 +31,10 @@
               </select>
             </div>
             
-            {{-- <div class="btn-group pull-right hidden-xs" id="div-search">
+            <div class="btn-group pull-right hidden-xs" id="div-search">
               <input id="search" name="search" type="text" value="" class="form-control" placeholder="Tên người gửi">
               <span class="fa fa-search"></span>
-            </div> --}}
+            </div>
           </div>
           @if (count($tatca_baocao) <= 0)
             <p>Chưa có báo cáo nào</p>
@@ -50,7 +50,7 @@
                 <th>Tình trạng</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="for-search">
               @csrf
               @if ($tatca_baocao)
                 @foreach ($tatca_baocao as $baocao)
@@ -63,7 +63,7 @@
                     <a href="view-contact.html" class="detail-message" data-toggle="modal" data-target=".show-message-modal" id="id">#{{$baocao->ma_bao_cao}}</a>
                   </td>
                   <td class="hidden-sm hidden-xs">Báo cáo {{$baocao->belongsToLoaiBaoCao->ten_loai_bao_cao}}</td>
-                  <td class="hidden-xs">{{$baocao->belongsToTaiKhoan->hasNguoiDung->ho_ten_lot." ".$baocao->belongsToTaiKhoan->hasNguoiDung->ten}}</td>
+                  <td class="hidden-xs td-search">{{$baocao->belongsToTaiKhoan->hasNguoiDung->ho_ten_lot." ".$baocao->belongsToTaiKhoan->hasNguoiDung->ten}}</td>
                   
                   <td class="hidden-sm hidden-xs">{{date_format($baocao->thoi_gian_gui_bao_cao, "d/m/Y H:i:s")}}</td>
                   <td>

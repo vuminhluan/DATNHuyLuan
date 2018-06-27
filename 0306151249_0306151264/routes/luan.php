@@ -262,7 +262,7 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 	// Nhóm
 	Route::prefix('nhom')->group(function() {
 		Route::get('/', 'Admin\NhomController@getIndex')->name('admin.nhom');
-		// Route::get('/xemchitiet/{post_id}', 'Admin\NhomController@getXemChiTietBaiViet')->name('admin.baiviet.xem');
+		Route::get('/xemchitiet/{group_id}', 'Admin\NhomController@getXemChiTietNhom')->name('admin.nhom.xem');
 		Route::post('/capnhat', 'Admin\NhomController@postCapNhat')->name('admin.nhom.capnhat.post');
 		Route::get('/timkiem/{tukhoa}', 'Admin\NhomController@getTimKiemTheoTenNhom')->name('admin.nhom.timkiem');
 	});

@@ -24,7 +24,7 @@
               </select>
             </div>
             <div class="btn-group pull-right hidden-xs" id="div-search">
-              <input id="search" name="search" type="text" value="" class="form-control" placeholder="Tên tài khoản">
+              <input id="search" name="search" type="text" value="" class="form-control" placeholder="Tên nhóm">
               <span class="fa fa-search"></span>
             </div>
           </div>
@@ -42,18 +42,18 @@
                 <th>Tình trạng</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="for-search">
               @foreach ($tatca_nhom as $nhom)
               <tr>
                 <td>
                   <input name="id[]" type="checkbox" value="{{$nhom->ma_nhom}}">
                 </td>
                 <td style="text-align: left;">
-                  <a href="javascript:void(0)" class="show-post-detail-button" id="id">
+                  <a href="{{ route('admin.nhom.xem', [$nhom->ma_nhom]) }}" class="show-post-detail-button" id="id">
                     #{{$nhom->ma_nhom}}
                   </a>
                 </td>
-                <td>{{$nhom->ten_nhom}}</td>
+                <td class="td-search">{{$nhom->ten_nhom}}</td>
                 <td class="hidden-xs"><a href="javascript:void(0)">{{'@'.$nhom->belongsToTaiKhoan->ten_tai_khoan}}</a></td>
                 <td style="text-align: left;" class="hidden-xs">{!! str_limit($nhom->gioi_thieu_nhom, '25') !!}</td>
                 {{-- {{date_format($baiviet->thoi_gian_dang, 'd/m/Y H:i:s')}} --}}
@@ -97,14 +97,8 @@
 @section('javascript')
 
   {{-- <script>
-    $(document).ready(function() {
-      $('.show-post-detail-button').click(function(event) {
-        
-        var postId = $(this).attr('id');
-        window.location.href= link_host+"/admin/baiviet/xemchitiet/"+postId;
-
-
-      });
+    $(document).ready(function(){
+      
     });
   </script> --}}
 @endsection
