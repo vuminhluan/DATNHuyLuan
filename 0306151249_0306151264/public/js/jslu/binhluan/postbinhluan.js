@@ -278,7 +278,7 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt,
                                                                 })
                                                                 ull.appendChild(phecanlove1);
                                                            }  
-                                                  divtuychonbinhluancap1.appendChild(ull);
+                                                  // divtuychonbinhluancap1.appendChild(ull);
                                                   //  document.getElementById("themluachonbinhluan"+mabinhluancap1)
                                                 divcon13.appendChild(divtuychonbinhluancap1);
 
@@ -444,7 +444,7 @@ function taoramotrepcmt(noidung,mabinhluancap1,duongdananh,tennguoicmt,mabinhlua
                                                                 phecanlove1.addEventListener("click",function(){})
                                                                 ull.appendChild(phecanlove1);
                                                            }                                                        
-                                                  divtuychonbinhluancap1.appendChild(ull);
+                                                  // divtuychonbinhluancap1.appendChild(ull);
                                                   //  document.getElementById("themluachonbinhluan"+mabinhluancap1)
                                                 divcon13.appendChild(divtuychonbinhluancap1);                          
                   divcon13.myparammabl = mabinhluancap2;
