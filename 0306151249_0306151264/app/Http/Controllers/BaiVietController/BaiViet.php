@@ -40,9 +40,12 @@ class BaiViet extends Controller
     public function Postbaiviet(Request $request)
     {
          $this->PostbaivietT($request);
-        for ($i=0; $i <count($request->lstmanhomsharebv) ; $i++) { 	
-            $this->Postbaivietchiase( $this->GetMaBaiVietT(),$request->ma_nguoi_viet,$request->lstmanhomsharebv[$i]);
-        }
+         if ($request->lstmanhomsharebv!="") {
+            for ($i=0; $i <count($request->lstmanhomsharebv) ; $i++) {  
+                $this->Postbaivietchiase( $this->GetMaBaiVietT(),$request->ma_nguoi_viet,$request->lstmanhomsharebv[$i]);
+            }
+         }
+
 
     }
     public function Postbaivietchiase($mabaiviet,$manguoichiase,$manhomchiase){
@@ -312,11 +315,13 @@ class BaiViet extends Controller
         $soluongbaivietdalay = $rql->soluongbaivietkiemduyetdalay;
         $soluongbaivietcanlay = $rql->soluongbaivietkiemduyetcanlay;
                 $listbaiviet      = DB::table('bai_viet')
+                                ->join('bai_viet_chia_se','bai_viet_chia_se.ma_bai_viet','=','bai_viet.ma_bai_viet')
                                 ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
                                 ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
                                 ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
                                 ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet')//
                                 ->where([["bai_viet.ma_chu_bai_viet",$rql->ma_nhom],["bai_viet.trang_thai","2"]])
+                                ->orWhere([["bai_viet_chia_se.ma_nhom_chia_se",$rql->ma_nhom],["bai_viet.trang_thai","1"]])
                                 ->orderBy('bai_viet.ma_bai_viet','desc')
                                 ->offset($soluongbaivietdalay)
                                 ->limit($soluongbaivietcanlay)   

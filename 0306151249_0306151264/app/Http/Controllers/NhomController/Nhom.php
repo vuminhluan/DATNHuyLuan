@@ -17,6 +17,7 @@ use App\tep_duoc_nop;
 use App\ThuMucThuBai;
 use App\binh_luan_bai_viet;
 use App\binh_luan_cap_2;
+use App\bai_viet_chia_se;
 class Nhom extends Controller
 {
     public function loadnhom ($idnhom)
@@ -49,12 +50,13 @@ class Nhom extends Controller
                                 ->where([["ma_chu_bai_viet",$idnhom],["trang_thai","1"]])
                                 ->get()[0]->soluongbaivietcuanhom;
         $listbaiviet      = DB::table('bai_viet')
-                                
+                                ->join('bai_viet_chia_se','bai_viet_chia_se.ma_bai_viet','=','bai_viet.ma_bai_viet')
                                 ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
                                 ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
                                 ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
                                 ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet')//
                                 ->where([["bai_viet.ma_chu_bai_viet",$idnhom],["bai_viet.trang_thai","1"]])
+                                ->orWhere([["bai_viet_chia_se.ma_nhom_chia_se",$idnhom],["bai_viet.trang_thai","1"]])
                                 ->orderBy('bai_viet.ma_bai_viet','desc')
                                ->take(10)->get();
 // "lstykienbinhchon"=>$lstbinhchonykien

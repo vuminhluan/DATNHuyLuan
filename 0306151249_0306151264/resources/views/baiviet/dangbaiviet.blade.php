@@ -38,7 +38,7 @@
 					  
 					    <dt>
 					    <div href="#">
-					      <span class="hida"><i class="fa fa-plus" aria-hidden="true"></i> Thêm người nhận</span>  
+					      <span class="hida"><i class="fa fa-plus" aria-hidden="true"></i> Thêm nơi nhận</span>  
 					       {{-- <input id="lstnhomsharebv" type="hidden" name="" value="">   --}}
 					      <p class="multiSel"></p>  
 					    </div>
@@ -49,7 +49,9 @@
 					            <ul>
 					            	@for ($i = 0; $i <count($listnhomtkquanly) ; $i++)
 					            	@if ($listnhomtkquanly[$i]->ma_nhom!=$t)
-										<li><input type="checkbox" value="{{$listnhomtkquanly[$i]->ten_nhom.','.$listnhomtkquanly[$i]->ma_nhom}}" />{{$listnhomtkquanly[$i]->ten_nhom}}</li>
+										<li style="border-bottom: solid 1px #e4e6e8;">
+											<input type="checkbox" value="{{$listnhomtkquanly[$i]->ten_nhom.','.$listnhomtkquanly[$i]->ma_nhom}}" />{{$listnhomtkquanly[$i]->ten_nhom}}<br>{{'@'.$listnhomtkquanly[$i]->ma_nhom}}
+										</li>
 					            	@endif
 						                
 					            	@endfor

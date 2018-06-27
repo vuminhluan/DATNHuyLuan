@@ -544,9 +544,10 @@ a {
 }
 /*#4F6877*/
 .dropdown dt div {
-  background-color: #e4e6e8;
+  background-color: #e4e6e836;
   font-size: 15px;
   color: black;
+  font-weight: bold;
   display: inline-block;
   padding: 8px 20px 5px 10px;
   min-height: 38px;
@@ -565,21 +566,23 @@ a {
 }
 
 .dropdown dd ul {
-  background-color: #4F6877;
+  font-size: 15px;
+  background-color: #e9eafb;
   border: 0;
-  color: #fff;
+  color: black;
   display: none;
   left: 0px;
   padding: 2px 15px 2px 5px;
   position: absolute;
   top: 2px;
-  width: 558px;
+  width: 552px;
   list-style: none;
-  height: 113px;
+  height: 110px;
   overflow: auto;
   z-index: 1000;
   border-bottom-left-radius:3px;
   border-bottom-right-radius: 3px; 
+  padding-bottom: 5px;
 }
 
 .dropdown span.value {
