@@ -50,7 +50,7 @@ class Nhom extends Controller
                                 ->where([["ma_chu_bai_viet",$idnhom],["trang_thai","1"]])
                                 ->get()[0]->soluongbaivietcuanhom;
         $listbaiviet      = DB::table('bai_viet')
-                                ->join('bai_viet_chia_se','bai_viet_chia_se.ma_bai_viet','=','bai_viet.ma_bai_viet')
+                                ->leftJoin('bai_viet_chia_se','bai_viet_chia_se.ma_bai_viet','=','bai_viet.ma_bai_viet')
                                 ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
                                 ->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
                                 ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
