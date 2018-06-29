@@ -68,7 +68,7 @@ function reloadbinhluancantim(mabaiviet,maloaibaiviet,mabinhluan){
           // $('#div-content-all-cmt-'+mabaiviet).html(data);
             $("#div-content-all-cmt-"+mabaiviet).empty();
               for (var i = 0; i < data.length; i++) {
-                var noidungbinhluan = data[i].ho_ten_lot+' '+data[i].ten+': '+data[i].noi_dung_binh_luan;
+                var noidungbinhluan = '<strong>'+data[i].ho_ten_lot+' '+data[i].ten+': '+'</strong>'+data[i].noi_dung_binh_luan;
                 if (maloaibaiviet=="LBV004"||maloaibaiviet=="LBV003") {
                   if(data[i].ten_an_danh!=null){
                     noidungbinhluan = data[i].ten_an_danh+': '+data[i].noi_dung_binh_luan;}
@@ -127,14 +127,16 @@ function reloadbinhluan(mabaiviet,maloaibaiviet){
               url: link_host+'/ajax/getbinhluanne',
               type:'GET',
               data:{
-                ma_bai_viet:mabaiviet
+                ma_bai_viet:mabaiviet,
+                soluongbinhluan1dalay:0,
+                soluongbinhluan1canlay:5
               }
 
             }).done(function(data){
           // $('#div-content-all-cmt-'+mabaiviet).html(data);
             $("#div-content-all-cmt-"+mabaiviet).empty();
               for (var i = 0; i < data.length; i++) {
-                var noidungbinhluan = data[i].ho_ten_lot+' '+data[i].ten+': '+data[i].noi_dung_binh_luan;
+                var noidungbinhluan = '<strong>'+data[i].ho_ten_lot+' '+data[i].ten+': '+'</strong>'+data[i].noi_dung_binh_luan;
                 if (maloaibaiviet=="LBV004"||maloaibaiviet=="LBV003") {
                   if(data[i].ten_an_danh!=null){
                     noidungbinhluan = data[i].ten_an_danh+': '+data[i].noi_dung_binh_luan;}
@@ -153,6 +155,39 @@ function reloadbinhluan(mabaiviet,maloaibaiviet){
             })
 }
 
+function xemfullbinhluan(mabaiviet,maloaibaiviet,tubinhluan,soluongcanlay){
+              $.ajax(
+            {
+              url: link_host+'/ajax/getbinhluanne',
+              type:'GET',
+              data:{
+                ma_bai_viet:mabaiviet,
+                soluongbinhluan1dalay:tubinhluan,
+                soluongbinhluan1canlay:soluongcanlay
+              }
+
+            }).done(function(data){
+          // $('#div-content-all-cmt-'+mabaiviet).html(data);
+            $("#div-content-all-cmt-"+mabaiviet).empty();
+              for (var i = 0; i < data.length; i++) {
+                var noidungbinhluan = '<strong>'+data[i].ho_ten_lot+' '+data[i].ten+': '+'</strong>'+data[i].noi_dung_binh_luan;
+                if (maloaibaiviet=="LBV004"||maloaibaiviet=="LBV003") {
+                  if(data[i].ten_an_danh!=null){
+                    noidungbinhluan = data[i].ten_an_danh+': '+data[i].noi_dung_binh_luan;}
+                  else{
+                    noidungbinhluan = 'Người nào đó'+': '+data[i].noi_dung_binh_luan;}
+                }
+                  taoramotcmt(noidungbinhluan,
+                              data[i].ma_binh_luan,
+                              data[i].anh_dai_dien,
+                              mabaiviet,
+                              data[i].ma_tai_khoan,
+                              maloaibaiviet,"0"
+                              );
+              }
+
+            })
+}
 
 function reloadlstcmtrep(prl,maloaibaiviet){
           $.ajax({
@@ -269,7 +304,7 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt,
                                                                   // createboxhoilydotocao("LBC04","NNBC2",$("#session-ma-tk").val(),mabinhluancap1,$("#div-hi-chu-bai-viet-ma-nhom").val());
                                                                   //LBC04 : loại báo cáo cmt cấp 1, : NNBC2 nơi nhận báo cáo nhóm
                                                                 })
-                                                                ull.appendChild(phecanlove);
+                                                                // ull.appendChild(phecanlove);
                                                                 
                                                             var phecanlove1 = document.createElement("LI");
                                                                 phecanlove1.className="lituychonthemnhom";
@@ -392,12 +427,12 @@ function taoramotrepcmt(noidung,mabinhluancap1,duongdananh,tennguoicmt,mabinhlua
             divchuatextvalikecmt.className="cl-div-tare-readrep";
             var divchuatext = document.createElement("div");
                 divchuatext.className="divchuacmtbac2"; 
-                divchuatext.innerHTML=tennguoicmt+': '+noidung;
+                divchuatext.innerHTML='<strong>'+tennguoicmt+': '+'</strong>'+noidung;
 
                 var textarea = document.createElement("TEXTAREA");
                     textarea.disabled =true;
                     textarea.className="tara-read-rep-cmt";
-                    textarea.value=tennguoicmt+': '+noidung;
+                    textarea.value='<strong>'+tennguoicmt+': '+'</strong>'+noidung;
                 // divchuatext.appendChild(textarea);
 //////////////////////////////////
   var divcon13 = document.createElement("div");
@@ -439,7 +474,7 @@ function taoramotrepcmt(noidung,mabinhluancap1,duongdananh,tennguoicmt,mabinhlua
                                                                 phecanlove.addEventListener("click",function(){
                                                                   // createboxhoilydotocao("LBC05","NNBC2",$("#session-ma-tk").val(),mabinhluancap2,$("#div-hi-chu-bai-viet-ma-nhom").val());
                                                                 })
-                                                                ull.appendChild(phecanlove);
+                                                                // ull.appendChild(phecanlove);
                                                                 
                                                             var phecanlove1 = document.createElement("LI");
                                                                 phecanlove1.className="lituychonthemnhom";
@@ -584,7 +619,7 @@ function sendbinhluan(mabaivietl,maloaibaiviet){
           }
         }).done(function(data) {
 
-          reloadbinhluan(mabaivietl,maloaibaiviet);
+          xemfullbinhluan(mabaivietl,maloaibaiviet,0,9999);
 
            $('#input-binhluan-'+mabaivietl).val('');})
 }
@@ -612,7 +647,8 @@ function submitme(event,mabaivietl,maloaibaiviet)
           }
      	  }).done(function(data) {
 
-          reloadbinhluan(mabaivietl,maloaibaiviet);
+          // reloadbinhluan(mabaivietl,maloaibaiviet);
+          xemfullbinhluan(mabaivietl,maloaibaiviet,0,9999);
           $.ajax({
              url: link_host+'/ajax/getmabinhluanne',
              type:'GET',

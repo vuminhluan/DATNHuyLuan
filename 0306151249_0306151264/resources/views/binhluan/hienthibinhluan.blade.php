@@ -24,7 +24,7 @@
                         </div>
                         {{--tren  --}}
                     <div id="dv-div-big-{{ $lstbaiviet[$i]->ma_bai_viet }}" class="div-tatca-cmt"  >
-                        <div style="margin-left: 12px;margin-right: 12px; height: 12px;"> </div>
+                        <div style="margin-left: 12px;margin-right: 12px; height: 28px;cursor: pointer;padding: 3px;text-align: center;" onclick="xemfullbinhluan('{{ $lstbaiviet[$i]->ma_bai_viet }}','{{$lstbaiviet[$i]->ma_loai_bai_viet}}','0','9999'),($(this).css('display','none'))"> Xem tất cả bình luận</div>
                         {{-- <div style="margin-left: 12px;margin-right: 12px; height: 30px;"> </div> --}}
                         <div id="div-content-all-cmt-{{ $lstbaiviet[$i]->ma_bai_viet }}" style="display: none;border-top: solid 1px #e4e6e8;margin-left: 12px;margin-right: 12px; height: auto;    padding-bottom: 10px"> 
                             {{-- 1 cmt --}}
