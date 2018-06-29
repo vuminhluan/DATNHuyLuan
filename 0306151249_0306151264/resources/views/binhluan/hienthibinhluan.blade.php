@@ -14,18 +14,18 @@
                     <div >
                         <div class="divlikecmt">
 
-                               <div class="divbtnlike" onclick="clicklike('div-content-all-cmt-157')">
+                               {{-- <div class="divbtnlike" onclick="clicklike('div-content-all-cmt-157')">
                                     <h3  ><i  class="fa fa-star-o" aria-hidden="true"><strong class="like-cmt" >&ensp;Hay</strong></i></h3>
-                                </div>
+                                </div> --}}
                              
                                 <div  class="divbtncmt" onclick="clickbinhluan('{{ $lstbaiviet[$i]->ma_bai_viet }}','{{$lstbaiviet[$i]->ma_loai_bai_viet}}')" >
-                                    <h3 ><i class="fa fa-comment-o" aria-hidden="true" ><strong class="like-cmt">&ensp;Bình luận</strong></i></h3>
+                                    <h3 ><i class="fa fa-comment-o" aria-hidden="true" ><strong class="like-cmt">&ensp;Thảo luận</strong></i></h3>
                                 </div>
                         </div>
                         {{--tren  --}}
                     <div id="dv-div-big-{{ $lstbaiviet[$i]->ma_bai_viet }}" class="div-tatca-cmt"  >
                         <div style="margin-left: 12px;margin-right: 12px; height: 12px;"> </div>
-                        <div style="margin-left: 12px;margin-right: 12px; height: 30px;"> </div>
+                        {{-- <div style="margin-left: 12px;margin-right: 12px; height: 30px;"> </div> --}}
                         <div id="div-content-all-cmt-{{ $lstbaiviet[$i]->ma_bai_viet }}" style="display: none;border-top: solid 1px #e4e6e8;margin-left: 12px;margin-right: 12px; height: auto;    padding-bottom: 10px"> 
                             {{-- 1 cmt --}}
                                {{--  @include('binhluan.motbinhluan') --}}
@@ -38,7 +38,7 @@
                         <div class="divcmt" id="div-input-binhluan-{{ $lstbaiviet[$i]->ma_bai_viet }}" style="display: none;" >
                             <div>
                                 <div class="divimgaccountcmt" >
-                                    <img class="imgaccountcmt"  src=" {{asset('pictures/anh_dai_dien/'.Auth::user()->anh_dai_dien)}}" alt="AVTCMT" >
+                                    <img class="imgaccountcmtcmt"  src=" {{asset('pictures/anh_dai_dien/'.Auth::user()->anh_dai_dien)}}" alt="AVTCMT" >
                                 </div>
                                 <div class="divtextcmt" >
                                     <input class="iptextcmt" id="input-binhluan-{{ $lstbaiviet[$i]->ma_bai_viet }}" onKeyPress='submitme(event,"{{ $lstbaiviet[$i]->ma_bai_viet }}","{{$lstbaiviet[$i]->ma_loai_bai_viet}}")' 

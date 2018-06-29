@@ -208,6 +208,7 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt,
                       }
               var divcon12 = document.createElement("div");
                   divcon12.className="cl-div-tare-read";
+                  divcon12.innerHTML=noidung;
                   var divcon121 = document.createElement("div");
                       divcon121.id="div-tare-cmt-"+mabinhluancap1;
                       divcon121.className="divchuacmtbac1";
@@ -265,7 +266,7 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt,
                                                                 phecanlove.className="lituychonthemnhom";
                                                                 phecanlove.textContent="Báo cáo bình luận này cho quản trị viên";
                                                                 phecanlove.addEventListener("click",function(){
-                                                                  createboxhoilydotocao("LBC04","NNBC2",$("#session-ma-tk").val(),mabinhluancap1,$("#div-hi-chu-bai-viet-ma-nhom").val());
+                                                                  // createboxhoilydotocao("LBC04","NNBC2",$("#session-ma-tk").val(),mabinhluancap1,$("#div-hi-chu-bai-viet-ma-nhom").val());
                                                                   //LBC04 : loại báo cáo cmt cấp 1, : NNBC2 nơi nhận báo cáo nhóm
                                                                 })
                                                                 ull.appendChild(phecanlove);
@@ -278,7 +279,7 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt,
                                                                 })
                                                                 ull.appendChild(phecanlove1);
                                                            }  
-                                                  // divtuychonbinhluancap1.appendChild(ull);
+                                                   divtuychonbinhluancap1.appendChild(ull);
                                                   //  document.getElementById("themluachonbinhluan"+mabinhluancap1)
                                                 divcon13.appendChild(divtuychonbinhluancap1);
 
@@ -293,8 +294,8 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt,
                         divcon13.appendChild(i131);
 //////////////////////
 
-                        divcon121.appendChild(txtare121);
-                        divcon122.appendChild(i122);
+                        // divcon121.appendChild(txtare121);
+                        // divcon122.appendChild(i122);
                         divcon123.appendChild(i123);
                   divcon11.appendChild(img11);
                   divcon12.appendChild(divcon121);
@@ -309,7 +310,7 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt,
               divcon2.className="cl-divrepcmt";
               divcon2.id="divrepcmt"+mabinhluancap1;
 
- repbinhluan(mabinhluancap1,maloaibaiviet);
+          // repbinhluan(mabinhluancap1,maloaibaiviet);
 
           var divcon3 = document.createElement("div");
               divcon3.className="iprepcmtcmt";
@@ -391,11 +392,13 @@ function taoramotrepcmt(noidung,mabinhluancap1,duongdananh,tennguoicmt,mabinhlua
             divchuatextvalikecmt.className="cl-div-tare-readrep";
             var divchuatext = document.createElement("div");
                 divchuatext.className="divchuacmtbac2"; 
+                divchuatext.innerHTML=tennguoicmt+': '+noidung;
+
                 var textarea = document.createElement("TEXTAREA");
                     textarea.disabled =true;
                     textarea.className="tara-read-rep-cmt";
                     textarea.value=tennguoicmt+': '+noidung;
-                divchuatext.appendChild(textarea);
+                // divchuatext.appendChild(textarea);
 //////////////////////////////////
   var divcon13 = document.createElement("div");
                   divcon13.id="themluachonbinhluan2"+mabinhluancap2;
@@ -434,7 +437,7 @@ function taoramotrepcmt(noidung,mabinhluancap1,duongdananh,tennguoicmt,mabinhlua
                                                                 phecanlove.className="lituychonthemnhom";
                                                                 phecanlove.textContent="Báo cáo bình luận này cho quản trị viên";
                                                                 phecanlove.addEventListener("click",function(){
-                                                                  createboxhoilydotocao("LBC05","NNBC2",$("#session-ma-tk").val(),mabinhluancap2,$("#div-hi-chu-bai-viet-ma-nhom").val());
+                                                                  // createboxhoilydotocao("LBC05","NNBC2",$("#session-ma-tk").val(),mabinhluancap2,$("#div-hi-chu-bai-viet-ma-nhom").val());
                                                                 })
                                                                 ull.appendChild(phecanlove);
                                                                 
@@ -444,7 +447,7 @@ function taoramotrepcmt(noidung,mabinhluancap1,duongdananh,tennguoicmt,mabinhlua
                                                                 phecanlove1.addEventListener("click",function(){})
                                                                 ull.appendChild(phecanlove1);
                                                            }                                                        
-                                                  // divtuychonbinhluancap1.appendChild(ull);
+                                                   divtuychonbinhluancap1.appendChild(ull);
                                                   //  document.getElementById("themluachonbinhluan"+mabinhluancap1)
                                                 divcon13.appendChild(divtuychonbinhluancap1);                          
                   divcon13.myparammabl = mabinhluancap2;
