@@ -218,7 +218,7 @@
 		<div style="width: 100%;height: 50px;border-top: solid 1px #e4e6e8;" >
 			{{-- class="custom-select" --}}
 				<div style="width: 80%;float: left;padding: 9px;">
-		 			 <select id="cbbloaibaiviet" style="margin-left: 43%;height: 30px;width: 277px;padding-left: 10px;border-radius: 3px;">
+		 			 <select id="cbbloaibaiviet" style="margin-left: 43%;height: 30px;width: 277px;padding-left: 10px;border-radius: 3px;border:solid 1px #e4e6e8;">
 		   				<option value="LBV001">Công khai</option>
 		   				<option value="LBV002">Chỉ ẩn tên người đăng</option>
 					    <option value="LBV003">Chỉ ẩn tên người bình luận</option>
@@ -230,6 +230,7 @@
 				<div style="width: 20%;float: left;" >
 					{{-- onclick="submitdangbaiviet()"  --}}
 					<input type="submit" id="btndangbaiviet"  name="btndangbaiviet" value="Đăng">
+					{{-- <label for="btndangbaiviet"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></label> --}}
 				</div>
 				{{-- </form> --}}
 		</div>

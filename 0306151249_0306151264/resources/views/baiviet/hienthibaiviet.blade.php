@@ -38,7 +38,7 @@
                           </div>
                        </div>
 
-                        <div class="divtopcontent" style="cursor: pointer;" >
+                        <a href="{{route('trangcanhan.index', '$lstbaiviet[$i]->ten_tai_khoan')}}"><div class="divtopcontent" >
                         <img class="imgavtnguoidang" src=" {{ asset( 'pictures/anh_dai_dien/'.$lstbaiviet[$i]->anh_dai_dien) }}" alt="Lu">
                           </div>
                           <div class="divtennguoidang" >
@@ -46,7 +46,7 @@
                             <span> <h5 class="spanthoigiandang"> {{ $lstbaiviet[$i]->thoi_gian_dang}} </h5> <span>
                           </div>
 
-                       </div>
+                       </div></a>
 
                        <div class="bodytus" >
                           <div class="texttus" >

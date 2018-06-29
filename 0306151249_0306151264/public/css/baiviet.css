@@ -29,6 +29,8 @@
   height: 50px;
 }
 #btndangbaiviet {
+  cursor: pointer;
+
 	margin-top: 7px;
 	margin-right: 5px;
     border: 2px solid black;
@@ -47,6 +49,11 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+#btndangbaiviet:hover{
+  background-color: #969524;
+  font-weight: bold;
+  color: white;
 }
 #divnoidungbaiviet{
 	height: 50px;

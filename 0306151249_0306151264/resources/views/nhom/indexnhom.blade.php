@@ -134,14 +134,14 @@
                @endif
             @endfor
 
-            @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
+{{--             @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
                @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV02")
                   <div id="pheduyetthanhviengianhapnhom" class="divtoprightnav" onclick="showlistbaocaovipham('{{$t}}')" style="padding: 12px;cursor: pointer;">
                   <center><ion-icon style="color: #9695d8" name="flag"></ion-icon>  <span>Báo cáo vi phạm</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
                   </div>
                   @break
                @endif
-            @endfor
+            @endfor --}}
           
 
         </div>

@@ -424,8 +424,8 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
                                             }
                                             }).done(function(data) {
 
-                                                console.log(lstmanhomsharebv);
-                                              
+                                                // console.log(lstmanhomsharebv);
+                                              lstmanhomsharebv=[];
 
 
 
