@@ -98,6 +98,7 @@
 					  } else {
 					  	var indexx = lstmanhomsharebv.indexOf(ma_nhom);
 						if (indexx !== -1) lstmanhomsharebv.splice(indexx, 1);
+						
 					    $('span[title="' + title + '"]').remove();
 					    var ret = $(".hida");
 					    $('.dropdown dt div').append(ret);

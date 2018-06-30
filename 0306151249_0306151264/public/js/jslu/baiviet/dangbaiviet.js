@@ -89,6 +89,19 @@ $( document ).ready(function() {
   $('#formdangbaiviet').submit(function(event) {
     event.preventDefault();
 
+
+// var promise1 = new Promise(function(resolve, reject) {
+//   resolve('Success!');
+// });
+
+// promise1.then(function(value) {
+//   console.log(value);
+//   // expected output: "Success!"
+// });
+// $.when().then(function2());
+
+
+
    
     submitdangbaiviet();
     
@@ -426,6 +439,9 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
 
                                                 // console.log(lstmanhomsharebv);
                                               lstmanhomsharebv=[];
+                                              $('.multiSel').empty();
+                                               $(".hida").css("display","block");
+                                              // $('.dropdown dt div').append(ret);
 
 
 
