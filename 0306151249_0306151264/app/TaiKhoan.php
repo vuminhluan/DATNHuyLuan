@@ -37,6 +37,12 @@ class TaiKhoan extends Model implements \Illuminate\Contracts\Auth\Authenticatab
   {
     return $this->hasMany('App\nhom_m', 'ma_tai_khoan', 'ma_tai_khoan');
   }
+
+  public function hasManyBaiViet()
+  {
+    return $this->hasMany('App\bai_viet', 'ma_nguoi_viet', 'ma_tai_khoan');
+  }
+
   public function hasManyBaoCao()
   {
     return $this->hasMany('App\bao_cao_vi_pham', 'nguoi_gui_bao_cao', 'ma_tai_khoan');

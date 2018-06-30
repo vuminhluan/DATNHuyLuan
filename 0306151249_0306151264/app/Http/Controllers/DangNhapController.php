@@ -93,26 +93,4 @@ class DangNhapController extends Controller
 	}
 
 
-	// public function postDangNhapGoogle()
-	// {
-
-	// 	return Socialite::driver('google')->redirect();
-	// }
-
-	// public function callBackDangNhapGoogle()
-	// {
-	// 	$user = Socialite::driver('google')->stateless()->user();
-
-	// 	// return $user->getName();
-	// 	return $this->xuLyDangNhapGoogle($user);
-	// }
-
-
-	// public function xuLyDangNhapGoogle($user)
-	// {
-		
-	// 	return "bo tay";
-	// }
-
-
 }

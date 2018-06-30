@@ -59,7 +59,21 @@ class NhomController extends Controller
 
   public function getXemChiTietNhom($group_id)
   {
-    return view('admin.nhom.chitiet');
+    $group = Nhom::find($group_id);
+     // $members = $group->hasManyThanhVien;
+    // return $members->where('ma_chuc_vu', 'CV01')->first()->belongsToTaiKhoan->ten;
+    // return $members->where('ma_chuc_vu', 'CV01')->where('ma_nhom', $group_id)->first()->belongsToTaiKhoan->hasManyBaiViet;
+    // return $members->where('ma_chuc_vu', '!=', 'CV01');
+
+    $operators = DB::table('nhom')
+    ->leftjoin('chuc_vu_cua_thanh_vien_trong_nhom AS tv_cv', 'nhom.ma_nhom', '=', 'tv_cv.ma_nhom')
+    ->leftjoin('nguoi_dung', 'tv_cv.ma_tai_khoan', '=', 'nguoi_dung.ma_tai_khoan')
+    ->where('nhom.ma_nhom', $group_id)->get();
+
+    // return $operators;
+
+    return view('admin.nhom.chitiet', ['group' => $group, 'operators' => $operators]);
+
   }
 
 }

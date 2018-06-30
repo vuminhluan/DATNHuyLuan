@@ -60,12 +60,16 @@ $('#sign-in-form').validate({
       }]
     },
     password: {
+      required: true,
       regex: myregex['matkhau']
     }
   },
   messages: {
     username: {
-      required: 'Dữ liệu không hợp lệ'
+      required: 'Tên đăng nhập hoặc email không thể để trống'
+    },
+    password: {
+      required: 'Mật khẩu không thể để trống'
     }
   }
 });

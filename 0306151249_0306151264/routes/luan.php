@@ -16,6 +16,11 @@ Route::group(['middleware' => ['MyUserAuth']], function () {
 	)->name('trangcanhan.index');
 
 	Route::get(
+		'/taikhoan/id/{id}',
+		'TrangCaNhanController@getTrangCaNhanTheoMaTaiKhoan'
+	)->name('trangcanhan.id.index');
+
+	Route::get(
 		'/taikhoan/{username}/nhom',
 		'TrangCaNhanController@getNhom'
 	)->name('trangcanhan.nhom');

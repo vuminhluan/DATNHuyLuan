@@ -93,6 +93,12 @@ class TrangCaNhanController extends Controller
 		return view('trang_ca_nhan.index')->with(['taikhoan'=>$taikhoan, 'tatca_gioitinh'=>$tatca_gioitinh, 'lstbaiviet'=>$account_posts]);
 	}
 
+	public function getTrangCaNhanTheoMaTaiKhoan($id)
+	{
+		$username = TaiKhoan::where('ma_tai_khoan', $id)->ten_tai_khoan;
+		return redirect()->route('trangcanhan.index', [$username]);
+	}
+
 	public function getNhom($username)
 	{	
 		$taikhoan = TaiKhoan::where('ten_tai_khoan', $username)->where('trang_thai', '!=', '4')->first();
