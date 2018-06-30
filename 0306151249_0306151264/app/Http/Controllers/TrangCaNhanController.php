@@ -95,7 +95,8 @@ class TrangCaNhanController extends Controller
 
 	public function getTrangCaNhanTheoMaTaiKhoan($id)
 	{
-		$username = TaiKhoan::where('ma_tai_khoan', $id)->ten_tai_khoan;
+		$username = TaiKhoan::where('ma_tai_khoan', $id)->first()->ten_tai_khoan;
+
 		return redirect()->route('trangcanhan.index', [$username]);
 	}
 

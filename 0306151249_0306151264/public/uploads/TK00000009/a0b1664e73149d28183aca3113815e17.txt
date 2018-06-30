@@ -1,1 +1,0 @@
-http://blog.adnansiddiqi.me/laravel-how-to-avoid-redirecting-to-home-after-login/
