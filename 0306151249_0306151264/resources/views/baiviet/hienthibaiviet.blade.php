@@ -38,7 +38,7 @@
                           </div>
                        </div>
 
-                        <a href="{{route('trangcanhan.index', '$lstbaiviet[$i]->ten_tai_khoan')}}"><div class="divtopcontent" >
+                        <a href="{{route('trangcanhan.id.index', '$lstbaiviet[$i]->ten_tai_khoan')}}"><div class="divtopcontent" >
                         <img class="imgavtnguoidang" src=" {{ asset( 'pictures/anh_dai_dien/'.$lstbaiviet[$i]->anh_dai_dien) }}" alt="Lu">
                           </div>
                           <div class="divtennguoidang" >
