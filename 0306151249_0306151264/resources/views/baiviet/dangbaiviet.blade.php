@@ -98,7 +98,7 @@
 					  } else {
 					  	var indexx = lstmanhomsharebv.indexOf(ma_nhom);
 						if (indexx !== -1) lstmanhomsharebv.splice(indexx, 1);
-						
+
 					    $('span[title="' + title + '"]').remove();
 					    var ret = $(".hida");
 					    $('.dropdown dt div').append(ret);
@@ -160,7 +160,7 @@
 						</label>
 						<div class="optionlevel2" id="optionthongbao">
 							
-							Ngày ẩn:<br><input class="datetimepickker checkthuykien"  type="date" id="ipdtngayanbaiviet" name="" value="" placeholder="">
+							Ngày ẩn:<br><input class="datetimepickker checkthuykien"  type="datetime-local" name="" value="2018-01-01T00:00" id="ipdtngayanbaiviet" name=""  placeholder="">
 							<br>
 							{{-- clickoption("optionthongbao") --}}
 						</div>
@@ -173,7 +173,7 @@
 						<div class="optionlevel2" id="optionthubai">
 {{-- 							Từ ngày:<br><input class="datetimepickker"  id="ngaybatdauthubaiviet"  type="date" name="" value="" placeholder="">
 							<br> --}}
-							Đến ngày:<br><input class="datetimepickker checkthuykien" id="ngayhethanthubaiviet" type="date" name="" value="" placeholder="">
+							Đến ngày:<br><input class="datetimepickker checkthuykien" id="ngayhethanthubaiviet" type="datetime-local" name="" value="2018-01-01T00:00" name=""  placeholder="">
 						</div>
 					</div>
 					<div class="divoptionradio" >
@@ -188,7 +188,7 @@
 {{-- 							Từ ngày:
 							<input class="datetimepickker"  type="date" name="" value="" placeholder=""> --}}
 							Đến ngày:
-								<br><input class="datetimepickker checkthuykien" id="ngayhethankhaosat"  type="date" name="" value="" placeholder="">
+								<br><input class="datetimepickker checkthuykien"  id="ngayhethankhaosat"  type="datetime-local" name="" value="2018-01-01T00:00" placeholder="">
 							<br>
 						</div>
 					</div>

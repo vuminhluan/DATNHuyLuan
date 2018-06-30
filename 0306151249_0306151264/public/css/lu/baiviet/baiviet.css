@@ -249,13 +249,13 @@ textarea:focus{
 .datetimepickker{
   border-radius: 3px;
   border: solid 1px; 
-  width: 110px;
+  width: 170px;
   border-color: #9695d8;
 }
 .divoptionradio{
 
 	float: right;
-	width: 21%;
+	width: 30%;
 	height: auto;
   border-top: 50%;
   margin-right: 5px;
@@ -275,6 +275,7 @@ textarea:focus{
     padding-left: 35px;
     margin-bottom: 12px;
     margin-right: 10px;
+    margin-left: 30px;
     cursor: pointer;
     font-size: 14px;
     -webkit-user-select: none;
@@ -441,27 +442,27 @@ textarea:focus{
 
 /*custom datetime*/
 /* Removes the clear button from date inputs */
- input.checkthuykien[type="date"]::-webkit-clear-button {
+ input.checkthuykien[type="datetime-local"]::-webkit-clear-button {
     display: none;
 }
 
 /* Removes the spin button */
- input.checkthuykien[type="date"]::-webkit-inner-spin-button { 
+ input.checkthuykien[type="datetime-local"]::-webkit-inner-spin-button { 
     display: none;
 }
 
 /* Always display the drop down caret */
- input.checkthuykien[type="date"]::-webkit-calendar-picker-indicator {
+ input.checkthuykien[type="datetime-local"]::-webkit-calendar-picker-indicator {
     color: #9695d8;
 }
 
 /* A few custom styles for date inputs */
- input.checkthuykien[type="date"] {
+ input.checkthuykien[type="datetime-local"] {
     appearance: none;
     -webkit-appearance: none;
     color: #95a5a6;
     font-family: "Helvetica", arial, sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     border:1px solid #9695d8;
     background: transparent;
     padding:5px;
@@ -469,7 +470,7 @@ textarea:focus{
     visibility: visible !important;
 }
 
- input.checkthuykien[type="date"], focus {
+ input.checkthuykien[type="datetime-local"], focus {
     color: #95a5a6;
     box-shadow: none;
     -webkit-box-shadow: none;
