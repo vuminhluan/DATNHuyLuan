@@ -239,7 +239,7 @@
                             </ul>
                           </div>
                        </div>
-
+                        <a href="{{route('trangcanhan.id.index', $lstbaiviet[$i]->ma_nguoi_viet)}}">
                         <div class="divtopcontent" style="cursor: pointer;" >
                         <img class="imgavtnguoidang" src=" {{ asset( 'pictures/anh_dai_dien/'.$lstbaiviet[$i]->anh_dai_dien) }}" alt="Lu">
                           </div>
@@ -247,6 +247,7 @@
                             <span> <h3 class="spantennguoidang">  {{ $lstbaiviet[$i]->ho_ten_lot }} {{ $lstbaiviet[$i]->ten }} </h3> </span><br>
                             <span> <h5 class="spanthoigiandang"> {{ $lstbaiviet[$i]->thoi_gian_dang}} </h5> <span>
                           </div>
+                        </a>
 
                        </div>
 

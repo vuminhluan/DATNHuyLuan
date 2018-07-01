@@ -558,8 +558,8 @@ function clicktrucxuatkhoinhom(prl){
             trang_thai:"0"
         }
     }).done(function(data){
-        alert("kích thành  viên khỏi nhóm thành công");
-        alert(data);
+        // alert("kích thành  viên khỏi nhóm thành công");
+        // alert(data);
         opentab_lstthanhvien(manhom,"");
     })
 }

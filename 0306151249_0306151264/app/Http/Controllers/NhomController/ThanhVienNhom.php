@@ -141,16 +141,36 @@ class ThanhVienNhom extends Controller
     }
     public function PostThanhVienXinGiaNhapNhom(Request $rql)
     {
+            if($this->GetThanhvienChoPheDuyet($rql->ma_tai_khoan,$rql->ma_nhom)==""){
+                $thanhvienchopheduyet = new thanh_vien_cho_phe_duyet();
+                $thanhvienchopheduyet->ma_nhom                  = $rql->ma_nhom;
+                $thanhvienchopheduyet->ma_tai_khoan             = $rql->ma_tai_khoan;
+                $thanhvienchopheduyet->nguoi_moi                = $rql->nguoi_moi;
+                $thanhvienchopheduyet->nguoi_phe_duyet          = $rql->nguoi_phe_duyet;
+                $thanhvienchopheduyet->thoi_gian_cho_phe_duyet  = $rql->thoi_gian_cho_phe_duyet;
+                $thanhvienchopheduyet->trang_thai               = $rql->trang_thai;
+                $thanhvienchopheduyet->save();
+                return "Xin gia nhập thành công";
+            }
+            else{
+              if($this->GetThanhvienChoPheDuyet($rql->ma_tai_khoan,$rql->ma_nhom)[0]->trang_thai=="0"){
+                DB::table('thanh_vien_cho_phe_duyet')
+                   ->where([["ma_tai_khoan",$rql->ma_tai_khoan],["ma_nhom",$rql->ma_nhom]])
+                   ->update(["trang_thai"=>"1"]);
+               }else{
+              if($this->GetThanhvienChoPheDuyet($rql->ma_tai_khoan,$rql->ma_nhom)[0]->trang_thai=="1"){
 
-            $thanhvienchopheduyet = new thanh_vien_cho_phe_duyet();
-            $thanhvienchopheduyet->ma_nhom                  = $rql->ma_nhom;
-            $thanhvienchopheduyet->ma_tai_khoan             = $rql->ma_tai_khoan;
-            $thanhvienchopheduyet->nguoi_moi                = $rql->nguoi_moi;
-            $thanhvienchopheduyet->nguoi_phe_duyet          = $rql->nguoi_phe_duyet;
-            $thanhvienchopheduyet->thoi_gian_cho_phe_duyet  = $rql->thoi_gian_cho_phe_duyet;
-            $thanhvienchopheduyet->trang_thai               = $rql->trang_thai;
-            $thanhvienchopheduyet->save();
-            return "Xin gia nhập thành công";
+                DB::table('thanh_vien_cho_phe_duyet')
+                   ->where([["ma_tai_khoan",$rql->ma_tai_khoan],["ma_nhom",$rql->ma_nhom]])
+                   ->update(["trang_thai"=>"0"]);
+                  }
+               }
+            }
+
+    }
+    public function GetThanhvienChoPheDuyet($mataikhoan, $manhom)
+    {
+     return DB::table('thanh_vien_cho_phe_duyet')->where([["ma_tai_khoan",$mataikhoan],["ma_nhom",$manhom]])->get();
     }
     public function GetLstThanhVienDangChoPheDuyetTheoMaNhom(Request $rql){
             // $lstThanhVienDangChoPheDuyetTheoMaNhom = DB::table("thanh_vien_cho_phe_duyet")
