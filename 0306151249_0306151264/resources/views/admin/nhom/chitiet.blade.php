@@ -66,6 +66,13 @@
 		<div class="block">
 			<ul>
 				<li><a href="{{ route('trangchu') }}"><i class="fa fa-home fa-2x"></i></a></li>
+
+				@if ($next_and_prev_group_id['previous'])
+					<li><a href="{{ route('admin.nhom.xem', [$next_and_prev_group_id['previous']]) }}"><i class="fa fa-chevron-left fa-2x"></i></a></li>
+				@endif
+				@if ($next_and_prev_group_id['next'])
+					<li><a href="{{ route('admin.nhom.xem', [$next_and_prev_group_id['next']]) }}"><i class="fa fa-chevron-right fa-2x"></i></a></li>
+				@endif
 			</ul>
 		</div>
 

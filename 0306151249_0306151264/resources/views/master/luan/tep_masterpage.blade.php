@@ -73,9 +73,9 @@
 								</form>
 							</div>
 
-							<div class="delete-box">
+							{{-- <div class="delete-box">
 								<a class="--button" href="{{ route('googledrive.huydichvu') }}">Hủy dịch vụ</a>
-							</div>
+							</div> --}}
 						@endif
 					</div>
 				@endif

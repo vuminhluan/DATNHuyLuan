@@ -8,9 +8,15 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailKichHoat;
+use App\ThuMucGoogleDrive;
+
+use App\Traits\TaoThuMucGoogleDriveTrait;
+use App\Traits\CapNhatDoiTuongTrait;
 
 class KichHoatTaiKhoanController extends Controller
 {
+  use CapNhatDoiTuongTrait;
+  use TaoThuMucGoogleDriveTrait;
 
   public function kichHoatTaiKhoan($username, $usernameMD5)
   {
@@ -30,8 +36,23 @@ class KichHoatTaiKhoanController extends Controller
         }
       }
 
-      return redirect()->route('trangchu')->with('success_message', 'Chúc mừng @'.Auth::user()->ten_tai_khoan.' bạn đã kích hoạt tài khoản thành công');
-      // return redirect()->route('trangchu')->with('update_email_message', 'Cập nhật email '.$newemail.' thành công');
+      // Tạo thư mục google drive
+
+      $root = env('GOOGLE_DRIVE_FOLDER_ID');
+      $foldername = Auth::user()->ma_tai_khoan;
+      $path = $root.'/'.$foldername;
+      $folder = $this->taoThuMucGoogleDrive($path, $root, $foldername);
+      $thumuc_googledrive = new ThuMucGoogleDrive();
+      $data = [
+        'ma_tai_khoan' => Auth::user()->ma_tai_khoan,
+        'ma_thumuc'    => $folder['basename'],
+        'trang_thai'   => 1
+      ];
+      $this->capNhatDoiTuong($data, $thumuc_googledrive);
+
+      // Tạo thư mục Google drive
+
+      return redirect()->route('trangchu')->with('slidemessage', 'Chúc mừng @'.Auth::user()->ten_tai_khoan.' đã kích hoạt tài khoản thành công');
 
     }
 
