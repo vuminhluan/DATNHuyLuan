@@ -88,40 +88,33 @@ $( document ).ready(function() {
 
   $('#formdangbaiviet').submit(function(event) {
     event.preventDefault();
+  
 
+    if (document.getElementById("imgInp").value!="") {
 
-// var promise1 = new Promise(function(resolve, reject) {
-//   resolve('Success!');
-// });
-
-// promise1.then(function(value) {
-//   console.log(value);
-//   // expected output: "Success!"
-// });
-// $.when().then(function2());
-
-
-
-   
-    submitdangbaiviet();
-    
     var danganhcheck=true;
     var formData = new FormData($(this)[0]);
         formData.append('nguoi_dang',$('#session-ma-tk').val());
         formData.append('chu_cua_bai_dang',$('#div-hi-chu-bai-viet-ma-nhom').val());
         formData.append('trang_thai','1');
-        if(danganhcheck){ danganhcheck=!danganhcheck;
-    $.ajax({
-        url:  link_host+'/uploadanh',
-        type: 'POST',  
-        processData: false,
-        contentType: false,              
-        data: formData
-    }).done(function(data){
-      document.getElementById("imgInp").value="";
-      $('#divanhxemtruocduocthemvao').css("display","none");
-    });
-    }
+        if(danganhcheck){ 
+            danganhcheck=!danganhcheck;
+              $.ajax({
+                  url:  link_host+'/uploadanh',
+                  type: 'POST',
+                  async: false,  
+                  processData: false,
+                  contentType: false,              
+                  data: formData
+              }).done(function(data){
+                // alert(data);
+                document.getElementById("imgInp").value="";
+                $('#divanhxemtruocduocthemvao').css("display","none");
+              });
+        }
+    } 
+
+     submitdangbaiviet();
     
 });
 
@@ -175,6 +168,7 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
                        $.ajax({
                         url: link_host+ '/ajax/getmabaivietne',
                         type:"GET",
+                        async:false,
                         data:{}
                       }).done(function(data){
                         var mabaivietmoi = parseInt(data)+1;
@@ -182,6 +176,7 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
                           $.ajax({
                             url: link_host+ '/taofolderchuatepthubaine',
                             type:"GET",
+                            async:false,
                             data:{ma_bai_viet:mabaivietmoi,nguoi_tao:$("#session-ma-tk").val()}
                           }).done(function(data){
 // end lấy folder khi cả 2 cùng check
@@ -203,6 +198,7 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
                                           $.ajax({
                                             url: link_host+ '/ajax/getmabaivietne',
                                             type:"GET",
+                                            async:false,
                                             data:{}
                                           }).done(function(dt){
                                             var mabaivietmoine=parseInt(dt)+1;
@@ -211,6 +207,7 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
                                                 $.ajax({
                                                   url:link_host+'/ajax/postykienvotebaivietne',
                                                   type:'POST',
+                                                  async:false,
                                                   data:{
                                                     _token: $('input[name=_token]').val(),
                                                     ma_bai_viet:mabaivietmoine,
@@ -246,6 +243,7 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
                        $.ajax({
                         url: link_host+ '/ajax/getmabaivietne',
                         type:"GET",
+                        async:false,
                         data:{}
                       }).done(function(data){
                         var mabaivietmoi = parseInt(data)+1;
@@ -253,6 +251,7 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
                           $.ajax({
                             url: link_host+ '/taofolderchuatepthubaine',
                             type:"GET",
+                            async:false,
                             data:{ma_bai_viet:mabaivietmoi,nguoi_tao:$("#session-ma-tk").val()}
                           }).done(function(data){
                             // đoạn này up bài mới khi thu bài được check cái kia ko
@@ -285,6 +284,7 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
                                 $.ajax({
                                   url: link_host+ '/ajax/getmabaivietne',
                                   type:"GET",
+                                  async:false,
                                   data:{}
                                 }).done(function(dt){
                                   var mabaivietmoine=parseInt(dt)+1;
@@ -293,6 +293,7 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
                                       $.ajax({
                                         url:link_host+'/ajax/postykienvotebaivietne',
                                         type:'POST',
+                                        // async:false,
                                         data:{
                                           _token: $('input[name=_token]').val(),
                                           ma_bai_viet:mabaivietmoine,
@@ -318,6 +319,7 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
                                      $.ajax({
                                   url: link_host+ '/ajax/getmabaivietne',
                                   type:"GET",
+                                  async:false,
                                   data:{}
                                 }).done(function(dt){
                                   var mabaivietmoine=parseInt(dt)+1;
@@ -418,6 +420,7 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
                                             {
                                                 url: link_host+'/ajax/postbaivietne',
                                                 type: 'POST',
+                                                async:false,
                                                 data:{
                                                 _token: $('input[name=_token]').val(),
                                                 ma_nguoi_viet: $('#session-ma-tk').val(),
@@ -473,6 +476,7 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
                                                       $.ajax({
                                                           url: link_host+'/ajax/getbaiviettheonguoivietvanguoisohuune',
                                                           type: 'GET',
+                                                          async:false,
                                                           data:{
                                                             ma_nguoi_viet: $('#session-ma-tk').val(),
                                                             ma_chu_bai_viet: $('#div-hi-chu-bai-viet-ma-nhom').val()

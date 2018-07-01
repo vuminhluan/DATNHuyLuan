@@ -178,9 +178,11 @@ class BaiViet extends Controller
     public function Postanh(Request $rql){
                 
         if ($rql->hasFile('imgInp')) {
+            // return "lỗi ảnh";
            // return $this->Getmaanh()+1;
 
             $mabaiviet = $this->Getmabaiviet()+1;
+            // return $mabaiviet;
             $mahinhanh = $this->Getmaanh()+1;
             $duongdananh= 'images/'.$rql->chu_cua_bai_dang.$rql->nguoi_dang;
             $tenanh = $rql->chu_cua_bai_dang.$rql->nguoi_dang.$mabaiviet.$mahinhanh.'.png';
@@ -195,6 +197,11 @@ class BaiViet extends Controller
             $anhbaiviet->trang_thai = $rql->trang_thai;
             $anhbaiviet->save();
 
+
+
+           }
+           else{
+            return "Không có ảnh";
            }
         //return $this->Getmaanh()+1;
         // return $this->Getmabaiviet()+1;
