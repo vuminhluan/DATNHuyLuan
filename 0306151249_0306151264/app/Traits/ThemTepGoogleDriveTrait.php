@@ -15,7 +15,7 @@ trait ThemTepGoogleDriveTrait {
     if($client_file->getClientSize()/1024/1024 > 50) {
 			$message = [
 				'success'      => false,
-				'slidemessage' => 'Kích thước tệp lớn hơn 100MB'
+				'slidemessage' => 'Kích thước tệp lớn hơn 50MB'
 			];
 			return $message;
 		}
@@ -47,6 +47,7 @@ trait ThemTepGoogleDriveTrait {
       ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
       ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
       ->first();
+      
 	  // Set quyền truy cập : Ai có link thì được truy cập
 	  $service = Storage::cloud()->getAdapter()->getService();
     $permission = new \Google_Service_Drive_Permission();

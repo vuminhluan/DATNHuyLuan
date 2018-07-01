@@ -13,12 +13,12 @@
       <form id="post_form" method="post" action="{{ route('admin.baiviet.capnhat.post') }}" role="form">
         @csrf
         <div class="col-xs-12">
-          <div class="form-group">
+        <div class="form-group">
             <!-- Single button -->
             <div class="btn-group">
               <select id="task" name="task" class="form-control">
                 <option>Tác vụ</option>
-                <option value="post-live">Đánh dấu đang hiển thị</option>
+                <option value="post-live">Cho phép hiển thị</option>
                 <option value="post-delete">Xóa</option>
                 <option value="post-ban">Đánh dấu vi phạm</option>
               </select>

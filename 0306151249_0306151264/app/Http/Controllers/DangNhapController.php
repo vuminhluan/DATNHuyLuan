@@ -57,19 +57,19 @@ class DangNhapController extends Controller
 				$success = true;
 
 				// Tạo thư mục google drive (có tên là mã tài khoản) nếu chưa có
-				if(!Auth::user()->thu_muc_google_drive && Auth::user()->quyen == "Q0002") {
-					$root = env('GOOGLE_DRIVE_FOLDER_ID');
-					$foldername = Auth::user()->ma_tai_khoan;
-					$path = $root.'/'.$foldername;
-					$folder = $this->taoThuMucGoogleDrive($path, $root, $foldername);
-					$thumuc_googledrive = new ThuMucGoogleDrive();
-				  $data = [
-						'ma_tai_khoan' => Auth::user()->ma_tai_khoan,
-						'ma_thumuc'    => $folder['basename'],
-						'trang_thai'   => 1
-				  ];
-				  $this->capNhatDoiTuong($data, $thumuc_googledrive);
-				}
+				// if(!Auth::user()->thu_muc_google_drive && Auth::user()->quyen == "Q0002") {
+				// 	$root = env('GOOGLE_DRIVE_FOLDER_ID');
+				// 	$foldername = Auth::user()->ma_tai_khoan;
+				// 	$path = $root.'/'.$foldername;
+				// 	$folder = $this->taoThuMucGoogleDrive($path, $root, $foldername);
+				// 	$thumuc_googledrive = new ThuMucGoogleDrive();
+				//   $data = [
+				// 		'ma_tai_khoan' => Auth::user()->ma_tai_khoan,
+				// 		'ma_thumuc'    => $folder['basename'],
+				// 		'trang_thai'   => 1
+				//   ];
+				//   $this->capNhatDoiTuong($data, $thumuc_googledrive);
+				// }
 
 				return ['success' => true, 'message' => 'Đăng nhập thành công !'];
 	  	} else {

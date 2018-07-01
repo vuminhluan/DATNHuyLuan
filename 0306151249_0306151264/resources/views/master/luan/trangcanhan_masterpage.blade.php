@@ -163,7 +163,7 @@
 						<p class="edit-profile edit-name">
 							<i class="fa fa-edit"></i>
 							&nbsp;
-							<a class="luan_link modal-open-button" href="#/" onclick="openModal('js-edit-profile-modal')">Chỉnh sửa thông tin hiển thị trang cá nhân.</a>
+							<a class="luan_link modal-open-button" href="#/" onclick="openModal('js-edit-profile-modal')">Chỉnh sửa thông tin hiển thị</a>
 						</p>
 					</div>
 				@endif

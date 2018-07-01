@@ -54,12 +54,11 @@
 	<li class="item link-hover1" >
 		<img style="display: none;" src="{{ asset('pictures/luan/ajax-loader.gif') }}" alt="">
 		<div>
-			
 			<img class="pos-absolute item-icon" src="{{asset('myicons/tep/file.svg')}}" alt="">
 		</div>
 		<div>
 			<p>
-				<a class="item-link" target="_blank" href="">{{$file['name']}}</a>
+				<a class="item-link" target="_blank" href="https://drive.google.com/file/d/{{$file['basename']}}/view">{{$file['name']}}</a>
 			</p>
 		</div>
 		<div class="item-date-created" data-date="{{date('Y-m-d',$file['timestamp'])}}"><p title="{{date('H:i:s',$file['timestamp'])}}">{{date('d/m/Y',$file['timestamp'])}}</p></div>

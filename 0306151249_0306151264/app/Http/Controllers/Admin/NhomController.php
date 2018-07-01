@@ -72,7 +72,13 @@ class NhomController extends Controller
 
     // return $operators;
 
-    return view('admin.nhom.chitiet', ['group' => $group, 'operators' => $operators]);
+    $next_and_prev_group_id = [];
+    $next_and_prev_group_id['previous'] = Nhom::where('ma_nhom', '<', $group_id)->max('ma_nhom');
+    $next_and_prev_group_id['next'] = Nhom::where('ma_nhom', '>', $group_id)->min('ma_nhom');
+  
+    // return $next_and_prev_group_id;
+
+    return view('admin.nhom.chitiet', ['group' => $group, 'operators' => $operators, 'next_and_prev_group_id'=>$next_and_prev_group_id]);
 
   }
 
