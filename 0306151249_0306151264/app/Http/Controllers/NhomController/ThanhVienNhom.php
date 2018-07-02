@@ -141,7 +141,7 @@ class ThanhVienNhom extends Controller
     }
     public function PostThanhVienXinGiaNhapNhom(Request $rql)
     {
-            if($this->GetThanhvienChoPheDuyet($rql->ma_tai_khoan,$rql->ma_nhom)==""){
+            if( count($this->GetThanhvienChoPheDuyet($rql->ma_tai_khoan,$rql->ma_nhom))==0){
                 $thanhvienchopheduyet = new thanh_vien_cho_phe_duyet();
                 $thanhvienchopheduyet->ma_nhom                  = $rql->ma_nhom;
                 $thanhvienchopheduyet->ma_tai_khoan             = $rql->ma_tai_khoan;

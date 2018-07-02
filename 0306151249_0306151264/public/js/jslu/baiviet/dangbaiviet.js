@@ -102,7 +102,7 @@ $( document ).ready(function() {
               $.ajax({
                   url:  link_host+'/uploadanh',
                   type: 'POST',
-                  async: false,  
+                  // async: false,  
                   processData: false,
                   contentType: false,              
                   data: formData
