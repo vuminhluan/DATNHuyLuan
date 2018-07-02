@@ -42,7 +42,6 @@ $(document).ready(function() {
 
 		if($('#seen'+id).attr('data-seen') == 1) {
 			seen = 1;
-
 		} else {
 			$('#seen'+id).attr('class', 'fa fa-check text-success');
 		}

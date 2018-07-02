@@ -65,7 +65,7 @@
                 @csrf
                 <input type="hidden" value="{{$taikhoan->ma_tai_khoan}}" name="id">
                 <div class="form-group">
-                  <label for="familyname">Họ tên lót:</label>
+                  <label for="familyname">Họ tên đệm:</label>
                   <input type="text" class="form-control" value="{{$taikhoan->ho_ten_lot}}" id="familyname" name="familyname">
                 </div>
                 <div class="form-group">

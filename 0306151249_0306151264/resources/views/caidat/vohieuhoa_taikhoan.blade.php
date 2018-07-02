@@ -24,7 +24,7 @@
 	<div>
 		<form action="javascript: void(0)" class="setting-form" id="deactivate-form">
 			@csrf
-			<button id="validation-button" class="deactivate-account-button modal-open-button" data-modalid="js-confirm-change-by-password-modal"><span>Vô hiệu hóa</span> @nguoidunga</button>
+			<button id="validation-button" class="deactivate-account-button modal-open-button" data-modalid="js-confirm-change-by-password-modal"><span>Vô hiệu hóa</span> {{'@'.Auth::user()->ten_tai_khoan}}</button>
 		</form>
 	</div>
 

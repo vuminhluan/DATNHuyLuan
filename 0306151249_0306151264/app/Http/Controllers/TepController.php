@@ -34,7 +34,11 @@ class TepController extends Controller
       $tatca_tep = $tatca_tep->where('ten_tep', 'LIKE', '%'.$req->filename_keyword.'%')->get();
       return view('trang_ca_nhan.tep.index', ['tatca_tep' => $tatca_tep, 'username' => $username]);
     }
-
+    if(Auth::user()->ten_tai_khoan != $username) {
+      $tatca_tep = $tatca_tep->where('cong_khai', 1)->orderBy('ma_tep', 'desc')->paginate(8);
+      // $tatca_tep = $tatca_tep->paginate(8);
+      return view('trang_ca_nhan.tep.index', ['tatca_tep' => $tatca_tep, 'username' => $username]);
+    }
     if($kind == "tatca" || $kind=="tep") {
       $tatca_tep = $tatca_tep->orderBy('ma_tep', 'desc');
     } else if ($kind == "congkhai") {

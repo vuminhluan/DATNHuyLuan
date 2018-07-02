@@ -60,7 +60,7 @@
                     <input name="id[]" class="check" type="checkbox" value="{{$baocao->ma_bao_cao}}">
                   </td>
                   <td>
-                    <a href="view-contact.html" class="detail-message" data-toggle="modal" data-target=".show-message-modal" id="id">#{{$baocao->ma_bao_cao}}</a>
+                    <a href="view-contact.html" class="detail-report" data-toggle="modal" data-target=".show-message-modal" id="{{$baocao->ma_bao_cao}}">#{{$baocao->ma_bao_cao}}</a>
                   </td>
                   <td class="hidden-sm hidden-xs">Báo cáo {{$baocao->belongsToLoaiBaoCao->ten_loai_bao_cao}}</td>
                   <td class="hidden-xs td-search">{{$baocao->belongsToTaiKhoan->hasNguoiDung->ho_ten_lot." ".$baocao->belongsToTaiKhoan->hasNguoiDung->ten}}</td>
@@ -68,9 +68,9 @@
                   <td class="hidden-sm hidden-xs">{{date_format($baocao->thoi_gian_gui_bao_cao, "d/m/Y H:i:s")}}</td>
                   <td>
                     @if ($baocao->da_xem)
-                      <i class="fa fa-check text-success" data-seen="1" id="seen{{$baocao->ma}}" data-toggle="tooltip" data-placement="top" title="Phản hồi đã đọc"></i>
+                      <i class="fa fa-check text-success" data-seen="1" id="seen{{$baocao->ma_bao_cao}}" data-toggle="tooltip" data-placement="top" title="Phản hồi đã đọc"></i>
                     @else
-                      <i class="fa fa-envelope-o" data-seen="0" id="seen{{$baocao->ma}}" data-toggle="tooltip" data-placement="top" title="Phản hồi chưa đọc"></i>
+                      <i class="fa fa-envelope-o" data-seen="0" id="seen{{$baocao->ma_bao_cao}}" data-toggle="tooltip" data-placement="top" title="Phản hồi chưa đọc"></i>
                     @endif
 
                     @if (!$baocao->trang_thai)
@@ -115,16 +115,17 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">PHẢN HỒI #<span id="contact-id">20</span></h4>
+        <h4 class="modal-title">BÁO CÁO #<span id="contact-id">20</span></h4>
       </div>
       <div class="modal-body">
-        <div><label for="">Họ tên: </label> <span id="contact-fullname">Họ tên người gửi</span></div>
-        <div><label for="">Email: </label> <span id="contact-email">Email</span></div>
-        <div><label for="">Thời gian: </label> <span id="contact-created-at">Thời gian gửi</span></div>
+        <div><label for="">Người báo cáo: </label> <span id="report-sender">Họ tên người gửi</span></div>
+        <div><label for="">Email: </label> <span id="report-sender-email">Email</span></div>
+        <div><label for="">Thời gian: </label> <span id="report-created-at">Thời gian gửi</span></div>
+        <div><label for="">Loại báo cáo: </label> <span id="report-kind">Loại báo cáo</span></div>
+        <div><label for="">Đối tượng bị báo cáo: </label> <span id="reported-thing">Đối tượng báo cáo</span></div>
         <div>
-          <label for="">Tin nhắn: </label> <br>
-          <pre id="contact-message"><code></code>
-          </pre>
+          <label for="">Nội dung báo cáo: </label> <br>
+          <p id="report-message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, sequi.</p>
         </div>
       </div>
       <div class="modal-footer">
@@ -139,44 +140,57 @@
 
 
 @section('javascript')
-  {{-- <script src="{{ asset('node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js') }}"></script>
-  <script src="{{ asset('js/admin/admin-contact.js') }}"></script> --}}
   
   <script>
     
-    // var socket = io.connect( 'http://'+window.location.hostname+':3000' );
-    // // console.log(socket);
-    // // console.log('asd');
-    // socket.on('sendMessage', function(data) {
-    //   // $('.alert').append('Có <strong>1</strong> phản hồi mới chưa đọc từ '+data.fullname);
-    //   // Update message counter
-    //   var messageCounter = parseInt($('#message-counter').attr('title'), 10) + 1; // cơ số 10
-    //   $('#message-counter').attr('title', parseInt(messageCounter));
-    //   if(messageCounter > 1000) {
-    //     messageCounter = parseInt(messageCounter/1000)+' k';
-    //   }
-    //   $('#message-counter').html(messageCounter);
+    $(document).ready(function() {
+
+      $('body').on('click', '.detail-report', function(event) {
+
+        // $('.myloader').show();
+        var id = $(this).attr('id');
+        // alert(id);return;
+        var seen = 0;
+
+        if($('#seen'+id).attr('data-seen') == 1) {
+          seen = 1;
+        } else {
+          $('#seen'+id).attr('class', 'fa fa-check text-success');
+        }
+
+        // alert(id+'--'+seen);return;
+
+        var data = {
+          id    : id,
+          seen  : seen,
+          _token: $('[name=_token]').val()
+        };
+
+        $.ajax({
+          url: link_host+'/admin/baocao/xemchitiet',
+          type: 'POST',
+          data: data,
+        })
+        .done(function(response) {
+          
+          console.log(response);
+          // $('#contact-fullname').html(response.ho_va_ten);
+          // $('#contact-email').html(response.email);
+          // $('#contact-created-at').html(response.thoi_gian_tao);
+          // $('#contact-id').html(response.ma);
+          // $('#contact-message code').html(response.tin_nhan);
+
+          // $('.myloader').hide();
+        })
+        .fail(function() {
+          console.log("error");
+        });
+        
+      });
 
 
-    //   // Update record;
-    //   var fullname = data.ho_va_ten;
-    //   var id = data.ma;
-
-    //   var createdAt = new Date(data.thoi_gian_tao);
-
-    //   var date = createdAt.getDate() < 10 ? '0'+createdAt.getDate() : createdAt.getDate();
-    //   var month = (createdAt.getMonth()+1) < 10 ? '0'+(createdAt.getMonth()+1) : (createdAt.getMonth()+1);
-    //   var hour = createdAt.getHours() < 10 ? '0'+createdAt.getHours() : createdAt.getHours();
-    //   var minute = createdAt.getMinutes() < 10 ? '0'+createdAt.getMinutes() : createdAt.getMinutes();
-    //   var second = createdAt.getSeconds() < 10 ? '0'+createdAt.getSeconds() : createdAt.getSeconds();
-      
-    //   createAt = date+'/'+month+'/'+createdAt.getFullYear()+' '+hour+':'+minute+':'+second;
-
-    //   var record = "<tr class='alert alert-info' style='color: #333'><td><input name='id[]' type='checkbox' value='0'></td><td><a href='view-contact.html' class='detail-message' data-toggle='modal' data-target='.show-message-modal' id='"+id+"'>#"+id+"</a></td><td class='hidden-xs'>"+fullname+"</td><td class='hidden-sm hidden-xs'>"+{{'data.email'}}+"</td><td class='hidden-sm hidden-xs'>"+createAt+"</td><td><i class='fa fa-envelope-o' data-toggle='tooltip' data-placement='top' title='Phản hồi chưa đọc'></i></td></tr>";
-
-    //   $('#message-table tbody').prepend(record);
-
-    // });
+    });
+  
   </script>
 @endsection
 

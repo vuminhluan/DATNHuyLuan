@@ -115,8 +115,8 @@ $(document).ready(function() {
     messages: {
     	profile_family_middle_name: {
         required : 'Họ và tên lót không được để trống',
-        regex    : 'Họ tên lót phải là tiếng việt có dấu',
-        maxlength: 'Họ tên lót dài tối đa {0} kí tự'
+        regex    : 'Họ tên đệm phải là tiếng việt có dấu',
+        maxlength: 'Họ tên đệm dài tối đa {0} kí tự'
     	},
     	profile_first_name: {
         required : 'Tên không được để trống',

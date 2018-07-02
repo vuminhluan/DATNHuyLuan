@@ -31,6 +31,7 @@ class TrangCaNhanController extends Controller
 	{
 		$tatca_gioitinh = DB::table('gioi_tinh')->get();
 
+
 		
 		// return $tatca_baiviet;
 		// return $tatca_gioitinh;
@@ -53,7 +54,15 @@ class TrangCaNhanController extends Controller
 			abort(404);
 		}
 		// return $taikhoan->hasNguoiDung->ten;
-		$taikhoan_bichan = TaiKhoanBiChan::where('ma_tai_khoan_bi_chan', $taikhoan->ma_tai_khoan)->where('ma_tai_khoan_chan', Auth::user()->ma_tai_khoan)->where('trang_thai', 1)->first();
+		$taikhoan_bichan = TaiKhoanBiChan::where([
+			['ma_tai_khoan_bi_chan', $taikhoan->ma_tai_khoan],
+			['ma_tai_khoan_chan', Auth::user()->ma_tai_khoan]
+		])
+		->orWhere([
+			['ma_tai_khoan_bi_chan', Auth::user()->ma_tai_khoan],
+			['ma_tai_khoan_chan', $taikhoan->ma_tai_khoan]
+		])
+		->where('trang_thai', 1)->first();
 
 		if($taikhoan_bichan) {
 			abort(404);

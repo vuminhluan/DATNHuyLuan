@@ -11,7 +11,7 @@ class bao_cao_vi_pham extends Model
       protected $primaryKey = "ma_bao_cao";
 	  // public $incrementing = false;
 	  const CREATED_AT = 'thoi_gian_gui_bao_cao';
-	  const UPDATED_AT = null;
+	  const UPDATED_AT = 'thoi_gian_xu_ly_bao_cao_update';
 
 
 	  public function belongsToTaiKhoan()

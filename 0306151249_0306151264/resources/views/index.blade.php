@@ -40,7 +40,7 @@
 									<span class="help-mark">&#63;
 
 										<span class="help-mark-text">
-											Họ và tên đệm chỉ chứa các kí tự là chữ cái (có dấu)
+											Họ và tên đệm dài từ 2 - 30 kí tự và chỉ chứa các kí tự là chữ cái (có dấu)
 										</span>
 
 									</span>
@@ -54,7 +54,7 @@
 									<span class="help-mark">&#63;
 
 										<span class="help-mark-text">
-											Tên chỉ chứa các kí tự là chữ cái (có dấu)
+											Tên dài từ 2 - 20 kí tự và chỉ chứa các kí tự là chữ cái (có dấu)
 										</span>
 
 									</span>

@@ -62,6 +62,11 @@ p[rel="js-show-more-description__target"] {
 	max-height: 400px;
 }
 
-
+.block__next-previous {
+	text-align: center;
+}
+.block__next-previous > li {
+	display: inline-block; padding: 8px;
+}
 
 

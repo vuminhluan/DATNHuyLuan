@@ -48,5 +48,10 @@ class BaoCaoController extends Controller
     return view('admin.nhom.index',['tatca_nhom' => $tatca_nhom]);
   }
 
+  public function postXemBaoCao(Request $req)
+  {
+    $report = BaoCao::find($req->id);
+    return $report;
+  }
 
 }
