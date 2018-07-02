@@ -54,30 +54,32 @@
               @csrf
               @if ($tatca_baocao)
                 @foreach ($tatca_baocao as $baocao)
-                
-                <tr class="alert alert-info" style="color: #333">
-                  <td>
-                    <input name="id[]" class="check" type="checkbox" value="{{$baocao->ma_bao_cao}}">
-                  </td>
-                  <td>
-                    <a href="view-contact.html" class="detail-report" data-toggle="modal" data-target=".show-message-modal" id="{{$baocao->ma_bao_cao}}">#{{$baocao->ma_bao_cao}}</a>
-                  </td>
-                  <td class="hidden-sm hidden-xs">Báo cáo {{$baocao->belongsToLoaiBaoCao->ten_loai_bao_cao}}</td>
-                  <td class="hidden-xs td-search">{{$baocao->belongsToTaiKhoan->hasNguoiDung->ho_ten_lot." ".$baocao->belongsToTaiKhoan->hasNguoiDung->ten}}</td>
+                  @if ($baocao->ma_noi_nhan_bao_cao == "NNBC1")
                   
-                  <td class="hidden-sm hidden-xs">{{date_format($baocao->thoi_gian_gui_bao_cao, "d/m/Y H:i:s")}}</td>
-                  <td>
-                    @if ($baocao->da_xem)
-                      <i class="fa fa-check text-success" data-seen="1" id="seen{{$baocao->ma_bao_cao}}" data-toggle="tooltip" data-placement="top" title="Phản hồi đã đọc"></i>
-                    @else
-                      <i class="fa fa-envelope-o" data-seen="0" id="seen{{$baocao->ma_bao_cao}}" data-toggle="tooltip" data-placement="top" title="Phản hồi chưa đọc"></i>
-                    @endif
+                  <tr class="alert alert-info" style="color: #333">
+                    <td>
+                      <input name="id[]" class="check" type="checkbox" value="{{$baocao->ma_bao_cao}}">
+                    </td>
+                    <td>
+                      <a href="view-contact.html" class="detail-report" data-toggle="modal" data-target=".show-message-modal" id="{{$baocao->ma_bao_cao}}">#{{$baocao->ma_bao_cao}}</a>
+                    </td>
+                    <td class="hidden-sm hidden-xs">Báo cáo {{$baocao->belongsToLoaiBaoCao->ten_loai_bao_cao}}</td>
+                    <td class="hidden-xs td-search">{{$baocao->belongsToTaiKhoan->hasNguoiDung->ho_ten_lot." ".$baocao->belongsToTaiKhoan->hasNguoiDung->ten}}</td>
+                    
+                    <td class="hidden-sm hidden-xs">{{date_format($baocao->thoi_gian_gui_bao_cao, "d/m/Y H:i:s")}}</td>
+                    <td>
+                      @if ($baocao->da_xem)
+                        <i class="fa fa-check text-success" data-seen="1" id="seen{{$baocao->ma_bao_cao}}" data-toggle="tooltip" data-placement="top" title="Phản hồi đã đọc"></i>
+                      @else
+                        <i class="fa fa-envelope-o" data-seen="0" id="seen{{$baocao->ma_bao_cao}}" data-toggle="tooltip" data-placement="top" title="Phản hồi chưa đọc"></i>
+                      @endif
 
-                    @if (!$baocao->trang_thai)
-                      <i class="fa fa-times text-danger" data-toggle="tooltip" data-placement="top" title="Báo cáo đã xóa"></i>
-                    @endif
-                  </td>
-                </tr>
+                      @if (!$baocao->trang_thai)
+                        <i class="fa fa-times text-danger" data-toggle="tooltip" data-placement="top" title="Báo cáo đã xóa"></i>
+                      @endif
+                    </td>
+                  </tr>
+                  @endif
                 @endforeach
               @endif
             </tbody>
@@ -119,7 +121,6 @@
       </div>
       <div class="modal-body">
         <div><label for="">Người báo cáo: </label> <span id="report-sender">Họ tên người gửi</span></div>
-        <div><label for="">Email: </label> <span id="report-sender-email">Email</span></div>
         <div><label for="">Thời gian: </label> <span id="report-created-at">Thời gian gửi</span></div>
         <div><label for="">Loại báo cáo: </label> <span id="report-kind">Loại báo cáo</span></div>
         <div><label for="">Đối tượng bị báo cáo: </label> <span id="reported-thing">Đối tượng báo cáo</span></div>

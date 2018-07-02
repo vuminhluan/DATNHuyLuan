@@ -29,6 +29,7 @@ class TrangCaNhanController extends Controller
 
 	public function getTrangCaNhan($username)
 	{
+		// return 1;
 		$tatca_gioitinh = DB::table('gioi_tinh')->get();
 
 
@@ -238,18 +239,19 @@ class TrangCaNhanController extends Controller
 	public function postBaoCaoTaiKhoan(Request $req)
 	{
 		// return "Đã báo cáo tài khoản thành công";
-
+		// return $req;
 		if($this->getKiemTraBaoCaoTonTaiHayChua($req->user_id)['reported']) {
-			$baocao = TaiKhoan::where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->first()->hasManyBaoCao()->where('trang_thai', 1)->where('ma_doi_tuong_bi_bao_cao', 'NH00000003')->first();
+			$baocao = TaiKhoan::where('ma_tai_khoan', Auth::user()->ma_tai_khoan)->first()->hasManyBaoCao()->where('trang_thai', 1)->where('ma_doi_tuong_bi_bao_cao', $req->user_id)->first();
 			$baocao->noi_dung_bao_cao = $req->report_input;
 			$baocao->save();
 		} else {
 			$baocao = new BaoCao();
-			$baocao->ma_loai_bao_cao = "LBC01";
+			$baocao->ma_loai_bao_cao = "LBC02";
 			$baocao->ma_noi_nhan_bao_cao = "NNBC1";
 			$baocao->nguoi_gui_bao_cao = Auth::user()->ma_tai_khoan;
 			$baocao->noi_dung_bao_cao = $req->report_input;
 			$baocao->ma_doi_tuong_bi_bao_cao = $req->user_id;
+			$baocao->trang_thai = 1;
 			$baocao->save();
 		}
 
