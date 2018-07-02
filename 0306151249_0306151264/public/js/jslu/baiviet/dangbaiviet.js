@@ -79,6 +79,9 @@ function displaydivoption(p)
 
 var mabaiviet="hi";
  var ngaygiohientai = getdatetime();
+ // $("#ngayhethankhaosat").val(getdatetime());
+ // $("#ngayhethanthubaiviet").val(getdatetime());
+ // $("#ipdtngayanbaiviet").val(getdatetime());
 
 // function transferComplete(data){
 //   console.log(data.currentTarget.response);
@@ -88,8 +91,17 @@ $( document ).ready(function() {
 
   $('#formdangbaiviet').submit(function(event) {
     event.preventDefault();
-  
+    //checkrou1
+      var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
+        if(noidungbaiviet==""){
+          thongbaopopupy("Đăng bài viết","Bạn chưa nhập vào nội dung bài viết");return;}//kiểm tra caption có chưa
 
+        if(checktimedangbaiviet()!="0"){
+          thongbaopopupy("Đăng bài viết",checktimedangbaiviet()); return;} //kiểm tra thời gian input hợp lệ chưa
+          // 
+
+  
+    submitdangbaiviet();
     if (document.getElementById("imgInp").value!="") {
 
     var danganhcheck=true;
@@ -102,40 +114,38 @@ $( document ).ready(function() {
               $.ajax({
                   url:  link_host+'/uploadanh',
                   type: 'POST',
-                  // async: false,  
+                   async: false,  
                   processData: false,
                   contentType: false,              
                   data: formData
               }).done(function(data){
                 // alert(data);
-                document.getElementById("imgInp").value="";
-                $('#divanhxemtruocduocthemvao').css("display","none");
+
               });
         }
     } 
 
-     submitdangbaiviet();
+     
     
 });
 
 
 });
 
-// function getmabaivietmoithat(){
-//    //
-//   var mabaivietmoi ="1";
-//      $.ajax({
-//                         url: link_host+ '/ajax/getmabaivietne',
-//                         type:"GET",
-//                         data:{}
-//                       }).done(function(data){
-//                         mabaivietmoi=data;
-//                        //alert(data);
-//                          return mabaivietmoi;
-//                       })            
-//   }
-// setInterval(getmabaivietmoithat,2000);
+
+var mabaiviettieptheo =0;
+function getmabaiviettieptheo() {
+  $.ajax({
+                        url: link_host+ '/ajax/getmabaivietne',
+                        type:"GET",
+                        async:false,
+                        data:{}
+                      }).done(function(data){
+                          mabaiviettieptheo = parseInt(data)+1;
+                      })
+}
 function submitdangbaiviet() {
+  getmabaiviettieptheo();
 
 var postbai= true; // đây là cái khóa tránh làm 2 lần ! của cậu ajax bất đồng bộ
 var taofolder = true;
@@ -165,19 +175,13 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
                       Thoigianthubaiviet=$("#ngayhethanthubaiviet").val();
                       if(taofolder){
                         taofolder=!taofolder;
-                       $.ajax({
-                        url: link_host+ '/ajax/getmabaivietne',
-                        type:"GET",
-                        async:false,
-                        data:{}
-                      }).done(function(data){
-                        var mabaivietmoi = parseInt(data)+1;
                         
                           $.ajax({
                             url: link_host+ '/taofolderchuatepthubaine',
                             type:"GET",
                             async:false,
-                            data:{ma_bai_viet:mabaivietmoi,nguoi_tao:$("#session-ma-tk").val()}
+                            data:{ma_bai_viet: mabaiviettieptheo ,//mabaivietmoi,  //mabaiviettieptheo
+                                  nguoi_tao:$("#session-ma-tk").val()}
                           }).done(function(data){
 // end lấy folder khi cả 2 cùng check
 // đoạn này lấy list vote khi cả 2 nút cùng check
@@ -195,13 +199,7 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
                                       if(khaosatcheck)
                                       {
                                         khaosatcheck=!khaosatcheck;
-                                          $.ajax({
-                                            url: link_host+ '/ajax/getmabaivietne',
-                                            type:"GET",
-                                            async:false,
-                                            data:{}
-                                          }).done(function(dt){
-                                            var mabaivietmoine=parseInt(dt)+1;
+
                                             
                                             for (var i = 0; i < arrcauhoi.length; i++) {
                                                 $.ajax({
@@ -210,7 +208,7 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
                                                   async:false,
                                                   data:{
                                                     _token: $('input[name=_token]').val(),
-                                                    ma_bai_viet:mabaivietmoine,
+                                                    ma_bai_viet:mabaiviettieptheo ,   //mabaivietmoine,
                                                     noi_dung_y_kien:arrcauhoi[i],
                                                     nguoi_tao_y_kien:$('#session-ma-tk').val(),
                                                     nguoi_sua:$('#session-ma-tk').val(),
@@ -220,13 +218,10 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
 // đoạn này up bài viết mới khi cả 2 cùng check
  if(postbai){
                                     postbai=!postbai;
-                            upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,Thoigiankhaosatbaiviet,Thoigiananbaiviet,mabaivietmoine);
-                          }
-                                                })}})
-                                          }/////////
-                                        }
+                            upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,Thoigiankhaosatbaiviet,Thoigiananbaiviet,mabaiviettieptheo);
+                          }})}}}
 // đoạn này end lấy list vote khi cả 2 cùng chẹck
-                          });})
+                          });
 }
 /////////////////////////
                     }}//}
@@ -234,33 +229,23 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
             /////đầu
              if($('#ckbthubai').is(":checked")){
                   thubai="1";  
-                    // if($("#ngayhethanthubaiviet").val()==""){
-                    //   alert("Bạn cung cấp thiếu hạn cuối thu bài viết");return;}
-                    // else{
                       Thoigianthubaiviet=$("#ngayhethanthubaiviet").val();
                       if(taofolder)
                         { taofolder=!taofolder;
-                       $.ajax({
-                        url: link_host+ '/ajax/getmabaivietne',
-                        type:"GET",
-                        async:false,
-                        data:{}
-                      }).done(function(data){
-                        var mabaivietmoi = parseInt(data)+1;
-                        
                           $.ajax({
                             url: link_host+ '/taofolderchuatepthubaine',
                             type:"GET",
-                            async:false,
-                            data:{ma_bai_viet:mabaivietmoi,nguoi_tao:$("#session-ma-tk").val()}
+                            async:true,
+                            data:{ma_bai_viet: mabaiviettieptheo ,//mabaivietmoi,
+                              nguoi_tao:$("#session-ma-tk").val()}
                           }).done(function(data){
                             // đoạn này up bài mới khi thu bài được check cái kia ko
                              if(postbai){
                                     postbai=!postbai;
-                            upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,Thoigiankhaosatbaiviet,Thoigiananbaiviet,mabaivietmoi);
+                            upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,Thoigiankhaosatbaiviet,Thoigiananbaiviet,mabaiviettieptheo);
                           }
                             // end up bài mới
-                          })})
+                          })//})
                   }
                     }//}
              else{
@@ -281,22 +266,16 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
                           }
                             if(khaosatcheck)
                             {khaosatcheck=!khaosatcheck;
-                                $.ajax({
-                                  url: link_host+ '/ajax/getmabaivietne',
-                                  type:"GET",
-                                  async:false,
-                                  data:{}
-                                }).done(function(dt){
-                                  var mabaivietmoine=parseInt(dt)+1;
+
                                   
                                   for (var i = 0; i < arrcauhoi.length; i++) {
                                       $.ajax({
                                         url:link_host+'/ajax/postykienvotebaivietne',
                                         type:'POST',
-                                        // async:false,
+                                         async:false,
                                         data:{
                                           _token: $('input[name=_token]').val(),
-                                          ma_bai_viet:mabaivietmoine,
+                                          ma_bai_viet: mabaiviettieptheo , //mabaivietmoine,
                                           noi_dung_y_kien:arrcauhoi[i],
                                           nguoi_tao_y_kien:$('#session-ma-tk').val(),
                                           nguoi_sua:$('#session-ma-tk').val(),
@@ -306,9 +285,9 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
 // đoạn này up bài mới khi vote bài được check cái kia ko
                                   if(postbai){
                                     postbai=!postbai;
-                                  upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,Thoigiankhaosatbaiviet,Thoigiananbaiviet,mabaivietmoine);
+                                  upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,Thoigiankhaosatbaiviet,Thoigiananbaiviet,mabaiviettieptheo);
                                       }
-                                      })}})
+                                      })}//})
                             }
                               }else{
                                   if (!$('#ckbthubai').is(":checked")&&!$('#ckbkhaosat').is(":checked"))
@@ -316,17 +295,10 @@ var noidungbaiviet=$('#iptextdangbaiviet').val().trim();
                                     //up bài mới khi không nút nào được chọn
                                      if(postbai){
                                     postbai=!postbai;
-                                     $.ajax({
-                                  url: link_host+ '/ajax/getmabaivietne',
-                                  type:"GET",
-                                  async:false,
-                                  data:{}
-                                }).done(function(dt){
-                                  var mabaivietmoine=parseInt(dt)+1;
-                                    upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,Thoigiankhaosatbaiviet,Thoigiananbaiviet,mabaivietmoine);
-                                    })
+
+                                    upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,Thoigiankhaosatbaiviet,Thoigiananbaiviet,mabaiviettieptheo);
+                                   // })
                                    }
-                                    //end up bài mới khi không nút nào được chọn
                                   }
                               }
 // đuôi của list câu vote
@@ -446,7 +418,8 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
                                                $(".hida").css("display","block");
                                               // $('.dropdown dt div').append(ret);
 
-
+                                                document.getElementById("imgInp").value="";
+                                               $('#divanhxemtruocduocthemvao').css("display","none");
 
 
                                               var batdongbo2 = true;

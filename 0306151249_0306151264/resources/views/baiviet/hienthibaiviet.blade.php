@@ -80,7 +80,7 @@
                                 <div class="divclicknopbai" id="div-click-{{$lstbaiviet[$i]->ma_bai_viet}}" onclick="shownoptep('{{$lstbaiviet[$i]->ma_bai_viet}}'),demnguoithoigiannopbai('{{$lstbaiviet[$i]->thoi_gian_thu_bai_viet}}','timehetnoibai-{{$lstbaiviet[$i]->ma_bai_viet}}')"><center>
                                      Nhấn nộp tài liệu &nbsp; &nbsp;<i class="fa fa-file-archive-o fa-2x" aria-hidden="true"></i></center>
                                 </div>
-                             
+                                {{-- <a href="https://drive.google.com/drive/folders/{{$folder['basename']}}" target="_blank"> <i class="fa fa-folder-o"></i> {{$folder['name']}}</a> --}}
                                 <div class="divtopfiletus" id="div-nopfile-{{$lstbaiviet[$i]->ma_bai_viet}}" style="display: none;border-top: none;">
                                   <div id="divthoigianhethannopbai-{{$lstbaiviet[$i]->ma_bai_viet}}" class="cldivthoigianhetvote" style="display: block;">
                                     <p id="timehetnoibai-{{$lstbaiviet[$i]->ma_bai_viet}}"></p>

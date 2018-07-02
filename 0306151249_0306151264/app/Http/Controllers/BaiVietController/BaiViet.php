@@ -48,6 +48,10 @@ class BaiViet extends Controller
 
 
     }
+    // public function Getmabaivietnguoidangtheo($value='')
+    // {
+    //     # code...
+    // }
     public function Postbaivietchiase($mabaiviet,$manguoichiase,$manhomchiase){
         
             $baivietchiase = new bai_viet_chia_se();
@@ -107,6 +111,10 @@ class BaiViet extends Controller
         // }
 
         // return $rql; // cais nayf la gi : 
+        // đoạn thêm tránh trùng folder
+        // $dt = new DateTime();
+        // $timer= $dt->format('Y-m-d-H-i-s');.$timer
+        // hihi
 
         $new_folder = 'folder'.$rql->ma_bai_viet.$rql->nguoi_tao;
         $path = $root.'/'.$thumuc_dangbai.'/'.$new_folder;
