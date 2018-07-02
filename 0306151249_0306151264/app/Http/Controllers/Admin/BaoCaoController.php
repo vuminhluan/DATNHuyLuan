@@ -93,7 +93,7 @@ class BaoCaoController extends Controller
         DB::raw("CONCAT(Sender.ho_ten_lot,' ', Sender.ten) AS sender_fullname"),
         
         'Target.ma_tai_khoan AS target_id',
-        DB::raw("CONCAT(Target.ho_ten_lot,' ', Target.ten) AS target_fullname")
+        DB::raw("CONCAT(Target.ho_ten_lot,' ', Target.ten) AS target_name")
       );
     }
 
