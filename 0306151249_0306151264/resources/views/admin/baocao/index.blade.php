@@ -173,9 +173,9 @@
           data: data,
         })
         .done(function(response) {
-          
+          response = response[0];
           console.log(response);
-          // $('#contact-fullname').html(response.ho_va_ten);
+          $('#report-sender').html(response.sender_fullname);
           // $('#contact-email').html(response.email);
           // $('#contact-created-at').html(response.thoi_gian_tao);
           // $('#contact-id').html(response.ma);

@@ -18,12 +18,7 @@ class BaoCaoController extends Controller
 
   public function postCapNhat(Request $req)
   {
-  	// return "Cap nhat bao cao";
-  	// if($req->search) {
-  	// 	return redirect()->route('admin.baocao.timkiem', [$req->search]);
-  	// }
-
-  	// return "ád";
+  
 
   	$message = "";
     if($req->task == "report-delete") {
@@ -61,26 +56,49 @@ class BaoCaoController extends Controller
       $report->da_xem = "1";
       $report->save();
     }
+
+    $report_obj = DB::table('bao_cao_vi_pham AS Report')
+      ->join('loai_bao_cao AS Kind', 'Report.ma_loai_bao_cao', '=', 'Kind.ma_loai_bao_cao')
+      ->join('nguoi_dung AS Sender', 'Report.nguoi_gui_bao_cao', '=', 'Sender.ma_tai_khoan');
+
     if($report->ma_loai_bao_cao == "LBC01") {
       // Báo cáo nhóm
-      $report = DB::table('bao_cao_vi_pham AS baocao')
-      ->join('loai_bao_cao', 'baocao.ma_loai_bao_cao', '=', 'loai_bao_cao.ma_loai_bao_cao')
-      ->join('nguoi_dung', 'baocao.nguoi_gui_bao_cao', '=', 'nguoi_dung.ma_tai_khoan')
-      ->join('nhom', 'baocao.ma_doi_tuong_bi_bao_cao', '=', 'nhom.ma_nhom')
+      $report_obj = $report_obj
+      ->join('nhom AS Target', 'Report.ma_doi_tuong_bi_bao_cao', '=', 'Target.ma_nhom')
       ->where('ma_bao_cao', $req->id)
-      ->select('baocao.noi_dung_bao_cao', 'nhom.ma_nhom', 'nhom.ten_nhom', 'loai_bao_cao.ten_loai_bao_cao')->get();
+      ->select(
+        'Report.ma_bao_cao AS report_id',
+        'Report.noi_dung_bao_cao AS report_content',
+        'Report.thoi_gian_gui_bao_cao AS report_created_at',
+        'Kind.ma_loai_bao_cao AS report_kind_id',
+        'Kind.ten_loai_bao_cao AS report_kind',
+        'Sender.ma_tai_khoan AS sender_id',
+        DB::raw("CONCAT(Sender.ho_ten_lot,' ', Sender.ten) AS sender_fullname"),
+
+        'Target.ma_nhom AS target_id',
+        'Target.ten_nhom AS target_name'
+      );
     } else if($report->ma_loai_bao_cao == "LBC02") {
       // Báo cáo tài khoản
-      $report = DB::table('bao_cao_vi_pham AS baocao')
-      ->join('loai_bao_cao', 'baocao.ma_loai_bao_cao', '=', 'loai_bao_cao.ma_loai_bao_cao')
-      ->join('nguoi_dung AS nguoi_baocao', 'baocao.nguoi_gui_bao_cao', '=', 'nguoi_baocao.ma_tai_khoan')
-      ->join('nguoi_dung AS nguoi_bi_baocao', 'baocao.ma_doi_tuong_bi_bao_cao', '=', 'nguoi_bi_baocao.ma_tai_khoan')
+      $report_obj = $report_obj
+      ->join('nguoi_dung AS Target', 'Report.ma_doi_tuong_bi_bao_cao', '=', 'Target.ma_tai_khoan')
       ->where('ma_bao_cao', $req->id)
-      ->select('baocao.noi_dung_bao_cao', 'nguoi_baocao.ten AS nguoi_bao_cao', 'nguoi_bi_baocao.ten AS nguoi_bi_bao_cao', 'loai_bao_cao.ten_loai_bao_cao')->get();
+      ->select(
+        'Report.ma_bao_cao AS report_id',
+        'Report.noi_dung_bao_cao AS report_content',
+        'Report.thoi_gian_gui_bao_cao AS report_created_at',
+        'Kind.ma_loai_bao_cao AS report_kind_id',
+        'Kind.ten_loai_bao_cao AS report_kind',
+        'Sender.ma_tai_khoan AS sender_id',
+        DB::raw("CONCAT(Sender.ho_ten_lot,' ', Sender.ten) AS sender_fullname"),
+        
+        'Target.ma_tai_khoan AS target_id',
+        DB::raw("CONCAT(Target.ho_ten_lot,' ', Target.ten) AS target_fullname")
+      );
     }
 
 
-    return $report;
+    return $report_obj->get();
   }
 
 }
