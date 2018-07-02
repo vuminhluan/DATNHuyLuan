@@ -123,10 +123,10 @@
         <div><label for="">Người báo cáo: </label> <span id="report-sender">Họ tên người gửi</span></div>
         <div><label for="">Thời gian: </label> <span id="report-created-at">Thời gian gửi</span></div>
         <div><label for="">Loại báo cáo: </label> <span id="report-kind">Loại báo cáo</span></div>
-        <div><label for="">Đối tượng bị báo cáo: </label> <span id="reported-thing">Đối tượng báo cáo</span></div>
+        <div><label for="">Đối tượng bị báo cáo: </label> <span id="report-target">Đối tượng báo cáo</span></div>
         <div>
           <label for="">Nội dung báo cáo: </label> <br>
-          <p id="report-message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, sequi.</p>
+          <p id="report-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, sequi.</p>
         </div>
       </div>
       <div class="modal-footer">
@@ -148,7 +148,7 @@
 
       $('body').on('click', '.detail-report', function(event) {
 
-        // $('.myloader').show();
+        $('.myloader').show();
         var id = $(this).attr('id');
         // alert(id);return;
         var seen = 0;
@@ -174,14 +174,14 @@
         })
         .done(function(response) {
           response = response[0];
-          console.log(response);
+          // console.log(response);
           $('#report-sender').html(response.sender_fullname);
-          // $('#contact-email').html(response.email);
-          // $('#contact-created-at').html(response.thoi_gian_tao);
-          // $('#contact-id').html(response.ma);
-          // $('#contact-message code').html(response.tin_nhan);
+          $('#report-created-at').html(response.report_created_at);
+          $('#report-kind').html("Báo cáo "+response.report_kind);
+          $('#report-target').html(response.target_name);
+          $('#report-content').html(response.report_content);
 
-          // $('.myloader').hide();
+          $('.myloader').hide();
         })
         .fail(function() {
           console.log("error");
