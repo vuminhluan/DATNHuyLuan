@@ -431,6 +431,7 @@ function taofolderthubai(mabaiviettieptheo) {
                             data:{ma_bai_viet: mabaiviettieptheo ,//mabaivietmoi,  //mabaiviettieptheo
                                   nguoi_tao:$("#session-ma-tk").val()}
                           }).done(function(data){ 
+                            console.log(data);
                           })
 }
 function Hoantatpostbaiviet(trangthaibaiviet,mabaivietmoine) {

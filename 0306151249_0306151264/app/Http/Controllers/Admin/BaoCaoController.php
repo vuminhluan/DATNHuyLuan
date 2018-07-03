@@ -97,7 +97,6 @@ class BaoCaoController extends Controller
       );
     }
 
-
     return $report_obj->get();
   }
 

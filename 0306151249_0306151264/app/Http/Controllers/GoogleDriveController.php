@@ -27,9 +27,10 @@ class GoogleDriveController extends Controller
 		// $foldername = date('dmY_His');
 
 		$path = $root.'/'.$foldername;
+		$search_from = $root;
 
 		//Tạo tệp trên drive:
-		$folder = $this->taoThuMucGoogleDrive($path, $root, $foldername);
+		$folder = $this->taoThuMucGoogleDrive($path, $root, $foldername, $search_from);
 
 		// return $folder;
 		
@@ -41,7 +42,7 @@ class GoogleDriveController extends Controller
 			'trang_thai'   => 1
 	  ];
 	  $this->capNhatDoiTuong($data, $thumuc_googledrive);
-
+	  // return $folder;
 	  // Nếu chưa đăng kí sử dụng dịch vụ
 	  // if(!Auth::user()->thu_muc_google_drive)
 

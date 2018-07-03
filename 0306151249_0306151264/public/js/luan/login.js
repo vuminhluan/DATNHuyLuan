@@ -217,8 +217,6 @@ function changeTab(n) {
   });
 
 
-
-
 // End Form đăng ký
 // ajax
   function SignupAjax() {
@@ -236,7 +234,6 @@ function changeTab(n) {
       },
       beforeSend: function() {
         $('#ajax-loader').css('display', 'block');
-
       },
       success: function() {
         // setting a timeout

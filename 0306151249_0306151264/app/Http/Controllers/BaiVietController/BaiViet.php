@@ -120,7 +120,8 @@ class BaiViet extends Controller
 
         $new_folder = 'folder'.$rql->ma_bai_viet.$rql->nguoi_tao;
         $path = $root.'/'.$thumuc_dangbai.'/'.$new_folder;
-        $folder = $this->taoThuMucGoogleDrive($path, $root, $new_folder);
+        $search_from = $root.'/'.$thumuc_dangbai;
+        $folder = $this->taoThuMucGoogleDrive($path, $root, $new_folder, $search_from);
 
 
       //   $contents = collect(Storage::cloud()->listContents($root, true));
@@ -142,9 +143,8 @@ class BaiViet extends Controller
         // return $folder['basename'];
 
 
-
-
-        return "OK";
+        // return "OK";
+        return $folder;
 
     }
 
@@ -152,7 +152,7 @@ class BaiViet extends Controller
     public function POSTBaiVietThuBaiFull(Request $rql)
     {
         // return $rql;
-        // $this->taofolderchuatepthubai($rql);
+        $this->taofolderchuatepthubai($rql);
         $this->Postbaiviet($rql);
 
     }
