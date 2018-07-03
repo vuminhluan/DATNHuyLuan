@@ -308,6 +308,10 @@ function submitnopbaine(prl,prl_mathumuc,prl_mabaiviet){
 
 	  $('#submitfile-'+prl).submit(function(event) {
 	    event.preventDefault();
+	    if (prl_mathumuc=="") {
+
+		thongbaopopupy("Nộp tệp","Chưa thể nộp tệp lúc này vui lòng tải lại trang"); return;}
+		
 		if( document.getElementById("inputfilenopbai-"+prl_mabaiviet).files.length == 0 )
 			{
 				alert("Chưa chọn tập tin");return;
@@ -362,9 +366,6 @@ function submitnopbaine(prl,prl_mathumuc,prl_mabaiviet){
     		}).done(function(data){
     		  thongbaopopupy("Nộp tệp tin",data);	// alert(data);
     		});
-    		//alert(prl_mabaiviet+$("#session-ma-tk").val()+tenfile);
-
-    		// 
     		$("#divloaddingupfile-"+prl_mabaiviet).empty();
     		var spannd = document.createElement("SPAN");
 			spannd.textContent = data;
@@ -373,7 +374,8 @@ function submitnopbaine(prl,prl_mathumuc,prl_mabaiviet){
 
 
 
-});
+})
+	
 }
 
 

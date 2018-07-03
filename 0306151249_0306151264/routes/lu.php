@@ -182,6 +182,8 @@ Route::post('/postanhbianhomne',"NhomController\Nhom@Postanhbianhom")
 
 Route::get("taofolderchuatepthubaine","BaiVietController\BaiViet@taofolderchuatepthubai")
 ->name("taofolderchuatepthubai");
+Route::post("/ajax/postbaivietthubaifullne","BaiVietController\BaiViet@POSTBaiVietThuBaiFull")
+->name("postbaivietthubaifull");
 
 Route::post("/postfilenopbaithanhvienne","BaiVietController\BaiViet@postfilenopbaithanhvien")
 ->name("postfilenopbaithanhvien");

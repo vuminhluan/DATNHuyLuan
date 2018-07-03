@@ -25,7 +25,7 @@ use App\chuc_vu_cua_thanh_vien_trong_nhom;
 use App\chuc_vu_trong_nhom;
 use App\cai_dat_nhom;
 use App\bai_viet_chia_se;
-//
+use Storage;
 
 
 
@@ -116,28 +116,50 @@ class BaiViet extends Controller
         // $timer= $dt->format('Y-m-d-H-i-s');.$timer
         // hihi
 
+
+
         $new_folder = 'folder'.$rql->ma_bai_viet.$rql->nguoi_tao;
         $path = $root.'/'.$thumuc_dangbai.'/'.$new_folder;
         $folder = $this->taoThuMucGoogleDrive($path, $root, $new_folder);
+
+
+      //   $contents = collect(Storage::cloud()->listContents($root, true));
+
+      // $dir = $contents->where('type', '=', 'dir')
+      //   ->where('filename', '=', $new_folder)
+      //   ->first();
+
+
+
+
         // nó ko trả về kết quả được :v lỗi từ khúc này trở xuống
-
-        // return $folder['basename'];
-
-
         $thumuc_thubai = new ThuMucThuBai();
-        $thumuc_thubai->ma_thumuc = $folder['basename'];
-        $thumuc_thubai->ma_bai_viet = $rql->ma_bai_viet;
+        $thumuc_thubai->ma_thumuc =$folder['basename'];
+        $thumuc_thubai->ma_bai_viet = $rql->ma_bai_viet; 
         $thumuc_thubai->nguoi_tao = $rql->nguoi_tao;
         $thumuc_thubai->trang_thai = 1;
         $thumuc_thubai->save();
+        // return $folder['basename'];
+
+
+
 
         return "OK";
 
     }
 
 
+    public function POSTBaiVietThuBaiFull(Request $rql)
+    {
+        // return $rql;
+        // $this->taofolderchuatepthubai($rql);
+        $this->Postbaiviet($rql);
 
-
+    }
+    // public function POSTBaiVietKhaoSatvaThuBaiFull($value='')
+    // {
+    //     # code...
+    // }
     public function GetMaBaiViet()
     {
       return  $this->GetMaBaiVietT();
