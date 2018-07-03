@@ -152,7 +152,7 @@ class BaiViet extends Controller
     public function POSTBaiVietThuBaiFull(Request $rql)
     {
         // return $rql;
-        $this->taofolderchuatepthubai($rql);
+        // $this->taofolderchuatepthubai($rql);
         $this->Postbaiviet($rql);
 
     }
