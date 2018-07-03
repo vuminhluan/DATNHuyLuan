@@ -310,7 +310,7 @@ function submitnopbaine(prl,prl_mathumuc,prl_mabaiviet){
 	    event.preventDefault();
 	    if (prl_mathumuc=="") {
 
-		thongbaopopupy("Nộp tệp","Chưa thể nộp tệp lúc này vui lòng tải lại trang"); return;}
+		thongbaopopupy("Nộp tệp","Thư mục chứa tệp hiện đang được khởi tạo. Chưa thể nộp tệp lúc này vui lòng đợi ít phút và tải lại trang. Xin cảm ơn!"); return;}
 		
 		if( document.getElementById("inputfilenopbai-"+prl_mabaiviet).files.length == 0 )
 			{
