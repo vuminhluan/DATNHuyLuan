@@ -24,6 +24,9 @@ class Nhom extends Controller
     public function loadnhom ($idnhom)
     {
          $matk =  Auth::user()->ma_tai_khoan;
+         // if ($matk==null) {
+         //     return redirect()->route('')
+         // }
        // $machucvu = DB::table('thanh_vien_nhom')->select("ma_chuc_vu")->where([["ma_nhom",$idnhom],["ma_tai_khoan",$matk],["trang_thai","1"]
        //                                                                          ])->get();
 

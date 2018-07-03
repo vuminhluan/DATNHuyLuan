@@ -62,5 +62,6 @@ class Kernel extends HttpKernel
         'MyAdminAuth'        => \App\Http\Middleware\MyAdminAuth::class,
         'MyUserAuth'         => \App\Http\Middleware\MyUserAuth::class,
         'PreventBackHistory' => \App\Http\Middleware\PreventBackHistory::class,
+        'MyNhommidw'         => \App\Http\Middleware\Nhommidw::class,
     ];
 }
