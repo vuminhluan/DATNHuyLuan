@@ -24,6 +24,67 @@
   
   
 }
+
+.upload-btn-wrapperl{
+	width: 50%;float: left;
+	  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.upload-btn-wrapperl input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+.btnlipfile{
+  border: 1px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 4px 10px;
+  border-radius: 1px;
+  font-size: 15px;
+  font-weight: bold;
+  max-height: 27px;
+}
+.btnlipfile:hover{
+	background-color:  gray;
+	color: white;
+	cursor: pointer;
+}
+
+.ipbaivietnopfile:hover{
+		background-color:  gray;
+	color: white;
+	cursor: pointer;
+}
+
+.submitnopbai{
+  float: right;
+  font-weight: bold;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border:solid 1px #9695d8;
+  color: #9695d8;
+/*  box-shadow: 1px 1px 1px #9695d8;*/
+  background-color:white;
+}
+.submitnopbai:hover{
+	cursor: pointer;
+	background-color: #9695d8;
+	color: white;
+}
+
+.divxemtepdanopthubai{
+	background-color: white; border-top: solid 1px #d0c0af36;font-weight: bold;text-align: center;padding: 10px;color: #9695d8;
+
+}
+.theatepduocnopbai{
+	text-decoration: none;
+}
 .headtus{
 
 }

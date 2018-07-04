@@ -335,7 +335,8 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
                                             }).done(function(data) {
                                               if (thubai=="1") {
                                                 thubai="0";
-                                                taofolderthubai(mabaiviettieptheo);}
+                                                taofolderthubai(mabaiviettieptheo);
+                                              }
                                                
                                               lstmanhomsharebv=[];
                                               $('.multiSel').empty();

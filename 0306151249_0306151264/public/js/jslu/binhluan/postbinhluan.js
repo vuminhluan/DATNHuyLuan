@@ -230,13 +230,19 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt,
 // 
 
 
-// 
+//            
+
+              var taga     = document.createElement("a");
+                  taga.href=link_host+"/taikhoan/id/"+mataikhoancmt;
+
               var divcon11 = document.createElement("div");
                   divcon11.className="cl-div-avt-cmt";
+
                   var img11 = document.createElement("IMG");
                       img11.className="imgaccountcmt";
                       if (maloaibaiviet=="LBV004"||maloaibaiviet=="LBV003") {
                         img11.src=link_host+'/pictures/anh_hide_user/hideuser.jpg';
+                         taga.href="";
                       }
                       else{
                       img11.src=link_host+'/pictures/anh_dai_dien/'+duongdananh;
@@ -312,7 +318,7 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt,
                                                                 phecanlove1.addEventListener("click",function(){
                                                                   // createboxhoilydotocao();
                                                                 })
-                                                                ull.appendChild(phecanlove1);
+                                                                // ull.appendChild(phecanlove1);
                                                            }  
                                                    divtuychonbinhluancap1.appendChild(ull);
                                                   //  document.getElementById("themluachonbinhluan"+mabinhluancap1)
@@ -336,7 +342,9 @@ function taoramotcmt(noidung,mabinhluancap1,duongdananh,mabaiviet,mataikhoancmt,
                   divcon12.appendChild(divcon121);
                   divcon12.appendChild(divcon122);
                   divcon12.appendChild(divcon123);
-              divcon1.appendChild(divcon11);
+                  taga.appendChild(divcon11);
+              // divcon1.appendChild(divcon11);
+              divcon1.appendChild(taga);
               divcon1.appendChild(divcon12);
               divcon1.appendChild(divcon13);
                    
@@ -404,6 +412,10 @@ function taoramotrepcmt(noidung,mabinhluancap1,duongdananh,tennguoicmt,mabinhlua
     var divtochuacmtvaanhdaidien = document.createElement("div");
         divtochuacmtvaanhdaidien.id="divtonhatbinhluancap2"+mabinhluancap2;
         divtochuacmtvaanhdaidien.className="cl-div-content-boxreadrepcmt-avt";
+
+
+        var traga     = document.createElement("a");
+                  traga.href=link_host+"/taikhoan/id/"+mataikhoancmt;
         var divchuaanhdaidien = document.createElement("div");
             divchuaanhdaidien.className="cl-div-avt-repcmt";
             var imganhdaidien = document.createElement("IMG");
@@ -412,9 +424,11 @@ function taoramotrepcmt(noidung,mabinhluancap1,duongdananh,tennguoicmt,mabinhlua
 
                       if (maloaibaiviet=="LBV004"||maloaibaiviet=="LBV003") {
                         imganhdaidien.src=link_host+'/pictures/anh_hide_user/hideuser.jpg';
+                        traga.href="";
                       }
                       else{
                         imganhdaidien.src=link_host+'/pictures/anh_dai_dien/'+duongdananh;//'localhost'+link_host+
+
                       }
 
 
@@ -422,6 +436,7 @@ function taoramotrepcmt(noidung,mabinhluancap1,duongdananh,tennguoicmt,mabinhlua
 
 
             divchuaanhdaidien.appendChild(imganhdaidien);
+            traga.appendChild(divchuaanhdaidien);
 
         var divchuatextvalikecmt = document.createElement("div");
             divchuatextvalikecmt.className="cl-div-tare-readrep";
@@ -499,8 +514,8 @@ function taoramotrepcmt(noidung,mabinhluancap1,duongdananh,tennguoicmt,mabinhlua
 
             divchuatextvalikecmt.appendChild(divchuatext);
             divchuatextvalikecmt.appendChild(divlikecmt);
-
-        divtochuacmtvaanhdaidien.appendChild(divchuaanhdaidien);
+        divtochuacmtvaanhdaidien.appendChild(traga);
+        // divtochuacmtvaanhdaidien.appendChild(divchuaanhdaidien);
         divtochuacmtvaanhdaidien.appendChild(divchuatextvalikecmt);
 
     document.getElementById("divrepcmt"+mabinhluancap1).appendChild(divtochuacmtvaanhdaidien);

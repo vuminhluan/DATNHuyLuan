@@ -23,16 +23,31 @@ class Nhom extends Controller
 {
     public function loadnhom ($idnhom)
     {
-         $matk =  Auth::user()->ma_tai_khoan;
+        $matk =  Auth::user()->ma_tai_khoan;
+        $lstthanhviennhom = DB::table('thanh_vien_nhom')
+                                ->join('nguoi_dung','thanh_vien_nhom.ma_tai_khoan','=','nguoi_dung.ma_tai_khoan')
+                                ->select('thanh_vien_nhom.*','nguoi_dung.*')
+                                ->where([['ma_nhom',$idnhom],['thanh_vien_nhom.trang_thai',"1"]])
+                                ->get();
+        $caidatnhom       = DB::table('cai_dat_nhom')
+                                ->where("ma_nhom",$idnhom)
+                                ->get();
+        $flagthanhviennhom = false;
+        for ($i=0; $i <count($lstthanhviennhom) ; $i++) { 
+           if ($lstthanhviennhom[$i]->ma_tai_khoan==$matk) {
+                $flagthanhviennhom=true;break; 
+           }
+        }
+
+
+         
          // if ($matk==null) {
          //     return redirect()->route('')
          // }
        // $machucvu = DB::table('thanh_vien_nhom')->select("ma_chuc_vu")->where([["ma_nhom",$idnhom],["ma_tai_khoan",$matk],["trang_thai","1"]
        //                                                                          ])->get();
 
-        $caidatnhom       = DB::table('cai_dat_nhom')
-                                ->where("ma_nhom",$idnhom)
-                                ->get();
+
 
         $listnhomtkquanly = $this->getlistnhomtkquanly($matk);
                                 
@@ -45,11 +60,7 @@ class Nhom extends Controller
         $nhom             = DB::table('nhom')
                                 ->where("ma_nhom","$idnhom")
                                 ->get();
-        $lstthanhviennhom = DB::table('thanh_vien_nhom')
-                                ->join('nguoi_dung','thanh_vien_nhom.ma_tai_khoan','=','nguoi_dung.ma_tai_khoan')
-                                ->select('thanh_vien_nhom.*','nguoi_dung.*')
-                                ->where([['ma_nhom',$idnhom],['thanh_vien_nhom.trang_thai',"1"]])
-                                ->get();
+
         $totalbaiviet =     DB::table('bai_viet')->select(DB::raw('count(*) as soluongbaivietcuanhom'))
                                 ->where([["ma_chu_bai_viet",$idnhom],["trang_thai","1"]])
                                 ->get()[0]->soluongbaivietcuanhom;
@@ -64,13 +75,35 @@ class Nhom extends Controller
                                 ->orWhere([["bai_viet_chia_se.ma_nhom_chia_se",$idnhom],["bai_viet.trang_thai","1"]])
                                 ->orderBy('bai_viet.ma_bai_viet','desc')
                                ->take(10)->get();
-// "lstykienbinhchon"=>$lstbinhchonykien
-//                                 // ->leftJoin('thumuc_googledrive','bai_viet.ma_nguoi_viet','=','thumuc_googledrive.ma_tai_khoan')
-                                // 'thumuc_googledrive.*',
-                                                               // ->paginate(5)
-                                // ->setPath("baiviet/trang");
-        //$soluongbaiviet =10; //,"s"=>$soluongbaiviet
-        return view("nhom.indexnhom",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thongtinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom,"listnhomtkquanly"=>$listnhomtkquanly]);
+
+        if ($caidatnhom[0]->ma_loai_nhom=="LN01") {
+            //nhóm công khai
+            //ai cũng vào được// người ko trong nhóm ko được đăng
+                if ($flagthanhviennhom) {
+                           return view("nhom.indexnhom",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thongtinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom,"listnhomtkquanly"=>$listnhomtkquanly]);
+                }else{
+                    
+                    return view("nhom.indexnhomkhinguoikhongthuocnhom",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thongtinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom,"listnhomtkquanly"=>$listnhomtkquanly]);
+                }
+
+        }else
+        {
+            if ($caidatnhom[0]->ma_loai_nhom=="LN02") {
+               //nhóm kín
+                //thành viên trong nhóm mới được vào
+                if ($flagthanhviennhom) {
+                           return view("nhom.indexnhom",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thongtinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom,"listnhomtkquanly"=>$listnhomtkquanly]);
+                }            
+                else{
+                 return view("nhom.indexnhomkhongco");
+            }
+            }
+
+        }
+
+
+
+
     }
     public function getlistnhomtkquanly($matk)
     {
