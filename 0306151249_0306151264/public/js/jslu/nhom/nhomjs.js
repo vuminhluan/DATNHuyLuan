@@ -631,3 +631,21 @@ function showlistbaocaovipham(manhom){
 // loadthemduyetbaiviet();
 }
 
+function sendmessnhom() {
+    // var socketio = io('http://localhost:6001')
+    // socket.on('chatnl:message',function(data){
+    //     console.log(data);
+    // })
+
+    var noidungmess ="akkakask"; // $("#textgui").val();
+      $.ajax({
+                    url: link_host+'/sendmesnhom',
+                    type:'POST',
+                    data:{
+                            _token: $('input[name=_token]').val(),
+                            contentmessnl:noidungmess      
+                    }}).done(function(data){
+                        console.log(data);
+                    })        
+
+}

@@ -195,3 +195,5 @@ Route::post("/ajax/postbaivietthubaifullne","BaiVietController\BaiViet@POSTBaiVi
 
 Route::post("/postfilenopbaithanhvienne","BaiVietController\BaiViet@postfilenopbaithanhvien")
 ->name("postfilenopbaithanhvien");
+
+Route::post("/sendmesnhom","NhomController\ChatNhomController@postMessagenl")->name("sendmess.nhom");
