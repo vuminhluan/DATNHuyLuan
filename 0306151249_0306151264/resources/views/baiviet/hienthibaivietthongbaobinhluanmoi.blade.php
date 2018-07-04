@@ -31,7 +31,7 @@
                             <span class="spanshowxbaiviet"></span>
                             <ul> 
                               @if ($lstbaiviet[$i]->ma_nguoi_viet!=Auth::user()->ma_tai_khoan)
-                                <li class="lixpopup" onclick='createboxhoilydotocao("LBC03","NNBC2",$("#session-ma-tk").val(),"{{$lstbaiviet[$i]->ma_bai_viet}}",$("#div-hi-chu-bai-viet-ma-nhom").val()),thaotacthembaiviet("{{$lstbaiviet[$i]->ma_bai_viet}}")'>Báo cáo bài viết tới quản trị viên</li>
+{{--                                 <li class="lixpopup" onclick='createboxhoilydotocao("LBC03","NNBC2",$("#session-ma-tk").val(),"{{$lstbaiviet[$i]->ma_bai_viet}}",$("#div-hi-chu-bai-viet-ma-nhom").val()),thaotacthembaiviet("{{$lstbaiviet[$i]->ma_bai_viet}}")'>Báo cáo bài viết tới quản trị viên</li> --}}
                                 <li class="lixpopup" onclick='createboxhoilydotocao("LBC03","NNBC1",$("#session-ma-tk").val(),"{{$lstbaiviet[$i]->ma_bai_viet}}",$("#div-hi-chu-bai-viet-ma-nhom").val()),thaotacthembaiviet("{{$lstbaiviet[$i]->ma_bai_viet}}")' >Báo cáo bài viết tơi nhà quản trị</li>
                                  <li class="lixpopup" onclick='thaotacthembaiviet("{{$lstbaiviet[$i]->ma_bai_viet}}")'>Hủy bỏ</li>
                               @endif

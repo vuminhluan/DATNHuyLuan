@@ -8,10 +8,18 @@ Route::get("mid",function(){
 return view("includes.navtop");
 
 });
-Route::get("gr/{id}","NhomController\Nhom@loadnhom")->name('nhom.index')->middleware('MyNhommidw');
-Route::get("gr/{id}/baiviet/{idbv}","NhomController\Nhom@loadnhomvoimotbaiviettheoma")->name('nhomhienthibaiviet.index');
-Route::get("bl/{id}","NhomController\Nhom@loadnhomvoimotbaiviettheomabinhluan")->name('loadnhomvoimotbaiviettheomabinhluan.index');
-Route::get("blr/{id}","NhomController\Nhom@loadnhomvoimotbaiviettheomabinhluanvarepcmt")->name('loadnhomvoimotbaiviettheomabinhluanvarepcmt.index');
+Route::get("gr/{id}","NhomController\Nhom@loadnhom")
+->name('nhom.index')
+->middleware('MyNhommidw');
+Route::get("gr/{id}/baiviet/{idbv}","NhomController\Nhom@loadnhomvoimotbaiviettheoma")
+->name('nhomhienthibaiviet.index')
+->middleware('MyNhommidw');
+Route::get("bl/{id}","NhomController\Nhom@loadnhomvoimotbaiviettheomabinhluan")
+->name('loadnhomvoimotbaiviettheomabinhluan.index')
+->middleware('MyNhommidw');
+Route::get("blr/{id}","NhomController\Nhom@loadnhomvoimotbaiviettheomabinhluanvarepcmt")
+->name('loadnhomvoimotbaiviettheomabinhluanvarepcmt.index')
+->middleware('MyNhommidw');
 Route::get("baiviet", function(){
 	return view("baiviet.hienthibaiviet");
 });

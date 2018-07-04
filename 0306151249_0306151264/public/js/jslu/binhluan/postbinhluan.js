@@ -608,7 +608,10 @@ function sendrepbinhluan(prl,maloaibaiviet){
               ma_binh_luan:prl
              }
             }).done(function(data){
-                       postthongbaobinhluanmoi("LTBN04","Trà lời bình luận","1",data,prl); 
+                                                  if (maloaibaiviet!="LBV003"&&maloaibaiviet!="LBV004") {
+                                                    postthongbaobinhluanmoi("LTBN04","Trà lời bình luận","1",data,prl); 
+                                                  }
+                       // postthongbaobinhluanmoi("LTBN04","Trà lời bình luận","1",data,prl); 
             })
            
           reloadlstcmtrep(prl,maloaibaiviet);
@@ -635,8 +638,22 @@ function sendbinhluan(mabaivietl,maloaibaiviet){
         }).done(function(data) {
 
           xemfullbinhluan(mabaivietl,maloaibaiviet,0,9999);
+          $.ajax({
+             url: link_host+'/ajax/getmabinhluanne',
+             type:'GET',
+             data:{
+              ma_nguoi_binh_luan:$('#session-ma-tk').val(),
+              ma_bai_viet:mabaivietl
+             }
+            }).done(function(data){
+                                                  if (maloaibaiviet!="LBV003"&&maloaibaiviet!="LBV004") {
+                                                    postthongbaobinhluanmoi("LTBN03","Bình luận bài viết","1",data,mabaivietl);  
+                                                  }
+                  //    postthongbaobinhluanmoi("LTBN03","Bình luận bài viết","1",data,mabaivietl);  
+            })
 
-           $('#input-binhluan-'+mabaivietl).val('');})
+           $('#input-binhluan-'+mabaivietl).val(''); // gán lại rỗng cho cmt
+         })
 }
 
 function submitme(event,mabaivietl,maloaibaiviet)
@@ -672,7 +689,10 @@ function submitme(event,mabaivietl,maloaibaiviet)
               ma_bai_viet:mabaivietl
              }
             }).done(function(data){
-                      postthongbaobinhluanmoi("LTBN03","Bình luận bài viết","1",data,mabaivietl);  
+                                                  if (maloaibaiviet!="LBV003"&&maloaibaiviet!="LBV004") {
+                                                     postthongbaobinhluanmoi("LTBN03","Bình luận bài viết","1",data,mabaivietl);   
+                                                  }
+                      // postthongbaobinhluanmoi("LTBN03","Bình luận bài viết","1",data,mabaivietl);  
             })
 
      	  	 $('#input-binhluan-'+mabaivietl).val(''); // gán lại rỗng cho cmt
