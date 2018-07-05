@@ -55,7 +55,7 @@
 	<!-- Profile navbar -->
 	<div class="profile-navbar">
 		<div class="main">
-			<ul class="">
+			<ul class="navbar-list">
 				{{-- profile-link-active --}}
 				<li class="{{Request::is('taikhoan/'.$taikhoan->ten_tai_khoan) ? 'profile-link-active' : ''}}">
 					<a class="luan_link" href="{{ route('trangcanhan.index', [$taikhoan->ten_tai_khoan]) }}">
@@ -92,12 +92,30 @@
 						<span>Chặn</span>
 					</a>
 				</li>
-				{{-- <li style="float: right">
-					<a class="luan_link" href="{{route('nguoidung.tep.index',[$taikhoan->ten_tai_khoan])}}">
-						<span>Nhắn tin</span>
-					</a>
-				</li> --}}
 				@endif
+				<li style="float: right">
+					<a class="luan_link js-user-chat-button" href="javascript:void(0)">
+						<span class="">Nhắn tin</span>
+					</a>
+					<div class="user-chat-info-box">
+							@if (Auth::user()->ma_tai_khoan != $taikhoan->ma_tai_khoan)
+								<div>
+									<a class="js-send-message-to-this-person-button" href="javascript:void(0)" data-userid = {{$taikhoan->ma_tai_khoan}}>Nhắn tin với {{'@'.$taikhoan->ten_tai_khoan}}</a>
+								</div>
+							@endif
+							
+							{{-- <div class="texting-user-list">
+								<h3>Danh sách đang nhắn tin</h3>
+								<div>
+									<p><a href="">a</a></p>
+									<p><a href="">as</a></p>
+									<p><a href="">asdasd</a></p>
+									<p><a href="">asdasdasdasd</a></p>
+									<p><a href="">asdasdasdasdasd</a></p>
+								</div>
+							</div> --}}
+						</div>
+				</li>
 				
 			</ul>
 		</div>
@@ -147,17 +165,6 @@
 					</p>
 					@endif
 				</div>
-				{{-- <div class="profile-some-images">
-					<i class="fa fa-image"></i>
-					&nbsp;
-					<a class="luan_link" href="#/">Hình ảnh</a>
-					<ul>
-						<li><a class="luan_link" href="{{asset('pictures/anh_bia/default-banner.png')}}" target="_blank"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a></li>
-						<li><a class="luan_link" href="{{asset('pictures/anh_bia/default-banner.png')}}"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a></li>
-						<li><a class="luan_link" href="{{asset('pictures/anh_bia/default-banner.png')}}"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a></li>
-						<li><a class="luan_link" href="{{asset('pictures/anh_bia/default-banner.png')}}"><img src="{{asset('pictures/anh_bia/default-banner.png')}}" alt=""></a></li>
-					</ul>
-				</div> --}}
 				@if (Auth::user()->ten_tai_khoan == $taikhoan->ten_tai_khoan)
 					<div id="edit-profile-button">
 						<p class="edit-profile edit-name">
@@ -194,6 +201,53 @@
 	@include('includes/trangcanhan/report_modal')
 	{{-- End report modal --}}
 
+
+	{{-- user-chat-box --}}
+	
+	<div class="user-chat-box__modal">
+		<div class="user-chat-box">
+			<div class="user-chat-box__header">
+				<h4>Chat với <span id="js-receiver" data-receiver-id=""></span> <i style="float: right;vertical-align: middle;" class="fa fa-times user-chat-box__modal__close-button"></i></h4>
+			</div>
+			<div class="user-chat-box__body">
+				{{-- <div class="chat-item">
+					<div class="chat-item__wrapper chat-item__right">
+						<div class="chat-item__header"><h4>Ten ng gui</h4></div>
+						<div class="chat-item__body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, voluptatum.</div>
+					</div>
+				</div>
+
+				<div class="chat-item">
+					<div class="chat-item__wrapper chat-item__left">
+						<div class="chat-item__header"><h4>Ten ng gui</h4></div>
+						<div class="chat-item__body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, voluptatum.</div>
+					</div>
+				</div>
+				
+				<div class="chat-item">
+					<div class="chat-item__wrapper chat-item__right">
+						<div class="chat-item__header"><h4>Ten ng gui</h4></div>
+						<div class="chat-item__body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, voluptatum.</div>
+					</div>
+				</div>
+				<div class="chat-item">
+					<div class="chat-item__wrapper chat-item__left">
+						<div class="chat-item__header"><h4>Ten ng gui</h4></div>
+						<div class="chat-item__body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, voluptatum.</div>
+					</div>
+				</div> --}}
+
+			</div>
+			<div class="user-chat-box__footer">
+				<textarea class="user-chat-box__footer__text-area" name="" placeholder="Nhập tin nhắn"></textarea>
+				<button class="user-chat-box__footer__send-message-button user-chat-box__footer__button">Gửi tin nhắn</button>
+				<button class="user-chat-box__footer__clear-message-button user-chat-box__footer__button" data-toID="">Xóa trò chuyện</button>
+			</div>
+		</div>
+	</div>
+
+	{{--  --}}
+
 @endsection
 
 
@@ -210,8 +264,10 @@
 	<script src="{{asset('js/luan/utilities/drag_to_scroll.js')}}"></script>
 	<script src="{{asset('js/luan/utilities/open_close_modal.js')}}"></script>
 	<script src="{{asset('js/jquery/jquery-validate.min.js')}}"></script>
-	<script src="{{ asset('js/globaljs/varglobal.js') }}" charset="utf-8"></script>
+	{{-- <script src="{{ asset('js/globaljs/varglobal.js') }}" charset="utf-8"></script> --}}
 	<script src="{{asset('js/luan/profile.js')}}"></script>
+	{{-- <script src="{{ asset('node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js') }}"></script> --}}
+	<script src="{{asset('js/user-chat.js')}}" charset="utf-8"></script>
 	
 	@yield('trang_canhan_javascript')
 @endsection

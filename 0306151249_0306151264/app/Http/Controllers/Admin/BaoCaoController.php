@@ -18,7 +18,6 @@ class BaoCaoController extends Controller
 
   public function postCapNhat(Request $req)
   {
-  
 
   	$message = "";
     if($req->task == "report-delete") {

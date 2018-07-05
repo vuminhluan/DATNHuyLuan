@@ -6,6 +6,8 @@ $(document).ready(function() {
 	// Socket
 	var socket = io.connect( 'http://'+window.location.hostname+':3000' );
 
+	socket.emit('joinRoomAdmin', room = 'RoomAdmin');
+
 
 	$('#open-chat-button').click(function(event) {
 		$('#admin-chat-sidebar').css({

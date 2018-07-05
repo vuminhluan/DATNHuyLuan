@@ -12,21 +12,18 @@ class ChatController extends Controller
   {
   	$msg = $req->message;
   	if (!$req->session()->has('admin-chat')) {
-	    session(['admin-chat'=> [
-
-	    	[
-					'name'    => $req->sender_name,
-					'message' => $msg,
-					'time'    => $req->time
-	    	]
-
-	    ]
-
-	  ]);
+	    session(['admin-chat'=>
+        [
+	    	  ['name' => $req->sender_name, 'message' => $msg, 'time' => $req->time ]
+	      ]
+      ]);
 		} else {
 			// session(['admin-chatt'=> [$data]]);
-			$req->session()->push('admin-chat', ['name' => $req->sender_name,
-	    		'message' => $msg, 'time' => $req->time]);
+			$req->session()->push('admin-chat', [
+				'name' => $req->sender_name,
+    		'message' => $msg,
+    		'time' => $req->time
+    	]);
 		}
   
   	$list_chat = $req->session()->get('admin-chat');

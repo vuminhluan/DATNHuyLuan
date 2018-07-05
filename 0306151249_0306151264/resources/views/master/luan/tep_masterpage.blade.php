@@ -159,31 +159,11 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	@include('includes.footer')
-
 	
+	@extends('master.nodeserver_masterpage')
 	<script type="text/javascript" src="{{ asset('js/globaljs/varglobal.js') }}" charset="utf-8"></script>
 	<script src="{{ asset('js/luan/file.js') }}"></script>
-	
-
 
 	
 </body>

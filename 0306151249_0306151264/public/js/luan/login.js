@@ -1,6 +1,9 @@
+
+
 $(document).ready(function() {
 
- 
+  // var socket = io.connect( 'http://'+window.location.hostname+':3000' );
+
   $.validator.addMethod( "regex", function(value, element, regexp) {
     var re = new RegExp(regexp);
     return re.test(value);
@@ -304,7 +307,8 @@ function changeTab(n) {
           showAlert(m);
           return;
         }
-        // Đăng nhập thành công, chuyển hướng về trang chủ
+        // Đăng nhập thành công, => chuyển hướng về trang chủ
+        // alert(response.id);return;
         window.location.href=link_host+"/trangchu";
       });
     }

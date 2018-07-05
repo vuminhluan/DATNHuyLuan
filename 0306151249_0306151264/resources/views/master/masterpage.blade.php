@@ -35,8 +35,7 @@
 	<div class="clear"></div>
 	@include('includes.footer')
 	{{-- Chưa có footer :D --}}
-
-{{-- 	<script src="{{asset('js/jquery/jquery3.3.1.js')}}" charset="utf-8"></script> --}}
+	{{-- <script src="{{ asset('node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js') }}"></script> --}}
 	<script>
 		// alert('asd');
 		// history.pushState(null, null, document.URL);
@@ -44,11 +43,13 @@
 		//     history.pushState(null, null, document.URL);
 		// });
 	</script>
+	<script type="text/javascript" src="{{asset('js/libs/moment.min.js')}}"></script>
 	@yield('javascript')
 
   <!-- Modal content -->
  {{-- @include ('includes.content-menu-popup'); --}}
 
 	{{-- <div id="masterpopup" style="display: block;" class="modal"></div> --}}
+	@extends('master.nodeserver_masterpage')
 </body>
 </html>

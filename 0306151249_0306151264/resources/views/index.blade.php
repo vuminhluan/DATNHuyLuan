@@ -198,6 +198,7 @@
 	<script src="{{asset('js/jquery/jquery3.3.1.js')}}" charset="utf-8"></script>
 	<script src="{{asset('js/jquery/jquery-validate.min.js')}}" charset="utf-8"></script>
 	<script type="text/javascript" src="{{ asset('js/globaljs/varglobal.js') }}" charset="utf-8"></script>
+	{{-- <script src="{{ asset('node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js') }}"></script> --}}
   <script src="js/luan/login.js"></script>
 
 

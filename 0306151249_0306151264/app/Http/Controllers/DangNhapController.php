@@ -40,9 +40,6 @@ class DangNhapController extends Controller
 	public function postDangNhap(Request $req)
 	{
 		// session(['test'=>'Đây là session test']);
-
-		
-
 		$username = $req->username;
 		$password = $req->password;
 		$remember = $req->remember;
@@ -56,22 +53,7 @@ class DangNhapController extends Controller
 			if ( Auth::attempt(['ten_tai_khoan' => $username, 'password' => $password, 'hoat_dong' => 1], $remember) || Auth::attempt(['email' => $username, 'password' => $password, 'hoat_dong' => 1], $remember) ) {
 				$success = true;
 
-				// Tạo thư mục google drive (có tên là mã tài khoản) nếu chưa có
-				// if(!Auth::user()->thu_muc_google_drive && Auth::user()->quyen == "Q0002") {
-				// 	$root = env('GOOGLE_DRIVE_FOLDER_ID');
-				// 	$foldername = Auth::user()->ma_tai_khoan;
-				// 	$path = $root.'/'.$foldername;
-				// 	$folder = $this->taoThuMucGoogleDrive($path, $root, $foldername);
-				// 	$thumuc_googledrive = new ThuMucGoogleDrive();
-				//   $data = [
-				// 		'ma_tai_khoan' => Auth::user()->ma_tai_khoan,
-				// 		'ma_thumuc'    => $folder['basename'],
-				// 		'trang_thai'   => 1
-				//   ];
-				//   $this->capNhatDoiTuong($data, $thumuc_googledrive);
-				// }
-
-				return ['success' => true, 'message' => 'Đăng nhập thành công !'];
+				return ['success' => true, 'message' => 'Đăng nhập thành công !', 'id' => Auth::user()->ma_tai_khoan];
 	  	} else {
 				return ['success' => false, 'message' => 'Xin hãy kiểm tra lại mật khẩu !'];
 			}

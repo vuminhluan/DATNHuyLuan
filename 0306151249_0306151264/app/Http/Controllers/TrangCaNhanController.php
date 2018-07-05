@@ -32,23 +32,6 @@ class TrangCaNhanController extends Controller
 		// return 1;
 		$tatca_gioitinh = DB::table('gioi_tinh')->get();
 
-
-		
-		// return $tatca_baiviet;
-		// return $tatca_gioitinh;
-
-		// $taikhoan_nguoidung = DB::table('tai_khoan AS tk')
-		// 	->join('nguoi_dung AS nd', 'tk.ma_tai_khoan', '=', 'nd.ma_tai_khoan')
-		// 	->where('tk.ten_tai_khoan', '=', $username)
-		// 	->select(
-		// 		'tk.*',
-		// 		DB::raw("CONCAT(nd.ho_ten_lot,' ', nd.ten) AS hoten_nguoidung")
-		// 	)->get();
-
-			// return $taikhoan_nguoidung;
-
-
-
 		$taikhoan = TaiKhoan::where('ten_tai_khoan', $username)->where('trang_thai', '!=', 4)->first();
 
 		if(!$taikhoan || $taikhoan->trang_thai != 2 || $taikhoan->quyen != "Q0002") {
@@ -57,13 +40,14 @@ class TrangCaNhanController extends Controller
 		// return $taikhoan->hasNguoiDung->ten;
 		$taikhoan_bichan = TaiKhoanBiChan::where([
 			['ma_tai_khoan_bi_chan', $taikhoan->ma_tai_khoan],
-			['ma_tai_khoan_chan', Auth::user()->ma_tai_khoan]
+			['ma_tai_khoan_chan', Auth::user()->ma_tai_khoan],
+			['trang_thai', 1]
 		])
 		->orWhere([
 			['ma_tai_khoan_bi_chan', Auth::user()->ma_tai_khoan],
-			['ma_tai_khoan_chan', $taikhoan->ma_tai_khoan]
-		])
-		->where('trang_thai', 1)->first();
+			['ma_tai_khoan_chan', $taikhoan->ma_tai_khoan],
+			['trang_thai', 1]
+		])->first();
 
 		if($taikhoan_bichan) {
 			abort(404);
@@ -93,7 +77,7 @@ class TrangCaNhanController extends Controller
     	]);
     }
 
-    $account_posts = $account_posts->orderBy('bai_viet.ma_bai_viet','desc')->take(100)->get();
+    $account_posts = $account_posts->orderBy('bai_viet.ma_bai_viet','desc')->take(2)->get();
 
       // return $account_posts;
 

@@ -131,7 +131,6 @@
     {{-- Tạo loader cho tất cả các trang admin Phải tạo bên ngoài ready function jquery vì nếu để ở trong mỗi lần refresh trang hình loader sẽ bị giật giật do phải render css --}}
     var loaderPath = "{{ asset('pictures/luan/ajax-loader2.gif') }}";
     $('.myloader img').attr('src', loaderPath);
-
   </script>
 
   @yield('javascript')

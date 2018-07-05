@@ -97,7 +97,14 @@ Route::get('/matkhau/datlai/{username}/{userid_md5}/{today_md5}', 'CaiDatControl
 Route::post('/matkhau/datlai', 'CaiDatController@postDatLaiMatKhau')->name('caidat.post.quen_matkhau.datlai')->middleware('MyUserAuth');
 
 
+// user-chat
+Route::prefix('taikhoan/chat')->group(function() {
+	Route::post('/voi/taikhoannay', 'ChatController@getTinNhanGiuaHaiNguoi')->name('user.chat.voimotnguoi');
+	Route::post('/luuchat', 'ChatController@luuChatVaoSession')->name('admin.chat.luu');
+	Route::get('/xoa_khung_chat', 'ChatController@xoaKhungChat')->name('user.chat.xoa_khungchat_hientai');
+});
 
+// End userchat
 
 
 
