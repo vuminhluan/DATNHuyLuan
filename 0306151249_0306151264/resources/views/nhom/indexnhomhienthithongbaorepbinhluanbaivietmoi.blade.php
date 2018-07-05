@@ -61,7 +61,7 @@
                @break
                @endif
             @endfor
-
+<a href="{{ route('nhom.index',$t) }}" >
          <div class="thongtinkhaccuanhom">
            <input type="hidden" id="div-hi-chu-bai-viet-ma-nhom" value="{{$t}}">
            <input type="hidden" id="div-hi-soluongbaiviethientainhom" value="{{$totalbaiviet}}">
@@ -75,6 +75,7 @@
                 </div>
            </div>
          </div>
+       </a>
 
          <div class="thongtinkhaccuanhom">
            <input type="hidden" id="div-hi-chu-bai-viet-ma-nhom" value="{{$t}}">

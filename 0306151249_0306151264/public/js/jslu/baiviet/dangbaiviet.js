@@ -335,7 +335,8 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
                                             }).done(function(data) {
                                               if (thubai=="1") {
                                                 thubai="0";
-                                                taofolderthubai(mabaiviettieptheo);}
+                                                taofolderthubai(mabaiviettieptheo);
+                                              }
                                                
                                               lstmanhomsharebv=[];
                                               $('.multiSel').empty();
@@ -361,13 +362,19 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
 
                                                 if(trangthaibaiviet=="2"){
                                                   thongbaopopupy("Đăng bài viết","Bài viết của bạn sẽ được kiểm duyệt trước khi xuất hiện");
-                                                  postthongbaobaivietmoi("LTBN02","Bài viết mới","2",mabaivietmoine);
+                                                  if (valueselectedoption!="LBV002"&&valueselectedoption!="LBV004") {
+                                                    postthongbaobaivietmoi("LTBN02","Bài viết mới","2",mabaivietmoine);
+                                                  }
+                                                  
+
                                                         $("#btndangbaiviet").css("display","block");
                                                         document.getElementById("formdangbaiviet").reset();
                                                         $('#iptextdangbaiviet').val("");
                                                   return;
                                                 }else{
-                                                  postthongbaobaivietmoi("LTBN02","Bài viết mới","1",mabaivietmoine);
+                                                  if (valueselectedoption!="LBV002"&&valueselectedoption!="LBV004") {
+                                                    postthongbaobaivietmoi("LTBN02","Bài viết mới","1",mabaivietmoine);
+                                                  }
                                                 }
 
                                                       $.ajax({

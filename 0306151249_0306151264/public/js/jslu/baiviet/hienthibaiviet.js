@@ -407,13 +407,15 @@ var x = setInterval(function() {
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById(tag).innerHTML = '<i class="fa fa-clock-o" aria-hidden="true"></i>'+ " Thời hạn nộp bài còn: " +'<p style="color:#9596d8;display:inline-block;">' + days + "ngày " + hours + "giờ "
+    document.getElementById('timehetnoibai-'+tag).innerHTML = '<i class="fa fa-clock-o" aria-hidden="true"></i>'+ " Thời hạn nộp bài còn: " +'<p style="color:#9596d8;display:inline-block;">' + days + "ngày " + hours + "giờ "
     + minutes + "phút " + seconds + "giây "+'</p>';
     if (distance < 0) {
+    	 $('#divomformnopbai-'+tag).css("display","none");
         clearInterval(x);
-        document.getElementById(tag).innerHTML = "Hết hạn nộp tệp tin";
+        document.getElementById('timehetnoibai-'+tag).innerHTML = "Hết hạn nộp tệp tin";
+
     }
-}, 1000);
+}, 100);
 }
 
 // $( document ).ready(function() {

@@ -5,13 +5,6 @@
 @endsection
 @section('javascript')
 <script src="{{ asset('js/jslu/nhom/nhomjs.js') }}" type="text/javascript" charset="utf-8" async defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js" type="text/javascript"></script>
-            <script>
-        //       var socketio = io('http://localhost:6001')
-        //           socketio.on('chatnl:message',function(data){
-        // console.log(data);
-        //        })
-            </script>
 @endsection
 @section('main')
  <!-- body -->
@@ -68,8 +61,7 @@
                @endif
             @endfor
 
-        <a href="{{ route('nhom.index',$t) }}" > 
-          <div class="thongtinkhaccuanhom">
+        <a href="{{ route('nhom.index',$t) }}" > <div class="thongtinkhaccuanhom">
            <input type="hidden" id="div-hi-chu-bai-viet-ma-nhom" value="{{$t}}">
            <input type="hidden" id="div-hi-soluongbaiviethientainhom" value="{{$totalbaiviet}}">
            <input type="hidden" id="div-hi-phe_duyet_bai_viet_an_danh" value="{{$caidatnhom[0]->phe_duyet_bai_viet_an_danh}}">
@@ -91,34 +83,14 @@
            </div>
            <div class="divtextgioithieunhom" >{{$caidatnhom[0]->gioi_thieu_nhom}}</div>
          </div>
-{{--           --}}
-         <div class="thongtinkhaccuanhom">
-          <div style="height: 400px;">
-
-            <div id="chatnhomcontnetne" style="height: 333px;">
-              
-            </div>
-            <div style="height: 177px;border-top: solid 1px #9695d8;">
-              <div style="float: left;">
-                <textarea id="textgui" style="width: 80%" rows="5"></textarea>
-              </div>
-
-              <div style="float: left;width: 20%;background-color: blue;color: white>" onclick="sendmessnhom()">
-                  Gửi
-              </div>
-            </div>
-            
-          </div>
-         </div>
-
         </div>
         
 <!--  -->
        
         <div id="divcontent" class="content"  >
-             <div id="divdangbaiviet">
+{{--              <div id="divdangbaiviet">
                    @include('baiviet.dangbaiviet')
-             </div>
+             </div> --}}
              <div id="divnoidungcon">
                    @include('baiviet.hienthibaiviet')
              </div>
@@ -129,10 +101,11 @@
         </div>
         
 <!--  -->
+{{-- onclick="($('#tuychonnhom').css('display')=='block')?$('#tuychonnhom').css('display','none'):$('#tuychonnhom').css('display','block');" --}}
         <div class="rightnav">
           <div class="divtoprightnav">
               <div class="divslthanhviennhom"><center>({{count($lstthanhviennhom)}})&nbsp;Thành viên</center></div>
-              <div class="divbtnshowtuychontvn" onclick="($('#tuychonnhom').css('display')=='block')?$('#tuychonnhom').css('display','none'):$('#tuychonnhom').css('display','block');"><i class="fa fa-ellipsis-h fa-2x" aria-hidden="true"></i>
+              <div class="divbtnshowtuychontvn" ><i class="fa fa-ellipsis-h fa-2x" aria-hidden="true"></i>
               </div>
               <div id="tuychonnhom">
                 <span class="spansomethinghh"></span>
@@ -161,8 +134,6 @@
                   @break
                @endif
             @endfor
-
-
 
 {{--             @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
                @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV02")
