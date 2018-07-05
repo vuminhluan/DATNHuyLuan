@@ -5,6 +5,7 @@
 @endsection
 @section('javascript')
 <script src="{{ asset('js/jslu/nhom/nhomjs.js') }}" type="text/javascript" charset="utf-8" async defer></script>
+<script src="{{ asset('js/includesjs/content-menu-popupjs.js') }}" type="text/javascript" charset="utf-8" async defer></script>
 @endsection
 @section('main')
  <!-- body -->
@@ -134,6 +135,20 @@
                   @break
                @endif
             @endfor
+
+
+            {{-- 5/7/2018 đợi về sửa --}}
+{{--                   <div id="xingianhapnhom" class="divtoprightnav" onclick="clickxinvaonhomriengle('{{$t}}')" style="padding: 12px;cursor: pointer;">
+                  <center> <span id="textxingianhapnhom">Gia nhập nhóm</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+                  </div> --}}
+
+
+
+
+
+
+
+
 
 {{--             @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
                @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV02")
