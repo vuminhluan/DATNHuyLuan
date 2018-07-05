@@ -631,20 +631,20 @@ function showlistbaocaovipham(manhom){
 // loadthemduyetbaiviet();
 }
 
-function sendmessnhom() {
-    var noidungmess = $("#textgui").val();
-      $.ajax({
-                    url: link_host+'/sendmesnhom',
-                    type:'POST',
-                    data:{
-                            _token: $('input[name=_token]').val(),
-                            contentmessnl:noidungmess      
-                    }}).done(function(data){
-                         // console.log(data);
-                    })        
+// function sendmessnhom() {
+//     var noidungmess = $("#textgui").val();
+//       $.ajax({
+//                     url: link_host+'/sendmesnhom',
+//                     type:'POST',
+//                     data:{
+//                             _token: $('input[name=_token]').val(),
+//                             contentmessnl:noidungmess      
+//                     }}).done(function(data){
+//                          // console.log(data);
+//                     })        
 
-}
-function taorooomnhom(){
-    socketio.emit("tao-room", $("#textgui").val());
+// }
+// function taorooomnhom(){
+//     socketio.emit("tao-room", $("#textgui").val());
 
-}
+// }
