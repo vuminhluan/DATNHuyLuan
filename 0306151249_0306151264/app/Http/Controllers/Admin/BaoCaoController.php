@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MailNhacNhoViPham;
 use App\bao_cao_vi_pham as BaoCao;
 use DB;
 
@@ -43,6 +45,22 @@ class BaoCaoController extends Controller
     return view('admin.nhom.index',['tatca_nhom' => $tatca_nhom]);
   }
 
+  public function getGuiMailNhacNho($user_id)
+  {
+    // return $user_id;
+    $target = DB::table('tai_khoan')
+    ->leftjoin('nguoi_dung', 'tai_khoan.ma_tai_khoan', '=', 'nguoi_dung.ma_tai_khoan')
+    ->where('tai_khoan.ma_tai_khoan', $user_id)
+    ->select(
+      'tai_khoan.ma_tai_khoan AS target_id',
+      'tai_khoan.email AS target_email',
+      DB::raw("CONCAT(nguoi_dung.ho_ten_lot,' ', nguoi_dung.ten) AS target_fullname")
+    )
+    ->get();
+    Mail::send(new MailNhacNhoViPham($target));
+    return $target;
+  }
+
   public function postXemBaoCao(Request $req)
   {
     // $report = BaoCao::find($req->id);
@@ -75,6 +93,7 @@ class BaoCaoController extends Controller
         DB::raw("CONCAT(Sender.ho_ten_lot,' ', Sender.ten) AS sender_fullname"),
 
         'Target.ma_nhom AS target_id',
+        'Target.ma_tai_khoan AS target_owner',
         'Target.ten_nhom AS target_name'
       );
     } else if($report->ma_loai_bao_cao == "LBC02") {
@@ -92,7 +111,25 @@ class BaoCaoController extends Controller
         DB::raw("CONCAT(Sender.ho_ten_lot,' ', Sender.ten) AS sender_fullname"),
         
         'Target.ma_tai_khoan AS target_id',
+        'Target.ma_tai_khoan AS target_owner',
         DB::raw("CONCAT(Target.ho_ten_lot,' ', Target.ten) AS target_name")
+      );
+    } else if($report->ma_loai_bao_cao == "LBC03") {
+      $report_obj = $report_obj
+      ->join('bai_viet AS Target', 'Report.ma_doi_tuong_bi_bao_cao', '=', 'Target.ma_bai_viet')
+      ->where('ma_bao_cao', $req->id)
+      ->select(
+        'Report.ma_bao_cao AS report_id',
+        'Report.noi_dung_bao_cao AS report_content',
+        'Report.thoi_gian_gui_bao_cao AS report_created_at',
+        'Kind.ma_loai_bao_cao AS report_kind_id',
+        'Kind.ten_loai_bao_cao AS report_kind',
+        'Sender.ma_tai_khoan AS sender_id',
+        DB::raw("CONCAT(Sender.ho_ten_lot,' ', Sender.ten) AS sender_fullname"),
+        
+        'Target.ma_bai_viet AS target_id',
+        'Target.ma_nguoi_viet AS target_owner',
+        DB::raw("CONCAT('Bài viết #', Target.ma_bai_viet) AS target_name")
       );
     }
 

@@ -53,7 +53,14 @@ io.on('connection', function (socket) {
 
 
 
+  // Contact - realtime
 
+  socket.on( 'sendMessage', function(data) {
+    io.sockets.emit( 'sendMessage', data);
+
+  });
+
+  // End contact -realtime
 
 
 

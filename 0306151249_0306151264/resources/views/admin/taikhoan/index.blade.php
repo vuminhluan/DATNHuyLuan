@@ -162,7 +162,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <a type="button" href="https://facebook.com" class="btn btn-default">Xem bài viết</a>
+        {{-- <a type="button" href="https://facebook.com" class="btn btn-default">Xem bài viết</a> --}}
         <a href="#/" id="url-to-files" type="button" class="btn btn-default">Xem tệp</a>
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
       </div>

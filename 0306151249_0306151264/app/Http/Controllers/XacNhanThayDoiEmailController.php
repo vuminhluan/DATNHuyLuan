@@ -31,7 +31,7 @@ class XacNhanThayDoiEmailController extends Controller
   					Auth::login($taikhoan);
   				}
 
-  				return redirect()->route('trangchu')->with('success_message', 'Cập nhật email '.$newemail.' thành công');
+  				return redirect()->route('caidat.index')->with('success_message', 'Cập nhật email '.$newemail.' thành công');
 
   			}
 

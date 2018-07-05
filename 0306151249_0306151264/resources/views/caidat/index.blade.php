@@ -6,7 +6,8 @@
 </div>
 <div class="myalert">
 	<div class="--content" >
-		<p>Thông báo ở đây</p>
+		{{-- <p>Thông báo ở đây</p> --}}
+		<p>{{session('success_message')}}</p>
 	</div>
 	<span class="--close fa fa-times"></span>
 </div>

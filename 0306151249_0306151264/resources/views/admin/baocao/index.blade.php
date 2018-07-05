@@ -123,13 +123,14 @@
         <div><label for="">Người báo cáo: </label> <span id="report-sender">Họ tên người gửi</span></div>
         <div><label for="">Thời gian: </label> <span id="report-created-at">Thời gian gửi</span></div>
         <div><label for="">Loại báo cáo: </label> <span id="report-kind">Loại báo cáo</span></div>
-        <div><label for="">Đối tượng bị báo cáo: </label> <span id="report-target">Đối tượng báo cáo</span></div>
+        <div><label for="">Đối tượng bị báo cáo: </label> <span id="report-target" >Đối tượng báo cáo</span></div>
         <div>
           <label for="">Nội dung báo cáo: </label> <br>
           <p id="report-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, sequi.</p>
         </div>
       </div>
       <div class="modal-footer">
+        <button id="send-mail-warning-button" type="button" class="btn btn-danger">Nhắc nhở vi phạm</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
       </div>
     </div>
@@ -179,6 +180,7 @@
           $('#report-created-at').html(response.report_created_at);
           $('#report-kind').html("Báo cáo "+response.report_kind);
           $('#report-target').html(response.target_name);
+          $('#report-target').attr('data-owner', response.target_owner);
           $('#report-content').html(response.report_content);
 
           $('.myloader').hide();
@@ -188,6 +190,29 @@
         });
         
       });
+
+      // Nhắc nhỏ vi phạm -> gửi mail
+      $('#send-mail-warning-button').click(function() {
+        var userID = $('#report-target').attr('data-owner');
+        // alert(userID);
+
+        $.ajax({
+          url: link_host+'/admin/baocao/nhacnho/'+userID,
+          type: 'GET',
+        })
+        .fail(function(error) {
+          console.log(error);
+        })
+        .done(function(data) {
+          console.log(data);
+        });
+        
+        
+
+      });
+
+
+
 
 
     });
