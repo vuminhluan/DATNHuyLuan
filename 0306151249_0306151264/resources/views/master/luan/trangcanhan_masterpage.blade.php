@@ -92,7 +92,6 @@
 						<span>Chặn</span>
 					</a>
 				</li>
-				@endif
 				<li style="float: right">
 					<a class="luan_link js-user-chat-button" href="javascript:void(0)">
 						<span class="">Nhắn tin</span>
@@ -116,6 +115,8 @@
 							</div> --}}
 						</div>
 				</li>
+				@endif
+				
 				
 			</ul>
 		</div>

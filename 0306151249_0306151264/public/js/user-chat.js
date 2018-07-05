@@ -107,7 +107,6 @@
 
 			}
 
-
 			$('.user-chat-box__modal').fadeIn('fast');return;
 
 
@@ -158,6 +157,7 @@
 				})
 				.done(function(response) {
 					// console.log(response);
+					$('.user-chat-box__footer__text-area').val('');
 
 					// Hiện lên khung chat
 					var index = 'chat-item__right';
@@ -200,14 +200,11 @@
 				type: 'POST',
 				data: {param1: 'value1'},
 			})
+			.fail(function(error) {
+				console.log(error);
+			})
 			.done(function() {
 				console.log("success");
-			})
-			.fail(function() {
-				console.log("error");
-			})
-			.always(function() {
-				console.log("complete");
 			});
 			
 			

@@ -20,7 +20,7 @@
 	<script type="text/javascript" src="{{ asset('js/globaljs/varglobal.js') }}" charset="utf-8"></script>
 	<script src="{{asset('js/jquery/jquery3.3.1.js')}}" charset="utf-8"></script>
 	<script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
-	<script src="{{ asset('js/libs/ionicons.js') }}"></script>
+	{{-- <script src="{{ asset('js/libs/ionicons.js') }}"></script> --}}
 	
 	{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
 
