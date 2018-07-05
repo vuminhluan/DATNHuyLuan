@@ -195,6 +195,7 @@
 			}
 
 			// Lưu chat vào session
+			message['toID'] = fromID;
 			$.ajax({
 				url: link_host+'/taikhoan/chat/luuchat',
 				type: 'POST',

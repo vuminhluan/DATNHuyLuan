@@ -76,12 +76,11 @@ class ChatController extends Controller
 		];
 		// return $data;
 
+		// Nếu có session rồi (session gốc và session cho từng người) => push nội dung chat vào luôn (vào mảng chat_list)
 		if($req->session()->has('user_chat') && $req->session()->has('user_chat.user'.$req->toID)) {
-
 			$req->session()->push('user_chat.user'.$req->toID.'.chat_list', $data_message);
   	} else {
-
-
+  		$to = NguoiDung::where('ma_tai_khoan', $req->toID)->first();
   		if (!$req->session()->has('user_chat')) {
 				// Nếu chưa chat với ai bao giờ => Tạo session user_chat:
 				session(['user_chat'=>
@@ -106,7 +105,6 @@ class ChatController extends Controller
 	    	]);
 			}
 
-
   	}
 
   	// $recent_chat = $req->session()->get('user_chat.user'.$req->toID.'.chat_list');
@@ -118,67 +116,16 @@ class ChatController extends Controller
 
   public function getTinNhanGiuaHaiNguoi(Request $req)
   {
-
-  	// $info = DB::table('nguoi_dung')
-  	// ->where([
-  	// 	['ma_tai_khoan', $req->fromID]
-  	// ])
-  	// ->orWhere([['ma_tai_khoan', $req->toID]])
-  	// ->select('ma_tai_khoan', 'ho_ten_lot', 'ten')
-  	// ->get();
-
-  	// return $info;
-
-  // 	if (!$req->session()->has('user_chat.user'.$req->toID)) {
-	 //    session(['user_chat'=>
-	 //    	[
-		//     	'user'.$req->toID => [
-		//     		'info' => ['from_id' => 'TK000001', 'from_name' => 'Vu Minh Luan', 'to_id'=>$req->toID, 'to_name' => 'Teo'],
-		// 	    	'chat-list' => [
-		// 	    		['name' => "nguoi gui", 'message' => 'tin nhan', 'time'  => date("H:i:s")]
-		// 	    	]
-		// 	    ],
-		// 	    'user2' => [
-		//     		'info' => ['from_id' => 'TK000001', 'from_name' => 'Vu Minh Luan', 'to_id'=>$req->toID, 'to_name' => 'Teo'],
-		// 	    	'chat-list' => [
-		// 	    		['name' => "nguoi gui", 'message' => 'tin nhan', 'time'  => 'thoi gian']
-		// 	    	]
-		// 	    ]
-		//     ]
-		//   ]);
-		// }
-		// else {
-		// 	// session(['admin-chatt'=> [$data]]);
-		// 	$req->session()->push('user_chat.user'.$req->toID.'.chat-list', [
-		// 		'name' => "nguoi gui2", 'message' => 'tin nhan2', 'time'  => date("H:i:s")
-  //   	]);
-		// }
-// -------------------------------------------------------------------------------
+		// -------------------------------------------------------------------------------
 
   	$info = "";
   	if($req->session()->has('user_chat') && $req->session()->has('user_chat.user'.$req->toID)) {
-
-  		// if (!$req->session()->has('user_chat.user'.$req->toID.'chat-list')) {
-  			// $req->session()->push('user_chat.user'.$req->toID.'.chat_list', [
-		   //  	'name' => "Vu Minh Luan", 'id'=>'TK00000007', 'message' => 'chao Teo', 'time' => date("H:i:s")
-	    // 	]);
-
-	    	// return "chua co chat-list";
-  		// }
 
   		$user_chat = $req->session()->get('user_chat.user'.$req->toID);
   		// $user_chat = $req->session()->get('user_chat');
   		return $user_chat;
   	} else {
-  		// $info = DB::table('nguoi_dung')
-  		// ->where([
-  		// 	['ma_tai_khoan', $req->fromID]
-  		// ])
-  		// ->orWhere([['ma_tai_khoan', $req->toID]])
-  		// ->select('ma_tai_khoan', 'ho_ten_lot', 'ten')
-  		// ->get();
   		$to = NguoiDung::where('ma_tai_khoan', $req->toID)->first();
-  		// return $to;
   	}
 
 		if (!$req->session()->has('user_chat')) {
