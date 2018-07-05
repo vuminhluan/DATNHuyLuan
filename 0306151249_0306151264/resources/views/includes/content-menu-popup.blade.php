@@ -48,7 +48,7 @@
 {{--                             @if ($lstnhomcuataikhoan[$i]->anh!="no")
                               <img src="{{ asset($lstnhomcuataikhoan[$i]->anh) }}" style="width: 100px;height: 100px; overflow: hidden;position: absolute;cursor: pointer;" alt="{{$lstnhomcuataikhoan[$i]->ten_nhom}}">
                             @endif --}}
-                                <div class="div-name-nhom"  style="height: 20px; width: 92px;text-align: center;margin-left: -23px;margin-top: 53px;">{{$lstnhomcuataikhoan[$i]->ten_nhom}}</div>
+                                <div class="div-name-nhom"  style="height: 35px; width: 87px;text-align: center;margin-left: -23px;margin-top: 53px;overflow: hidden;font-weight: bold;">{{$lstnhomcuataikhoan[$i]->ten_nhom}}</div>
 
                             </div>
                           
@@ -72,7 +72,8 @@
                               {{-- background-image: url('pictures/group-icon.png'); --}}
                              {{--  <img src="{{ asset('papictures/group-icon.pngth') }}" style="width: 90px;height: 130px;" alt=""> --}}
                               <div  class="div-item-nhom-popup" style="background-image: url('{{ asset($lstNhomQuanLyCuaTaiKhoan[$i]->anh) }}');background-repeat: no-repeat, repeat; background-size:77px auto; background-position: center; " >
-                                  <div class="div-name-nhom"  style="height: 20px; width: 92px;text-align: center;margin-left: -23px;margin-top: 53px;">{{$lstNhomQuanLyCuaTaiKhoan[$i]->ten_nhom}}</div>
+                                  <div class="div-name-nhom"  style="height: 35px; width: 87px;text-align: center;margin-left: -23px;margin-top: 53px;overflow: hidden;font-weight: bold;">{{$lstNhomQuanLyCuaTaiKhoan[$i]->ten_nhom}}
+                                  </div>
                               </div>
                             
                             </div>

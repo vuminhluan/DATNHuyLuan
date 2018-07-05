@@ -29,8 +29,8 @@ function taonhommoi(l)
 function submittaonhom()
 {
     var tennhom = $('#input-tennhom').val();
-    if (tennhom.length>60||tennhom.length<10) {
-        thongbaopopupy("Tên nhóm","Tên nhóm từ 10 tới 60 kí tự");return;
+    if (tennhom.length>60||tennhom.length<4) {
+        thongbaopopupy("Tên nhóm","Tên nhóm từ 4 tới 60 kí tự");return;
     }
     $("#btn-xac-nhan-tao-nhom-in-model").css("display","none");
     $("#btn-huy-tao-nhom-in-model").css("display","none");

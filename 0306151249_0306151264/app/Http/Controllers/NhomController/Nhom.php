@@ -35,7 +35,7 @@ class Nhom extends Controller
         $flagthanhviennhom = false;
         for ($i=0; $i <count($lstthanhviennhom) ; $i++) { 
            if ($lstthanhviennhom[$i]->ma_tai_khoan==$matk) {
-                $flagthanhviennhom=true;break; 
+                $flagthanhviennhom=true; 
            }
         }
 
@@ -73,8 +73,9 @@ class Nhom extends Controller
                                 ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet')//
                                 ->where([["bai_viet.ma_chu_bai_viet",$idnhom],["bai_viet.trang_thai","1"]])
                                 ->orWhere([["bai_viet_chia_se.ma_nhom_chia_se",$idnhom],["bai_viet.trang_thai","1"]])
+                                ->groupBy('bai_viet.ma_bai_viet')
                                 ->orderBy('bai_viet.ma_bai_viet','desc')
-                               ->take(10)->get();
+                                ->take(10)->get();
 
         if ($caidatnhom[0]->ma_loai_nhom=="LN01") {
             //nhóm công khai
@@ -150,6 +151,7 @@ class Nhom extends Controller
                                 ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
                                 ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet')//
                                 ->where([["bai_viet.ma_bai_viet",$mabaiviet],["bai_viet.trang_thai","1"]])
+                                ->groupBy('bai_viet.ma_bai_viet')
                                 ->orderBy('bai_viet.ma_bai_viet','desc')
                                ->take(1)->get();
 
@@ -194,6 +196,7 @@ class Nhom extends Controller
                                 ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
                                 ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet')//
                                 ->where([["bai_viet.ma_bai_viet",$manhomvamabaiviet->ma_bai_viet],["bai_viet.trang_thai","1"]])
+                                ->groupBy('bai_viet.ma_bai_viet')
                                 ->orderBy('bai_viet.ma_bai_viet','desc')
                                ->take(1)->get();
 
@@ -239,6 +242,7 @@ class Nhom extends Controller
                                 ->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
                                 ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet')//
                                 ->where([["bai_viet.ma_bai_viet",$manhomvamabaiviet->ma_bai_viet],["bai_viet.trang_thai","1"]])
+                                ->groupBy('bai_viet.ma_bai_viet')
                                 ->orderBy('bai_viet.ma_bai_viet','desc')
                                ->take(1)->get();
 

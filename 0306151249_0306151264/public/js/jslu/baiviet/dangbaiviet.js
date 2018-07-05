@@ -312,7 +312,7 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
                                             {
                                                 url: link_host+'/ajax/postbaivietne',
                                                 type: 'POST',
-                                                async:true,
+                                                async:false,
                                                 data:{
                                                 _token: $('input[name=_token]').val(),
                                                 ma_nguoi_viet: $('#session-ma-tk').val(),
