@@ -405,6 +405,7 @@ function pheduyetthanhvienvaonhomcreateelement(pr){
         var listsearchdiv = document.getElementById('divbodybodykiemduyetthanhvien');
         for (var i = 0; i < data.length; i++) {
            var divkq = document.createElement("div");
+           divkq.id="kiemduyetthanhvienvaonhomiddiv-"+data[i].ma_tai_khoan;
         divkq.style.height= "auto";
         divkq.style.width="770px";
         divkq.style.background ="white";

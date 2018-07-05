@@ -304,13 +304,17 @@ function shownoptep(prl) {
 	})
 }
 
-function submitnopbaine(prl,prl_mathumuc,prl_mabaiviet){	
+function submitnopbaine(prl,prl_mathumuc,prl_mabaiviet,prl_thoi_gian_dang){	
 
 	  $('#submitfile-'+prl).submit(function(event) {
 	    event.preventDefault();
+	     // var timenoww    = new Date(getdatetime()).getTime();
 	    if (prl_mathumuc=="") {
-
-		thongbaopopupy("Nộp tệp","Thư mục chứa tệp hiện đang được khởi tạo. Chưa thể nộp tệp lúc này vui lòng đợi ít phút và tải lại trang. Xin cảm ơn!"); return;}
+			// var khaosat = new Date($("#ngayhethankhaosat").val()).getTime();
+			//   if (khaosat-timenoww<0) {
+			//   }
+			thongbaopopupy("Nộp tệp","Thư mục chứa tệp hiện đang được khởi tạo. Chưa thể nộp tệp lúc này vui lòng đợi ít phút và tải lại trang. Xin cảm ơn!"); return;
+		}
 		
 		if( document.getElementById("inputfilenopbai-"+prl_mabaiviet).files.length == 0 )
 			{

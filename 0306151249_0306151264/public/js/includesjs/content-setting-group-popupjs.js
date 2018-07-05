@@ -648,6 +648,8 @@ function clickpheduyetgianhapnhom(prl){
 				                    //sau khi hoàn tất thêm thành viên vào nhóm
 				                    $("#btnpheduyetgianhapnhom"+prmataikhoan).css("display","none");
 				                     $("#btntuchoiduyetgianhapnhom"+prmataikhoan).css("display","none");
+                             $("#kiemduyetthanhvienvaonhomiddiv-"+prmataikhoan).css("display","none");
+
                                      ////
                                     // opentab_pheduyetthanhvien(nhomhientaidangduocchon);// cái này là gọi lại hàm cập nhật người tham gia
 				            })
