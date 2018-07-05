@@ -67,11 +67,12 @@ class ChatController extends Controller
 
 	public function luuChatVaoSession(Request $req)
 	{
+
 		$data_message = [
 			'name'    => $req->name,
 			'id'      => $req->id,
 			'message' => $req->message,
-			'time'    => date('d/m/Y H:i:s', strtotime($req->time))
+			'time'    => date('d/m/Y H:i:s', $req->time)
 		];
 
 		// return $data_message;
@@ -95,6 +96,7 @@ class ChatController extends Controller
 					'from_id' => Auth::user()->ma_tai_khoan, 'from_name' => Auth::user()->ho_ten_lot.' '.Auth::user()->ten,
 					'to_id'=>$to->ma_tai_khoan, 'to_name' => $to->ho_ten_lot.' '.$to->ten, 'beginning_time' => date('d/m/Y H:i:s')
 	    	]);
+	    	$req->session()->push('user_chat.user'.$req->toID.'.chat_list', $data_message);
 
 			} else if(!$req->session()->has('user_chat.user'.$req->toID)) {
 				// Nếu đã có session user_chat nhưng chưa chat với người hiện tại bao giờ => tạo array lưu chat với người hiện tại => push vào session user_chat
@@ -103,6 +105,7 @@ class ChatController extends Controller
 					'from_id' => Auth::user()->ma_tai_khoan, 'from_name' => Auth::user()->ho_ten_lot.' '.Auth::user()->ten,
 					'to_id'=>$to->ma_tai_khoan, 'to_name' => $to->ho_ten_lot.' '.$to->ten, 'beginning_time' => date('d/m/Y H:i:s')
 	    	]);
+	    	$req->session()->push('user_chat.user'.$req->toID.'.chat_list', $data_message);
 			}
 
   	}

@@ -15,6 +15,7 @@
 
 	$('.user-chat-box__modal__close-button').click(function() {
 		$('.user-chat-box__modal').css('display', 'none');
+		$('.user-chat-box__footer__text-area').val('');
 	});
 
 	$('.js-user-chat-button').click(function() {
@@ -178,12 +179,14 @@
 			}
 		});
 
+		// Nhận tin nhắn từ người khác
 		socket.on('sendMessageToSomeone', function (idAndMessage) {
 			// Nhận tin nhắn từ người khác => Hiển thị
 			var toID = idAndMessage.toID;
 			var fromID = idAndMessage.fromID;
 			var message = idAndMessage.message;
-			// console.log(toID);
+			// console.log("nhan tin nhan tu nguoi khac:");
+			// console.log(message);
 
 			// Nếu khung chat đang mở => nếu đang chat với người gửi tin nhắn tới -> id của họ trên header của chatbox = id của người gửi tin nhắn tới -> hiện tin nhắn của họ lên
 			// Nếu đang chat với người khác => không hiện
@@ -197,17 +200,19 @@
 			// Lưu chat vào session
 			message['toID'] = fromID;
 			message['_token'] = $('[name=_token]').val();
-			// console.log(message);return;
+			message['time'] = new Date(message['time']).getTime()/1000;
+			// console.log(message.time);return;
 			$.ajax({
 				url: link_host+'/taikhoan/chat/luuchat',
 				type: 'POST',
 				data: message,
 			})
 			.fail(function(error) {
-				console.log(error);
+				// console.log(error);
 			})
 			.done(function(data) {
-				console.log(data);
+				// console.log("tin nhan cua nguoi khac - da luu vao session cua minh");
+				// console.log(data);
 			});
 			
 			
