@@ -53,16 +53,14 @@
 											<div class="group-description">
 												{{$nhom_theo_chucvu[$i]->gioi_thieu_nhom}}
 											</div>
-											<button class="group-action-button"></button>
+											{{-- <button class="group-action-button"></button>
 											<div class="group-list-context-menu">
 												<span class="caret caret-outer"></span>
 												<span class="caret caret-inner"></span>
 												<ul>
-													{{-- <li>Bỏ ghim</li> --}}
 													<li>Rời khỏi nhóm</li>
-													{{-- <li>Chặn nhóm</li> --}}
 												</ul>
-											</div>
+											</div> --}}
 
 										</div>
 									</li>

@@ -196,16 +196,18 @@
 
 			// Lưu chat vào session
 			message['toID'] = fromID;
+			message['_token'] = $('[name=_token]').val();
+			// console.log(message);return;
 			$.ajax({
 				url: link_host+'/taikhoan/chat/luuchat',
 				type: 'POST',
-				data: {param1: 'value1'},
+				data: message,
 			})
 			.fail(function(error) {
 				console.log(error);
 			})
-			.done(function() {
-				console.log("success");
+			.done(function(data) {
+				console.log(data);
 			});
 			
 			

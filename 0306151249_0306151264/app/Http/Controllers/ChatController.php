@@ -67,14 +67,14 @@ class ChatController extends Controller
 
 	public function luuChatVaoSession(Request $req)
 	{
-		// return date('d/m/Y H:i:s', $req->time);
 		$data_message = [
 			'name'    => $req->name,
 			'id'      => $req->id,
 			'message' => $req->message,
-			'time'    => date('d/m/Y H:i:s', $req->time),
+			'time'    => date('d/m/Y H:i:s', strtotime($req->time))
 		];
-		// return $data;
+
+		// return $data_message;
 
 		// Nếu có session rồi (session gốc và session cho từng người) => push nội dung chat vào luôn (vào mảng chat_list)
 		if($req->session()->has('user_chat') && $req->session()->has('user_chat.user'.$req->toID)) {
