@@ -10,7 +10,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class RdlEvent
+class RdlEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -22,7 +22,7 @@ class RdlEvent
     public $messageln;
     public function __construct($message)
     {
-        $this->$messageln = $message;
+        $this->messageln = $message;
     }
 
     /**

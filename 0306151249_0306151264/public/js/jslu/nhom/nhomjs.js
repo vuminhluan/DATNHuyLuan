@@ -632,12 +632,7 @@ function showlistbaocaovipham(manhom){
 }
 
 function sendmessnhom() {
-    // var socketio = io('http://localhost:6001')
-    // socket.on('chatnl:message',function(data){
-    //     console.log(data);
-    // })
-
-    var noidungmess ="akkakask"; // $("#textgui").val();
+    var noidungmess = $("#textgui").val();
       $.ajax({
                     url: link_host+'/sendmesnhom',
                     type:'POST',
@@ -645,7 +640,11 @@ function sendmessnhom() {
                             _token: $('input[name=_token]').val(),
                             contentmessnl:noidungmess      
                     }}).done(function(data){
-                        console.log(data);
+                         // console.log(data);
                     })        
+
+}
+function taorooomnhom(){
+    socketio.emit("tao-room", $("#textgui").val());
 
 }

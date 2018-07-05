@@ -7,10 +7,12 @@
 <script src="{{ asset('js/jslu/nhom/nhomjs.js') }}" type="text/javascript" charset="utf-8" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js" type="text/javascript"></script>
             <script>
-        //       var socketio = io('http://localhost:6001')
-        //           socketio.on('chatnl:message',function(data){
-        // console.log(data);
-        //        })
+              var socketio = io('http://localhost:6001')
+                  socketio.on('chatnl:message',function(data){
+                  console.log(data)
+                  // alert(data);
+                  })
+                  
             </script>
 @endsection
 @section('main')
@@ -102,9 +104,13 @@
               <div style="float: left;">
                 <textarea id="textgui" style="width: 80%" rows="5"></textarea>
               </div>
+{{-- onclick="sendmessnhom()" --}}
 
-              <div style="float: left;width: 20%;background-color: blue;color: white>" onclick="sendmessnhom()">
+              <div style="float: left;width: 10%;background-color: blue;color: white" onclick="sendmessnhom()" >
                   Gửi
+              </div>
+              <div style="float: left;width: 10%;background-color: blue;color: white" onclick="taorooomnhom()" >
+                  Tạo room
               </div>
             </div>
             

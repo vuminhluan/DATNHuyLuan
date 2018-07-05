@@ -10,11 +10,11 @@ class ChatNhomController extends Controller
 {
     public function postMessagenl(Request $rql)
     {
-    	$messenges = "lala";
     	event(
-    		$e = new RdlEvent($messenges)
+    		$e = new RdlEvent($rql->contentmessnl)
     	);
     	// return redirect()->back();
-    	 return $rql;
+    	 // return $rql;
     }
+
 }
