@@ -12,7 +12,7 @@
   </ol>
 
   <div class="col-xs-12">
-    <ul class="--list">
+    <ul class="--list" style="list-style: none;">
       
         @foreach ($folders as $folder)
           <li>

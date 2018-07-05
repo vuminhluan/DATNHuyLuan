@@ -41,7 +41,8 @@ class KichHoatTaiKhoanController extends Controller
       $root = env('GOOGLE_DRIVE_FOLDER_ID');
       $foldername = Auth::user()->ma_tai_khoan;
       $path = $root.'/'.$foldername;
-      $folder = $this->taoThuMucGoogleDrive($path, $root, $foldername);
+      $search_from = $root;
+      $folder = $this->taoThuMucGoogleDrive($path, $root, $foldername, $search_from);
       $thumuc_googledrive = new ThuMucGoogleDrive();
       $data = [
         'ma_tai_khoan' => Auth::user()->ma_tai_khoan,
