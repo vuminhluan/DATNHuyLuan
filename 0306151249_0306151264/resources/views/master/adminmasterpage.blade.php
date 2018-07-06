@@ -46,10 +46,10 @@
             <p>Tin nhắn mẫu 2.</p>
           </div>
         </div> --}}
-        
         @if (session('admin-chat'))
           @php
             $list_chat = session('admin-chat');
+
           @endphp
           @for ($i = count($list_chat)-1; $i >= 0 ; $i--)
             @if ($list_chat[$i]['name'] == Auth::user()->ho_ten_lot." ".Auth::user()->ten)

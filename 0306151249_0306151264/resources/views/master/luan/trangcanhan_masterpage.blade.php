@@ -92,30 +92,37 @@
 						<span>Chặn</span>
 					</a>
 				</li>
+				
+				@endif
 				<li style="float: right">
 					<a class="luan_link js-user-chat-button" href="javascript:void(0)">
 						<span class="">Nhắn tin</span>
 					</a>
 					<div class="user-chat-info-box">
-							@if (Auth::user()->ma_tai_khoan != $taikhoan->ma_tai_khoan)
-								<div>
-									<a class="js-send-message-to-this-person-button" href="javascript:void(0)" data-userid = {{$taikhoan->ma_tai_khoan}}>Nhắn tin với {{'@'.$taikhoan->ten_tai_khoan}}</a>
-								</div>
-							@endif
+						@if (Auth::user()->ma_tai_khoan != $taikhoan->ma_tai_khoan)
+							<div>
+								<a class="js-send-message-to-this-person-button" href="javascript:void(0)" data-userid = {{$taikhoan->ma_tai_khoan}}>Nhắn tin với {{'@'.$taikhoan->ten_tai_khoan}}</a>
+							</div>
+						@endif
+						@if (session('user_chat'))
+							{{-- @php
+								$chat = session('user_chat');
+								echo "<pre>";
+								print_r($chat);
+							@endphp --}}
+							@foreach (session('user_chat') as $user_chat)
+								@if ($user_chat['info'][0]['to_id'] != $taikhoan->ma_tai_khoan)
+									<div>
+										<a class="js-send-message-to-this-person-button" href="javascript:void(0)" data-userid = {{$user_chat['info'][0]['to_id']}}>{{$user_chat['info'][0]['to_name']}}</a>
+									</div>
+								@endif
+								
+							@endforeach
 							
-							{{-- <div class="texting-user-list">
-								<h3>Danh sách đang nhắn tin</h3>
-								<div>
-									<p><a href="">a</a></p>
-									<p><a href="">as</a></p>
-									<p><a href="">asdasd</a></p>
-									<p><a href="">asdasdasdasd</a></p>
-									<p><a href="">asdasdasdasdasd</a></p>
-								</div>
-							</div> --}}
-						</div>
+						@endif
+						
+					</div>
 				</li>
-				@endif
 				
 				
 			</ul>
