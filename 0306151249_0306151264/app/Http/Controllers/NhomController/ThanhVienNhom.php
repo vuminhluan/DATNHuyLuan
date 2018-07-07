@@ -139,6 +139,11 @@ class ThanhVienNhom extends Controller
             $lstNhomTVdagianhap = DB::table("thanh_vien_nhom")->where([["ma_tai_khoan",$rql->ma_tai_khoan],["trang_thai","1"]])->get();
             return $lstNhomTVdagianhap;
     }
+    public function GetLstNhomMaThanhVienGiaNhapKRQ($ma_tai_khoan)
+    {
+            $lstNhomTVdagianhap = DB::table("thanh_vien_nhom")->where([["ma_tai_khoan",$ma_tai_khoan],["trang_thai","1"]])->get();
+            return $lstNhomTVdagianhap;
+    }
     public function PostThanhVienXinGiaNhapNhom(Request $rql)
     {
             if( count($this->GetThanhvienChoPheDuyet($rql->ma_tai_khoan,$rql->ma_nhom))==0){

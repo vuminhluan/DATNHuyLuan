@@ -333,6 +333,7 @@ function luuchinhsualoainhomnon(prl){
 
 
 function updatecaidatnhomjs(prl){
+    // alert("hihiihih");
      $.ajax({
                             url: link_host+'/ajax/postupdatecaidatnhomne',
                             type:'POST',
@@ -349,6 +350,7 @@ function updatecaidatnhomjs(prl){
                                     ma_nguoi_them:                          prl[0].ma_nguoi_them,
                                     trang_thai:                             prl[0].trang_thai
                             }}).done(function(data){
+                                location.reload();
                             })
 }
 function loadlistcauhoicuanhom(prl){
@@ -368,15 +370,15 @@ function updatetrangthaicauhoigianhapnhomnon(prl1,prl2){
     prl1 = JSON.parse(prl1);
     if (prl2=="0") {
         prl1[0].trang_thai_cau_hoi_gia_nhap_nhom="1";
-        updatecaidatnhomjs(prl1)
+        updatecaidatnhomjs(prl1);
         $("#divcauhoigianhapnhomdangduoctat").css("display","none");
         $("#divcauhoigianhapnhomdangduocbat").css("display","block");
-        
+        // location.reload();
 
     }else{
         if (prl2=="1") {
             prl1[0].trang_thai_cau_hoi_gia_nhap_nhom="0";
-            updatecaidatnhomjs(prl1)
+            updatecaidatnhomjs(prl1);
         $("#divcauhoigianhapnhomdangduoctat").css("display","block");
         $("#divcauhoigianhapnhomdangduocbat").css("display","none");
         }
@@ -394,7 +396,7 @@ function updatetrangthaimagianhapnhomnon(prl1,prl2){
     prl1 = JSON.parse(prl1);
     if (prl2=="0") {
         prl1[0].trang_thai_ma_gia_nhap_nhom="1";
-        updatecaidatnhomjs(prl1)
+        updatecaidatnhomjs(prl1);
         $("#divmagianhapnhomdangduoctat").css("display","none");
         $("#divmagianhapnhomdangduocbat").css("display","block");
         
@@ -402,7 +404,7 @@ function updatetrangthaimagianhapnhomnon(prl1,prl2){
     }else{
         if (prl2=="1") {
             prl1[0].trang_thai_ma_gia_nhap_nhom="0";
-            updatecaidatnhomjs(prl1)
+            updatecaidatnhomjs(prl1);
         $("#divmagianhapnhomdangduoctat").css("display","block");
         $("#divmagianhapnhomdangduocbat").css("display","none");
         }
@@ -434,7 +436,7 @@ function updatetrangthaipheduyetbaivietcongkhainon(prl1,prl2){
      prl1 = JSON.parse(prl1);
     if (prl2=="0") {
         prl1[0].phe_duyet_bai_viet_binh_thuong="1";
-        updatecaidatnhomjs(prl1)
+        updatecaidatnhomjs(prl1);
         $("#divpheduyetbaivietcongkhaidangduoctat").css("display","none");
         $("#divpheduyetbaivietcongkhaidangduocbat").css("display","block");
         
@@ -442,7 +444,7 @@ function updatetrangthaipheduyetbaivietcongkhainon(prl1,prl2){
     }else{
         if (prl2=="1") {
             prl1[0].phe_duyet_bai_viet_binh_thuong="0";
-            updatecaidatnhomjs(prl1)
+            updatecaidatnhomjs(prl1);
         $("#divpheduyetbaivietcongkhaidangduoctat").css("display","block");
         $("#divpheduyetbaivietcongkhaidangduocbat").css("display","none");
         }
@@ -460,7 +462,7 @@ function updatetrangthaipheduyetbaivietandanhnon(prl1,prl2){
     if (prl2=="0") {
         prl1[0].phe_duyet_bai_viet_an_danh="1";
       //  thucthifuncysno(prl1,'updatecaidatnhomjs','Lưu cài đặt nhóm','Bạn chắn chắc muốn lưu cài đặt này chứ?');
-        updatecaidatnhomjs(prl1)
+        updatecaidatnhomjs(prl1);
         $("#divpheduyetbaivietandanhdangduoctat").css("display","none");
         $("#divpheduyetbaivietandanhdangduocbat").css("display","block");
         
@@ -469,7 +471,7 @@ function updatetrangthaipheduyetbaivietandanhnon(prl1,prl2){
         if (prl2=="1") {
             prl1[0].phe_duyet_bai_viet_an_danh="0";
             // thucthifuncysno(prl1,'updatecaidatnhomjs','Lưu cài đặt nhóm','Bạn chắn chắc muốn lưu cài đặt này chứ?');
-            updatecaidatnhomjs(prl1)
+            updatecaidatnhomjs(prl1);
         $("#divpheduyetbaivietandanhdangduoctat").css("display","block");
         $("#divpheduyetbaivietandanhdangduocbat").css("display","none");
         }
@@ -489,7 +491,7 @@ function upgioithieunhom(prl){
          prl = JSON.parse(prl);
         prl[0].gioi_thieu_nhom=$('#txtaragioithieunhom').val();
        // alert(prl[0].gioi_thieu_nhom);
-        updatecaidatnhomjs(prl)
+        updatecaidatnhomjs(prl);
         showhidediv('div-content-gioi-thieu-nhom-caidat','1');
         showhidediv('icon-div-content-gioi-thieu-nhom-caidat','0');
         showhidediv('iconhidegioithieunhom','0');

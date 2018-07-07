@@ -330,7 +330,12 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
                                                 lstmanhomsharebv:lstmanhomsharebv,
                                                 // ma_bai_viet_nay:mabaivietmoine
 
-
+                                                // noi_nhan_tac_dong: $('#div-hi-chu-bai-viet-ma-nhom').val(), // hiện tại đăng trong nhóm nên sẽ là của nhóm
+                                                // ma_loai_thong_bao:loaithongbao,
+                                                // noi_dung_tac_dong:ma_noi_dung_duoc_thong_bao,
+                                                // noi_dung_thong_bao:noidungthongbao,
+                                                // nguoi_tao_thong_bao: $('#session-ma-tk').val(),
+                                                // trang_thai: trangthai
                                             }
                                             }).done(function(data) {
                                               if (thubai=="1") {

@@ -30,6 +30,21 @@ class ThongBao extends Controller
 	    	return " Lưu thông báo thành công";
 	    }
 
+	    public function postthongbaokrq($noi_nhan_tac_dong,$ma_loai_thong_bao,$noi_dung_tac_dong,$noi_dung_thong_bao,$nguoi_tao_thong_bao,$trang_thai)
+	    {
+
+
+	    	$thongbao = new thong_bao();
+	    	$thongbao->noi_nhan_tac_dong     = $noi_nhan_tac_dong;	                 // mã nhóm
+	    	$thongbao->ma_loai_thong_bao     = $ma_loai_thong_bao;	//đăng bài trong nhóm
+	    	$thongbao->noi_dung_tac_dong     = $noi_dung_tac_dong;	//mã bài viết
+	        $thongbao->noi_dung_thong_bao 	 = $noi_dung_thong_bao;         //"đã đăng bài viết"
+	    	$thongbao->nguoi_tao_thong_bao   = $nguoi_tao_thong_bao;	     // thành viên A
+	    	$thongbao->trang_thai    		 = $trang_thai;                       //1 là thông báo, 2 là thông  báo sẵn sàng
+	    	$thongbao->save();
+	    	return " Lưu thông báo thành công";
+	    }
+
                                                 // noi_nhan_tac_dong: $('#div-hi-chu-bai-viet-ma-nhom').val(), // hiện tại đăng trong nhóm nên sẽ là của nhóm
                                                 // ma_loai_thong_bao:loaithongbao,
                                                 // noi_dung_tac_dong:ma_noi_dung_duoc_thong_bao,

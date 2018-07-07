@@ -106,6 +106,14 @@ class Nhom extends Controller
 
 
     }
+
+    public function getlistquanlycuanhom($idnhom)
+    {
+        return DB::table('chuc_vu_cua_thanh_vien_trong_nhom')
+                ->where([['ma_nhom',$idnhom],['ma_chuc_vu','CV02']])
+                ->get();
+    }
+
     public function getlistnhomtkquanly($matk)
     {
         return DB::table('nhom')

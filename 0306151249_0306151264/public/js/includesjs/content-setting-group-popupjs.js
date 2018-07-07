@@ -391,8 +391,8 @@ function showtoggletuychonthanhviennhom(idtaikhoan,manhom){
                             }
 
 
-       //alert(data[0].ma_chuc_vu+"đây mã tìm được đây");
-        var arrCN = ["Quản trị viên","Phê duyệt thành viên","Phê duyệt bài viết","Trợ giúp xuất sắc","Hỗ trợ nhiệt tình"];
+       //alert(data[0].ma_chuc_vu+"đây mã tìm được đây"); ////,"Trợ giúp xuất sắc","Hỗ trợ nhiệt tình"
+        var arrCN = ["Quản trị viên","Phê duyệt thành viên","Phê duyệt bài viết"];
         var arrMCN= ["CV02","CV03","CV04","CV05","CV06","CV07"];
         var arrNameChucNang= ["onoffquantrivien","onoffpheduyetthanhvien","onoffpheduyetbaiviet","onofftrogiupxuatsac","onoffhotronhiettinh"];
         var ul= document.createElement("UL");
@@ -411,7 +411,7 @@ function showtoggletuychonthanhviennhom(idtaikhoan,manhom){
             
         
          if(!flagtestquyennguoiquanly||lstquyentk_hientai[0].ma_tai_khoan!=data[0].ma_tai_khoan){
-            for (var i = 0; i < 5; i++) {
+            for (var i = 0; i < 3; i++) {
                 
                     var li1= document.createElement("LI");
                     //  var nameofevent = arrNameChucNang[i];

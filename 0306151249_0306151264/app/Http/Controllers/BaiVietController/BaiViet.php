@@ -26,8 +26,8 @@ use App\chuc_vu_trong_nhom;
 use App\cai_dat_nhom;
 use App\bai_viet_chia_se;
 use Storage;
-
-
+// use App\Http\Controllers\ThongBaoController\ThongBao;
+use App\thong_bao;
 
 
 class BaiViet extends Controller 
@@ -38,16 +38,45 @@ class BaiViet extends Controller
     use ThemTepGoogleDriveTrait;
 
     public function Postbaiviet(Request $request)
-    {
+    {   
+        // $this->ThongBao()->postthongbaokrq(
+        // $thongbaooi = new ThongBao();
          $this->PostbaivietT($request);
          if ($request->lstmanhomsharebv!="") {
-            for ($i=0; $i <count($request->lstmanhomsharebv) ; $i++) {  
-                $this->Postbaivietchiase( $this->GetMaBaiVietT(),$request->ma_nguoi_viet,$request->lstmanhomsharebv[$i]);
+            for ($i=0; $i <count($request->lstmanhomsharebv) ; $i++) { 
+                if ($request->trang_thai=="2") {                    
+                    // $this->app('App\Http\Controllers\ThongBaoController')
+                    $this->postthongbaokrq($request->lstmanhomsharebv[$i], "LTBN02",$this->GetMaBaiVietT(),
+                        "Bài viết mới",$request->ma_nguoi_viet,"2");
+                } 
+                else{                  
+                    $this->postthongbaokrq($request->lstmanhomsharebv[$i], "LTBN02",$this->GetMaBaiVietT(),
+                        "Bài viết mới",$request->ma_nguoi_viet,"1");
+             }
+
+            $this->Postbaivietchiase( $this->GetMaBaiVietT(),$request->ma_nguoi_viet,$request->lstmanhomsharebv[$i]);
             }
          }
 
 
     }
+
+
+    public function postthongbaokrq($noi_nhan_tac_dong,$ma_loai_thong_bao,$noi_dung_tac_dong,$noi_dung_thong_bao,$nguoi_tao_thong_bao,$trang_thai)
+        {
+
+
+            $thongbao = new thong_bao();
+            $thongbao->noi_nhan_tac_dong     = $noi_nhan_tac_dong;                   // mã nhóm
+            $thongbao->ma_loai_thong_bao     = $ma_loai_thong_bao;  //đăng bài trong nhóm
+            $thongbao->noi_dung_tac_dong     = $noi_dung_tac_dong;  //mã bài viết
+            $thongbao->noi_dung_thong_bao    = $noi_dung_thong_bao;         //"đã đăng bài viết"
+            $thongbao->nguoi_tao_thong_bao   = $nguoi_tao_thong_bao;         // thành viên A
+            $thongbao->trang_thai            = $trang_thai;                       //1 là thông báo, 2 là thông  báo sẵn sàng
+            $thongbao->save();
+            return " Lưu thông báo thành công";
+        }
+
     // public function Getmabaivietnguoidangtheo($value='')
     // {
     //     # code...
