@@ -57,24 +57,22 @@ class ThongBao extends Controller
 
 
 	    public function getthongbao(Request $rql){ // tạm thời
+
+	    	$loaitbtknhan = $this->gettknhanthongbao()
+
 	        $mataikhoan = $rql->ma_tai_khoan;
 	        $soluongthongbaodalay = $rql->soluongthongbaodalay;
 	        $soluongthongbaocanlay = $rql->soluongthongbaocanlay;
 	        $soluongthongbaodadoc = $this->soluonggetthongbao($rql);
+	// if ($loaitbtknhan=='2'||$loaitbtknhan=="") {
 	         $listthongbao = DB::table('thong_bao')
 	                        ->leftJoin('thanh_vien_nhom','thong_bao.noi_nhan_tac_dong','=','thanh_vien_nhom.ma_nhom')
 	                        ->leftJoin('nguoi_dung as nguoitaothongbao','thong_bao.nguoi_tao_thong_bao','=','nguoitaothongbao.ma_tai_khoan')
-	                        //
 	                        ->leftJoin('bai_viet','thong_bao.noi_nhan_tac_dong','=','bai_viet.ma_bai_viet')
 	                        ->leftJoin('nguoi_dung as chubaiviet','bai_viet.ma_nguoi_viet','=','chubaiviet.ma_tai_khoan')
-	                        //
 	                        ->leftJoin('binh_luan_bai_viet','thong_bao.noi_nhan_tac_dong','=','binh_luan_bai_viet.ma_binh_luan')
 	                        ->leftJoin('nguoi_dung as chubinhluan','binh_luan_bai_viet.ma_nguoi_binh_luan','=','chubinhluan.ma_tai_khoan') 
-	                        //
 	                        ->leftJoin('nhom','thanh_vien_nhom.ma_nhom','=','nhom.ma_nhom')
-	                        //
-	                        // ->leftJoin('nguoi_doc_thong_bao','nguoi_doc_thong_bao.ma_thong_bao','=','thong_bao.ma_thong_bao')
-	                        //
 	                        ->select('thong_bao.*',
 	                        		 'nguoitaothongbao.*',
 	                        		 'nguoitaothongbao.anh_dai_dien AS anhdaidiennguoitaothongbao',
@@ -94,7 +92,17 @@ class ThongBao extends Controller
 	                        ->limit($soluongthongbaocanlay)   
 	                        ->get();
 	                        return view("thongbao.thongbaonhom.thongbaonhom",["listthongbao"=>$listthongbao,'listthongbaodadoc'=>$soluongthongbaodadoc]);
-	    }
+	               // }
+}
+
+    public function gettknhanthongbao($matk,$ma_nhom,$trangthai)
+    {
+        return DB::table('nhan_thong_bao')
+        ->where([['nhan_thong_bao.ma_nhom',$ma_nhom],['nhan_thong_bao.ma_tai_khoan',$matk],['nhan_thong_bao.trang_thai',$trangthai]])
+        ->get();
+    }
+
+
 
 	    public function soluonggetthongbao(Request $rql){ // tạm thời
 	        $mataikhoan = $rql->ma_tai_khoan;
