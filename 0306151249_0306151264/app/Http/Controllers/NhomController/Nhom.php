@@ -19,6 +19,8 @@ use App\ThuMucThuBai;
 use App\binh_luan_bai_viet;
 use App\binh_luan_cap_2;
 use App\bai_viet_chia_se;
+use App\nhan_thong_bao;
+use App\loai_thong_bao_nhan;
 class Nhom extends Controller
 {
     public function loadnhom ($idnhom)
@@ -40,14 +42,15 @@ class Nhom extends Controller
         }
 
 
+
          
          // if ($matk==null) {
          //     return redirect()->route('')
          // }
        // $machucvu = DB::table('thanh_vien_nhom')->select("ma_chuc_vu")->where([["ma_nhom",$idnhom],["ma_tai_khoan",$matk],["trang_thai","1"]
        //                                                                          ])->get();
-
-
+        $nhanthongbaoftk  = $this->gettknhanthongbao($matk,$idnhom,1);
+        $listloaithongbao = $this->getlistloaithongbaonhan();
 
         $listnhomtkquanly = $this->getlistnhomtkquanly($matk);
                                 
@@ -81,7 +84,7 @@ class Nhom extends Controller
             //nhóm công khai
             //ai cũng vào được// người ko trong nhóm ko được đăng
                 if ($flagthanhviennhom) {
-                           return view("nhom.indexnhom",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thongtinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom,"listnhomtkquanly"=>$listnhomtkquanly]);
+                           return view("nhom.indexnhom",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thongtinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom,"listnhomtkquanly"=>$listnhomtkquanly,"listloaithongbao"=>$listloaithongbao,"nhanthongbaoftk"=>$nhanthongbaoftk]);
                 }else{
                     
                     return view("nhom.indexnhomkhinguoikhongthuocnhom",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thongtinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom,"listnhomtkquanly"=>$listnhomtkquanly]);
@@ -93,7 +96,7 @@ class Nhom extends Controller
                //nhóm kín
                 //thành viên trong nhóm mới được vào
                 if ($flagthanhviennhom) {
-                           return view("nhom.indexnhom",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thongtinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom,"listnhomtkquanly"=>$listnhomtkquanly]);
+                           return view("nhom.indexnhom",["t"=>$idnhom,"quyentruycapnhomcuataikhoan"=>$machucvu,"totalbaiviet"=>$totalbaiviet,"lstbaiviet"=>$listbaiviet,"caidatnhom"=>$caidatnhom,"thongtinnhom"=>$nhom,"lstthanhviennhom"=>$lstthanhviennhom,"listnhomtkquanly"=>$listnhomtkquanly,"listloaithongbao"=>$listloaithongbao,"nhanthongbaoftk"=>$nhanthongbaoftk]);
                 }            
                 else{
                  return view("nhom.indexnhomkhongco");
@@ -106,6 +109,63 @@ class Nhom extends Controller
 
 
     }
+
+    public function getlistloaithongbaonhan()
+    {
+        return DB::table('loai_thong_bao_nhan')->get();
+    }
+    public function gettknhanthongbao($matk,$ma_nhom,$trangthai)
+    {
+        return DB::table('nhan_thong_bao')
+        ->join('loai_thong_bao_nhan','loai_thong_bao_nhan.ma_loai_thong_bao_nhan','=',
+            'nhan_thong_bao.loai_thong_bao_nhan')
+        ->select('loai_thong_bao_nhan.*')
+        ->where([['nhan_thong_bao.ma_nhom',$ma_nhom],['nhan_thong_bao.ma_tai_khoan',$matk],['nhan_thong_bao.trang_thai',$trangthai]])
+        ->groupBy('nhan_thong_bao.loai_thong_bao_nhan')
+        ->get();
+    }
+    public function gettknhanthongbaomatbmanhom($matk,$ma_nhom,$loai_thong_bao_nhan)
+    {
+        return DB::table('nhan_thong_bao')->where([['ma_nhom',$ma_nhom],['ma_tai_khoan',$matk],['loai_thong_bao_nhan',$loai_thong_bao_nhan]])->get();
+    }
+    public function posttknhanthongbaosl(Request $rql)
+    {
+        if (count($this->gettknhanthongbaomatbmanhom($rql->matk,$rql->ma_nhom,$rql->loai_thong_bao_nhan))==0) {
+            $this->updatetknhantbxxx($rql->matk,$rql->ma_nhom,0);
+           $this->inserttknhantb($rql->matk,$rql->ma_nhom,$rql->loai_thong_bao_nhan);
+        }
+        else{
+            if   ($this->gettknhanthongbaomatbmanhom($rql->matk,$rql->ma_nhom,$rql->loai_thong_bao_nhan)[0]->trang_thai=='0') {
+                $this->updatetknhantbxxx($rql->matk,$rql->ma_nhom,0);
+                $this->updatetknhantb($rql->matk,$rql->ma_nhom,$rql->loai_thong_bao_nhan,1);
+            }
+        }
+
+    } 
+    public function updatetknhantb($matk,$ma_nhom,$loaitbnhan,$trang_thai)
+    {
+                DB::table('nhan_thong_bao')
+                ->where([['ma_tai_khoan',$matk],['ma_nhom',$ma_nhom],['loai_thong_bao_nhan',$loaitbnhan]])
+                ->update(["trang_thai"=>$trang_thai]);
+    }
+    public function updatetknhantbxxx($matk,$ma_nhom,$trang_thai)
+    {
+                DB::table('nhan_thong_bao')
+                ->where([['ma_tai_khoan',$matk],['ma_nhom',$ma_nhom]])
+                ->update(["trang_thai"=>$trang_thai]);
+    }
+    public function inserttknhantb($matk,$ma_nhom,$loaitbn)
+    {
+                $taikhoannhantb = new nhan_thong_bao();
+                $taikhoannhantb->ma_nhom    = $ma_nhom;
+                $taikhoannhantb->ma_tai_khoan =  $matk;
+                $taikhoannhantb->loai_thong_bao_nhan =$loaitbn;
+                $taikhoannhantb->trang_thai ="1";
+                $taikhoannhantb->save();
+    }
+
+
+
 
     public function getlistquanlycuanhom($idnhom)
     {

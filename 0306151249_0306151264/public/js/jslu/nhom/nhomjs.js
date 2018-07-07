@@ -632,6 +632,27 @@ function showlistbaocaovipham(manhom){
 // loadthemduyetbaiviet();
 }
 
+function chonthongbao(manhanthongbao,noidungthongbao){
+// alert("kkk");
+document.getElementById("iddtb").innerHTML=noidungthongbao;
+ $.ajax({
+                            url: link_host+'/ajax/posttknhanthongbaoslne',
+                            type:'POST',
+                            data:{
+                                    _token: $('input[name=_token]').val(),
+                                    matk:$("#session-ma-tk").val(),
+                                    ma_nhom:$("#div-hi-chu-bai-viet-ma-nhom").val(),
+                                    loai_thong_bao_nhan:manhanthongbao
+                                    
+                            }}).done(function(data){
+
+                            })
+// /ajax/posttknhanthongbaoslne
+}
+
+
+
+
 // function sendmessnhom() {
 //     var noidungmess = $("#textgui").val();
 //       $.ajax({

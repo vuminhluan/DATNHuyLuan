@@ -62,7 +62,7 @@
                    <div id="thongtincuanhom">
                       <div class="divomshowcaidatnhomhi" >
                        <div id="div-btn-show-menu-setting-nhom" onclick="($('#div-setting-nhom-menu').css('display')=='none')?$('#div-setting-nhom-menu').css('display','block'):$('#div-setting-nhom-menu').css('display','none')" class="dvbtnshowcaidatnhom">
-                            <h3><i class="fa fa-cog" aria-hidden="true"> &nbsp; Cài đặt nhóm</i></h3>
+                            <h3 style="font-weight: bold;font-size: 15px;" ><i class="fa fa-cog" aria-hidden="true"> &nbsp;</i> Cài đặt nhóm</h3>
                        </div>
                      </div>
                    </div>
@@ -134,6 +134,29 @@
         
 <!--  -->
         <div class="rightnav">
+
+          <div class="divtoprightnav">
+              <div class="divslthongbao" style="position: relative;"><ion-icon style="font-size: 23px;" name="notifications"></ion-icon>
+                    <span style="position: absolute;font-weight: bold;">Thông báo:</span>
+              </div>
+              <div class="dropdownnhantb">
+                @if (count($nhanthongbaoftk)==0)
+                  <button id="iddtb" class="dropbtnnhantb">Tất cả</button>
+                @endif
+                 @if (count($nhanthongbaoftk)!=0)
+                  <button id="iddtb" class="dropbtnnhantb">{{$nhanthongbaoftk[0]->ten_loai_thong_bao_nhan}}</button>
+                @endif  
+                
+                
+                <div class="dropdown-contentnhantb">
+                  @for ($i = 0; $i < count($listloaithongbao); $i++)
+                     <div onclick='chonthongbao("{{$listloaithongbao[$i]->ma_loai_thong_bao_nhan}}","{{$listloaithongbao[$i]->ten_loai_thong_bao_nhan}}")' >{{$listloaithongbao[$i]->ten_loai_thong_bao_nhan}}</div>
+                  @endfor
+                </div>
+              </div>
+
+          </div>
+
           <div class="divtoprightnav">
               <div class="divslthanhviennhom"><center>({{count($lstthanhviennhom)}})&nbsp;Thành viên</center></div>
               <div class="divbtnshowtuychontvn" onclick="($('#tuychonnhom').css('display')=='block')?$('#tuychonnhom').css('display','none'):$('#tuychonnhom').css('display','block');"><i class="fa fa-ellipsis-h fa-2x" aria-hidden="true"></i>
@@ -149,7 +172,7 @@
           
            @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
                @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV03")
-                  <div id="divpheduyetbaivietnhom" onclick="showlistthanhvienchopheduyet('{{$t}}')" class="divtoprightnav" style="padding: 12px;cursor: pointer;">
+                  <div id="divpheduyetbaivietnhom" onclick="showlistthanhvienchopheduyet('{{$t}}')" class="divtoprightnav" style="padding: 12px;cursor: pointer;font-weight: bold;font-size: 15px;">
                    <center><ion-icon  style="color: #9695d8" name="contacts"></ion-icon>&nbsp;<span>Phê duyệt thành viên</span>&nbsp;&nbsp;</center>
                   </div>
                   @break
@@ -159,7 +182,7 @@
 
            @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
                @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV04")
-                  <div id="pheduyetthanhviengianhapnhom" class="divtoprightnav" onclick="showlistbaivietchopheduyet('{{$t}}')" style="padding: 12px;cursor: pointer;">
+                  <div id="pheduyetthanhviengianhapnhom" class="divtoprightnav" onclick="showlistbaivietchopheduyet('{{$t}}')" style="padding: 12px;cursor: pointer;font-weight: bold;font-size: 15px;">
                   <center><ion-icon  style="color: #9695d8" name="clipboard"></ion-icon>  <span>Phê duyệt bài viết</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
                   </div>
                   @break
