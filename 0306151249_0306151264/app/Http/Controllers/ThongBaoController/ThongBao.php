@@ -13,6 +13,7 @@ use App\binh_luan_bai_viet;
 use App\binh_luan_cap_2;
 use App\nguoi_doc_thong_bao;
 use App\nhan_thong_bao;
+use App\chuc_vu_cua_thanh_vien_trong_nhom;
 
 class ThongBao extends Controller
 {
@@ -74,7 +75,7 @@ class ThongBao extends Controller
 	                        ->leftJoin('binh_luan_bai_viet','thong_bao.noi_nhan_tac_dong','=','binh_luan_bai_viet.ma_binh_luan')
 	                        ->leftJoin('nguoi_dung as chubinhluan','binh_luan_bai_viet.ma_nguoi_binh_luan','=','chubinhluan.ma_tai_khoan') 
 
-	                        ->join('nhan_thong_bao','nhan_thong_bao.ma_nhom','<>','thong_bao.noi_nhan_tac_dong')
+	                        // ->leftJoin('nhan_thong_bao','nhan_thong_bao.ma_nhom','=','thong_bao.noi_nhan_tac_dong')
 
 
 
@@ -94,16 +95,6 @@ class ThongBao extends Controller
 									
 
 	                        	['thanh_vien_nhom.ma_tai_khoan',$mataikhoan],['thong_bao.trang_thai','1'],['thong_bao.ma_loai_thong_bao','LTBN02'],['thong_bao.nguoi_tao_thong_bao','<>',$mataikhoan]
-
-								// ['thong_bao.noi_nhan_tac_dong','<>','nhan_thong_bao.ma_nhom']
-	       //                  	,
-	       //                  	,['thanh_vien_nhom.ma_nhom','<>','nhan_thong_bao.ma_nhom']
-
-
-
-
-
-
 	                        ])
 
 
@@ -117,6 +108,39 @@ class ThongBao extends Controller
 	                        ->offset($soluongthongbaodalay)
 	                        ->limit($soluongthongbaocanlay)   
 	                        ->get();
+
+
+
+
+	                        // for ($i=0; $i < count($listthongbao) ; $i++) { 
+	                        // 	if ($listthongbao[$i]->ma_loai_thong_bao=='LTBN02') {
+	                        // 		// array_splice($listthongbao, 1, 1);
+	                        // 		// unset($listthongbao[$i]);
+	                        // 		//kiểm tra mã nhóm này trong bảng nhận thông báo xem loại nào
+	                        // 		// if ($this->gettknhanthongbao($mataikhoan,$listthongbao[$i]->noi_nhan_tac_dong,1)[0]->loai_thong_bao_nhan=='1') {
+	                        // 		// 	//không nhận tb
+	                        // 		// 	// unset($listthongbao[$i]);
+	                        // 		// }
+	                        // 		// if ($this->gettknhanthongbao($mataikhoan,$listthongbao[$i],1)[0]->loai_thong_bao_nhan=='2') {
+	                        // 		// 	//nhận tất cả
+	                        // 		// }
+	                        // 		// if ($this->gettknhanthongbao($mataikhoan,$listthongbao[$i],1)[0]->loai_thong_bao_nhan=='3') {
+	                        // 		// 	//chỉ nhận tb của quản trị viên
+	                        // 		// 		$listquantrivienx =	$this->getlistquanlycuanhomtb($listthongbao->noi_nhan_tac_dong);
+	                        // 		// 		$flagqtv = false;
+	                        // 		// 		for ($j=0; $j <count($listquantrivienx) ; $j++) { 
+	                        // 		// 			if ($listthongbao[$i]->nguoi_tao_thong_bao==$listquantrivienx[$j]->ma_tai_khoan) {
+	                        // 		// 				$flagqtv = true;
+	                        // 		// 			}
+	                        // 		// 		}
+	                        // 		// 		if (!$flagqtv) {
+	                        // 		// 			//nếu true thì ko sao bài đó của QTV , còn nếu false thì ko phải của QTV và xóa
+	                        // 		// 			// unset($listthongbao[$i]);
+	                        // 		// 		}
+	                        // 		// }
+	                        // 	}
+	                        // }
+
 	                        return view("thongbao.thongbaonhom.thongbaonhom",["listthongbao"=>$listthongbao,'listthongbaodadoc'=>$soluongthongbaodadoc]);
 	               // }
 }
@@ -128,7 +152,17 @@ class ThongBao extends Controller
         ->get();
     }
 
+	// public function FunctionName($value='')
+	// {
+	// 	# code...
+	// }
 
+    public function getlistquanlycuanhomtb($idnhom)
+    {
+        return DB::table('chuc_vu_cua_thanh_vien_trong_nhom')
+                ->where([['ma_nhom',$idnhom],['ma_chuc_vu','CV02']])
+                ->get();
+    }
 
 	    public function soluonggetthongbao(Request $rql){ // tạm thời
 	        $mataikhoan = $rql->ma_tai_khoan;
