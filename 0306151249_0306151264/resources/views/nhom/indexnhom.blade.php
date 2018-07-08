@@ -139,7 +139,7 @@
               <div class="divslthongbao" style="position: relative;"><ion-icon style="font-size: 23px;" name="notifications"></ion-icon>
                     <span style="position: absolute;font-weight: bold;">Thông báo:</span>
               </div>
-{{--               <div class="dropdownnhantb">
+              <div class="dropdownnhantb">
                 @if (count($nhanthongbaoftk)==0)
                   <button id="iddtb" class="dropbtnnhantb">Tất cả</button>
                 @endif
@@ -153,7 +153,7 @@
                      <div onclick='chonthongbao("{{$listloaithongbao[$i]->ma_loai_thong_bao_nhan}}","{{$listloaithongbao[$i]->ten_loai_thong_bao_nhan}}")' >{{$listloaithongbao[$i]->ten_loai_thong_bao_nhan}}</div>
                   @endfor
                 </div>
-              </div> --}}
+              </div>
 
           </div>
 

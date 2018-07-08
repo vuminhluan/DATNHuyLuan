@@ -12,6 +12,7 @@ use App\bai_viet;
 use App\binh_luan_bai_viet;
 use App\binh_luan_cap_2;
 use App\nguoi_doc_thong_bao;
+use App\nhan_thong_bao;
 
 class ThongBao extends Controller
 {
@@ -58,7 +59,7 @@ class ThongBao extends Controller
 
 	    public function getthongbao(Request $rql){ // tạm thời
 
-	    	$loaitbtknhan = $this->gettknhanthongbao()
+	    	// $loaitbtknhan = $this->gettknhanthongbao()
 
 	        $mataikhoan = $rql->ma_tai_khoan;
 	        $soluongthongbaodalay = $rql->soluongthongbaodalay;
@@ -72,6 +73,11 @@ class ThongBao extends Controller
 	                        ->leftJoin('nguoi_dung as chubaiviet','bai_viet.ma_nguoi_viet','=','chubaiviet.ma_tai_khoan')
 	                        ->leftJoin('binh_luan_bai_viet','thong_bao.noi_nhan_tac_dong','=','binh_luan_bai_viet.ma_binh_luan')
 	                        ->leftJoin('nguoi_dung as chubinhluan','binh_luan_bai_viet.ma_nguoi_binh_luan','=','chubinhluan.ma_tai_khoan') 
+
+	                        ->join('nhan_thong_bao','nhan_thong_bao.ma_nhom','<>','thong_bao.noi_nhan_tac_dong')
+
+
+
 	                        ->leftJoin('nhom','thanh_vien_nhom.ma_nhom','=','nhom.ma_nhom')
 	                        ->select('thong_bao.*',
 	                        		 'nguoitaothongbao.*',
@@ -83,7 +89,27 @@ class ThongBao extends Controller
 	                        		 DB::raw("CONCAT(chubaiviet.ho_ten_lot,' ',chubaiviet.ten) AS hovatenchubaiviet "),
 	                        		 DB::raw("CONCAT(chubinhluan.ho_ten_lot,' ',chubinhluan.ten) AS hotenchubinhluan ")
 	                        		 )//,'chubaiviet.*' 'thanh_vien_nhom.*','nguoitaothongbao.*',,'nhom.*'
-	                        ->where([['thanh_vien_nhom.ma_tai_khoan',$mataikhoan],['thong_bao.trang_thai','1'],['thong_bao.ma_loai_thong_bao','LTBN02'],['thong_bao.nguoi_tao_thong_bao','<>',$mataikhoan]])
+	                        ->where([
+
+									
+
+	                        	['thanh_vien_nhom.ma_tai_khoan',$mataikhoan],['thong_bao.trang_thai','1'],['thong_bao.ma_loai_thong_bao','LTBN02'],['thong_bao.nguoi_tao_thong_bao','<>',$mataikhoan]
+
+								// ['thong_bao.noi_nhan_tac_dong','<>','nhan_thong_bao.ma_nhom']
+	       //                  	,
+	       //                  	,['thanh_vien_nhom.ma_nhom','<>','nhan_thong_bao.ma_nhom']
+
+
+
+
+
+
+	                        ])
+
+
+
+
+
 	                        ->orWhere([['bai_viet.ma_nguoi_viet',$mataikhoan],['thong_bao.trang_thai','1'],['thong_bao.ma_loai_thong_bao','LTBN03'],['thong_bao.nguoi_tao_thong_bao','<>',$mataikhoan]])
 	                        ->orWhere([['binh_luan_bai_viet.ma_nguoi_binh_luan',$mataikhoan],['thong_bao.trang_thai','1'],['thong_bao.ma_loai_thong_bao','LTBN04'],['thong_bao.nguoi_tao_thong_bao','<>',$mataikhoan]])
 	                        ->groupBy('thong_bao.ma_thong_bao')
