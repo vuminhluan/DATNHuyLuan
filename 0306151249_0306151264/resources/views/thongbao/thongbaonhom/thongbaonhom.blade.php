@@ -1,3 +1,6 @@
+{{-- <script>
+	console.log($listthongbao);
+</script> --}}
 @for ($i = 0; $i <count($listthongbao) ; $i++)
 	{{-- expr --}}
 {{-- <script>
@@ -9,6 +12,9 @@
 	
 
 {{-- .thongbaodadocdiv .thongbaodiv --}}
+{{-- <script>
+	console.log($listthongbao);
+</script> --}}
 @if ($listthongbao[$i]->ma_loai_thong_bao=="LTBN02")
 	<div class="thongbaodiv"  id="divtb-{{$listthongbao[$i]->ma_thong_bao}}" onclick="openbaivietduocthongbao('{{$listthongbao[$i]->noi_nhan_tac_dong}}','{{$listthongbao[$i]->noi_dung_tac_dong}}','{{$listthongbao[$i]->ma_thong_bao}}')" >
 		<div style="width: 20%;float: left;padding-left: 15px;">

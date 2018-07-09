@@ -153,14 +153,14 @@
 				</div>
 				<div id="divoptionradiobutton" style="clear:both;padding-bottom: 3px;padding-top: 3px;">		
 					
-					<div class="divoptionradio"  >	
+					<div class="divoptionradio" style="display: none;" >	
 						<label class="container">Ẩn bài
 		  				<input id="ckbthongbao" type="checkbox"  onclick='($("#optionthongbao").css("display")=="none")?$("#optionthongbao").css("display","block"):$("#optionthongbao").css("display","none")'>
 		 				<span class="checkmark"></span>
 						</label>
 						<div class="optionlevel2" id="optionthongbao">
 							
-							Ngày ẩn:<br><input class="datetimepickker checkthuykien"  type="datetime-local" name="" value="2018-07-03T00:00" id="ipdtngayanbaiviet" name=""  placeholder="">
+							Ngày ẩn:<br><input class="datetimepickker checkthuykien"  type="datetime-local" name="" value="2018-07-12T00:00" id="ipdtngayanbaiviet" name=""  placeholder="">
 							<br>
 							{{-- clickoption("optionthongbao") --}}
 						</div>
@@ -173,7 +173,7 @@
 						<div class="optionlevel2" id="optionthubai">
 {{-- 							Từ ngày:<br><input class="datetimepickker"  id="ngaybatdauthubaiviet"  type="date" name="" value="" placeholder="">
 							<br> --}}
-							Đến ngày:<br><input class="datetimepickker checkthuykien" id="ngayhethanthubaiviet" type="datetime-local" name="" value="2018-07-03T00:00" name=""  placeholder="">
+							Đến ngày:<br><input class="datetimepickker checkthuykien" id="ngayhethanthubaiviet" type="datetime-local" name="" value="2018-07-12T00:00" name=""  placeholder="">
 						</div>
 					</div>
 					<div class="divoptionradio" >
@@ -188,7 +188,7 @@
 {{-- 							Từ ngày:
 							<input class="datetimepickker"  type="date" name="" value="" placeholder=""> --}}
 							Đến ngày:
-								<br><input class="datetimepickker checkthuykien"  id="ngayhethankhaosat"  type="datetime-local" name="" value="2018-07-03T00:00" placeholder="">
+								<br><input class="datetimepickker checkthuykien"  id="ngayhethankhaosat"  type="datetime-local" name="" value="2018-07-12T00:00" placeholder="">
 							<br>
 						</div>
 					</div>

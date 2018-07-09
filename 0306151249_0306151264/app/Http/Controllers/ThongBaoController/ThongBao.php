@@ -111,35 +111,46 @@ class ThongBao extends Controller
 
 
 
+// array_splice($listthongbao,2);
+	                        // $listthongbao = (array) $listthongbao;
+	                        // $listthongbao = json_decode(json_encode($listthongbao), true);
+	                         // array_splice($listthongbao,2);
+	                        // unset($listthongbao[2]);
+	                        for ($i=0; $i < count($listthongbao) ; $i++) { 
+	                        	// unset($listthongbao[$i]);
+	        //                 	if ($listthongbao[$i]->ma_loai_thong_bao=='LTBN02') {
 
-	                        // for ($i=0; $i < count($listthongbao) ; $i++) { 
-	                        // 	if ($listthongbao[$i]->ma_loai_thong_bao=='LTBN02') {
-	                        // 		// array_splice($listthongbao, 1, 1);
-	                        // 		// unset($listthongbao[$i]);
-	                        // 		//kiểm tra mã nhóm này trong bảng nhận thông báo xem loại nào
-	                        // 		// if ($this->gettknhanthongbao($mataikhoan,$listthongbao[$i]->noi_nhan_tac_dong,1)[0]->loai_thong_bao_nhan=='1') {
-	                        // 		// 	//không nhận tb
-	                        // 		// 	// unset($listthongbao[$i]);
-	                        // 		// }
-	                        // 		// if ($this->gettknhanthongbao($mataikhoan,$listthongbao[$i],1)[0]->loai_thong_bao_nhan=='2') {
-	                        // 		// 	//nhận tất cả
-	                        // 		// }
-	                        // 		// if ($this->gettknhanthongbao($mataikhoan,$listthongbao[$i],1)[0]->loai_thong_bao_nhan=='3') {
-	                        // 		// 	//chỉ nhận tb của quản trị viên
-	                        // 		// 		$listquantrivienx =	$this->getlistquanlycuanhomtb($listthongbao->noi_nhan_tac_dong);
-	                        // 		// 		$flagqtv = false;
-	                        // 		// 		for ($j=0; $j <count($listquantrivienx) ; $j++) { 
-	                        // 		// 			if ($listthongbao[$i]->nguoi_tao_thong_bao==$listquantrivienx[$j]->ma_tai_khoan) {
-	                        // 		// 				$flagqtv = true;
-	                        // 		// 			}
-	                        // 		// 		}
-	                        // 		// 		if (!$flagqtv) {
-	                        // 		// 			//nếu true thì ko sao bài đó của QTV , còn nếu false thì ko phải của QTV và xóa
-	                        // 		// 			// unset($listthongbao[$i]);
-	                        // 		// 		}
-	                        // 		// }
-	                        // 	}
-	                        // }
+									// // if (($key = array_search('strawberry', $listthongbao)) !== false) {
+									//     // array_splice($listthongbao,$listthongbao[$i]);
+									// // }
+
+
+	        //                 		// array_splice($listthongbao, 1, 1);
+	        //                 		// unset($listthongbao[$i]);
+	        //                 		// kiểm tra mã nhóm này trong bảng nhận thông báo xem loại nào
+	        //                 		// if ($this->gettknhanthongbao($mataikhoan,$listthongbao[$i]->noi_nhan_tac_dong,1)[0]->loai_thong_bao_nhan=='1') {
+	        //                 		// 	//không nhận tb
+	        //                 		// 	// unset($listthongbao[$i]);
+	        //                 		// }
+	        //                 		// if ($this->gettknhanthongbao($mataikhoan,$listthongbao[$i],1)[0]->loai_thong_bao_nhan=='2') {
+	        //                 		// 	//nhận tất cả
+	        //                 		// }
+	        //                 		// if ($this->gettknhanthongbao($mataikhoan,$listthongbao[$i],1)[0]->loai_thong_bao_nhan=='3') {
+	        //                 		// 	//chỉ nhận tb của quản trị viên
+	        //                 		// 		$listquantrivienx =	$this->getlistquanlycuanhomtb($listthongbao->noi_nhan_tac_dong);
+	        //                 		// 		$flagqtv = false;
+	        //                 		// 		for ($j=0; $j <count($listquantrivienx) ; $j++) { 
+	        //                 		// 			if ($listthongbao[$i]->nguoi_tao_thong_bao==$listquantrivienx[$j]->ma_tai_khoan) {
+	        //                 		// 				$flagqtv = true;
+	        //                 		// 			}
+	        //                 		// 		}
+	        //                 		// 		if (!$flagqtv) {
+	        //                 		// 			//nếu true thì ko sao bài đó của QTV , còn nếu false thì ko phải của QTV và xóa
+	        //                 		// 			// unset($listthongbao[$i]);
+	        //                 		// 		}
+	        //                 		// }
+	        //                 	}
+	                        }
 
 	                        return view("thongbao.thongbaonhom.thongbaonhom",["listthongbao"=>$listthongbao,'listthongbaodadoc'=>$soluongthongbaodadoc]);
 	               // }

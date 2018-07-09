@@ -351,6 +351,7 @@ function updatecaidatnhomjs(prl){
                                     trang_thai:                             prl[0].trang_thai
                             }}).done(function(data){
                                 location.reload();
+                                // history.go(0);
                             })
 }
 function loadlistcauhoicuanhom(prl){

@@ -100,8 +100,8 @@ $( document ).ready(function() {
           thongbaopopupy("Đăng bài viết",checktimedangbaiviet()); return;} //kiểm tra thời gian input hợp lệ chưa
           // 
 
-  
-    submitdangbaiviet();
+  submitdangbaiviet();
+    
     if (document.getElementById("imgInp").value!="") {
 
     var danganhcheck=true;
@@ -119,11 +119,13 @@ $( document ).ready(function() {
                   contentType: false,              
                   data: formData
               }).done(function(data){
-                // alert(data);
+                 document.getElementById("imgInp").value="";
+                 $('#divanhxemtruocduocthemvao').css("display","none");
 
               });
         }
     } 
+    
 
      
     
@@ -348,8 +350,8 @@ function upbaivietupup(noidungbaiviet,tailieu,thubai,khaosat,Thoigianthubaiviet,
                                                $(".hida").css("display","block");
                                               // $('.dropdown dt div').append(ret);
 
-                                                document.getElementById("imgInp").value="";
-                                               $('#divanhxemtruocduocthemvao').css("display","none");
+                                               //  document.getElementById("imgInp").value="";
+                                               // $('#divanhxemtruocduocthemvao').css("display","none");
 
 
                                               var batdongbo2 = true;
