@@ -70,14 +70,11 @@ class ThongBao extends Controller
 	         $listthongbao = DB::table('thong_bao')
 	                        ->leftJoin('thanh_vien_nhom','thong_bao.noi_nhan_tac_dong','=','thanh_vien_nhom.ma_nhom')
 	                        ->leftJoin('nguoi_dung as nguoitaothongbao','thong_bao.nguoi_tao_thong_bao','=','nguoitaothongbao.ma_tai_khoan')
+	                        // ->leftJoin('')
 	                        ->leftJoin('bai_viet','thong_bao.noi_nhan_tac_dong','=','bai_viet.ma_bai_viet')
 	                        ->leftJoin('nguoi_dung as chubaiviet','bai_viet.ma_nguoi_viet','=','chubaiviet.ma_tai_khoan')
 	                        ->leftJoin('binh_luan_bai_viet','thong_bao.noi_nhan_tac_dong','=','binh_luan_bai_viet.ma_binh_luan')
 	                        ->leftJoin('nguoi_dung as chubinhluan','binh_luan_bai_viet.ma_nguoi_binh_luan','=','chubinhluan.ma_tai_khoan') 
-
-	                        // ->leftJoin('nhan_thong_bao','nhan_thong_bao.ma_nhom','=','thong_bao.noi_nhan_tac_dong')
-
-
 
 	                        ->leftJoin('nhom','thanh_vien_nhom.ma_nhom','=','nhom.ma_nhom')
 	                        ->select('thong_bao.*',
@@ -91,16 +88,9 @@ class ThongBao extends Controller
 	                        		 DB::raw("CONCAT(chubinhluan.ho_ten_lot,' ',chubinhluan.ten) AS hotenchubinhluan ")
 	                        		 )//,'chubaiviet.*' 'thanh_vien_nhom.*','nguoitaothongbao.*',,'nhom.*'
 	                        ->where([
-
-									
-
 	                        	['thanh_vien_nhom.ma_tai_khoan',$mataikhoan],['thong_bao.trang_thai','1'],['thong_bao.ma_loai_thong_bao','LTBN02'],['thong_bao.nguoi_tao_thong_bao','<>',$mataikhoan]
+	                        	// ,['thanh_vien_nhom.thoi_gian_vao_nhom','<','thong_bao.ngay_tao_thong_bao']
 	                        ])
-
-
-
-
-
 	                        ->orWhere([['bai_viet.ma_nguoi_viet',$mataikhoan],['thong_bao.trang_thai','1'],['thong_bao.ma_loai_thong_bao','LTBN03'],['thong_bao.nguoi_tao_thong_bao','<>',$mataikhoan]])
 	                        ->orWhere([['binh_luan_bai_viet.ma_nguoi_binh_luan',$mataikhoan],['thong_bao.trang_thai','1'],['thong_bao.ma_loai_thong_bao','LTBN04'],['thong_bao.nguoi_tao_thong_bao','<>',$mataikhoan]])
 	                        ->groupBy('thong_bao.ma_thong_bao')
@@ -108,53 +98,20 @@ class ThongBao extends Controller
 	                        ->offset($soluongthongbaodalay)
 	                        ->limit($soluongthongbaocanlay)   
 	                        ->get();
-
-
-
-// array_splice($listthongbao,2);
-	                        // $listthongbao = (array) $listthongbao;
-	                        // $listthongbao = json_decode(json_encode($listthongbao), true);
-	                         // array_splice($listthongbao,2);
-	                        // unset($listthongbao[2]);
-	                        for ($i=0; $i < count($listthongbao) ; $i++) { 
-	                        	// unset($listthongbao[$i]);
-	        //                 	if ($listthongbao[$i]->ma_loai_thong_bao=='LTBN02') {
-
-									// // if (($key = array_search('strawberry', $listthongbao)) !== false) {
-									//     // array_splice($listthongbao,$listthongbao[$i]);
-									// // }
-
-
-	        //                 		// array_splice($listthongbao, 1, 1);
-	        //                 		// unset($listthongbao[$i]);
-	        //                 		// kiểm tra mã nhóm này trong bảng nhận thông báo xem loại nào
-	        //                 		// if ($this->gettknhanthongbao($mataikhoan,$listthongbao[$i]->noi_nhan_tac_dong,1)[0]->loai_thong_bao_nhan=='1') {
-	        //                 		// 	//không nhận tb
-	        //                 		// 	// unset($listthongbao[$i]);
-	        //                 		// }
-	        //                 		// if ($this->gettknhanthongbao($mataikhoan,$listthongbao[$i],1)[0]->loai_thong_bao_nhan=='2') {
-	        //                 		// 	//nhận tất cả
-	        //                 		// }
-	        //                 		// if ($this->gettknhanthongbao($mataikhoan,$listthongbao[$i],1)[0]->loai_thong_bao_nhan=='3') {
-	        //                 		// 	//chỉ nhận tb của quản trị viên
-	        //                 		// 		$listquantrivienx =	$this->getlistquanlycuanhomtb($listthongbao->noi_nhan_tac_dong);
-	        //                 		// 		$flagqtv = false;
-	        //                 		// 		for ($j=0; $j <count($listquantrivienx) ; $j++) { 
-	        //                 		// 			if ($listthongbao[$i]->nguoi_tao_thong_bao==$listquantrivienx[$j]->ma_tai_khoan) {
-	        //                 		// 				$flagqtv = true;
-	        //                 		// 			}
-	        //                 		// 		}
-	        //                 		// 		if (!$flagqtv) {
-	        //                 		// 			//nếu true thì ko sao bài đó của QTV , còn nếu false thì ko phải của QTV và xóa
-	        //                 		// 			// unset($listthongbao[$i]);
-	        //                 		// 		}
-	        //                 		// }
-	        //                 	}
-	                        }
+	                        // $listthongbao->forget(1);
+	                        // $json = json_encode($listthongbao);
+	                        // $json->splice(1, 1);
+	                        // unset($listthongbao);
 
 	                        return view("thongbao.thongbaonhom.thongbaonhom",["listthongbao"=>$listthongbao,'listthongbaodadoc'=>$soluongthongbaodadoc]);
 	               // }
 }
+
+
+	// public function getngaythamgianhom($value='')
+	// {
+	// 	# code...
+	// }
 
     public function gettknhanthongbao($matk,$ma_nhom,$trangthai)
     {
