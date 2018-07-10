@@ -203,3 +203,5 @@ Route::post("/sendmesnhom","NhomController\ChatNhomController@postMessagenl")
 
 Route::post("/ajax/posttknhanthongbaoslne","NhomController\Nhom@posttknhanthongbaosl")
 ->name('posttknhanthongbaosl');
+
+// Route::get("gettknhanthongbao","ThongBaoController\ThongBao@gettknhanthongbao")->name('gettkknhantb');

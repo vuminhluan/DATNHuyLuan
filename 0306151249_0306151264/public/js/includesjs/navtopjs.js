@@ -354,8 +354,27 @@ $(document).ready(function() {
                 ma_nguoi_doc:$("#session-ma-tk").val(),
             }
         }).done(function(soluongthongbaodadoc){
-            // alert()
-            if ((soluongthongbao.length-soluongthongbaodadoc.length)!=0) {
+           var soluongthongbaothat=0;
+           var soluongthongbaodadocthat = 0;
+            // for (var i = 0; i < soluongthongbao.length; i++) {
+            //     if (soluongthongbao[i]!="") {
+            //         soluongthongbaothat+=1;
+            //     }
+            // }
+            // soluongthongbao.forEach(function(soluongthongbao) {
+            //   soluongthongbaothat+=1;
+            //   // console.log(soluongthongbao.noi_nhan_tac_dong);
+            // });
+
+              // console.log(soluongthongbaothat);
+              // console.log(soluongthongbaodadoc);
+            // for (var j = 0; i < soluongthongbaodadoc.length; j++) {
+            //     if (soluongthongbaodadoc[i]!="") {
+            //         soluongthongbaodadocthat+=1;
+            //     }
+            // }
+
+            if ((soluongthongbao.length-soluongthongbaodadoc.length)>0) {
                 $("#divnotisoluongthongbao").css("display","block");
                 if (soluongthongbao.length-soluongthongbaodadoc.length>19) {
                     $("#soluongthongbao").text("19+");
@@ -474,7 +493,10 @@ function openpopupthongbao(prl_mataikhoan){
 loadtinthongbao();
 }
        var  soluongthongbaodalay = 0;
-       var  soluongthongbaocanlay =7;
+       var  soluongthongbaocanlay =50;
+
+
+
 function loadtinthongbao(){
     var blockdongbo = true;
      if (blockdongbo) {
@@ -488,21 +510,20 @@ function loadtinthongbao(){
             soluongthongbaocanlay:soluongthongbaocanlay
         }
     }).done(function(data){
-         soluongthongbaodalay+=7;
+         soluongthongbaodalay+=50;
       var divpost = document.createElement("div");
              divpost.innerHTML=data;
 
 
 
     ///////////////////////////////////////////////////////////////
-         $.ajax({
+    $.ajax({
         url: link_host+'/ajax/soluonggetthongbaone', 
         type: 'GET',
         data:{ 
-            ma_tai_khoan:$("#session-ma-tk").val(),
-        }
+        ma_tai_khoan:$("#session-ma-tk").val(),
+    }
     }).done(function(soluongthongbao){
-      // alert(soluongthongbao.length);
          $.ajax({
             url: link_host+'/ajax/getnguoidocthongbaone', 
             type: 'GET',
@@ -510,9 +531,6 @@ function loadtinthongbao(){
                 ma_nguoi_doc:$("#session-ma-tk").val(),
             }
         }).done(function(soluongthongbaodadoc){
-            // alert()
-
-
             for (var i = 0; i < soluongthongbao.length; i++) {
                 for (var j = 0; j < soluongthongbaodadoc.length; j++) {
                     if(soluongthongbao[i].ma_thong_bao==soluongthongbaodadoc[j].ma_thong_bao&&soluongthongbaodadoc[j].ma_nguoi_doc==$("#session-ma-tk").val()){
@@ -520,12 +538,15 @@ function loadtinthongbao(){
                     }
                 }
             }            
-            // alert(soluongthongbao.length+'-'+soluongthongbaodadoc.length);
         })
     })
 
     ///////////////////////////////////////////////////////////////
             document.getElementById('divbodybodythongbaonhom').appendChild(divpost);
+            // console.log(data);
+            // if (data="") {
+            //     loadtinthongbao();
+            // }
     })
     }
 }

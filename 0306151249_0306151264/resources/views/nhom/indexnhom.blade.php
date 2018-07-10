@@ -135,7 +135,7 @@
 <!--  -->
         <div class="rightnav">
 
-{{--           <div class="divtoprightnav">
+          <div class="divtoprightnav">
               <div class="divslthongbao" style="position: relative;"><ion-icon style="font-size: 23px;" name="notifications"></ion-icon>
                     <span style="position: absolute;font-weight: bold;">Thông báo:</span>
               </div>
@@ -155,7 +155,7 @@
                 </div>
               </div>
 
-          </div> --}}
+          </div>
 
           <div class="divtoprightnav">
               <div class="divslthanhviennhom"><center>({{count($lstthanhviennhom)}})&nbsp;Thành viên</center></div>

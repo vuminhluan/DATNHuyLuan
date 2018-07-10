@@ -102,7 +102,7 @@
         
 <!--  -->
         <div class="rightnav">
-          <div class="divtoprightnav">
+{{--           <div class="divtoprightnav">
               <div class="divslthanhviennhom"><center>({{count($lstthanhviennhom)}})&nbsp;Thành viên</center></div>
               <div class="divbtnshowtuychontvn" onclick="($('#tuychonnhom').css('display')=='block')?$('#tuychonnhom').css('display','none'):$('#tuychonnhom').css('display','block');"><i class="fa fa-ellipsis-h fa-2x" aria-hidden="true"></i>
               </div>
@@ -114,8 +114,8 @@
                 </ul>
               </div>
           </div>
-          
-           @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
+           --}}
+{{--            @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
                @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV03")
                   <div id="divpheduyetbaivietnhom" onclick="showlistthanhvienchopheduyet('{{$t}}')" class="divtoprightnav" style="padding: 12px;cursor: pointer;">
                    <center><ion-icon  style="color: #9695d8" name="contacts"></ion-icon>&nbsp;<span>Phê duyệt thành viên</span>&nbsp;&nbsp;</center>
@@ -132,8 +132,8 @@
                   </div>
                   @break
                @endif
-            @endfor
-
+            @endfor --}}
+{{-- 
             @for ($i = 0; $i <count($quyentruycapnhomcuataikhoan) ; $i++)
                @if ($quyentruycapnhomcuataikhoan[$i]->ma_chuc_vu=="CV02")
                   <div id="pheduyetthanhviengianhapnhom" class="divtoprightnav" onclick="showlistbaocaovipham('{{$t}}')" style="padding: 12px;cursor: pointer;">
@@ -141,7 +141,7 @@
                   </div>
                   @break
                @endif
-            @endfor
+            @endfor --}}
           
 
         </div>
