@@ -371,8 +371,8 @@ class Nhom extends Controller
            $lstnhomtimkiem = DB::table('nhom')
                            ->leftJoin('cai_dat_nhom','nhom.ma_nhom','=','cai_dat_nhom.ma_nhom')
                            ->select("nhom.*","cai_dat_nhom.*")
-                           ->where("nhom.ten_nhom","LIKE","%$rql->ten_nhom%")
-                           ->orWhere("nhom.ma_nhom",$rql->ten_nhom)
+                           ->where("nhom.ma_nhom",$rql->ten_nhom)
+                           ->orWhere("nhom.ten_nhom","LIKE","%$rql->ten_nhom%")
                            ->groupBy('nhom.ma_nhom')
                            ->take(3)->get();
         }

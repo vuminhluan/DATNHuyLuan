@@ -181,7 +181,7 @@ function clickxinvaonhom(pr){
 }
 
 function dongyhoanthanhtraloicauhoigianhapnhom(prl){
-    alert("hihi");
+    // alert("hihi");
     // var manhom = prl.currenTarget.myParammanhom;
 
     //       $.ajax({
@@ -347,7 +347,7 @@ function search_group(){
 
            //http://localhost/DATNHuyLuan/0306151249_0306151264/public/img_group/NH00000002TK00000006/NH00000002TK00000006-2018-06-20-03-57-36am.png
 
-            divkq.innerHTML = data[i].ten_nhom+'<br>'+'<span style="color:#777777;">'+"@"+ data[i].ma_nhom+'</span>';
+            divkq.innerHTML = data[i].ten_nhom+'<br>'+'<span style="color:#777777;">'+"Mã nhóm: "+ data[i].ma_nhom+'</span>';
 
          var btnxingianhapnhomnhanh = document.createElement("div");
              btnxingianhapnhomnhanh.className="btnxingianhapnhomnhanh";
