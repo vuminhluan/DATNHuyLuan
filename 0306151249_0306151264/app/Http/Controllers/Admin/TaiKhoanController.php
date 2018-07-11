@@ -180,7 +180,7 @@ class TaiKhoanController extends Controller
 
   	$taikhoan->hasNguoiDung()->save($nguoidung);
 
-  	return redirect()->back()->with('slidemessage', 'Tạo tài khoản Mod thành công')->withInput();
+  	return redirect()->back()->with('slidemessage', 'Tạo tài khoản mới thành công')->withInput();
 
   }
 
