@@ -6,32 +6,42 @@
 
 @section('profile_css')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/lu/baiviet/noidungbaiviet.css') }}">
+<style>
+	.no-post-alert {
+		background-color: #fff;padding:8px 10px;border-radius: 3px;box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+	}
+</style>
 @endsection
 
 @section('noidung_trangcanhan')
 
+@if (count($lstbaiviet) <= 0)
+	<div class="no-post-alert">
+		<p>Bạn hiện chưa có vài viết nào. Hãy tham gia các nhóm và đăng bài chia sẻ với cộng đồng</p>
+	</div>
+@endif
 <div class="content" style="background-color: transparent;">
 	@for ($i = 0; $i < count($lstbaiviet) ; $i++)
 	{{-- css file noidungbaiviet.css --}}
-			{{-- @if (Auth::user()->ma_tai_khoan == $taikhoan->ma_tai_khoan)
-				@include('includes.trangcanhan.post')
-			@elseif ($lstbaiviet[$i]->ma_loai_bai_viet != "LBV002" && $lstbaiviet[$i]->ma_loai_bai_viet != "LBV004")
-				@include('includes.trangcanhan.post')
-				@endif --}}
+		{{-- @if (Auth::user()->ma_tai_khoan == $taikhoan->ma_tai_khoan)
+		@include('includes.trangcanhan.post')
+	@elseif ($lstbaiviet[$i]->ma_loai_bai_viet != "LBV002" && $lstbaiviet[$i]->ma_loai_bai_viet != "LBV004")
+		@include('includes.trangcanhan.post')
+		@endif --}}
 
 
-				@include('includes.trangcanhan.post')
+		@include('includes.trangcanhan.post')
 
-				@endfor
-
-
-				{{-- <div>Xem thêm</div> --}}
-			</div>
+	@endfor
 
 
-			{{-- @include('includes/trangcanhan/trangcanhan_modal') --}}
-			{{-- <div style="display:none"  id="my_message">{{session('my_message')}}</div> --}}
-			@endsection
+		{{-- <div>Xem thêm</div> --}}
+</div>
+
+
+{{-- @include('includes/trangcanhan/trangcanhan_modal') --}}
+{{-- <div style="display:none"  id="my_message">{{session('my_message')}}</div> --}}
+@endsection
 
 			@section('trang_canhan_javascript')
 

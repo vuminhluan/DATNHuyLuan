@@ -20,7 +20,9 @@
 				// echo "<pre>";
 				// print_r($tatca_nhom);
 			@endphp
-
+			@if (count($tatca_nhom['CV02']) <= 0 && count($tatca_nhom['CV07']) <= 0 )
+				<p>Hiện tại bạn chưa có nhóm nào</p>
+			@endif
 			@foreach ($tatca_nhom as $nhom_theo_chucvu)
 				@if (count($nhom_theo_chucvu) > 0)
 
