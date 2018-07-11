@@ -8,6 +8,7 @@ use App\bai_viet as BaiViet;
 // use Auth;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use App\hinh_anh_bai_viet as HinhAnhBaiViet;
 
 class BaiVietController extends Controller
 {
@@ -49,13 +50,16 @@ class BaiVietController extends Controller
 
   	$account_posts = DB::table('bai_viet')
 			->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
+      ->join('loai_bai_viet','bai_viet.ma_loai_bai_viet','=','loai_bai_viet.ma_loai_bai_viet')
+      ->join('tai_khoan','bai_viet.ma_nguoi_viet','=','tai_khoan.ma_tai_khoan')
 			->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
 			->leftJoin('hinh_anh_bai_viet','bai_viet.ma_bai_viet','=','hinh_anh_bai_viet.ma_bai_viet')
 			->leftJoin('thumuc_thubai','thumuc_thubai.ma_bai_viet','=','bai_viet.ma_bai_viet')
-      ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet', 'nhom.ma_nhom', 'nhom.ten_nhom')//
+      ->select('nguoi_dung.*','bai_viet.*','hinh_anh_bai_viet.*','thumuc_thubai.*','bai_viet.ma_bai_viet', 'nhom.ma_nhom', 'nhom.ten_nhom', 'tai_khoan.ten_tai_khoan', 'loai_bai_viet.ma_loai_bai_viet', 'loai_bai_viet.ten_loai_bai_viet')
       ->where([['bai_viet.ma_bai_viet',$post_id]])
       ->get();
 
+    // return $account_posts;
     // $account_posts = DB::table('bai_viet')
     //   ->join('nguoi_dung','bai_viet.ma_nguoi_viet','=','nguoi_dung.ma_tai_khoan')
     //   ->join('nhom','bai_viet.ma_chu_bai_viet','=','nhom.ma_nhom')
@@ -65,9 +69,20 @@ class BaiVietController extends Controller
     //   ->where([['bai_viet.ma_bai_viet',$post_id]])
     //   ->get();
 
-     // return $account_posts;
+    // $key = $account_posts->search(function ($item)
+    // {
+    //   return $item->ma_bai_viet == 6;
+    // });
 
-     return view('admin.baiviet.chitiet')->with(['lstbaiviet'=>$account_posts]);
+    // $account_posts->pull($key);
+    // return $account_posts;
+
+    $next_and_prev_post_id = [];
+    $next_and_prev_post_id['previous'] = BaiViet::where('ma_bai_viet', '<', $post_id)->max('ma_bai_viet');
+    $next_and_prev_post_id['next'] = BaiViet::where('ma_bai_viet', '>', $post_id)->min('ma_bai_viet');
+
+
+    return view('admin.baiviet.chitiet')->with(['lstbaiviet'=>$account_posts, 'next_and_prev_post_id'=>$next_and_prev_post_id]);
 
   }
 

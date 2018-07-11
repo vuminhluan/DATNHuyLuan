@@ -3,3 +3,47 @@
 /*CSS for admin.baiviet.chitiet.blade.php*/
 
 /*body {display: none;}*/
+/*h1, h2, h3, h4, h5, h6 {
+	margin: 0px !important;
+}*/
+h3 {
+	font-size: 20px;
+}
+/*.block__header, .block__body {
+	padding: 8px;
+}*/
+.block__header {
+	border-bottom: 1px solid #eee;
+}
+
+.detail-post-sidebar > div, .middle-content > div {
+	margin-bottom: 8px;background-color: #fff;padding-bottom: 8px;border-radius: 3px;
+	box-shadow: 2px 2px 3px rgb(102, 103, 166, 1);
+}
+
+.detail-post-sidebar > div:hover, .middle-content > div:hover {
+	/*#6667a6;*/
+	box-shadow: 2px 2px 3px rgb(102, 103, 166, 0.6);
+}
+
+.middle-content > div {
+	margin-bottom: 8px;background-color: #fff;padding-bottom: 8px;border-radius: 3px;
+	box-shadow: 2px 2px 3px rgb(102, 103, 166, 1);
+}
+
+.block__next-previous {
+	text-align: center;
+}
+.block__next-previous > li {
+	display: inline-block; padding: 8px;
+}
+
+.block--padding {
+	padding: 8px 8px 8px 8px;
+}
+
+.block__post-content {
+	white-space: pre-wrap;word-wrap: break-word;overflow:auto;word-break: unset;text-align: justify;
+	font-family: "Arial";font-size: 13px;border: 0;background-color: unset;
+	padding:0;margin:0;
+}

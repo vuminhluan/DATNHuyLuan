@@ -1,7 +1,7 @@
 @extends('master.three-col_layout_masterpage')
 
 @section('title')
-	<title>group detail</title>
+	<title>Chi tiết nhóm</title>
 @endsection
 
 @section('css')

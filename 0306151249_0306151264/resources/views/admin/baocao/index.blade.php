@@ -46,6 +46,8 @@
                 <th>Mã</th>
                 <th class="hidden-sm hidden-xs">Loại báo cáo</th>
                 <th class="hidden-xs">Người gửi</th>
+                {{-- <th class="hidden-xs">Tên tài khoản</th>
+                <th class="hidden-xs">Người gửi</th> --}}
                 <th class="hidden-sm hidden-xs">Ngày gửi</th>
                 <th>Tình trạng</th>
               </tr>
@@ -121,9 +123,11 @@
       </div>
       <div class="modal-body">
         <div><label for="">Người báo cáo: </label> <span id="report-sender">Họ tên người gửi</span></div>
+        <div><label for="">Email người báo cáo: </label> <span id="report-sender-email">Email người báo cáo</span></div>
         <div><label for="">Thời gian: </label> <span id="report-created-at">Thời gian gửi</span></div>
         <div><label for="">Loại báo cáo: </label> <span id="report-kind">Loại báo cáo</span></div>
         <div><label for="">Đối tượng bị báo cáo: </label> <span id="report-target" >Đối tượng báo cáo</span></div>
+        <div><label for="">Email đối tượng bị báo cáo: </label> <span id="report-target-email">Email đối tượng bị báo cáo</span></div>
         <div>
           <label for="">Nội dung báo cáo: </label> <br>
           <p id="report-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, sequi.</p>
@@ -177,11 +181,14 @@
           response = response[0];
           // console.log(response);
           $('#report-sender').html(response.sender_fullname);
+          $('#report-sender-email').html(response.sender_email);
           $('#report-created-at').html(response.report_created_at);
           $('#report-kind').html("Báo cáo "+response.report_kind);
           $('#report-target').html(response.target_name);
           $('#report-target').attr('data-owner', response.target_owner);
+          $('#report-target-email').html(response.target_email);
           $('#report-content').html(response.report_content);
+          $('#report-content').attr('data-reportid', response.report_id);
 
           $('.myloader').hide();
         })
@@ -194,10 +201,11 @@
       // Nhắc nhỏ vi phạm -> gửi mail
       $('#send-mail-warning-button').click(function() {
         var userID = $('#report-target').attr('data-owner');
-        // alert(userID);
+        var reportID = $('#report-content').attr('data-reportid');
+        // alert(userID+'----'+reportID);return;
 
         $.ajax({
-          url: link_host+'/admin/baocao/nhacnho/'+userID,
+          url: link_host+'/admin/baocao/nhacnho/'+userID+'/'+reportID,
           type: 'GET',
         })
         .fail(function(error) {
@@ -205,6 +213,7 @@
         })
         .done(function(data) {
           console.log(data);
+          alert('Đã gửi mail nhắc nhở')
         });
         
         

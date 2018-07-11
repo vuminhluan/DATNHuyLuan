@@ -13,6 +13,7 @@ use App\TaiKhoan;
 use App\Tep;
 use App\Traits\TaoMaTepTrait;
 use App\Traits\CapNhatDoiTuongTrait;
+use App\ThuMucThuBai;
 
 class TepController extends Controller
 {
@@ -27,26 +28,27 @@ class TepController extends Controller
 	  	return view('admin.tep.index', ['tatca_tep' => $tatca_tep, 'ma_tai_khoan' => $userid]);
   	} else if ($kind == "googledrive") {
 
-	  	// Lấy folder id của người dùng.
-			$myfolder = TaiKhoan::where('ma_tai_khoan', $userid)->first()->hasThuMuc;
-			if($myfolder) {
-				$myfolder = $myfolder->ma_thumuc;
-			} else return "Tài khoản này chưa đăng kí sử dụng dịch vụ Google Drive";
+	  // 	// Lấy folder id của người dùng.
+			// $myfolder = TaiKhoan::where('ma_tai_khoan', $userid)->first()->hasThuMuc;
+			// if($myfolder) {
+			// 	$myfolder = $myfolder->ma_thumuc;
+			// } else return "Tài khoản này chưa đăng kí sử dụng dịch vụ Google Drive";
 
 			
-			$dir = '/'.$myfolder.'/';
-		  $recursive = false; // Get subdirectories also?
-		  $contents = collect(Storage::cloud()->listContents($dir, $recursive));
+			// $dir = '/'.$myfolder.'/';
+		 //  $recursive = false; // Get subdirectories also?
+		 //  $contents = collect(Storage::cloud()->listContents($dir, $recursive));
 
-		  // $files = $contents->where('type', '=', 'file'); // files
-		  $folders = $contents->where('type', '=', 'dir'); // directory
+		 //  // $files = $contents->where('type', '=', 'file'); // files
+		 //  $folders = $contents->where('type', '=', 'dir'); // directory
 
-			// return view('trang_ca_nhan.tep.googledrive')->with(['files'=>$files, 'folders'=>$folders, 'userid'=>Auth::user()->ten_tai_khoan]);
-			// return $files;
+			// // return view('trang_ca_nhan.tep.googledrive')->with(['files'=>$files, 'folders'=>$folders, 'userid'=>Auth::user()->ten_tai_khoan]);
+			// // return $files;
+      $root_folder = TaiKhoan::where('ma_tai_khoan', $userid)->first()->hasThuMuc;
+      $children_folder = TaiKhoan::where('ma_tai_khoan', 'TK00000003')->first()->hasManyThuMucThuBai;
 
-			return view('admin.tep.googledrive')->with(['folders'=>$folders]);
 
-
+			return view('admin.tep.googledrive')->with(['children'=>$children_folder, 'root'=>$root_folder]);
   	}
   	abort(404);
   }

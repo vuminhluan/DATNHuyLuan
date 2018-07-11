@@ -248,7 +248,7 @@ Route::prefix('admin')->middleware('MyAdminAuth')->group(function () {
 		Route::post('/capnhat', 'Admin\BaoCaoController@postCapNhat')->name('admin.baocao.capnhat');
 		Route::get('/timkiem/{tukhoa}', 'Admin\BaoCaoController@getTimKiemTheoTenNguoiGui')->name('admin.baocao.timkiem');
 
-		Route::get('/nhacnho/{user_id}', 'Admin\BaoCaoController@getGuiMailNhacNho')->name('admin.baocao.nhacnho.vipham');
+		Route::get('/nhacnho/{user_id}/{report_id}', 'Admin\BaoCaoController@getGuiMailNhacNho')->name('admin.baocao.nhacnho.vipham');
 	});
 	// End báo cáo
 

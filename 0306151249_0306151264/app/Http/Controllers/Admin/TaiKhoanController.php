@@ -30,7 +30,7 @@ class TaiKhoanController extends Controller
   	if(Auth::user()->quyen == "Q0003") {
     	$tatca_taikhoan = $tatca_taikhoan->where('trang_thai', '!=', 4);
     }
-    $tatca_taikhoan = $tatca_taikhoan->orderBy('thoi_gian_tao', 'DESC')->paginate(5);
+    $tatca_taikhoan = $tatca_taikhoan->orderBy('thoi_gian_tao', 'DESC')->paginate(8);
   	return view('admin.taikhoan.index', ['tatca_taikhoan' => $tatca_taikhoan])->with('slidemessage', 'Trang quản lý tài khoản');
   }
 

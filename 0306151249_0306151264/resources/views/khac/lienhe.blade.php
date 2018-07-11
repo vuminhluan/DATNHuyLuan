@@ -55,7 +55,7 @@
 							<div class="info-icon"><i class="fa fa-envelope"></i></div>
 
 							<div>
-								<p>datn.ckc@gmail.com</p>
+								<p>datn.ckc15@gmail.com</p>
 							</div>
 						</li>
 					</ul>

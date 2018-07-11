@@ -94,7 +94,7 @@
 				</li>
 				
 				@endif
-				<li style="float: right">
+				{{-- <li style="float: right">
 					<a class="luan_link js-user-chat-button" href="javascript:void(0)">
 						<span class="">Nhắn tin</span>
 					</a>
@@ -105,11 +105,7 @@
 							</div>
 						@endif
 						@if (session('user_chat'))
-							{{-- @php
-								$chat = session('user_chat');
-								echo "<pre>";
-								print_r($chat);
-							@endphp --}}
+					
 							@foreach (session('user_chat') as $user_chat)
 								@if ($user_chat['info'][0]['to_id'] != $taikhoan->ma_tai_khoan)
 									<div>
@@ -122,7 +118,7 @@
 						@endif
 						
 					</div>
-				</li>
+				</li> --}}
 				
 				
 			</ul>

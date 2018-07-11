@@ -57,7 +57,7 @@
                   <input name="id[]" type="checkbox" value="{{$baiviet->ma_bai_viet}}">
                 </td>
                 <td style="text-align: left;">
-                  <a href="javascript:void(0)" class="show-post-detail-button" id="{{$baiviet->ma_bai_viet}}">
+                  <a href="{{ route('admin.baiviet.xem', [$baiviet->ma_bai_viet]) }}" class="show-post-detail-button" id="{{$baiviet->ma_bai_viet}}">
                     #{{$baiviet->ma_bai_viet}}
                   </a>
                 </td>
@@ -105,7 +105,7 @@
 @section('javascript')
   {{-- <script src="{{ asset('js/admin/admin-account.js') }}"></script> --}}
 
-  <script>
+  {{-- <script>
     $(document).ready(function() {
       $('.show-post-detail-button').click(function(event) {
         
@@ -115,5 +115,5 @@
 
       });
     });
-  </script>
+  </script> --}}
 @endsection
