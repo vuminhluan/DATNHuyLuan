@@ -21,7 +21,6 @@
           <div class="profile-card-banner" style="background-image: url('{{asset('pictures/anh_bia/'.Auth::user()->nguoi_dung->anh_bia)}}');">
             <div class="profile-card-avatar">
               <img src="{{asset('pictures/anh_dai_dien/'.Auth::user()->nguoi_dung->anh_dai_dien)}}" alt="">
-
             </div>
           </div>
         </a>
@@ -36,10 +35,10 @@
 			{{-- Setting sidebar --}}
       <div class="setting-sidenav">
         <ul>
-          <li><a href="{{route('caidat.index')}}" class="setting-active-link">Tài khoản <span><i class="fa fa-angle-right"></i></span></a></li>
+          <li><a href="{{route('caidat.index')}}" class="{{Request::is('caidat/taikhoan') ? 'setting-active-link' : ''}}">Tài khoản <span><i class="fa fa-angle-right"></i></span></a></li>
           {{-- <li><a href="#/">Bảo mật và riêng tư <span><i class="fa fa-angle-right"></i></span></a></li> --}}
-          <li><a href="{{route('caidat.thaydoi_matkhau')}}">Mật khẩu <span><i class="fa fa-angle-right"></i></span></a></li>
-          <li><a href="{{route('caidat.chan_taikhoan')}}">Danh sách tài khoản đã chặn <span><i class="fa fa-angle-right"></i></span></a>
+          <li><a href="{{route('caidat.thaydoi_matkhau')}}" class="{{Request::is('caidat/matkhau/thaydoi') ? 'setting-active-link' : ''}}">Mật khẩu <span><i class="fa fa-angle-right"></i></span></a></li>
+          <li><a href="{{route('caidat.chan_taikhoan')}}" class="{{Request::is('caidat/taikhoan/bichan') ? 'setting-active-link' : ''}}">Danh sách tài khoản đã chặn <span><i class="fa fa-angle-right"></i></span></a>
           {{-- <li><a href="setting-blocked-groups.html">Danh sách nhóm đã chặn <span><i class="fa fa-angle-right"></i></span></a></li> --}}
           {{-- <li><a href="setting-blocked-groups.html">Cài đặt bảng tin <span><i class="fa fa-angle-right"></i></span></a></li> --}}
         </ul>
