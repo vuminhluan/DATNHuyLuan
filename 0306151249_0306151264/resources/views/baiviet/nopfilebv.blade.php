@@ -6,7 +6,8 @@
                                 <div class="divtopfiletus" id="div-nopfile-{{$lstbaiviet[$i]->ma_bai_viet}}" style="display: none;border-top: none;">
                                   @if ($lstbaiviet[$i]->ma_nguoi_viet==Auth::user()->ma_tai_khoan)
                                   <a class="theatepduocnopbai" href="https://drive.google.com/drive/folders/{{$lstbaiviet[$i]->ma_thumuc}}" title="Tệp được nộp" target="_blank">
-                                    <div class="divxemtepdanopthubai" >Xem tệp đã được nộp{{$lstbaiviet[$i]->ma_bai_viet}}</div>
+                                    {{-- {{$lstbaiviet[$i]->ma_bai_viet}} --}}
+                                    <div class="divxemtepdanopthubai" >Xem tệp đã được nộp</div>
                                   </a>
                                   @endif
 
