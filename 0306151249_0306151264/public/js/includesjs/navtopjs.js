@@ -493,7 +493,7 @@ function openpopupthongbao(prl_mataikhoan){
 loadtinthongbao();
 }
        var  soluongthongbaodalay = 0;
-       var  soluongthongbaocanlay =50;
+       var  soluongthongbaocanlay =100;
 
 
 
@@ -510,7 +510,7 @@ function loadtinthongbao(){
             soluongthongbaocanlay:soluongthongbaocanlay
         }
     }).done(function(data){
-         soluongthongbaodalay+=50;
+         soluongthongbaodalay+=100;
       var divpost = document.createElement("div");
              divpost.innerHTML=data;
 
