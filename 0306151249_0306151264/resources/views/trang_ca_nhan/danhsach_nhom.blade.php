@@ -6,7 +6,11 @@
 
 @section('profile_css')
 	<link rel="stylesheet" href="{{asset('css/luan/profile/profile_all_groups.css')}}">
-
+	<style>
+	.no-group-alert {
+		background-color: #fff;padding:8px 10px;border-radius: 3px;box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+	}
+	</style>
 @endsection
 
 @section('noidung_trangcanhan')
@@ -21,7 +25,9 @@
 				// print_r($tatca_nhom);
 			@endphp
 			@if (count($tatca_nhom['CV02']) <= 0 && count($tatca_nhom['CV07']) <= 0 )
-				<p>Hiện tại bạn chưa có nhóm nào</p>
+				<div class="no-group-alert">
+					<p>Hiện tại bạn chưa có nhóm nào</p>
+				</div>
 			@endif
 			@foreach ($tatca_nhom as $nhom_theo_chucvu)
 				@if (count($nhom_theo_chucvu) > 0)
