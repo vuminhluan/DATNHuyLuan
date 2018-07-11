@@ -134,8 +134,6 @@ class TrangCaNhanController extends Controller
 		}
 
 		// return $nhom_theo_chucvu;
-
-
 		return 	view('trang_ca_nhan.danhsach_nhom')->with([
 							'taikhoan'=>$taikhoan,
 							'tatca_gioitinh'=>$tatca_gioitinh,
