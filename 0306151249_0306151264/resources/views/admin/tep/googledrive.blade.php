@@ -13,9 +13,12 @@
 
   <div class="col-xs-12">
     <ul class="--list" style="list-style: none;">
+      @if ($root)
         <li>
           <a href="https://drive.google.com/drive/folders/{{$root->ma_thumuc}}" target="_blank"> <i class="fa fa-folder-o"></i> Thư mục gốc</a>
         </li>
+      @endif
+       
         @foreach ($children as $child)
           <li>
             <a href="https://drive.google.com/drive/folders/{{$child->ma_thumuc}}" target="_blank"> <i class="fa fa-folder-o"></i> Thư mục của bài viết #{{$child->ma_bai_viet}}</a>

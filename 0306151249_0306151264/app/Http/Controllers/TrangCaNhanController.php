@@ -77,7 +77,7 @@ class TrangCaNhanController extends Controller
     	]);
     }
 
-    $account_posts = $account_posts->orderBy('bai_viet.ma_bai_viet','desc')->take(2)->get();
+    $account_posts = $account_posts->orderBy('bai_viet.ma_bai_viet','desc')->take(13)->get();
 
       // return $account_posts;
 
